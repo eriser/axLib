@@ -1,0 +1,243 @@
+#ifndef __MIDI_TRACK__
+#define __MIDI_TRACK__
+
+#include "axLib.h"
+#include <vector>
+#include <string>
+#include <cmath>
+
+#include "axAudio.h"
+
+#include <sys/types.h>
+#include <unistd.h>
+
+
+enum ColorChoice
+{
+	CHOICE_RED,
+	CHOICE_GREEN,
+	CHOICE_BLUE
+};
+
+string GetCurrentAppDirectory();
+
+void ExecApplication(const string& app_name);
+
+struct MultipleSliderMsg
+{
+	int index;
+	double value;
+	int bar_index;
+};
+
+//-----------------------------------------------------------------------------
+// MultipleSlider.
+//-----------------------------------------------------------------------------
+class MultipleSlider: public axPanel
+{
+public:
+	MultipleSlider(axApp* app, 
+				   axWindow* parent, 
+				   const axRect& rect, 
+				   const axColor& bgColor,
+				   const int& barIndex,
+				   axEvtFunction(MultipleSliderMsg)& slider_fct);
+
+	void SetNumberOfSlider(const int& nb);
+
+	axEVENT(axSliderMsg, OnSlider1Move);
+	axEVENT(axSliderMsg, OnSlider2Move);
+	axEVENT(axSliderMsg, OnSlider3Move);
+
+private:
+		int _nSlider;
+		axColor _bgColor;
+		axSlider* sliders[3]; 
+		int _barIndex;
+
+		axEvtFunction(MultipleSliderMsg) _slider_fct;
+
+	// Events.
+	virtual void OnPaint();
+
+	void OnSlider1Move(const axSliderMsg& msg);
+	void OnSlider2Move(const axSliderMsg& msg);
+	void OnSlider3Move(const axSliderMsg& msg);
+};
+
+//-----------------------------------------------------------------------------
+// MidiTrackName
+//-----------------------------------------------------------------------------
+class MidiTrackName: public axPanel
+{
+public:
+	MidiTrackName(axApp* app, axWindow* parent, const axRect& rect, const string& name);
+
+private:
+	string _trackName;
+
+	virtual void OnPaint();
+};
+
+struct MidiNoteParams
+{
+	MidiNoteParams():
+		velocities(3, 0.0),
+		actives(3, false),
+		colors(3, axColor(0.8, 0.0, 0.0))
+	{
+		active = false;
+		velocity = 0.0;
+	}
+
+	bool active;
+	float velocity;
+
+	vector<bool> actives;
+	vector<float> velocities;
+	vector<axColor> colors;
+	//vector<int> colors;
+};
+
+class MidiVelocity: public axPanel
+{
+public:
+	MidiVelocity(axApp* app, axWindow* parent, const axRect& rect, axEvtFunction(MultipleSliderMsg) fct);
+
+	void SetNumberOfSlider(const int& nb)
+	{
+		for(int i = 0; i < _sliders.size(); i++)
+		{
+			_sliders[i]->SetNumberOfSlider(nb);
+		}
+	}
+
+	axEVENT(MultipleSliderMsg, OnChangeVelocity);
+
+private:
+
+	vector<MultipleSlider*> _sliders;
+
+	axEvtFunction(MultipleSliderMsg) _velocity_fct;
+
+	void OnChangeVelocity(const MultipleSliderMsg& vel);
+
+
+
+
+	virtual void OnPaint();
+};
+
+//-----------------------------------------------------------------------------
+// MidiTrackSequence
+//-----------------------------------------------------------------------------
+class MidiTrackSequence: public axPanel
+{
+public:
+	MidiTrackSequence(axApp* app, axWindow* parent, const axRect& rect, Audio* audio, int num);
+
+	void SetNumberOfSubTrack(const int& n)
+	{
+		_nSubTrack = n;
+		Update();
+	}
+
+	void SetColorSelection(const ColorChoice& color);
+
+private:
+	int _nbars, _highLightIndex;
+	vector<MidiNoteParams> _notes;
+	int _track_number;
+	ColorChoice _choice;
+	int _nSubTrack;
+
+	axImage* _bgImg;
+
+	axColor _hightColor;
+	int _selectedSeparationNumber;
+
+	AudioMidiSeq* _audio;
+
+	void DrawMidiSequence(axGC* gc, const axRect& rect0);
+
+	// Events.
+	virtual void OnPaint();
+	virtual void OnMouseMotion(const axPoint& mousePos);
+	virtual void OnMouseLeftDown(const axPoint& mousePos);
+	virtual void OnMouseLeave();
+};
+
+//-----------------------------------------------------------------------------
+// LineSelection.
+//-----------------------------------------------------------------------------
+class LineSelection: public axPanel
+{
+public:
+	LineSelection(axApp* app, axWindow* parent, const axRect& rect);
+
+private:
+	// Events.
+	virtual void OnPaint();
+};
+
+
+struct MidiTrackEvents
+{
+	std::function<void (int)> minimize;
+	
+	MidiTrackEvents(){}
+	MidiTrackEvents(std::function<void (int)>& fct){ minimize = fct; }
+};
+
+
+//-----------------------------------------------------------------------------
+// MidiTrack.
+//-----------------------------------------------------------------------------
+class MidiTrack: public axPanel
+{
+public:
+	MidiTrack(axApp* app, axWindow* parent, const axRect& rect, const string& trackName, Audio* audio, int track_number);
+
+	void SetEvent(MidiTrackEvents& evt)
+	{
+		_evt = evt;
+	}
+
+	void SetColorSelection(const ColorChoice& choice);
+
+	axEVENT(axButtonMsg, OnAddSeparation);
+	axEVENT(axButtonMsg, OnRemoveSeparation);
+	axEVENT(axButtonMsg, OnMinimize);
+	axEVENT(MultipleSliderMsg, OnVelocity);
+	
+	
+private:
+	MidiTrackName* _trackName;
+	MidiTrackSequence* _trackSeq;
+	MidiVelocity* _velocity;
+	MidiTrackEvents _evt;
+	AudioMidiSeq* _audio;
+
+	axButton *_addBtn, *_removeBtn;
+
+	int _nSubTrack;
+
+	int _track_number;
+
+	// Events.
+	virtual void OnPaint();
+
+	void OnAddSeparation(const axButtonMsg& msg);
+	void OnRemoveSeparation(const axButtonMsg& msg);
+	void OnMinimize(const axButtonMsg& msg);
+
+	void OnVelocity(const MultipleSliderMsg& msg);
+
+
+};
+
+
+
+
+
+#endif // __MIDI_TRACK__

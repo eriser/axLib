@@ -1,0 +1,96 @@
+/// @defgroup Core 
+/// @{
+
+#ifndef __AX_WINDOW__
+#define __AX_WINDOW__
+
+#include "axObject.h"
+//#include "axID.h"
+#include "axC++.h"
+#include "axGC.h"
+
+
+
+class axWindow : public axObject
+{
+public:
+	axWindow(axWindow* parent, const axRect& rect);
+
+	axWindow* GetParent() const;
+
+	//axID GetId() const;
+	axRect GetRect() const;
+	axRect GetAbsoluteRect() const;
+	axSize GetSize() const;
+	void SetSize(const axSize& size);
+	void SetPosition(const axPoint& pos);
+
+	axPoint GetBottomLeftPosition() const;
+
+	bool IsShown() const
+	{
+		return !_isHidden;
+	}
+
+	void Show()
+	{
+		if (_isHidden != false)
+		{
+			_isHidden = false;
+			Update();
+		}
+	}
+
+	void Hide()
+	{
+		if (_isHidden != true)
+		{
+			_isHidden = true;
+			Update();
+		}
+		
+	}
+
+//protected:
+	friend class axManager;
+
+	virtual void OnPaint(){}
+	virtual void OnLeftDragging(){}
+	virtual void OnRightDragging(){}
+	virtual void OnMouseMotion(const axPoint& pos){}
+
+	virtual void OnMouseLeftDown(const axPoint& pos)
+	{
+
+	}
+
+	virtual void OnMouseLeftUp(const axPoint& pos)
+	{
+
+	}
+
+	virtual void OnMouseRightDown(){}
+	virtual void OnMouseRightUp(){}
+	virtual void OnMouseEnter(){}
+	virtual void OnMouseLeave(){}
+	virtual void OnFocusIn(){}
+	virtual void Update() = 0;
+	virtual void OnMouseLeftDragging(const axPoint& pos){}
+	//virtual void Update(){}
+
+	axGC* GetGC();
+
+private:
+	axWindow* _parent;
+	axRect _rect;
+	//axID _id;
+	axPoint _absolutePosition;
+	axGC* _gc;
+	bool _isHidden;
+
+	GLuint _texture;
+};
+
+#endif //__AX_WINDOW__
+
+/// @}
