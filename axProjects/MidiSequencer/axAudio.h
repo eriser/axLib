@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <random>
 
 #include "portaudio.h" 
 #include "axAudioBuffer.h"
@@ -60,6 +61,13 @@ public:
 		_velocity[section][index] = vel;
 	}
 
+	void SetStandardDeviation(const double& dev)
+	{
+		_deviation = dev;
+
+		cout << "Value " << dev << endl;
+	}
+
 	void SetNumberOfSection(const int& nSection)
 	{
 		_nSection = nSection;
@@ -71,6 +79,7 @@ private:
 	bool _notes[3][16];
 	float _probability[3][16];
 	double _velocity[3][16];
+	double _deviation;
 
 	int _nFrameBuf;
 	int _beatIndex, _sampleCount, _nSamplePerBeat;
@@ -79,6 +88,9 @@ private:
 	double _currentVelocity;
 
 	float* _outBuffer;
+
+	std::random_device rd;
+    // std::mt19937 gen;
 };
 
 class Audio
@@ -180,6 +192,11 @@ public:
 	void SetBeat(const int& track_index, const int& index, const bool& on)
 	{
 		_tracks[track_index]->SetBeat(index, on);
+	}
+
+	void SetStandardDeviation(const int& track_index, const double& dev)
+	{
+		_tracks[track_index]->SetStandardDeviation(dev);
 	}
 
 	void SetMidiNote(const int& track_index, 

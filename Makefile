@@ -11,7 +11,8 @@ CC = clang++ -std=c++11 -g $(INCLUDE)
 
 WIDGETS = axWidgets/axButton.o axWidgets/axGrid.o \
 		  axWidgets/axSlider.o axWidgets/axNumberBox.o \
-		  axWidgets/axPopupMenu.o axWidgets/axMenu.o
+		  axWidgets/axPopupMenu.o axWidgets/axMenu.o \
+		  axWidgets/axKnob.o
 
 OBJECTS = axCoreX11.o axUtils.o axC++.o 				\
 		  axApp.o axCore.o axColor.o axGC.o 			\

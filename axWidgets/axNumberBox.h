@@ -1,13 +1,19 @@
 #ifndef __AX_NUMBER_BOX__
 #define __AX_NUMBER_BOX__
 
+/**************************************************************************//**
+ * @file    axNumberBox.h
+ * @author  Alexandre Arsenault <alexandre.arsenault@polymtl.ca>
+ * @brief   axNumberBox.
+ * @date    19/07/2013
+ *****************************************************************************/
 #include "axEvent.h"
 #include "axPanel.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
 
-enum axControlType
+ enum axControlType
 {
     axCTRL_NO_TYPE,
     axCTRL_FLOAT,
@@ -31,211 +37,171 @@ enum axControlInterpolation
     axCTRL_LOGARITHME
 };
 
-///**************************************************************************//**
-// * axSliderFlags.
-//******************************************************************************/
-//#define axSLIDER_FLAG_VERTICAL			axFLAG_1
-//#define axSLIDER_FLAG_CLICK_ANYWHERE    axFLAG_2
-//#define axSLIDER_FLAG_RELEASE_ON_LEAVE  axFLAG_3
-//#define axSLIDER_FLAG_LEFT_CLICK_ENTER  axFLAG_4
-//#define axSLIDER_FLAG_RIGHT_ALIGN       axFLAG_5
-//#define axSLIDER_FLAG_MIDDLE_ALIGN      axFLAG_6
-//#define axSLIDER_FLAG_BACK_SLIDER       axFLAG_7
-//#define axSLIDER_FLAG_NO_SLIDER_LINE    axFLAG_8
-//
-///**************************************************************************//**
-// * axSliderMsg
-//******************************************************************************/
-//class axSliderMsg
-//{
-//public:
-//	axSliderMsg(const double& value):
-//		_value(value)
-//	{
-//	}
-//
-//	double GetValue() const
-//	{
-//		return _value;
-//	}
-//
-//private:
-//	double _value;
-//};
-//
-///**************************************************************************//**
-// * axSliderEvents.
-//******************************************************************************/
-//struct axSliderEvents
-//{
-//	axEvtFunction(axSliderMsg) slider_value_change;
-//
-//	axSliderEvents(){}
-//	axSliderEvents(axEvtFunction(axSliderMsg)& fct){ slider_value_change = fct; }
-//};
-//
-///**************************************************************************//**
-// * axSliderInfo.
-//******************************************************************************/
-//struct axSliderInfo
-//{
-//	string img_path;
-//	axSize btn_size;
-//	unsigned int slider_width;
-//
-//	axColor bgColorNormal,
-//			bgColorHover,
-//			bgColorClicked,
-//			sliderColorNormal,
-//			sliderColorHover,
-//			sliderColorClicked,
-//			sliderContourColor,
-//			contourColor,
-//			backSliderColor,
-//			backSliderContourColor;
-//
-//	axSliderInfo(const string& imgPath,
-//				 const axSize& size,
-//				 const axColor& bg_normal,
-//				 const axColor& bg_hover,
-//				 const axColor& bg_clicking,
-//				 const axColor& slider_normal,
-//				 const axColor& slider_hover,
-//				 const axColor& slider_clicking,
-//				 const axColor& slider_contour,
-//				 const axColor& contour,
-//				 const axColor& back_slider,
-//				 const axColor& back_slider_contour,
-//				 const unsigned int width) :
-//				 // Members.
-//				 img_path(imgPath),
-//				 btn_size(size),
-//				 bgColorNormal(bg_normal),
-//				 bgColorHover(bg_hover),
-//				 bgColorClicked(bg_clicking),
-//				 sliderColorNormal(slider_normal),
-//				 sliderColorHover(slider_hover),
-//				 sliderColorClicked(slider_clicking),
-//				 sliderContourColor(slider_contour),
-//				 contourColor(contour),
-//				 backSliderColor(back_slider),
-//				 backSliderContourColor(back_slider_contour),
-//				 slider_width(width){}
-//
-//	axSliderInfo(const string& info_path)
-//	{
-//		ifstream file;
-//		file.open(info_path);
-//
-//		if (file.fail())
-//		{
-//			cerr << "Problem opening file " << info_path << endl;
-//		}
-//		else
-//		{
-//			string line;
-//
-//			if (file.good())
-//			{
-//				getline(file, line);
-//				img_path = line;
-//			}
-//
-//			if (file.good())
-//			{
-//				getline(file, line);
-//				btn_size.x = stoi(line);
-//			}
-//
-//			if (file.good())
-//			{
-//				getline(file, line);
-//				btn_size.y = stoi(line);
-//			}
-//
-//			if (file.good())
-//			{
-//				getline(file, line);
-//				slider_width = stoi(line);
-//			}
-//			
-//
-//			axColor* ptr = &bgColorNormal;
-//			while (file.good())
-//			{
-//				getline(file, line);
-//				*ptr++ = axColor(line);
-//			}
-//		}
-//	}
-//};
-//
-///**************************************************************************//**
-// * axSlider.
-//******************************************************************************/
-//class axSlider : public axPanel
-//{
-//public:
-//	axSlider(axApp* app,
-//			 axWindow* parent,
-//			 const axRect& rect,
-//			 const axSliderEvents& events,
-//			 const axSliderInfo& info,
-//			 //string img_path = "",
-//			 //string label = "",
-//			 axFlag flags = 0);
-//
-//protected:
-//	//axSliderMembers _members;
-//	//axSliderOrientationStrategy* _sliderOrientationStrategy;
-//	axSliderEvents _events;
-//	axSliderInfo _info;
-//	axFlag _flag;
-//	axColor _currentBgColor, 
-//			_currentSliderColor;
-//
-//	axImage _btnImg;
-//	axFlag _flags;
-//	int _nCurrentImg,
-//		_sliderPosition,
-//		_btnYPos,
-//		_sliderYPos,
-//		_delta_click;
-//
-//	double _sliderValue;
-//
-//	enum axButtonState 
-//	{
-//		axBTN_NORMAL,
-//		axBTN_HOVER,
-//		axBTN_DOWN
-//	};
-//
-//	void blockSliderPosition(const axPoint& pos);
-//	void updateSliderValue();
-//
-//	void OnPaint();
-//	void OnMouseEnter(const axPoint& pos);
-//	void OnMouseLeftDown(const axPoint& pos);
-//	void OnMouseLeftUp(const axPoint& pos);
-//	void OnMouseMotion(const axPoint& pos);
-//	void OnMouseLeftDragging(const axPoint& pos);
-//	void OnMouseLeave(const axPoint& pos);
-//	//void OnFocusIn();
-//};
+ /*************************************************************************//**
+ * axNumberBoxFlags.
+******************************************************************************/
+#define axNUMBER_BOX_FLAG_LABEL    axFLAG_1
+#define axNUMBER_BOX_FLAG_SLIDER   axFLAG_2
+#define axNUMBER_BOX_FLAG_NO_MOUSE axFLAG_3
 
-//#define axSLIDER_PLAIN_GREY     axSliderInfo( "sliderPlain.png",          \
-//	axSize(12, 12), \
-//	axColor(0.1, 0.1, 0.1), \
-//	axColor("#888888"), \
-//	axColor("#888888"), \
-//	axColor("#3333FF"), \
-//	axColor("#4444FF"), \
-//	axColor("#5555FF"), \
-//	axColor("#000000"), \
-//	axColor(0.2, 0.2, 0.2), \
-//	axColor("#444444"), \
-//	axColor("#000000"), \
-//	5)
+/**************************************************************************//**
+ * axNumberBoxMsg
+******************************************************************************/
+class axNumberBoxMsg
+{
+public:
+    axNumberBoxMsg(const double& value):
+        _value(value)
+    {
+    }
+
+    double GetValue() const
+    {
+        return _value;
+    }
+
+private:
+    double _value;
+};
+
+/**************************************************************************//**
+ * axNumberBoxEvents.
+******************************************************************************/
+struct axNumberBoxEvents
+{
+    axEvtFunction(axNumberBoxMsg) value_change;
+
+    axNumberBoxEvents(){}
+    axNumberBoxEvents(axEvtFunction(axNumberBoxMsg)& fct){ value_change = fct; }
+};
+
+/**************************************************************************//**
+ * axNumberBoxInfo.
+******************************************************************************/
+struct axNumberBoxInfo
+{
+    axColor normal;
+    axColor hover;
+    axColor clicking;
+    axColor selected;
+    axColor contour;
+    axColor font_color;
+
+    axNumberBoxInfo(){}
+    axNumberBoxInfo(
+        const axColor& normal_color,
+        const axColor& hover_color,
+        const axColor& clicked_color,
+        const axColor& selected_color,
+        const axColor& contour_color,
+        const axColor& font_color_) :
+        normal(normal_color),
+        hover(hover_color),
+        clicking(clicked_color),
+        selected(selected_color),
+        contour(contour_color),
+        font_color(font_color_){}
+};
+
+
+
+/********************************************************************************//**
+ * axNumberBox.
+ * @todo Need to find a way to hide mouse when clicking.
+ * @todo Figure out what to do with Label and axXXXControl class.
+************************************************************************************/
+class axNumberBox: public axPanel
+{
+public:
+    axNumberBox(axApp* app,
+                axWindow* parent,
+                const axRect& rect,
+                const axNumberBoxEvents& events,
+                const axNumberBoxInfo& info,
+                axFlag flags = 0,
+                double value = 0.0,
+                axFloatRange range = axFloatRange(0.0, 1.0),
+                axControlType type = axCTRL_FLOAT,
+                axControlUnit m_unit = axCTRL_NO_UNIT,
+                axControlInterpolation interpolation = axCTRL_LINEAR,
+                string label = "");
+
+    double GetValue();
+
+private:
+    axNumberBoxEvents _events;
+    axNumberBoxInfo _info;
+    axFlag _flags;
+    // axSTANDARD_WIDGET_MEMBERS( axNumberBox );
+    axControlType _type;
+    axControlUnit _unit;
+    axFloatRange _range;
+    axControlInterpolation _interpolation;
+    // axFlag m_flags;
+
+    axColor _currentColor;
+    double _value;
+    double _zeroToOneValue;
+    string _label;
+
+    int _clickPosY;
+
+
+    void OnPaint();
+    void OnMouseEnter();
+    void OnMouseLeftDown(const axPoint& pos);
+    void OnMouseLeftUp(const axPoint& pos);
+    // void OnMouseMotion(const axPoint& pos);
+    void OnMouseLeftDragging(const axPoint& pos);
+    void OnMouseLeave();
+
+    // void OnPaint();
+    // void OnMouseEnter();
+    // void OnMouseLeave();
+    // void OnMouseLeftDown();
+    // void OnMouseLeftUp();
+    // void OnLeftDragging();
+};
+
+#define axNUMBER_BOX_STANDARD axNumberBoxInfo( axColor("#AA1111"),          \
+                                               axColor("#CC1111"),          \
+                                               axColor("#FF1111"),          \
+                                               axColor("#FF0000"),          \
+                                               axColor("#000000") )
+
+#define axNUMBER_BOX_WHITE axNumberBoxInfo( axColor("#FFFFFF"),          \
+                                            axColor("#DDDDDD"),          \
+                                            axColor("#AAAAAA"),          \
+                                            axColor("#FF0000"),          \
+                                            axColor("#000000") )
+
+///********************************************************************************//**
+//***********************************************************************************/
+//class axNumberBoxControl: public axWindow
+//{
+//public:
+//    axNumberBoxControl( axApp* app,
+//                        axWindow* parent,
+//                        const axID& id,
+//                        const string& label,
+//                        const axNumberBoxEvents& events,
+//                        const axNumberBoxInfo& box_info,
+//                        const axPoint& pos );
+
+//    double GetValue();
+
+//private:
+//    axWindow* m_parent;
+//    axNumberBox* m_numBox;
+//    axColor m_currentColor;
+//    axNumberBoxEvents m_eventID;
+//    string m_label;
+
+//    void OnPaint();
+
+//    void OnValueChange();
+
+//    EVENT( axNumberBoxControl, OnValueChange )
+//};
 
 #endif // __AX_NUMBER_BOX__

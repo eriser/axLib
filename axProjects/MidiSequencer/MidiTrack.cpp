@@ -53,8 +53,8 @@ MultipleSlider::MultipleSlider(axApp* app, axWindow* parent,
                           axColor(0.9, 0.9, 0.9), // Bg clicking.
                           axColor(0.3, 0.3, 0.3), // Slider normal
                           axColor(0.3, 0.3, 0.3), // Slider hover
-                          axColor(0.8, 0.0, 0.0), // Slider clicking.
-                          axColor(0.0, 0.0, 0.0), // Slider contour.
+                          axColor(0.4, 0.4, 0.4), // Slider clicking.
+                          axColor(0.3, 0.3, 0.3), // Slider contour.
                           axColor(0.0, 0.0, 0.0), // COntour
                           axColor(0.9, 0.9, 0.9), // Back Slider
                           axColor(0.9, 0.9, 0.9), // Back Slider contour.
@@ -89,6 +89,9 @@ MultipleSlider::MultipleSlider(axApp* app, axWindow* parent,
     sliders[1]->SetBackgroundAlpha(0.0);
     sliders[2]->SetBackgroundAlpha(0.0);
 
+    sliders[0]->SetValue(0.7);
+    sliders[1]->SetValue(0.7);
+    sliders[2]->SetValue(0.7);
     // sliders[2]->Hide();
 
     SetNumberOfSlider(2);
@@ -415,6 +418,9 @@ void MidiTrackSequence::OnPaint()
   gc->DrawRectangleContour(rect0);
 }
 
+//-----------------------------------------------------------------------------
+// MidiTrackName.
+//-----------------------------------------------------------------------------
 MidiTrackName::MidiTrackName(axApp* app, axWindow* parent, 
                const axRect& rect, 
                const string& name):
@@ -460,7 +466,6 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
       _nSubTrack(2)
       
 {
-
   _audio = static_cast<AudioMidiSeq*>(audio);
 
   axButtonInfo btn_info(axColor(0.2, 0.2, 0.2),
@@ -505,8 +510,14 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
                         audio, _track_number);
 
   axEvtFunction(MultipleSliderMsg) fct(GetOnVelocity());
-  _velocity = new MidiVelocity(app, this, axRect(0, 30, 480, 60), fct);
+  axEvtFunction(axNumberBoxMsg) sfct(GetOnStandardDeviation());
+  _velocity = new MidiVelocity(app, this, axRect(0, 30, 480, 60), fct, sfct);
 
+
+  _nSubTrack = 1;
+  _trackSeq->SetNumberOfSubTrack(_nSubTrack);
+  _velocity->SetNumberOfSlider(_nSubTrack);
+  _audio->SetTrackNumberOfSection(_track_number, _nSubTrack);
 
 }
 
@@ -517,6 +528,18 @@ void MidiTrack::OnVelocity(const MultipleSliderMsg& msg)
                         msg.index, 
                         msg.bar_index, 
                         msg.value);
+}
+
+void MidiTrack::OnStandardDeviation(const axNumberBoxMsg& msg)
+{
+  // cout << "TEST : " << msg.GetValue() << endl;
+
+  _audio->SetStandardDeviation(_track_number, msg.GetValue() * 0.5);
+    // cout << msg.bar_index << " " << msg.index << " " << msg.value << endl;
+    // _audio->SetVelocity(_track_number, 
+    //                     msg.index, 
+    //                     msg.bar_index, 
+    //                     msg.value);
 }
 
 void MidiTrack::OnAddSeparation(const axButtonMsg& msg)
@@ -642,9 +665,12 @@ void LineSelection::OnPaint()
 MidiVelocity::MidiVelocity(axApp* app,  
                            axWindow* parent, 
                            const axRect& rect, 
-                           axEvtFunction(MultipleSliderMsg) fct):
-      axPanel(app, parent, rect),
-      _velocity_fct(fct)
+                           axEvtFunction(MultipleSliderMsg) fct,
+                           axEvtFunction(axNumberBoxMsg) sfct):
+                           axPanel(app, parent, rect),
+                           // Members.
+                           _velocity_fct(fct),
+                           _standard_deviation_fct(sfct)
 {
     for(int i = 0; i < 16; i++)
     {
@@ -663,16 +689,55 @@ MidiVelocity::MidiVelocity(axApp* app,
         axEvtFunction(MultipleSliderMsg) sldfct(GetOnChangeVelocity());
         _sliders.push_back(new MultipleSlider(app, this, r, color, i, sldfct));
     }
+
+
+    // axKnobInfo knob_info(axColor(0.6, 0.6, 0.6),
+    //                    axColor("#AAAAAA"),
+    //                    axColor("#BBBBBB"),
+    //                    128,               
+    //                    axSize( 32, 32 ),  
+    //                    "knob.png",         
+    //                    "knobSelected.png");
+
+    // axEvtFunction(axKnobMsg) evt(GetOnStandardDeviation());
+    // axKnob* knob = new axKnob(app, this, axRect(25, 15, 32, 32),
+    //                         axKnobEvents(evt), knob_info);
+
+    axNumberBoxInfo box_info(axColor(0.7, 0.7, 0.7),
+                             axColor(0.3, 0.3, 0.3),
+                             axColor(0.2, 0.2, 0.2),
+                             axColor(0.2, 0.2, 0.2),
+                             axColor(0.0, 0.0, 0.0),
+                             axColor(0.0, 0.0, 0.0));
+
+    axEvtFunction(axNumberBoxMsg) evt(GetOnStandardDeviation());
+
+
+    axNumberBox* box1 = new axNumberBox(app, this, 
+                           axRect(15, 10, 40, 20), 
+                           axNumberBoxEvents(evt), 
+                           box_info);
+
 }
 
 void MidiVelocity::OnChangeVelocity(const MultipleSliderMsg& msg)
-{
+{    
     if(_velocity_fct)
     {
         _velocity_fct(msg);
     }
     
     // cout << msg.bar_index << " " << msg.index << " " << msg.value << endl;
+}
+
+void MidiVelocity::OnStandardDeviation(const axNumberBoxMsg& msg)
+{
+    
+
+    if(_standard_deviation_fct)
+    {
+      _standard_deviation_fct(msg);
+    }
 }
 
 

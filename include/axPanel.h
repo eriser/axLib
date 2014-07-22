@@ -20,6 +20,11 @@ public:
 
 	axApp* GetApp();
 
+	void BlockDrawing();
+	void BlockDrawing(const axRect& rect);
+
+	void UnBlockDrawing();
+
 private:
 	axApp* _app;
 };

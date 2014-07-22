@@ -48,6 +48,22 @@ axSlider::axSlider(axApp* app,
 	Update();
 }
 
+void axSlider::SetValue(const double& value)
+{
+	_sliderValue = value;
+
+	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
+	{
+		_sliderPosition = double(GetSize().y) * (1.0 - _sliderValue);// - _info.btn_size.y - 2) + 1;
+	}
+	// else
+	// {
+	// 	_sliderValue = (_sliderPosition - 1) /
+	// 		double(GetSize().x - _info.btn_size.x - 2);
+	// }
+	Update();	
+}
+
 void axSlider::OnMouseLeftDown(const axPoint& mousePos)
 {
 	axPoint pos = mousePos - GetAbsoluteRect().position;
@@ -275,6 +291,71 @@ void axSlider::OnMouseLeave(const axPoint& p)
 	}
 }
 
+void axSlider::DrawLineBehindSlider_Vertical(axGC* gc, const axRect& rect0)
+{
+	int half_btn_size = _info.btn_size.y * 0.5;
+
+	axRect slider_rect;
+	if (axFlag_exist(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
+	{
+		// slider_rect = axRect(_sliderYPos, _sliderPosition + half_btn_size,
+		// 					 12,// _info.slider_width,
+		// 					 GetSize().y - _sliderPosition - half_btn_size);
+
+		slider_rect = axRect(_sliderYPos, _sliderPosition + half_btn_size,
+							 _info.slider_width,
+							 GetSize().y - _sliderPosition - half_btn_size);
+	}
+	else
+	{
+		slider_rect = axRect(_sliderYPos, 0,
+							 _info.slider_width,
+							 _sliderPosition + half_btn_size);
+	}
+
+	gc->SetColor(_currentSliderColor);
+	gc->DrawRectangle(slider_rect);
+
+	gc->SetColor(_info.sliderContourColor);
+	// gc->DrawRectangleContour(slider_rect);
+}
+
+void axSlider::DrawVerticalSlider(axGC* gc, const axRect& rect0)
+{
+	axSize size(rect0.size);
+	int half_btn_size = _info.btn_size.y * 0.5;
+
+	// if (axFlag_exist(axSLIDER_FLAG_BACK_SLIDER, _flags))
+	// {
+	// 	// Back slider.
+	// 	axRect back_slider(_sliderYPos, 0, _info.slider_width, size.y);
+
+	// 	gc->SetColor(_info.backSliderColor, 1.0);
+	// 	gc->DrawRectangle(back_slider);
+
+	// 	gc->SetColor(_info.backSliderContourColor);
+	// 	gc->DrawRectangleContour(back_slider);
+	// }
+
+	// Draw line behind the slider.
+	if (!axFlag_exist(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
+	{
+		DrawLineBehindSlider_Vertical(gc, rect0);
+	}
+
+
+	gc->SetColor(_info.contourColor);
+	gc->DrawRectangleContour(rect0);
+
+	if (_btnImg.IsImageReady())
+	{
+		gc->DrawPartOfImage(&_btnImg,
+			axPoint(0, _nCurrentImg * _info.btn_size.y),
+			_info.btn_size,
+			axPoint(_btnYPos, _sliderPosition));
+	}
+}
+
 void axSlider::OnPaint()
 {
 	axGC* gc = GetGC();
@@ -287,54 +368,7 @@ void axSlider::OnPaint()
 	// VERTICAL SLIDER.
 	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
 	{
-		if (axFlag_exist(axSLIDER_FLAG_BACK_SLIDER, _flags))
-		{
-			// Back slider.
-			axRect back_slider(_sliderYPos, 0, _info.slider_width, size.y);
-
-			gc->SetColor(_info.backSliderColor, 1.0);
-			gc->DrawRectangle(back_slider);
-
-			gc->SetColor(_info.backSliderContourColor);
-			gc->DrawRectangleContour(back_slider);
-		}
-
-		int half_btn_size = _info.btn_size.y * 0.5;
-
-		if (!axFlag_exist(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
-		{
-			axRect slider_rect;
-			if (axFlag_exist(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
-			{
-				slider_rect = axRect(_sliderYPos, _sliderPosition + half_btn_size,
-									 _info.slider_width,
-									 GetSize().y - _sliderPosition - half_btn_size);
-			}
-			else
-			{
-				slider_rect = axRect(_sliderYPos, 0,
-					_info.slider_width,
-					_sliderPosition + half_btn_size);
-			}
-
-			gc->SetColor(_currentSliderColor);
-			gc->DrawRectangle(slider_rect);
-
-			gc->SetColor(_info.sliderContourColor);
-			gc->DrawRectangleContour(slider_rect);
-		}
-
-
-		gc->SetColor(_info.contourColor);
-		gc->DrawRectangleContour(rect0);
-
-		if (_btnImg.IsImageReady())
-		{
-			gc->DrawPartOfImage(&_btnImg,
-				axPoint(0, _nCurrentImg * _info.btn_size.y),
-				_info.btn_size,
-				axPoint(_btnYPos, _sliderPosition));
-		}
+		DrawVerticalSlider(gc, rect0);
 	}
 
 	// HORIZONTAL SLIDER.

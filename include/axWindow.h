@@ -9,6 +9,7 @@
 #include "axC++.h"
 #include "axGC.h"
 
+class axApp;
 
 
 class axWindow : public axObject
@@ -24,6 +25,8 @@ public:
 	axSize GetSize() const;
 	void SetSize(const axSize& size);
 	void SetPosition(const axPoint& pos);
+
+	// virtual axApp* GetApp() = 0;
 
 	axPoint GetBottomLeftPosition() const;
 

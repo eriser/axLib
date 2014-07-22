@@ -7,6 +7,37 @@ axPanel::axPanel(axApp* app, axWindow* parent, const axRect& rect) :
 	_app = app;
 }
 
+void axPanel::BlockDrawing()
+{
+	axRect absRect(GetAbsoluteRect());
+	axSize gSize(GetApp()->GetCore()->GetGlobalSize());
+	
+	glScissor(absRect.position.x-1, 
+			  gSize.y - absRect.position.y - absRect.size.y, 
+			  absRect.size.x+1, 
+			  absRect.size.y+1);
+
+	glEnable(GL_SCISSOR_TEST);
+
+}
+
+void axPanel::BlockDrawing(const axRect& rect)
+{
+	axSize gSize(GetApp()->GetCore()->GetGlobalSize());
+	
+	glScissor(rect.position.x-1, 
+			  gSize.y - rect.position.y - rect.size.y, 
+			  rect.size.x+1, 
+			  rect.size.y+1);
+
+	glEnable(GL_SCISSOR_TEST);
+}
+
+void axPanel::UnBlockDrawing()
+{
+	glDisable(GL_SCISSOR_TEST);
+}
+
 axApp* axPanel::GetApp()
 {
 	return _app;

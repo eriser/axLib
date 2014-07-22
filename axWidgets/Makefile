@@ -7,7 +7,7 @@ PROGRAM_NAME = main
 LIB_NAME = libaxcore.a
 CC = clang++ -std=c++11 -g $(INCLUDE) 
 
-OBJECTS = axNumberBox.o axPopupMenu.o axSlider.o axButton.o axGrid.o axMenu.o
+OBJECTS = axNumberBox.o axPopupMenu.o axSlider.o axButton.o axGrid.o axMenu.o axKnob.o
 
 
 default: $(OBJECTS)
@@ -35,6 +35,9 @@ axGrid.o: axGrid.h axGrid.cpp
 
 axMenu.o: axMenu.h axMenu.cpp
 	$(CC) $(INCLUDE) axMenu.cpp -c
+
+axKnob.o: axKnob.h axKnob.cpp
+	$(CC) $(INCLUDE) axKnob.cpp -c
 
 clean:
 	rm -f $(LIB_NAME)

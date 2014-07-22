@@ -22,26 +22,32 @@ CC = clang++ -std=c++11 -g $(INCLUDE)
 ##CC = clang++ -std=c++11 -g $(INCLUDE) 
 #-I/usr/include/freetype2 -L/usr/local/lib -lfreetype
 
-OBJECTS = main.o
+OBJECTS = AudioWaveform.o MidiTrack.o axAudio.o axAudioBuffer.o main.o
 ##main.o
 
 
 # g++ -o prog1 main.cpp Hash.o -std=c++0x
-default: 
-	clang++ -o main main.cpp  AudioWaveform.cpp MidiTrack.cpp axAudio.cpp axAudioBuffer.cpp libportaudio.a $(LIB_INCLUDE) $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE) -laxlib $(LIBS) $(LIBSNDFILE) -std=c++11
+default: $(OBJECTS)
+	clang++ -o main $(OBJECTS) libportaudio.a $(LIB_INCLUDE) $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE) -laxlib $(LIBS) $(LIBSNDFILE)
+	# clang++ -o main main.cpp  AudioWaveform.cpp MidiTrack.cpp axAudio.cpp axAudioBuffer.cpp libportaudio.a $(LIB_INCLUDE) $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE) -laxlib $(LIBS) $(LIBSNDFILE) -std=c++11
 
 # library: $(OBJECTS)
 # 	ar -cvq libaxlib.a $(OBJECTS_LIST)
 
-# axUtils.o: axUtils.h axUtils.cpp
-# 	$(CC) axUtils.cpp -c
+main.o: main.h main.cpp
+	$(CC) main.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
 
-# axCoreX11.o: axCoreX11.h axCoreX11.cpp
-# 	$(CC) axCoreX11.cpp -c
+AudioWaveform.o: AudioWaveform.h AudioWaveform.cpp
+	$(CC) AudioWaveform.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
 
-# axC++.o: axC++.h axC++.cpp
-# 	$(CC) axC++.cpp -c
+MidiTrack.o: MidiTrack.h MidiTrack.cpp
+	$(CC) MidiTrack.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
 
+axAudio.o: axAudio.h axAudio.cpp
+	$(CC) axAudio.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
+
+axAudioBuffer.o: axAudioBuffer.h axAudioBuffer.cpp
+	$(CC) axAudioBuffer.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
 # axApp.o: axApp.h axApp.cpp
 # 	$(CC) axApp.cpp -c
 
@@ -81,9 +87,7 @@ default:
 # axButton.o: axButton.h axButton.cpp
 # 	$(CC) axButton.cpp -c
 
-main.o: main.cpp main.h
-	$(CC)  $(INCLUDE) (LIB_INCLUDE) $(INCLUDE) -laxlib main.cpp -c
 
-# clean:
-	# rm -f $(LIB_NAME)
-	# rm -f $(OBJECTS)
+clean:
+	rm -f $(PROGRAM_NAME)
+	rm -f $(OBJECTS)

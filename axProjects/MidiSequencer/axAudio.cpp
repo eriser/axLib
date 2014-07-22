@@ -9,10 +9,12 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 					   _nSamplePerBeat(samplePerBeat),
 					   _nSection(2),
 					   _selectedSection(0),
-					   _currentVelocity(0.0)
+					   _currentVelocity(0.0) 
+					    
 {
 	_buffer = new axAudioBuffer(sndfile);
 	_outBuffer = new float[1024 * 2];
+	_deviation = 0.0;
 
 	for(int i = 0; i < 1024 * 2; i++)
 	{
@@ -25,9 +27,23 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 		{
 			_notes[j][i] = false;
 			_probability[j][i] = 0.0;
-			_velocity[j][i] = 0.0;
+			_velocity[j][i] = 0.7;
 		}
 	}
+
+	
+    
+
+    // rd = random_device();
+    // gen = std::mt19937(rd());
+ 
+    // values near the mean are the most likely
+    // standard deviation affects the dispersion of generated values from the mean
+    // std::normal_distribution<> d(5,2);
+ 
+    // std::map<int, int> hist;
+    // for(int n=0; n<10000; ++n) {
+    //     ++hist[std::round(d(gen))];
 
 }
 
@@ -69,7 +85,12 @@ float* AudioTrack::Process()
     			if(_probability[_selectedSection][_beatIndex] >= r)
     			{
     				_nFrameBuf = 0;
-    				_currentVelocity = _velocity[_selectedSection][_beatIndex];
+
+    				std::mt19937 gen(rd());
+    				double v = _velocity[_selectedSection][_beatIndex];
+    				std::normal_distribution<> d(v,_deviation);
+    				_currentVelocity = d(gen);
+    				// _currentVelocity = v;
     			}
 
 

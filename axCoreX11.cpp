@@ -2,6 +2,17 @@
 #include "axApp.h"
 
 #include <X11/cursorfont.h>
+
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+// #include <X11/extensions/Xcomposite.h>
+// #include <X11/extensions/Xrender.h>
+#include <X11/extensions/Xfixes.h>
+#include <X11/Xatom.h>
+#include <X11/Xmd.h>
+
+// #include <X11/Xutil.h>
+// #include <X11/Xatom.h>
 // #include <X11/MwmUtil.h>
 
 axCoreX11::axCoreX11(axApp* app) : axCore()
@@ -163,11 +174,164 @@ Window axCoreX11::GetRootWindow()
 	return _rootWindow;
 }
 
+#define MAX_PROPERTY_VALUE_LEN 4096
+
+char* GetPropriety(Display *disp, Window win, 
+        			 Atom xa_prop_type, 
+        			 string prop_name, unsigned long& size) 
+{
+    Atom xa_prop_name;
+    Atom xa_ret_type;
+    int ret_format;
+    unsigned long ret_nitems;
+    unsigned long ret_bytes_after;
+    
+    unsigned char *ret_prop;
+    // gchar *ret;
+    
+    xa_prop_name = XInternAtom(disp, prop_name.c_str(), False);
+    
+     int result = XGetWindowProperty(
+     	disp, // Specifies the connection to the X server.
+
+     	win, // Specifies the window whose property you want to obtain.
+
+     	xa_prop_name, // Specifies the property name.
+
+     	0, // Specifies the offset in the specified property 
+     	   // (in 32-bit quantities) where the data is to be retrieved.
+
+     	1024, // Specifies the length in 32-bit multiples 
+     		  // of the data to be retrieved.
+
+     	False, // Specifies a Boolean value that determines whether the 
+     		   // property is deleted.
+
+        xa_prop_type, // Specifies the atom identifier associated with 
+        			  // the property type or AnyPropertyType.
+        
+        &xa_ret_type, // Returns the atom identifier that defines the 
+        			  // actual type of the property.
+
+        &ret_format, // Returns the actual format of the property.
+
+        &ret_nitems, // Returns the actual number of 8-bit, 16-bit, 
+        			 // or 32-bit items stored in the prop_return data.
+
+        &ret_bytes_after, // Returns the number of bytes remaining to be read 
+        				  //in the property if a partial read was performed.
+
+        &ret_prop // Returns the data in the specified format. 
+        );	
+
+    if(result != Success) 
+    {
+    	cerr << "Error with XGetWindowProperty." << endl;
+        // p_verbose("Cannot get %s property.\n", prop_name);
+        return "";
+    }
+  
+    if(xa_ret_type != xa_prop_type) 
+    {
+        // p_verbose("Invalid type of %s property.\n", prop_name);
+        XFree(ret_prop);
+        return "";
+    }
+
+    /* null terminate the result to make string handling easier */
+    unsigned long tmp_size = (ret_format / 8) * ret_nitems;
+
+    // string ret(ret_prop);//ret = new 
+    char* ret = new char[tmp_size + 1];
+    memcpy(ret, ret_prop, tmp_size);
+    ret[tmp_size] = '\0';
+    size = tmp_size;
+    
+    XFree(ret_prop);
+    return ret;
+}
+
+bool WindowManagerSupported(Display *disp, const string& prop) 
+{
+    unsigned long size;
+    Atom *list = (Atom*)GetPropriety(disp, 
+    								 DefaultRootWindow(disp), 
+    								 XA_ATOM, 
+    								 "_NET_SUPPORTED", 
+    								 size);
+    if(list == NULL) 
+    {
+        // p_verbose("Cannot get _NET_SUPPORTED property.\n");
+        return false;
+    }
+
+    Atom xa_prop = XInternAtom(disp, prop.c_str(), False);
+
+    for (int i = 0; i < size / sizeof(Atom); i++) 
+    {
+        if (list[i] == xa_prop) 
+        {
+            // g_free(list);
+
+            return true;
+        }
+    }
+    
+    // g_free(list);
+
+    return false;
+}
+
+
+
 void axCoreX11::MainLoop()
 {
+	// Set the window manager state
+	// Atom _NET_WM_STATE = XInternAtom(
+	// 			_display,
+	// 			"_NET_WM_STATE",
+	// 			False);
+
+	Atom _NET_WM_STATE = XInternAtom(_display, "_NET_WM_STATE", False); 
+	XSetWMProtocols(_display, _win, &_NET_WM_STATE, 1);
+
+	// XChangeProperty(
+	// 			_display,
+	// 			_win,
+	// 			_NET_WM_STATE,
+	// 			XA_ATOM,
+	// 			32,
+	// 			PropModeReplace,
+	// 			(unsigned char *) &_NET_WM_STATE_HIDDEN,
+	// 			1);
+
 	//---------------------------------------------------------------------
-	Atom WM_DELETE_WINDOW = XInternAtom(_display, "WM_DELETE_WINDOW", False); 
-	XSetWMProtocols(_display, _win, &WM_DELETE_WINDOW, 1);  
+	Atom del = XInternAtom(_display, "WM_DELETE_WINDOW", False); 
+	XSetWMProtocols(_display, _win, &del, 1);  
+
+	#define IsSupported(x) cout << "Support for " << x << \
+		" : " <<WindowManagerSupported(_display, x) << endl;
+
+	
+	IsSupported("_NET_WM_STATE_HIDDEN");
+	IsSupported("_NET_MOVERESIZE_WINDOW");
+
+	
+	// XSetWMProtocols(_display, _win, 
+	// 				&_NET_WM_STATE_HIDDEN, //Specifies the list of protocols. 
+	// 				1);  // Count. 
+
+	// _NET_WM_STATE_FULLSCREEN, ATOM
+
+	// XSizeHints sh;
+	// sh.width = sh.min_width = 1700;
+	// sh.height = sh.min_height = 930;
+	// sh.h = 220;
+	// sh.y = 0;
+	// sh.flags = PSize | PMinSize | PPosition;
+	// XSetWMNormalHints(dpy, win, &sh);
+	// XMapWindow(dpy, win);
+
 
 	// bool uname_ok = false;
 	// struct utsname sname;  
@@ -182,6 +346,8 @@ void axCoreX11::MainLoop()
 	XEvent e;
 
 	bool loop_on = true;
+
+
 	while (loop_on) 
 	{
 		XNextEvent(_display, &e);
@@ -193,7 +359,7 @@ void axCoreX11::MainLoop()
 		switch(e.type)
 		{
 			case Expose:
-				cout << "Catch Expose : " << e.xexpose.window << endl; 
+				// cout << "Catch Expose : " << e.xexpose.window << endl; 
 				UpdateAll();
 
 			break;
@@ -202,8 +368,20 @@ void axCoreX11::MainLoop()
 			{
 				XConfigureEvent conf = e.xconfigure;
 				//axCORE->ResizeGLScene(conf.width, conf.height);
-				core->ResizeGLScene(conf.width, conf.height);
-				windowManager->OnSize();
+				axSize size = GetGlobalSize();
+
+				if (conf.width != size.x || conf.height != size.y) 
+				{
+	                core->ResizeGLScene(conf.width, conf.height);
+					windowManager->OnSize();
+					cout << "Resize" << endl;
+            	}
+            	else // Window move.
+            	{
+            		cout << "Window move" << endl;
+            	}
+				
+				
 			}
 			break;
 
@@ -211,20 +389,15 @@ void axCoreX11::MainLoop()
 			{
 				axPoint m_pos(e.xmotion.x, e.xmotion.y);
 				windowManager->OnMouseMotion(m_pos);
-
-				
 			}
 			break;
 
 			case ButtonPress:
 			{
-				cout << "ButtonPress" << endl; 
-
 				switch(e.xbutton.button)
 				{
 					case 1: // Mouse left down.
 					{
-						std::cout << "Btn : " << e.xexpose.window << std::endl; 
 						axPoint m_pos(e.xbutton.x, e.xbutton.y);
 						windowManager->OnMouseLeftDown(m_pos);
 					}
@@ -254,15 +427,15 @@ void axCoreX11::MainLoop()
 			break;
 
 			case FocusIn:
-			cout << "FOCUS IN" << endl;
+			// cout << "FOCUS IN" << endl;
 			break;
 
 			case EnterNotify:
-			cout << "ENTER" << endl;
+			// cout << "ENTER" << endl;
 			break;
 
 			case LeaveNotify:
-			cout << "LEAAVE" << endl;
+			// cout << "LEAAVE" << endl;
 			break;
 
 			case KeyPress:
@@ -281,10 +454,25 @@ void axCoreX11::MainLoop()
 
 			case ClientMessage:
 			{
-				if(static_cast<unsigned int>(e.xclient.data.l[0]) == WM_DELETE_WINDOW)
+				if((Atom)e.xclient.data.l[0] == del)
 				{
 					loop_on = false;
+					cout << "Delete Window" << endl;
 				}
+
+				// else if(static_cast<unsigned int>(e.xclient.data.l[0]) == XdndEnter)
+				// {
+				// 	cout << "ENTER DRAG AND DROP." << endl;
+				// }
+				// else if((Atom)e.xclient.data.l[0] == _NET_WM_STATE)
+				// {
+				// 	cout << "Hidden" << endl;
+				// }
+
+				// else if(e.xclient.message_type == _NET_WM_STATE)
+				// {
+				// 	cout << "Hidden2" << endl;
+				// }
 			}
 			break;
 		}

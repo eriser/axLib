@@ -11,7 +11,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-
 enum ColorChoice
 {
 	CHOICE_RED,
@@ -102,7 +101,10 @@ struct MidiNoteParams
 class MidiVelocity: public axPanel
 {
 public:
-	MidiVelocity(axApp* app, axWindow* parent, const axRect& rect, axEvtFunction(MultipleSliderMsg) fct);
+	MidiVelocity(axApp* app, axWindow* parent, 
+				 const axRect& rect, 
+				 axEvtFunction(MultipleSliderMsg) fct,
+				 axEvtFunction(axNumberBoxMsg) sfct);
 
 	void SetNumberOfSlider(const int& nb)
 	{
@@ -113,14 +115,18 @@ public:
 	}
 
 	axEVENT(MultipleSliderMsg, OnChangeVelocity);
+	axEVENT(axNumberBoxMsg, OnStandardDeviation);
 
 private:
 
 	vector<MultipleSlider*> _sliders;
 
 	axEvtFunction(MultipleSliderMsg) _velocity_fct;
+	axEvtFunction(axNumberBoxMsg) _standard_deviation_fct;
 
 	void OnChangeVelocity(const MultipleSliderMsg& vel);
+
+	void OnStandardDeviation(const axNumberBoxMsg& msg);
 
 
 
@@ -196,12 +202,21 @@ struct MidiTrackEvents
 class MidiTrack: public axPanel
 {
 public:
-	MidiTrack(axApp* app, axWindow* parent, const axRect& rect, const string& trackName, Audio* audio, int track_number);
+	MidiTrack(axApp* app, axWindow* parent, 
+			  const axRect& rect, 
+			  const string& trackName, 
+			  Audio* audio, int track_number);
 
 	void SetEvent(MidiTrackEvents& evt)
 	{
 		_evt = evt;
 	}
+
+	void SetBtnClickEvent(axEvtFunction(int) fct)
+	{
+		_btn_evt_fct = fct;
+	}
+
 
 	void SetColorSelection(const ColorChoice& choice);
 
@@ -209,6 +224,7 @@ public:
 	axEVENT(axButtonMsg, OnRemoveSeparation);
 	axEVENT(axButtonMsg, OnMinimize);
 	axEVENT(MultipleSliderMsg, OnVelocity);
+	axEVENT(axNumberBoxMsg, OnStandardDeviation);
 	
 	
 private:
@@ -217,6 +233,8 @@ private:
 	MidiVelocity* _velocity;
 	MidiTrackEvents _evt;
 	AudioMidiSeq* _audio;
+
+	axEvtFunction(int) _btn_evt_fct;
 
 	axButton *_addBtn, *_removeBtn;
 
@@ -232,7 +250,7 @@ private:
 	void OnMinimize(const axButtonMsg& msg);
 
 	void OnVelocity(const MultipleSliderMsg& msg);
-
+	void OnStandardDeviation(const axNumberBoxMsg& msg);
 
 };
 

@@ -28,9 +28,9 @@ struct axRange
 {
     axRange() {}
     axRange( const T& minimum, const T& maximum ) :
-             _min( minimum ), _max( maximum ) {}
+             min( minimum ), max( maximum ) {}
 
-    T _min, _max;
+    T min, max;
 };
 
 template < typename T >

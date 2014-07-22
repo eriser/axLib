@@ -176,6 +176,7 @@ public:
 		return _sliderValue;
 	}
 
+	void SetValue(const double& value);
 protected:
 	//axSliderMembers _members;
 	//axSliderOrientationStrategy* _sliderOrientationStrategy;
@@ -208,6 +209,9 @@ protected:
 
 	void blockSliderPosition(const axPoint& pos);
 	void updateSliderValue();
+
+	void DrawVerticalSlider(axGC* gc, const axRect& rect0);
+	void DrawLineBehindSlider_Vertical(axGC* gc, const axRect& rect0);
 
 
 

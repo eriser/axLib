@@ -1,375 +1,176 @@
 #include "axNumberBox.h"
-//
-//axSlider::axSlider(axApp* app,
-//	axWindow* parent,
-//	const axRect& rect,
-//	const axSliderEvents& events,
-//	const axSliderInfo& info,
-//	//string img_path,
-//	//string label,
-//	axFlag flags) :
-//	// Heritage.
-//	axPanel(app, parent, rect),
-//	// Members.
-//	_events(events),
-//	_info(info),
-//	_currentBgColor(info.bgColorNormal),
-//	_currentSliderColor(info.sliderColorNormal),
-//	_btnImg(info.img_path.c_str()),
-//	_nCurrentImg(axBTN_NORMAL),
-//	_delta_click(0),
-//	_sliderValue(0.0),
-//	_flags(flags)
+
+axNumberBox::axNumberBox(axApp* app,
+						 axWindow* parent,
+						 const axRect& rect,
+						 const axNumberBoxEvents& events,
+						 const axNumberBoxInfo& info,
+						 axFlag flags,
+                         double value,
+                         axFloatRange range,
+                         axControlType type,
+                         axControlUnit unit,
+                         axControlInterpolation interpolation,
+                         string label):
+
+                        axPanel(app, parent, rect),
+						// Members.
+						_events(events),
+						_info(info),
+						_flags(flags),
+                        _range(range),
+                        _type(type),
+                        _unit(unit),
+                        _interpolation(interpolation),
+                        _currentColor(_info.normal)
+{
+    // Clip value with min and max.
+    {
+        double v = value;
+        axCLIP( v, _range.min, _range.max );
+        _value = v;
+    }
+
+    _zeroToOneValue = ( _value - _range.min ) /
+                      double( _range.max - _range.min );
+
+    Update();
+}
+
+double axNumberBox::GetValue()
+{
+    return _value;
+}
+
+void axNumberBox::OnMouseEnter()
+{
+    _currentColor = _info.hover;
+    Update();
+}
+
+void axNumberBox::OnMouseLeave()
+{
+    if(!IsGrabbed())
+    {
+        _currentColor = _info.normal;
+        Update();
+    }
+}
+
+void axNumberBox::OnMouseLeftDown(const axPoint& pos)
+{
+
+	_clickPosY = (pos - GetAbsoluteRect().position).y;
+    GrabMouse();
+    Update();
+
+}
+
+void axNumberBox::OnMouseLeftUp(const axPoint& pos)
+{
+    if(IsGrabbed())
+    {
+        UnGrabMouse();
+
+        if(!GetAbsoluteRect().IsPointInside(pos))
+        {
+            _currentColor = _info.normal;
+        }
+
+        if(_events.value_change)
+        {
+        	_events.value_change(axNumberBoxMsg(_value));
+        }
+        Update();
+    }
+}
+
+void axNumberBox::OnMouseLeftDragging(const axPoint& pos)
+{
+	axPoint pt(GetAbsoluteRect().position);
+	axPoint p = pos - pt;
+
+	_clickPosY = p.y - _clickPosY;
+
+    double v = -_clickPosY / 1000.0;
+    _zeroToOneValue += v;
+    
+    axCLIP( _zeroToOneValue, 0.0, 1.0 );
+
+    _value = _zeroToOneValue * ( _range.max - _range.min ) + _range.min;
+
+    if(_events.value_change)
+    {
+    	_events.value_change(axNumberBoxMsg(_value));
+    }	
+    Update();
+}
+
+void axNumberBox::OnPaint()
+{
+	axGC* gc = GetGC();
+	axSize size = GetSize();
+	axRect rect0(0, 0, size.x, size.y);
+
+    gc->SetColor(_currentColor);
+    gc->DrawRectangle(rect0);
+
+    gc->SetColor(_info.contour);
+    gc->DrawRectangleContour(rect0);
+
+    gc->SetColor(_info.font_color);
+    gc->SetFontSize(10);
+    string v = to_string(_value);
+    v.resize(4);
+    gc->DrawStringAlignedCenter(v, rect0);
+}
+
+//axNumberBoxControl::axNumberBoxControl( axApp* app,
+//                                        axWindow* parent,
+//                                        const axID& id,
+//                                        const string& label,
+//                                        const axNumberBoxEvents& events,
+//                                        const axNumberBoxInfo& box_info,
+//                                        const axPoint& pos ):
+//                                        axWindow( app, parent, id,
+//                                                  axRect( pos, box_info.box_size + axSize( 4, 20 )) ),
+//                                        // Members.
+//                                        m_parent( parent ),
+//                                        m_currentColor( box_info.bgColorNormal),
+//                                        m_label( label ),
+//                                        m_eventID( events )
 //{
-//	_sliderPosition = 0;
-//
-//	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
-//	{
-//		_sliderYPos = (GetSize().x - _info.slider_width) * 0.5;
-//		_btnYPos = (GetSize().x - _info.btn_size.x) * 0.5;
-//
-//		if (axFlag_exist(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
-//		{
-//			_sliderPosition = GetSize().y - _info.btn_size.y;
-//		}
-//	}
-//	else
-//	{
-//		_sliderYPos = (GetSize().y - _info.slider_width) * 0.5;
-//		_btnYPos = (GetSize().y - _info.btn_size.y) * 0.5;
-//
-//		if (axFlag_exist(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
-//		{
-//			_sliderPosition = GetSize().x - _info.btn_size.x;
-//		}
-//	}
-//	//SendPaintEvent();
-//	Update();
-//}
-//
-//void axSlider::OnMouseLeftDown(const axPoint& p)
-//{
-//	axPoint pos = p - GetAbsoluteRect().position;
-//
-//	axRect sliderBtnRect(axPoint(_sliderPosition, _btnYPos),
-//		_info.btn_size);
-//
-//	if (axFlag_exist(axSLIDER_FLAG_CLICK_ANYWHERE, _flags))
-//	{
-//		//DSTREAM << "TEST" << endl;
-//		_nCurrentImg = axBTN_DOWN;
-//		_currentSliderColor = _info.sliderColorClicked;
-//		
-//		if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))//IsMouseHoverRect( sliderBtnRect ) && m_nCurrentImg != axBTN_DOWN )
-//		{
-//			_delta_click = -_info.btn_size.y * 0.5;
-//		}
-//		else
-//		{
-//			_delta_click = -_info.btn_size.x * 0.5;
-//		}
-//
-//		blockSliderPosition(pos);
-//		GrabMouse();
-//		//SendPaintEvent();
-//
-//		if (_events.slider_value_change)
-//		{
-//			_events.slider_value_change(axSliderMsg(_sliderValue));
-//		}
-//		Update();
-//	}
-//	else
-//	{
-//		if (sliderBtnRect.IsPointInside(pos) && _nCurrentImg != axBTN_DOWN)
-//		{
-//			_nCurrentImg = axBTN_DOWN;
-//			_currentSliderColor = _info.sliderColorClicked;
-//
-//			if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
-//			{
-//				_delta_click = sliderBtnRect.position.y - pos.y;
-//			}
-//			else
-//			{
-//				_delta_click = sliderBtnRect.position.x - pos.x;
-//			}
-//			GrabMouse();
-//
-//			// Send value change event.
-//			if (_events.slider_value_change)
-//			{
-//				_events.slider_value_change(axSliderMsg(_sliderValue));
-//			}
-//			Update();
-//		}
-//	}
-//}
-//
-//void axSlider::OnMouseLeftUp(const axPoint& p)
-//{
-//	
-//	axPoint pos = p - GetAbsoluteRect().position;
-//
-//	if (IsGrabbed())
-//	{
-//		UnGrabMouse();
-//		blockSliderPosition(pos);
-//		_nCurrentImg = axBTN_NORMAL;
-//		_currentSliderColor = _info.sliderColorNormal;
-//
-//		Update();
-//	}
-//}
-//
-//void axSlider::OnMouseLeftDragging(const axPoint& p)
-//{
-//	//DSTREAM << "DRAG" << endl;
-//	axPoint pos = p - GetAbsoluteRect().position;
-//
-//	blockSliderPosition(pos);
-//
-//	if (_events.slider_value_change)
-//	{
-//		_events.slider_value_change(axSliderMsg(_sliderValue));
-//	}
-//	
-//	Update();
-//}
-//
-//void axSlider::blockSliderPosition(const axPoint& pos)
-//{
-//	//axPoint pos = p - GetRect().position;
-//
-//	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
-//	{
-//		int pos_y = pos.y + _delta_click;
-//
-//		axCLIP(pos_y, 1, GetSize().y - _info.btn_size.y - 1);
-//
-//		_sliderPosition = pos_y;
-//	}
-//	else
-//	{
-//		int pos_x = pos.x + _delta_click;
-//
-//		axCLIP(pos_x, 1, GetSize().x - _info.btn_size.x - 1);
-//
-//		_sliderPosition = pos_x;
-//	}
-//
-//	updateSliderValue();
-//}
-//
-//void axSlider::updateSliderValue()
-//{
-//	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
-//	{
-//		_sliderValue = (_sliderPosition - 1) /
-//			double(GetSize().y - _info.btn_size.y - 2);
-//	}
-//	else
-//	{
-//		_sliderValue = (_sliderPosition - 1) /
-//			double(GetSize().x - _info.btn_size.x - 2);
-//	}
-//}
-//
-//void axSlider::OnMouseMotion(const axPoint& p)
-//{
-//	axPoint pos = p - GetAbsoluteRect().position;
-//
-//	axRect sliderBtnRect;
-//	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
-//	{
-//		sliderBtnRect = axRect(axPoint(_btnYPos, _sliderPosition),
-//			_info.btn_size);
-//	}
-//	else
-//	{
-//		sliderBtnRect = axRect(axPoint(_sliderPosition, _btnYPos),
-//			_info.btn_size);
-//	}
-//
-//	if (sliderBtnRect.IsPointInside(pos))
-//	{
-//		if (_nCurrentImg != axBTN_HOVER)
-//		{
-//			_nCurrentImg = axBTN_HOVER;
-//			Update();
-//		}
-//	}
-//	else // Mouse is not hover slider button.
-//	{
-//		if (_nCurrentImg != axBTN_NORMAL)
-//		{
-//			_nCurrentImg = axBTN_NORMAL;
-//			Update();
-//		}
-//	}
-//}
-//
-//void axSlider::OnMouseEnter(const axPoint& p)
-//{
-//	cout << "Enter" << endl;
-//	axPoint pos = p - GetAbsoluteRect().position;
-//
-//	if (axFlag_exist(axSLIDER_FLAG_LEFT_CLICK_ENTER, _flags))
-//	{
-//		//if (GetParent()->LeftIsDown())
-//		//{
-//			axRect sliderBtnRect(axPoint(_sliderPosition, _btnYPos),
-//				_info.btn_size);
-//
-//			_nCurrentImg = axBTN_DOWN;
-//			_currentSliderColor = _info.sliderColorClicked;
-//			if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
-//			{
-//				_delta_click = sliderBtnRect.position.y - pos.y;
-//			}
-//			else
-//			{
-//				_delta_click = sliderBtnRect.position.x - pos.x;
-//			}
-//			GrabMouse();
-//			//SendPaintEvent();
-//			Update();
-//		//}
-//	}
-//}
-//
-//void axSlider::OnMouseLeave(const axPoint& p)
-//{
-//	axPoint pos = p - GetAbsoluteRect().position;
-//
-//	if (axFlag_exist(axSLIDER_FLAG_RELEASE_ON_LEAVE, _flags))
-//	{
-//		if (IsGrabbed())
-//		{
-//			UnGrabMouse();
-//			blockSliderPosition(pos);
-//			_nCurrentImg = axBTN_NORMAL;
-//			_currentSliderColor = _info.sliderColorNormal;
-//			//SendPaintEvent();
-//			Update();
-//		}
-//	}
-//}
-//
-//void axSlider::OnPaint()
-//{
-//	axGC* gc = GetGC();
-//	axSize size = GetSize();
-//
-//	gc->SetColor(_currentBgColor);
-//	gc->DrawRectangle(axRect(0, 0, size.x, size.y));
-//
-//	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
-//	{
-//		if (axFlag_exist(axSLIDER_FLAG_BACK_SLIDER, _flags))
-//		{
-//			// Back slider.
-//			axRect back_slider(_sliderYPos, 0, _info.slider_width, size.y);
-//
-//			gc->SetColor(_info.backSliderColor);
-//			gc->DrawRectangle(back_slider);
-//
-//			gc->SetColor(_info.backSliderContourColor);
-//			gc->DrawRectangleContour(back_slider);
-//		}
-//
-//		int half_btn_size = _info.btn_size.y * 0.5;
-//
-//		if (!axFlag_exist(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
-//		{
-//			axRect slider_rect;
-//			if (axFlag_exist(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
-//			{
-//				slider_rect = axRect(_sliderYPos, _sliderPosition,
-//					_info.slider_width,
-//					GetSize().y - _sliderPosition + half_btn_size);
-//			}
-//			else
-//			{
-//				slider_rect = axRect(_sliderYPos, 0,
-//					_info.slider_width,
-//					_sliderPosition + half_btn_size);
-//			}
-//
-//			gc->SetColor(_currentSliderColor);
-//			gc->DrawRectangle(slider_rect);
-//
-//			gc->SetColor(_info.sliderContourColor);
-//			gc->DrawRectangleContour(slider_rect);
-//		}
-//
-//
-//		gc->SetColor(_info.contourColor);
-//		gc->DrawRectangleContour(axRect(0, 0, size.x, size.y));
-//
-//		if (_btnImg.IsImageReady())
-//		{
-//			gc->DrawPartOfImage(&_btnImg,
-//				axPoint(0, _nCurrentImg * _info.btn_size.y),
-//				_info.btn_size,
-//				axPoint(_btnYPos, _sliderPosition));
-//		}
-//	}
-//	else // axSLIDER_FLAG_VERTICAL.
-//	{
-//		if (axFlag_exist(axSLIDER_FLAG_BACK_SLIDER, _flags))
-//		{
-//			// Back slider.
-//			axRect back_slider(0, _sliderYPos, size.x,
-//				_info.slider_width);
-//
-//			gc->SetColor(_info.backSliderColor);
-//			gc->DrawRectangle(back_slider);
-//
-//			gc->SetColor(_info.backSliderContourColor);
-//			gc->DrawRectangleContour(back_slider);
-//		}
-//
-//		int half_btn_size = _info.btn_size.x * 0.5;
-//
-//		if (!axFlag_exist(axSLIDER_FLAG_NO_SLIDER_LINE, _flags))
-//		{
-//			axRect slider_rect; (0, _sliderYPos,
-//				_sliderPosition + half_btn_size,
-//				_info.slider_width);
-//
-//			if (axFlag_exist(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
-//			{
-//				slider_rect = axRect(_sliderPosition,
-//					_sliderYPos,
-//					GetSize().x - _sliderPosition + half_btn_size,
-//					_info.slider_width);
-//			}
-//			else
-//			{
-//				slider_rect = axRect(0, _sliderYPos,
-//					_sliderPosition + half_btn_size,
-//					_info.slider_width);
-//			}
-//			gc->SetColor(_currentSliderColor);
-//			gc->DrawRectangle(slider_rect);
-//
-//			gc->SetColor(_info.sliderContourColor);
-//			gc->DrawRectangleContour(slider_rect);
-//		}
-//
-//
-//		gc->SetColor(_info.contourColor);
-//		gc->DrawRectangleContour(axRect(0, 0, size.x, size.y));
-//
-//		if (_btnImg.IsImageReady())
-//		{
-//			gc->DrawPartOfImage(&_btnImg,
-//				axPoint(0, _nCurrentImg * _info.btn_size.y),
-//				_info.btn_size,
-//				axPoint(_sliderPosition, _btnYPos));
-//		}
-//	}
-//
+//    SetCustomPaint( true );
+
+//    m_numBox = new axNumberBox( app, this, axID_ANY, events, box_info, axPoint( 2, 20 ) );
+
+//    Connect( events.valueChange, EVT( OnValueChange ) );
 //}
 
+//void axNumberBoxControl::OnValueChange()
+//{
+//    GetParent()->TriggerEvent( m_eventID.valueChange );
+//}
+
+//double axNumberBoxControl::GetValue()
+//{
+//    return m_numBox->GetValue();
+//}
+
+//void axNumberBoxControl::OnPaint()
+//{
+//    axGC gc( GetBackBuffer() );
+//    axSize size = GetSize();
+
+//    gc.SetColor( m_currentColor );
+
+//    gc.DrawRectangle( axRect(0, 0, size.x, size.y) );
+
+//    gc.DrawTextAligned( m_label,
+//                        axTEXT_CENTER,
+//                        m_currentColor.GetColorRGB(),
+//                        "8",
+//                        axRect( 0, 0, size.x, 20 ) );
+
+//    FlipScreen( gc );
+//}

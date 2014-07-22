@@ -7,6 +7,7 @@
 #include "axSlider.h"
 #include "axGrid.h"
 #include "axMenu.h"
+#include "axKnob.h"
 
 
 #endif //__AX_WIDGET__
