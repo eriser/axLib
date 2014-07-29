@@ -6,12 +6,111 @@
 #include <string>
 #include <cmath>
 #include <random>
+#include <fstream>
+
 
 #include "portaudio.h" 
 #include "axAudioBuffer.h"
 
 using namespace std;
 
+struct TrackInfo
+{
+	int nSubTrack;
+	double deviation;
+	bool notes[3][16];
+	double probability[3][16];
+	double velocity[3][16];
+};
+
+struct DrumMachinePreset
+{
+	int nTracks;
+	TrackInfo* info;
+
+	DrumMachinePreset()
+	{
+		info = nullptr;
+	}
+
+	// Number of tracks. endl.
+	// Number of subtrack. endl.
+	// 16 * 3 bool of note on/off. endl.
+	// 16 * 3 probability double. endl.
+	// 16 * 3 velocity double. endl.
+	DrumMachinePreset(const string& file_path)
+	{
+		 ifstream file(file_path);
+		// ifstream file;
+		// file.open(file_path);
+
+		if(file.fail())
+		{
+			cerr << "Problem opening file " << file_path << endl;
+		}
+		else
+		{
+			string line;
+
+			// axColor* ptr = &normal;
+			//while (file.good())
+			//{
+				file >> nTracks;
+				cout << "nb Tracks : " << nTracks << endl;
+
+				if(nTracks)
+				{
+					info = new TrackInfo[nTracks];
+
+					for(int i = 0; i < nTracks; i++)
+					{
+						file >> info[i].nSubTrack; 
+						file >> info[i].deviation;
+						// cout << "nb subTracks : " << info[i].nSubTrack << endl;
+
+						// Fill on/off.
+						cout << "Notes : " << endl;
+						for(int k = 0; k < 3; k++)
+						{
+							for(int n = 0; n < 16; n++)
+							{
+								file >> info[i].notes[k][n];
+								// cout << info[i].notes[k][n]; 
+							}
+							// cout << endl;
+						}
+
+						// Fill probabiblity.
+						for(int k = 0; k < 3; k++)
+						{
+							for(int n = 0; n < 16; n++)
+							{
+								file >> info[i].probability[k][n];
+								// cout << info[i].probability[k][n] << " "; 
+							}
+						}
+
+						// Fill velocity.
+						for(int k = 0; k < 3; k++)
+						{
+							for(int n = 0; n < 16; n++)
+							{
+								file >> info[i].velocity[k][n];
+								// cout << info[i].velocity[k][n] << " "; 
+							}
+						}						
+					}
+
+				}
+				else
+				{
+					cerr << "Preset has no tracks saved." << endl;
+				}
+			}
+		}
+		
+	//}
+};
 
 //------------------------------------------------------------------
 // You get this error:
@@ -27,6 +126,8 @@ struct paTestData
     int right_phase;
     char message[20];
 };
+
+
 
 class AudioTrack
 {
@@ -73,7 +174,31 @@ public:
 		_nSection = nSection;
 	}
 
+	void SetPreset(TrackInfo* info)
+	{ 
+		cout << __PRETTY_FUNCTION__ << endl;
+		_nSection = info->nSubTrack;
+
+		cout << "INFO VALUE : " << info->nSubTrack << endl;
+		int nSubTrack;
+
+		for(int j = 0; j < MAX_NUM_OF_PROB_TRACK; j++)
+		{
+			for(int i = 0; i < NUMBER_OF_NOTES; i++)
+			{
+				_notes[j][i] = info->notes[j][i];
+				_probability[j][i] = info->probability[j][i];
+				_velocity[j][i] = info->velocity[j][i];
+			}
+		}
+	}
+
+
 private:
+	static const int MAX_NUM_OF_PROB_TRACK = 3;
+	static const int NUMBER_OF_NOTES = 16;
+
+
 	axAudioBuffer* _buffer;
 	// vector<bool> _notes;
 	bool _notes[3][16];
@@ -177,6 +302,51 @@ public:
 		_tracks.push_back(new AudioTrack("snare06.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("hihat3.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
+
+		// cout << __PRETTY_FUNCTION__ << endl;
+		cout << "TRACKS SIZE : " << _tracks.size() << endl;
+	}
+
+	void SetPreset(DrumMachinePreset* preset)
+	{
+		// cout << __PRETTY_FUNCTION__ << endl;
+		cout << "TRACKS SIZE : " << _tracks.size() << endl;
+
+		if(preset->info != nullptr)
+		{
+			if(preset->nTracks <= _tracks.size())
+			{
+				// TrackInfo& tInfo(preset.info[0]);
+				// cout << "NUMBER SUB TRACK : " << tInfo.nSubTrack << endl;
+
+				// const TrackInfo& ikk(tInfo);
+
+				// _tracks[0]->SetPreset(preset.info);
+				// _tracks[0]->SetNumberOfSection(1);
+				// cout << "TRACKS SIZE = " << _tracks.size() << endl;
+				// for(auto& i : _tracks)
+				// {
+				// 	cout << "f" << endl;
+				// }
+
+				// cout << "NUMBER OF TRACKS : " << preset->nTracks << endl;
+				for(int i = 0; i < preset->nTracks; i++)
+				{
+					// TrackInfo& t_info(preset.info[i]);
+					 _tracks[i]->SetPreset(&preset->info[i]);
+				}
+			}
+			else
+			{
+				cerr << "Error : Too many tracks in presets." << endl;
+			}
+		}
+		else
+		{
+			cerr << "Error : Preset is not loaded." << endl;
+		}
+
+
 	}
 
 	void SetKickBeat(vector<bool>& beat)

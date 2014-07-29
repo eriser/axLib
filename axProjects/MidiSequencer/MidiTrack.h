@@ -44,6 +44,8 @@ public:
 
 	void SetNumberOfSlider(const int& nb);
 
+	void SetValue(const int& index, const double& value);
+
 	axEVENT(axSliderMsg, OnSlider1Move);
 	axEVENT(axSliderMsg, OnSlider2Move);
 	axEVENT(axSliderMsg, OnSlider3Move);
@@ -114,6 +116,8 @@ public:
 		}
 	}
 
+	void SetPreset(TrackInfo* info);
+
 	axEVENT(MultipleSliderMsg, OnChangeVelocity);
 	axEVENT(axNumberBoxMsg, OnStandardDeviation);
 
@@ -149,6 +153,8 @@ public:
 	}
 
 	void SetColorSelection(const ColorChoice& color);
+
+	void SetPreset(TrackInfo* info);
 
 private:
 	int _nbars, _highLightIndex;
@@ -216,6 +222,8 @@ public:
 	{
 		_btn_evt_fct = fct;
 	}
+
+	void SetPreset(TrackInfo* info);
 
 
 	void SetColorSelection(const ColorChoice& choice);

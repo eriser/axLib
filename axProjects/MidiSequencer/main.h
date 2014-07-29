@@ -1,3 +1,6 @@
+#ifndef __MIDI_SEUENCER__
+#define __MIDI_SEUENCER__
+
 #include "axLib.h"
 //#include "axImage.h"
 
@@ -7,6 +10,7 @@
 #include "MidiTrack.h"
 #include "axAudio.h"
 #include "AudioWaveform.h"
+
 
 class MidiPartitionTrack: public axPanel
 {
@@ -53,21 +57,35 @@ public:
 
 private:
 
-	axImage* _circle;
+	axImage* _circle, *_selectedCircle;
 
-	axPoint GetCirclePosition(const int& bar_index, 
-						  const int& nSection, 
-						  const int& section_index,
-						  const int& nCircle, 
-						  const int& circle_index);
+	// axPoint GetCirclePosition(const int& bar_index, 
+	// 					  const int& nSection, 
+	// 					  const int& section_index,
+	// 					  const int& nCircle, 
+	// 					  const int& circle_index);
 
 
+	vector<int> _bars;
 
-	vector<vector<int>> _circles;
+	int _heightlighted_bar;
+
+	int _nSlice;
+	int _heighlighted_circle;
+
+	int _selected_bar, _selected_circle;
+
+	void DrawSelectedCircle(axGC* gc, const axRect& rect0);
+	void DrawLines(axGC* gc, const axRect& rect0);
+	void DrawCircles(axGC* gc, const axRect& rect0);
+	void DrawHeighlightedCircle(axGC* gc, const axRect& rect0);
+	// vector<vector<int>> _circles;
 	// vector<vector<pair<int,CircleInfo>>> _circles;
 
 	// Events.
 	virtual void OnPaint();
+	virtual void OnMouseMotion(const axPoint& mouse);
+	virtual void OnMouseLeave();
 };
 
 
@@ -79,8 +97,12 @@ public:
 				   axWindow* parent, 
 				   const axRect& rect);
 
+	axEVENT(axButtonMsg, OnOpenFile);
+
 private:
 	// Events.
+
+	void OnOpenFile(const axButtonMsg& msg);
 	virtual void OnPaint();
 };
 
@@ -98,6 +120,9 @@ public:
 	{
 		_track_resize_parent_fct = fct;
 	}
+
+	void SetPreset(DrumMachinePreset* preset);
+	
 
 	axEVENT(axButtonMsg, OnColorChange);
 	axEVENT(int, OnChangeTrackHeight);
@@ -130,6 +155,11 @@ public:
 				   const axRect& rect, Audio* audio);
 
 	axEVENT(int, OnChangeTrackHeight);
+	axEVENT(axButtonMsg, OnChangeTemplate);
+
+	void ExecApplication(const string& app_name);
+
+	void SetPreset(const string& file_path);
 
 private:
 	axImage* _side_img;
@@ -137,8 +167,10 @@ private:
 	SynthControl* _synth;
 	MidiSequencer* _midiSeq;
 	MidiPartition* _midiPartition;
+	Audio* _audio;
 
 	void OnChangeTrackHeight(const int& msg);
+	void OnChangeTemplate(const axButtonMsg& msg);
 
 
 	// axEvtFunction(int) _evt_track_size;
@@ -147,3 +179,6 @@ private:
 	// Events.
 	virtual void OnPaint();
 };
+
+
+#endif // __MIDI_SEUENCER__

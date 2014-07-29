@@ -313,8 +313,8 @@ void axCoreX11::MainLoop()
 		" : " <<WindowManagerSupported(_display, x) << endl;
 
 	
-	IsSupported("_NET_WM_STATE_HIDDEN");
-	IsSupported("_NET_MOVERESIZE_WINDOW");
+	// IsSupported("_NET_WM_STATE_HIDDEN");
+	// IsSupported("_NET_MOVERESIZE_WINDOW");
 
 	
 	// XSetWMProtocols(_display, _win, 
@@ -374,11 +374,11 @@ void axCoreX11::MainLoop()
 				{
 	                core->ResizeGLScene(conf.width, conf.height);
 					windowManager->OnSize();
-					cout << "Resize" << endl;
+					// cout << "Resize" << endl;
             	}
             	else // Window move.
             	{
-            		cout << "Window move" << endl;
+            		// cout << "Window move" << endl;
             	}
 				
 				
@@ -457,7 +457,7 @@ void axCoreX11::MainLoop()
 				if((Atom)e.xclient.data.l[0] == del)
 				{
 					loop_on = false;
-					cout << "Delete Window" << endl;
+					// cout << "Delete Window" << endl;
 				}
 
 				// else if(static_cast<unsigned int>(e.xclient.data.l[0]) == XdndEnter)
@@ -521,7 +521,7 @@ XVisualInfo* axCoreX11::GetGLXVisualInfo(Display* dpy)
     }
     else
     {
-        cout << "GLX Visual." << endl;
+        // cout << "GLX Visual." << endl;
     }
 
     return v_info;

@@ -98,6 +98,15 @@ MultipleSlider::MultipleSlider(axApp* app, axWindow* parent,
 
 }
 
+void MultipleSlider::SetValue(const int& index, 
+                              const double& value)
+{
+    if(index >= 0 && index < 3)
+    {
+        sliders[index]->SetValue(value);
+    }
+}
+
 
 void MultipleSlider::OnSlider1Move(const axSliderMsg& msg)
 {
@@ -213,6 +222,39 @@ MidiTrackSequence::MidiTrackSequence(axApp* app, axWindow* parent,
 void MidiTrackSequence::SetColorSelection(const ColorChoice& color)
 {
   _choice = color;
+}
+
+void MidiTrackSequence::SetPreset(TrackInfo* info)
+{
+    _nSubTrack = info->nSubTrack;
+
+    for(int j = 0; j < 3; j++)
+    {
+        for(int i = 0; i < 16; i++)
+        {
+            if(info->notes[0][i] || info->notes[1][i] || info->notes[2][i])
+            {
+                _notes[i].active = true;
+            }
+            
+            _notes[i].actives[j] = info->notes[j][i];
+
+            if(info->probability[j][i] == 1.0)
+            {
+                _notes[i].colors[j] = axColor(0.8, 0.0, 0.0);
+            }
+            else if(info->probability[j][i] == 0.5)
+            {
+                _notes[i].colors[j] = axColor(0.0, 0.8, 0.0);
+            } 
+            else if(info->probability[j][i] == 0.2)
+            {
+                _notes[i].colors[j] = axColor(0.0, 0.0, 0.8);
+            }
+        }
+    }
+
+    Update();
 }
 
 void MidiTrackSequence::OnMouseMotion(const axPoint& mousePos)
@@ -521,6 +563,12 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
 
 }
 
+void MidiTrack::SetPreset(TrackInfo* info)
+{
+    _trackSeq->SetPreset(info);
+    _velocity->SetPreset(info);
+}
+
 void MidiTrack::OnVelocity(const MultipleSliderMsg& msg)
 {
     cout << msg.bar_index << " " << msg.index << " " << msg.value << endl;
@@ -718,6 +766,19 @@ MidiVelocity::MidiVelocity(axApp* app,
                            axNumberBoxEvents(evt), 
                            box_info);
 
+}
+
+void MidiVelocity::SetPreset(TrackInfo* info)
+{
+    SetNumberOfSlider(info->nSubTrack);
+
+    for(int j = 0; j < 3; j++)
+    {
+        for(int i = 0; i < 16; i++)
+        {
+            _sliders[i]->SetValue(j, info->velocity[j][i]);
+        }
+    }
 }
 
 void MidiVelocity::OnChangeVelocity(const MultipleSliderMsg& msg)

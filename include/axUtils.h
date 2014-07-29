@@ -17,11 +17,20 @@
 #include <vector>
 #include <map>
 #include <deque>
+#include <algorithm>
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h> 
 
 using namespace std;
 
 string axFloatToString( const double& value, int num_char = 4 );
 string axIntToString(const int &value );
+
+string OpenFileDialog(const string& app_name, string folder_path = "");
+
+string axGetExtension(const string& path);
 
 template < typename T >
 struct axRange

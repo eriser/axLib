@@ -177,6 +177,7 @@ public:
 	}
 
 	void SetValue(const double& value);
+	
 protected:
 	//axSliderMembers _members;
 	//axSliderOrientationStrategy* _sliderOrientationStrategy;

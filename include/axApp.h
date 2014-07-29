@@ -12,10 +12,13 @@ class axApp
 {
 public:
 	axApp();
+	// ~axApp();
 
 	axApp(const axSize& frame_size);
 
 	void MainLoop();
+
+	void CreatePopupWindow(const axSize& size);
 
 	axManager* GetWindowManager();
 
@@ -24,6 +27,8 @@ public:
 	void UpdateAll();
 
 	axCore* GetCore();
+
+	string GetCurrentAppDirectory();
 
 private:
 	axCore* _core;

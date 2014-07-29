@@ -1,5 +1,8 @@
 #include "main.h"
 
+//-----------------------------------------------------------------------------
+// MidiPartitionTrack.
+//-----------------------------------------------------------------------------
 MidiPartitionTrack::MidiPartitionTrack(axApp* app, axWindow* parent, const axRect& rect):
 			axPanel(app, parent, rect),
 			_nPart(4)
@@ -34,120 +37,112 @@ void MidiPartitionTrack::OnPaint()
 	gc->DrawRectangleContour(rect0);
 }
 
-// struct CircleInfo
-// {
-// 	CircleInfo()
-// 	{
-// 		parent_bar = -1;
-// 		parent_section = -1;
-// 		parent_circle = -1;
-// 	}
-	
-// 	int parent_bar;
-// 	int parent_section;
-// 	int parent_circle;
-// };
-
-// struct SectionInfo
-// {
-// 	int nCircle;
-
-// 	vector<CircleInfo> circles;
-
-// };
-
 MidiPartition::MidiPartition(axApp* app, axWindow* parent, const axRect& rect):
-			axPanel(app, parent, rect)
+			axPanel(app, parent, rect),
+			_heightlighted_bar(-1),
+			_nSlice(10),
+			_heighlighted_circle(0),
+			_selected_bar(0), 
+			_selected_circle(0)
 			
 {
-
 	_circle = new axImage("round.png");
+	_selectedCircle = new axImage("round_sel.png");
 
-	_circles.resize(16);
-
-	// SectionInfo c1;
-	// c1.nCircle = 2;
-	// _circles[0].push_back(c1);
-
-	// _circles[0]
-	// pair<int, CircleInfo> c1;
-	// c1.first = 2;
-
-	// _circles[0].push_back(c1);
-
-
-
-	// c1.first = 2;
-	// c1.second.parent_bar = 0;
-	// c1.second.parent_section = 0;
-	// c1.second.parent_circle = 0;
-	// _circles[1].push_back(c1);
-
-	// c1.first = 2;
-	// c1.second.parent_bar = 0;
-	// c1.second.parent_section = 0;
-	// c1.second.parent_circle = 1;
-	// _circles[1].push_back(c1);
-
-
-	_circles[0].push_back(1);
-	_circles[0].push_back(1);
-	// SectionInfo c2;
-	// c2.nCircle = 2;
-
-	// CircleInfo cinfo;
-	// cinfo.parent_bar = 0;
-	// cinfo.parent_section = 0;
-	// cinfo.parent_circle = 1;
-
-	// c2.circles.push_back(cinfo);
-	// c2.circles.push_back(cinfo);
-
-	// _circles[1]
-	_circles[1].push_back(2);
-	_circles[1].push_back(2);
-	// _circles[1].push_back(1);
-
-	_circles[2].push_back(2);
-	_circles[2].push_back(2);
-	_circles[2].push_back(1);
-	_circles[2].push_back(1);
-
-	_circles[3].push_back(2);
-	_circles[3].push_back(1);
-
-	_circles[4].push_back(1);
-	_circles[4].push_back(1);
-	_circles[5].push_back(1);
+	_bars.push_back(1);
+ 	_bars.push_back(3);
+	_bars.push_back(2);
 }
 
-axPoint MidiPartition::GetCirclePosition(const int& bar_index, 
-						  const int& nSection, 
-						  const int& section_index,
-						  const int& nCircle, 
-						  const int& circle_index)
+void MidiPartition::OnMouseLeave()
 {
-	axRect rect0(axPoint(0, 0), GetSize());
+	_heightlighted_bar = -1;
+	Update();
+}
 
-	if(nSection)
+void MidiPartition::OnMouseMotion(const axPoint& mouse)
+{
+
+	double pos = (mouse - GetAbsoluteRect().position).x;
+
+	int temp_index = _nSlice * pos / GetRect().size.x;
+
+	if(_heightlighted_bar != temp_index)
 	{
-		int circle_size = (1.0 / double(16)) * rect0.size.x * 0.5;
-		int x_delta_pos = (1.0 / double(16)) * rect0.size.x * 0.25;
-
-		int separation_height = rect0.size.y / double(nSection);
-		int left_x = (bar_index / double(16)) * rect0.size.x;
-		int right_x = ((bar_index + 1) / double(16)) * rect0.size.x;
-
-		int separation_y_pos = separation_height * section_index;
-		int y_delta = separation_height / double(nCircle);
-		
-		int y_pos = separation_y_pos + y_delta * 0.5 - circle_size * 0.5;
-		y_pos += (y_delta * circle_index);
-
-		return axPoint(left_x + x_delta_pos, y_pos);
+		_heightlighted_bar = temp_index;
+		Update();
 	}
+}
 
-	return axPoint(0, 0);
+void MidiPartition::DrawSelectedCircle(axGC* gc, const axRect& rect0)
+{
+
+	int circle_size = (1.0 / double(_nSlice)) * rect0.size.x * 0.5;
+	int left_x = (_selected_bar / double(_nSlice)) * rect0.size.x;
+	int right_x = ((_selected_bar+1) / double(_nSlice)) * rect0.size.x;
+	int size_x = right_x - left_x;
+	axPoint pos(left_x + (size_x - circle_size) * 0.5,
+						(_selected_circle + 1.0) * rect0.size.y / (_bars[_selected_bar] + 1.0) - circle_size * 0.5);
+	
+	gc->DrawImageResize(_selectedCircle, 
+						axPoint(pos.x, pos.y), 
+						axSize(circle_size, circle_size));
+}
+
+void MidiPartition::DrawLines(axGC* gc, const axRect& rect0)
+{
+	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+	// int nSlice = 16;
+	for(int i = 0; i < _nSlice; i++)
+	{
+		int left_x = (i / double(_nSlice)) * rect0.size.x;
+		gc->DrawLine(axPoint(left_x, 0), axPoint(left_x, rect0.size.y));
+	}
+}
+
+void MidiPartition::DrawCircles(axGC* gc, const axRect& rect0)
+{
+	int circle_size = (1.0 / double(_nSlice)) * rect0.size.x * 0.5;
+
+	for(int i = 0; i < _bars.size(); i++)
+	{
+		for(int k = 0; k < _bars[i]; k++)
+		{
+			int left_x = (i / double(_nSlice)) * rect0.size.x;
+			int right_x = ((i+1) / double(_nSlice)) * rect0.size.x;
+			int size_x = right_x - left_x;
+
+			axPoint pos(left_x + (size_x - circle_size) * 0.5,
+						(k + 1.0) * rect0.size.y / (_bars[i] + 1.0) - circle_size * 0.5);
+
+
+			if(_heighlighted_circle == k && _heightlighted_bar == i)
+			{
+				// int select_size = 20;
+				gc->SetColor(axColor(0.55, 0.35, 0.35), 1.0);
+				gc->DrawRectangle(axRect(axPoint(pos.x - 3, pos.y - 3), 
+								  axSize(circle_size + 6, circle_size + 6)));
+			}
+
+			
+
+			gc->DrawImageResize(_circle, 
+								axPoint(pos.x, pos.y), 
+								axSize(circle_size, circle_size));
+		}
+	}
+}
+
+void MidiPartition::DrawHeighlightedCircle(axGC* gc, const axRect& rect0)
+{
+	if(_heightlighted_bar != -1)
+	{
+		int left_x = (_heightlighted_bar / double(_nSlice)) * rect0.size.x;
+		int right_x = ((_heightlighted_bar+1) / double(_nSlice)) * rect0.size.x;
+
+		gc->SetColor(axColor(0.35, 0.35, 0.35), 1.0);
+		gc->DrawRectangle(axRect(left_x, 0, right_x - left_x - 1, rect0.size.y));
+	}
 }
 
 void MidiPartition::OnPaint()
@@ -159,149 +154,19 @@ void MidiPartition::OnPaint()
 	gc->SetColor(axColor(0.3, 0.3, 0.3), 1.0);
 	gc->DrawRectangle(rect0);
 
-	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-
-	int nSlice = 16;
-	for(int i = 0; i < nSlice; i++)
-	{
-		int left_x = (i / double(nSlice)) * rect0.size.x;
-
-		gc->DrawLine(axPoint(left_x, 0), axPoint(left_x, rect0.size.y));
-	}
-
-
-	int circle_size = (1.0 / double(nSlice)) * rect0.size.x * 0.5;
-
-	// for(int i = 0; i < nSlice; i++)
-	// {
-	// 	for(int k = 0; k < _circles[i].size(); k++)
-	// 	{
-	// 		// for(int n = 0; n < _circles[i][k]; n++)
-	// 		for(int n = 0; n < _circles[i][k].first; n++)
-	// 		{
-	// 			axPoint pos(GetCirclePosition(i, _circles[i].size(), k, _circles[i][k].first, n));
-
-	// 			// Draw lines.
-	// 			if(i > 0)
-	// 			{
-	// 				int parent_bar_index = _circles[i][k].second.parent_bar;
-	// 				int parent_nSection = _circles[parent_bar_index].size();
-
-	// 				int parent_section_index = _circles[i][k].second.parent_section;
-
-	// 				int parent_nCircle = _circles[parent_bar_index][parent_section_index].first;
-	// 				int parent_circle_index = _circles[i][k].second.parent_circle;
-
-	// 				axPoint parent_pos(GetCirclePosition(parent_bar_index, 
-	// 													 parent_nSection ,
-	// 													 parent_section_index, 
-	// 													 parent_nCircle, 
-	// 													 parent_circle_index));
-
-	// 				int x_delta_pos = (1.0 / double(16)) * rect0.size.x * 0.25;
-	// 				int circle_size = (1.0 / double(16)) * rect0.size.x * 0.5;
-
-	// 				axPoint offset(x_delta_pos, circle_size * 0.5);
-	// 				gc->DrawLine(pos + offset, parent_pos + offset);
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	for(int i = 0; i < nSlice; i++)
-	{
-		for(int k = 0; k < _circles[i].size(); k++)
-		{
-			for(int n = 0; n < _circles[i][k]; n++)
-			// for(int n = 0; n < _circles[i][k].first; n++)
-			{
-				axPoint pos(GetCirclePosition(i, _circles[i].size(), k, _circles[i][k], n));
-				// axPoint pos(GetCirclePosition(i, _circles[i].size(), k, _circles[i][k].first, n));
-
-				// Draw lines.
-				// if(i > 0)
-				// {
-				// 	int parent_bar_index = _circles[i][k].second.parent_bar;
-				// 	int parent_nSection = _circles[parent_bar_index].size();
-
-				// 	int parent_section_index = _circles[i][k].second.parent_section;
-
-				// 	int parent_nCircle = _circles[parent_bar_index][parent_section_index].first;
-				// 	int parent_circle_index = _circles[i][k].second.parent_circle;
-
-				// 	axPoint parent_pos(GetCirclePosition(parent_bar_index, 
-				// 										 parent_nSection ,
-				// 										 parent_section_index, 
-				// 										 parent_nCircle, 
-				// 										 parent_circle_index));
-
-				// 	int x_delta_pos = (1.0 / double(16)) * rect0.size.x * 0.25;
-				// 	int circle_size = (1.0 / double(16)) * rect0.size.x * 0.5;
-
-				// 	axPoint offset(x_delta_pos, circle_size * 0.5);
-				// 	gc->DrawLine(pos + offset, parent_pos + offset);
-				// }
-
-				gc->DrawImageResize(_circle, 
-									axPoint(pos.x, pos.y), 
-									axSize(circle_size, circle_size));
-
-			}
-		}
-	}
-
-	// int circle_size = (1.0 / double(nSlice)) * rect0.size.x * 0.5;
-	// int x_delta_pos = (1.0 / double(nSlice)) * rect0.size.x * 0.25;
-
-
-
-	// For each bar.
-	// for(int i = 0; i < nSlice; i++)
-	// {
-	// 	int nbSeparation = _circles[i].size();
-
-	// 	if(nbSeparation)
-	// 	{
-	// 		int separation_height = rect0.size.y / double(nbSeparation);
-	// 		int separation_y_pos = 0;
-
-	// 		int left_x = (i / double(nSlice)) * rect0.size.x;
-	// 		int right_x = ((i+1) / double(nSlice)) * rect0.size.x;
-
-	// 		for(int k = 0; k < nbSeparation; k++)
-	// 		{
-	// 			axRect separation_rect(separation_y_pos, 0, right_x - left_x, separation_height);
-	// 			int nbCircle = _circles[i][k];
-	// 			int y = separation_height / double(nbCircle);
-
-	// 			int y_pos = separation_y_pos + y * 0.5 - circle_size * 0.5;
-				
-	// 			for(int n = 0; n < nbCircle; n++)
-	// 			{
-	// 				gc->DrawImageResize(_circle, 
-	// 									axPoint(left_x + x_delta_pos, y_pos), 
-	// 									axSize(circle_size, circle_size));
-	// 				y_pos += y;
-	// 			}
-
-	// 			separation_y_pos += separation_height;
-	// 		}			
-	// 	}
-
-	// 	// cout << "size : " << size << endl;
-
-
-	// }
-
-	// gc->SetColor(axColor(0.5, 0.5, 0.1), 1.0);
-	// gc->DrawCircle(axPoint(3, 3), 5, 10);
-
-	
+	DrawLines(gc, rect0);
+	DrawHeighlightedCircle(gc, rect0);
+	DrawCircles(gc, rect0);
+	DrawSelectedCircle(gc, rect0);
 
 	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangleContour(rect0);
 }
 
+
+//-----------------------------------------------------------------------------
+// SynthControl.
+//-----------------------------------------------------------------------------
 SynthControl::SynthControl(axApp* app, axWindow* parent, const axRect& rect):
 			axPanel(app, parent, rect)
 {
@@ -313,12 +178,12 @@ SynthControl::SynthControl(axApp* app, axWindow* parent, const axRect& rect):
                         axColor(0.0, 0.0, 0.0),
                         axColor(0.8, 0.8, 0.8));
 
-	  // function<void (axButtonMsg)> btnFct(GetOnAddSeparation());
+	  function<void (axButtonMsg)> btnFct(GetOnOpenFile());
 
 
 	  axButton* btn = new axButton(app, this, 
 	               axRect(5, 5, 45, 20), 
-	               axButtonEvents(), 
+	               axButtonEvents(btnFct), 
 	               btn_info, "", "Open", axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
 
 	axWaveform* wave = new axWaveform(app, this, 
@@ -379,6 +244,11 @@ SynthControl::SynthControl(axApp* app, axWindow* parent, const axRect& rect):
 
 }
 
+void SynthControl::OnOpenFile(const axButtonMsg& msg)
+{
+	cout << "FILE" << endl;
+	string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main");
+}
 
 void SynthControl::OnPaint()
 {
@@ -402,6 +272,9 @@ void SynthControl::OnPaint()
 }
 
 
+//-----------------------------------------------------------------------------
+// MidiSequencer.
+//-----------------------------------------------------------------------------
 MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, Audio* audio):
 			axPanel(app, parent, rect)
 {
@@ -511,6 +384,32 @@ void MidiSequencer::AddNewTrack(const string& trackName, Audio* audio, int num)
 	// _midiTracks[_midiTracks.size() - 1]->SetEvent(evt);
 }
 
+void MidiSequencer::SetPreset(DrumMachinePreset* preset)
+{
+	if(preset->info != nullptr)
+		{
+			cout << __PRETTY_FUNCTION__ << endl;
+			cout << "NB TRACKS = " << preset->nTracks << endl;
+
+			if(preset->nTracks <= _midiTracks.size())
+			{
+				for(int i = 0; i < preset->nTracks; i++)
+				{
+					// TrackInfo& t_info(preset.info[i]);
+					 _midiTracks[i]->SetPreset(&preset->info[i]);
+				}
+			}
+			else
+			{
+				cerr << "Error : Too many tracks in presets." << endl;
+			}
+		}
+		else
+		{
+			cerr << "Error : Preset is not loaded." << endl;
+		}
+}
+
 axPoint MidiSequencer::GetNextTrackPosition() const
 {
 	return _midiTracks[_midiTracks.size() - 1]->GetBottomLeftPosition();
@@ -547,12 +446,55 @@ void MidiSequencer::OnPaint()
 	gc->DrawRectangleContour(rect0);
 }
 
-DrumMachine::DrumMachine(axApp* app, 
-				   axWindow* parent, 
-				   const axRect& rect, Audio* audio):
-	axPanel(app, parent, rect)
+void DrumMachine::ExecApplication(const string& app_name)
 {
-	_midiSeq = new MidiSequencer(app, this, axRect(45, 20, 480, 50), audio);
+	pid_t p_id = fork();
+
+	// Child.
+	if (p_id == 0)                
+	{
+		execl(app_name.c_str(), 0);
+		exit(0);
+	}
+
+	// Failed to fork.
+	else if (p_id < 0)            
+	{
+	    cerr << "Failed to open " << app_name << endl;
+	    exit(1);
+	    // Throw exception
+	}
+}
+
+//-----------------------------------------------------------------------------
+// DrumMachine.
+//-----------------------------------------------------------------------------
+DrumMachine::DrumMachine(axApp* app, 
+				   		 axWindow* parent, 
+				   		 const axRect& rect, Audio* audio):
+						 axPanel(app, parent, rect),
+						 _audio(audio)
+{
+	function<void (axButtonMsg)> btnFct(GetOnChangeTemplate());
+
+	string dir(app->GetCurrentAppDirectory());
+
+	// axButtonInfo btn_info(axColor(0.8, 0.0, 0.0),
+	// 					  axColor(0.9, 0.0, 0.0),
+	// 					  axColor(0.8, 0.0, 0.0),
+	// 					  axColor(0.8, 0.0, 0.0),
+	// 					  axColor(0.0, 0.0, 0.0),
+	// 					  axColor(0.0, 0.0, 0.0));
+
+	// int x = 0, y = 0, xDelta = 20;
+
+	axButton* btn = new axButton(app, this, 
+								 axRect(45, 0, 40, 18), 
+								 axButtonEvents(btnFct), 
+								 axButtonInfo(dir + "ressources/axStandardButton.axobj"), 
+								 "", "Open");
+
+	_midiSeq = new MidiSequencer(app, this, axRect(45, 20, 480, 50), _audio);
 
 	axEvtFunction(int) trackResizeFct(GetOnChangeTrackHeight());
 	_midiSeq->SetTrackResizeFct(trackResizeFct);
@@ -561,16 +503,43 @@ DrumMachine::DrumMachine(axApp* app,
 	_synth = new SynthControl(app, this, axRect(45, y, 480, 180));
 
 	_midiPartition = new MidiPartition(app, this, 
-			axRect(_synth->GetBottomLeftPosition(), axSize(480, 180)));
+			axRect(_synth->GetBottomLeftPosition(), axSize(480, 70)));
 
 	_side_img = new axImage("woodSide.png");
+
+}
+
+void DrumMachine::OnChangeTemplate(const axButtonMsg& msg)
+{
+	//cout << "Change template." << endl;
+	string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main", 
+							  "/home/alexarse/Desktop/axLib/axProjects/MidiSequencer/axPresets");
+
+	// cout << "FILE : " << f << endl;
+	// cout << "EXT : " << axGetExtension(f) << endl;
+
+	// if(axGetExtension(f) == "seq")
+	{
+		// SetPreset("axPresets/template1.txt");
+		SetPreset(f);
+	}
 }
 
 void DrumMachine::OnChangeTrackHeight(const int& msg)
 {
-	cout << "DRUM MACHINE RESIZE" << endl;
+	// cout << "DRUM MACHINE RESIZE" << endl;
 	_synth->SetPosition(_midiSeq->GetBottomLeftPosition());
 	_midiPartition->SetPosition(_synth->GetBottomLeftPosition() + axPoint(0, 5));
+}
+
+void DrumMachine::SetPreset(const string& file_path)
+{
+	cout << __PRETTY_FUNCTION__ << endl;
+	DrumMachinePreset preset(file_path);
+	AudioMidiSeq* audio = static_cast<AudioMidiSeq*>(_audio);
+	audio->SetPreset(&preset);
+
+	_midiSeq->SetPreset(&preset);
 }
 
 void DrumMachine::OnPaint()
@@ -593,16 +562,44 @@ void DrumMachine::OnPaint()
 
 int main()
 {
-	AudioMidiSeq* audio = new AudioMidiSeq();
+	
 
-	axApp app(axSize(570, 600));
-	DrumMachine* machine = new DrumMachine(&app, 
+	// pid_t dialog = fork();
+
+	// if(dialog)
+	// {
+	// 	// axSize size(50, 50);
+	// 	// axApp app_test(size);
+	// 	// app_test.MainLoop();
+
+	// 	exit(0);
+	// }
+	// else if(dialog == -1)
+	// {
+	// 	cerr << "Error creating process." << endl;
+	// }
+	// else
+	// {
+		AudioMidiSeq* audio = new AudioMidiSeq();
+
+		axApp* app = new axApp(axSize(570, 600));
+
+		// axApp app2(axSize(570, 600));
+		DrumMachine* machine = new DrumMachine(app, 
 										   nullptr, 
 										   axRect(0, 0, 570, 600),
 										   audio);
 
-	audio->StartAudio();
-	app.MainLoop();
+		
+		// DrumMachinePreset test("presets/presets.txt");
+
+		audio->StartAudio();
+
+		// machine->SetPreset("presets/presets.txt");
+		app->MainLoop();
+	// }
+
+	
 
 	return 0;
 }

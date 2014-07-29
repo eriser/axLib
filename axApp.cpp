@@ -22,6 +22,23 @@ axApp::axApp(const axSize& frame_size)
 	// //win_manager->InitManager(axCORE->GetScreenRect().size);
 }
 
+void axApp::CreatePopupWindow(const axSize& size)
+{
+	axCore* c = new axCoreX11(this);
+	c->Init(size);
+}
+
+string axApp::GetCurrentAppDirectory()
+{
+	char buf[1024];
+	readlink("/proc/self/exe", buf, sizeof(buf)-1);
+	string path(buf);
+	path = path.substr(0, path.find_last_of("/"));
+	path.push_back('/');
+
+	return path;
+}
+
 void axApp::MainLoop()
 {
 	//axCORE->MainLoop();
