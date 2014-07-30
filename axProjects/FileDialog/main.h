@@ -6,6 +6,7 @@
 #include <cmath>
 #include <dirent.h> 
 #include <algorithm>
+#include <map>
 
 class DirectoryNavigation
 {
@@ -18,6 +19,7 @@ public:
 		ICON_PROGFILE,
 		ICON_EXEC,
 		ICON_PNG,
+		ICON_MIDI,
 		ICON_NONE
 	};
 
@@ -25,11 +27,20 @@ public:
 
 	void SetDestinationPath(const string& path);
 
+	string GetParentDirectory() const;
+
+	string GetCurrentDirectoryName() const;
+
 	IconType FindType(dirent* dir);
 
-	deque<FileInfo> GetFileInfoDeque();
+	deque<FileInfo>* GetFileInfoDeque();
 
 	void PrintDirectoryContent();
+
+	void GoToParentDirectory();
+
+	void GoToFolder(const string& folder_name);
+
 
 private:
 	deque<DirectoryNavigation::FileInfo> _dirName;
@@ -38,49 +49,55 @@ private:
 };
 
 
-
-
 //------------------------
 // Desktop app.
 //------------------------
-class Desktop: public axPanel
+class FolderContent: public axPanel
 {
 public:
-	Desktop(axApp* app, axWindow* parent, const axRect& rect, const string& path);
+	FolderContent(axApp* app, axWindow* parent, const axRect& rect, 
+				 DirectoryNavigation* navigation);
 
-	axEVENT(axButtonMsg, OnBtn);
-	axEVENT(axButtonMsg, OnBtn2);
-	axEVENT(axButtonMsg, OnBtn3);
+	void SetDirectoryNavigation(DirectoryNavigation* navigation);
 
-	enum IconType
-	{
-		ICON_FOLDER,
-		ICON_PROGFILE,
-		ICON_EXEC,
-		ICON_PNG,
-		ICON_NONE
-	};
+	// axEVENT(axButtonMsg, OnBtn);
 
-	typedef pair<string, IconType> FileInfo;
 private:
 	vector<axButton*> _btns;
-	deque<FileInfo> _dirName;
-	deque<IconType> _iconType;
+	axImage *file_img, 
+			*png_img, 
+			*png_midi, 
+			*folder;
 
-	axImage* folder, *back;
-	axImage* file_img, *png_img;
+	typedef pair<DirectoryNavigation::IconType, axImage*> IconPair;
+	map<DirectoryNavigation::IconType, axImage*> _icons;
 
-	// int _filesHeight;
+	DirectoryNavigation* _dirNavigation;
 
 	int _selected_file;
-	void FillDirectoryVector(const string& dir);
-
-
-	void OnBtn(const axButtonMsg& msg);
-	void OnBtn2(const axButtonMsg& msg);
-	void OnBtn3(const axButtonMsg& msg);
 
 	virtual void OnMouseLeftDown(const axPoint& mousePos);
 	virtual void OnMouseMotion(const axPoint& mousePos);
+	virtual void OnPaint();
+};
+
+
+class FileDialog: public axPanel
+{
+public:
+	FileDialog(axApp* app, axWindow* parent, const axRect& rect, const string& path);
+
+	DirectoryNavigation* GetDirectoryNavigation();
+
+	axEVENT(axButtonMsg, OnBackBtn);
+	axEVENT(axButtonMsg, OnCancel);
+
+private:
+	vector<axButton*> _btns;
+	DirectoryNavigation* _dirNavigation;
+	FolderContent* _folderContent;
+
+	void OnCancel(const axButtonMsg& msg);
+	void OnBackBtn(const axButtonMsg& msg);
 	virtual void OnPaint();
 };

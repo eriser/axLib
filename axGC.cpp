@@ -56,6 +56,8 @@ void axGC::SetColor(const axColor& color, const float& alpha)
 void axGC::DrawRectangle(const axRect& rect)
 {
 	axFloatRect frect = RectToFloatRect(rect +_win->GetAbsoluteRect().position);
+	frect.position.x  -= _win->GetScrollDecay().x;
+	frect.position.y  -= _win->GetScrollDecay().y;
 
 	GLfloat z = 0;
 
@@ -82,6 +84,8 @@ void axGC::DrawRectangle(const axRect& rect)
 void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 {
 	axFloatRect frect = RectToFloatRect(rect + _win->GetAbsoluteRect().position);
+	frect.position.x  -= _win->GetScrollDecay().x;
+	frect.position.y  -= _win->GetScrollDecay().y;
 	//axFloatRect frect = RectToFloatRect(rect + _win->GetAbsoluteRect().position);
 
 	glLineWidth((GLfloat)linewidth);
@@ -119,6 +123,8 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 {
 	axPoint pos = rect.position + _win->GetAbsoluteRect().position;
+	pos.x  -= _win->GetScrollDecay().x;
+	pos.y  -= _win->GetScrollDecay().y;
 
 	//axColorStruct c = color.GetColorStruct();
 	//glColor4f(c.r, c.g, c.b, 1.0);
@@ -158,6 +164,7 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 {
 	axPoint pos = position + _win->GetAbsoluteRect().position;
+	pos -= _win->GetScrollDecay();
 
 	glColor4f(1.0, 1.0, 1.0, alpha);
 
@@ -194,6 +201,7 @@ void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& size, double alpha)
 {
 	axPoint pos = position + _win->GetAbsoluteRect().position;
+	pos -= _win->GetScrollDecay();
 
 	glColor4f(1.0, 1.0, 1.0, alpha);
 
@@ -233,6 +241,8 @@ void axGC::DrawPartOfImage(axImage* img,
 					 const axPoint& position)
 {
 	axPoint pos = position + _win->GetAbsoluteRect().position;
+	pos -= _win->GetScrollDecay();
+
 	axSize img_size = img->GetSize();
 
 	double img_x = (posInImage.x + sizeInImage.x) / double(img_size.x),
@@ -275,6 +285,9 @@ void axGC::DrawPartOfImage(axImage* img,
 
 void axGC::DrawString(const string& text, const axPoint& pos)
 {
+	// axPoint pos = position + _win->GetAbsoluteRect().position;
+	// pos -= _win->GetScrollDecay();
+
 	int x = pos.x;
 
 	for (int i = 0; i < text.size(); i++)
@@ -323,10 +336,12 @@ void axGC::DrawStringAlignedCenter(const string& text,
 }
 
 void axGC::DrawRectangleColorFade(const axRect& rectangle,
-	const axColor& c1, const float& alpha1,
-	const axColor& c2, const float& alpha2)
+								  const axColor& c1, const float& alpha1,
+								  const axColor& c2, const float& alpha2)
 {
 	axFloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
+	rect.position.x  -= _win->GetScrollDecay().x;
+	rect.position.y  -= _win->GetScrollDecay().y;
 
 	glBegin(GL_QUADS);
 	SetColor(c1, alpha1);
@@ -349,6 +364,9 @@ void axGC::DrawRectangleColorFade(const axRect& rectangle,
 void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2)
 {
 	axPoint real_pos = _win->GetAbsoluteRect().position;
+	real_pos.x  -= _win->GetScrollDecay().x;
+	real_pos.y  -= _win->GetScrollDecay().y;
+
 	axPoint p1 = pt1 + real_pos;
 	axPoint p2 = pt2 + real_pos;
 
@@ -361,6 +379,8 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2)
 void axGC::DrawCircle(const axPoint& pos, float r, int num_segments) 
 { 
 	axPoint real_pos = _win->GetAbsoluteRect().position;
+	real_pos -= _win->GetScrollDecay();
+
 	real_pos += pos;
 
 	glBegin(GL_LINE_LOOP); 

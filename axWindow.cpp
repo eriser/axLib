@@ -64,7 +64,7 @@ axRect axWindow::GetAbsoluteRect() const
 		win = win->GetParent();
 	}
 
-	return axRect(pos - _scrollDecay, _rect.size);
+	return axRect(pos, _rect.size);
 	
 	// Constant.
 	//return axRect(_absolutePosition, _rect.size);

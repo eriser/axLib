@@ -89,12 +89,14 @@ public:
 private:
 	axWindow* _parent;
 	axRect _rect;
+	// axSize _shownSize;
 	//axID _id;
 	axPoint _absolutePosition;
 	axGC* _gc;
 	bool _isHidden;
 
 	axPoint _scrollDecay;
+
 
 	GLuint _texture;
 };
