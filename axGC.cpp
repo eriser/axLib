@@ -8,8 +8,32 @@ axGC::axGC(axWindow* win):
 
 }
 
-axFloatRect RectToFloatRect(const axRect& rect)
+// axFloatRect RectToFloatRect(const axRect& rect)
+// {
+// 	// axPoint pos(_win->GetScrollDecay());
+
+// 	// if(pos.y != 0)
+// 	// {
+// 	// 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y - pos.y),
+// 	// 				   axFloat(rect.size.x), axFloat(rect.size.y));
+// 	// }
+
+
+// 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y),
+// 					   axFloat(rect.size.x), axFloat(rect.size.y));
+// }
+
+axFloatRect axGC::RectToFloatRect(const axRect& rect)
 {
+	// axPoint pos(_win->GetScrollDecay());
+
+	// if(pos.y != 0)
+	// {
+	// 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y - pos.y),
+	// 				   axFloat(rect.size.x), axFloat(rect.size.y));
+	// }
+
+
 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y),
 					   axFloat(rect.size.x), axFloat(rect.size.y));
 }

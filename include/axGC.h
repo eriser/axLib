@@ -10,8 +10,6 @@
 
 #include <cmath>
 
-
-
 class axWindow;
 
 class axGC
@@ -63,10 +61,12 @@ private:
 	axWindow* _win;
 	axFont _font;
 	//axRect _win_abs_position;
+
+	axFloatRect RectToFloatRect(const axRect& rect);
 	
 };
 
-axFloatRect RectToFloatRect(const axRect& rect);
+// axFloatRect RectToFloatRect(const axRect& rect);
 
 #endif //__AX_GC__
 

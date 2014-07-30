@@ -544,6 +544,7 @@ void DrumMachine::SetPreset(const string& file_path)
 
 void DrumMachine::OnPaint()
 {
+	
 	axGC* gc = GetGC();
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);

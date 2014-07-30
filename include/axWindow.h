@@ -26,6 +26,9 @@ public:
 	void SetSize(const axSize& size);
 	void SetPosition(const axPoint& pos);
 
+	void SetScrollDecay(const axPoint& decay);
+	axPoint GetScrollDecay();
+
 	// virtual axApp* GetApp() = 0;
 
 	axPoint GetBottomLeftPosition() const;
@@ -90,6 +93,8 @@ private:
 	axPoint _absolutePosition;
 	axGC* _gc;
 	bool _isHidden;
+
+	axPoint _scrollDecay;
 
 	GLuint _texture;
 };

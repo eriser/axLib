@@ -34,6 +34,81 @@ void ExecApplication(const string& app_name)
 	}
 }
 
+DirectoryNavigation::DirectoryNavigation(const string& folder_path):
+					 _currentDirectory(folder_path)
+{
+	SetDestinationPath(folder_path);
+}
+
+void DirectoryNavigation::SetDestinationPath(const string& path)
+{
+	_dirName.clear();
+
+	DIR *d = opendir(path.c_str());
+	dirent* dir;
+
+	if(d)
+	{
+		while((dir = readdir(d)) != NULL)
+		{
+			IconType icon = FindType(dir);
+			_dirName.push_back(FileInfo(dir->d_name, icon));
+		}
+
+		closedir(d);
+	}
+
+	_dirName.pop_front();
+	_dirName.pop_front();
+
+	std::sort(_dirName.begin(), _dirName.end());
+
+	_dirName.push_front(FileInfo(path, ICON_FOLDER));
+}
+
+deque<DirectoryNavigation::FileInfo> DirectoryNavigation::GetFileInfoDeque()
+{
+	return _dirName;
+}
+
+DirectoryNavigation::IconType DirectoryNavigation::FindType(dirent* dir)
+{
+	if(dir->d_type == DT_REG)
+	{
+		string ext(axGetExtension(dir->d_name));
+
+		if(ext == "c" || ext == "cpp") 
+		{
+			// _dirName.push_back(FileInfo(dir->d_name, ICON_PROGFILE));
+			return ICON_PROGFILE;
+		}
+		else if(ext == "png") 
+		{
+			// _dirName.push_back(FileInfo(dir->d_name, ICON_PNG));
+			return ICON_PNG;
+		}
+		else
+		{
+			// _dirName.push_back(FileInfo(dir->d_name, ICON_NONE));
+			return ICON_NONE;
+		}
+	}
+	else
+	{
+		// _iconType.push_back(ICON_NONE);
+		//_dirName.push_back(FileInfo(dir->d_name, ICON_FOLDER));
+		return ICON_FOLDER;
+	}
+}
+
+void DirectoryNavigation::PrintDirectoryContent()
+{
+	for(auto& i : _dirName)
+	{
+		cout << i.first << endl;
+	}
+}
+
 void Desktop::FillDirectoryVector(const string& path)
 {
 	_dirName.clear();
@@ -170,6 +245,8 @@ void Desktop::OnBtn3(const axButtonMsg& msg)
 
 void Desktop::OnMouseLeftDown(const axPoint& mousePos)
 {
+	// SetScrollDecay(axPoint(0, 100));
+
 	if(_selected_file != 0 && 
 	   _selected_file != -1 && 
 	   _selected_file < _dirName.size() && 
@@ -195,7 +272,14 @@ void Desktop::OnMouseLeftDown(const axPoint& mousePos)
 
 void Desktop::OnPaint()
 {
+
+	// SetScrollDecay(axPoint(0, 100));
+	axRect r(GetAbsoluteRect());
+	BlockDrawing(axRect(axPoint(r.position.x, r.position.y + GetScrollDecay().y), r.size));
+
 	axGC* gc = GetGC();
+
+	
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);
 
@@ -281,6 +365,7 @@ void Desktop::OnPaint()
 		}
 	}
 
+	UnBlockDrawing();
 }
 
 void SetNoBorder(axApp* app)
@@ -310,7 +395,7 @@ void SetNoBorder(axApp* app)
 int main(int argc, char* argv[])
 {
 	string path;
-
+	cout << "TEST" << endl;
 	// if(string(argv[0]) == string("main"))
 	// {
 		path = argv[0];

@@ -9,7 +9,7 @@
 
 using namespace std;
 
-string OpenFileDialog(const string& app_name)
+string OpenFileDialog(const string& app_name, const string& path_name)
 {
 	int parent_to_child[2]; /* Parent to child pipe */
 	int child_to_parent[2]; /* Child to parent pipe */
@@ -45,11 +45,14 @@ string OpenFileDialog(const string& app_name)
 		{
 			cerr << "Error copying file descriptor." << endl;
 		}
+
+
 		// close(parent_to_child[0]);
 		// close(parent_to_child[1]);
 		// close(child_to_parent[0]);
 
-		execl(app_name.c_str(), 0);
+		cout << "EXEC: " << app_name << endl;
+		execl(app_name.c_str(), path_name.c_str(), 0);
 
 		_exit(0);
 	}
@@ -102,7 +105,8 @@ void ExecApplication(const string& app_name)
 
 int main()
 {
-	string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main");
+	string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main",
+							  "/home/alexarse/Desktop/axLib/axProjects/FileDialog/");
 	cout << f << endl;
 
 	return 0;

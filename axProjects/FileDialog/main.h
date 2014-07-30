@@ -7,6 +7,39 @@
 #include <dirent.h> 
 #include <algorithm>
 
+class DirectoryNavigation
+{
+public:
+	DirectoryNavigation(const string& folder_path);
+
+	enum IconType
+	{
+		ICON_FOLDER,
+		ICON_PROGFILE,
+		ICON_EXEC,
+		ICON_PNG,
+		ICON_NONE
+	};
+
+	typedef pair<string, IconType> FileInfo;
+
+	void SetDestinationPath(const string& path);
+
+	IconType FindType(dirent* dir);
+
+	deque<FileInfo> GetFileInfoDeque();
+
+	void PrintDirectoryContent();
+
+private:
+	deque<DirectoryNavigation::FileInfo> _dirName;
+
+	string _currentDirectory;
+};
+
+
+
+
 //------------------------
 // Desktop app.
 //------------------------

@@ -7,6 +7,7 @@ axWindow::axWindow(axWindow* parent, const axRect& rect):
 	//_id(NEXT_ID),
 	_rect(rect),
 	_isHidden(false)
+	// _scrollDecay(0, 0)
 {
 	if (parent == nullptr)
 	{
@@ -23,6 +24,16 @@ axWindow::axWindow(axWindow* parent, const axRect& rect):
 axWindow* axWindow::GetParent() const
 {
 	return _parent;
+}
+
+void axWindow::SetScrollDecay(const axPoint& decay)
+{
+	_scrollDecay = decay;
+}
+
+axPoint axWindow::GetScrollDecay()
+{
+	return _scrollDecay;
 }
 
 // axID axWindow::GetId() const
@@ -53,7 +64,7 @@ axRect axWindow::GetAbsoluteRect() const
 		win = win->GetParent();
 	}
 
-	return axRect(pos, _rect.size);
+	return axRect(pos - _scrollDecay, _rect.size);
 	
 	// Constant.
 	//return axRect(_absolutePosition, _rect.size);
