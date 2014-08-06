@@ -12,12 +12,12 @@ CC = clang++ -std=c++11 -g $(INCLUDE)
 WIDGETS = axWidgets/axButton.o axWidgets/axGrid.o \
 		  axWidgets/axSlider.o axWidgets/axNumberBox.o \
 		  axWidgets/axPopupMenu.o axWidgets/axMenu.o \
-		  axWidgets/axKnob.o
+		  axWidgets/axKnob.o axWidgets/axScrollBar.o
 
 OBJECTS = axCoreX11.o axUtils.o axC++.o 				\
 		  axApp.o axCore.o axColor.o axGC.o 			\
 		  axImage.o axFont.o axPanel.o axManager.o 		\
-		  axWindow.o axWindowTree.o 			
+		  axWindow.o axWindowTree.o  axObject.o			
 
 # default: $(OBJECTS)
 # 	#ar rcs $(LIB_NAME) $(OBJECTS_LIST)
@@ -72,6 +72,9 @@ axWindow.o: include/axWindow.h axWindow.cpp
 
 axWindowTree.o: include/axWindowTree.h axWindowTree.cpp
 	$(CC) axWindowTree.cpp -c
+
+axObject.o: include/axObject.h axObject.cpp
+	$(CC) axObject.cpp -c
 
 # main.o: main.cpp main.h
 # 	$(CC) main.cpp -c

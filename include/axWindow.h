@@ -86,6 +86,8 @@ public:
 
 	axGC* GetGC();
 
+	void Reparent(axWindow* parent, const axPoint& position);
+
 private:
 	axWindow* _parent;
 	axRect _rect;

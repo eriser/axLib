@@ -47,6 +47,8 @@ void axManager::OnPaint()
 		{
 			deque<axWindow*> parents = _windowTree.GetWindowParents(x.second);
 			bool need_drawing = true;
+
+			// If one of the parent is hidden then we don't draw the window.
 			for (auto& c : parents)
 			{
 				if (c->IsShown() == false)
@@ -58,41 +60,11 @@ void axManager::OnPaint()
 
 			if (need_drawing)
 			{
-				
-				// axPanel* panel = static_cast<axPanel*>(win);
-				// axRect absRect(panel->GetAbsoluteRect());
-				// axSize gSize(panel->GetApp()->GetCore()->GetGlobalSize());
-
-				// if(app != nullptr)
-				// {
-					
-
-					// glScissor(absRect.position.x-1, 
-					// 	  gSize.y - absRect.position.y - absRect.size.y, 
-					// 	  absRect.size.x+1, absRect.size.y+1);
-
-					// glEnable(GL_SCISSOR_TEST);
-				// }
-			
-
-				// cout << "scissor : " << absRect.position.x-1 << " " << gSize.y - absRect.position.y - rect.size.y << " " << rect.size
-				
-
 				x.second->OnPaint();
-
-				// glDisable(GL_SCISSOR_TEST);
-
 			}
 		}
 	}
-
-	//DrawMouse(_mouse, _mousePosition);
 }
-
-// void OnMouseLeftDragging(const axPoint& pos)
-// {
-	
-// }
 
 void axManager::OnMouseMotion(const axPoint& pos)
 {

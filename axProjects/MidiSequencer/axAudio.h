@@ -302,6 +302,7 @@ public:
 		_tracks.push_back(new AudioTrack("snare06.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("hihat3.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack("snare2.wav", _nSamplePerBeat));
 
 		// cout << __PRETTY_FUNCTION__ << endl;
 		cout << "TRACKS SIZE : " << _tracks.size() << endl;
@@ -310,29 +311,13 @@ public:
 	void SetPreset(DrumMachinePreset* preset)
 	{
 		// cout << __PRETTY_FUNCTION__ << endl;
-		cout << "TRACKS SIZE : " << _tracks.size() << endl;
 
 		if(preset->info != nullptr)
 		{
 			if(preset->nTracks <= _tracks.size())
 			{
-				// TrackInfo& tInfo(preset.info[0]);
-				// cout << "NUMBER SUB TRACK : " << tInfo.nSubTrack << endl;
-
-				// const TrackInfo& ikk(tInfo);
-
-				// _tracks[0]->SetPreset(preset.info);
-				// _tracks[0]->SetNumberOfSection(1);
-				// cout << "TRACKS SIZE = " << _tracks.size() << endl;
-				// for(auto& i : _tracks)
-				// {
-				// 	cout << "f" << endl;
-				// }
-
-				// cout << "NUMBER OF TRACKS : " << preset->nTracks << endl;
 				for(int i = 0; i < preset->nTracks; i++)
 				{
-					// TrackInfo& t_info(preset.info[i]);
 					 _tracks[i]->SetPreset(&preset->info[i]);
 				}
 			}
@@ -411,15 +396,35 @@ public:
 	{
 		float *out = (float*)output;
 
-		float* track1 = _tracks[0]->Process();
-		float* track2 = _tracks[1]->Process();
-		float* track3 = _tracks[2]->Process();
-		float* track4 = _tracks[3]->Process();
+		float* tracks_out[15];
+		for(int i = 0; i < _tracks.size(); i++)
+		{
+			tracks_out[i] = _tracks[i]->Process();
+		} 
+
+		// float* track1 = _tracks[0]->Process();
+		// float* track2 = _tracks[1]->Process();
+		// float* track3 = _tracks[2]->Process();
+		// float* track4 = _tracks[3]->Process();
+		// float* track5 = _tracks[4]->Process();
 
 		for(int i = 0; i < 1024; i++)
 		{
-			*out++ = *track1++ + *track2++ + *track3++ + *track4++;
-			*out++ = *track1++ + *track2++ + *track3++ + *track4++;
+			float v_l = 0.0;
+			float v_r = 0.0;
+
+			for(int n = 0; n < _tracks.size(); n++)
+			{
+				// float* f = *tracks_out[n]++;
+				v_l += *tracks_out[n]++;;
+				v_r += *tracks_out[n]++;
+				// tracks_out[n] = f;
+			}
+
+			*out++ = v_l;
+			*out++ = v_r;
+			// *out++ = *track1++ + *track2++ + *track3++ + *track4++ + *track5++;
+			// *out++ = *track1++ + *track2++ + *track3++ + *track4++ + *track5++;
 		}
 
     	return paContinue;

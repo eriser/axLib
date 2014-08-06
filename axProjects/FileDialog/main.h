@@ -101,3 +101,20 @@ private:
 	void OnBackBtn(const axButtonMsg& msg);
 	virtual void OnPaint();
 };
+
+
+
+class TitleBar: public axPanel
+{
+public:
+	TitleBar(axApp* app, axWindow* parent, const axRect& rect);
+
+	axEVENT(axButtonMsg, OnBtn);
+	axEVENT(axButtonMsg, OnBtn2);
+
+private:
+	void OnBtn(const axButtonMsg& msg);
+	void OnBtn2(const axButtonMsg& msg);
+
+	virtual void OnPaint();
+};

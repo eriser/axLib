@@ -143,7 +143,7 @@ FolderContent::FolderContent(axApp* app, axWindow* parent, const axRect& rect, D
 
 	_selected_file = -1;
 
-	SetScrollDecay(axPoint(0, 50));
+	// SetScrollDecay(axPoint(0, 50));
 
 	_icons.insert(IconPair(DirectoryNavigation::ICON_FOLDER, 
 						   new axImage(path + "folder.png")));
@@ -156,11 +156,6 @@ FolderContent::FolderContent(axApp* app, axWindow* parent, const axRect& rect, D
 
 	_icons.insert(IconPair(DirectoryNavigation::ICON_MIDI, 
 						   new axImage(path + "midi.png")));
-
-	// folder = new axImage(path + "folder.png");
-	// file_img = new axImage(path + "file.png");
-	// png_img = new axImage(path + "PNG-icon.png");
-	// png_midi = new axImage(path + "midi.png");
 }
 
 void FolderContent::OnMouseMotion(const axPoint& mousePos)
@@ -319,11 +314,26 @@ int main(int argc, char* argv[])
 		path = argv[0];
 	// }
 
-	axApp app(axSize(500, 500));
+	axApp app(axSize(500, 530));
 	SetNoBorder(&app);
 
+	TitleBar* titlebar = new TitleBar(&app, nullptr, axRect(0, 0, 500, 530));
+
 	FileDialog* file_dialog = new FileDialog(&app, nullptr, 
-								  axRect(0, 0, 500, 500), path);
+								  axRect(3, 30, 494, 497), path);
+
+
+	
+	
+	// file_dialog->Reparent(titlebar, axPoint(0, 0));
+
+
+	// app.GetCore();
+	// XReparentWindow(dpy, (Window)win, parent, 3, 30);
+
+	// Window win = static_cast<axCoreX11*>(app->GetCore())->GetWindow();
+	// Display* dpy = static_cast<axCoreX11*>(app->GetCore())->GetDisplay();
+
 	app.MainLoop();
 
 	return 0;
@@ -434,14 +444,70 @@ void FileDialog::OnPaint()
 
 	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangleContour(buttonBarRect);
+}
 
-	// gc->SetColor(axColor("#88888888"), 1.0);
-	// gc->DrawRectangle(axRect(1, 32, rect0.size.x - 2, 20));
 
-	// gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-	// gc->SetFontSize(12);
-	// gc->DrawString(_dirNavigation->GetCurrentDirectoryName(), axPoint(5, 32));
 
-	// gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-	// gc->DrawRectangleContour(axRect(1, 32, rect0.size.x - 1, 20));
+TitleBar::TitleBar(axApp* app, axWindow* parent, const axRect& rect):
+			axPanel(app, parent, rect)
+{
+	string path(app->GetCurrentAppDirectory());
+
+	function<void (axButtonMsg)> btnFct(GetOnBtn());
+
+	axButton* btn = new axButton(app, this, 
+								 axRect(10, 5, 15, 15), 
+								 axButtonEvents(btnFct), 
+								 axButtonInfo(axColor(0.5, 0.5, 0.5),
+											  axColor(0.5, 0.5, 0.5),
+											  axColor(0.5, 0.5, 0.5),
+											  axColor(0.5, 0.5, 0.5),
+											  axColor(0.5, 0.5, 0.5),
+											  axColor(0.5, 0.5, 0.5)),
+								 path+string("x.png"));
+
+
+	btnFct = GetOnBtn();
+	axButton* btn2 = new axButton(app, this, 
+							 axRect(30, 5, 15, 15), 
+							 axButtonEvents(btnFct), 
+							 axButtonInfo(axColor(0.5, 0.5, 0.5),
+										  axColor(0.5, 0.5, 0.5),
+										  axColor(0.5, 0.5, 0.5),
+										  axColor(0.5, 0.5, 0.5),
+										  axColor(0.5, 0.5, 0.5),
+										  axColor(0.5, 0.5, 0.5)),
+							 path+string("x.png"));
+
+
+
+	btn->SetBackgroundAlpha(0.0);
+	btn2->SetBackgroundAlpha(0.0);
+}
+
+void TitleBar::OnBtn(const axButtonMsg& msg)
+{
+	cout << "TESTTTTTT" << endl;
+	exit(0);
+}
+
+
+void TitleBar::OnBtn2(const axButtonMsg& msg)
+{
+	exit(0);
+}
+
+void TitleBar::OnPaint()
+{
+	axGC* gc = GetGC();
+	axRect rect(GetRect());
+	axRect rect0(axPoint(0, 0), rect.size);
+
+	gc->DrawRectangleColorFade(
+		axRect(0, 0, rect0.size.x, rect0.size.y),// - 30),
+		axColor(0.5, 0.5, 0.5), 1,
+		axColor(0.3, 0.3, 0.3), 1);
+
+	gc->SetColor(axColor(0.4, 0.4, 0.4));
+	gc->DrawRectangleContour(axRect(1, 1, rect0.size.x - 1, rect0.size.y - 1));
 }

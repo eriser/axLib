@@ -36,6 +36,18 @@ axPoint axWindow::GetScrollDecay()
 	return _scrollDecay;
 }
 
+void axWindow::Reparent(axWindow* parent, const axPoint& position)
+{
+	_parent = parent;
+	SetPosition(position);
+
+	axID temp = _parent->GetId();
+	_parent->SetIdForReparenting(GetId());
+	SetIdForReparenting(temp);
+
+	Update();
+}
+
 // axID axWindow::GetId() const
 // {
 // 	return _id;

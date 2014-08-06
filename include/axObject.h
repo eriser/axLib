@@ -20,6 +20,8 @@ public:
 		return _id;
 	}
 
+	void SetIdForReparenting(const axID& id);
+
 private:
 	axID _id;
 	

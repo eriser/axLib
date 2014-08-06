@@ -553,7 +553,7 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
 
   axEvtFunction(MultipleSliderMsg) fct(GetOnVelocity());
   axEvtFunction(axNumberBoxMsg) sfct(GetOnStandardDeviation());
-  _velocity = new MidiVelocity(app, this, axRect(0, 30, 480, 60), fct, sfct);
+  _velocity = new MidiVelocity(app, this, axRect(0, 30, rect.size.x, 60), fct, sfct);
 
 
   _nSubTrack = 1;

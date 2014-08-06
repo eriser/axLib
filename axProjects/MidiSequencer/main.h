@@ -136,6 +136,8 @@ private:
 	axSize _trackSize;
 	vector<axButton*> btns;
 
+	axImage* _side_img;
+
 	axEvtFunction(int) _track_resize_parent_fct;
 
 	void OnChangeTrackHeight(const int& msg);
@@ -162,7 +164,7 @@ public:
 	void SetPreset(const string& file_path);
 
 private:
-	axImage* _side_img;
+	
 
 	SynthControl* _synth;
 	MidiSequencer* _midiSeq;
@@ -176,6 +178,25 @@ private:
 	// axEvtFunction(int) _evt_track_size;
 
 
+	// Events.
+	virtual void OnPaint();
+};
+
+class ScrollDrumMachine: public axPanel
+{
+public:
+	ScrollDrumMachine(axApp* app, 
+				   axWindow* parent, 
+				   const axRect& rect, Audio* audio);
+
+	axEVENT(axScrollBarMsg, OnScroll);
+private:
+	axScrollBar* scroll_bar;
+	DrumMachine* _drum;
+	axImage* _side_img;
+	int _last_delta;
+
+	void OnScroll(const axScrollBarMsg& msg);
 	// Events.
 	virtual void OnPaint();
 };

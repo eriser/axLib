@@ -178,10 +178,10 @@ SynthControl::SynthControl(axApp* app, axWindow* parent, const axRect& rect):
                         axColor(0.0, 0.0, 0.0),
                         axColor(0.8, 0.8, 0.8));
 
-	  function<void (axButtonMsg)> btnFct(GetOnOpenFile());
+	function<void (axButtonMsg)> btnFct(GetOnOpenFile());
 
 
-	  axButton* btn = new axButton(app, this, 
+	axButton* btn = new axButton(app, this, 
 	               axRect(5, 5, 45, 20), 
 	               axButtonEvents(btnFct), 
 	               btn_info, "", "Open", axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
@@ -193,9 +193,6 @@ SynthControl::SynthControl(axApp* app, axWindow* parent, const axRect& rect):
                     					  axColor(0.4, 0.4, 0.4), // Background.
                     					  axColor(0.5, 0.5, 0.5), // Lines.
                     					  axColor(0.0, 0.0, 0.0))); // Contour.
-	// SynthControlTrack* track = new SynthControlTrack(app, this, axRect(0, 0, 20, rect.size.y));
-
-
 
 	axNumberBoxInfo box_info(axColor(0.2, 0.2, 0.2),
                         	 axColor(0.3, 0.3, 0.3),
@@ -246,8 +243,8 @@ SynthControl::SynthControl(axApp* app, axWindow* parent, const axRect& rect):
 
 void SynthControl::OnOpenFile(const axButtonMsg& msg)
 {
-	cout << "FILE" << endl;
-	string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main");
+	// cout << "FILE" << endl;
+	// string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main");
 }
 
 void SynthControl::OnPaint()
@@ -326,14 +323,15 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 							axButtonEvents(btnFct),
 							btn_info, "btn.png", "", btnFlags, to_string(CHOICE_BLUE)));
 
-	_trackSize = axSize(480, 90);
+	_trackSize = axSize(rect.size.x, 90);
 
-	LineSelection* lines = new LineSelection(app, this, axRect(60, 0, 420, 20));
+	LineSelection* lines = new LineSelection(app, this, axRect(60, 0, rect.size.x - 60, 20));
 
 	AddNewTrack("Kick", audio, 0);
 	AddNewTrack("Snare", audio, 1);
 	AddNewTrack("HiHat", audio, 2);
-	AddNewTrack("OpenHat", audio, 3);	
+	AddNewTrack("Clap", audio, 3);	
+	AddNewTrack("Tom", audio, 4);	
 
 	// SynthControl* midiPart = new SynthControl(app, this, axRect(500, 80, 420, 300));
 
@@ -489,23 +487,23 @@ DrumMachine::DrumMachine(axApp* app,
 	// int x = 0, y = 0, xDelta = 20;
 
 	axButton* btn = new axButton(app, this, 
-								 axRect(45, 0, 40, 18), 
+								 axRect(0, 0, 40, 18), 
 								 axButtonEvents(btnFct), 
 								 axButtonInfo(dir + "ressources/axStandardButton.axobj"), 
 								 "", "Open");
 
-	_midiSeq = new MidiSequencer(app, this, axRect(45, 20, 480, 50), _audio);
+	_midiSeq = new MidiSequencer(app, this, axRect(0, 20, rect.size.x, 50), _audio);
 
 	axEvtFunction(int) trackResizeFct(GetOnChangeTrackHeight());
 	_midiSeq->SetTrackResizeFct(trackResizeFct);
 
-	int y = _midiSeq->GetBottomLeftPosition().y;
-	_synth = new SynthControl(app, this, axRect(45, y, 480, 180));
+	// int y = _midiSeq->GetBottomLeftPosition().y;
+	// _synth = new SynthControl(app, this, axRect(0, y, rect.size.x, 180));
 
 	_midiPartition = new MidiPartition(app, this, 
-			axRect(_synth->GetBottomLeftPosition(), axSize(480, 70)));
+			axRect(_midiSeq->GetBottomLeftPosition(), axSize(rect.size.x, 70)));
 
-	_side_img = new axImage("woodSide.png");
+	// _side_img = new axImage("woodSide.png");
 
 }
 
@@ -528,8 +526,8 @@ void DrumMachine::OnChangeTemplate(const axButtonMsg& msg)
 void DrumMachine::OnChangeTrackHeight(const int& msg)
 {
 	// cout << "DRUM MACHINE RESIZE" << endl;
-	_synth->SetPosition(_midiSeq->GetBottomLeftPosition());
-	_midiPartition->SetPosition(_synth->GetBottomLeftPosition() + axPoint(0, 5));
+	// _synth->SetPosition(_midiSeq->GetBottomLeftPosition());
+	 _midiPartition->SetPosition(_midiSeq->GetBottomLeftPosition() + axPoint(0, 5));
 }
 
 void DrumMachine::SetPreset(const string& file_path)
@@ -545,6 +543,57 @@ void DrumMachine::SetPreset(const string& file_path)
 void DrumMachine::OnPaint()
 {
 	
+	axGC* gc = GetGC();
+	axRect rect(GetRect());
+	axRect rect0(axPoint(0, 0), rect.size);
+
+	gc->SetColor(axColor(0.1, 0.1, 0.1), 1.0);
+	gc->DrawRectangle(rect0);
+
+	// gc->DrawImage(_side_img, axPoint(0, 0));
+	// gc->DrawImage(_side_img, axPoint(rect0.size.x - 45, 0));
+
+	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+	gc->DrawRectangleContour(rect0);
+}
+
+
+ScrollDrumMachine::ScrollDrumMachine(axApp* app, axWindow* parent, const axRect& rect, Audio* audio):
+			axPanel(app, parent, rect)
+{
+	function<void (axScrollBarMsg)> scroll(GetOnScroll());
+	scroll_bar = new axScrollBar(app, this, 
+								 axRect(rect.size.x -14 - 45, 0, 14, rect.size.y), 
+								 axScrollBarEvents(scroll), 
+								 axScrollBarInfo());
+
+
+	scroll_bar->setInputInfo(rect.size.y, 1000, 0);
+	_drum = new DrumMachine(app, this, axRect(45, 0, rect.size.x - 90 - 14, 1000), audio);
+
+	_side_img = new axImage("woodSide.png");
+
+	_last_delta = 0;
+}
+
+void ScrollDrumMachine::OnScroll(const axScrollBarMsg& msg)
+{
+	
+	int delta = - stof(msg.GetMsg());
+
+	if(_last_delta != delta)
+	{
+		// cout << "pos : " << GetRect().position.y << endl;
+		_drum->SetPosition(axPoint(45, delta));
+		cout << delta << endl;
+		_last_delta = delta;
+	}
+	// scroll_win->SetScrollDecay(axPoint(0, stof(msg.GetMsg())));
+	
+}
+
+void ScrollDrumMachine::OnPaint()
+{
 	axGC* gc = GetGC();
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);
@@ -586,7 +635,7 @@ int main()
 		axApp* app = new axApp(axSize(570, 600));
 
 		// axApp app2(axSize(570, 600));
-		DrumMachine* machine = new DrumMachine(app, 
+		ScrollDrumMachine* machine = new ScrollDrumMachine(app, 
 										   nullptr, 
 										   axRect(0, 0, 570, 600),
 										   audio);

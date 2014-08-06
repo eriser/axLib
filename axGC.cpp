@@ -78,15 +78,22 @@ void axGC::DrawRectangle(const axRect& rect)
 
 	// Top Left
 	glVertex3f(frect.position.x, frect.position.y + frect.size.y, z);
+
 	glEnd();
 }
 
 void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 {
 	axFloatRect frect = RectToFloatRect(rect + _win->GetAbsoluteRect().position);
-	frect.position.x  -= _win->GetScrollDecay().x;
+	frect.position.x  -= floor(_win->GetScrollDecay().x);
 	frect.position.y  -= _win->GetScrollDecay().y;
-	//axFloatRect frect = RectToFloatRect(rect + _win->GetAbsoluteRect().position);
+
+	// Note that OpenGL coordinate space has no notion of integers, 
+	// everything is a float and the "centre" of an OpenGL pixel is 
+	// really at the 0.5,0.5 instead of its top-left corner. 
+	// Therefore, if you want a 1px wide line from 0,0 to 10,10 inclusive, 
+	// you really had to draw a line from 0.5,0.5 to 10.5,10.5. 
+	frect.position.x -= 0.5;
 
 	glLineWidth((GLfloat)linewidth);
 
@@ -231,6 +238,7 @@ void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& 
 	glTexCoord2d(1.0, 1.0);
 	glVertex2d(pos.x + img_size.x, pos.y);
 	glEnd();
+
 	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 }
