@@ -1,0 +1,37 @@
+﻿Build started 15/08/2014 10:37:02 AM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\axGL\axGL.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../../libs/freetype-2.5.3/include" /I../../../libs/lpng1610 /I../../../include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\axUtils.cpp
+         axUtils.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib" /NOLOGO Debug\axApp.obj
+         Debug\axC++.obj
+         Debug\axColor.obj
+         Debug\axCore.obj
+         Debug\axCoreWin32.obj
+         Debug\axDebugWin32.obj
+         Debug\axEvent.obj
+         Debug\axFont.obj
+         Debug\axGC.obj
+         Debug\axImage.obj
+         Debug\axManager.obj
+         Debug\axObject.obj
+         Debug\axPanel.obj
+         Debug\axUtils.obj
+         Debug\axButton.obj
+         Debug\axGrid.obj
+         Debug\axKnob.obj
+         Debug\axMenu.obj
+         Debug\axNumberBox.obj
+         Debug\axPopupMenu.obj
+         Debug\axScrollBar.obj
+         Debug\axSlider.obj
+         Debug\axWin32Utils.obj
+         Debug\axWindow.obj
+         Debug\axWindowTree.obj
+         axGL.vcxproj -> C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\axGL\axGL.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.66

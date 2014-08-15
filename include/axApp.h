@@ -4,7 +4,14 @@
 #ifndef __AX_APP__
 #define __AX_APP__
 
+#ifdef __linux__
 #include "axCoreX11.h"
+#endif __linux__
+
+#ifdef _MSC_VER
+#include "axCoreWin32.h"
+#endif _MSC_VER
+
 #include "axC++.h"
 
 // Is use as an adapter to global axCore class (axCORE).

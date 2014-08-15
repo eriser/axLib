@@ -2,19 +2,42 @@
 
 axApp::axApp()
 {
+#ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(axSize(0, 0));
-	// // axCORE = new axCoreWin32();
-	// axCORE = new axCoreX11();
-	// axCORE->Init(axSize(500, 500));
-	// //axManager* win_manager = axCORE->GetWindowManager();
-	// //win_manager->InitManager(axCORE->GetScreenRect().size);
+#endif __linux__
+
+
+#ifdef _MSC_VER
+	_core = new axCoreWin32();
+	axCORE = _core;
+	_core->Init(axSize(0, 0));
+#endif _MSC_VER
 }
 
 axApp::axApp(const axSize& frame_size)
 {
+#ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(frame_size);
+#endif __linux__
+	// //axCORE = new axCoreWin32();
+	// axCORE = new axCoreX11();
+	// axCORE->Init(frame_size);
+	// //axManager* win_manager = axCORE->GetWindowManager();
+	// //win_manager->InitManager(axCORE->GetScreenRect().size);
+
+	//axCORE = GetCore();
+
+	//cout << "Frame size : " << frame_size.x << " " << frame_size.y << endl;
+#ifdef _MSC_VER
+	_core = new axCoreWin32();
+	axCORE = _core;
+	_core->Init(frame_size);
+#endif
+
+	//_core = new axCoreX11(this);
+	//_core->Init(frame_size);
 	// //axCORE = new axCoreWin32();
 	// axCORE = new axCoreX11();
 	// axCORE->Init(frame_size);
@@ -24,19 +47,27 @@ axApp::axApp(const axSize& frame_size)
 
 void axApp::CreatePopupWindow(const axSize& size)
 {
+#ifdef __linux__
 	axCore* c = new axCoreX11(this);
 	c->Init(size);
+#endif __linux__
 }
 
 string axApp::GetCurrentAppDirectory()
 {
+#ifdef __linux__
 	char buf[1024];
 	readlink("/proc/self/exe", buf, sizeof(buf)-1);
 	string path(buf);
 	path = path.substr(0, path.find_last_of("/"));
 	path.push_back('/');
-
 	return path;
+#endif __linux__
+
+#ifdef _MSC_VER
+	return "";
+#endif _MSC_VER
+
 }
 
 void axApp::MainLoop()

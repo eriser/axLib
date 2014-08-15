@@ -27,6 +27,7 @@ string axGetExtension(const string& path)
 
 string OpenFileDialog(const string& app_name, string folder_path)
 {
+#ifdef __linux__
     int parent_to_child[2]; /* Parent to child pipe */
     int child_to_parent[2]; /* Child to parent pipe */
 
@@ -99,7 +100,10 @@ string OpenFileDialog(const string& app_name, string folder_path)
         file.erase( std::remove(file.begin(), file.end(), '\0'), file.end());
         return file;
     }
+#endif __linux__
 
-
+#ifdef _MSC_VER
+	return "";
+#endif _MSC_VER
 }
 

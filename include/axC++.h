@@ -8,21 +8,23 @@
 #ifndef __AX_CPP__
 #define __AX_CPP__
 
-//#include <windows.h>
-//#include <gl\gl.h>
-//#include <gl\glu.h>
-/// @todo Include x11 and glx.
-
- #include <X11/Xlib.h>
+#ifdef __linux__
+#include <X11/Xlib.h>
 #include <X11/Xutil.h>
-//#include <X11/Xos.h>
-#include <GL/gl.h>
 #include <GL/glx.h>
+#include <GL/gl.h>
 #include <GL/glu.h>
+#endif __linux__
+
+#ifdef _MSC_VER
+#include <windows.h>
+#include <gl\gl.h>
+#include <gl\glu.h>
+#endif _MSC_VER
+
 #include <stdint.h>
 
 #include "axUtils.h"
-//#include "axDebug.h"
 
 // If altenative.
 #define if_error_in if

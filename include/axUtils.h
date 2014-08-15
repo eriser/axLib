@@ -19,9 +19,11 @@
 #include <deque>
 #include <algorithm>
 
+#ifdef __linux__
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h> 
+#endif __linux__
 
 using namespace std;
 

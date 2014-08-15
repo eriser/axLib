@@ -1,0 +1,31 @@
+﻿Build started 07/04/2014 9:59:09 AM.
+     1>Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Od /Oi /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D PNG_USE_DLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\contrib\libtests\pngunknown.c
+         pngunknown.c
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\ libpng16.lib /MANIFEST /ManifestFile:"Debug\pngunknown.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.lib" /MACHINE:X86 Debug\pngunknown.obj
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_read_end referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_read_row referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_image_width referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_image_height referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_start_read_image referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_interlace_type referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_read_info referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_set_keep_unknown_chunks referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_set_read_user_chunk_fn referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_init_io referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_create_info_struct referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_create_read_struct referenced in function _check
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_destroy_read_struct referenced in function _clean_display
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_error_ptr referenced in function _error
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_text referenced in function _get_valid
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_valid referenced in function _get_valid
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_user_chunk_ptr referenced in function _read_callback
+     1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_unknown_chunks referenced in function _get_unknown
+     1>C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.exe : fatal error LNK1120: 18 unresolved externals
+     1>Done Building Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.86
