@@ -1,12 +1,15 @@
 #ifndef __AX_AUDIO__
 #define __AX_AUDIO__
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cmath>
 #include <random>
 #include <fstream>
+#include "axUtils.h"
 
 
 #include "portaudio.h" 
@@ -176,7 +179,7 @@ public:
 
 	void SetPreset(TrackInfo* info)
 	{ 
-		cout << __PRETTY_FUNCTION__ << endl;
+		//cout << __PRETTY_FUNCTION__ << endl;
 		_nSection = info->nSubTrack;
 
 		cout << "INFO VALUE : " << info->nSubTrack << endl;

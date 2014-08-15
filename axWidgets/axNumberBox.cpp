@@ -27,12 +27,12 @@ axNumberBox::axNumberBox(axApp* app,
     // Clip value with min and max.
     {
         double v = value;
-        axCLIP( v, _range.min, _range.max );
+        axCLIP( v, _range.left, _range.right );
         _value = v;
     }
 
-    _zeroToOneValue = ( _value - _range.min ) /
-                      double( _range.max - _range.min );
+    _zeroToOneValue = ( _value - _range.left ) /
+                      double( _range.right - _range.left );
 
     Update();
 }
@@ -97,7 +97,7 @@ void axNumberBox::OnMouseLeftDragging(const axPoint& pos)
     
     axCLIP( _zeroToOneValue, 0.0, 1.0 );
 
-    _value = _zeroToOneValue * ( _range.max - _range.min ) + _range.min;
+    _value = _zeroToOneValue * ( _range.left - _range.right ) + _range.left;
 
     if(_events.value_change)
     {

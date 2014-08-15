@@ -74,8 +74,8 @@ string axAudioBuffer::GetSoundPath()
 
 void axAudioBuffer::ShowInfo()
 {
-    cout << "Snd file  : " << m_path << endl;
+ /*   cout << "Snd file  : " << m_path << endl;
     cout << "Nb Frames : " << m_info->frames << endl;
     cout << "Nb Chans  : " << m_info->channels << endl;
-    cout << "SR        : " << m_info->samplerate << endl;
+    cout << "SR        : " << m_info->samplerate << endl;*/
 }

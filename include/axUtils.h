@@ -10,6 +10,9 @@
 #ifndef __AX_UTILS__
 #define __AX_UTILS__
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -39,9 +42,9 @@ struct axRange
 {
     axRange() {}
     axRange( const T& minimum, const T& maximum ) :
-             min( minimum ), max( maximum ) {}
+             left( minimum ), right( maximum ) {}
 
-    T min, max;
+    T left, right;
 };
 
 template < typename T >
@@ -181,6 +184,24 @@ public:
 		return (size.x >= rect.size.x && size.y >= rect.size.y); 
 	}
 };
+
+//=========================================================================
+//= Multiplicative LCG for generating uniform(0.0, 1.0) random numbers    =
+//=   - x_n = 7^5*x_(n-1)mod(2^31 - 1)                                    =
+//=   - With x seeded to 1 the 10000th x value should be 1043618065       =
+//=   - From R. Jain, "The Art of Computer Systems Performance Analysis," =
+//=     John Wiley & Sons, 1991. (Page 443, Figure 26.2)                  =
+//=========================================================================
+double rand_val(int seed);
+
+//===========================================================================
+//=  Function to generate normally distributed random variable using the    =
+//=  Box-Muller method                                                      =
+//=    - Input: mean and standard deviation                                 =
+//=    - Output: Returns with normally distributed random variable          =
+//===========================================================================
+double axNormalDistributionRandomGenerator(const double& mean, 
+										   const double& std_dev);
 
 #endif
 

@@ -177,7 +177,7 @@ void axButton::OnPaint()
 	{
 		// cout << "FONT" << endl;
 		gc->SetColor(_info.font_color, 1.0);
-		gc->SetFontType("/home/alexarse/Desktop/axLib/ressources/axFonts/FreeSans.ttf");
+		//gc->SetFontType("/home/alexarse/Desktop/axLib/ressources/axFonts/FreeSans.ttf");
 		gc->SetFontSize(12);
 		gc->DrawStringAlignedCenter(_label, rect0);
 		// cout << "END FONT" << endl;

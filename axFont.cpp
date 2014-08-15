@@ -105,7 +105,8 @@ bool axFont::InitFreeType()
 		return false;
 	}
 
-	if (FT_New_Face(_freeType, "/home/alexarse/Desktop/axLib/ressources/axFonts/FreeSans.ttf", 0, &_face))
+	//if (FT_New_Face(_freeType, "/home/alexarse/Desktop/axLib/ressources/axFonts/FreeSans.ttf", 0, &_face))
+	if (FT_New_Face(_freeType, "FreeSans.ttf", 0, &_face))
 	{
 		DSTREAM << "Init error : Could not open font." << endl;
 		return false;

@@ -386,7 +386,7 @@ void MidiSequencer::SetPreset(DrumMachinePreset* preset)
 {
 	if(preset->info != nullptr)
 		{
-			cout << __PRETTY_FUNCTION__ << endl;
+			//cout << __PRETTY_FUNCTION__ << endl;
 			cout << "NB TRACKS = " << preset->nTracks << endl;
 
 			if(preset->nTracks <= _midiTracks.size())
@@ -446,22 +446,22 @@ void MidiSequencer::OnPaint()
 
 void DrumMachine::ExecApplication(const string& app_name)
 {
-	pid_t p_id = fork();
+	//pid_t p_id = fork();
 
-	// Child.
-	if (p_id == 0)                
-	{
-		execl(app_name.c_str(), 0);
-		exit(0);
-	}
+	//// Child.
+	//if (p_id == 0)                
+	//{
+	//	execl(app_name.c_str(), 0);
+	//	exit(0);
+	//}
 
-	// Failed to fork.
-	else if (p_id < 0)            
-	{
-	    cerr << "Failed to open " << app_name << endl;
-	    exit(1);
-	    // Throw exception
-	}
+	//// Failed to fork.
+	//else if (p_id < 0)            
+	//{
+	//    cerr << "Failed to open " << app_name << endl;
+	//    exit(1);
+	//    // Throw exception
+	//}
 }
 
 //-----------------------------------------------------------------------------
@@ -532,7 +532,7 @@ void DrumMachine::OnChangeTrackHeight(const int& msg)
 
 void DrumMachine::SetPreset(const string& file_path)
 {
-	cout << __PRETTY_FUNCTION__ << endl;
+	//cout << __PRETTY_FUNCTION__ << endl;
 	DrumMachinePreset preset(file_path);
 	AudioMidiSeq* audio = static_cast<AudioMidiSeq*>(_audio);
 	audio->SetPreset(&preset);

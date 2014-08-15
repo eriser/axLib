@@ -107,3 +107,70 @@ string OpenFileDialog(const string& app_name, string folder_path)
 #endif _MSC_VER
 }
 
+
+double rand_val(int seed)
+{
+	const long a = 16807; // Multiplier
+	const long m = 2147483647; // Modulus
+	const long q = 127773; // m / a
+	const long r = 2836; // m % a
+	static long random_seed_variable; // Random int value.
+
+	// Set the seed if argument is non-zero and then return zero
+	if (seed > 0)
+	{
+		random_seed_variable = seed;
+		return(0.0);
+	}
+
+	// RNG using integer arithmetic
+	long x_div_q = random_seed_variable / q;
+	long x_mod_q = random_seed_variable % q;
+	long x_new = (a * x_mod_q) - (r * x_div_q);
+
+	if (x_new > 0)
+	{
+		random_seed_variable = x_new;
+	}
+	else
+	{
+		random_seed_variable = x_new + m;
+	}
+
+	// Return a random value between 0.0 and 1.0.
+	return((double)random_seed_variable / m);
+}
+
+double axNormalDistributionRandomGenerator(const double& mean, 
+										   const double& std_dev)
+{
+	double u = 0.0, theta = 0.0; // Variables for Box-Muller method.
+	//double x; // Normal(0, 1) rv.
+	double norm_rv; // The adjusted normal rv.
+
+	// Generate u
+	while (u == 0.0)
+	{
+		u = rand_val(0);
+	}
+
+	// Compute r
+	double r = sqrt(-2.0 * log(u));
+
+	// Generate theta
+	while (theta == 0.0)
+	{
+		theta = 2.0 * M_PI * rand_val(0);
+	}
+
+	// Generate x value.
+	// Normal(0, 1) rv.
+	double x = r * cos(theta);
+
+	// Adjust x value for specified mean and variance.
+	norm_rv = (x * std_dev) + mean;
+
+	// Return the normally distributed RV value
+	return(norm_rv);
+}
+

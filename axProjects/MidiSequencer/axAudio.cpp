@@ -86,10 +86,12 @@ float* AudioTrack::Process()
     			{
     				_nFrameBuf = 0;
 
-    				std::mt19937 gen(rd());
-    				double v = _velocity[_selectedSection][_beatIndex];
-    				std::normal_distribution<> d(v,_deviation);
-    				_currentVelocity = d(gen);
+					double v = _velocity[_selectedSection][_beatIndex];
+					_currentVelocity = axNormalDistributionRandomGenerator(v, _deviation);
+    	//			std::mt19937 gen(rd());
+    	//			double v = _velocity[_selectedSection][_beatIndex];
+    	//			std::normal_distribution<> d(v,_deviation);
+					//_currentVelocity = 1.0;//d(gen);
     				// _currentVelocity = v;
     			}
 
@@ -145,7 +147,7 @@ Audio::Audio()
 	}
 
 
-	outputParameters.device = 1;//Pa_GetDefaultOutputDevice();
+	outputParameters.device = Pa_GetDefaultOutputDevice(); //1
 	// cout << "OUTPU : " << outputParameters.device.name << endl;
 	if(outputParameters.device == paNoDevice)
 	{
