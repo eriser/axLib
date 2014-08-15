@@ -105,7 +105,7 @@ void CalcScreen::OnPaint()
 	path.push_back('/');
 
 	string font_path = path + string("tmp/FreeSans.ttf");
-	cout << "Paint path : " << font_path << endl;
+	// cout << "Paint path : " << font_path << endl;
 
 
 	string val = to_string(_value);

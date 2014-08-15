@@ -5,7 +5,7 @@ LIB_INCLUDE = -L/usr/X11R6/lib -L/usr/local/lib
 INCLUDE = -I/usr/X11R6/include -I/usr/X11R6/include/X11 -I/usr/include -I/usr/include/freetype2 -I/home/alexarse/Desktop/axLib/include
 PROGRAM_NAME = main
 LIB_NAME = libaxcore.a
-CC = g++ -std=c++11 -g $(INCLUDE) 
+CC = clang++ -std=c++11 -g $(INCLUDE) 
 
 OBJECTS = axNumberBox.o axPopupMenu.o axSlider.o axButton.o axGrid.o axMenu.o axKnob.o axScrollBar.o
 

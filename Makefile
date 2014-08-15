@@ -5,7 +5,7 @@ LIB_INCLUDE = -L/usr/X11R6/lib -L/usr/local/lib
 INCLUDE = -I/usr/X11R6/include -I/usr/X11R6/include/X11 -I/usr/include -I/usr/include/freetype2 -I include/
 PROGRAM_NAME = main
 LIB_NAME = libaxcore.a
-CC = clang++ -std=c++11 -g $(INCLUDE) 
+CC = g++ -std=c++11 -g $(INCLUDE) 
 ##CC = clang++ -std=c++11 -g $(INCLUDE) 
 #-I/usr/include/freetype2 -L/usr/local/lib -lfreetype
 
