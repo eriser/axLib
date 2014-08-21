@@ -1,38 +1,6 @@
-﻿Build started 15/08/2014 12:40:13 PM.
-     1>Project "C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\axGL\axGL.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../../libs/freetype-2.5.3/include" /I../../../libs/lpng1610 /I../../../include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\axUtils.cpp
-         axUtils.cpp
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(1000,5): warning MSB8015: Forcing a rebuild of all source files due to the contents of "C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\axGL\Debug\axGL.tlog\lib.command.1.tlog" being invalid.
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib" /NOLOGO Debug\axApp.obj
-         Debug\axC++.obj
-         Debug\axColor.obj
-         Debug\axCore.obj
-         Debug\axCoreWin32.obj
-         Debug\axDebugWin32.obj
-         Debug\axEvent.obj
-         Debug\axFont.obj
-         Debug\axGC.obj
-         Debug\axImage.obj
-         Debug\axManager.obj
-         Debug\axObject.obj
-         Debug\axPanel.obj
-         Debug\axUtils.obj
-         Debug\axButton.obj
-         Debug\axGrid.obj
-         Debug\axKnob.obj
-         Debug\axMenu.obj
-         Debug\axNumberBox.obj
-         Debug\axPopupMenu.obj
-         Debug\axScrollBar.obj
-         Debug\axSlider.obj
-         Debug\axWin32Utils.obj
-         Debug\axWindow.obj
-         Debug\axWindowTree.obj
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(1000,5): warning MSB8015: Forcing a rebuild of all source files due to the contents of "C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\axGL\Debug\axGL.tlog\lib.command.1.tlog" being invalid.
-         axGL.vcxproj -> C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib
-     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\axGL\axGL.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.53
+﻿  axFont.cpp
+c:\users\alexarse\desktop\axlib\axfont.cpp(46): warning C4244: 'initializing' : conversion from 'std::streamsize' to 'unsigned int', possible loss of data
+c:\users\alexarse\desktop\axlib\axfont.cpp(52): warning C4244: 'argument' : conversion from 'std::streamsize' to 'unsigned int', possible loss of data
+c:\users\alexarse\desktop\axlib\axfont.cpp(59): warning C4244: 'argument' : conversion from 'std::streamsize' to 'FT_Long', possible loss of data
+c:\users\alexarse\desktop\axlib\axfont.cpp(131): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+  axGL.vcxproj -> C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib

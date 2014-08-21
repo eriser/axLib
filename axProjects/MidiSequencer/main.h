@@ -8,8 +8,10 @@
 #include <string>
 #include <cmath>
 #include "MidiTrack.h"
+#include "DrumSampler.h"
 #include "axAudio.h"
 #include "AudioWaveform.h"
+#include "axMidi.h"
 
 
 class MidiPartitionTrack: public axPanel
@@ -90,21 +92,7 @@ private:
 
 
 
-class SynthControl: public axPanel
-{
-public:
-	SynthControl(axApp* app, 
-				   axWindow* parent, 
-				   const axRect& rect);
 
-	axEVENT(axButtonMsg, OnOpenFile);
-
-private:
-	// Events.
-
-	void OnOpenFile(const axButtonMsg& msg);
-	virtual void OnPaint();
-};
 
 //-----------------------------------------------------------------------------
 // Desktop app.
@@ -169,7 +157,10 @@ private:
 	SynthControl* _synth;
 	MidiSequencer* _midiSeq;
 	MidiPartition* _midiPartition;
+	DrumSampler* _drumSampler;
 	Audio* _audio;
+	axMidi* _midi;
+	axImage* _topBg;
 
 	void OnChangeTrackHeight(const int& msg);
 	void OnChangeTemplate(const axButtonMsg& msg);

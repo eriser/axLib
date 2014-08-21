@@ -44,12 +44,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\libsndfile\include;C:\portaudio\include;C:\Users\alexarse\Desktop\axLib;C:\Users\alexarse\Desktop\axLib\include;C:\Users\alexarse\Desktop\axLib\libs\lpng1610;C:\Users\alexarse\Desktop\axLib\libs\freetype-2.5.3/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexarse\Desktop\axLib\libs\portmidi\porttime;C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_win;C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_common;C:\libsndfile\include;C:\Users\alexarse\Desktop\axLib\libs\portaudio\include;C:\Users\alexarse\Desktop\axLib;C:\Users\alexarse\Desktop\axLib\include;C:\Users\alexarse\Desktop\axLib\libs\lpng1610;C:\Users\alexarse\Desktop\axLib\libs\freetype-2.5.3/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\libsndfile\lib;C:\portaudio\build\msvc\Win32\Debug;C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug;C:\Users\alexarse\Desktop\axLib\libs\lpng1610/projects/vstudio/Debug;C:\Users\alexarse\Desktop\axLib\libs\freetype-2.5.3/objs/win32/vc2010</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libsndfile-1.lib;portaudio_x86.lib;axGL.lib;opengl32.lib;glu32.lib;libpng16.lib;zlib.lib;freetype253_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\alexarse\Desktop\axLib\libs\portmidi\Debug;C:\libsndfile\lib;C:\Users\alexarse\Desktop\axLib\libs\portaudio\build\msvc\Win32\Debug;C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug;C:\Users\alexarse\Desktop\axLib\libs\lpng1610/projects/vstudio/Debug;C:\Users\alexarse\Desktop\axLib\libs\freetype-2.5.3/objs/win32/vc2010</AdditionalLibraryDirectories>
+      <AdditionalDependencies>portmidi.lib;libsndfile-1.lib;portaudio_x86.lib;axGL.lib;opengl32.lib;glu32.lib;libpng16.lib;zlib.lib;freetype253_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -70,6 +70,8 @@
     <ClCompile Include="..\..\AudioWaveform.cpp" />
     <ClCompile Include="..\..\axAudio.cpp" />
     <ClCompile Include="..\..\axAudioBuffer.cpp" />
+    <ClCompile Include="..\..\axMidi.cpp" />
+    <ClCompile Include="..\..\DrumSampler.cpp" />
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\MidiTrack.cpp" />
   </ItemGroup>
@@ -77,6 +79,8 @@
     <ClInclude Include="..\..\AudioWaveform.h" />
     <ClInclude Include="..\..\axAudio.h" />
     <ClInclude Include="..\..\axAudioBuffer.h" />
+    <ClInclude Include="..\..\axMidi.h" />
+    <ClInclude Include="..\..\DrumSampler.h" />
     <ClInclude Include="..\..\main.h" />
     <ClInclude Include="..\..\MidiTrack.h" />
   </ItemGroup>

@@ -1,0 +1,53 @@
+﻿Build started 20/08/2014 4:40:32 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\adelay\win\adelay_vc10.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Win32\Release\ADelay.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../../../../.. /Zi /nologo /W3 /WX- /O2 /Oy- /D WINDOWS=1 /D RELEASE=1 /D _CRT_SECURE_NO_DEPRECATE=1 /D _VC80_UPGRADE=0x0710 /D _WINDLL /D _MBCS /Gm- /EHsc /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Release\\" /Fd"Win32\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\adelaycontroller.cpp ..\source\adelayprocessor.cpp ..\source\exampletest.cpp ..\source\factory.cpp ..\..\..\..\source\main\dllmain.cpp ..\..\..\..\source\main\pluginfactoryvst3.cpp ..\..\..\..\source\common\pluginview.cpp ..\..\..\..\source\vst\vstaudioeffect.cpp ..\..\..\..\source\vst\vstbus.cpp ..\..\..\..\source\vst\vstcomponent.cpp ..\..\..\..\source\vst\vstcomponentbase.cpp ..\..\..\..\source\vst\vsteditcontroller.cpp ..\..\..\..\source\vst\vstinitiids.cpp ..\..\..\..\source\vst\vstparameters.cpp ..\..\..\..\..\pluginterfaces\base\conststringtable.cpp ..\..\..\..\..\pluginterfaces\base\funknown.cpp ..\..\..\..\..\pluginterfaces\base\ustring.cpp /MP 
+         adelaycontroller.cpp
+         adelayprocessor.cpp
+         exampletest.cpp
+         factory.cpp
+         dllmain.cpp
+         pluginfactoryvst3.cpp
+         pluginview.cpp
+         vstaudioeffect.cpp
+         vstbus.cpp
+         vstcomponent.cpp
+         vstcomponentbase.cpp
+         vsteditcontroller.cpp
+         vstinitiids.cpp
+         vstparameters.cpp
+         conststringtable.cpp
+         funknown.cpp
+         ustring.cpp
+       ResourceCompile:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _VC80_UPGRADE=0x0710 /l"0x0409" /I../../../../.. /nologo /fo"Win32\Release\adelay.res" adelay.rc 
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\adelay\win\Win32\Release\ADelay.dll) does not match the Linker's OutputFile property value (c:\VST\aDel.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(992,5): warning MSB8012: TargetName(ADelay) does not match the Linker's OutputFile property value (aDel). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:/VST/aDel.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"adelay.def" /MANIFEST:NO /DEBUG /PDB:"C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\adelay\win\Win32\Release\ADelay.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Win32\Release\ADelay.lib" /MACHINE:X64 /DLL Win32\Release\adelay.res
+         Win32\Release\adelaycontroller.obj
+         Win32\Release\adelayprocessor.obj
+         Win32\Release\exampletest.obj
+         Win32\Release\factory.obj
+         Win32\Release\dllmain.obj
+         Win32\Release\pluginfactoryvst3.obj
+         Win32\Release\pluginview.obj
+         Win32\Release\vstaudioeffect.obj
+         Win32\Release\vstbus.obj
+         Win32\Release\vstcomponent.obj
+         Win32\Release\vstcomponentbase.obj
+         Win32\Release\vsteditcontroller.obj
+         Win32\Release\vstinitiids.obj
+         Win32\Release\vstparameters.obj
+         Win32\Release\conststringtable.obj
+         Win32\Release\funknown.obj
+         Win32\Release\ustring.obj
+         "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\Win32\Release.base_vc10\base_vc10.lib"
+     1>Win32\Release\adelaycontroller.obj : fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\adelay\win\adelay_vc10.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:05.26

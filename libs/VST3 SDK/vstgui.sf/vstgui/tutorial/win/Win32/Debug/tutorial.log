@@ -1,0 +1,38 @@
+﻿Build started 16/08/2014 10:18:46 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\vstgui.sf\vstgui\tutorial\win\tutorial.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _CRT_SECURE_NO_DEPRECATE=1 /D _WINDLL /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\Tutorial2Editor.cpp ..\source\TutorialVST2Effect.cpp ..\..\aeffguieditor.cpp ..\..\vstcontrols.cpp ..\..\vstgui.cpp
+         vstgui.cpp
+     1>c:\users\alexarse\desktop\axlib\libs\vst3 sdk\vstgui.sf\vstgui\vstgui.cpp(3674): warning C4996: 'GetVersionExW': was declared deprecated
+                 c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h(442) : see declaration of 'GetVersionExW'
+         vstcontrols.cpp
+         aeffguieditor.cpp
+         TutorialVST2Effect.cpp
+         Tutorial2Editor.cpp
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _CRT_SECURE_NO_DEPRECATE=1 /D _WINDLL /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\audioeffect1.obj" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\..\public.sdk\source\vst2.x\audioeffect.cpp
+         audioeffect.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _CRT_SECURE_NO_DEPRECATE=1 /D _WINDLL /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\audioeffectx1.obj" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\..\public.sdk\source\vst2.x\audioeffectx.cpp
+         audioeffectx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _CRT_SECURE_NO_DEPRECATE=1 /D _WINDLL /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\vstplugmain1.obj" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\..\public.sdk\source\vst2.x\vstplugmain.cpp
+         vstplugmain.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Win32\Debug\tutorial.res" tutorial.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Win32\Debug\Tutorial.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"vstplug.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Win32\Debug\Tutorial.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Win32\Debug\Tutorial.lib" /MACHINE:X86 /SAFESEH /DLL Win32\Debug\tutorial.res
+         Win32\Debug\Tutorial2Editor.obj
+         Win32\Debug\TutorialVST2Effect.obj
+         Win32\Debug\aeffguieditor.obj
+         Win32\Debug\vstcontrols.obj
+         Win32\Debug\vstgui.obj
+         Win32\Debug\audioeffect1.obj
+         Win32\Debug\audioeffectx1.obj
+         Win32\Debug\vstplugmain1.obj
+     1>Tutorial2Editor.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+            Creating library Win32\Debug\Tutorial.lib and object Win32\Debug\Tutorial.exp
+         tutorial.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\vstgui.sf\vstgui\tutorial\win\Win32\Debug\Tutorial.dll
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\vstgui.sf\vstgui\tutorial\win\tutorial.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:17.34

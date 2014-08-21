@@ -1,0 +1,12 @@
+// Propellerhead Software Xcode settings
+
+#include "PPH General.xcconfig"
+
+// Testing additions
+SEPARATE_STRIP = YES
+OTHER_CPLUSPLUSFLAGS = $(OTHER_CFLAGS) -fno-use-cxa-atexit -fvisibility-inlines-hidden
+GCC_OPTIMIZATION_LEVEL = 3
+GCC_UNROLL_LOOPS = YES
+GCC_FAST_MATH = YES
+GCC_WARN_UNINITIALIZED_AUTOS = YES
+GCC_PREPROCESSOR_DEFINITIONS = MAC=1 TARGET_TESTING=1

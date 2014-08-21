@@ -44,13 +44,19 @@ public:
                 axWindow* parent,
                 const axRect& rect,
                 const axWaveformEvents& events,
-                const axWaveformInfo& waveInfo);
+                const axWaveformInfo& waveInfo,
+				const string& snd_path);
 
     void SetBufferPtr( axAudioBuffer* buffer )
     {
         m_buffer = buffer;
         Update();
     }
+
+	void SetBackgroundAlpha(const float& alpha)
+	{
+		_bgAlpha = alpha;
+	}
 
     // void SetTimeLineParms( axTimeLineParams* lines )
     // {
@@ -61,11 +67,17 @@ public:
 private:
     axWaveformInfo m_info;
     axWaveformEvents m_eventID;
-    //string m_path;
     axAudioBuffer* m_buffer;
+
+	axImage* _envRoundImg;
+
+	vector<axFloatPoint> _pointsRealValue;
+	vector<axPoint> _envPoints;
     // axTimeLineParams* m_lineParams;
 
-    void FormatLines( const axSize& size );
+	float _bgAlpha;
+
+    void FormatLines(const axSize& size);
 
     void OnPaint();
 };

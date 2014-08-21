@@ -1,0 +1,72 @@
+﻿Build started 16/08/2014 9:06:53 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\note_expression_synth\win\note_expression_synth_vc10.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../../.. /I../../../../../vstgui4 /ZI /nologo /W3 /WX- /Od /Oy- /D WINDOWS=1 /D DEVELOPMENT=1 /D _CRT_SECURE_NO_DEPRECATE=1 /D VSTGUI_LIVE_EDITING=1 /D _VC80_UPGRADE=0x0710 /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /FR"Win32\Debug\\" /Gd /TP /analyze- /errorReport:prompt /MP "..\..\..\..\..\vstgui4\vstgui\plugin-bindings\vst3groupcontroller.cpp" "..\..\..\..\..\vstgui4\vstgui\plugin-bindings\vst3padcontroller.cpp" ..\source\factory.cpp ..\source\note_expression_synth_controller.cpp ..\source\note_expression_synth_processor.cpp ..\source\note_expression_synth_ui.cpp ..\source\note_expression_synth_voice.cpp ..\..\..\..\source\main\dllmain.cpp ..\..\..\..\source\main\pluginfactoryvst3.cpp ..\..\..\..\source\common\pluginview.cpp ..\..\..\..\source\vst\vstaudioeffect.cpp ..\..\..\..\source\vst\vstbus.cpp ..\..\..\..\source\vst\vstcomponent.cpp ..\..\..\..\source\vst\vstcomponentbase.cpp ..\..\..\..\source\vst\vsteditcontroller.cpp ..\..\..\..\source\vst\vstguieditor.cpp ..\..\..\..\source\vst\vstinitiids.cpp ..\..\..\..\source\vst\vstnoteexpressiontypes.cpp ..\..\..\..\source\vst\vstparameters.cpp ..\..\..\..\..\pluginterfaces\base\conststringtable.cpp ..\..\..\..\..\pluginterfaces\base\funknown.cpp ..\..\..\..\..\pluginterfaces\base\ustring.cpp "..\..\..\..\..\vstgui4\vstgui\plugin-bindings\vst3editor.cpp" ..\..\..\..\..\vstgui4\vstgui\vstgui_uidescription_win32.cpp ..\..\..\..\..\vstgui4\vstgui\vstgui_win32.cpp ..\source\note_touch_controller.cpp
+         vst3groupcontroller.cpp
+         vst3padcontroller.cpp
+         factory.cpp
+         note_expression_synth_controller.cpp
+         note_expression_synth_processor.cpp
+         note_expression_synth_ui.cpp
+         note_expression_synth_voice.cpp
+         dllmain.cpp
+         pluginfactoryvst3.cpp
+         pluginview.cpp
+         vstaudioeffect.cpp
+         vstbus.cpp
+         vstcomponent.cpp
+         vstcomponentbase.cpp
+         vsteditcontroller.cpp
+         vstguieditor.cpp
+         vstinitiids.cpp
+         vstnoteexpressiontypes.cpp
+         vstparameters.cpp
+         conststringtable.cpp
+         funknown.cpp
+         ustring.cpp
+         vst3editor.cpp
+         vstgui_uidescription_win32.cpp
+         vstgui_win32.cpp
+         note_touch_controller.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _VC80_UPGRADE=0x0710 /l"0x0409" /I../../../../.. /nologo /fo"Win32\Debug\note_expression_synth.res" note_expression_synth.rc 
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\note_expression_synth\win\Win32\Debug\Note Expression Synth.vst3) does not match the Linker's OutputFile property value (C:\Program Files (x86)\Common Files\VST3\Steinberg\Note Expression Synth.vst3). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Program Files (x86)\Common Files\VST3\Steinberg\Note Expression Synth.vst3" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"note_expression_synth.def" /MANIFEST:NO /DEBUG /PDB:"Win32\Debug\note_expression_synth.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Win32\Debug\Note Expression Synth.lib" /MACHINE:X86 /SAFESEH /DLL Win32\Debug\note_expression_synth.res
+         Win32\Debug\vst3groupcontroller.obj
+         Win32\Debug\vst3padcontroller.obj
+         Win32\Debug\factory.obj
+         Win32\Debug\note_expression_synth_controller.obj
+         Win32\Debug\note_expression_synth_processor.obj
+         Win32\Debug\note_expression_synth_ui.obj
+         Win32\Debug\note_expression_synth_voice.obj
+         Win32\Debug\dllmain.obj
+         Win32\Debug\pluginfactoryvst3.obj
+         Win32\Debug\pluginview.obj
+         Win32\Debug\vstaudioeffect.obj
+         Win32\Debug\vstbus.obj
+         Win32\Debug\vstcomponent.obj
+         Win32\Debug\vstcomponentbase.obj
+         Win32\Debug\vsteditcontroller.obj
+         Win32\Debug\vstguieditor.obj
+         Win32\Debug\vstinitiids.obj
+         Win32\Debug\vstnoteexpressiontypes.obj
+         Win32\Debug\vstparameters.obj
+         Win32\Debug\conststringtable.obj
+         Win32\Debug\funknown.obj
+         Win32\Debug\ustring.obj
+         Win32\Debug\vst3editor.obj
+         Win32\Debug\vstgui_uidescription_win32.obj
+         Win32\Debug\vstgui_win32.obj
+         Win32\Debug\note_touch_controller.obj
+         "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\Win32\Debug.base_vc10\base_vc10.lib"
+     1>vst3groupcontroller.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+            Creating library Win32\Debug\Note Expression Synth.lib and object Win32\Debug\Note Expression Synth.exp
+         note_expression_synth_vc10.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\note_expression_synth\win\Win32\Debug\Note Expression Synth.vst3
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"Win32\Debug\Note Expression Synth.bsc" Win32\Debug\vst3groupcontroller.sbr Win32\Debug\vst3padcontroller.sbr Win32\Debug\factory.sbr Win32\Debug\note_expression_synth_controller.sbr Win32\Debug\note_expression_synth_processor.sbr Win32\Debug\note_expression_synth_ui.sbr Win32\Debug\note_expression_synth_voice.sbr Win32\Debug\dllmain.sbr Win32\Debug\pluginfactoryvst3.sbr Win32\Debug\pluginview.sbr Win32\Debug\vstaudioeffect.sbr Win32\Debug\vstbus.sbr Win32\Debug\vstcomponent.sbr Win32\Debug\vstcomponentbase.sbr Win32\Debug\vsteditcontroller.sbr Win32\Debug\vstguieditor.sbr Win32\Debug\vstinitiids.sbr Win32\Debug\vstnoteexpressiontypes.sbr Win32\Debug\vstparameters.sbr Win32\Debug\conststringtable.sbr Win32\Debug\funknown.sbr Win32\Debug\ustring.sbr Win32\Debug\vst3editor.sbr Win32\Debug\vstgui_uidescription_win32.sbr Win32\Debug\vstgui_win32.sbr Win32\Debug\note_touch_controller.sbr
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\note_expression_synth\win\note_expression_synth_vc10.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:01:47.66

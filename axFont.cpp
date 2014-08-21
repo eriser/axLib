@@ -1,13 +1,100 @@
 #include "axFont.h"
 
+//std::ifstream file("myfile", std::ios::binary);
+//file.seekg(0, std::ios::end);
+//std::streamsize size = file.tellg();
+//file.seekg(0, std::ios::beg);
+//
+//std::vector<unsigned char> buffer(size);
+//if (file.read(buffer.data(), size))
+//{
+//	/* worked! */
+//}
+
+axFontGlobalManager axFont::_fontManager;
+
+axFontGlobalManager::axFontGlobalManager()
+{
+	if (FT_Init_FreeType(&_freeType))
+	{
+		cerr << "Error : Could not init freetype library." << endl;
+	}
+}
+
+bool axFontGlobalManager::LoadFont(const string& path, FT_Face& face)
+{
+	std::map<std::string, axFontStruct>::iterator it = _fontMap.find(path);
+
+	if (it != _fontMap.end())
+	{
+		//cout << "Font already loaded in memory." << endl;
+		FT_New_Memory_Face(_freeType,
+							(FT_Byte*)it->second._data, // First byte in memory.
+							it->second._size, // Size in bytes.
+							0, // Face_index.        
+							&face);
+		return true;
+	}
+	else
+	{
+		//cout << "Init new font." << endl;
+		std::ifstream file(path, std::ios::binary);
+		file.seekg(0, std::ios::end);
+		std::streamsize size = file.tellg();
+		file.seekg(0, std::ios::beg);
+		
+		char* buffer = new char[size];
+
+		//std::vector<unsigned char> buffer(size);
+
+		if (file.read(buffer, size))
+		{
+			axFontStruct font_info(buffer, size);
+			_fontMap.insert(pair<std::string, axFontStruct>(path, font_info));
+
+			FT_New_Memory_Face(_freeType,
+							   (FT_Byte*)buffer, // First byte in memory.
+							   size, // Size in bytes.
+							   0, // Face_index.        
+				               &face);
+
+			file.close();
+
+			return true;
+		}
+		else
+		{
+			delete buffer;
+		}
+		//if (InitImage(path, _texture, _size) == false)
+		//{
+		//	axImageStruct img_info(_texture, _size);
+		//	_imageMap.insert(pair<std::string, axImageStruct>(path, img_info));
+		//	return true;
+		//}
+	}
+
+	return false;
+}
+
+
 axFont::axFont(const string& font)
 	//_font_img(font)
 {
-	if_no_error_in(InitFreeType())
+	//if_no_error_in(InitFreeType())
+	//{
+	//	// Set default size.
+	//	SetFontSize(12);
+	//}
+	if (_fontManager.LoadFont("FreeSans.ttf", _face))
 	{
-		// Set default size.
-		SetFontSize(18);
+		SetFontSize(12);
 	}
+	else
+	{
+		cerr << "Error loading font" << endl;
+	}
+	
 
 	glGenTextures(1, &_texture);
 }
@@ -99,6 +186,7 @@ void axFont::SetFontType(const string& font_type)
 
 bool axFont::InitFreeType()
 {
+	// Init FreeType library.
 	if (FT_Init_FreeType(&_freeType))
 	{
 		DSTREAM << "Error : Could not init freetype library." << endl;

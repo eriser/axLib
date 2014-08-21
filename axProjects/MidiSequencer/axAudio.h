@@ -116,7 +116,7 @@ struct DrumMachinePreset
 };
 
 //------------------------------------------------------------------
-// You get this error:
+// On linux : if you get this error:
 // bt_audio_service_open: connect() failed: Connection refused (111)
 // Solution : sudo apt-get purge bluez-als
 //------------------------------------------------------------------
@@ -196,11 +196,16 @@ public:
 		}
 	}
 
+	string GetSoundPath()
+	{
+		return _buffer->GetSoundPath();
+	}
+
+	void SetMidiNoteOn();
 
 private:
 	static const int MAX_NUM_OF_PROB_TRACK = 3;
 	static const int NUMBER_OF_NOTES = 16;
-
 
 	axAudioBuffer* _buffer;
 	// vector<bool> _notes;
@@ -208,6 +213,8 @@ private:
 	float _probability[3][16];
 	double _velocity[3][16];
 	double _deviation;
+
+	bool _midiNoteOn;
 
 	int _nFrameBuf;
 	int _beatIndex, _sampleCount, _nSamplePerBeat;
@@ -225,6 +232,10 @@ class Audio
 {
 public: 
 	Audio();
+	~Audio()
+	{
+		Pa_Terminate();
+	}
 
 	void StartAudio();
 
@@ -307,6 +318,11 @@ public:
 		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("snare2.wav", _nSamplePerBeat));
 
+		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack("snare2.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
+		
+
 		// cout << __PRETTY_FUNCTION__ << endl;
 		cout << "TRACKS SIZE : " << _tracks.size() << endl;
 	}
@@ -357,6 +373,11 @@ public:
 		_tracks[track_index]->SetStandardDeviation(dev);
 	}
 
+	void SetLiveMidiNoteOn(const int& track_index)
+	{
+		_tracks[track_index]->SetMidiNoteOn();
+	}
+	
 	void SetMidiNote(const int& track_index, 
 					 const int& section_index, 
 					 const int& index, 
@@ -436,6 +457,16 @@ public:
 	axAudioBuffer* GetAudioBuffer()
 	{
 		return _buffer;
+	}
+
+	int GetNumberOfTrack() const
+	{
+		return _tracks.size();
+	}
+
+	string GetSoundPath(const int& track)
+	{
+		return _tracks[track]->GetSoundPath();
 	}
 
 private:

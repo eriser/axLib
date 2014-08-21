@@ -10,6 +10,31 @@
 #include "axC++.h"
 #include "axImage.h"
 #include <map>
+#include <fstream>
+
+struct axFontStruct
+{
+	axFontStruct(void* data, unsigned int size) :
+	_data(data), _size(size)
+	{
+	}
+
+	void* _data;
+	unsigned int _size;
+};
+
+class axFontGlobalManager
+{
+public:
+	axFontGlobalManager();
+
+	bool LoadFont(const string& path, FT_Face& face);
+
+private:
+	std::map<std::string, axFontStruct> _fontMap;
+	FT_Library _freeType;
+};
+
 
 class axFont
 {
@@ -36,6 +61,8 @@ private:
 	axPoint _delta;
 	int _next;
 	int _font_size;
+
+	static axFontGlobalManager _fontManager;
 
 	bool InitFreeType();
 };

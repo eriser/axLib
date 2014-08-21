@@ -207,21 +207,87 @@ MidiTrackSequence::MidiTrackSequence(axApp* app, axWindow* parent,
                   axPanel(app, parent, rect),
                   _track_number(num)
 {
-  _audio = static_cast<AudioMidiSeq*>(audio);
-  _nbars = 16;
-  _highLightIndex = -1;
-  _notes.resize(_nbars);
-  _hightColor = axColor(0.7, 0.7, 0.7);
-  _nSubTrack = 2;
-  _selectedSeparationNumber = 0;
+	_audio = static_cast<AudioMidiSeq*>(audio);
+	_nbars = 16;
+	_highLightIndex = -1;
+	_notes.resize(_nbars);
+	_nSubTrack = 2;
+	_selectedSeparationNumber = 0;
 
-  _bgImg = new axImage("btn.png");
+	_bgImg = new axImage("btn.png");
+	_hightlighImg = new axImage("btnhigh.png");
 
+	_colorChoice[CHOICE_RED] = axColor(0.8, 0.0, 0.0);
+	_colorChoice[CHOICE_GREEN] = axColor(0.0, 0.8, 0.0);
+	_colorChoice[CHOICE_BLUE] = axColor(0.0, 0.0, 0.8);
+
+	_probabilityValues[CHOICE_RED] = 1.0;
+	_probabilityValues[CHOICE_GREEN] = 0.5;
+	_probabilityValues[CHOICE_BLUE] = 0.2;
+
+	_bgColors[0] = axColor(0.3, 0.3, 0.3);
+	_bgColors[1] = axColor(0.32, 0.32, 0.32);
+	_bgColors[2] = axColor(0.4, 0.4, 0.4);
+	_bgColors[3] = axColor(0.42, 0.42, 0.42);
+
+	bool four_bar = false;
+	_sequenceColors.resize(_nbars);
+	for (int i = 0; i < _nbars; i++)
+	{
+		if (i % 4 == 0)
+		{
+			four_bar = !four_bar;
+		}
+
+		if (i % 2 == 0)
+		{
+			if (four_bar)
+			{
+				_sequenceColors[i] = &_bgColors[0];
+			}
+			else
+			{
+				_sequenceColors[i] = &_bgColors[2];
+			}
+		}
+		else
+		{
+			if (four_bar)
+			{
+				_sequenceColors[i] = &_bgColors[1];
+			}
+			else
+			{
+				_sequenceColors[i] = &_bgColors[2];
+			}
+		}
+	}
+
+	_gridRects.resize(_nbars);
+	double sizex_over_nbars = rect.size.x / double(_nbars);
+	for (int i = 0; i < _nbars; i++)
+	{
+		int x_left = i * sizex_over_nbars;
+		int x_right = (i + 1) * sizex_over_nbars;
+		_gridRects[i] = axRect(x_left, 0, x_right - x_left, rect.size.y);
+	}
 }
 
 void MidiTrackSequence::SetColorSelection(const ColorChoice& color)
 {
-  _choice = color;
+	_choice = color;
+}
+
+void MidiTrackSequence::SetVelocity(const int& index,
+								    const int& subtrack,
+								    const float& value)
+{
+	if (_notes[index].velocities[subtrack] != value)
+	{
+		_notes[index].velocities[subtrack] = value;
+		Update();
+	}
+	
 }
 
 void MidiTrackSequence::SetPreset(TrackInfo* info)
@@ -239,17 +305,17 @@ void MidiTrackSequence::SetPreset(TrackInfo* info)
             
             _notes[i].actives[j] = info->notes[j][i];
 
-            if(info->probability[j][i] == 1.0)
+			if (info->probability[j][i] == _probabilityValues[CHOICE_RED])
             {
-                _notes[i].colors[j] = axColor(0.8, 0.0, 0.0);
+				_notes[i].colors[j] = _colorChoice[CHOICE_RED];
             }
-            else if(info->probability[j][i] == 0.5)
+			else if (info->probability[j][i] == _probabilityValues[CHOICE_GREEN])
             {
-                _notes[i].colors[j] = axColor(0.0, 0.8, 0.0);
+				_notes[i].colors[j] = _colorChoice[CHOICE_GREEN];
             } 
-            else if(info->probability[j][i] == 0.2)
+			else if (info->probability[j][i] == _probabilityValues[CHOICE_BLUE])
             {
-                _notes[i].colors[j] = axColor(0.0, 0.0, 0.8);
+				_notes[i].colors[j] = _colorChoice[CHOICE_BLUE];
             }
         }
     }
@@ -259,205 +325,123 @@ void MidiTrackSequence::SetPreset(TrackInfo* info)
 
 void MidiTrackSequence::OnMouseMotion(const axPoint& mousePos)
 {
-  axPoint pos = mousePos - GetAbsoluteRect().position;
+	axPoint pos = mousePos - GetAbsoluteRect().position;
 
-  int index = pos.x / double(GetRect().size.x) * _nbars;
-  int selected = (pos.y / double(GetRect().size.y)) * _nSubTrack;
+	int index = pos.x / double(GetRect().size.x) * _nbars;
+	int selected = (pos.y / double(GetRect().size.y)) * _nSubTrack;
 
-  if(index != _highLightIndex || selected != _selectedSeparationNumber)
-  {
-    _highLightIndex = index;
-    _selectedSeparationNumber = selected;
-    Update();
-  }
+	if(index != _highLightIndex || 
+	   selected != _selectedSeparationNumber)
+	{
+		_highLightIndex = index;
+		_selectedSeparationNumber = selected;
+		Update();
+	}
 }
 
 void MidiTrackSequence::OnMouseLeftDown(const axPoint& mousePos)
 {
-  if(_highLightIndex != -1)
-  {
-    _notes[_highLightIndex].active = true;
-    // audio->SetBeat(_track_number, _highLightIndex, true);
+	if(_highLightIndex != -1)
+	{
+		_notes[_highLightIndex].active = true;
 
-    if(_notes[_highLightIndex].actives[_selectedSeparationNumber] == true)
-    {
-      _notes[_highLightIndex].actives[_selectedSeparationNumber] = false;
+		// Note is already active, needs to be turn off. 
+		if(_notes[_highLightIndex].actives[_selectedSeparationNumber] == true)
+		{
+			_notes[_highLightIndex].actives[_selectedSeparationNumber] = false;
 
-      // AUDIO CALL.
-      _audio->SetMidiNote(_track_number, _selectedSeparationNumber, _highLightIndex, false);      
-          
-    }
-    else
-    {
-      _notes[_highLightIndex].actives[_selectedSeparationNumber] = true;
+			// AUDIO CALL.
+			_audio->SetMidiNote(_track_number, 
+							    _selectedSeparationNumber, 
+								_highLightIndex, false);      
+		}
+		// Note needs to be turn on.
+		else
+		{
+			_notes[_highLightIndex].actives[_selectedSeparationNumber] = true;
+			_notes[_highLightIndex].colors[_selectedSeparationNumber] = _colorChoice[_choice];
 
-      if(_choice == CHOICE_RED)
-      {
-        _notes[_highLightIndex].colors[_selectedSeparationNumber] = axColor(0.8, 0.0, 0.0);
-      }
-      else if(_choice == CHOICE_GREEN)
-      {
-        _notes[_highLightIndex].colors[_selectedSeparationNumber] = axColor(0.0, 0.8, 0.0);
-      } 
-      else if(_choice == CHOICE_BLUE)
-      {
-        _notes[_highLightIndex].colors[_selectedSeparationNumber] = axColor(0.0, 0.0, 0.8);
-      } 
-
-      // AUDIO CALL.
-      _audio->SetMidiNote(_track_number, _selectedSeparationNumber, _highLightIndex, true);
-
-      if(_choice == CHOICE_RED)
-      {
-        _audio->SetProbability(_track_number, _selectedSeparationNumber, _highLightIndex, 1.0);
-      }
-      else if(_choice == CHOICE_GREEN)
-      {
-        _audio->SetProbability(_track_number, _selectedSeparationNumber, _highLightIndex, 0.5);
-      }
-      else if(_choice == CHOICE_BLUE)
-      {
-        _audio->SetProbability(_track_number, _selectedSeparationNumber, _highLightIndex, 0.2);
-      }
-    }
-
-    
-    
-    Update();
-  }
+			// AUDIO CALL.
+			_audio->SetMidiNote(_track_number, _selectedSeparationNumber, _highLightIndex, true);
+			_audio->SetProbability(_track_number,
+								   _selectedSeparationNumber,
+								   _highLightIndex, 
+								   _probabilityValues[_choice]);
+		}
+		Update();
+	}
 }
 
 void MidiTrackSequence::OnMouseLeave()
 {
-  if(_highLightIndex != -1)
-  {
-    _highLightIndex = -1;
-    Update();
-  }
-}
-
-void MidiTrackSequence::DrawMidiSequence(axGC* gc, const axRect& rect0)
-{
-    axColor colors[3] = {axColor(0.8, 0.0, 0.0), 
-                         axColor(0.0, 0.8, 0.0), 
-                         axColor(0.0, 0.0, 0.8)};
-
-    for(int i = 0; i < _nbars; i++)
-    {
-        if(_notes[i].active == true)
-        {
-            double ratio = rect0.size.x / double(_nbars);
-            int left_x = i * ratio;;
-            int right_x = (i+1.0) * ratio;
-
-
-            for(int k = 0; k < _nSubTrack; k++)
-            {
-                if(_notes[i].actives[k] == true)
-                {
-                    int pos_y = k * rect0.size.y / double(_nSubTrack);
-                    int size_y = rect0.size.y / double(_nSubTrack);
-
-                    // Draw background color.
-                    gc->SetColor(_notes[i].colors[k]);
-                    gc->DrawRectangle(axRect(left_x, pos_y, right_x - left_x, size_y));
-
-                    // Draw background image.
-                    gc->DrawImageResize(_bgImg, 
-                                        axPoint(left_x, pos_y), 
-                                        axSize(right_x - left_x, size_y), 1.0);
-                }
-            }
-        }
-    }
+	if(_highLightIndex != -1)
+	{
+		_highLightIndex = -1;
+		Update();
+	}
 }
 
 void MidiTrackSequence::OnPaint()
 {
-  string path = GetCurrentAppDirectory();
+	axGC* gc = GetGC();
+	axRect rect(GetRect());
+	axRect rect0(axPoint(0, 0), rect.size);
+	int height_y = rect0.size.y / double(_nSubTrack);
 
-  axGC* gc = GetGC();
-  axRect rect(GetRect());
-  axRect rect0(axPoint(0, 0), rect.size);
+	// Draw grid.
+	for(int i = 0; i < _nbars; i++)
+	{
+		gc->SetColor(*_sequenceColors[i]); 
+		gc->DrawRectangle(_gridRects[i]);
 
-  // Draw background.
-  gc->SetColor(axColor("#888888"), 1.0);
-  gc->DrawRectangle(rect0);
+		// Draw notes.
+		for (int k = 0; k < _nSubTrack; k++)
+		{
+			if (_notes[i].actives[k] == true)
+			{
+				int pos_y = k * rect0.size.y / double(_nSubTrack);
+				int size_y = rect0.size.y / double(_nSubTrack);
+				//cout << "vel : " << _notes[i].velocities[k] << endl;
+				float alpha = _notes[i].velocities[k] * 0.8 + 0.2;
+				gc->SetColor(_notes[i].colors[k], alpha);
+				gc->DrawRectangle(axRect(_gridRects[i].position.x, 
+								  pos_y, _gridRects[i].size.x, size_y));
+			}
+		}
 
-  
-  // Draw hightlighted note.
-  if(_highLightIndex != -1)
-  {
-    int height_y = rect0.size.y / double(_nSubTrack);
+		// Draw background image.
+		gc->DrawImageResize(_bgImg,
+							_gridRects[i].position,
+							_gridRects[i].size, 1.0);
 
-    int left_x = (_highLightIndex / double(_nbars)) * rect0.size.x;
-    int right_x = ((_highLightIndex+1.0) / double(_nbars)) * rect0.size.x;
-    int y_top = height_y * _selectedSeparationNumber;
-    int y_bot = height_y * (1.0 + _selectedSeparationNumber);
+		// Highligted note.
+		if (i == _highLightIndex)
+		{
+			int y_top = height_y * _selectedSeparationNumber;
+			int y_bot = height_y * (1.0 + _selectedSeparationNumber);
+			gc->DrawImageResize(_hightlighImg,
+				axPoint(_gridRects[i].position.x, y_top),
+				axSize(_gridRects[i].size.x, y_bot - y_top), 1.0);
+		}
 
+		// Draw contour.
+		gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+		gc->DrawLine(axPoint(_gridRects[i].position.x, 0), 
+					 axPoint(_gridRects[i].position.x, rect0.size.y));
+	}
 
-    if(_notes[_highLightIndex].active == true)
-    {
-      gc->SetColor(1.0, 0.0, 0.0);
-    }
-    else
-    {
-      gc->SetColor(_hightColor);
-    }
+	// Draw separation;
+	gc->SetColor(axColor(0.1, 0.1, 0.1), 1.0);
+	int y_pos = height_y;
 
-    gc->DrawRectangle(axRect(left_x, y_top, right_x - left_x, y_bot - y_top));
-  }
+	for(int i = 0; i < _nSubTrack; i++)
+	{
+		gc->DrawLine(axPoint(0.0, y_pos), axPoint(rect0.size.x, y_pos));
+		y_pos += height_y;
+	}
 
-  // Draw separation.
-  int height_y = rect0.size.y / double(_nSubTrack);
-  int y_pos = height_y;
-
-
-  // Draw contour.
-  int delta = double(_nbars) * rect0.size.x;
-  for(int i = 0; i < _nbars; i++)
-  {
-    // gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-    int x_pos = (i / double(_nbars)) * rect0.size.x;
-    // gc->DrawLine(axPoint(x_pos, 0), axPoint(x_pos, rect0.size.y));
-
-    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-    int x_pos2 = ((i+1) / double(_nbars)) * rect0.size.x;
-
-    if(i % 2)
-    {
-      // gc->SetColor(axColor(0.8, 0.8, 0.8), 1.0);
-        gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
-    }
-    else
-    {
-      // gc->SetColor(axColor(0.75, 0.75, 0.75), 1.0);
-        gc->SetColor(axColor(0.45, 0.45, 0.45), 1.0);
-    }
-    
-    gc->DrawRectangle(axRect(x_pos, 0, x_pos2 - x_pos, rect0.size.y));
-  }
-
-  DrawMidiSequence(gc, rect0);
-
-  // Draw contour.
-  for(int i = 0; i < _nbars; i++)
-  {
-    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-    int x_pos = (i / double(_nbars)) * rect0.size.x;
-    gc->DrawLine(axPoint(x_pos, 0), axPoint(x_pos, rect0.size.y));
-  }
-
-  gc->SetColor(axColor(0.1, 0.1, 0.1), 1.0);
-  for(int i = 0; i < _nSubTrack; i++)
-  {
-    gc->DrawLine(axPoint(0.0, y_pos), axPoint(rect0.size.x, y_pos));
-    y_pos += height_y;
-  }
-
-  
-  gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-  gc->DrawRectangleContour(rect0);
+	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+	gc->DrawRectangleContour(rect0);
 }
 
 //-----------------------------------------------------------------------------
@@ -475,7 +459,7 @@ MidiTrackName::MidiTrackName(axApp* app, axWindow* parent,
 
 void MidiTrackName::OnPaint()
 {
-  string path = GetCurrentAppDirectory();
+  //string path = GetCurrentAppDirectory();
 
   axGC* gc = GetGC();
   axRect rect(GetRect());
@@ -484,18 +468,11 @@ void MidiTrackName::OnPaint()
   gc->SetColor(axColor(0.2, 0.2, 0.2), 1.0);
   gc->DrawRectangle(rect0);
 
-  // cout << "TEST" << endl;
-
-  // gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
   gc->SetColor(axColor(0.8, 0.8, 0.8), 1.0);
-  // gc->SetFontType(path+string("FreeSans.ttf"));
   gc->SetFontSize(13);
-  // gc->DrawString(_trackName, axPoint(0, 0));
   gc->DrawStringAlignedCenter(_trackName, rect0);
   gc->DrawRectangleContour(rect0);
 }
-
-
 
 
 //-----------------------------------------------------------------------------
@@ -526,13 +503,15 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
   _addBtn = new axButton(app, this, 
                axRect(rect.size.x - 14, 0, 14, height), 
                axButtonEvents(btnFct), 
-               btn_info, "", "+");
+			   btn_info, "btnhigh.png", "+", 
+			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
 
   btnFct = GetOnRemoveSeparation();
   _removeBtn = new axButton(app, this, 
                axRect(rect.size.x - 14, height, 14, height), 
                axButtonEvents(btnFct), 
-               btn_info, "", "-");
+               btn_info, "btnhigh.png", "-",
+			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
 
 
   // _trackName = new MidiTrackName(app, this, 
@@ -543,7 +522,7 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
   axButton* name = new axButton(app, this, 
                axRect(0, 0, 60, 30), 
                axButtonEvents(btnFct), 
-               btn_info, "", trackName);
+			   btn_info, "miditrackname.png", trackName, axBUTTON_SINGLE_IMG);
 
   _trackSeq = new MidiTrackSequence(app, this, 
                     axRect(60, 0, 
@@ -561,6 +540,8 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
   _velocity->SetNumberOfSlider(_nSubTrack);
   _audio->SetTrackNumberOfSection(_track_number, _nSubTrack);
 
+  OnMinimize(axButtonMsg(name, ""));
+
 }
 
 void MidiTrack::SetPreset(TrackInfo* info)
@@ -571,11 +552,14 @@ void MidiTrack::SetPreset(TrackInfo* info)
 
 void MidiTrack::OnVelocity(const MultipleSliderMsg& msg)
 {
-    cout << msg.bar_index << " " << msg.index << " " << msg.value << endl;
+    //cout << msg.bar_index << " " << msg.index << " " << msg.value << endl;
     _audio->SetVelocity(_track_number, 
                         msg.index, 
                         msg.bar_index, 
                         msg.value);
+
+	//cout << "index : " << msg.index << " bar index : " << msg.bar_index << endl;
+	_trackSeq->SetVelocity(msg.bar_index, msg.index, msg.value);
 }
 
 void MidiTrack::OnStandardDeviation(const axNumberBoxMsg& msg)
@@ -672,7 +656,7 @@ void LineSelection::OnPaint()
   axRect rect(GetRect());
   axRect rect0(axPoint(0, 0), rect.size);
 
-  gc->SetColor(axColor(0.2, 0.2, 0.2), 1.0);
+  gc->SetColor(axColor(0.1, 0.1, 0.1), 1.0);
   gc->DrawRectangle(rect0);
 
    gc->SetColor(axColor(0.6, 0.6, 0.6), 1.0);

@@ -47,6 +47,11 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 
 }
 
+void AudioTrack::SetMidiNoteOn()
+{
+	_midiNoteOn = true;
+}
+
 float* AudioTrack::Process()
 {
  	axFloat* buffer = _buffer->GetBuffer();
@@ -67,7 +72,6 @@ float* AudioTrack::Process()
     		_nFrameBuf = binfo.frames;
     	}
 
-
     	out *= _currentVelocity;
 
     	_outBuffer[i] = out;// * _velocity[_selectedSection][_beatIndex];
@@ -75,9 +79,16 @@ float* AudioTrack::Process()
 
     	_sampleCount++;
 
+		if (_midiNoteOn == true)
+		{
+			_nFrameBuf = 0;
+			_currentVelocity = 0.7;
+			_midiNoteOn = false;
+		}
+
     	if(_sampleCount > _nSamplePerBeat)
     	{
-    		if(_notes[_selectedSection][_beatIndex] == true)
+			if (_notes[_selectedSection][_beatIndex] == true)
     		{
     			float r = rand() / double(RAND_MAX);
 
@@ -147,7 +158,7 @@ Audio::Audio()
 	}
 
 
-	outputParameters.device = Pa_GetDefaultOutputDevice(); //1
+	outputParameters.device = 4;//Pa_GetDefaultOutputDevice(); //1
 	// cout << "OUTPU : " << outputParameters.device.name << endl;
 	if(outputParameters.device == paNoDevice)
 	{

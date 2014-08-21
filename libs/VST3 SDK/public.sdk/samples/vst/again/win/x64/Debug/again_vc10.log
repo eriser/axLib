@@ -1,0 +1,35 @@
+﻿Build started 20/08/2014 4:24:59 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\again_vc10.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\x64\Debug\AGain.vst3) does not match the Linker's OutputFile property value (c:\VST\again.vst3). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"c:/VST/again.vst3" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"again.def" /MANIFEST:NO /DEBUG /PDB:"x64\Debug\again.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"x64\Debug\AGain.lib" /MACHINE:X64 /DLL x64\Debug\again.res
+         x64\Debug\again.obj
+         x64\Debug\againcontroller.obj
+         x64\Debug\againeditor.obj
+         x64\Debug\againentry.obj
+         x64\Debug\pluginview.obj
+         x64\Debug\vstaudioeffect.obj
+         x64\Debug\vstbus.obj
+         x64\Debug\vstcomponent.obj
+         x64\Debug\vstcomponentbase.obj
+         x64\Debug\vsteditcontroller.obj
+         x64\Debug\vstguieditor.obj
+         x64\Debug\vstinitiids.obj
+         x64\Debug\vstparameters.obj
+         x64\Debug\dllmain.obj
+         x64\Debug\pluginfactoryvst3.obj
+         x64\Debug\funknown.obj
+         x64\Debug\ustring.obj
+         x64\Debug\cvstguitimer.obj
+         x64\Debug\vstcontrols.obj
+         x64\Debug\vstgui.obj
+         x64\Debug\vstguidebug.obj
+         "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\x64\Debug.base_vc10\base_vc10.lib"
+         LINK : c:/VST/again.vst3 not found or not built by the last incremental link; performing full link
+            Creating library x64\Debug\AGain.lib and object x64\Debug\AGain.exp
+         again_vc10.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\x64\Debug\AGain.vst3
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\again_vc10.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.58

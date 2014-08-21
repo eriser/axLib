@@ -1,0 +1,19 @@
+﻿Build started 20/08/2014 4:37:44 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\base_vc10.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Debug.base_vc10\base_vc10.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Lib:
+         All outputs are up-to-date.
+         base_vc10.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\x64\Debug.base_vc10\base_vc10.lib
+       BscMake:
+         All outputs are up-to-date.
+       FinalizeBuildStatus:
+         Deleting file "x64\Debug.base_vc10\base_vc10.unsuccessfulbuild".
+         Touching "x64\Debug.base_vc10\base_vc10.lastbuildstate".
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\base_vc10.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.16

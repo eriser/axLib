@@ -84,6 +84,12 @@ public:
 
     double GetValue() { return m_knobValue; }
 
+	void SetBackgroundAlpha(const float& alpha)
+	{
+		_bgAlpha = alpha;
+		Update();
+	}
+
 private:
     axKnobEvents _events;
     axKnobInfo _info;
@@ -95,6 +101,7 @@ private:
     unsigned int m_nCurrentImg;
     double m_knobValue;
     int _clickPosY;
+	float _bgAlpha;
 
     void OnPaint();
     void OnMouseLeftDragging(const axPoint& pos);

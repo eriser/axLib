@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ReWireSDK">
+      <UniqueIdentifier>{0f569c81-fd24-4412-9745-cfc2043e7ffb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SampleUtils">
+      <UniqueIdentifier>{981d110f-36ff-403c-9597-4017038f7c27}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ReWireSDK\ReWire.c">
+      <Filter>ReWireSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ReWireSDK\rewireapi.c">
+      <Filter>ReWireSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ReWireSDK\rewirepanelapi.c">
+      <Filter>ReWireSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SampleUtils\SampleUtils.cpp">
+      <Filter>SampleUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="SamplePanel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ReWireSDK\rewire.h">
+      <Filter>ReWireSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ReWireSDK\rewireapi.h">
+      <Filter>ReWireSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ReWireSDK\rewirepanelapi.h">
+      <Filter>ReWireSDK</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

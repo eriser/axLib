@@ -93,7 +93,7 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 	// really at the 0.5,0.5 instead of its top-left corner. 
 	// Therefore, if you want a 1px wide line from 0,0 to 10,10 inclusive, 
 	// you really had to draw a line from 0.5,0.5 to 10.5,10.5. 
-	frect.position.x -= 0.5;
+	//frect.position.x -= 0.5; // Seems to be only on linux.
 
 	glLineWidth((GLfloat)linewidth);
 

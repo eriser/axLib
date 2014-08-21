@@ -1,0 +1,28 @@
+﻿Build started 16/08/2014 8:54:30 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\source\vst\vst2wrapper\win\vst2wrapper_vc10.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../../.. /ZI /nologo /W3 /WX- /Od /Oy- /D WINDOWS=1 /D DEVELOPMENT=1 /D _CRT_SECURE_NO_DEPRECATE=1 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\vst2wrapper.cpp ..\..\..\vst2.x\audioeffect.cpp ..\..\..\vst2.x\audioeffectx.cpp ..\..\hosting\eventlist.cpp ..\..\hosting\hostclasses.cpp ..\..\hosting\parameterchanges.cpp ..\..\hosting\processdata.cpp ..\..\..\common\memorystream.cpp
+         memorystream.cpp
+         processdata.cpp
+         parameterchanges.cpp
+         hostclasses.cpp
+         eventlist.cpp
+         audioeffectx.cpp
+         audioeffect.cpp
+         vst2wrapper.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"Win32\Debug\vst2wrapper.lib" /NOLOGO Win32\Debug\vst2wrapper.obj
+         Win32\Debug\audioeffect.obj
+         Win32\Debug\audioeffectx.obj
+         Win32\Debug\eventlist.obj
+         Win32\Debug\hostclasses.obj
+         Win32\Debug\parameterchanges.obj
+         Win32\Debug\processdata.obj
+         Win32\Debug\memorystream.obj
+         vst2wrapper_vc10.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\source\vst\vst2wrapper\win\Win32\Debug\vst2wrapper.lib
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\source\vst\vst2wrapper\win\vst2wrapper_vc10.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:08.19

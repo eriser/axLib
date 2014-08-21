@@ -5,7 +5,8 @@
  **********************************************************************************/
 axWaveform::axWaveform(axApp* app, axWindow* parent, const axRect& rect,
                        const axWaveformEvents& events,
-                       const axWaveformInfo& waveInfo):
+                       const axWaveformInfo& waveInfo, 
+					   const string& snd_path):
                        axPanel(app, parent, rect),
                         // Members.
                         m_info(waveInfo)
@@ -13,7 +14,25 @@ axWaveform::axWaveform(axApp* app, axWindow* parent, const axRect& rect,
 {
     // SetCustomPaint( true );
 
-    m_buffer = new axAudioBuffer("ohat.wav");
+	_bgAlpha = 1.0;
+
+	m_buffer = new axAudioBuffer(snd_path.c_str());
+
+	_envRoundImg = new axImage("env2.png");
+
+	_pointsRealValue.push_back(axFloatPoint(0.0, 0.0));
+	_pointsRealValue.push_back(axFloatPoint(0.0, 1.0));
+	_pointsRealValue.push_back(axFloatPoint(1.0, 1.0));
+	_pointsRealValue.push_back(axFloatPoint(1.0, 0.0));
+
+	axSize imgSize(_envRoundImg->GetSize());
+	for (auto& pt : _pointsRealValue)
+	{
+		axPoint point(pt.x * (rect.size.x - imgSize.x - 2), 
+					 (rect.size.y - imgSize.y - 2) - pt.y * (rect.size.y - imgSize.y - 2));
+		_envPoints.push_back(point);
+	}
+	
 
     // m_buffer = nullptr;
     // m_lineParams = nullptr;
@@ -32,8 +51,8 @@ void axWaveform::OnPaint()
     axSize size = rect.size;
     int middle_y = size.y * 0.5;
     
-    gc.SetColor( m_info.background );
-    gc.DrawRectangle( axRect(0, 0, size.x, size.y) );
+	gc.SetColor(m_info.background, _bgAlpha);
+    gc.DrawRectangle(axRect(0, 0, size.x, size.y));
 
     gc.SetColor( m_info.contour );
     gc.DrawRectangleContour( axRect(0, 0, size.x, size.y) );
@@ -133,6 +152,20 @@ void axWaveform::OnPaint()
     gc.SetColor( m_info.lines );
     // gc.SetLineWidth( 1 );
     gc.DrawLine( axPoint( 1, middle_y ), axPoint( size.x - 2, middle_y ) );
+
+
+
+	//for (auto& pt : _envPoints)
+	//{
+	//	gc.DrawImage(_envRoundImg, pt);
+	//}
+
+	//axPoint decay(_envRoundImg->GetWidth() * 0.5, _envRoundImg->GetHeight() * 0.5);
+
+	//gc.SetColor(axColor(0.0, 0.58, 1.0));
+	//gc.DrawLine(_envPoints[0] + decay, _envPoints[1] + decay);
+	//gc.DrawLine(_envPoints[1] + decay, 	_envPoints[2] + decay);
+	//gc.DrawLine(_envPoints[2] + decay, _envPoints[3] + decay);
 
 
     UnBlockDrawing();

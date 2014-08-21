@@ -164,109 +164,7 @@ void MidiPartition::OnPaint()
 }
 
 
-//-----------------------------------------------------------------------------
-// SynthControl.
-//-----------------------------------------------------------------------------
-SynthControl::SynthControl(axApp* app, axWindow* parent, const axRect& rect):
-			axPanel(app, parent, rect)
-{
 
-	axButtonInfo btn_info(axColor(0.2, 0.2, 0.2),
-                        axColor(0.3, 0.3, 0.3),
-                        axColor(0.2, 0.2, 0.2),
-                        axColor(0.2, 0.2, 0.2),
-                        axColor(0.0, 0.0, 0.0),
-                        axColor(0.8, 0.8, 0.8));
-
-	function<void (axButtonMsg)> btnFct(GetOnOpenFile());
-
-
-	axButton* btn = new axButton(app, this, 
-	               axRect(5, 5, 45, 20), 
-	               axButtonEvents(btnFct), 
-	               btn_info, "", "Open", axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
-
-	axWaveform* wave = new axWaveform(app, this, 
-						   axRect(20, 30, rect.size.x - 40, 80),
-						   axWaveformEvents(),
-						   axWaveformInfo(axColor(0.0, 0.0, 0.0), // Waveform.
-                    					  axColor(0.4, 0.4, 0.4), // Background.
-                    					  axColor(0.5, 0.5, 0.5), // Lines.
-                    					  axColor(0.0, 0.0, 0.0))); // Contour.
-
-	axNumberBoxInfo box_info(axColor(0.2, 0.2, 0.2),
-                        	 axColor(0.3, 0.3, 0.3),
-                        	 axColor(0.2, 0.2, 0.2),
-                        	 axColor(0.2, 0.2, 0.2),
-                        	 axColor(0.0, 0.0, 0.0),
-                        	 axColor(0.8, 0.8, 0.8));
-
-	  // function<void (axButtonMsg)> btnFct(GetOnAddSeparation());
-
-
-  	axNumberBox* box1 = new axNumberBox(app, this, 
-	               					 axRect(20, 140, 40, 20), 
-	               					 axNumberBoxEvents(), 
-	               					 box_info);
-
-    axNumberBox* box2 = new axNumberBox(app, this, 
-	               					 axRect(70, 140, 40, 20), 
-	               					 axNumberBoxEvents(), 
-	               					 box_info);
-
-	axNumberBox* box3 = new axNumberBox(app, this, 
-	               					 axRect(120, 140, 40, 20), 
-	               					 axNumberBoxEvents(), 
-	               					 box_info);
-
-  axKnobInfo knob_info(axColor(0.2, 0.2, 0.2),
-                       axColor("#AAAAAA"),
-                       axColor("#BBBBBB"),
-                       128,               
-                       axSize( 32, 32 ),  
-                       "knob.png",         
-					   "knobSelected.png");
-
-  axKnob* knob = new axKnob(app, this, axRect(180, 130, 32, 32),
-  							axKnobEvents(), knob_info);
-
-  axKnob* knob2 = new axKnob(app, this, axRect(230, 130, 32, 32),
-  							axKnobEvents(), knob_info);
-
-	axKnob* knob3 = new axKnob(app, this, axRect(380, 130, 32, 32),
-  							axKnobEvents(), knob_info);
-
-	axKnob* knob4 = new axKnob(app, this, axRect(425, 130, 32, 32),
-  							axKnobEvents(), knob_info);
-
-}
-
-void SynthControl::OnOpenFile(const axButtonMsg& msg)
-{
-	// cout << "FILE" << endl;
-	// string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main");
-}
-
-void SynthControl::OnPaint()
-{
-	axGC* gc = GetGC();
-	BlockDrawing();
-
-	axRect rect(GetRect());
-	axRect rect0(axPoint(0, 0), rect.size);
-	
-
-	gc->SetColor(axColor(0.2, 0.2, 0.2), 1.0);
-	gc->DrawRectangle(rect0);
-
-	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-	gc->DrawRectangleContour(rect0);
-
-	// gc->SetColor(axColor(0.0, 1.0, 0.0), 1.0);
-	// gc->DrawRectangle(axRect(rect0.position.x, rect0.position.y, 800, 30));
-
-	UnBlockDrawing();
-}
 
 
 //-----------------------------------------------------------------------------
@@ -321,22 +219,21 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 	btns.push_back(new axButton(app, this, 
 							axRect(x, y, 20, 20), 
 							axButtonEvents(btnFct),
-							btn_info, "btn.png", "", btnFlags, to_string(CHOICE_BLUE)));
+							btn_info, "btn.png", "", 
+							btnFlags, to_string(CHOICE_BLUE)));
 
 	_trackSize = axSize(rect.size.x, 90);
 
 	LineSelection* lines = new LineSelection(app, this, axRect(60, 0, rect.size.x - 60, 20));
 
-	AddNewTrack("Kick", audio, 0);
-	AddNewTrack("Snare", audio, 1);
-	AddNewTrack("HiHat", audio, 2);
-	AddNewTrack("Clap", audio, 3);	
-	AddNewTrack("Tom", audio, 4);	
-
-	// SynthControl* midiPart = new SynthControl(app, this, axRect(500, 80, 420, 300));
-
-	// axPoint pos = GetNextTrackPosition();
-	
+	AddNewTrack("Kick",		audio, 0);
+	AddNewTrack("Snare",	audio, 1);
+	AddNewTrack("HiHat",	audio, 2);
+	AddNewTrack("Clap",		audio, 3);	
+	AddNewTrack("Tom",		audio, 4);	
+	AddNewTrack("Clap2",	audio, 5);
+	AddNewTrack("Clap2",	audio, 6);
+	AddNewTrack("Clap4",	audio, 7);
 }
 
 void MidiSequencer::OnColorChange(const axButtonMsg& msg)
@@ -358,28 +255,24 @@ void MidiSequencer::AddNewTrack(const string& trackName, Audio* audio, int num)
 											_trackSize), 
 											trackName, audio, num));
 
-		// SetSize(axSize(GetRect().size.x, GetRect().size.y + _trackSize.y));
 		SetSize(axSize(GetRect().size.x, 
-					   5 + _midiTracks[_midiTracks.size() - 1]->GetBottomLeftPosition().y));
+					   _midiTracks[_midiTracks.size() - 1]->GetBottomLeftPosition().y));
 
 	}
 	else
 	{
-		_midiTracks.push_back(new MidiTrack(GetApp(), this, 
-											axRect(GetNextTrackPosition(), 
-											_trackSize), 
+		_midiTracks.push_back(new MidiTrack(GetApp(), this,
+											axRect(GetNextTrackPosition(),
+											_trackSize),
 											trackName, audio, num));
 
-		// SetSize(axSize(GetRect().size.x, GetRect().size.y + _trackSize.y));
-		SetSize(axSize(GetRect().size.x, 
-					   5 + _midiTracks[_midiTracks.size() - 1]->GetBottomLeftPosition().y));
+		SetSize(axSize(GetRect().size.x,
+			_midiTracks[_midiTracks.size() - 1]->GetBottomLeftPosition().y));
 	}
 
-	function<void (int)> min_fct(GetOnChangeTrackHeight());
+	function<void(int)> min_fct(GetOnChangeTrackHeight());
 	MidiTrackEvents evt(min_fct);
 	_midiTracks[_midiTracks.size() - 1]->SetEvent(evt);
-
-	// _midiTracks[_midiTracks.size() - 1]->SetEvent(evt);
 }
 
 void MidiSequencer::SetPreset(DrumMachinePreset* preset)
@@ -421,7 +314,7 @@ void MidiSequencer::OnChangeTrackHeight(const int& msg)
 	}
 
 	SetSize(axSize(GetRect().size.x, 
-				   5 + _midiTracks[_midiTracks.size() - 1]->GetBottomLeftPosition().y));
+				   _midiTracks[_midiTracks.size() - 1]->GetBottomLeftPosition().y));
 
 
 	if(_track_resize_parent_fct)
@@ -477,6 +370,8 @@ DrumMachine::DrumMachine(axApp* app,
 
 	string dir(app->GetCurrentAppDirectory());
 
+	_topBg = new axImage("tool2.png");
+	
 	// axButtonInfo btn_info(axColor(0.8, 0.0, 0.0),
 	// 					  axColor(0.9, 0.0, 0.0),
 	// 					  axColor(0.8, 0.0, 0.0),
@@ -486,13 +381,14 @@ DrumMachine::DrumMachine(axApp* app,
 
 	// int x = 0, y = 0, xDelta = 20;
 
-	axButton* btn = new axButton(app, this, 
-								 axRect(0, 0, 40, 18), 
-								 axButtonEvents(btnFct), 
-								 axButtonInfo(dir + "ressources/axStandardButton.axobj"), 
-								 "", "Open");
+	//axButton* btn = new axButton(app, this, 
+	//							 axRect(0, 0, 40, 18), 
+	//							 axButtonEvents(btnFct), 
+	//							 axButtonInfo(dir + "ressources/axStandardButton.axobj"), 
+	//							 "", "Open");
 
-	_midiSeq = new MidiSequencer(app, this, axRect(0, 20, rect.size.x, 50), _audio);
+	//cout << "MIDI SEQ :" << rect.size.x - 10 << endl;
+	_midiSeq = new MidiSequencer(app, this, axRect(5, 70, rect.size.x - 10, 50), _audio);
 
 	axEvtFunction(int) trackResizeFct(GetOnChangeTrackHeight());
 	_midiSeq->SetTrackResizeFct(trackResizeFct);
@@ -500,8 +396,19 @@ DrumMachine::DrumMachine(axApp* app,
 	// int y = _midiSeq->GetBottomLeftPosition().y;
 	// _synth = new SynthControl(app, this, axRect(0, y, rect.size.x, 180));
 
-	_midiPartition = new MidiPartition(app, this, 
-			axRect(_midiSeq->GetBottomLeftPosition(), axSize(rect.size.x, 70)));
+
+
+	//----------------------------------------------------------------------
+	_drumSampler = new DrumSampler(app, this, 
+		axRect(_midiSeq->GetBottomLeftPosition() + axPoint(0, 5), 
+			   axSize(rect.size.x - 10, 330)), _audio);
+	//----------------------------------------------------------------------
+
+
+
+	//_midiPartition = new MidiPartition(app, this, 
+	//	axRect(_drumSampler->GetBottomLeftPosition() + axPoint(0, 5), 
+	//		   axSize(rect.size.x - 10, 70)));
 
 	// _side_img = new axImage("woodSide.png");
 
@@ -527,7 +434,11 @@ void DrumMachine::OnChangeTrackHeight(const int& msg)
 {
 	// cout << "DRUM MACHINE RESIZE" << endl;
 	// _synth->SetPosition(_midiSeq->GetBottomLeftPosition());
-	 _midiPartition->SetPosition(_midiSeq->GetBottomLeftPosition() + axPoint(0, 5));
+
+	//--------------------------------------------
+	_drumSampler->SetPosition(_midiSeq->GetBottomLeftPosition() + axPoint(0, 5));
+
+	//_midiPartition->SetPosition(_drumSampler->GetBottomLeftPosition() + axPoint(0, 5));
 }
 
 void DrumMachine::SetPreset(const string& file_path)
@@ -542,13 +453,15 @@ void DrumMachine::SetPreset(const string& file_path)
 
 void DrumMachine::OnPaint()
 {
-	
 	axGC* gc = GetGC();
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);
 
-	gc->SetColor(axColor(0.1, 0.1, 0.1), 1.0);
+	//gc->SetColor(axColor(0.1, 0.1, 0.1), 1.0);
+	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangle(rect0);
+
+	gc->DrawImage(_topBg, axPoint(5, 50));
 
 	// gc->DrawImage(_side_img, axPoint(0, 0));
 	// gc->DrawImage(_side_img, axPoint(rect0.size.x - 45, 0));
@@ -558,8 +471,9 @@ void DrumMachine::OnPaint()
 }
 
 
-ScrollDrumMachine::ScrollDrumMachine(axApp* app, axWindow* parent, const axRect& rect, Audio* audio):
-			axPanel(app, parent, rect)
+ScrollDrumMachine::ScrollDrumMachine(axApp* app, axWindow* parent, 
+									 const axRect& rect, Audio* audio):
+								     axPanel(app, parent, rect)
 {
 	function<void (axScrollBarMsg)> scroll(GetOnScroll());
 	scroll_bar = new axScrollBar(app, this, 
@@ -612,44 +526,28 @@ void ScrollDrumMachine::OnPaint()
 
 int main()
 {
-	
+	AudioMidiSeq* audio = new AudioMidiSeq();
+	axMidi* midi = new axMidi(audio);
 
-	// pid_t dialog = fork();
+	axApp* app = new axApp(axSize(570, 600));
 
-	// if(dialog)
-	// {
-	// 	// axSize size(50, 50);
-	// 	// axApp app_test(size);
-	// 	// app_test.MainLoop();
+	ScrollDrumMachine* machine = new ScrollDrumMachine(app, 
+										nullptr, 
+										axRect(0, 0, 570, 600),
+										audio);
 
-	// 	exit(0);
-	// }
-	// else if(dialog == -1)
-	// {
-	// 	cerr << "Error creating process." << endl;
-	// }
-	// else
-	// {
-		AudioMidiSeq* audio = new AudioMidiSeq();
+	// DrumMachinePreset test("presets/presets.txt");
+	audio->StartAudio();
+	midi->StartStream();
 
-		axApp* app = new axApp(axSize(570, 600));
+	// machine->SetPreset("presets/presets.txt");
+	app->MainLoop();
 
-		// axApp app2(axSize(570, 600));
-		ScrollDrumMachine* machine = new ScrollDrumMachine(app, 
-										   nullptr, 
-										   axRect(0, 0, 570, 600),
-										   audio);
+	//midi->StopStream();
 
-		
-		// DrumMachinePreset test("presets/presets.txt");
-
-		audio->StartAudio();
-
-		// machine->SetPreset("presets/presets.txt");
-		app->MainLoop();
-	// }
-
-	
+	delete midi;
+	delete audio;
+	delete app;
 
 	return 0;
 }

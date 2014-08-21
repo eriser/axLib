@@ -1,0 +1,61 @@
+﻿Build started 20/08/2014 4:16:53 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\again_vc10.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Win32\Debug\) contains files shared from another project (AGain VST2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../../../vstgui.sf /I../../../../.. /ZI /nologo /W3 /WX- /Od /Oy- /D WINDOWS=1 /D DEVELOPMENT=1 /D _CRT_SECURE_NO_DEPRECATE=1 /D _VC80_UPGRADE=0x0710 /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /FR"Win32\Debug\\" /Gd /TP /analyze- /errorReport:prompt /MP ..\source\again.cpp ..\source\againcontroller.cpp ..\source\againeditor.cpp ..\source\againentry.cpp ..\..\..\..\source\common\pluginview.cpp ..\..\..\..\source\vst\vstaudioeffect.cpp ..\..\..\..\source\vst\vstbus.cpp ..\..\..\..\source\vst\vstcomponent.cpp ..\..\..\..\source\vst\vstcomponentbase.cpp ..\..\..\..\source\vst\vsteditcontroller.cpp ..\..\..\..\source\vst\vstguieditor.cpp ..\..\..\..\source\vst\vstinitiids.cpp ..\..\..\..\source\vst\vstparameters.cpp ..\..\..\..\source\main\dllmain.cpp ..\..\..\..\source\main\pluginfactoryvst3.cpp ..\..\..\..\..\pluginterfaces\base\funknown.cpp ..\..\..\..\..\pluginterfaces\base\ustring.cpp ..\..\..\..\..\vstgui.sf\vstgui\cvstguitimer.cpp ..\..\..\..\..\vstgui.sf\vstgui\vstcontrols.cpp ..\..\..\..\..\vstgui.sf\vstgui\vstgui.cpp ..\..\..\..\..\vstgui.sf\vstgui\vstguidebug.cpp
+         again.cpp
+         againcontroller.cpp
+         againeditor.cpp
+         againentry.cpp
+         pluginview.cpp
+         vstaudioeffect.cpp
+         vstbus.cpp
+         vstcomponent.cpp
+         vstcomponentbase.cpp
+         vsteditcontroller.cpp
+         vstguieditor.cpp
+         vstinitiids.cpp
+         vstparameters.cpp
+         dllmain.cpp
+         pluginfactoryvst3.cpp
+         funknown.cpp
+         ustring.cpp
+         cvstguitimer.cpp
+         vstcontrols.cpp
+         vstgui.cpp
+         vstguidebug.cpp
+     1>c:\users\alexarse\desktop\axlib\libs\vst3 sdk\vstgui.sf\vstgui\vstgui.cpp(3674): warning C4996: 'GetVersionExW': was declared deprecated
+                 c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h(442) : see declaration of 'GetVersionExW'
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _VC80_UPGRADE=0x0710 /l"0x0409" /I../../../../.. /nologo /fo"Win32\Debug\again.res" ..\resource\again.rc 
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\Win32\Debug\AGain.dll) does not match the Linker's OutputFile property value (C:\VST\AGain.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\VST\AGain.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"again.def" /MANIFEST:NO /DEBUG /PDB:"Win32\Debug\again.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Win32\Debug\AGain.lib" /MACHINE:X64 /SAFESEH /DLL Win32\Debug\again.res
+         Win32\Debug\again.obj
+         Win32\Debug\againcontroller.obj
+         Win32\Debug\againeditor.obj
+         Win32\Debug\againentry.obj
+         Win32\Debug\pluginview.obj
+         Win32\Debug\vstaudioeffect.obj
+         Win32\Debug\vstbus.obj
+         Win32\Debug\vstcomponent.obj
+         Win32\Debug\vstcomponentbase.obj
+         Win32\Debug\vsteditcontroller.obj
+         Win32\Debug\vstguieditor.obj
+         Win32\Debug\vstinitiids.obj
+         Win32\Debug\vstparameters.obj
+         Win32\Debug\dllmain.obj
+         Win32\Debug\pluginfactoryvst3.obj
+         Win32\Debug\funknown.obj
+         Win32\Debug\ustring.obj
+         Win32\Debug\cvstguitimer.obj
+         Win32\Debug\vstcontrols.obj
+         Win32\Debug\vstgui.obj
+         Win32\Debug\vstguidebug.obj
+         "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\Win32\Debug.base_vc10\base_vc10.lib"
+     1>Win32\Debug\again.obj : fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\again_vc10.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:13.72

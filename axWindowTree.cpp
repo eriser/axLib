@@ -167,7 +167,7 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 			n = node;
 			for (axWindowNode* it : n->GetChild())
 			{
-				if (it->window->GetAbsoluteRect().IsPointInside(pos))
+				if (it->window->GetAbsoluteRect().IsPointInside(pos) && it->window->IsShown())
 				{
 					node = it;
 					break;

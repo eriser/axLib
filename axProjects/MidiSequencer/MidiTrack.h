@@ -15,7 +15,8 @@ enum ColorChoice
 {
 	CHOICE_RED,
 	CHOICE_GREEN,
-	CHOICE_BLUE
+	CHOICE_BLUE,
+	CHOICE_NUM
 };
 
 string GetCurrentAppDirectory();
@@ -83,7 +84,7 @@ private:
 struct MidiNoteParams
 {
 	MidiNoteParams():
-		velocities(3, 0.0),
+		velocities(3, 0.7),
 		actives(3, false),
 		colors(3, axColor(0.8, 0.0, 0.0))
 	{
@@ -97,7 +98,6 @@ struct MidiNoteParams
 	vector<bool> actives;
 	vector<float> velocities;
 	vector<axColor> colors;
-	//vector<int> colors;
 };
 
 class MidiVelocity: public axPanel
@@ -156,21 +156,39 @@ public:
 
 	void SetPreset(TrackInfo* info);
 
+	void SetVelocity(const int& index, const int& subtrack, const float& value);
+
 private:
-	int _nbars, _highLightIndex;
 	vector<MidiNoteParams> _notes;
-	int _track_number;
+
+	int _nbars, // Number of bars.
+		_highLightIndex, // Mouse over index.
+		_track_number, // To call audio functions.
+		_nSubTrack, // Number of subtracks.
+		_selectedSeparationNumber; // Index of subtrack selected.
+
+	// Color probability chosen.
 	ColorChoice _choice;
-	int _nSubTrack;
 
-	axImage* _bgImg;
+	// Images to put over rectangle.
+	axImage* _bgImg, *_hightlighImg; 
 
-	axColor _hightColor;
-	int _selectedSeparationNumber;
+	// Background colors when no notes on.
+	axColor _bgColors[4]; 
 
+	// Notes color.
+	axColor _colorChoice[CHOICE_NUM]; 
+
+	// Probability value associated with color.
+	float _probabilityValues[CHOICE_NUM]; 
+
+	// Colors of the background order in sequence.
+	vector<axColor*> _sequenceColors;
+
+	// Rectangles of the background order in sequence.
+	vector<axRect> _gridRects;
+	
 	AudioMidiSeq* _audio;
-
-	void DrawMidiSequence(axGC* gc, const axRect& rect0);
 
 	// Events.
 	virtual void OnPaint();

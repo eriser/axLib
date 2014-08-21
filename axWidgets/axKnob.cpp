@@ -19,6 +19,7 @@ axKnob::axKnob( axApp* app,
                 m_knobValue( 0 )
 {
     m_knobImg = new axImage(_info.img_path);
+	_bgAlpha = 1.0;
 }
 
 void  axKnob::OnMouseLeftDown(const axPoint& pos)
@@ -87,7 +88,7 @@ void axKnob::OnPaint()
     axSize size = GetSize();
     axRect rect0(0, 0, size.x, size.y);
 	
-    gc->SetColor( m_currentBgColor );
+	gc->SetColor(m_currentBgColor, _bgAlpha);
 
     gc->DrawRectangle(rect0);
 
