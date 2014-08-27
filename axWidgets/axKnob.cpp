@@ -82,6 +82,19 @@ void  axKnob::OnMouseLeftDragging(const axPoint& pos)
     // GetParent()->TriggerEvent( m_eventsID.motion );
 }
 
+void axKnob::SetValue(const axFloat& value)
+{
+	int cur_img = m_nCurrentImg;
+	m_knobValue = value;
+	axCLIP(m_knobValue, 0.0, 1.0);
+	m_nCurrentImg = m_knobValue * (_info.n_knob - 1);
+
+	if (m_nCurrentImg != cur_img)
+	{
+		Update();
+	}
+}
+
 void axKnob::OnPaint()
 {
     axGC* gc = GetGC();

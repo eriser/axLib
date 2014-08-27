@@ -43,7 +43,15 @@ bool axFontGlobalManager::LoadFont(const string& path, FT_Face& face)
 		std::streamsize size = file.tellg();
 		file.seekg(0, std::ios::beg);
 		
-		char* buffer = new char[size];
+		char* buffer = nullptr;
+		try
+		{
+			buffer = new char[size];
+		}
+		catch (std::bad_alloc)
+		{
+			cerr << "Error new buffer." << endl;
+		}
 
 		//std::vector<unsigned char> buffer(size);
 
@@ -114,7 +122,7 @@ void axFont::SetChar(const char& letter)
 {
 	if_error_in(FT_Load_Char(_face, letter, FT_LOAD_RENDER))
 	{
-		DSTREAM << "Error : Could not load character " << letter << endl;
+		DSTREAM(1) << "Error : Could not load character " << letter << endl;
 	}
 	else
 	{
@@ -189,14 +197,14 @@ bool axFont::InitFreeType()
 	// Init FreeType library.
 	if (FT_Init_FreeType(&_freeType))
 	{
-		DSTREAM << "Error : Could not init freetype library." << endl;
+		DSTREAM(1) << "Error : Could not init freetype library." << endl;
 		return false;
 	}
 
 	//if (FT_New_Face(_freeType, "/home/alexarse/Desktop/axLib/ressources/axFonts/FreeSans.ttf", 0, &_face))
 	if (FT_New_Face(_freeType, "FreeSans.ttf", 0, &_face))
 	{
-		DSTREAM << "Init error : Could not open font." << endl;
+		DSTREAM(1) << "Init error : Could not open font." << endl;
 		return false;
 	}
 

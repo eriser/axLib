@@ -3,8 +3,33 @@
 axPanel::axPanel(axApp* app, axWindow* parent, const axRect& rect) : 
 		axWindow(parent, rect)
 {
-	app->AddWindow(this);
+	if (parent != nullptr)
+	{
+		if (parent->GetIsPopup())
+		{
+			app->AddPopWindow(this);
+			GetIsPopup() = true;
+		}
+		else
+		{
+			app->AddWindow(this);
+		}
+	}
+	else
+	{
+		app->AddWindow(this);
+	}
+
 	_app = app;
+	//_isInPopup = false;
+}
+
+axPanel::axPanel(int f, axApp* app, axWindow* parent, const axRect& rect) :
+axWindow(parent, rect)
+{
+	app->AddPopWindow(this);
+	_app = app;
+	GetIsPopup() = true;
 }
 
 void axPanel::BlockDrawing()

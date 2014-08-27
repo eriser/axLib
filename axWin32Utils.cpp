@@ -12,7 +12,7 @@ RECT axWin32::axRectToWin32Rect(const axRect& rect)
 
 WNDCLASS axWin32::CreateDefaultWindowClassStructure(const char* label, 
 										   HINSTANCE hinstance,
-										   WNDPROC WindowCallback)
+										   WNDPROC callbackFctPointer)
 {
 	// Windows Class Structure
 	WNDCLASS wc;
@@ -21,7 +21,7 @@ WNDCLASS axWin32::CreateDefaultWindowClassStructure(const char* label,
 	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;	
 	
 	// Wndproc handles messages
-	wc.lpfnWndProc = (WNDPROC)WindowCallback;
+	wc.lpfnWndProc = (WNDPROC)callbackFctPointer;
 
 	// No extra window data.
 	wc.cbClsExtra = 0;									
@@ -54,11 +54,12 @@ bool axWin32::CreateHWNDWindow(HWND& win,
 							   DWORD& style,
 							   DWORD& exStyle,
 							   RECT& win_rect,
-							   const char* title)
+							   const char* title,
+							   const char* winclassname)
 {
 	win = CreateWindowEx(
 		exStyle,	// Extended style. 
-		"OpenGL",	// Class name.
+		winclassname,	// Class name.
 		title,		// Title.
 		style | WS_CLIPSIBLINGS | WS_CLIPCHILDREN, // Window style.
 		10, //win_rect.left,

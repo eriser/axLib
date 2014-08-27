@@ -11,6 +11,72 @@
 #include "axImage.h"
 #include <fstream>
 
+enum axType
+{
+	axCOLOR,
+	axINT,
+	axFLOAT
+};
+
+//typedef unsigned int axType;
+
+class axInfo
+{
+public:
+	axInfo()
+	{
+	}
+
+	bool Load()
+	{
+		Fill();
+		return true;
+	}
+
+	bool Load(const string& info_path)
+	{
+		Fill();
+		cout << "Size : " << _colors.size() << endl;
+		return true;
+	}
+
+	virtual void Fill() = 0;
+
+	axColor& operator [](pair<axColor, std::string>& col)
+	{
+		return _colors[col.second];
+	}
+
+private:
+	map<string, axColor> _colors;
+};
+
+#define axAddInfo(type, label) (*this)[pair<type, string>(type(), label)]
+
+class axInfoTest : public axInfo
+{
+public:
+	axInfoTest()
+	{
+		Load();
+	}
+
+	axInfoTest(const string& path)
+	{	
+		Load(path);
+	}
+
+	virtual void Fill()
+	{
+		axAddInfo(axColor, "normal");
+		axAddInfo(axColor, "hover");
+		axAddInfo(axColor, "clicking");
+		axAddInfo(axColor, "selected");
+		axAddInfo(axColor, "contour");
+		axAddInfo(axColor, "font");
+	}
+};
+
 /**************************************************************************//**
  * axButtonFlags.
 ******************************************************************************/
@@ -102,8 +168,15 @@ struct axButtonInfo
 			}
 		}
 	}
-
 };
+
+#define axSTANDARD_BUTTON 	axButtonInfo( \
+							axColor(0.5, 0.5, 0.5),\
+							axColor(0.6, 0.6, 0.6),\
+							axColor(0.4, 0.4, 0.4),\
+							axColor(0.5, 0.5, 0.5),\
+							axColor(0.0, 0.0, 0.0),\
+							axColor(0.0, 0.0, 0.0)) 
 
 
 class axButton : public axPanel
@@ -118,6 +191,11 @@ public:
 		string label = "",
 		axFlag flags = 0,
 		string msg = "");
+
+	axButton(axApp* app,
+			 axWindow* parent,
+			 const axButtonEvents& events,
+			 const string& path);
 
 	void SetBackgroundAlpha(const float& alpha);
 
@@ -147,12 +225,11 @@ private:
 
 	int _nCurrentImg;
 
-	virtual void OnPaint();
-	//virtual void OnMouseMotion(){}
-	virtual void OnMouseLeftDown(const axPoint& pos);
-	virtual void OnMouseLeftUp(const axPoint& pos);
-	virtual void OnMouseEnter();
-	virtual void OnMouseLeave();
+	axEvent OnPaint();
+	axEvent OnMouseLeftDown(const axPoint& pos);
+	axEvent OnMouseLeftUp(const axPoint& pos);
+	axEvent OnMouseEnter();
+	axEvent OnMouseLeave();
 };
 
 #endif //__AX_BUTTON__

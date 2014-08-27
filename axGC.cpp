@@ -64,6 +64,7 @@ void axGC::DrawRectangle(const axRect& rect)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	//GL_LINE_LOOP !!!!!!!!!!!!!!!!!!
 	glBegin(GL_QUADS);
 	// Bottom left.
 	glVertex3f(frect.position.x, frect.position.y, z);
@@ -80,6 +81,7 @@ void axGC::DrawRectangle(const axRect& rect)
 	glVertex3f(frect.position.x, frect.position.y + frect.size.y, z);
 
 	glEnd();
+
 }
 
 void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
@@ -141,6 +143,24 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindTexture(GL_TEXTURE_2D, texture);
+
+	axREMOVE_ON_RELEASE
+	(
+		GLenum err = glGetError();
+
+		if (err != GL_NO_ERROR)
+		{
+			DSTREAM(3) << "GL TEXTURE ERROR : " << " " <<
+				gluErrorString(err) << endl;
+		}
+	)
+
+	//if (err != GL_NO_ERROR)
+	//{
+	//	cout << "GL TEXTURE ERROR : " << hex << err << " " << 
+	//			 gluErrorString(err) << endl;
+	//}
+
 	glDepthMask(GL_TRUE);
 	axSize img_size = rect.size;
 
@@ -369,7 +389,35 @@ void axGC::DrawRectangleColorFade(const axRect& rectangle,
 	glEnd();
 }
 
-void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2)
+void axGC::DrawLines(const vector<axPoint>& pts, float width)
+{
+	axPoint real_pos = _win->GetAbsoluteRect().position;
+	real_pos.x -= _win->GetScrollDecay().x;
+	real_pos.y -= _win->GetScrollDecay().y;
+
+	//axPoint p1 = pt1 + real_pos;
+	//axPoint p2 = pt2 + real_pos;
+
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_POLYGON_SMOOTH);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+
+	glLineWidth(width);
+
+	glBegin(GL_LINE_STRIP);
+	for (const axPoint& pt : pts)
+	{
+		glVertex2f(pt.x + real_pos.x, pt.y + real_pos.y);
+	}
+	//glVertex2f(p1.x, p1.y);
+	//glVertex2f(p2.x, p2.y);
+	glEnd();
+}
+
+void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 {
 	axPoint real_pos = _win->GetAbsoluteRect().position;
 	real_pos.x  -= _win->GetScrollDecay().x;
@@ -377,6 +425,15 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2)
 
 	axPoint p1 = pt1 + real_pos;
 	axPoint p2 = pt2 + real_pos;
+
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_POLYGON_SMOOTH);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+
+	glLineWidth(width);
 
 	glBegin(GL_LINES);
 	glVertex2f(p1.x, p1.y);

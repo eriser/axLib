@@ -14,6 +14,7 @@
 
 #include "portaudio.h" 
 #include "axAudioBuffer.h"
+#include "axAudioFilter.h"
 
 using namespace std;
 
@@ -201,7 +202,22 @@ public:
 		return _buffer->GetSoundPath();
 	}
 
+	axAudioBuffer* GetAudioBuffer()
+	{
+		return _buffer;
+	}
+
 	void SetMidiNoteOn();
+
+	void SetFilterFrequency(const axFloat& freq)
+	{
+		_filter->SetFreq(freq);
+	}
+
+	void SetFilterRes(const axFloat& q)
+	{
+		_filter->SetQ(q);
+	}
 
 private:
 	static const int MAX_NUM_OF_PROB_TRACK = 3;
@@ -222,10 +238,15 @@ private:
 	int _selectedSection;
 	double _currentVelocity;
 
+	// For return in audio callback.
 	float* _outBuffer;
 
 	std::random_device rd;
-    // std::mt19937 gen;
+	// std::mt19937 gen;
+
+	// Audio effects.
+	axAudioFilter* _filter;
+    
 };
 
 class Audio
@@ -391,6 +412,11 @@ public:
 		_tracks[track]->SetNumberOfSection(section);
 	}
 
+	axAudioBuffer* GetAudioBufferFromTrack(const int& track_num)
+	{
+		return _tracks[track_num]->GetAudioBuffer();
+	}
+
 	void SetProbability(const int& track,
 						const int& section, 
 				 		const int& index, 
@@ -411,6 +437,11 @@ public:
 				 					   vel);
 	}
 
+	AudioTrack* GetAudioTrack(const int& track_num)
+	{
+		return _tracks[track_num];
+	}
+
 	virtual int myMemberCallback(const void *input, 
 						 void *output,
 						 unsigned long frameCount, 
@@ -426,12 +457,6 @@ public:
 			tracks_out[i] = _tracks[i]->Process();
 		} 
 
-		// float* track1 = _tracks[0]->Process();
-		// float* track2 = _tracks[1]->Process();
-		// float* track3 = _tracks[2]->Process();
-		// float* track4 = _tracks[3]->Process();
-		// float* track5 = _tracks[4]->Process();
-
 		for(int i = 0; i < 1024; i++)
 		{
 			float v_l = 0.0;
@@ -439,16 +464,12 @@ public:
 
 			for(int n = 0; n < _tracks.size(); n++)
 			{
-				// float* f = *tracks_out[n]++;
 				v_l += *tracks_out[n]++;;
 				v_r += *tracks_out[n]++;
-				// tracks_out[n] = f;
 			}
 
 			*out++ = v_l;
 			*out++ = v_r;
-			// *out++ = *track1++ + *track2++ + *track3++ + *track4++ + *track5++;
-			// *out++ = *track1++ + *track2++ + *track3++ + *track4++ + *track5++;
 		}
 
     	return paContinue;

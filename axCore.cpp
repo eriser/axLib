@@ -1,17 +1,22 @@
 #include "axCore.h"
 
-//axCore* axCORE = nullptr;
-
 axCore::axCore():
 	// Members.
-	_needToDraw(true)
+	_needToDraw(true),
+	_popupNeedToDraw(true)
 {
 	_windowManager = new axManager();
+	_popupManager = new axManager();
 }
 
 axManager* axCore::GetWindowManager()
 {
 	return _windowManager;
+}
+
+axManager* axCore::GetPopupManager()
+{
+	return _popupManager;
 }
 
 void axCore::ResizeGLScene(const int& width, const int& height)
@@ -40,6 +45,16 @@ void axCore::ResizeGLScene(const int& width, const int& height)
 	// Reset the modelview matrix.
 	glLoadIdentity();		
 	_needToDraw = true;
+	_popupNeedToDraw = true;
+
+}
+
+void axCore::DeletePopWindow()
+{
+	KillPopGLWindow();
+
+	delete _popupManager;
+	_popupManager = nullptr;
 }
 
 int axCore::InitGL()										
@@ -64,6 +79,66 @@ int axCore::InitGL()
 
 	return true;										
 }
+//
+//void axCore::ResizeGLScene(const int& width, const int& height)
+//{
+//	int h = height;
+//
+//	// Prevent a divide by zero by.
+//	if (h == 0)	h = 1;
+//	_size = axSize(width, h);
+//
+//	// Reset the current viewport.
+//	glViewport(0, 0, width, h);
+//
+//	// Select the projection matrix.
+//	glMatrixMode(GL_PROJECTION);
+//
+//	// Reset the projection matrix.
+//	glLoadIdentity();
+//
+//	// Calculate the aspect ratio of the window.
+//	gluPerspective(45.0f, (GLfloat)width / (GLfloat)h, 0.1f, 100.0f);
+//
+//	// Select the modelview matrix.
+//	glMatrixMode(GL_MODELVIEW);
+//
+//	// Reset the modelview matrix.
+//	glLoadIdentity();
+//	_needToDraw = true;
+//	_popupNeedToDraw = true;
+//
+//}
+
+void axCore::ResizePopGLScene(const int& width, const int& height)
+{
+	int h = height;
+
+	// Prevent a divide by zero by.
+	if (h == 0)	h = 1;
+		_popSize = axSize(width, h);
+
+	// Reset the current viewport.
+	glViewport(0, 0, width, h);
+
+	// Select the projection matrix.
+	glMatrixMode(GL_PROJECTION);
+
+	// Reset the projection matrix.
+	glLoadIdentity();
+
+	// Calculate the aspect ratio of the window.
+	gluPerspective(45.0f, (GLfloat)width / (GLfloat)h, 0.1f, 100.0f);
+
+	// Select the modelview matrix.
+	glMatrixMode(GL_MODELVIEW);
+
+	// Reset the modelview matrix.
+	glLoadIdentity();
+	_needToDraw = true;
+	_popupNeedToDraw = true;
+
+}
 
 axSize axCore::GetGlobalSize() const
 {
@@ -73,6 +148,7 @@ axSize axCore::GetGlobalSize() const
 void axCore::UpdateAll()
 {
 	_needToDraw = true;
+	_popupNeedToDraw = true;
 }
 
 int axCore::DrawGLScene()
@@ -116,6 +192,52 @@ int axCore::DrawGLScene()
 		glEnd();
 
 		_windowManager->OnPaint();
+		return true;
+	}
+	return false;
+}
+
+int axCore::DrawGLPopScene()
+{
+	//glViewport(0, 0, att.width, att.height);
+
+	//if (_needToDraw)
+	if (_popupNeedToDraw)
+	{
+		_popupNeedToDraw = false;
+
+		// Clear screen and depth buffer.
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		//glViewport(0, 0, _size.x, _size.y);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluOrtho2D(0.0, _popSize.x, _popSize.y, 0.0);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+
+		axFloatRect rect(0 - 1.0, 0 - 1, _size.x * 2.0, _size.y * 2.0);
+
+		glColor3f(0.1, 0.1, 0.1);
+		GLfloat z = 0;
+
+		glBegin(GL_QUADS);
+		// Bottom left.
+		glVertex3f(rect.position.x, rect.position.y, z);
+
+		// Bottom Right.
+		glVertex3f(rect.position.x + rect.size.x,
+			rect.position.y, z);
+
+		// Top Right.
+		glVertex3f(rect.position.x + rect.size.x,
+			rect.position.y + rect.size.y, z);
+
+		// Top Left
+		glVertex3f(rect.position.x, rect.position.y + rect.size.y, z);
+		glEnd();
+
+		_popupManager->OnPaint();
 		return true;
 	}
 	return false;

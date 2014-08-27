@@ -92,7 +92,7 @@ public:
 
 private:
     axMenuNodeSelectionMode m_select_mode;
-    axImage m_img;
+    axImage* m_img;
     string m_label;
     int m_nCurrentImg;
     int m_delta;

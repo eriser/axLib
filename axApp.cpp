@@ -53,6 +53,21 @@ void axApp::CreatePopupWindow(const axSize& size)
 #endif __linux__
 }
 
+string axApp::OpenFileDialog()
+{
+	return _core->OpenFileDialog();
+}
+
+bool axApp::CreatePopupWindow(char* title, int x, int y)
+{
+	return _core->CreatePopupWindow("Popup", x, y);
+}
+
+string axApp::GetAppDirectory()
+{
+	return _core->GetAppDirectory();
+}
+
 string axApp::GetCurrentAppDirectory()
 {
 #ifdef __linux__
@@ -65,7 +80,15 @@ string axApp::GetCurrentAppDirectory()
 #endif __linux__
 
 #ifdef _MSC_VER
-	return "";
+	HMODULE hModule = GetModuleHandleW(NULL);
+	WCHAR path[MAX_PATH];
+	GetModuleFileNameW(hModule, path, MAX_PATH);
+
+	char str[MAX_PATH];
+	wcstombs(str, path, MAX_PATH);
+
+	return string(str);
+
 #endif _MSC_VER
 
 }
@@ -92,6 +115,12 @@ void axApp::AddWindow(axWindow* win)
 {
 	GetWindowManager()->Add(win);
 }
+
+void axApp::AddPopWindow(axWindow* win)
+{
+	_core->GetPopupManager()->Add(win);
+}
+
 
 axCore* axApp::GetCore()
 {

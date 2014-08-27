@@ -20,7 +20,7 @@ class axImage;
 
 struct axImageStruct
 {
-	axImageStruct(GLuint tex, axSize size):
+	axImageStruct(GLuint tex, axSize size) :
 	_texture(tex), _size(size)
 	{
 	}

@@ -30,12 +30,19 @@ public:
 	axManager* GetWindowManager();
 
 	void AddWindow(axWindow* win);
+	void AddPopWindow(axWindow* win);
 
 	void UpdateAll();
 
 	axCore* GetCore();
 
+	string OpenFileDialog();
+
+	bool CreatePopupWindow(char*, int, int);
+
 	string GetCurrentAppDirectory();
+
+	string GetAppDirectory();
 
 private:
 	axCore* _core;

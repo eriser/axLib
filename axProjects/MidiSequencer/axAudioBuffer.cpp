@@ -27,10 +27,10 @@ axSOUND_ERROR axAudioBuffer::OpenSoundFile( const string& snd_path )
     if( m_buffer )
     {
         delete m_buffer;
-        m_buffer = NULL;
+        m_buffer = nullptr;
     }
 
-    m_buffer = new axFloat[ m_info->frames * m_info->channels ];
+    m_buffer = new axFloat[m_info->frames * m_info->channels];
 
     /*unsigned int numFrames = */sf_readf_float( m_sndFile, m_buffer, m_info->frames );
 

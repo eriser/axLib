@@ -84,6 +84,8 @@ public:
 
     double GetValue() { return m_knobValue; }
 
+	void SetValue(const axFloat& value);
+
 	void SetBackgroundAlpha(const float& alpha)
 	{
 		_bgAlpha = alpha;

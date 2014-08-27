@@ -17,7 +17,8 @@ namespace axWin32
 		DWORD& style,
 		DWORD& exStyle,
 		RECT& win_rect,
-		const char* title);
+		const char* title,
+		const char* winclassname);
 
 	void ErrorMessageDialog(const string& msg);
 

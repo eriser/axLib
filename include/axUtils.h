@@ -121,6 +121,11 @@ public:
 
 	axTemplateRect(T x, T y, T w, T h): position(x, y), size(w, h){}
 
+	axTemplateRect(const string& path)
+	{
+		Load(path);
+	}
+
 	bool IsPointInside(const CPos& pos)
 	{
 		return	pos.x >= position.x &&
@@ -182,6 +187,28 @@ public:
 	bool operator >= (const axTemplateRect& rect) 
 	{ 
 		return (size.x >= rect.size.x && size.y >= rect.size.y); 
+	}
+
+	bool Load(const string& path)
+	{
+		ifstream file;
+		file.open(path);
+
+		if (file.fail())
+		{
+			cerr << "Problem opening file " << path << endl;
+			return false;
+		}
+		else
+		{
+			if (!file.fail())
+			{
+				file >> position.x;
+				file >> position.y;
+				file >> size.x;
+				file >> size.y;
+			}
+		}
 	}
 };
 

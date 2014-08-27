@@ -34,7 +34,7 @@ axPopupMenu::axPopupMenu(axApp* app,
 
 void axPopupMenu::OnButtonClick(const axButtonMsg& msg)
 {
-	DSTREAM << "KK" << endl;
+	//DSTREAM << "KK" << endl;
 	if (_lastSelected == nullptr)
 		_lastSelected = msg.GetSender();
 

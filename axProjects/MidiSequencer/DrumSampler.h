@@ -13,17 +13,29 @@ class SynthControl : public axPanel
 {
 public:
 	SynthControl(axApp* app,
-		axWindow* parent,
-		const axRect& rect, const string& snd_path);
+				 axWindow* parent,
+				 const axRect& rect, 
+				 const string& snd_path,
+				 Audio* audio,
+				 const int& track_num);
 
 	axEVENT(axButtonMsg, OnOpenFile);
+	axEVENT(axKnobMsg, OnFilterFrequency);
+	axEVENT(axKnobMsg, OnFilterRes);
 
 private:
 	// Events.
 	axImage* _bgImg;
+	AudioMidiSeq* _audio;
+	int _trackNum;
+	axWaveform* _wave;
 
 	void OnOpenFile(const axButtonMsg& msg);
+	void OnFilterFrequency(const axKnobMsg& msg);
+	void OnFilterRes(const axKnobMsg& msg);
 	virtual void OnPaint();
+
+
 };
 
 class DrumPad;

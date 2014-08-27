@@ -4,8 +4,8 @@
  * @date	13/08/2013
  **********************************************************************************/
 
-#ifndef DEF_AX_AUDIO_BUFFER_H
-#define DEF_AX_AUDIO_BUFFER_H
+#ifndef __AX_AUDIO_BUFFER__
+#define __AX_AUDIO_BUFFER__
 
 #include "sndfile.h"
 #include <iostream>
@@ -62,4 +62,4 @@ private:
     axFloat *m_buffer, *m_start, *m_end;
 };
 
-#endif // DEF_AX_AUDIO_BUFFER_H.
+#endif // __AX_AUDIO_BUFFER__.

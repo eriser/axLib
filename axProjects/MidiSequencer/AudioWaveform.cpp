@@ -40,7 +40,7 @@ axWaveform::axWaveform(axApp* app, axWindow* parent, const axRect& rect,
 
 void axWaveform::OnPaint()
 {
-    BlockDrawing(GetParent()->GetAbsoluteRect());
+    BlockDrawing(GetAbsoluteRect());
 
     axGC* gct = GetGC();
     axGC& gc = *gct;
@@ -150,8 +150,7 @@ void axWaveform::OnPaint()
 
     // Draw horizontal middle line.
     gc.SetColor( m_info.lines );
-    // gc.SetLineWidth( 1 );
-    gc.DrawLine( axPoint( 1, middle_y ), axPoint( size.x - 2, middle_y ) );
+    gc.DrawLine(axPoint(1, middle_y), axPoint(size.x - 2, middle_y));
 
 
 

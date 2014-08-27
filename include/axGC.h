@@ -51,7 +51,8 @@ public:
 		const axColor& c1, const float& alpha1,
 		const axColor& c2, const float& alpha2);
 
-	void DrawLine(const axPoint& pt1, const axPoint& pt2);
+	void DrawLine(const axPoint& pt1, const axPoint& pt2, float width = 1.0);
+	void DrawLines(const vector<axPoint>& pts, float width = 1.0);
 
 	void DrawCircle(const axPoint& pos, float r, int num_segments);
 	

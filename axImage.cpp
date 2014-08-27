@@ -30,12 +30,14 @@ bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, axS
 	return false;
 }
 
-bool axImageGlobalMapLoader::InitImage(const string& path, GLuint& _texture, axSize& _size)
+bool axImageGlobalMapLoader::InitImage(const string& path, 
+									   GLuint& _texture, 
+									   axSize& _size)
 {
 	// http://zarb.org/~gc/html/libpng.html.
 	// http://stackoverflow.com/questions/11296644/loading-png-textures-to-opengl-with-libpng-only.
 	// Reading png.
-	png_byte header[8];
+	png_byte header[8];	
 
 	FILE *fp = fopen(path.c_str(), "rb");
 
@@ -203,6 +205,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path, GLuint& _texture, axS
 	free(image_data);
 	free(row_pointers);
 	fclose(fp);
+
 	return false;
 }
 

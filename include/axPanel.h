@@ -8,6 +8,7 @@ class axPanel : public axWindow
 {
 public:
 	axPanel(axApp* app, axWindow* parent, const axRect& rect);
+	axPanel(int f, axApp* app, axWindow* parent, const axRect& rect);
 
 	void UpdateAll();
 	virtual void Update();
@@ -25,8 +26,11 @@ public:
 
 	void UnBlockDrawing();
 
+
 private:
 	axApp* _app;
+
+	bool _isInPopup;
 };
 
 #endif //__AX_PANEL__

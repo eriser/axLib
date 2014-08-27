@@ -47,7 +47,7 @@ public:
                 const axWaveformInfo& waveInfo,
 				const string& snd_path);
 
-    void SetBufferPtr( axAudioBuffer* buffer )
+    void SetBufferPtr(axAudioBuffer* buffer)
     {
         m_buffer = buffer;
         Update();

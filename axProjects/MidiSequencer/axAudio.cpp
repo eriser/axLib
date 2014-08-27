@@ -16,6 +16,7 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	_outBuffer = new float[1024 * 2];
 	_deviation = 0.0;
 
+	/// @todo Need to set proper frame buffer size.
 	for(int i = 0; i < 1024 * 2; i++)
 	{
 		_outBuffer[i] = 0.0;
@@ -31,6 +32,7 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 		}
 	}
 
+	_filter = new axAudioFilter();
 	
     
 
@@ -73,6 +75,8 @@ float* AudioTrack::Process()
     	}
 
     	out *= _currentVelocity;
+
+		out = _filter->Process(out);
 
     	_outBuffer[i] = out;// * _velocity[_selectedSection][_beatIndex];
     	_outBuffer[i+1] = out;// * _velocity[_selectedSection][_beatIndex];

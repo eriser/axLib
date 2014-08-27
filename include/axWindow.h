@@ -88,6 +88,13 @@ public:
 
 	void Reparent(axWindow* parent, const axPoint& position);
 
+	bool& GetIsPopup()
+	{
+		return _isPopup;
+	}
+
+protected:
+	bool _isPopup;
 private:
 	axWindow* _parent;
 	axRect _rect;
@@ -98,7 +105,7 @@ private:
 	bool _isHidden;
 
 	axPoint _scrollDecay;
-
+	
 
 	GLuint _texture;
 };

@@ -32,6 +32,60 @@ axButton::axButton(
 	
 }
 
+axButton::axButton(axApp* app,
+		 axWindow* parent,
+		 const axButtonEvents& events,
+		 const string& path):
+		 axPanel(app, parent, axRect(0, 0, 20, 20)),
+		// Members.
+		_events(events),
+		_nCurrentImg(axBTN_NORMAL),
+		_selected(false),
+		_bgAlpha(1.0)
+{
+	ifstream file;
+	file.open(path);
+
+	if (file.fail())
+	{
+		cerr << "Problem opening file " << path << endl;
+	}
+	else
+	{
+		if (!file.fail())
+		{
+			axRect rect;
+			string rect_info;
+			file >> rect.position.x >> rect.position.y >> rect.size.x >> rect.size.y;
+
+			SetPosition(rect.position);
+			SetSize(rect.size);
+
+			string info_path;
+			file >> info_path;
+			_info = axButtonInfo(info_path);
+
+			string img_path;
+			file >> img_path;
+			_btnImg = new axImage(img_path);
+
+			file >> _label;
+
+			int flag0 = 0;
+			int flag1 = 0;
+			file >> flag0;
+			file >> flag1;
+			_flags = (unsigned int)flag0 | (unsigned int)flag1;
+			_msg = "";
+			
+		}
+	}
+
+	_currentColor = &_info.normal;
+
+	file.close();
+}
+
 void axButton::SetMsg(const string& msg)
 {
 	_msg = msg;

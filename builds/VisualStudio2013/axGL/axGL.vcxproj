@@ -26,6 +26,7 @@
     <ClCompile Include="..\..\..\axPanel.cpp" />
     <ClCompile Include="..\..\..\axUtils.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axButton.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axDropMenu.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axGrid.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axKnob.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axMenu.cpp" />
@@ -38,8 +39,8 @@
     <ClCompile Include="..\..\..\axWindowTree.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\axEvent.h" />
     <ClInclude Include="..\..\..\axWidgets\axButton.h" />
+    <ClInclude Include="..\..\..\axWidgets\axDropMenu.h" />
     <ClInclude Include="..\..\..\axWidgets\axGrid.h" />
     <ClInclude Include="..\..\..\axWidgets\axKnob.h" />
     <ClInclude Include="..\..\..\axWidgets\axMenu.h" />

@@ -1,6 +1,6 @@
 /*******************************************************************************//**
  * @file	axC++.h
- * @author	Alexandre Arsenault <alexandre.arsenault@polymtl.ca>
+ * @author	Alexandre Arsenault <alexandre.arsenault@axlib.net>
  * @date	21/04/2014
  **********************************************************************************/
 /// @defgroup Utils 
@@ -26,6 +26,22 @@
 
 #include "axUtils.h"
 
+#define axDEBUG_LEVEL0 0
+#define axDEBUG_MINIMAL_LEVEL 1
+#define axDEBUG_MEDIUM_LEVEL 2
+#define axDEBUG_HIGH_LEVEL 3
+
+#define axDEBUG_LEVEL (axDEBUG_MINIMAL_LEVEL)
+
+#if axDEBUG_LEVEL > 0
+#define axREMOVE_ON_RELEASE(x) x
+#elif
+#define axREMOVE_ON_RELEASE(x) 
+#endif
+
+//#define DSTREAM cout
+#define DSTREAM(x) if(x <= axDEBUG_LEVEL) cout 
+
 // If altenative.
 #define if_error_in if
 #define if_no_error_in if 
@@ -36,13 +52,13 @@
 // While alternative.
 #define while_not_null(ptr) while((ptr) != nullptr)
 
-#define _SP_ << " " <<
+//#define SPACE << " " <<
 
 /// @todo Make a template function Clamp.
 #define axCLIP( v, min, max ) if( v < min ) v = min; \
 							  else if (v > max) v = max;
 
-#define DSTREAM cout							  
+							  
 
 // Standard type.
 typedef float axFloat;
