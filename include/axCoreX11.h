@@ -26,6 +26,12 @@ public:
 								int width, 
 								int height, 
 								int bits = 16);
+
+	virtual string GetAppDirectory();
+	virtual bool CreatePopupWindow(char* title, int width, int height);
+	virtual string OpenFileDialog();
+	virtual void KillPopGLWindow();
+
 	virtual void MainLoop();
 
 	Display* CreateDisplay();

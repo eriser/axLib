@@ -37,6 +37,26 @@ axRect axCoreX11::GetScreenRect()
                   XDisplayHeight(_display, _screen));
 }
 
+string axCoreX11::GetAppDirectory()
+{
+	return string("error");
+}
+
+bool axCoreX11::CreatePopupWindow(char* title, int width, int height)
+{
+	return false;
+}
+
+string axCoreX11::OpenFileDialog()
+{
+	return "";
+}
+
+void axCoreX11::KillPopGLWindow()
+{
+	
+}
+
 //-----------------------------------------------------------------------------
 // PROTECTED
 //-----------------------------------------------------------------------------

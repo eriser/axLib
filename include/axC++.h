@@ -14,13 +14,13 @@
 #include <GL/glx.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-#endif __linux__
+#endif //__linux__
 
 #ifdef _MSC_VER
 #include <windows.h>
 #include <gl\gl.h>
 #include <gl\glu.h>
-#endif _MSC_VER
+#endif //_MSC_VER
 
 #include <stdint.h>
 
@@ -35,7 +35,7 @@
 
 #if axDEBUG_LEVEL > 0
 #define axREMOVE_ON_RELEASE(x) x
-#elif
+#else
 #define axREMOVE_ON_RELEASE(x) 
 #endif
 

@@ -1,7 +1,7 @@
 
 LIBS = -pthread -lX11 -lGL -lGLU -lpng -lfreetype -lrt -lasound
 # gcc -lrt -lasound -ljack -lpthread -o YOUR_BINARY main.c libportaudio.a
-LIB_INCLUDE = -L/usr/X11R6/lib -L/usr/local/lib -L/home/alexarse/Desktop/axLib/
+LIB_INCLUDE = -L/usr/X11R6/lib -L/usr/local/lib -L/home/alexarse/Desktop/axLib/ -L/usr/lib/
 
 
 LIBSNDFILE_INCLUDE = -I /usr/include 
@@ -22,13 +22,13 @@ CC = clang++ -std=c++11 -g $(INCLUDE)
 ##CC = clang++ -std=c++11 -g $(INCLUDE) 
 #-I/usr/include/freetype2 -L/usr/local/lib -lfreetype
 
-OBJECTS = AudioWaveform.o MidiTrack.o axAudio.o axAudioBuffer.o main.o
+OBJECTS = AudioWaveform.o MidiTrack.o axAudio.o axAudioBuffer.o axMidi.o DrumSampler.o axAudioEnvelope.o axAudioFilter.o main.o
 ##main.o
 
 
 # g++ -o prog1 main.cpp Hash.o -std=c++0x
 default: $(OBJECTS)
-	clang++ -o main $(OBJECTS) libportaudio.a $(LIB_INCLUDE) $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE) -laxlib $(LIBS) $(LIBSNDFILE)
+	clang++ -o main $(OBJECTS) libportaudio.a libportmidi.a libporttime.a $(LIB_INCLUDE) $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE) -laxlib $(LIBS) $(LIBSNDFILE)
 	# clang++ -o main main.cpp  AudioWaveform.cpp MidiTrack.cpp axAudio.cpp axAudioBuffer.cpp libportaudio.a $(LIB_INCLUDE) $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE) -laxlib $(LIBS) $(LIBSNDFILE) -std=c++11
 
 # library: $(OBJECTS)
@@ -48,6 +48,18 @@ axAudio.o: axAudio.h axAudio.cpp
 
 axAudioBuffer.o: axAudioBuffer.h axAudioBuffer.cpp
 	$(CC) axAudioBuffer.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
+
+DrumSampler.o: DrumSampler.h DrumSampler.cpp
+	$(CC) DrumSampler.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
+
+axAudioEnvelope.o: axAudioEnvelope.h axAudioEnvelope.cpp
+	$(CC) axAudioEnvelope.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
+
+axAudioFilter.o: axAudioFilter.h axAudioFilter.cpp
+	$(CC) axAudioFilter.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
+
+axMidi.o: axMidi.h axMidi.cpp
+	$(CC) axMidi.cpp -c $(INCLUDE) $(LIBSNDFILE_FLAG) $(LIBSNDFILE_INCLUDE)
 # axApp.o: axApp.h axApp.cpp
 # 	$(CC) axApp.cpp -c
 

@@ -100,11 +100,11 @@ string OpenFileDialog(const string& app_name, string folder_path)
         file.erase( std::remove(file.begin(), file.end(), '\0'), file.end());
         return file;
     }
-#endif __linux__
+#endif //__linux__
 
 #ifdef _MSC_VER
 	return "";
-#endif _MSC_VER
+#endif //_MSC_VER
 }
 
 

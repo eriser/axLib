@@ -6,7 +6,7 @@ axCore::axCore():
 	_popupNeedToDraw(true)
 {
 	_windowManager = new axManager();
-	_popupManager = new axManager();
+	// _popupManager = new axManager();
 }
 
 axManager* axCore::GetWindowManager()
@@ -16,7 +16,7 @@ axManager* axCore::GetWindowManager()
 
 axManager* axCore::GetPopupManager()
 {
-	return _popupManager;
+	// return _popupManager;
 }
 
 void axCore::ResizeGLScene(const int& width, const int& height)
@@ -51,10 +51,10 @@ void axCore::ResizeGLScene(const int& width, const int& height)
 
 void axCore::DeletePopWindow()
 {
-	KillPopGLWindow();
+// 	KillPopGLWindow();
 
-	delete _popupManager;
-	_popupManager = nullptr;
+// 	delete _popupManager;
+// 	_popupManager = nullptr;
 }
 
 int axCore::InitGL()										

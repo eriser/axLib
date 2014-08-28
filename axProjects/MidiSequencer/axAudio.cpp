@@ -177,7 +177,7 @@ Audio::Audio()
 	}
 
 
-	outputParameters.device = 4;//Pa_GetDefaultOutputDevice(); //1
+	outputParameters.device = 1;//;//Pa_GetDefaultOutputDevice(); //1
 	// cout << "OUTPU : " << outputParameters.device.name << endl;
 	if(outputParameters.device == paNoDevice)
 	{
