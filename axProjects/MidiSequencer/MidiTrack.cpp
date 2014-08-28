@@ -58,11 +58,13 @@ MultipleSlider::MultipleSlider(axApp* app, axWindow* parent,
                           axColor(0.0, 0.0, 0.0), // COntour
                           axColor(0.9, 0.9, 0.9), // Back Slider
                           axColor(0.9, 0.9, 0.9), // Back Slider contour.
-                          4);
+                          3);
 
     _nSlider = 3;
+	double position_ratio = rect.size.x / double(_nSlider);
     int size_x = rect.size.x / double(_nSlider);
 
+	/*double t = position_ratio * 1.0;*/
 
     axFlag slider_flags = axSLIDER_FLAG_VERTICAL | 
               axSLIDER_FLAG_CLICK_ANYWHERE | 
@@ -71,19 +73,35 @@ MultipleSlider::MultipleSlider(axApp* app, axWindow* parent,
 
     axEvtFunction(axSliderMsg) sld_fct(GetOnSlider1Move());
     // function<void(const axSliderMsg&)> sld_fct(GetOnSliderMove());
-    sliders[0] = new axSlider(app, this, 
-                  axRect(0, 0, size_x, rect.size.y), 
-                  axSliderEvents(sld_fct), sld_info, slider_flags);
 
+	double left = position_ratio * 0.0;
+	double right = position_ratio * 1.0;
+	sliders[0] = new axSlider(app, this, 
+		axRect(left, 0, right - left, rect.size.y),
+	              axSliderEvents(sld_fct), sld_info, slider_flags);
+    //sliders[0] = new axSlider(app, this, 
+    //              axRect(0, 0, size_x, rect.size.y), 
+    //              axSliderEvents(sld_fct), sld_info, slider_flags);
+
+	left = position_ratio * 1.0;
+	right = position_ratio * 2.0;
     sld_fct = GetOnSlider2Move();
-    sliders[1] = new axSlider(app, this, 
-                  axRect(size_x, 0, size_x, rect.size.y), 
-                  axSliderEvents(sld_fct), sld_info, slider_flags);
+	sliders[1] = new axSlider(app, this, 
+		axRect(left, 0, right - left, rect.size.y),
+	              axSliderEvents(sld_fct), sld_info, slider_flags);
+    //sliders[1] = new axSlider(app, this, 
+    //              axRect(size_x, 0, size_x, rect.size.y), 
+    //              axSliderEvents(sld_fct), sld_info, slider_flags);
 
+	left = position_ratio * 2.0;
+	right = position_ratio * 3.0;
     sld_fct = GetOnSlider3Move();
-    sliders[2] = new axSlider(app, this, 
-                axRect(size_x * 2, 0, size_x, rect.size.y), 
-                axSliderEvents(sld_fct), sld_info, slider_flags);
+	sliders[2] = new axSlider(app, this, 
+		axRect(left, 0, right - left, rect.size.y),
+	            axSliderEvents(sld_fct), sld_info, slider_flags);
+    //sliders[2] = new axSlider(app, this, 
+    //            axRect(size_x * 2, 0, size_x, rect.size.y), 
+    //            axSliderEvents(sld_fct), sld_info, slider_flags);
 
     sliders[0]->SetBackgroundAlpha(0.0);
     sliders[1]->SetBackgroundAlpha(0.0);

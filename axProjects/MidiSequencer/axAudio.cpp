@@ -17,6 +17,7 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	_deviation = 0.0;
 	_gain = 0.5;
 	_speed = 1.0;
+	_trackName = "";
 
 	/// @todo Need to set proper frame buffer size.
 	for(int i = 0; i < 1024 * 2; i++)

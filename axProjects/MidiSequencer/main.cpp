@@ -226,14 +226,28 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 
 	LineSelection* lines = new LineSelection(app, this, axRect(60, 0, rect.size.x - 60, 20));
 
-	AddNewTrack("Kick",		audio, 0);
-	AddNewTrack("Snare",	audio, 1);
-	AddNewTrack("HiHat",	audio, 2);
-	AddNewTrack("Clap",		audio, 3);	
-	AddNewTrack("Tom",		audio, 4);	
-	AddNewTrack("Clap2",	audio, 5);
-	AddNewTrack("Clap2",	audio, 6);
-	AddNewTrack("Clap4",	audio, 7);
+
+	//AddNewTrack("Kick",		audio, 0);
+	//AddNewTrack("Snare",	audio, 1);
+	//AddNewTrack("HiHat",	audio, 2);
+	//AddNewTrack("Clap",		audio, 3);	
+	//AddNewTrack("Tom",		audio, 4);	
+	//AddNewTrack("Clap2",	audio, 5);
+	//AddNewTrack("Clap2",	audio, 6);
+	//AddNewTrack("Clap4",	audio, 7);
+	AudioMidiSeq* au = static_cast<AudioMidiSeq*>(audio);
+	for (int i = 0; i < 8; i++)
+	{
+		AddNewTrack(au->GetAudioTrack(i)->GetTrackName(), audio, i);
+	}
+		
+	//AddNewTrack("Snare", audio, 1);
+	//AddNewTrack("HiHat", audio, 2);
+	//AddNewTrack("Clap", audio, 3);
+	//AddNewTrack("Tom", audio, 4);
+	//AddNewTrack("Clap2", audio, 5);
+	//AddNewTrack("Clap2", audio, 6);
+	//AddNewTrack("Clap4", audio, 7);
 }
 
 void MidiSequencer::OnColorChange(const axButtonMsg& msg)

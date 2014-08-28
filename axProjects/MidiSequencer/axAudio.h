@@ -247,6 +247,16 @@ public:
 		_speed = s;
 	}
 
+	string GetTrackName() const
+	{
+		return _trackName;
+	}
+
+	void SetTrackName(const string& name)
+	{
+		_trackName = name;
+	}
+
 private:
 	static const int MAX_NUM_OF_PROB_TRACK = 3;
 	static const int NUMBER_OF_NOTES = 16;
@@ -371,14 +381,22 @@ public:
 		_tracks.push_back(new AudioTrack("hihat3.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("snare2.wav", _nSamplePerBeat));
-
 		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("snare2.wav", _nSamplePerBeat));
 		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
+
+		_tracks[0]->SetTrackName("Kick");
+		_tracks[1]->SetTrackName("Snare");
+		_tracks[2]->SetTrackName("HiHat");
+		_tracks[3]->SetTrackName("OHat");
+		_tracks[4]->SetTrackName("Clap");
+		_tracks[5]->SetTrackName("Tom");
+		_tracks[6]->SetTrackName("Bell");
+		_tracks[7]->SetTrackName("Crash");
 		
 
 		// cout << __PRETTY_FUNCTION__ << endl;
-		cout << "TRACKS SIZE : " << _tracks.size() << endl;
+		//cout << "TRACKS SIZE : " << _tracks.size() << endl;
 	}
 
 	void SetPreset(DrumMachinePreset* preset)

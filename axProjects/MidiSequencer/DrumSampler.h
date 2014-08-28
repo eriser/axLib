@@ -86,17 +86,25 @@ public:
 		const int& track_id,
 		axEvtFunction(DrumPadMsg) click_evt);
 
+	void SetTrackName(const string& name);
+	void SetSelected();
+	void SetUnselected();
+
 	//axEVENT(axButtonMsg, OnOpenFile);
 
 private:
 	axImage* _bgImg;
 	int _trackId;
+	string _trackName;
+	bool _highlight, _selected;
 
 	axEvtFunction(DrumPadMsg) _clickEvent;
 	// Events.
 
 	//void OnOpenFile(const axButtonMsg& msg);
 	virtual void OnMouseLeftDown(const axPoint& pos);
+	virtual void OnMouseEnter();
+	virtual void OnMouseLeave();
 	virtual void OnPaint();
 };
 

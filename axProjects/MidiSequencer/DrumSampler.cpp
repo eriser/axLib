@@ -199,10 +199,35 @@ DrumPad::DrumPad(axApp* app, axWindow* parent,
 	const axRect& rect, const int& track_id, axEvtFunction(DrumPadMsg) click_evt) :
 	axPanel(app, parent, rect)
 {
+	_trackName = "";
 	_clickEvent = click_evt;
 	_trackId = track_id;
 	_bgImg = new axImage("pad.png");
+	_selected = false;
 
+}
+
+void DrumPad::SetTrackName(const string& name)
+{
+	_trackName = name;
+}
+
+void DrumPad::SetSelected()
+{
+	if (_selected == false)
+	{
+		_selected = true;
+		Update();
+	}
+	
+}
+void DrumPad::SetUnselected()
+{
+	if (_selected == true)
+	{
+		_selected = false;
+		Update();
+	}
 }
 
 void DrumPad::OnMouseLeftDown(const axPoint& pos)
@@ -212,6 +237,18 @@ void DrumPad::OnMouseLeftDown(const axPoint& pos)
 		DrumPadMsg msg(this, _trackId);
 		_clickEvent(msg);
 	}
+}
+
+void DrumPad::OnMouseEnter()
+{
+	_highlight = true;
+	Update();
+}
+
+void DrumPad::OnMouseLeave()
+{
+	_highlight = false;
+	Update();
 }
 //
 //void SynthControl::OnOpenFile(const axButtonMsg& msg)
@@ -223,31 +260,34 @@ void DrumPad::OnMouseLeftDown(const axPoint& pos)
 void DrumPad::OnPaint()
 {
 	axGC* gc = GetGC();
-	//BlockDrawing();
-
-	
-
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);
 
-	//cout << "PAD SIZE : " << rect0.size.x << " " << rect0.size.y << endl;
-	gc->SetColor(axColor(0.6, 0.6, 0.6), 1.0);
+	if (_selected)
+	{
+		gc->SetColor(axColor(0.95, 0.4, 0.08), 1.0);
+	}
+	else
+	{
+		if (_highlight)
+		{
+			gc->SetColor(axColor(0.6, 0.6, 0.6), 1.0);
+			
+		}
+		else
+		{
+			gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
+		}
+	}
+
+	
 	gc->DrawRectangle(rect0);
 
 	gc->DrawImage(_bgImg, axPoint(0, 0));
-	//gc->DrawImageResize(_bgImg, axPoint(0, 0), axSize(rect0.size));
 
 	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
 	gc->SetFontSize(12);
-	gc->DrawStringAlignedCenter("Kick", axRect(0, 0, rect0.size.x, 20));
-
-	//gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-	//gc->DrawRectangleContour(rect0);
-
-	// gc->SetColor(axColor(0.0, 1.0, 0.0), 1.0);
-	// gc->DrawRectangle(axRect(rect0.position.x, rect0.position.y, 800, 30));
-
-	//UnBlockDrawing();
+	gc->DrawStringAlignedCenter(_trackName, axRect(0, 0, rect0.size.x, 20));
 }
 
 
@@ -271,6 +311,7 @@ DrumSampler::DrumSampler(axApp* app, axWindow* parent, const axRect& rect, Audio
 		_pads[i] = new DrumPad(app, this, axRect(x, 25, pad_size, 60), 
 							   i, padClickFct);
 		x += pad_size + 5;
+		_pads[i]->SetTrackName(_audio->GetAudioTrack(i)->GetTrackName());
 	}
 
 
@@ -284,6 +325,7 @@ DrumSampler::DrumSampler(axApp* app, axWindow* parent, const axRect& rect, Audio
 	}
 
 	_synths[0]->Show();
+	_pads[0]->SetSelected();
 }
 
 void DrumSampler::OnDrumPadClick(const DrumPadMsg& msg)
@@ -294,10 +336,12 @@ void DrumSampler::OnDrumPadClick(const DrumPadMsg& msg)
 		//if (_synths[i]->IsShown())
 		//{
 			_synths[i]->Hide();
+			_pads[i]->SetUnselected();
 		//}
 	}
 
 	_synths[msg.GetMsg()]->Show();
+	_pads[msg.GetMsg()]->SetSelected();
 
 }
 

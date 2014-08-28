@@ -4,11 +4,11 @@ c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : 
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(308): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(355): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(389): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(487): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(497): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(319): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(366): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(408): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(506): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(516): warning C4018: '<' : signed/unsigned mismatch
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(17): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(34): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(73): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
@@ -20,11 +20,13 @@ c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(167): w
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(173): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(181): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(190): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(234): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(266): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(277): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(292): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(312): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(268): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(274): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(279): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(306): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(318): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(334): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(356): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
   libpng16.lib(png.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
 AudioWaveform.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
