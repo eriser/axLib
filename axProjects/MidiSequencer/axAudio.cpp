@@ -9,7 +9,8 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 					   _nSamplePerBeat(samplePerBeat),
 					   _nSection(2),
 					   _selectedSection(0),
-					   _currentVelocity(0.0) 
+					   _currentVelocity(0.0) ,
+					   rd(random_device())
 					    
 {
 	_buffer = new axAudioBuffer(sndfile);
@@ -48,10 +49,9 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	// cout << "Filter set ptr" << endl;
 	_filter->SetFreqEnvelopePtr(&_modFilterFreqEnv);
 	_filter->SetFreqEnvelopeAmountPtr(&_modFilterFreqEnvAmount);
-    
-
-    // rd = random_device();
-    // gen = std::mt19937(rd());
+   
+     //rd = random_device();
+     gen = std::mt19937(rd());
  
     // values near the mean are the most likely
     // standard deviation affects the dispersion of generated values from the mean
@@ -143,10 +143,31 @@ float* AudioTrack::Process()
 					_env->TriggerNote();
 
 					double v = _velocity[_selectedSection][_beatIndex];
-					_currentVelocity = axNormalDistributionRandomGenerator(v, _deviation);
+					//_currentVelocity = axNormalDistributionRandomGenerator(v, _deviation);
+
+
     	//			std::mt19937 gen(rd());
     	//			double v = _velocity[_selectedSection][_beatIndex];
-    	//			std::normal_distribution<> d(v,_deviation);
+			/*		if (_deviation <= 0)
+					{
+						cerr << "Error: Sigma can't be smaller or equal to 0 in normal distribution." << endl;
+					}*/
+
+
+					// The C++11 standard says the following (§26.5.8.4.4):
+					// explicit normal_distribution(RealType mean = 0.0, RealType stddev = 1.0);
+					// Requires: 0 < stddev.
+					// As such a standard derivation of 0 is explicitly forbidden by the standard 
+					// and therefore not guaranteed to work.
+					if (_deviation > 0.0)
+					{
+						std::normal_distribution<> d(v, _deviation);
+						_currentVelocity = d(gen);
+					}
+					else
+					{
+						_currentVelocity = v;
+					}
 					//_currentVelocity = 1.0;//d(gen);
     				// _currentVelocity = v;
     			}

@@ -96,8 +96,8 @@ void axNumberBox::OnMouseLeftDragging(const axPoint& pos)
     _zeroToOneValue += v;
     
     axCLIP( _zeroToOneValue, 0.0, 1.0 );
-
-    _value = _zeroToOneValue * ( _range.left - _range.right ) + _range.left;
+//	_value = _zeroToOneValue;
+    _value = _zeroToOneValue * (_range.right - _range.left ) + _range.left;
 
     if(_events.value_change)
     {

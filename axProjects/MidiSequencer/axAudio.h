@@ -172,8 +172,9 @@ public:
 	void SetStandardDeviation(const double& dev)
 	{
 		_deviation = dev;
+		cout << "Value of standard deviation." << dev << endl;
 
-		cout << "Value " << dev << endl;
+
 	}
 
 	void SetNumberOfSection(const int& nSection)
@@ -300,7 +301,7 @@ private:
 	
 
 	std::random_device rd;
-	// std::mt19937 gen;
+	std::mt19937 gen;
 
 	// Audio effects.
 	axAudioFilter* _filter;

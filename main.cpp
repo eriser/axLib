@@ -100,6 +100,23 @@ void Desktop::OnShowAppDirectory(const axButtonMsg& msg)
 
 void Desktop::OnOpenFile(const axButtonMsg& msg)
 {
+	//cout << "open" << endl;
+	//HWND win = static_cast<axCoreWin32*>(GetApp()->GetCore())->GetMainWindowHandle();
+	//HMENU menu = CreatePopupMenu();
+	//if (menu != NULL)
+	//{
+	//	cout << "not null" << endl;
+	//	MENUITEMINFO item_info;
+	//	item_info.cbSize = sizeof(MENUITEMINFO);
+	//	item_info.fMask = MIIM_STRING;
+	//	item_info.wID = 1;
+	//	item_info.dwTypeData = "TEST";
+	//	//AppendMenu(menu, MF_STRING, 1, "&TEST");
+
+	//	BOOL err = InsertMenuItem(menu, 1, false,
+	//		&item_info
+	//		);
+	//}
 	//cout << "Click" << endl;
 	//string filename(GetApp()->OpenFileDialog());
 	//if (!filename.empty())
