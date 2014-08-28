@@ -39,9 +39,35 @@ void axAudioFilter::SetGain(axFloat f)
 	gain = f;
 }
 
+void axAudioFilter::SetFreqEnvelopePtr(axFloat* ptr)
+{
+	env[0] = ptr;
+	// if(env[0] != nullptr)
+	// {
+	// 	cout << "ENV[0] diff from nullptr" << endl;
+	// }
+}
+
+void axAudioFilter::SetFreqEnvelopeAmountPtr(axFloat* ptr)
+{
+	envAmnt[0] = ptr;
+
+	// if(envAmnt[0] != nullptr)
+	// {
+	// 	cout << "ENV[0] diff from nullptr" << endl;
+	// }
+}
+
+	// void SetFreqEnvelopePtr(axFloat* ptr);
+	// void SetFreqEnvelopeAmountPtr(axFloat* ptr);
+
 axFloat axAudioFilter::Process(axFloat in)
 {
 	axFloat v;
+	axFloat f = freq;
+	axFloat res = q;
+	bool compute_coeff = false;
+	//Compute_Variables(axFloat freq, axFloat q)
 
 	if (init)
 	{
@@ -49,7 +75,20 @@ axFloat axAudioFilter::Process(axFloat in)
 		init = false;
 	}
 
-	//Compute_Variables(in, axFloat q)
+	if (env[0] != nullptr && envAmnt[0] != nullptr)
+	{
+		// cout << "ENV FREQ" << endl;
+		axFloat modEnvFreq = *env[0];
+		f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
+		CLIP(f, 20, 20000);
+		compute_coeff = true;
+	}
+
+	if(compute_coeff)
+	{
+		Compute_Variables(f, res);
+	}
+	//C
 	v = ((b0 * in) + (b1 * x1) + (b2 * x2) - (a1 * y1) - (a2 * y2)) / a0;
 
 	y2 = y1;
@@ -59,6 +98,7 @@ axFloat axAudioFilter::Process(axFloat in)
 
 	return v * gain;
 }
+
 t_out axAudioFilter::ProcessStereo(t_out in)
 {
 	t_out v;
@@ -76,8 +116,9 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 		comp = 1;
 	}
 	//ENV FREQ
-	if (env[0] != NULL && envAmnt[0] != NULL)
+	if (env[0] != nullptr && envAmnt[0] != nullptr)
 	{
+		cout << "ENV FREQ" << endl;
 		axFloat modEnvFreq = *env[0];
 		f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
 		CLIP(f, 20, 20000);

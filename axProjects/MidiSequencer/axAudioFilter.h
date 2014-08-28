@@ -57,6 +57,9 @@ public:
 	void SetQ(axFloat f);
 	void SetGain(axFloat f);
 
+	void SetFreqEnvelopePtr(axFloat* ptr);
+	void SetFreqEnvelopeAmountPtr(axFloat* ptr);
+
 	axFloat* lfo[2];
 	axFloat* lfoAmnt[2];
 	axFloat* env[2];

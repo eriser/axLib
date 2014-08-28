@@ -6,6 +6,7 @@
 
 #include "axC++.h"
 #include "axManager.h"
+#include <time.h>
 
 class axCore
 {
@@ -45,6 +46,8 @@ protected:
 
 	bool _needToDraw, _popupNeedToDraw;
 	axSize _size, _popSize;
+	//clock_t _lastDrawingTime;
+
 };
 
 //extern axCore* axCORE;

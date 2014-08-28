@@ -18,6 +18,8 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	_gain = 0.5;
 	_speed = 1.0;
 	_trackName = "";
+	_modFilterFreqEnv = 0.0;
+	_modFilterFreqEnvAmount = 0.0;
 
 	/// @todo Need to set proper frame buffer size.
 	for(int i = 0; i < 1024 * 2; i++)
@@ -37,7 +39,10 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 
 	_filter = new axAudioFilter();
 	_env = new axAudioEnvelope();
-	
+
+	cout << "Filter set ptr" << endl;
+	_filter->SetFreqEnvelopePtr(&_modFilterFreqEnv);
+	_filter->SetFreqEnvelopeAmountPtr(&_modFilterFreqEnvAmount);
     
 
     // rd = random_device();
@@ -89,7 +94,8 @@ float* AudioTrack::Process()
 		out *= _gain;
 
 		out = _filter->Process(out);
-		out *= _env->Process();
+		_modFilterFreqEnv = _env->Process();
+		out *= _modFilterFreqEnv;
 
     	_outBuffer[i] = out;// * _velocity[_selectedSection][_beatIndex];
     	_outBuffer[i+1] = out;// * _velocity[_selectedSection][_beatIndex];
@@ -176,8 +182,11 @@ Audio::Audio()
 		cout << "OUTPUT : " << i << " " << deviceInfo->name << endl;
 	}
 
-
+#ifdef __linux__
+	outputParameters.device = 1;//1;//;//Pa_GetDefaultOutputDevice(); //1
+#elif _MSC_VER
 	outputParameters.device = 4;//1;//;//Pa_GetDefaultOutputDevice(); //1
+#endif
 	// cout << "OUTPU : " << outputParameters.device.name << endl;
 	if(outputParameters.device == paNoDevice)
 	{

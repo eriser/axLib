@@ -306,76 +306,23 @@ bool WindowManagerSupported(Display *disp, const string& prop)
 
 void axCoreX11::MainLoop()
 {
-	// Set the window manager state
-	// Atom _NET_WM_STATE = XInternAtom(
-	// 			_display,
-	// 			"_NET_WM_STATE",
-	// 			False);
-
+	// Not sure what's this for anymore.
 	Atom _NET_WM_STATE = XInternAtom(_display, "_NET_WM_STATE", False); 
 	XSetWMProtocols(_display, _win, &_NET_WM_STATE, 1);
 
-	// XChangeProperty(
-	// 			_display,
-	// 			_win,
-	// 			_NET_WM_STATE,
-	// 			XA_ATOM,
-	// 			32,
-	// 			PropModeReplace,
-	// 			(unsigned char *) &_NET_WM_STATE_HIDDEN,
-	// 			1);
-
-	//---------------------------------------------------------------------
 	Atom del = XInternAtom(_display, "WM_DELETE_WINDOW", False); 
 	XSetWMProtocols(_display, _win, &del, 1);  
-
-	#define IsSupported(x) cout << "Support for " << x << \
-		" : " <<WindowManagerSupported(_display, x) << endl;
-
-	
-	// IsSupported("_NET_WM_STATE_HIDDEN");
-	// IsSupported("_NET_MOVERESIZE_WINDOW");
-
-	
-	// XSetWMProtocols(_display, _win, 
-	// 				&_NET_WM_STATE_HIDDEN, //Specifies the list of protocols. 
-	// 				1);  // Count. 
-
-	// _NET_WM_STATE_FULLSCREEN, ATOM
-
-	// XSizeHints sh;
-	// sh.width = sh.min_width = 1700;
-	// sh.height = sh.min_height = 930;
-	// sh.h = 220;
-	// sh.y = 0;
-	// sh.flags = PSize | PMinSize | PPosition;
-	// XSetWMNormalHints(dpy, win, &sh);
-	// XMapWindow(dpy, win);
-
-
-	// bool uname_ok = false;
-	// struct utsname sname;  
-	// int ret = uname(&sname);
-
-	// if (ret != -1)
-	// {
-	// 	uname_ok = true;
-	// }
-	//---------------------------------------------------------------------
 
 	XEvent e;
 
 	bool loop_on = true;
 
-
 	while (loop_on) 
 	{
 		XNextEvent(_display, &e);
-
 		axCore* core = _app->GetCore();
 		axManager* windowManager = _app->GetCore()->GetWindowManager();
 
-		//axManager* windowManager = axCORE->GetWindowManager();
 		switch(e.type)
 		{
 			case Expose:
@@ -387,21 +334,17 @@ void axCoreX11::MainLoop()
 			case ConfigureNotify:
 			{
 				XConfigureEvent conf = e.xconfigure;
-				//axCORE->ResizeGLScene(conf.width, conf.height);
 				axSize size = GetGlobalSize();
 
 				if (conf.width != size.x || conf.height != size.y) 
 				{
 	                core->ResizeGLScene(conf.width, conf.height);
 					windowManager->OnSize();
-					// cout << "Resize" << endl;
             	}
             	else // Window move.
             	{
             		// cout << "Window move" << endl;
             	}
-				
-				
 			}
 			break;
 
@@ -439,21 +382,24 @@ void axCoreX11::MainLoop()
 						windowManager->OnMouseLeftUp(m_pos);
 					}
 					break;
-
+					/// @todo Implement mouse right up.
 					case 3: // Mouse right up.
 					break;
 				}
 			}
 			break;
 
+			/// @todo Implement FocusInApp.
 			case FocusIn:
 			// cout << "FOCUS IN" << endl;
 			break;
 
+			/// @todo Implement MouseEnterApp.
 			case EnterNotify:
 			// cout << "ENTER" << endl;
 			break;
 
+			/// @todo Implement MouseLeavingApp..
 			case LeaveNotify:
 			// cout << "LEAAVE" << endl;
 			break;
@@ -479,20 +425,6 @@ void axCoreX11::MainLoop()
 					loop_on = false;
 					// cout << "Delete Window" << endl;
 				}
-
-				// else if(static_cast<unsigned int>(e.xclient.data.l[0]) == XdndEnter)
-				// {
-				// 	cout << "ENTER DRAG AND DROP." << endl;
-				// }
-				// else if((Atom)e.xclient.data.l[0] == _NET_WM_STATE)
-				// {
-				// 	cout << "Hidden" << endl;
-				// }
-
-				// else if(e.xclient.message_type == _NET_WM_STATE)
-				// {
-				// 	cout << "Hidden2" << endl;
-				// }
 			}
 			break;
 		}
@@ -509,7 +441,6 @@ void axCoreX11::MainLoop()
 //-----------------------------------------------------------------------------
 // PRIVATE
 //-----------------------------------------------------------------------------
-
 Display* axCoreX11::CreateDisplay()
 {
 	Display* dpy = XOpenDisplay(NULL);

@@ -496,8 +496,8 @@ ScrollDrumMachine::ScrollDrumMachine(axApp* app, axWindow* parent,
 								 axScrollBarInfo());
 
 
-	scroll_bar->setInputInfo(rect.size.y, 1000, 0);
-	_drum = new DrumMachine(app, this, axRect(45, 0, rect.size.x - 90 - 14, 1000), audio);
+	scroll_bar->setInputInfo(rect.size.y, 800, 0);
+	_drum = new DrumMachine(app, this, axRect(45, 0, rect.size.x - 90 - 14, 800), audio);
 
 	_side_img = new axImage("woodSide.png");
 
@@ -513,7 +513,7 @@ void ScrollDrumMachine::OnScroll(const axScrollBarMsg& msg)
 	{
 		// cout << "pos : " << GetRect().position.y << endl;
 		_drum->SetPosition(axPoint(45, delta));
-		cout << delta << endl;
+		// cout << delta << endl;
 		_last_delta = delta;
 	}
 	// scroll_win->SetScrollDecay(axPoint(0, stof(msg.GetMsg())));

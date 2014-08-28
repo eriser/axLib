@@ -257,6 +257,11 @@ public:
 		_trackName = name;
 	}
 
+	void SetFilterFrequencyEnvelopeAmount(const axFloat& value)
+	{
+		_modFilterFreqEnvAmount = value;
+	}
+
 private:
 	static const int MAX_NUM_OF_PROB_TRACK = 3;
 	static const int NUMBER_OF_NOTES = 16;
@@ -282,6 +287,8 @@ private:
 	float* _outBuffer;
 
 	axFloat _gain;
+	axFloat _modFilterFreqEnv, _modFilterFreqEnvAmount;
+	
 
 	std::random_device rd;
 	// std::mt19937 gen;

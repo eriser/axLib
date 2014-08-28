@@ -7,6 +7,8 @@ axCore::axCore():
 {
 	_windowManager = new axManager();
 	 _popupManager = new axManager();
+
+	 //_lastDrawingTime = clock();
 }
 
 axManager* axCore::GetWindowManager()
@@ -154,10 +156,13 @@ void axCore::UpdateAll()
 int axCore::DrawGLScene()
 {
 	//glViewport(0, 0, att.width, att.height);
-	
-	if (_needToDraw)
+	// /float time = float(clock() - _lastDrawingTime) / CLOCKS_PER_SEC;
+	// cout << "time  draw : " << _lastDrawingTime << "Clock per sec " << CLOCKS_PER_SEC << endl;
+	//cout << time << endl;
+	if (_needToDraw)// && time > 0.01)
 	//if (true)
 	{
+		// _lastDrawingTime = clock();
 		_needToDraw = false;
 	
 		// Clear screen and depth buffer.

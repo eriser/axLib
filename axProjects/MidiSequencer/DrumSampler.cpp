@@ -92,8 +92,9 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 	res->SetBackgroundAlpha(0.0);
 	res->SetValue(0.00707);
 
+	fct = GetOnFilterEnvelope();
 	axKnob* env = new axKnob(app, this, axRect(98, 156, 46, 46),
-		axKnobEvents(), knob_info);
+		axKnobEvents(fct), knob_info);
 	env->SetBackgroundAlpha(0.0);
 
 
@@ -159,6 +160,13 @@ void SynthControl::OnFilterRes(const axKnobMsg& msg)
 {
 	axFloat q = msg.GetValue() * 5.0;
 	_audio->GetAudioTrack(_trackNum)->SetFilterRes(q);
+}
+
+void SynthControl::OnFilterEnvelope(const axKnobMsg& msg)
+{
+	// cout << "Filter env : " << msg.GetValue() << endl;
+	// axFloat q = msg.GetValue() * 5.0;
+	_audio->GetAudioTrack(_trackNum)->SetFilterFrequencyEnvelopeAmount(msg.GetValue());
 }
 
 void SynthControl::OnAttack(const axKnobMsg& msg)
