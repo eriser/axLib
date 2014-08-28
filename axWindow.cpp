@@ -6,7 +6,8 @@ axWindow::axWindow(axWindow* parent, const axRect& rect):
 	_parent(parent),
 	//_id(NEXT_ID),
 	_rect(rect),
-	_isHidden(false)
+	_isHidden(false),
+	_isPopup(false)
 	// _scrollDecay(0, 0)
 {
 	if (parent == nullptr)

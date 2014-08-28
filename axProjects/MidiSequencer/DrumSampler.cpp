@@ -78,15 +78,17 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 						 "knob_dark.png",
 						 "knob_dark.png");
 
-	axKnobEvents freq_evt(GetOnFilterFrequency());
+	axEvtFunction(axKnobMsg) fct = GetOnFilterFrequency();
+	axKnobEvents freq_evt(fct);
 	axKnob* knob = new axKnob(app, this, axRect(19, 156, 46, 46),
 							  freq_evt, knob_info);
 
 	knob->SetBackgroundAlpha(0.0);
 	knob->SetValue(1.0);
 
+	fct = GetOnFilterRes();
 	axKnob* res = new axKnob(app, this, axRect(59, 156, 46, 46),
-							 axKnobEvents(GetOnFilterRes()), knob_info);
+							 axKnobEvents(fct), knob_info);
 	res->SetBackgroundAlpha(0.0);
 	res->SetValue(0.00707);
 
@@ -95,28 +97,32 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 	env->SetBackgroundAlpha(0.0);
 
 
-
+	fct = GetOnAttack();
 	axKnob* att = new axKnob(app, this, axRect(163, 156, 46, 46),
-		axKnobEvents(GetOnAttack()), knob_info);
+		axKnobEvents(fct), knob_info);
 	att->SetBackgroundAlpha(0.0);
 
+	fct = GetOnDecay();
 	axKnob* dec = new axKnob(app, this, axRect(202, 156, 46, 46),
-		axKnobEvents(GetOnDecay()), knob_info);
+		axKnobEvents(fct), knob_info);
 	dec->SetBackgroundAlpha(0.0);
 	dec->SetValue(1.0);
 
+	fct = GetOnTuning();
 	axKnob* pitch = new axKnob(app, this, axRect(269, 156, 46, 46),
-		axKnobEvents(GetOnTuning()), knob_info);
+		axKnobEvents(fct), knob_info);
 	pitch->SetBackgroundAlpha(0.0);
 	pitch->SetValue(0.5);
+
 
 	axKnob* env_pitch = new axKnob(app, this, axRect(308, 156, 46, 46),
 		axKnobEvents(), knob_info);
 	env_pitch->SetBackgroundAlpha(0.0);
 	env_pitch->SetValue(0.0);
 
+	fct = GetOnGain();
 	axKnob* gain = new axKnob(app, this, axRect(376, 156, 46, 46),
-		axKnobEvents(GetOnGain()), knob_info);
+		axKnobEvents(fct), knob_info);
 	gain->SetBackgroundAlpha(0.0);
 	gain->SetValue(0.5);
 	//axKnob* knob2 = new axKnob(app, this, axRect(230, 130, 32, 32),

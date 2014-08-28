@@ -11,71 +11,71 @@
 #include "axImage.h"
 #include <fstream>
 
-enum axType
-{
-	axCOLOR,
-	axINT,
-	axFLOAT
-};
+// enum axType
+// {
+// 	axCOLOR,
+// 	axINT,
+// 	axFLOAT
+// };
 
 //typedef unsigned int axType;
 
-class axInfo
-{
-public:
-	axInfo()
-	{
-	}
+// class axInfo
+// {
+// public:
+// 	axInfo()
+// 	{
+// 	}
 
-	bool Load()
-	{
-		Fill();
-		return true;
-	}
+// 	bool Load()
+// 	{
+// 		Fill();
+// 		return true;
+// 	}
 
-	bool Load(const string& info_path)
-	{
-		Fill();
-		cout << "Size : " << _colors.size() << endl;
-		return true;
-	}
+// 	bool Load(const string& info_path)
+// 	{
+// 		Fill();
+// 		cout << "Size : " << _colors.size() << endl;
+// 		return true;
+// 	}
 
-	virtual void Fill() = 0;
+// 	virtual void Fill() = 0;
 
-	axColor& operator [](pair<axColor, std::string>& col)
-	{
-		return _colors[col.second];
-	}
+// 	axColor& operator [](pair<axColor, std::string>& col)
+// 	{
+// 		return _colors[col.second];
+// 	}
 
-private:
-	map<string, axColor> _colors;
-};
+// private:
+// 	map<string, axColor> _colors;
+// };
 
-#define axAddInfo(type, label) (*this)[pair<type, string>(type(), label)]
+// #define axAddInfo(type, label) (*this)[pair<type, string>(type(), label)]
 
-class axInfoTest : public axInfo
-{
-public:
-	axInfoTest()
-	{
-		Load();
-	}
+// class axInfoTest : public axInfo
+// {
+// public:
+// 	axInfoTest()
+// 	{
+// 		Load();
+// 	}
 
-	axInfoTest(const string& path)
-	{	
-		Load(path);
-	}
+// 	axInfoTest(const string& path)
+// 	{	
+// 		Load(path);
+// 	}
 
-	virtual void Fill()
-	{
-		axAddInfo(axColor, "normal");
-		axAddInfo(axColor, "hover");
-		axAddInfo(axColor, "clicking");
-		axAddInfo(axColor, "selected");
-		axAddInfo(axColor, "contour");
-		axAddInfo(axColor, "font");
-	}
-};
+// 	virtual void Fill()
+// 	{
+// 		axAddInfo(axColor, "normal");
+// 		axAddInfo(axColor, "hover");
+// 		axAddInfo(axColor, "clicking");
+// 		axAddInfo(axColor, "selected");
+// 		axAddInfo(axColor, "contour");
+// 		axAddInfo(axColor, "font");
+// 	}
+// };
 
 /**************************************************************************//**
  * axButtonFlags.

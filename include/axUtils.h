@@ -18,6 +18,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <fstream>
 #include <map>
 #include <deque>
 #include <algorithm>
@@ -26,7 +27,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h> 
-#endif __linux__
+#endif //__linux__
 
 using namespace std;
 

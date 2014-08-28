@@ -5,14 +5,14 @@ axApp::axApp()
 #ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(axSize(0, 0));
-#endif __linux__
+#endif //__linux__
 
 
 #ifdef _MSC_VER
 	_core = new axCoreWin32();
 	axCORE = _core;
 	_core->Init(axSize(0, 0));
-#endif _MSC_VER
+#endif //_MSC_VER
 }
 
 axApp::axApp(const axSize& frame_size)
@@ -20,7 +20,7 @@ axApp::axApp(const axSize& frame_size)
 #ifdef __linux__
 	_core = new axCoreX11(this);
 	_core->Init(frame_size);
-#endif __linux__
+#endif //__linux__
 	// //axCORE = new axCoreWin32();
 	// axCORE = new axCoreX11();
 	// axCORE->Init(frame_size);
@@ -50,7 +50,7 @@ void axApp::CreatePopupWindow(const axSize& size)
 #ifdef __linux__
 	axCore* c = new axCoreX11(this);
 	c->Init(size);
-#endif __linux__
+#endif //__linux__
 }
 
 string axApp::OpenFileDialog()
@@ -77,7 +77,7 @@ string axApp::GetCurrentAppDirectory()
 	path = path.substr(0, path.find_last_of("/"));
 	path.push_back('/');
 	return path;
-#endif __linux__
+#endif //__linux__
 
 #ifdef _MSC_VER
 	HMODULE hModule = GetModuleHandleW(NULL);
@@ -89,7 +89,7 @@ string axApp::GetCurrentAppDirectory()
 
 	return string(str);
 
-#endif _MSC_VER
+#endif //_MSC_VER
 
 }
 
@@ -118,7 +118,8 @@ void axApp::AddWindow(axWindow* win)
 
 void axApp::AddPopWindow(axWindow* win)
 {
-	_core->GetPopupManager()->Add(win);
+	cerr << "POP WINDOW ERROR" << endl;
+	// _core->GetPopupManager()->Add(win);
 }
 
 

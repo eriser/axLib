@@ -368,7 +368,7 @@ DrumMachine::DrumMachine(axApp* app,
 {
 	function<void (axButtonMsg)> btnFct(GetOnChangeTemplate());
 
-	string dir(app->GetCurrentAppDirectory());
+	// string dir(app->GetCurrentAppDirectory());
 
 	_topBg = new axImage("tool2.png");
 	
@@ -530,7 +530,7 @@ int main()
 	axMidi* midi = new axMidi(audio);
 
 	axApp* app = new axApp(axSize(570, 600));
-
+	
 	ScrollDrumMachine* machine = new ScrollDrumMachine(app, 
 										nullptr, 
 										axRect(0, 0, 570, 600),
