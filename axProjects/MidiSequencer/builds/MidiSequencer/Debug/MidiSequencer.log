@@ -1,16 +1,206 @@
-﻿  axAudio.cpp
+﻿  main.cpp
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(319): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(366): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(408): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(506): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(516): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(75): warning C4244: 'initializing' : conversion from 'double' to 'long', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(76): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(88): warning C4244: '*=' : conversion from 'double' to 'float', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(111): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(335): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(382): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(424): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(522): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(532): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(89): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(90): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(113): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(24): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(29): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(30): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(68): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(80): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(81): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(82): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(85): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(98): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(105): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(107): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(111): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(112): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(116): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(122): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(140): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(141): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(143): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(154): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(182): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(200): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(201): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(202): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(203): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(204): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(213): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(214): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(215): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(216): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(217): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(299): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(325): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(347): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(510): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(529): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+  axAudioFilter.cpp
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(9): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(31): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(82): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(114): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(123): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(132): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(133): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(140): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(141): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(179): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(182): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudiofilter.cpp(184): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+  axAudio.cpp
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(335): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(382): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(424): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(522): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(532): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(25): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(90): warning C4244: 'initializing' : conversion from 'double' to 'long', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(91): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(100): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(113): warning C4244: '*=' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(137): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+  DrumSampler.cpp
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(335): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(382): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(424): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(522): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(532): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(17): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(34): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(73): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(93): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(155): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(161): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(169): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(175): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(181): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(187): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(193): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(200): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(209): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(287): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(293): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(298): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(325): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(337): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(353): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(375): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+  Generating Code...
+  Compiling...
+  axMidi.cpp
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(335): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(382): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(424): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(522): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(532): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axmidi.cpp(50): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axmidi.cpp(90): warning C4101: 'result' : unreferenced local variable
+  MidiTrack.cpp
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(335): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(382): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(424): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(522): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(532): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(89): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(90): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(113): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(51): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(53): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(54): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(57): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(59): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(60): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(65): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(80): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(90): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(100): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(175): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(184): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(194): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(238): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(239): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(240): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(244): warning C4305: '=' : truncation from 'double' to 'float'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(246): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(247): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(248): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(249): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(288): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(289): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(348): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(349): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(407): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(420): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(421): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(423): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(439): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(452): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(457): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(486): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(489): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(508): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(519): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(580): warning C4244: 'argument' : conversion from 'const double' to 'const float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(677): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(680): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(686): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(698): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(728): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(729): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(736): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(756): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(813): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(816): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(820): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(828): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+  AudioWaveform.cpp
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(335): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(382): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(424): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(522): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(532): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(32): warning C4244: 'argument' : conversion from 'axFloat' to 'axInt', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(52): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(127): warning C4018: '<' : signed/unsigned mismatch
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(138): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(139): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+  Generating Code...
   libpng16.lib(png.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
 AudioWaveform.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification

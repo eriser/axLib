@@ -1,1 +1,11 @@
-﻿
+﻿  ReWire.c
+  rewireapi.c
+..\ReWireSDK\rewireapi.c(114): warning C4996: 'GetVersionExW': was declared deprecated
+          C:\Program Files (x86)\Windows Kits\8.1\Include\um\sysinfoapi.h(442) : see declaration of 'GetVersionExW'
+  rewiredeviceapi.c
+  Generating Code...
+  SampleDevice.cpp
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\ReWireSDK_2.6.4_135\Output\SamplePanel\Win32\Debugging\SampleDevice.dll) does not match the Linker's OutputFile property value (C:\Users\alexarse\Desktop\axLib\libs\ReWireSDK_2.6.4_135\Output\SamplePanel\Win32\Debugging\SampleDeviceDebugging.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1188,5): warning MSB8012: TargetName(SampleDevice) does not match the Linker's OutputFile property value (SampleDeviceDebugging). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     Creating library C:\Users\alexarse\Desktop\axLib\libs\ReWireSDK_2.6.4_135\Output\SamplePanel\Win32\Debugging\SampleDeviceDebugging.lib and object C:\Users\alexarse\Desktop\axLib\libs\ReWireSDK_2.6.4_135\Output\SamplePanel\Win32\Debugging\SampleDeviceDebugging.exp
+  SampleDevice.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\ReWireSDK_2.6.4_135\Output\SamplePanel\Win32\Debugging\SampleDevice.dll

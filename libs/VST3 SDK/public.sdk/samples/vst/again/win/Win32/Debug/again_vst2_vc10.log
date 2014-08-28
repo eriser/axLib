@@ -1,68 +1,9 @@
-﻿Build started 16/08/2014 8:54:38 PM.
-     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\again_vst2_vc10.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../../.. /I../../../../../vstgui.sf /ZI /nologo /W3 /WX- /Od /Oy- /D WINDOWS=1 /D DEVELOPMENT=1 /D _CRT_SECURE_NO_DEPRECATE=1 /D _VC80_UPGRADE=0x0710 /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\again1.obj" /Fd"Win32\Debug\vc120.pdb" /FR"Win32\Debug\\" /Gd /TP /analyze- /errorReport:prompt ..\source\again.cpp
-         again.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../../.. /I../../../../../vstgui.sf /ZI /nologo /W3 /WX- /Od /Oy- /D WINDOWS=1 /D DEVELOPMENT=1 /D _CRT_SECURE_NO_DEPRECATE=1 /D _VC80_UPGRADE=0x0710 /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /FR"Win32\Debug\\" /Gd /TP /analyze- /errorReport:prompt ..\source\againcontroller.cpp ..\source\againeditor.cpp ..\source\againentry_vst2.cpp ..\..\..\..\source\common\pluginview.cpp ..\..\..\..\source\vst\vstaudioeffect.cpp ..\..\..\..\source\vst\vstbus.cpp ..\..\..\..\source\vst\vstcomponent.cpp ..\..\..\..\source\vst\vstcomponentbase.cpp ..\..\..\..\source\vst\vsteditcontroller.cpp ..\..\..\..\source\vst\vstguieditor.cpp ..\..\..\..\source\vst\vstinitiids.cpp ..\..\..\..\source\vst\vstparameters.cpp ..\..\..\..\source\main\dllmain.cpp ..\..\..\..\source\main\pluginfactoryvst3.cpp ..\..\..\..\..\pluginterfaces\base\ustring.cpp ..\..\..\..\..\vstgui.sf\vstgui\cvstguitimer.cpp ..\..\..\..\..\vstgui.sf\vstgui\vstcontrols.cpp ..\..\..\..\..\vstgui.sf\vstgui\vstgui.cpp ..\..\..\..\..\vstgui.sf\vstgui\vstguidebug.cpp
-         vstguidebug.cpp
-         vstgui.cpp
-     1>c:\users\alexarse\desktop\axlib\libs\vst3 sdk\vstgui.sf\vstgui\vstgui.cpp(3674): warning C4996: 'GetVersionExW': was declared deprecated
-                 c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h(442) : see declaration of 'GetVersionExW'
-         vstcontrols.cpp
-         cvstguitimer.cpp
-         ustring.cpp
-         pluginfactoryvst3.cpp
-         dllmain.cpp
-         vstparameters.cpp
-         vstinitiids.cpp
-         vstguieditor.cpp
-         vsteditcontroller.cpp
-         vstcomponentbase.cpp
-         vstcomponent.cpp
-         vstbus.cpp
-         vstaudioeffect.cpp
-         pluginview.cpp
-         againentry_vst2.cpp
-         againeditor.cpp
-         againcontroller.cpp
-         Generating Code...
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../../.. /I../../../../../vstgui.sf /ZI /nologo /W3 /WX- /Od /Oy- /D WINDOWS=1 /D DEVELOPMENT=1 /D _CRT_SECURE_NO_DEPRECATE=1 /D _VC80_UPGRADE=0x0710 /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\againentry1.obj" /Fd"Win32\Debug\vc120.pdb" /FR"Win32\Debug\\" /Gd /TP /analyze- /errorReport:prompt ..\source\againentry.cpp
-         againentry.cpp
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _VC80_UPGRADE=0x0710 /l"0x0409" /I../../../../.. /nologo /fo"Win32\Debug\again.res" ..\resource\again.rc 
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\Win32\Debug\AGain VST2.dll) does not match the Linker's OutputFile property value (C:\Program Files (x86)\Steinberg\vstplugins\test\AGain VST2.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Program Files (x86)\Steinberg\vstplugins\test\AGain VST2.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"again_vst2.def" /MANIFEST:NO /DEBUG /PDB:"Win32\Debug\again.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Win32\Debug\AGain VST2.lib" /MACHINE:X86 /SAFESEH /DLL Win32\Debug\again.res
-         Win32\Debug\againcontroller.obj
-         Win32\Debug\againeditor.obj
-         Win32\Debug\againentry_vst2.obj
-         Win32\Debug\pluginview.obj
-         Win32\Debug\vstaudioeffect.obj
-         Win32\Debug\vstbus.obj
-         Win32\Debug\vstcomponent.obj
-         Win32\Debug\vstcomponentbase.obj
-         Win32\Debug\vsteditcontroller.obj
-         Win32\Debug\vstguieditor.obj
-         Win32\Debug\vstinitiids.obj
-         Win32\Debug\vstparameters.obj
-         Win32\Debug\dllmain.obj
-         Win32\Debug\pluginfactoryvst3.obj
-         Win32\Debug\ustring.obj
-         Win32\Debug\cvstguitimer.obj
-         Win32\Debug\vstcontrols.obj
-         Win32\Debug\vstgui.obj
-         Win32\Debug\vstguidebug.obj
-         Win32\Debug\again1.obj
-         Win32\Debug\againentry1.obj
-         "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\Win32\Debug.base_vc10\base_vc10.lib"
-         "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\source\vst\vst2wrapper\win\Win32\Debug\vst2wrapper.lib"
-     1>againcontroller.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-            Creating library Win32\Debug\AGain VST2.lib and object Win32\Debug\AGain VST2.exp
-         again_vst2_vc10.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\Win32\Debug\AGain VST2.dll
-       BscMake:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"Win32\Debug\AGain VST2.bsc" Win32\Debug\again.sbr Win32\Debug\againcontroller.sbr Win32\Debug\againeditor.sbr Win32\Debug\againentry.sbr Win32\Debug\againentry_vst2.sbr Win32\Debug\pluginview.sbr Win32\Debug\vstaudioeffect.sbr Win32\Debug\vstbus.sbr Win32\Debug\vstcomponent.sbr Win32\Debug\vstcomponentbase.sbr Win32\Debug\vsteditcontroller.sbr Win32\Debug\vstguieditor.sbr Win32\Debug\vstinitiids.sbr Win32\Debug\vstparameters.sbr Win32\Debug\dllmain.sbr Win32\Debug\pluginfactoryvst3.sbr Win32\Debug\ustring.sbr Win32\Debug\cvstguitimer.sbr Win32\Debug\vstcontrols.sbr Win32\Debug\vstgui.sbr Win32\Debug\vstguidebug.sbr
-     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\again_vst2_vc10.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:01:14.98
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Win32\Debug\) contains files shared from another project (AGain.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  again.cpp
+  againentry_vst2.cpp
+  againentry.cpp
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\Win32\Debug\AGain VST2.dll) does not match the Linker's OutputFile property value (C:\Program Files (x86)\Steinberg\vstplugins\test\AGain VST2.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+  LINK : program database C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\Win32\Debug\again.pdb missing; performing full link
+againcontroller.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+     Creating library Win32\Debug\AGain VST2.lib and object Win32\Debug\AGain VST2.exp
+  again_vst2_vc10.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\samples\vst\again\win\Win32\Debug\AGain VST2.dll
