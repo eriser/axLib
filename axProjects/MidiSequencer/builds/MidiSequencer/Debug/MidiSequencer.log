@@ -1,6 +1,4 @@
-﻿  DrumSampler.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+﻿  axAudio.cpp
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(190): warning C4101: 'nSubTrack' : unreferenced local variable
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(245): warning C4305: '=' : truncation from 'double' to 'axFloat'
@@ -9,24 +7,10 @@ c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(366): warning
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(408): warning C4018: '<=' : signed/unsigned mismatch
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(506): warning C4018: '<' : signed/unsigned mismatch
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(516): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(17): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(34): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(73): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(91): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(148): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(154): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(161): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(167): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(173): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(181): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(190): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(268): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(274): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(279): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(306): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(318): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(334): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(356): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(75): warning C4244: 'initializing' : conversion from 'double' to 'long', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(76): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(88): warning C4244: '*=' : conversion from 'double' to 'float', possible loss of data
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(111): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
   libpng16.lib(png.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
 AudioWaveform.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
@@ -46,8 +30,6 @@ libpng16.lib(pngset.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with '
 libpng16.lib(pngwutil.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwutil.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
 libpng16.lib(pngwio.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwio.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
 libpng16.lib(pngwtran.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwtran.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-axAudioFilter.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'axAudioFilter.obj' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc120.pdb'; linking object as if no debug info
-axAudioEnvelope.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'axAudioEnvelope.obj' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc120.pdb'; linking object as if no debug info
 axAudioBuffer.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'axAudioBuffer.obj' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc120.pdb'; linking object as if no debug info
 zlib.lib(adler32.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(adler32.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
 zlib.lib(crc32.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(crc32.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info

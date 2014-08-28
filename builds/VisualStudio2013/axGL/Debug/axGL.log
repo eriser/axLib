@@ -1,6 +1,6 @@
-﻿  axKnob.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axknob.cpp(68): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axknob.cpp(90): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
+﻿  axCore.cpp
+c:\users\alexarse\desktop\axlib\axcore.cpp(173): warning C4244: 'argument' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axcore.cpp(175): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+c:\users\alexarse\desktop\axlib\axcore.cpp(219): warning C4244: 'argument' : conversion from 'double' to 'axFloat', possible loss of data
+c:\users\alexarse\desktop\axlib\axcore.cpp(221): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
   axGL.vcxproj -> C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib
