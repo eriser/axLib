@@ -15,6 +15,8 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	_buffer = new axAudioBuffer(sndfile);
 	_outBuffer = new float[1024 * 2];
 	_deviation = 0.0;
+	_gain = 0.5;
+	_speed = 1.0;
 
 	/// @todo Need to set proper frame buffer size.
 	for(int i = 0; i < 1024 * 2; i++)
@@ -33,6 +35,7 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	}
 
 	_filter = new axAudioFilter();
+	_env = new axAudioEnvelope();
 	
     
 
@@ -58,6 +61,9 @@ float* AudioTrack::Process()
 {
  	axFloat* buffer = _buffer->GetBuffer();
  	axBufferInfo binfo =  _buffer->GetBufferInfo();
+	//axFloat speed = 0.5;
+
+
 
 	for(int i = 0; i < 1024 * 2; i+=2)
     {
@@ -65,8 +71,12 @@ float* AudioTrack::Process()
 
     	if(_nFrameBuf < binfo.frames)
     	{
-    		out = buffer[_nFrameBuf];
-    		_nFrameBuf++;
+			long pos = _nFrameBuf;
+			axFloat frac = _nFrameBuf - pos;
+			out = LINE_INTERPOLE(buffer[pos], buffer[pos+1], frac);
+    		//out = buffer[int(floor(_nFrameBuf))];
+    		//_nFrameBuf++;
+			_nFrameBuf += _speed;
     	}
 
     	if(_nFrameBuf > binfo.frames - 1)
@@ -75,8 +85,10 @@ float* AudioTrack::Process()
     	}
 
     	out *= _currentVelocity;
+		out *= _gain;
 
 		out = _filter->Process(out);
+		out *= _env->Process();
 
     	_outBuffer[i] = out;// * _velocity[_selectedSection][_beatIndex];
     	_outBuffer[i+1] = out;// * _velocity[_selectedSection][_beatIndex];
@@ -88,6 +100,7 @@ float* AudioTrack::Process()
 			_nFrameBuf = 0;
 			_currentVelocity = 0.7;
 			_midiNoteOn = false;
+			_env->TriggerNote();
 		}
 
     	if(_sampleCount > _nSamplePerBeat)
@@ -100,6 +113,7 @@ float* AudioTrack::Process()
     			if(_probability[_selectedSection][_beatIndex] >= r)
     			{
     				_nFrameBuf = 0;
+					_env->TriggerNote();
 
 					double v = _velocity[_selectedSection][_beatIndex];
 					_currentVelocity = axNormalDistributionRandomGenerator(v, _deviation);

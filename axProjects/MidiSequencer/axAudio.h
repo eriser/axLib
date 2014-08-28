@@ -15,6 +15,9 @@
 #include "portaudio.h" 
 #include "axAudioBuffer.h"
 #include "axAudioFilter.h"
+#include "axAudioEnvelope.h"
+
+#define LINE_INTERPOLE(y1, y2, mu) y1 + mu * (y2 - y1);
 
 using namespace std;
 
@@ -219,20 +222,47 @@ public:
 		_filter->SetQ(q);
 	}
 
+	void SetAttack(const axFloat& value)
+	{
+		_env->SetAttack(value);
+	}
+
+	void SetDecay(const axFloat& value)
+	{
+		_env->SetDecay(value);
+	}
+
+	void SetGain(const axFloat& value)
+	{
+		_gain = value;
+	}
+
+	void SetSpeed(const axFloat& speed)
+	{
+		axFloat s = speed;
+		if (s < 0.01)
+		{
+			s = 0.01;
+		}
+		_speed = s;
+	}
+
 private:
 	static const int MAX_NUM_OF_PROB_TRACK = 3;
 	static const int NUMBER_OF_NOTES = 16;
 
 	axAudioBuffer* _buffer;
+	string _trackName;
 	// vector<bool> _notes;
 	bool _notes[3][16];
 	float _probability[3][16];
 	double _velocity[3][16];
 	double _deviation;
+	axFloat _speed;
 
 	bool _midiNoteOn;
 
-	int _nFrameBuf;
+	double _nFrameBuf;
 	int _beatIndex, _sampleCount, _nSamplePerBeat;
 	int _nSection;
 	int _selectedSection;
@@ -241,11 +271,14 @@ private:
 	// For return in audio callback.
 	float* _outBuffer;
 
+	axFloat _gain;
+
 	std::random_device rd;
 	// std::mt19937 gen;
 
 	// Audio effects.
 	axAudioFilter* _filter;
+	axAudioEnvelope* _env;
     
 };
 

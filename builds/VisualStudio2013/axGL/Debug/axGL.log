@@ -3,17 +3,4 @@ c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : 
 c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
 c:\users\alexarse\desktop\axlib\axwidgets\axknob.cpp(68): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
 c:\users\alexarse\desktop\axlib\axwidgets\axknob.cpp(90): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
-  axGC.cpp
-c:\users\alexarse\desktop\axlib\axgc.cpp(90): warning C4244: '-=' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(233): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(321): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axgc.cpp(340): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axgc.cpp(350): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(353): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axgc.cpp(413): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(439): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(440): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(454): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-  Generating Code...
   axGL.vcxproj -> C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib

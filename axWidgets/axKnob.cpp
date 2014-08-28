@@ -93,6 +93,11 @@ void axKnob::SetValue(const axFloat& value)
 	{
 		Update();
 	}
+
+	if (_events.value_change)
+	{
+		_events.value_change(axKnobMsg(m_knobValue));
+	}
 }
 
 void axKnob::OnPaint()

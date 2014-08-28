@@ -70,6 +70,7 @@
     <ClCompile Include="..\..\AudioWaveform.cpp" />
     <ClCompile Include="..\..\axAudio.cpp" />
     <ClCompile Include="..\..\axAudioBuffer.cpp" />
+    <ClCompile Include="..\..\axAudioEnvelope.cpp" />
     <ClCompile Include="..\..\axAudioFilter.cpp" />
     <ClCompile Include="..\..\axMidi.cpp" />
     <ClCompile Include="..\..\DrumSampler.cpp" />
@@ -80,6 +81,7 @@
     <ClInclude Include="..\..\AudioWaveform.h" />
     <ClInclude Include="..\..\axAudio.h" />
     <ClInclude Include="..\..\axAudioBuffer.h" />
+    <ClInclude Include="..\..\axAudioEnvelope.h" />
     <ClInclude Include="..\..\axAudioFilter.h" />
     <ClInclude Include="..\..\axMidi.h" />
     <ClInclude Include="..\..\DrumSampler.h" />

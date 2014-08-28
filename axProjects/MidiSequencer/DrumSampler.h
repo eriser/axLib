@@ -22,6 +22,10 @@ public:
 	axEVENT(axButtonMsg, OnOpenFile);
 	axEVENT(axKnobMsg, OnFilterFrequency);
 	axEVENT(axKnobMsg, OnFilterRes);
+	axEVENT(axKnobMsg, OnAttack);
+	axEVENT(axKnobMsg, OnDecay);
+	axEVENT(axKnobMsg, OnGain);
+	axEVENT(axKnobMsg, OnTuning);
 
 private:
 	// Events.
@@ -33,6 +37,10 @@ private:
 	void OnOpenFile(const axButtonMsg& msg);
 	void OnFilterFrequency(const axKnobMsg& msg);
 	void OnFilterRes(const axKnobMsg& msg);
+	void OnAttack(const axKnobMsg& msg);
+	void OnDecay(const axKnobMsg& msg);
+	void OnGain(const axKnobMsg& msg);
+	void OnTuning(const axKnobMsg& msg);
 	virtual void OnPaint();
 
 

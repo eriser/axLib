@@ -37,7 +37,7 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 							axColor(0.0, 0.0, 0.0));
 
 	_wave = new axWaveform(app, this,
-									  axRect(20, 30, rect.size.x - 40, 80),
+									  axRect(20, 30, 405, 80),
 									  axWaveformEvents(),
 									  waveinfo,
 									  snd_path
@@ -79,20 +79,46 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 						 "knob_dark.png");
 
 	axKnobEvents freq_evt(GetOnFilterFrequency());
-	axKnob* knob = new axKnob(app, this, axRect(19, 152, 46, 46),
+	axKnob* knob = new axKnob(app, this, axRect(19, 156, 46, 46),
 							  freq_evt, knob_info);
 
 	knob->SetBackgroundAlpha(0.0);
 	knob->SetValue(1.0);
 
-	axKnob* res = new axKnob(app, this, axRect(59, 152, 46, 46),
+	axKnob* res = new axKnob(app, this, axRect(59, 156, 46, 46),
 							 axKnobEvents(GetOnFilterRes()), knob_info);
 	res->SetBackgroundAlpha(0.0);
 	res->SetValue(0.00707);
 
-	axKnob* env = new axKnob(app, this, axRect(98, 152, 46, 46),
+	axKnob* env = new axKnob(app, this, axRect(98, 156, 46, 46),
 		axKnobEvents(), knob_info);
 	env->SetBackgroundAlpha(0.0);
+
+
+
+	axKnob* att = new axKnob(app, this, axRect(163, 156, 46, 46),
+		axKnobEvents(GetOnAttack()), knob_info);
+	att->SetBackgroundAlpha(0.0);
+
+	axKnob* dec = new axKnob(app, this, axRect(202, 156, 46, 46),
+		axKnobEvents(GetOnDecay()), knob_info);
+	dec->SetBackgroundAlpha(0.0);
+	dec->SetValue(1.0);
+
+	axKnob* pitch = new axKnob(app, this, axRect(269, 156, 46, 46),
+		axKnobEvents(GetOnTuning()), knob_info);
+	pitch->SetBackgroundAlpha(0.0);
+	pitch->SetValue(0.5);
+
+	axKnob* env_pitch = new axKnob(app, this, axRect(308, 156, 46, 46),
+		axKnobEvents(), knob_info);
+	env_pitch->SetBackgroundAlpha(0.0);
+	env_pitch->SetValue(0.0);
+
+	axKnob* gain = new axKnob(app, this, axRect(376, 156, 46, 46),
+		axKnobEvents(GetOnGain()), knob_info);
+	gain->SetBackgroundAlpha(0.0);
+	gain->SetValue(0.5);
 	//axKnob* knob2 = new axKnob(app, this, axRect(230, 130, 32, 32),
 	//	axKnobEvents(), knob_info);
 
@@ -125,8 +151,34 @@ void SynthControl::OnFilterFrequency(const axKnobMsg& msg)
 
 void SynthControl::OnFilterRes(const axKnobMsg& msg)
 {
-	axFloat q = msg.GetValue() * 50.0;
+	axFloat q = msg.GetValue() * 5.0;
 	_audio->GetAudioTrack(_trackNum)->SetFilterRes(q);
+}
+
+void SynthControl::OnAttack(const axKnobMsg& msg)
+{
+	//cout << "Attack : " << msg.GetValue() << endl;
+	_audio->GetAudioTrack(_trackNum)->SetAttack(msg.GetValue());
+}
+
+void SynthControl::OnDecay(const axKnobMsg& msg)
+{
+	//cout << "Attack : " << msg.GetValue() << endl;
+	_audio->GetAudioTrack(_trackNum)->SetDecay(msg.GetValue());
+}
+
+void SynthControl::OnTuning(const axKnobMsg& msg)
+{
+	//cout << "Attack : " << msg.GetValue() << endl;
+	axFloat value = (msg.GetValue() * 2.0);
+	_audio->GetAudioTrack(_trackNum)->SetSpeed(value);
+}
+
+
+void SynthControl::OnGain(const axKnobMsg& msg)
+{
+	//cout << "Attack : " << msg.GetValue() << endl;
+	_audio->GetAudioTrack(_trackNum)->SetGain(msg.GetValue());
 }
 
 void SynthControl::OnPaint()
