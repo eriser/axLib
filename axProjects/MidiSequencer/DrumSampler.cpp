@@ -115,9 +115,9 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 	pitch->SetBackgroundAlpha(0.0);
 	pitch->SetValue(0.5);
 
-
+	fct = GetOnTuningEnv();
 	axKnob* env_pitch = new axKnob(app, this, axRect(308, 156, 46, 46),
-		axKnobEvents(), knob_info);
+		axKnobEvents(fct), knob_info);
 	env_pitch->SetBackgroundAlpha(0.0);
 	env_pitch->SetValue(0.0);
 
@@ -186,6 +186,11 @@ void SynthControl::OnTuning(const axKnobMsg& msg)
 	//cout << "Attack : " << msg.GetValue() << endl;
 	axFloat value = (msg.GetValue() * 2.0);
 	_audio->GetAudioTrack(_trackNum)->SetSpeed(value);
+}
+
+void SynthControl::OnTuningEnv(const axKnobMsg& msg)
+{
+	_audio->GetAudioTrack(_trackNum)->SetPitchEnvelopeAmount(msg.GetValue());
 }
 
 

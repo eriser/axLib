@@ -262,6 +262,11 @@ public:
 		_modFilterFreqEnvAmount = value;
 	}
 
+	void SetPitchEnvelopeAmount(const axFloat& value)
+	{
+		_pitchEnvAmount = value;
+	}
+
 private:
 	static const int MAX_NUM_OF_PROB_TRACK = 3;
 	static const int NUMBER_OF_NOTES = 16;
@@ -274,6 +279,10 @@ private:
 	double _velocity[3][16];
 	double _deviation;
 	axFloat _speed;
+	axFloat _c0;
+
+	axFloat _pitchEnvValue;
+	axFloat _pitchEnvAmount;
 
 	bool _midiNoteOn;
 

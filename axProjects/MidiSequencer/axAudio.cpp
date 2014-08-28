@@ -21,6 +21,11 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	_modFilterFreqEnv = 0.0;
 	_modFilterFreqEnvAmount = 0.0;
 
+	double c5 = 220.0 * pow(ST_RATIO, 3);
+	_c0 = c5 * pow(0.5, 5);
+	_pitchEnvValue = 0;
+	_pitchEnvAmount = 0;
+
 	/// @todo Need to set proper frame buffer size.
 	for(int i = 0; i < 1024 * 2; i++)
 	{
@@ -40,7 +45,7 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 	_filter = new axAudioFilter();
 	_env = new axAudioEnvelope();
 
-	cout << "Filter set ptr" << endl;
+	// cout << "Filter set ptr" << endl;
 	_filter->SetFreqEnvelopePtr(&_modFilterFreqEnv);
 	_filter->SetFreqEnvelopeAmountPtr(&_modFilterFreqEnvAmount);
     
@@ -69,11 +74,16 @@ float* AudioTrack::Process()
  	axBufferInfo binfo =  _buffer->GetBufferInfo();
 	//axFloat speed = 0.5;
 
-
+ 	
 
 	for(int i = 0; i < 1024 * 2; i+=2)
     {
     	float out = 0.0;
+    	axFloat envValue = _env->Process();
+    	_modFilterFreqEnv = envValue;
+    	_pitchEnvValue = envValue;
+
+    	axFloat speed = _speed;
 
     	if(_nFrameBuf < binfo.frames)
     	{
@@ -82,7 +92,17 @@ float* AudioTrack::Process()
 			out = LINE_INTERPOLE(buffer[pos], buffer[pos+1], frac);
     		//out = buffer[int(floor(_nFrameBuf))];
     		//_nFrameBuf++;
-			_nFrameBuf += _speed;
+			
+			// if(lfo[2] != NULL && lfoAmnt[2] != NULL)
+			if(_pitchEnvAmount != 0.0)
+			{
+				axFloat modLfoPitch = _pitchEnvValue;
+				speed = speed + 1.0 * _pitchEnvValue * _pitchEnvAmount;
+				// f = f + ( 12 * _pitchEnvAmount * modLfoPitch * (f * (ST_RATIO - 1.0) + 1.0));
+				// s = f / (c0 * pow(ST_RATIO, 60));
+			}//----------------------------------------------------------------
+
+			_nFrameBuf += speed;
     	}
 
     	if(_nFrameBuf > binfo.frames - 1)
@@ -94,7 +114,7 @@ float* AudioTrack::Process()
 		out *= _gain;
 
 		out = _filter->Process(out);
-		_modFilterFreqEnv = _env->Process();
+		// _modFilterFreqEnv = _env->Process();
 		out *= _modFilterFreqEnv;
 
     	_outBuffer[i] = out;// * _velocity[_selectedSection][_beatIndex];

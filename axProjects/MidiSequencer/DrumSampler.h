@@ -27,6 +27,7 @@ public:
 	axEVENT(axKnobMsg, OnDecay);
 	axEVENT(axKnobMsg, OnGain);
 	axEVENT(axKnobMsg, OnTuning);
+	axEVENT(axKnobMsg, OnTuningEnv);
 
 private:
 	// Events.
@@ -43,6 +44,7 @@ private:
 	void OnDecay(const axKnobMsg& msg);
 	void OnGain(const axKnobMsg& msg);
 	void OnTuning(const axKnobMsg& msg);
+	void OnTuningEnv(const axKnobMsg& msg);
 	virtual void OnPaint();
 
 
