@@ -3,10 +3,16 @@ c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\de
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\audiowaveform.obj
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\axaudio.obj
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\axaudiobuffer.obj
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\axaudioenvelope.obj
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\axaudiofilter.obj
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\axmidi.obj
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\drumsampler.obj
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\main.obj
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\miditrack.obj
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\axvstinterface.obj
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\audioeffect.obj
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\audioeffectx.obj
+c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\vstplugmain.obj
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\debug\midisequencer.exe
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\debug\midisequencer.pdb
 c:\users\alexarse\desktop\axlib\axprojects\midisequencer\builds\midisequencer\debug\midisequencer.tlog\cl.command.1.tlog

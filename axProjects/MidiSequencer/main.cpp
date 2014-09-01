@@ -537,7 +537,6 @@ void ScrollDrumMachine::OnPaint()
 }
 
 
-
 int main()
 {
 	AudioMidiSeq* audio = new AudioMidiSeq();

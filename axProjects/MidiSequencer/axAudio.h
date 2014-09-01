@@ -1,6 +1,12 @@
 #ifndef __AX_AUDIO__
 #define __AX_AUDIO__
 
+//------------------------------------------------------------------
+// On linux : if you get this error:
+// bt_audio_service_open: connect() failed: Connection refused (111)
+// Solution : sudo apt-get purge bluez-als
+//------------------------------------------------------------------
+
 #define _USE_MATH_DEFINES
 #include <cmath>
 
@@ -16,6 +22,8 @@
 #include "axAudioBuffer.h"
 #include "axAudioFilter.h"
 #include "axAudioEnvelope.h"
+
+#include "axVstInterface.h"
 
 #define LINE_INTERPOLE(y1, y2, mu) y1 + mu * (y2 - y1);
 
@@ -119,11 +127,7 @@ struct DrumMachinePreset
 	//}
 };
 
-//------------------------------------------------------------------
-// On linux : if you get this error:
-// bt_audio_service_open: connect() failed: Connection refused (111)
-// Solution : sudo apt-get purge bluez-als
-//------------------------------------------------------------------
+
 #define TABLE_SIZE   (200)
 
 struct paTestData
@@ -135,7 +139,9 @@ struct paTestData
 };
 
 
-
+//-----------------------------------------------------------------------------
+// AudioTrack.
+//-----------------------------------------------------------------------------
 class AudioTrack
 {
 public:
@@ -143,130 +149,45 @@ public:
 
 	float* Process();
 
-	void SetBeat(const int& index, const bool& on)
-	{
-		_notes[0][index] = on;
-	}
+	void SetBeat(const int& index, const bool& on);
 
-	void SetNote(const int& section, 
-				 const int& index, 
-				 const bool& on)
-	{
-		_notes[section][index] = on;
-	}
+	void SetNote(const int& section, const int& index, const bool& on);
 
-	void SetProbability(const int& section, 
-				 		const int& index, 
-				 		const float& prob)
-	{
-		_probability[section][index] = prob;
-	}
+	void SetProbability(const int& section,	const int& index, const float& prob);
 
-	void SetVelocity(const int& section, 
-		 			 const int& index, 
-			 		 const double& vel)
-	{
-		_velocity[section][index] = vel;
-	}
+	void SetVelocity(const int& section, const int& index, const double& vel);
 
-	void SetStandardDeviation(const double& dev)
-	{
-		_deviation = dev;
-		cout << "Value of standard deviation." << dev << endl;
+	void SetStandardDeviation(const double& dev);
 
+	void SetNumberOfSection(const int& nSection);
 
-	}
+	void SetPreset(TrackInfo* info);
 
-	void SetNumberOfSection(const int& nSection)
-	{
-		_nSection = nSection;
-	}
+	string GetSoundPath();
 
-	void SetPreset(TrackInfo* info)
-	{ 
-		//cout << __PRETTY_FUNCTION__ << endl;
-		_nSection = info->nSubTrack;
-
-		cout << "INFO VALUE : " << info->nSubTrack << endl;
-		int nSubTrack;
-
-		for(int j = 0; j < MAX_NUM_OF_PROB_TRACK; j++)
-		{
-			for(int i = 0; i < NUMBER_OF_NOTES; i++)
-			{
-				_notes[j][i] = info->notes[j][i];
-				_probability[j][i] = info->probability[j][i];
-				_velocity[j][i] = info->velocity[j][i];
-			}
-		}
-	}
-
-	string GetSoundPath()
-	{
-		return _buffer->GetSoundPath();
-	}
-
-	axAudioBuffer* GetAudioBuffer()
-	{
-		return _buffer;
-	}
+	axAudioBuffer* GetAudioBuffer();
 
 	void SetMidiNoteOn();
 
-	void SetFilterFrequency(const axFloat& freq)
-	{
-		_filter->SetFreq(freq);
-	}
+	void SetFilterFrequency(const axFloat& freq);
 
-	void SetFilterRes(const axFloat& q)
-	{
-		_filter->SetQ(q);
-	}
+	void SetFilterRes(const axFloat& q);
 
-	void SetAttack(const axFloat& value)
-	{
-		_env->SetAttack(value);
-	}
+	void SetAttack(const axFloat& value);
 
-	void SetDecay(const axFloat& value)
-	{
-		_env->SetDecay(value);
-	}
+	void SetDecay(const axFloat& value);
 
-	void SetGain(const axFloat& value)
-	{
-		_gain = value;
-	}
+	void SetGain(const axFloat& value);
 
-	void SetSpeed(const axFloat& speed)
-	{
-		axFloat s = speed;
-		if (s < 0.01)
-		{
-			s = 0.01;
-		}
-		_speed = s;
-	}
+	void SetSpeed(const axFloat& speed);
 
-	string GetTrackName() const
-	{
-		return _trackName;
-	}
+	string GetTrackName() const;
 
-	void SetTrackName(const string& name)
-	{
-		_trackName = name;
-	}
+	void SetTrackName(const string& name);
 
-	void SetFilterFrequencyEnvelopeAmount(const axFloat& value)
-	{
-		_modFilterFreqEnvAmount = value;
-	}
+	void SetFilterFrequencyEnvelopeAmount(const axFloat& value);
 
-	void SetPitchEnvelopeAmount(const axFloat& value)
-	{
-		_pitchEnvAmount = value;
-	}
+	void SetPitchEnvelopeAmount(const axFloat& value);
 
 private:
 	static const int MAX_NUM_OF_PROB_TRACK = 3;
@@ -274,24 +195,19 @@ private:
 
 	axAudioBuffer* _buffer;
 	string _trackName;
-	// vector<bool> _notes;
 	bool _notes[3][16];
 	float _probability[3][16];
 	double _velocity[3][16];
 	double _deviation;
-	axFloat _speed;
-	axFloat _c0;
+	axFloat _speed, _c0;
 
 	axFloat _pitchEnvValue;
 	axFloat _pitchEnvAmount;
 
 	bool _midiNoteOn;
-
-	double _nFrameBuf;
 	int _beatIndex, _sampleCount, _nSamplePerBeat;
-	int _nSection;
-	int _selectedSection;
-	double _currentVelocity;
+	int _nSection, _selectedSection;
+	double _nFrameBuf, _currentVelocity;
 
 	// For return in audio callback.
 	float* _outBuffer;
@@ -299,16 +215,17 @@ private:
 	axFloat _gain;
 	axFloat _modFilterFreqEnv, _modFilterFreqEnvAmount;
 	
-
 	std::random_device rd;
 	std::mt19937 gen;
 
 	// Audio effects.
 	axAudioFilter* _filter;
 	axAudioEnvelope* _env;
-    
 };
 
+//-----------------------------------------------------------------------------
+// Audio.
+//-----------------------------------------------------------------------------
 class Audio
 {
 public: 
@@ -328,10 +245,7 @@ public:
 						 Audio* userData)
 	{
 		 float *out = (float*)output;
-
-
 		 paTestData* data = &userData->data;
-
 
 	    for(int i = 0; i < frameCount; i++)
 	    {
@@ -369,12 +283,20 @@ public:
 };
 
 
-
+//-----------------------------------------------------------------------------
+// AudioMidiSeq.
+//-----------------------------------------------------------------------------
 class AudioMidiSeq: public Audio
 {
 public:
-	AudioMidiSeq()
+	AudioMidiSeq():
+		// Members.
+		_vst(44100, 1024)
 	{
+		// Vst plugin.
+		_vst.LoadVstPlugin("C:\\VST\\TAL-Chorus-LX.dll");
+		_vst.startPlugin();
+
 		_buffer = new axAudioBuffer("kickw.wav");
 		_buffer->ShowInfo();
 
@@ -410,11 +332,7 @@ public:
 		_tracks[5]->SetTrackName("Tom");
 		_tracks[6]->SetTrackName("Bell");
 		_tracks[7]->SetTrackName("Crash");
-		
-
-		// cout << __PRETTY_FUNCTION__ << endl;
-		//cout << "TRACKS SIZE : " << _tracks.size() << endl;
-	}
+}
 
 	void SetPreset(DrumMachinePreset* preset)
 	{
@@ -525,6 +443,9 @@ public:
 			tracks_out[i] = _tracks[i]->Process();
 		} 
 
+		axFloat** vst_input_buffers = _vst.GetInputBuffers();
+		axFloat** vst_output_buffers = _vst.GetOutputBuffers();
+
 		for(int i = 0; i < 1024; i++)
 		{
 			float v_l = 0.0;
@@ -536,8 +457,19 @@ public:
 				v_r += *tracks_out[n]++;
 			}
 
-			*out++ = v_l;
-			*out++ = v_r;
+			vst_input_buffers[0][i] = v_l;
+			vst_input_buffers[1][i] = v_r;
+			//*out++ = v_l;
+			//*out++ = v_r;
+		}
+
+		_vst.processAudio(vst_input_buffers, vst_output_buffers);
+
+		int index = 0;
+		for (int i = 0; i < 1024 * 2; i+=2, index++)
+		{
+			out[i] = vst_output_buffers[0][index];
+			out[i + 1] = vst_output_buffers[1][index];
 		}
 
     	return paContinue;
@@ -570,6 +502,7 @@ private:
 
 	AudioTrack* _track;
 	vector<AudioTrack*> _tracks;
+	axVstInterface _vst;
 
 };
 

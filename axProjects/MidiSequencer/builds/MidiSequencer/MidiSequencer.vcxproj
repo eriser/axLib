@@ -44,7 +44,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\alexarse\Desktop\axLib\libs\portmidi\porttime;C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_win;C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_common;C:\libsndfile\include;C:\Users\alexarse\Desktop\axLib\libs\portaudio\include;C:\Users\alexarse\Desktop\axLib;C:\Users\alexarse\Desktop\axLib\include;C:\Users\alexarse\Desktop\axLib\libs\lpng1610;C:\Users\alexarse\Desktop\axLib\libs\freetype-2.5.3/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexarse\Desktop\axLib\libs\portmidi\porttime;C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_win;C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_common;C:\libsndfile\include;C:\Users\alexarse\Desktop\axLib\libs\portaudio\include;C:\Users\alexarse\Desktop\axLib;C:\Users\alexarse\Desktop\axLib\include;C:\Users\alexarse\Desktop\axLib\libs\lpng1610;C:\Users\alexarse\Desktop\axLib\libs\freetype-2.5.3/include;C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\pluginterfaces\vst2.x;C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\source\vst2.x;C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK</AdditionalIncludeDirectories>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -67,23 +70,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\libs\VST3 SDK\public.sdk\source\vst2.x\audioeffect.cpp" />
+    <ClCompile Include="..\..\..\..\libs\VST3 SDK\public.sdk\source\vst2.x\audioeffectx.cpp" />
     <ClCompile Include="..\..\AudioWaveform.cpp" />
     <ClCompile Include="..\..\axAudio.cpp" />
     <ClCompile Include="..\..\axAudioBuffer.cpp" />
     <ClCompile Include="..\..\axAudioEnvelope.cpp" />
     <ClCompile Include="..\..\axAudioFilter.cpp" />
     <ClCompile Include="..\..\axMidi.cpp" />
+    <ClCompile Include="..\..\axVstInterface.cpp" />
     <ClCompile Include="..\..\DrumSampler.cpp" />
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\MidiTrack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\libs\VST3 SDK\pluginterfaces\vst2.x\aeffect.h" />
+    <ClInclude Include="..\..\..\..\libs\VST3 SDK\pluginterfaces\vst2.x\aeffectx.h" />
+    <ClInclude Include="..\..\..\..\libs\VST3 SDK\pluginterfaces\vst2.x\vstfxstore.h" />
+    <ClInclude Include="..\..\..\..\libs\VST3 SDK\public.sdk\source\vst2.x\aeffeditor.h" />
+    <ClInclude Include="..\..\..\..\libs\VST3 SDK\public.sdk\source\vst2.x\audioeffect.h" />
+    <ClInclude Include="..\..\..\..\libs\VST3 SDK\public.sdk\source\vst2.x\audioeffectx.h" />
     <ClInclude Include="..\..\AudioWaveform.h" />
     <ClInclude Include="..\..\axAudio.h" />
     <ClInclude Include="..\..\axAudioBuffer.h" />
     <ClInclude Include="..\..\axAudioEnvelope.h" />
     <ClInclude Include="..\..\axAudioFilter.h" />
     <ClInclude Include="..\..\axMidi.h" />
+    <ClInclude Include="..\..\axVstInterface.h" />
     <ClInclude Include="..\..\DrumSampler.h" />
     <ClInclude Include="..\..\main.h" />
     <ClInclude Include="..\..\MidiTrack.h" />

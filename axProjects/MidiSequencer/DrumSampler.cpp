@@ -26,11 +26,6 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 
 	axButton* btn = new axButton(app, this, btnFct, "axBtnOpen.axobj");
 
-	//axButton* btn = new axButton(app, this,
-	//	axRect(5, 5, 45, 15),
-	//	axButtonEvents(btnFct),
-	//	btn_info, "", "Open", axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
-
 	axWaveformInfo waveinfo(axColor(0.7, 0.7, 0.7), // Waveform.
 							axColor(0.4, 0.4, 0.4), // Background.
 							axColor(0.5, 0.5, 0.5), // Lines.
@@ -44,31 +39,6 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 									  ); // Contour.
 
 	_wave->SetBackgroundAlpha(0.0);
-
-	//axNumberBoxInfo box_info(axColor(0.2, 0.2, 0.2),
-	//	axColor(0.3, 0.3, 0.3),
-	//	axColor(0.2, 0.2, 0.2),
-	//	axColor(0.2, 0.2, 0.2),
-	//	axColor(0.0, 0.0, 0.0),
-	//	axColor(0.8, 0.8, 0.8));
-
-	//// function<void (axButtonMsg)> btnFct(GetOnAddSeparation());
-
-
-	//axNumberBox* box1 = new axNumberBox(app, this,
-	//	axRect(20, 140, 40, 20),
-	//	axNumberBoxEvents(),
-	//	box_info);
-
-	//axNumberBox* box2 = new axNumberBox(app, this,
-	//	axRect(70, 140, 40, 20),
-	//	axNumberBoxEvents(),
-	//	box_info);
-
-	//axNumberBox* box3 = new axNumberBox(app, this,
-	//	axRect(120, 140, 40, 20),
-	//	axNumberBoxEvents(),
-	//	box_info);
 
 	axKnobInfo knob_info(axColor(0.3, 0.3, 0.3),
 						 axColor("#AAAAAA"),
@@ -126,28 +96,16 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 		axKnobEvents(fct), knob_info);
 	gain->SetBackgroundAlpha(0.0);
 	gain->SetValue(0.5);
-	//axKnob* knob2 = new axKnob(app, this, axRect(230, 130, 32, 32),
-	//	axKnobEvents(), knob_info);
-
-	//axKnob* knob3 = new axKnob(app, this, axRect(380, 130, 32, 32),
-	//	axKnobEvents(), knob_info);
-
-	//axKnob* knob4 = new axKnob(app, this, axRect(425, 130, 32, 32),
-	//	axKnobEvents(), knob_info);
 }
 
 void SynthControl::OnOpenFile(const axButtonMsg& msg)
 {
-	// cout << "FILE" << endl;
-	
 	string f;
 	if ((f = GetApp()->OpenFileDialog()) != "")
 	{
-		//cout << f << endl;
 		_audio->GetAudioBufferFromTrack(_trackNum)->OpenSoundFile(f);
 		_wave->SetBufferPtr(_audio->GetAudioBufferFromTrack(_trackNum));
 	}
-	// string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main");
 }
 
 void SynthControl::OnFilterFrequency(const axKnobMsg& msg)
@@ -164,26 +122,21 @@ void SynthControl::OnFilterRes(const axKnobMsg& msg)
 
 void SynthControl::OnFilterEnvelope(const axKnobMsg& msg)
 {
-	// cout << "Filter env : " << msg.GetValue() << endl;
-	// axFloat q = msg.GetValue() * 5.0;
 	_audio->GetAudioTrack(_trackNum)->SetFilterFrequencyEnvelopeAmount(msg.GetValue());
 }
 
 void SynthControl::OnAttack(const axKnobMsg& msg)
 {
-	//cout << "Attack : " << msg.GetValue() << endl;
 	_audio->GetAudioTrack(_trackNum)->SetAttack(msg.GetValue());
 }
 
 void SynthControl::OnDecay(const axKnobMsg& msg)
 {
-	//cout << "Attack : " << msg.GetValue() << endl;
 	_audio->GetAudioTrack(_trackNum)->SetDecay(msg.GetValue());
 }
 
 void SynthControl::OnTuning(const axKnobMsg& msg)
 {
-	//cout << "Attack : " << msg.GetValue() << endl;
 	axFloat value = (msg.GetValue() * 2.0);
 	_audio->GetAudioTrack(_trackNum)->SetSpeed(value);
 }
@@ -196,7 +149,6 @@ void SynthControl::OnTuningEnv(const axKnobMsg& msg)
 
 void SynthControl::OnGain(const axKnobMsg& msg)
 {
-	//cout << "Attack : " << msg.GetValue() << endl;
 	_audio->GetAudioTrack(_trackNum)->SetGain(msg.GetValue());
 }
 
