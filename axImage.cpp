@@ -34,6 +34,9 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 									   GLuint& _texture, 
 									   axSize& _size)
 {
+    glGenTextures(1, &_texture);
+//    glBindTexture(GL_TEXTURE_2D, _texture);
+    
 	// http://zarb.org/~gc/html/libpng.html.
 	// http://stackoverflow.com/questions/11296644/loading-png-textures-to-opengl-with-libpng-only.
 	// Reading png.
@@ -177,7 +180,8 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 	png_read_image(png_ptr, row_pointers);
 
 	// Generate OpenGl texture object.
-	glGenTextures(1, &_texture);
+//    GLuint texture_test;
+//	glGenTextures(1, &_texture);
 	glBindTexture(GL_TEXTURE_2D, _texture);
 
 	if (color_type == 2)

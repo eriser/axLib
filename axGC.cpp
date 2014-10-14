@@ -102,7 +102,7 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 	glEnable(GL_BLEND); //Enable blending.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glBegin(GL_LINES);
+	glBegin(GL_LINE_LOOP);
 
 	// Top
 	glVertex3f(frect.position.x, frect.position.y, 0);

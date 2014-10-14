@@ -104,7 +104,7 @@ axFont::axFont(const string& font)
 	}
 	
 
-	//glGenTextures(1, &_texture);
+	glGenTextures(1, &_texture);
 }
 
 //axPoint axFont::GetLetterPosition(const char& letter)
