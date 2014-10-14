@@ -1,4 +1,5 @@
 #include "axCore.h"
+#include <GLKit/GLKMath.h>
 
 axCore::axCore():
 	// Members.
@@ -155,6 +156,7 @@ void axCore::UpdateAll()
 
 int axCore::DrawGLScene()
 {
+    
 	//glViewport(0, 0, att.width, att.height);
 	// /float time = float(clock() - _lastDrawingTime) / CLOCKS_PER_SEC;
 	// cout << "time  draw : " << _lastDrawingTime << "Clock per sec " << CLOCKS_PER_SEC << endl;
@@ -172,12 +174,21 @@ int axCore::DrawGLScene()
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluOrtho2D(0.0, _size.x, _size.y, 0.0);
+//        GLKMatrix4MakeOrtho (
+//                             0.0,
+//                             _size.x,
+//                             _size.y,
+//                             0.0,
+//                             0.0,
+//                             1.0
+//                             );
+
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 	
 		axFloatRect rect(0 - 1.0, 0 - 1, _size.x * 2.0, _size.y * 2.0);
 
-		glColor3f(0.1, 0.1, 0.1);
+		glColor3d(1.0, 0.0, 0.0);
 		GLfloat z = 0;
 
 		glBegin(GL_QUADS);

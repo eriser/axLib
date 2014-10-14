@@ -12,6 +12,8 @@
 #include "axCoreWin32.h"
 #endif //_MSC_VER
 
+#include "axCoreMac.h"
+
 #include "axC++.h"
 
 // Is use as an adapter to global axCore class (axCORE).

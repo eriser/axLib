@@ -40,6 +40,8 @@ void axManager::OnPaint()
 		}
 	}*/
 
+//    cout << "Win manager paint. : " << _windows.size() << endl;
+    
 	for (auto& x : _windows)
 	{
 		axWindow* win = x.second;
@@ -100,9 +102,6 @@ void axManager::OnMouseMotion(const axPoint& pos)
 			_pastWindow = win;
 		}
 	}
-
-	//DrawMouse(_mouse, _mousePosition);
-	//OnPaint();
 }
 
 void axManager::OnMouseLeftDown(const axPoint& pos)

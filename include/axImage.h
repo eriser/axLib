@@ -9,7 +9,7 @@
 #define PNG_DEBUG 3
 /// @endcond
 
-#include <png.h>
+#include "png.h"
 
 #include "axC++.h"
 #include <string>

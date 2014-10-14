@@ -13,6 +13,10 @@ axApp::axApp()
 	axCORE = _core;
 	_core->Init(axSize(0, 0));
 #endif //_MSC_VER
+    
+    _core = new axCoreMac();
+    _core->Init(axSize(200, 200));
+    
 }
 
 axApp::axApp(const axSize& frame_size)
@@ -90,6 +94,8 @@ string axApp::GetCurrentAppDirectory()
 	return string(str);
 
 #endif //_MSC_VER
+    
+    return "";
 
 }
 

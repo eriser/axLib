@@ -105,6 +105,8 @@ string OpenFileDialog(const string& app_name, string folder_path)
 #ifdef _MSC_VER
 	return "";
 #endif //_MSC_VER
+    
+    return "";
 }
 
 

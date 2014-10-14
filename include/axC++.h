@@ -22,6 +22,9 @@
 #include <gl\glu.h>
 #endif //_MSC_VER
 
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/glu.h>
+
 #include <stdint.h>
 
 #include "axUtils.h"
