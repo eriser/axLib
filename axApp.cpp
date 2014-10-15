@@ -1,5 +1,7 @@
 #include "axApp.h"
 
+axApp* axApp::MainInstance = nullptr;
+
 axApp::axApp()
 {
 #ifdef __linux__
@@ -14,8 +16,10 @@ axApp::axApp()
 	_core->Init(axSize(0, 0));
 #endif //_MSC_VER
     
+#ifdef __APPLE__
     _core = new axCoreMac();
-    _core->Init(axSize(200, 200));
+    _core->Init(axSize(1000, 500));
+#endif
     
 }
 
@@ -25,28 +29,17 @@ axApp::axApp(const axSize& frame_size)
 	_core = new axCoreX11(this);
 	_core->Init(frame_size);
 #endif //__linux__
-	// //axCORE = new axCoreWin32();
-	// axCORE = new axCoreX11();
-	// axCORE->Init(frame_size);
-	// //axManager* win_manager = axCORE->GetWindowManager();
-	// //win_manager->InitManager(axCORE->GetScreenRect().size);
 
-	//axCORE = GetCore();
-
-	//cout << "Frame size : " << frame_size.x << " " << frame_size.y << endl;
 #ifdef _MSC_VER
 	_core = new axCoreWin32();
 	axCORE = _core;
 	_core->Init(frame_size);
-#endif
-
-	//_core = new axCoreX11(this);
-	//_core->Init(frame_size);
-	// //axCORE = new axCoreWin32();
-	// axCORE = new axCoreX11();
-	// axCORE->Init(frame_size);
-	// //axManager* win_manager = axCORE->GetWindowManager();
-	// //win_manager->InitManager(axCORE->GetScreenRect().size);
+#endif // _MSC_VER
+    
+#ifdef __APPLE__
+    _core = new axCoreMac();
+    _core->Init(frame_size);
+#endif // __APPLE__
 }
 
 void axApp::CreatePopupWindow(const axSize& size)
@@ -95,8 +88,9 @@ string axApp::GetCurrentAppDirectory()
 
 #endif //_MSC_VER
     
+#ifdef __APPLE__
     return "";
-
+#endif // __APPLE__
 }
 
 void axApp::MainLoop()

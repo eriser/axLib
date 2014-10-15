@@ -188,7 +188,7 @@ int axCore::DrawGLScene()
 	
 		axFloatRect rect(0 - 1.0, 0 - 1, _size.x * 2.0, _size.y * 2.0);
 
-		glColor3d(1.0, 0.0, 0.0);
+		glColor3d(0.0, 0.0, 0.0);
 		GLfloat z = 0;
 
 		glBegin(GL_QUADS);

@@ -28,13 +28,13 @@ axScrollBar::axScrollBar(
 						   axRect(0, 0, 14, 14), 
 						   axButtonEvents(), 
 						   btn_info, 
-						   "scrollBar_up.png");
+						   "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/scrollBar_up.png");
 
 	_btn[1] = new axButton(app, this, 
 						   axRect(0, rect.size.y - 14, 14, 14), 
 						   axButtonEvents(), 
 						   btn_info, 
-						   "scrollBar_down.png");
+						   "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/scrollBar_down.png");
 
 	m_imgHeight = 14;
 	m_sliderMaxHeight = 500 - 2 * m_imgHeight - 1;

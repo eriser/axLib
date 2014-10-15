@@ -94,7 +94,7 @@ axFont::axFont(const string& font)
 	//	// Set default size.
 	//	SetFontSize(12);
 	//}
-	if (_fontManager.LoadFont("FreeSans.ttf", _face))
+	if (_fontManager.LoadFont("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/FreeSans.ttf", _face))
 	{
 		SetFontSize(12);
 	}

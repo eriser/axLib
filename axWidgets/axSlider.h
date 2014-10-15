@@ -277,7 +277,7 @@ protected:
 //													5)
 //
 
-#define axSLIDER_PLAIN_GREY     axSliderInfo( "sliderPlain.png",          \
+#define axSLIDER_PLAIN_GREY     axSliderInfo( "/Users/alexarse/Project/axLib/ressources/sliderPlain.png",          \
 	axSize(12, 12), \
 	axColor(0.1, 0.1, 0.1), \
 	axColor("#888888"), \

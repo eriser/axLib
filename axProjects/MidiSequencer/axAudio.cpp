@@ -8,8 +8,8 @@ AudioTrack::AudioTrack(const string& sndfile, const int& samplePerBeat):
 					   _nSamplePerBeat(samplePerBeat),
 					   _nSection(2),
 					   _selectedSection(0),
-					   _currentVelocity(0.0) ,
-					   rd(random_device())
+					   _currentVelocity(0.0) //,
+					   //rd(random_device())
 					    
 {
 	//_inVstBuffers = new float*[2];
@@ -353,6 +353,7 @@ Audio::Audio()
 #elif _MSC_VER
 	outputParameters.device = 4;//1;//;//Pa_GetDefaultOutputDevice(); //1
 #endif
+    outputParameters.device = 2;
 	// cout << "OUTPU : " << outputParameters.device.name << endl;
 	if(outputParameters.device == paNoDevice)
 	{
@@ -362,7 +363,7 @@ Audio::Audio()
 
 	outputParameters.channelCount = 2;       /* stereo output */
 	outputParameters.sampleFormat = paFloat32; /* 32 bit floating point output */
-	outputParameters.suggestedLatency = Pa_GetDeviceInfo( outputParameters.device )->defaultLowOutputLatency;
+//	outputParameters.suggestedLatency = Pa_GetDeviceInfo( outputParameters.device )->defaultLowOutputLatency;
 	outputParameters.hostApiSpecificStreamInfo = NULL;
 
     err = Pa_OpenStream(

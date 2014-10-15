@@ -159,7 +159,7 @@ private:
 	MidiPartition* _midiPartition;
 	DrumSampler* _drumSampler;
 	Audio* _audio;
-	axMidi* _midi;
+//	axMidi* _midi;
 	axImage* _topBg;
 
 	void OnChangeTrackHeight(const int& msg);
@@ -190,6 +190,42 @@ private:
 	void OnScroll(const axScrollBarMsg& msg);
 	// Events.
 	virtual void OnPaint();
+};
+
+
+class axMain
+{
+public:
+    axMain()
+    {
+    }
+    
+    static void MainEntryPoint(axApp* app)
+    {
+        AudioMidiSeq* audio = new AudioMidiSeq();
+        //axMidi* midi = new axMidi(audio);
+        
+        //        axApp* app = new axApp(axSize(570, 600));
+        
+        ScrollDrumMachine* machine = new ScrollDrumMachine(app,
+                                                           nullptr,
+                                                           axRect(0, 0, 570, 600),
+                                                           audio);
+        
+        // DrumMachinePreset test("presets/presets.txt");
+        audio->StartAudio();
+        //        midi->StartStream();
+        
+        // machine->SetPreset("presets/presets.txt");
+//        app->MainLoop();
+        
+        //midi->StopStream();
+        
+//        //        delete midi;
+//        delete audio;
+//        delete app;
+        
+    }
 };
 
 

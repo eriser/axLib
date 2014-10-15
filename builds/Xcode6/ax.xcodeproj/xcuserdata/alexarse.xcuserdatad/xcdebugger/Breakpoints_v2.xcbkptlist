@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/axAppDelegate.h"
-            timestampString = "434951593.71033"
+            timestampString = "434997806.651459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "@interface axAppDelegate"
             landmarkType = "2">
          </BreakpointContent>
@@ -32,22 +32,6 @@
             startingLineNumber = "160"
             endingLineNumber = "160"
             landmarkName = "axCore::DrawGLScene()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test/axAppDelegate.mm"
-            timestampString = "434995963.75422"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "Desktop(axApp* app, axWindow* parent, const axRect&amp; rect)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

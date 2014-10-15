@@ -18,7 +18,7 @@ axWaveform::axWaveform(axApp* app, axWindow* parent, const axRect& rect,
 
 	m_buffer = new axAudioBuffer(snd_path.c_str());
 
-	_envRoundImg = new axImage("env2.png");
+	_envRoundImg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/env2.png");
 
 	_pointsRealValue.push_back(axFloatPoint(0.0, 0.0));
 	_pointsRealValue.push_back(axFloatPoint(0.0, 1.0));

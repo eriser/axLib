@@ -13,59 +13,60 @@
 
 #include <iostream>
 #include "axLib.h"
+//#include "Main.h"
 
 axApp* GlobalApp = nullptr;
 
-class Desktop : public axPanel
-{
-public:
-    Desktop(axApp* app, axWindow* parent, const axRect& rect):
-    axPanel(app, parent, rect)
-    {
-        
-        axButtonInfo btn_info(axColor(0.8, 0.8, 0.8),
-                              axColor(0.9, 0.9, 0.9),
-                              axColor(1.0, 1.0, 1.0),
-                              axColor(0.8, 0.8, 0.8),
-                              axColor(0.0, 0.0, 0.0),
-                              axColor(0.8, 0.8, 0.8));
-        
-        axEvtFunction(axButtonMsg) evt(GetOnBtn());
-        axButton* btn = new axButton(app, this, axRect(30, 30, 48, 48),
-                                axButtonEvents(evt),
-                                btn_info,"/Users/alexarse/Project/axLib/ressources/axImages/calc.png", "");
-        
-        axEvtFunction(axButtonMsg) evt2(GetOnBtn2());
-        axButton* btn2 = new axButton(app, this, axRect(100, 30, 48, 48),
-                                     axButtonEvents(evt2),
-                                     btn_info);
-
-    }
-    
-    axEVENT(axButtonMsg, OnBtn);
-    axEVENT(axButtonMsg, OnBtn2);
-    
-    void OnBtn(const axButtonMsg& msg)
-    {
-        cout << "Btn 1 msg." << endl;
-    }
-    
-    
-    void OnBtn2(const axButtonMsg& msg)
-    {
-        cout << "Btn 2 msg." << endl;
-    }
-    
-    void OnPaint()
-    {
-        axGC* gc = GetGC();
-        axRect rect(GetRect());
-        axRect rect0(axPoint(0, 0), rect.size);
-        
-        gc->SetColor(axColor(0.0, 1.0, 0.0), 1.0);
-        gc->DrawRectangle(rect0);
-    }
-};
+//class Desktop : public axPanel
+//{
+//public:
+//    Desktop(axApp* app, axWindow* parent, const axRect& rect):
+//    axPanel(app, parent, rect)
+//    {
+//        
+//        axButtonInfo btn_info(axColor(0.8, 0.8, 0.8),
+//                              axColor(0.9, 0.9, 0.9),
+//                              axColor(1.0, 1.0, 1.0),
+//                              axColor(0.8, 0.8, 0.8),
+//                              axColor(0.0, 0.0, 0.0),
+//                              axColor(0.8, 0.8, 0.8));
+//        
+//        axEvtFunction(axButtonMsg) evt(GetOnBtn());
+//        axButton* btn = new axButton(app, this, axRect(30, 30, 48, 48),
+//                                axButtonEvents(evt),
+//                                btn_info,"/Users/alexarse/Project/axLib/ressources/axImages/calc.png", "");
+//        
+//        axEvtFunction(axButtonMsg) evt2(GetOnBtn2());
+//        axButton* btn2 = new axButton(app, this, axRect(100, 30, 48, 48),
+//                                     axButtonEvents(evt2),
+//                                     btn_info);
+//
+//    }
+//    
+//    axEVENT(axButtonMsg, OnBtn);
+//    axEVENT(axButtonMsg, OnBtn2);
+//    
+//    void OnBtn(const axButtonMsg& msg)
+//    {
+//        cout << "Btn 1 msg." << endl;
+//    }
+//    
+//    
+//    void OnBtn2(const axButtonMsg& msg)
+//    {
+//        cout << "Btn 2 msg." << endl;
+//    }
+//    
+//    void OnPaint()
+//    {
+//        axGC* gc = GetGC();
+//        axRect rect(GetRect());
+//        axRect rect0(axPoint(0, 0), rect.size);
+//        
+//        gc->SetColor(axColor(0.0, 1.0, 0.0), 1.0);
+//        gc->DrawRectangle(rect0);
+//    }
+//};
 //-----------------------------------------------------------
 
 @implementation axAppDelegate
@@ -80,10 +81,6 @@ public:
     if (self)
     {
         [self wantsBestResolutionOpenGLSurface];
-        
-//        axApp* app = new axApp();
-//        GlobalApp = app;
-//        Desktop* desktop = new Desktop(app, nullptr, axRect(0, 0, 200, 200));
     }
 
     return self;
@@ -104,9 +101,10 @@ public:
     [[self window] setAcceptsMouseMovedEvents:YES];
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
     
-    axApp* app = new axApp();
-    GlobalApp = app;
-    Desktop* desktop = new Desktop(app, nullptr, axRect(0, 0, 200, 200));
+    axApp::MainInstance = new axApp();
+    axMain::MainEntryPoint(axApp::MainInstance);
+//    axApp::MainInstance->CallMainEntryPoint(axApp::MainInstance);
+//    Desktop* desktop = new Desktop(axApp::MainInstance, nullptr, axRect(0, 0, 200, 200));
 }
 
 -(void)awakeFromNib
@@ -135,9 +133,9 @@ public:
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
     
-    int y = GlobalApp->GetCore()->GetGlobalSize().y;
+    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
     axPoint pos(locationInView.x, y - locationInView.y);
-    GlobalApp->GetWindowManager()->OnMouseLeftDown(pos);
+    axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
     
     [self setNeedsDisplay:YES];
 }
@@ -148,9 +146,9 @@ public:
     NSPoint locationInView = [self convertPoint:[anEvent locationInWindow]
                                        fromView:nil];
     
-    int y = GlobalApp->GetCore()->GetGlobalSize().y;
+    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
     axPoint pos(locationInView.x, y - locationInView.y);
-    GlobalApp->GetWindowManager()->OnMouseLeftUp(pos);
+    axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
     
     [self setNeedsDisplay:YES];
 }
@@ -158,8 +156,12 @@ public:
 // Working.
 - (void)mouseDragged:(NSEvent *)theEvent
 {
-    NSLog(@"Mouse drag");
-    
+    NSPoint locationInView = [self convertPoint:[theEvent locationInWindow]
+                                       fromView:nil];
+
+    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
+    axPoint pos(locationInView.x, y - locationInView.y);
+    axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
     [self setNeedsDisplay:YES];
 }
 
@@ -169,9 +171,9 @@ public:
     NSPoint locationInView = [self convertPoint:[MyMouseMouse locationInWindow]
                                        fromView:nil];
     
-    int y = GlobalApp->GetCore()->GetGlobalSize().y;
+    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
     axPoint pos(locationInView.x, y - locationInView.y);
-    GlobalApp->GetWindowManager()->OnMouseMotion(pos);
+    axApp::MainInstance->GetWindowManager()->OnMouseMotion(pos);
     
     [self setNeedsDisplay:YES];
 }
@@ -209,8 +211,8 @@ public:
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
     //glViewport(0,0, backingBounds.size.width, backingBounds.size.height);
 
-    GlobalApp->GetCore()->ResizeGLScene(backingBounds.size.width, backingBounds.size.height);
-    GlobalApp->GetCore()->DrawGLScene();
+    axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width, backingBounds.size.height);
+    axApp::MainInstance->GetCore()->DrawGLScene();
     glFlush();
 }
 

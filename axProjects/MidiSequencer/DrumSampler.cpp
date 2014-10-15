@@ -12,7 +12,7 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 	_trackNum(track_num)
 {
 	_audio = static_cast<AudioMidiSeq*>(audio);
-	_bgImg = new axImage("synth_bg.png");
+	_bgImg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/synth_bg.png");
 
 	axButtonInfo btn_info(axColor(0.2, 0.2, 0.2),
 		axColor(0.3, 0.3, 0.3),
@@ -24,7 +24,7 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 	function<void(axButtonMsg)> btnFct(GetOnOpenFile());
 	
 
-	axButton* btn = new axButton(app, this, btnFct, "axBtnOpen.axobj");
+	axButton* btn = new axButton(app, this, btnFct, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/axBtnOpen.axobj");
 
 	axWaveformInfo waveinfo(axColor(0.7, 0.7, 0.7), // Waveform.
 							axColor(0.4, 0.4, 0.4), // Background.
@@ -45,8 +45,8 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 						 axColor("#BBBBBB"),
 						 128,
 						 axSize(46, 46),
-						 "knob_dark.png",
-						 "knob_dark.png");
+						 "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/knob_dark.png",
+						 "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/knob_dark.png");
 
 	axEvtFunction(axKnobMsg) fct = GetOnFilterFrequency();
 	axKnobEvents freq_evt(fct);
@@ -173,7 +173,7 @@ DrumPad::DrumPad(axApp* app, axWindow* parent,
 	_trackName = "";
 	_clickEvent = click_evt;
 	_trackId = track_id;
-	_bgImg = new axImage("pad.png");
+	_bgImg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/pad.png");
 	_selected = false;
 
 }
@@ -266,7 +266,7 @@ void DrumPad::OnPaint()
 DrumSampler::DrumSampler(axApp* app, axWindow* parent, const axRect& rect, Audio* audio) :
 			 axPanel(app, parent, rect)
 {
-	_topBar = new axImage("tool.png");
+	_topBar = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/tool.png");
 
 	_audio = static_cast<AudioMidiSeq*>(audio);
 	cout << "NUMBER OF AUDIO TRACK " << _audio->GetNumberOfTrack() << endl;

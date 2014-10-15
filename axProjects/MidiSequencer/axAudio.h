@@ -23,7 +23,7 @@
 #include "axAudioFilter.h"
 #include "axAudioEnvelope.h"
 
-#include "axVstInterface.h"
+//#include "axVstInterface.h"
 
 #define LINE_INTERPOLE(y1, y2, mu) y1 + mu * (y2 - y1);
 
@@ -289,13 +289,13 @@ public:
 class AudioMidiSeq: public Audio
 {
 public:
-	AudioMidiSeq():
+	AudioMidiSeq()
 		// Members.
-		_vst(44100, 1024)
+//		_vst(44100, 1024)
 	{
 		// Vst plugin.
-		_vst.LoadVstPlugin("C:\\VST\\TAL-Chorus-LX.dll");
-		_vst.startPlugin();
+//		_vst.LoadVstPlugin("C:\\VST\\TAL-Chorus-LX.dll");
+//		_vst.startPlugin();
 
 		_buffer = new axAudioBuffer("kickw.wav");
 		_buffer->ShowInfo();
@@ -443,9 +443,9 @@ public:
 			tracks_out[i] = _tracks[i]->Process();
 		} 
 
-		axFloat** vst_input_buffers = _vst.GetInputBuffers();
-		axFloat** vst_output_buffers = _vst.GetOutputBuffers();
-
+//		axFloat** vst_input_buffers = _vst.GetInputBuffers();
+//		axFloat** vst_output_buffers = _vst.GetOutputBuffers();
+//
 		for(int i = 0; i < 1024; i++)
 		{
 			float v_l = 0.0;
@@ -457,20 +457,20 @@ public:
 				v_r += *tracks_out[n]++;
 			}
 
-			vst_input_buffers[0][i] = v_l;
-			vst_input_buffers[1][i] = v_r;
-			//*out++ = v_l;
-			//*out++ = v_r;
+//			vst_input_buffers[0][i] = v_l;
+//			vst_input_buffers[1][i] = v_r;
+			*out++ = v_l;
+			*out++ = v_r;
 		}
+//
+//		_vst.processAudio(vst_input_buffers, vst_output_buffers);
 
-		_vst.processAudio(vst_input_buffers, vst_output_buffers);
-
-		int index = 0;
-		for (int i = 0; i < 1024 * 2; i+=2, index++)
-		{
-			out[i] = vst_output_buffers[0][index];
-			out[i + 1] = vst_output_buffers[1][index];
-		}
+//		int index = 0;
+//		for (int i = 0; i < 1024 * 2; i+=2, index++)
+//		{
+//			out[i] = vst_output_buffers[0][index];
+//			out[i + 1] = vst_output_buffers[1][index];
+//		}
 
     	return paContinue;
 	}
@@ -502,7 +502,7 @@ private:
 
 	AudioTrack* _track;
 	vector<AudioTrack*> _tracks;
-	axVstInterface _vst;
+//	axVstInterface _vst;
 
 };
 

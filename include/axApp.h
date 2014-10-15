@@ -20,6 +20,7 @@
 class axApp
 {
 public:
+    static axApp* MainInstance;
 	axApp();
 	// ~axApp();
 
@@ -45,6 +46,16 @@ public:
 	string GetCurrentAppDirectory();
 
 	string GetAppDirectory();
+    
+//    static void CallMainEntryPoint(axApp* app)
+//    {
+//        _mainFunction(app);
+//    }
+//    
+//    static void ConnectMainEntryPoint(void (*fct)(axApp*) )
+//    {
+//        _mainFunction = fct;
+//    }
 
 private:
 	axCore* _core;

@@ -46,8 +46,8 @@ MidiPartition::MidiPartition(axApp* app, axWindow* parent, const axRect& rect):
 			_selected_circle(0)
 			
 {
-	_circle = new axImage("round.png");
-	_selectedCircle = new axImage("round_sel.png");
+	_circle = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/round.png");
+	_selectedCircle = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/round_sel.png");
 
 	_bars.push_back(1);
  	_bars.push_back(3);
@@ -193,7 +193,7 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 	btns.push_back(new axButton(app, this, 
 								 axRect(x, y, 20, 20), 
 								 axButtonEvents(btnFct), 
-								 btn_info, "btn.png", "", btnFlags, 
+								 btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btn.png", "", btnFlags,
 								 to_string(CHOICE_RED)));
 
 	x += xDelta;
@@ -206,7 +206,7 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 	btns.push_back(new axButton(app, this, 
 								axRect(x, y, 20, 20), 
 								axButtonEvents(btnFct), 
-								btn_info, "btn.png", "", btnFlags, 
+								btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btn.png", "", btnFlags,
 								to_string(CHOICE_GREEN)));
 
 	x += xDelta;
@@ -219,7 +219,7 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 	btns.push_back(new axButton(app, this, 
 							axRect(x, y, 20, 20), 
 							axButtonEvents(btnFct),
-							btn_info, "btn.png", "", 
+							btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btn.png", "",
 							btnFlags, to_string(CHOICE_BLUE)));
 
 	_trackSize = axSize(rect.size.x, 90);
@@ -384,7 +384,7 @@ DrumMachine::DrumMachine(axApp* app,
 
 	// string dir(app->GetCurrentAppDirectory());
 
-	_topBg = new axImage("tool2.png");
+	_topBg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/tool2.png");
 	
 	// axButtonInfo btn_info(axColor(0.8, 0.0, 0.0),
 	// 					  axColor(0.9, 0.0, 0.0),
@@ -499,7 +499,7 @@ ScrollDrumMachine::ScrollDrumMachine(axApp* app, axWindow* parent,
 	scroll_bar->setInputInfo(rect.size.y, 800, 0);
 	_drum = new DrumMachine(app, this, axRect(45, 0, rect.size.x - 90 - 14, 800), audio);
 
-	_side_img = new axImage("woodSide.png");
+	_side_img = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/woodSide.png");
 
 	_last_delta = 0;
 }
@@ -537,30 +537,30 @@ void ScrollDrumMachine::OnPaint()
 }
 
 
-int main()
-{
-	AudioMidiSeq* audio = new AudioMidiSeq();
-	axMidi* midi = new axMidi(audio);
-
-	axApp* app = new axApp(axSize(570, 600));
-	
-	ScrollDrumMachine* machine = new ScrollDrumMachine(app, 
-										nullptr, 
-										axRect(0, 0, 570, 600),
-										audio);
-
-	// DrumMachinePreset test("presets/presets.txt");
-	audio->StartAudio();
-	midi->StartStream();
-
-	// machine->SetPreset("presets/presets.txt");
-	app->MainLoop();
-
-	//midi->StopStream();
-
-	delete midi;
-	delete audio;
-	delete app;
-
-	return 0;
-}
+//int main()
+//{
+//	AudioMidiSeq* audio = new AudioMidiSeq();
+//	axMidi* midi = new axMidi(audio);
+//
+//	axApp* app = new axApp(axSize(570, 600));
+//	
+//	ScrollDrumMachine* machine = new ScrollDrumMachine(app, 
+//										nullptr, 
+//										axRect(0, 0, 570, 600),
+//										audio);
+//
+//	// DrumMachinePreset test("presets/presets.txt");
+//	audio->StartAudio();
+//	midi->StartStream();
+//
+//	// machine->SetPreset("presets/presets.txt");
+//	app->MainLoop();
+//
+//	//midi->StopStream();
+//
+//	delete midi;
+//	delete audio;
+//	delete app;
+//
+//	return 0;
+//}

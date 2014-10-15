@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #include "axApp.h"
+#include "axTrempoline.h"
+#include "Main.h"
 
-@interface axAppDelegate :NSOpenGLView
+@interface axAppDelegate : NSOpenGLView
 {
     //system timer, needed to synchronize the frame rate
     NSTimer* renderTimer;

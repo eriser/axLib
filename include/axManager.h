@@ -36,7 +36,7 @@ public:
 
 	// Mouse events.
 	void OnMouseMotion(const axPoint& pos);
-	// void OnMouseLeftDragging(const axPoint& pos);
+    void OnMouseLeftDragging(const axPoint& pos);
 	void OnMouseLeftDown(const axPoint& pos);
 	void OnMouseLeftUp(const axPoint& pos);
 	void OnMouseRightDown();

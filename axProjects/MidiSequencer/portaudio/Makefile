@@ -18,17 +18,17 @@ libdir = ${exec_prefix}/lib
 includedir = ${prefix}/include
 CC = gcc
 CXX = 
-CFLAGS = -g -O2 -DPA_LITTLE_ENDIAN -I$(top_srcdir)/include -I$(top_srcdir)/src/common -I$(top_srcdir)/src/os/unix -pthread -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DLT_OBJDIR=\".libs/\" -DHAVE_SYS_SOUNDCARD_H=1 -DHAVE_LINUX_SOUNDCARD_H=1 -DSIZEOF_SHORT=2 -DSIZEOF_INT=4 -DSIZEOF_LONG=8 -DHAVE_CLOCK_GETTIME=1 -DHAVE_NANOSLEEP=1 -DPA_USE_ALSA=1 -DPA_USE_OSS=1
-LIBS =  -lasound -lm -lpthread
+CFLAGS = -std=c99 -O2 -Wall -pedantic -pipe -fPIC -DNDEBUG -DPA_LITTLE_ENDIAN -I$(top_srcdir)/include -I$(top_srcdir)/src/common -I$(top_srcdir)/src/os/unix -Werror -arch i386 -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -mmacosx-version-min=10.4  -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DLT_OBJDIR=\".libs/\" -DSIZEOF_SHORT=2 -DSIZEOF_INT=4 -DSIZEOF_LONG=8 -DHAVE_NANOSLEEP=1 -DPA_USE_COREAUDIO=1
+LIBS = -framework CoreAudio -framework AudioToolbox -framework AudioUnit -framework Carbon
 AR = /usr/bin/ar
 RANLIB = ranlib
-SHELL = /bin/bash
+SHELL = /bin/sh
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
-SHARED_FLAGS = -fPIC
+SHARED_FLAGS = -framework CoreAudio -framework AudioToolbox -framework AudioUnit -framework Carbon -dynamiclib -arch i386 -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -mmacosx-version-min=10.4
 LDFLAGS = 
-DLL_LIBS =  -lrt -lasound -lm -lpthread
+DLL_LIBS = 
 CXXFLAGS = 
 NASM = 
 NASMOPT = 
@@ -37,8 +37,8 @@ LT_CURRENT=2
 LT_REVISION=0
 LT_AGE=0
 
-OTHER_OBJS =  src/hostapi/alsa/pa_linux_alsa.o src/hostapi/oss/pa_unix_oss.o src/os/unix/pa_unix_hostapis.o src/os/unix/pa_unix_util.o
-INCLUDES = portaudio.h pa_linux_alsa.h
+OTHER_OBJS = src/os/unix/pa_unix_hostapis.o src/os/unix/pa_unix_util.o src/hostapi/coreaudio/pa_mac_core.o src/hostapi/coreaudio/pa_mac_core_utilities.o src/hostapi/coreaudio/pa_mac_core_blocking.o src/common/pa_ringbuffer.o
+INCLUDES = portaudio.h
 
 PALIB = libportaudio.la
 PAINC = include/portaudio.h

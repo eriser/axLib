@@ -232,8 +232,8 @@ MidiTrackSequence::MidiTrackSequence(axApp* app, axWindow* parent,
 	_nSubTrack = 2;
 	_selectedSeparationNumber = 0;
 
-	_bgImg = new axImage("btn.png");
-	_hightlighImg = new axImage("btnhigh.png");
+	_bgImg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btn.png");
+	_hightlighImg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btnhigh.png");
 
 	_colorChoice[CHOICE_RED] = axColor(0.8, 0.0, 0.0);
 	_colorChoice[CHOICE_GREEN] = axColor(0.0, 0.8, 0.0);
@@ -521,14 +521,14 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
   _addBtn = new axButton(app, this, 
                axRect(rect.size.x - 14, 0, 14, height), 
                axButtonEvents(btnFct), 
-			   btn_info, "btnhigh.png", "+", 
+			   btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btnhigh.png", "+",
 			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
 
   btnFct = GetOnRemoveSeparation();
   _removeBtn = new axButton(app, this, 
                axRect(rect.size.x - 14, height, 14, height), 
                axButtonEvents(btnFct), 
-               btn_info, "btnhigh.png", "-",
+               btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btnhigh.png", "-",
 			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
 
 
@@ -540,7 +540,7 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
   axButton* name = new axButton(app, this, 
                axRect(0, 0, 60, 30), 
                axButtonEvents(btnFct), 
-			   btn_info, "miditrackname.png", trackName, axBUTTON_SINGLE_IMG);
+			   btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/miditrackname.png", trackName, axBUTTON_SINGLE_IMG);
 
   _trackSeq = new MidiTrackSequence(app, this, 
                     axRect(60, 0, 

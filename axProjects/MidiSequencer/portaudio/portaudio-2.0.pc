@@ -8,5 +8,5 @@ Description: Portable audio I/O
 Requires:
 Version: 19
 
-Libs: -L${libdir} -lportaudio  -lasound -lm -lpthread
-Cflags: -I${includedir} -pthread
+Libs: -L${libdir} -lportaudio -framework CoreAudio -framework AudioToolbox -framework AudioUnit -framework Carbon
+Cflags: -I${includedir} 

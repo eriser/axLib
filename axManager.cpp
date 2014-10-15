@@ -67,6 +67,13 @@ void axManager::OnPaint()
 		}
 	}
 }
+void axManager::OnMouseLeftDragging(const axPoint& pos)
+{
+    if(_mouseCaptureWindow != nullptr)
+    {
+        _mouseCaptureWindow->OnMouseLeftDragging(pos);
+    }
+}
 
 void axManager::OnMouseMotion(const axPoint& pos)
 {
