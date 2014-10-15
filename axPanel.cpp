@@ -38,7 +38,7 @@ void axPanel::BlockDrawing()
 	axSize gSize(GetApp()->GetCore()->GetGlobalSize());
 	
 	glScissor(absRect.position.x-1, 
-			  gSize.y - absRect.position.y - absRect.size.y, 
+			  gSize.y - absRect.position.y - absRect.size.y,
 			  absRect.size.x+1, 
 			  absRect.size.y+1);
 

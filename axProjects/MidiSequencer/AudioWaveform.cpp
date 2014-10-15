@@ -40,7 +40,7 @@ axWaveform::axWaveform(axApp* app, axWindow* parent, const axRect& rect,
 
 void axWaveform::OnPaint()
 {
-    BlockDrawing(GetAbsoluteRect());
+//    BlockDrawing(GetAbsoluteRect());
 
     axGC* gct = GetGC();
     axGC& gc = *gct;
@@ -167,7 +167,7 @@ void axWaveform::OnPaint()
 	//gc.DrawLine(_envPoints[2] + decay, _envPoints[3] + decay);
 
 
-    UnBlockDrawing();
+//    UnBlockDrawing();
     // FlipScreen( gc );
 }
 

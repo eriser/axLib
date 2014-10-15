@@ -10,6 +10,8 @@ axCore::axCore():
 	 _popupManager = new axManager();
 
 	 //_lastDrawingTime = clock();
+    
+    _y_test = 0.0;
 }
 
 axManager* axCore::GetWindowManager()
@@ -22,7 +24,7 @@ axManager* axCore::GetPopupManager()
 	 return _popupManager;
 }
 
-void axCore::ResizeGLScene(const int& width, const int& height)
+void axCore::ResizeGLScene(const int& width, const int& height, double y)
 {
 	int h = height;
 
@@ -32,10 +34,11 @@ void axCore::ResizeGLScene(const int& width, const int& height)
         h = 1;
     }
     
+    _y_test = y;
 	_size = axSize(width, h);
 
 	// Reset the current viewport.
-	glViewport(0, 0, width, h);
+	glViewport(0, _y_test, width, h);
 
 	// Select the projection matrix.
 	glMatrixMode(GL_PROJECTION);	
@@ -50,7 +53,8 @@ void axCore::ResizeGLScene(const int& width, const int& height)
 	glMatrixMode(GL_MODELVIEW);			
 
 	// Reset the modelview matrix.
-	glLoadIdentity();		
+//	glLoadIdentity();
+    glTranslated(0.0, y, 0.0);
 	_needToDraw = true;
 	_popupNeedToDraw = true;
 

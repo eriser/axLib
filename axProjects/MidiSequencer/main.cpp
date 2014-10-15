@@ -496,7 +496,7 @@ ScrollDrumMachine::ScrollDrumMachine(axApp* app, axWindow* parent,
 								 axScrollBarInfo());
 
 
-	scroll_bar->setInputInfo(rect.size.y, 800, 0);
+	scroll_bar->setInputInfo(rect.size.y, 605, 0);
 	_drum = new DrumMachine(app, this, axRect(45, 0, rect.size.x - 90 - 14, 800), audio);
 
 	_side_img = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/woodSide.png");

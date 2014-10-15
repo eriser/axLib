@@ -15,7 +15,7 @@ public:
 	virtual void MainLoop() = 0;
 	virtual void Init(const axPoint& frame_size) = 0;
 
-	void ResizeGLScene(const int& width, const int& height);
+	void ResizeGLScene(const int& width, const int& height, double y = 0);
 	axManager* GetWindowManager();
 	axManager* GetPopupManager();
 	virtual string GetAppDirectory() = 0;
@@ -38,6 +38,11 @@ public:
 	virtual void KillGLWindow() = 0;
 	virtual void KillPopGLWindow() = 0;
 	virtual bool CreateGLWindow(char* title, int width, int height, int bits) = 0;
+    
+    double GetYTestValue()
+    {
+        return _y_test;
+    }
 
 protected:
 
@@ -47,6 +52,8 @@ protected:
 	bool _needToDraw, _popupNeedToDraw;
 	axSize _size, _popSize;
 	//clock_t _lastDrawingTime;
+    
+    double _y_test;
 
 };
 

@@ -18,7 +18,7 @@ axApp::axApp()
     
 #ifdef __APPLE__
     _core = new axCoreMac();
-    _core->Init(axSize(1000, 500));
+    _core->Init(axSize(1000, 717));
 #endif
     
 }

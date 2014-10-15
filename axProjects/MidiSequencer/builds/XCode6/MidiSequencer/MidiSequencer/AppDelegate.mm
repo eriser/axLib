@@ -157,7 +157,7 @@ axApp* GlobalApp = nullptr;
 }
 
 // Set origin at top left position.
-- (BOOL)isFlipped;
+- (BOOL)isFlipped
 {
     return YES;
 }
@@ -166,10 +166,34 @@ axApp* GlobalApp = nullptr;
 // Each time window has to be redrawn, this method is called
 - (void)drawRect:(NSRect)bounds
 {
-    NSRect backingBounds = [self convertRectToBacking:[self bounds]];
-    axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width,
-                                                  backingBounds.size.height);
+    int frame_height = bounds.size.height;
+//    cout << "gg : " << bounds.origin.y << endl;
+//    CGPoint position = CGPointMake(0,0);
+//    [self setFrame:(CGRect){.origin = position,.size = self.frame.size}];
     
+//    bounds.origin = CGPointMake(50,0);
+//    NSRect frame_rect = [self convertRectToBacking:[self drawRect]];
+    NSRect backingBounds = [self convertRectToBacking:[self bounds]];
+
+    axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width,
+                                                  backingBounds.size.height,
+                                                  frame_height - backingBounds.size.height);
+//    NSRect frame = [self frame];
+//    frame.origin.y = 0;
+//    [self setFrame:frame];
+//    NSPoint pt;
+//    pt.x = 0;
+//    pt.y = 0;
+//    [self setFrameTopLeftPoint:pt];
+//    cout << "POSITION : " << backingBounds.origin.y << endl;
+//    cout << "HEIGHT : " << backingBounds.size.height << endl;
+//    cout << "FHEIGHT : " << frame_rect.size.height << endl;
+//    if ( [self frame].size.height < [[self superview] frame].size.height )
+//    {
+//        [self frame].size.height = [[self superview] frame].size.height;
+//    }
+    
+
     // Is only gonna draw if necessary.
     axApp::MainInstance->GetCore()->DrawGLScene();
     glFlush();

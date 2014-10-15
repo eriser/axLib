@@ -668,16 +668,17 @@
             </items>
         </menu>
         <window title="ax" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="567" height="771"/>
+            <rect key="contentRect" x="335" y="390" width="570" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <value key="minSize" type="size" width="570" height="600"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="567" height="771"/>
+                <rect key="frame" x="0.0" y="0.0" width="570" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <openGLView fixedFrame="YES" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4P-Mk-36u" customClass="axAppDelegate">
-                        <rect key="frame" x="0.0" y="60" width="599" height="716"/>
+                    <openGLView fixedFrame="YES" placeholderIntrinsicWidth="599" placeholderIntrinsicHeight="771" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4P-Mk-36u" customClass="axAppDelegate">
+                        <rect key="frame" x="0.0" y="-171" width="570" height="771"/>
                     </openGLView>
                 </subviews>
             </view>
