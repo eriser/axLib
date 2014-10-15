@@ -86,8 +86,9 @@ axApp* GlobalApp = nullptr;
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
     
-    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-    axPoint pos(locationInView.x, y - locationInView.y);
+//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
+//    axPoint pos(locationInView.x, y - locationInView.y);
+    axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
     
     [self setNeedsDisplay:YES];
@@ -99,8 +100,9 @@ axApp* GlobalApp = nullptr;
     NSPoint locationInView = [self convertPoint:[anEvent locationInWindow]
                                        fromView:nil];
     
-    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-    axPoint pos(locationInView.x, y - locationInView.y);
+//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
+//    axPoint pos(locationInView.x, y - locationInView.y);
+    axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
     
     [self setNeedsDisplay:YES];
@@ -112,8 +114,9 @@ axApp* GlobalApp = nullptr;
     NSPoint locationInView = [self convertPoint:[theEvent locationInWindow]
                                        fromView:nil];
     
-    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-    axPoint pos(locationInView.x, y - locationInView.y);
+//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
+//    axPoint pos(locationInView.x, y - locationInView.y);
+    axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
     [self setNeedsDisplay:YES];
 }
@@ -124,11 +127,13 @@ axApp* GlobalApp = nullptr;
     NSPoint locationInView = [self convertPoint:[MyMouseMouse locationInWindow]
                                        fromView:nil];
     
-    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-    axPoint pos(locationInView.x, y - locationInView.y);
+//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
+//    axPoint pos(locationInView.x, y - locationInView.y);
+    axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseMotion(pos);
     
     [self setNeedsDisplay:YES];
+    
 }
 
 // Working.
@@ -148,23 +153,24 @@ axApp* GlobalApp = nullptr;
 // Timer callback method
 - (void)timerFired:(id)sender
 {
-    //    bool need_to_draw = GlobalApp->GetCore()->DrawGLScene();
-    //    if(need_to_draw)
-    //    {
-    //        [self setNeedsDisplay:YES];
-    //    }
-    
+
 }
+
+// Set origin at top left position.
+- (BOOL)isFlipped;
+{
+    return YES;
+}
+
 
 // Each time window has to be redrawn, this method is called
 - (void)drawRect:(NSRect)bounds
 {
-    //below code sets the viewport of Open GL context into
-    //correct size (assuming resize, fullscreen operations may trigger change)
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
-    //glViewport(0,0, backingBounds.size.width, backingBounds.size.height);
+    axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width,
+                                                  backingBounds.size.height);
     
-    axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width, backingBounds.size.height);
+    // Is only gonna draw if necessary.
     axApp::MainInstance->GetCore()->DrawGLScene();
     glFlush();
 }

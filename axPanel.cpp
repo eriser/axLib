@@ -3,7 +3,6 @@
 axPanel::axPanel(axApp* app, axWindow* parent, const axRect& rect) : 
 		axWindow(parent, rect)
 {
-    cout << "ADD window ct." << endl;
 	if (parent != nullptr)
 	{
 		if (parent->GetIsPopup())
@@ -13,13 +12,11 @@ axPanel::axPanel(axApp* app, axWindow* parent, const axRect& rect) :
 		}
 		else
 		{
-            cout << "ADD window." << endl;
 			app->AddWindow(this);
 		}
 	}
 	else
 	{
-        cout << "ADD window first." << endl;
 		app->AddWindow(this);
 	}
 

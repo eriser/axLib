@@ -313,16 +313,19 @@ public:
 
 		_beatIndex = 0;
 
+        
 		_track = new AudioTrack("kickw.wav", _nSamplePerBeat);
+        
+        std::string local_dir("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/");
 
-		_tracks.push_back(new AudioTrack("kickw.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack("snare06.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack("hihat3.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack("snare2.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack("snare2.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack("ohat.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "kickw.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "snare06.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "hihat3.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "ohat.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "snare2.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "ohat.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "snare2.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "ohat.wav", _nSamplePerBeat));
 
 		_tracks[0]->SetTrackName("Kick");
 		_tracks[1]->SetTrackName("Snare");

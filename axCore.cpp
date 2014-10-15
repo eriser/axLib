@@ -27,11 +27,15 @@ void axCore::ResizeGLScene(const int& width, const int& height)
 	int h = height;
 
 	// Prevent a divide by zero by.
-	if (h == 0)	h = 1;
+	if (h == 0)
+    {
+        h = 1;
+    }
+    
 	_size = axSize(width, h);
 
 	// Reset the current viewport.
-	glViewport(0, 0, width, h);						
+	glViewport(0, 0, width, h);
 
 	// Select the projection matrix.
 	glMatrixMode(GL_PROJECTION);	
