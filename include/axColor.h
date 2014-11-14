@@ -6,35 +6,27 @@
 
 #include "axC++.h"
 
-struct axColorStruct
-{
-	axColorStruct(){}
-	axColorStruct(const axFloat& r_, const axFloat& g_, const axFloat& b_):
-		r(r_), g(g_), b(b_)
-	{
-	}
-
-
-	axFloat r, g, b;
-};
-
 class axColor
 {
 public:
-	axColor(const axFloat& r, const axFloat& g, const axFloat& b);
-	axColor(const string& color);
-	axColor(const axColorStruct& color);
+	axColor(const axDouble& r, const axDouble& g, const axDouble& b);
+    
+    axColor(const axDouble& r, const axDouble& g,
+            const axDouble& b, const axDouble& a);
+    
 	axColor();
 	axColor(const axColor& col);
+    axColor(const string& color);
 
-	axFloat GetRed() const;
-	axFloat GetGreen() const;
-	axFloat GetBlue() const;
-	axColorStruct GetColorStruct() const;
+	axDouble GetRed() const;
+	axDouble GetGreen() const;
+	axDouble GetBlue() const;
+    axDouble GetAlpha() const;
 
 private:
-	axFloat _r, _g, _b;
+	axDouble _r, _g, _b, _a;
 };
+
 
 #endif //__AX_COLOR__
 

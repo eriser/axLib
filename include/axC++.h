@@ -22,11 +22,12 @@
 #include <gl\glu.h>
 #endif //_MSC_VER
 
+#ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
+#endif // __APPLE__
 
 #include <stdint.h>
-
 #include "axUtils.h"
 
 #define axDEBUG_LEVEL0 0
@@ -61,8 +62,6 @@
 #define axCLIP( v, min, max ) if( v < min ) v = min; \
 							  else if (v > max) v = max;
 
-							  
-
 // Standard type.
 typedef float axFloat;
 typedef double axDouble;
@@ -74,18 +73,18 @@ typedef unsigned char axByte;
 
 // Point.
 typedef axTemplate2DPoint<axInt> axPoint;
-typedef axTemplate2DPoint<axFloat> axFloatPoint;
+typedef axTemplate2DPoint<axDouble> axFloatPoint;
 
 // Size.
 typedef axTemplate2DPoint<axInt> axSize;
-typedef axTemplate2DPoint<axFloat> axFloatSize;
+typedef axTemplate2DPoint<axDouble> axFloatSize;
 
 // Rectangle.
 typedef axTemplateRect<axPoint, axSize, axInt> axRect;
-typedef axTemplateRect<axFloatPoint, axFloatSize, axFloat> axFloatRect;
+typedef axTemplateRect<axFloatPoint, axFloatSize, axDouble> axFloatRect;
 
 // Range.
-typedef axRange<axFloat> axFloatRange;
+typedef axRange<axDouble> axFloatRange;
 typedef axRange<axInt> axIntRange;
 
 // Flag.

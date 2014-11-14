@@ -31,7 +31,11 @@
 
 using namespace std;
 
+#define DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+
+DEPRECATED_ATTRIBUTE
 string axFloatToString( const double& value, int num_char = 4 );
+DEPRECATED_ATTRIBUTE
 string axIntToString(const int &value );
 
 string OpenFileDialog(const string& app_name, string folder_path = "");
@@ -127,14 +131,6 @@ public:
 		Load(path);
 	}
 
-	bool IsPointInside(const CPos& pos)
-	{
-		return	pos.x >= position.x &&
-				pos.x <= position.x + size.x &&
-				pos.y >= position.y &&
-				pos.y <= position.y + size.y;
-	}
-
 	CSize size;
 	CPos position;							  
 
@@ -189,7 +185,47 @@ public:
 	{ 
 		return (size.x >= rect.size.x && size.y >= rect.size.y); 
 	}
-
+    
+    bool IsPointInside(const CPos& pos)
+    {
+        return	pos.x >= position.x &&
+        pos.x <= position.x + size.x &&
+        pos.y >= position.y &&
+        pos.y <= position.y + size.y;
+    }
+    
+    axTemplateRect GetInteriorRect(const CPos& point) const
+    {
+        return axTemplateRect(point.x, point.y,
+                      size.x - (T)(2.0 * point.x),
+                      size.y - (T)(2.0 * point.y));
+    }
+    
+    CPos GetTopLeft() const
+    {
+        return position;
+    }
+    
+    CPos GetTopRight() const
+    {
+        return CPos(position.x + size.x, position.y);
+    }
+    
+    CPos GetBottomLeft() const
+    {
+        return CPos(position.x, position.y + size.y);
+    }
+    
+    CPos GetBottomRight() const
+    {
+        return CPos(position.x + size.x, position.y + size.y);
+    }
+    
+    CPos GetMiddle() const
+    {
+        return CPos(position.x + size.x * 0.5, position.y + size.y * 0.5);
+    }
+    
 	bool Load(const string& path)
 	{
 		ifstream file;
@@ -212,24 +248,6 @@ public:
 		}
 	}
 };
-
-//=========================================================================
-//= Multiplicative LCG for generating uniform(0.0, 1.0) random numbers    =
-//=   - x_n = 7^5*x_(n-1)mod(2^31 - 1)                                    =
-//=   - With x seeded to 1 the 10000th x value should be 1043618065       =
-//=   - From R. Jain, "The Art of Computer Systems Performance Analysis," =
-//=     John Wiley & Sons, 1991. (Page 443, Figure 26.2)                  =
-//=========================================================================
-double rand_val(int seed);
-
-//===========================================================================
-//=  Function to generate normally distributed random variable using the    =
-//=  Box-Muller method                                                      =
-//=    - Input: mean and standard deviation                                 =
-//=    - Output: Returns with normally distributed random variable          =
-//===========================================================================
-double axNormalDistributionRandomGenerator(const double& mean, 
-										   const double& std_dev);
 
 #endif
 

@@ -40,17 +40,28 @@ axFloatRect axGC::RectToFloatRect(const axRect& rect)
 
 void axGC::SetColor(const axDouble& r, const axDouble& g, const axDouble& b)
 {
-	glColor3f(axFloat(r), axFloat(g), axFloat(b));
+	glColor4d(r, b, g, 1.0);
+}
+
+void axGC::SetColor(const axDouble& r,
+                    const axDouble& g,
+                    const axDouble& b,
+                    const axDouble& a)
+{
+    glColor4d(r, g, b, a);
 }
 
 void axGC::SetColor(const axColor& color)
 {
-	glColor3f(color.GetRed(), color.GetGreen(), color.GetBlue());
+	glColor4d(color.GetRed(),
+              color.GetGreen(),
+              color.GetBlue(),
+              color.GetAlpha());
 }
 
 void axGC::SetColor(const axColor& color, const float& alpha)
 {
-	glColor4f(color.GetRed(), color.GetGreen(), color.GetBlue(), alpha);
+	glColor4d(color.GetRed(), color.GetGreen(), color.GetBlue(), alpha);
 }
 
 void axGC::DrawRectangle(const axRect& rect)
@@ -95,7 +106,7 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 	// really at the 0.5,0.5 instead of its top-left corner. 
 	// Therefore, if you want a 1px wide line from 0,0 to 10,10 inclusive, 
 	// you really had to draw a line from 0.5,0.5 to 10.5,10.5. 
-	//frect.position.x -= 0.5; // Seems to be only on linux.
+	frect.position.x -= 0.5; // Seems to be only on linux and mac.
 
 	glLineWidth((GLfloat)linewidth);
 
@@ -105,8 +116,8 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 	glBegin(GL_LINE_LOOP);
 
 	// Top
-	glVertex3f(frect.position.x, frect.position.y, 0);
-	glVertex3f(frect.position.x + frect.size.x + 1,
+	glVertex3f(frect.position.x , frect.position.y, 0);
+	glVertex3f(frect.position.x + frect.size.x,
 		frect.position.y, 0);
 
 	// Right
@@ -127,6 +138,8 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 	glVertex3f(frect.position.x /*+ 1*/,
 		frect.position.y + frect.size.y, 0);
 	glEnd();
+    
+    
 }
 
 void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
@@ -439,6 +452,26 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 	glVertex2f(p1.x, p1.y);
 	glVertex2f(p2.x, p2.y);
 	glEnd();
+}
+
+void axGC::SetLineWidth(const double& width)
+{
+    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_POLYGON_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+    
+    glLineWidth(width);
+
+}
+
+void axGC::SeDefaultLine()
+{
+    glDisable(GL_LINE_SMOOTH);
+    glDisable(GL_POLYGON_SMOOTH);
+    glLineWidth(1.0);
 }
 
 void axGC::DrawCircle(const axPoint& pos, float r, int num_segments) 

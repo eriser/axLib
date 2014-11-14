@@ -116,7 +116,7 @@ private:
 
 struct axButtonEvents
 {
-	//axEvtFunction(axButtonMsg) button_click;
+//	axEvtFunction(axButtonMsg) button_click;
 	std::function<void (axButtonMsg)> button_click;
 	
 	axButtonEvents(){}

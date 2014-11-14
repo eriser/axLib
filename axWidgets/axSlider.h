@@ -70,6 +70,7 @@ struct axSliderInfo
 			backSliderColor,
 			backSliderContourColor;
 
+    axSliderInfo(){}
 	axSliderInfo(const string& imgPath,
 				 const axSize& size,
 				 const axColor& bg_normal,
