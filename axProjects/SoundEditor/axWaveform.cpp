@@ -28,9 +28,9 @@ void axWaveform::SetZoom(const double& zoom)
     axBufferInfo b_info = _audioBuffer->GetBufferInfo();
     double nSamplesToProcess = b_info.frames * zoom;
     
-    if(nSamplesToProcess < 11)
+    if(nSamplesToProcess < 5.0)
     {
-        _zoom = 11.0 / b_info.frames;
+        _zoom = 5.0 / b_info.frames;
     }
     else
     {
@@ -120,7 +120,7 @@ void axWaveform::OnPaint()
         // Ratio of number of pixel over number of sample to draw.
         double r = double(rect.size.x-2) / nSamplesToProcess;
         
-        for(int i = 1; i < ceil(nSamplesToProcess); i++, index++)
+        for(int i = 1; i < floor(nSamplesToProcess); i++, index++)
         {
             // Pixel position.
             double x_pos_left = double(i-1) * r;
@@ -162,7 +162,6 @@ void axWaveform::OnPaint()
                 // One sample or less per pixel.
                 else
                 {
-                    std::cout << "One sample or less per pixel." << std::endl;
                     // Pixel value.
                     int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
                     int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
@@ -171,29 +170,19 @@ void axWaveform::OnPaint()
                                  axPoint(x_pos_right, y_pixel_right));
                 }
                 
-//                std::cout << "Pixel : " << changing_pixel << std::endl;
-//                std::cout << "Samples : " << nSamplePerPixel << std::endl;
                 changing_pixel++;
                 nSamplePerPixel = 0;
                 min_value_pixel = 1000.0;
                 max_value_pixel = -1000.0;
             }
-            
-//            // Pixel value.
-//            int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
-//            int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
-//            
-//            gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                         axPoint(x_pos_right, y_pixel_right));
         }
         
-        gc->SetColor(axColor(0.7, 0.7, 0.7), 1.0);
+        // Draw middle line.
+        gc->SetColor(axColor(0.7, 0.7, 0.7), 0.4);
         gc->DrawLine(axPoint(1, middle_y), axPoint(rect.size.x - 2, middle_y));
     }
 
-    
-    
-    
+    // Draw contour.
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawRectangleContour(rect0);
 }

@@ -62,11 +62,12 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     sld_evts.slider_value_change = GetOnZoomValue();
     
     axSlider* sld1 = new axSlider(app, this, axRect(axPoint(765, 90),
-                                                    axSize(15, 200)),
+                                                    axSize(15, 245)),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_VERTICAL |
-                                  axSLIDER_FLAG_RIGHT_ALIGN);
-    sld1->SetBackgroundAlpha(0.3);
+                                  axSLIDER_FLAG_RIGHT_ALIGN |
+                                  axSLIDER_FLAG_NO_SLIDER_LINE);
+    sld1->SetBackgroundAlpha(0.1);
     sld1->SetValue(1.0);
     
     _waveform = new axWaveform(app, this, axRect(40, 90, 720, 200));
@@ -99,6 +100,7 @@ void SoundEditor::OnOpenDialog(const axButtonMsg& msg)
             if(_evtChangePathAudio)
             {
                 _evtChangePathAudio(file_path);
+                _waveformNavig->SetAudioBuffer(SoundEditorAudio::GetInstance()->GetSoundBuffer());
             }
         }
     }

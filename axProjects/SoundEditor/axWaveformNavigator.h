@@ -39,6 +39,9 @@ private:
     
     int _click_pos_delta_x;
     
+    std::vector<axPoint> _waveformDrawingData;
+    
+    void FillWaveformDrawingData();
     axRect GetBorderRect() const;
     axFloatRange GetBorderRangeFromRect(const axRect& rect) const;
     

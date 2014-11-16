@@ -22,7 +22,140 @@ _audioBuffer(nullptr)
 void axWaveformNavigator::SetAudioBuffer(axAudioBuffer* buffer)
 {
     _audioBuffer = buffer;
+    FillWaveformDrawingData();
 }
+
+void axWaveformNavigator::FillWaveformDrawingData()
+{
+    if(_audioBuffer != nullptr)
+    {
+        axRect rect(GetRect());
+        
+        //    std::cout << "RECT : " << (rect.size.x-3) * 4 << std::endl;
+
+        int data_vector_index = 0;
+        axBufferInfo b_info = _audioBuffer->GetBufferInfo();
+        
+        bool need_to_push_back = false;
+        
+        if(b_info.frames < 2 * rect.size.x)
+        {
+            _waveformDrawingData.clear();
+            need_to_push_back = true;
+        }
+        else
+        {
+            // Doesnt work if buffer is smaller than number of pixel.
+            int size_of_data_vector = (rect.size.x-3) * 4;
+            _waveformDrawingData.resize(size_of_data_vector);
+        }
+
+            float* buffer = _audioBuffer->GetBuffer();
+            int middle_y = rect.size.y * 0.5;
+            
+            //        std::cout << "BSIZE : " << b_info.frames << std::endl;
+            
+            double nSamplesToProcess = double(b_info.frames);
+            int index = 1 ;
+            int nSamplePerPixel = 0;
+            
+            double min_value_pixel = 1000.0;
+            double max_value_pixel = -1000.0;
+            
+            // Ratio of number of pixel over number of sample to draw.
+            double r = double(rect.size.x-2) / nSamplesToProcess;
+            
+            for(int i = 1; i < ceil(nSamplesToProcess); i++, index++)
+            {
+                // Pixel position.
+                double x_pos_left = double(i-1) * r;
+                double x_pos_right = double(i) * r;
+                
+                double l_value = buffer[index - 1];
+                double r_value = buffer[index];
+                
+                if(l_value < min_value_pixel) min_value_pixel = l_value;
+                if(l_value > max_value_pixel) max_value_pixel = l_value;
+                if(r_value < min_value_pixel) min_value_pixel = r_value;
+                if(r_value > max_value_pixel) max_value_pixel = r_value;
+                
+                // Increment sample at each iteration.
+                nSamplePerPixel++;
+                
+                // If pixel has change.
+                if(int(x_pos_left) != int(x_pos_right))
+                {
+                    if(nSamplePerPixel > 1)
+                    {
+                        // Pixel value.
+                        int y_pixel_left = middle_y - min_value_pixel * 0.9 * middle_y;
+                        int y_pixel_right = middle_y - max_value_pixel * 0.9 * middle_y;
+                        
+                        // Draw min to max line on the left pixel.
+                        if(need_to_push_back)
+                        {
+                            _waveformDrawingData.push_back(axPoint(x_pos_left, y_pixel_left));
+                            _waveformDrawingData.push_back(axPoint(x_pos_left, y_pixel_right));
+                        }
+                        else
+                        {
+                            _waveformDrawingData[data_vector_index++] = (axPoint(x_pos_left, y_pixel_left) );
+                            _waveformDrawingData[data_vector_index++] = (axPoint(x_pos_left, y_pixel_right));
+                        }
+  
+           
+                        
+                        // Draw last value of left pixel and first value of right
+                        // pixel. This is to make sure that horizontal lines will be
+                        // drawn if necessary. A liason between each vertical lines.
+                        y_pixel_left = middle_y - l_value * 0.9 * middle_y;
+                        y_pixel_right = middle_y - r_value * 0.9 * middle_y;
+                        
+                        if(need_to_push_back)
+                        {
+                            _waveformDrawingData.push_back(axPoint(x_pos_left, y_pixel_left));
+                            _waveformDrawingData.push_back(axPoint(x_pos_right, y_pixel_right));
+                        }
+                        else
+                        {
+                            _waveformDrawingData[data_vector_index++] = (axPoint(x_pos_left, y_pixel_left) );
+                            _waveformDrawingData[data_vector_index++] = (axPoint(x_pos_right, y_pixel_right));
+                        }
+    
+                    }
+                    // One sample or less per pixel.
+                    else
+                    {
+                        // Pixel value.
+                        int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
+                        int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
+                        
+                        if(need_to_push_back)
+                        {
+                            _waveformDrawingData.push_back(axPoint(x_pos_left, y_pixel_left));
+                            _waveformDrawingData.push_back(axPoint(x_pos_right, y_pixel_right));
+                        }
+                        else
+                        {
+                            _waveformDrawingData[data_vector_index++] = (axPoint(x_pos_left, y_pixel_left) );
+                            _waveformDrawingData[data_vector_index++] = (axPoint(x_pos_right, y_pixel_right));
+                        }
+
+                        
+                        
+                    }
+                    
+                    nSamplePerPixel = 0;
+                    min_value_pixel = 1000.0;
+                    max_value_pixel = -1000.0;
+                }
+            }
+//        }
+    }
+    
+//    std::cout << "Waveform lines size = " << _waveformDrawingData.size() << std::endl;
+}
+
 
 void axWaveformNavigator::SetValueChangeEvt(axEvtFunction(double) fct)
 {
@@ -148,83 +281,86 @@ void axWaveformNavigator::OnPaint()
     gc->SetColor(axColor(0.5, 0.5, 0.5), 1.0);
     gc->DrawRectangle(rect0);
     
-    if(_audioBuffer != nullptr)
-    {
-        axBufferInfo b_info = _audioBuffer->GetBufferInfo();
-        float* buffer = _audioBuffer->GetBuffer();
+    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+    gc->DrawLines(_waveformDrawingData);
+    
+//    if(_audioBuffer != nullptr)
+//    {
+//        axBufferInfo b_info = _audioBuffer->GetBufferInfo();
+//        float* buffer = _audioBuffer->GetBuffer();
         int middle_y = rect.size.y * 0.5;
-        
-        gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-        
-        double nSamplesToProcess = double(b_info.frames);
-        int index = 1 ;
-        int nSamplePerPixel = 0;
-        
-        double min_value_pixel = 1000.0;
-        double max_value_pixel = -1000.0;
-        
-        // Ratio of number of pixel over number of sample to draw.
-        double r = double(rect.size.x-2) / nSamplesToProcess;
-        
-        for(int i = 1; i < ceil(nSamplesToProcess); i++, index++)
-        {
-            // Pixel position.
-            double x_pos_left = double(i-1) * r;
-            double x_pos_right = double(i) * r;
-            
-            double l_value = buffer[index - 1];
-            double r_value = buffer[index];
-            
-            if(l_value < min_value_pixel) min_value_pixel = l_value;
-            if(l_value > max_value_pixel) max_value_pixel = l_value;
-            if(r_value < min_value_pixel) min_value_pixel = r_value;
-            if(r_value > max_value_pixel) max_value_pixel = r_value;
-            
-            // Increment sample at each iteration.
-            nSamplePerPixel++;
-            
-            // If pixel has change.
-            if(int(x_pos_left) != int(x_pos_right))
-            {
-                if(nSamplePerPixel > 1)
-                {
-                    // Pixel value.
-                    int y_pixel_left = middle_y - min_value_pixel * 0.9 * middle_y;
-                    int y_pixel_right = middle_y - max_value_pixel * 0.9 * middle_y;
-                    
-                    // Draw min to max line on the left pixel.
-                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-                                 axPoint(x_pos_left, y_pixel_right));
-                    
-                    // Draw last value of left pixel and first value of right
-                    // pixel. This is to make sure that horizontal lines will be
-                    // drawn if necessary. A liason between each vertical lines.
-                    y_pixel_left = middle_y - l_value * 0.9 * middle_y;
-                    y_pixel_right = middle_y - r_value * 0.9 * middle_y;
-                    
-                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-                                 axPoint(x_pos_right, y_pixel_right));
-                }
-                // One sample or less per pixel.
-                else
-                {
-                    // Pixel value.
-                    int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
-                    int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
-                    
-                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-                                 axPoint(x_pos_right, y_pixel_right));
-                }
-                
-                nSamplePerPixel = 0;
-                min_value_pixel = 1000.0;
-                max_value_pixel = -1000.0;
-            }
-        }
-        
-        gc->SetColor(axColor(0.7, 0.7, 0.7), 1.0);
+//
+//        gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+//        
+//        double nSamplesToProcess = double(b_info.frames);
+//        int index = 1 ;
+//        int nSamplePerPixel = 0;
+//        
+//        double min_value_pixel = 1000.0;
+//        double max_value_pixel = -1000.0;
+//        
+//        // Ratio of number of pixel over number of sample to draw.
+//        double r = double(rect.size.x-2) / nSamplesToProcess;
+//        
+//        for(int i = 1; i < ceil(nSamplesToProcess); i++, index++)
+//        {
+//            // Pixel position.
+//            double x_pos_left = double(i-1) * r;
+//            double x_pos_right = double(i) * r;
+//            
+//            double l_value = buffer[index - 1];
+//            double r_value = buffer[index];
+//            
+//            if(l_value < min_value_pixel) min_value_pixel = l_value;
+//            if(l_value > max_value_pixel) max_value_pixel = l_value;
+//            if(r_value < min_value_pixel) min_value_pixel = r_value;
+//            if(r_value > max_value_pixel) max_value_pixel = r_value;
+//            
+//            // Increment sample at each iteration.
+//            nSamplePerPixel++;
+//            
+//            // If pixel has change.
+//            if(int(x_pos_left) != int(x_pos_right))
+//            {
+//                if(nSamplePerPixel > 1)
+//                {
+//                    // Pixel value.
+//                    int y_pixel_left = middle_y - min_value_pixel * 0.9 * middle_y;
+//                    int y_pixel_right = middle_y - max_value_pixel * 0.9 * middle_y;
+//                    
+//                    // Draw min to max line on the left pixel.
+//                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
+//                                 axPoint(x_pos_left, y_pixel_right));
+//                    
+//                    // Draw last value of left pixel and first value of right
+//                    // pixel. This is to make sure that horizontal lines will be
+//                    // drawn if necessary. A liason between each vertical lines.
+//                    y_pixel_left = middle_y - l_value * 0.9 * middle_y;
+//                    y_pixel_right = middle_y - r_value * 0.9 * middle_y;
+//                    
+//                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
+//                                 axPoint(x_pos_right, y_pixel_right));
+//                }
+//                // One sample or less per pixel.
+//                else
+//                {
+//                    // Pixel value.
+//                    int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
+//                    int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
+//                    
+//                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
+//                                 axPoint(x_pos_right, y_pixel_right));
+//                }
+//                
+//                nSamplePerPixel = 0;
+//                min_value_pixel = 1000.0;
+//                max_value_pixel = -1000.0;
+//            }
+//        }
+    
+        gc->SetColor(axColor(0.7, 0.7, 0.7), 0.4);
         gc->DrawLine(axPoint(1, middle_y), axPoint(rect.size.x - 2, middle_y));
-    }
+//    }
 
     
     

@@ -408,26 +408,41 @@ void axGC::DrawLines(const vector<axPoint>& pts, float width)
 	real_pos.x -= _win->GetScrollDecay().x;
 	real_pos.y -= _win->GetScrollDecay().y;
 
+    glPushMatrix();
+    glTranslated(real_pos.x, real_pos.y, 0.0);
 	//axPoint p1 = pt1 + real_pos;
 	//axPoint p2 = pt2 + real_pos;
 
-	glEnable(GL_LINE_SMOOTH);
-	glEnable(GL_POLYGON_SMOOTH);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+//	glEnable(GL_LINE_SMOOTH);
+////	glEnable(GL_POLYGON_SMOOTH);
+////	glEnable(GL_BLEND);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+//	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 
 	glLineWidth(width);
 
-	glBegin(GL_LINE_STRIP);
-	for (const axPoint& pt : pts)
-	{
-		glVertex2f(pt.x + real_pos.x, pt.y + real_pos.y);
-	}
-	//glVertex2f(p1.x, p1.y);
-	//glVertex2f(p2.x, p2.y);
-	glEnd();
+//    GLfloat vertices[] = {...}; // 36 of vertex coords
+//    ...
+//    // activate and specify pointer to vertex array
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(2, GL_INT, 0, pts.data());
+//
+//    // draw a cube
+    glDrawArrays(GL_LINES, 0, int(pts.size()));
+    
+    // deactivate vertex arrays after drawing
+    glDisableClientState(GL_VERTEX_ARRAY);
+    
+    glPopMatrix();
+//    glTranslated(-real_pos.x, -real_pos.y, 0.0);
+    
+//	glBegin(GL_LINES);
+//	for (const axPoint& pt : pts)
+//	{
+//		glVertex2f(pt.x + real_pos.x, pt.y + real_pos.y);
+//	}
+//	glEnd();
 }
 
 void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
