@@ -54,14 +54,23 @@ void axSlider::SetValue(const double& value)
 
 	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
 	{
-		_sliderPosition = double(GetSize().y) * (1.0 - _sliderValue);// - _info.btn_size.y - 2) + 1;
+        if (axFlag_exist(axSLIDER_FLAG_RIGHT_ALIGN, _flags))
+        {
+            _sliderPosition = double(GetSize().y - _info.btn_size.y ) * (_sliderValue);
+        }
+        else
+        {
+            _sliderPosition = double(GetSize().y - _info.btn_size.y ) * (1.0 - _sliderValue);
+        }
+		
 	}
-	// else
-	// {
-	// 	_sliderValue = (_sliderPosition - 1) /
-	// 		double(GetSize().x - _info.btn_size.x - 2);
-	// }
-	Update();	
+	 else
+	 {
+         _sliderPosition = double(GetSize().x - _info.btn_size.x - 2) * (_sliderValue);
+//	 	_sliderValue = (_sliderPosition - 1) /
+//	 		double(GetSize().x - _info.btn_size.x - 2);
+	 }
+	Update();
 }
 
 void axSlider::OnMouseLeftDown(const axPoint& mousePos)

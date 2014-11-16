@@ -139,7 +139,7 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 		frect.position.y + frect.size.y, 0);
 	glEnd();
     
-    
+    glLineWidth(1.0f);
 }
 
 void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)

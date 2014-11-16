@@ -175,9 +175,15 @@ axApp* GlobalApp = nullptr;
 //    NSRect frame_rect = [self convertRectToBacking:[self drawRect]];
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
 
-    axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width,
-                                                  backingBounds.size.height,
-                                                  frame_height - backingBounds.size.height);
+    axSize global_size = axApp::MainInstance->GetCore()->GetGlobalSize();
+    if(global_size.x != backingBounds.size.width ||
+       global_size.y != backingBounds.size.height)
+    {
+        axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width,
+                                                      backingBounds.size.height,
+                                                      frame_height - backingBounds.size.height);
+    }
+
 //    NSRect frame = [self frame];
 //    frame.origin.y = 0;
 //    [self setFrame:frame];

@@ -169,7 +169,7 @@ int axCore::DrawGLScene()
 	// /float time = float(clock() - _lastDrawingTime) / CLOCKS_PER_SEC;
 	// cout << "time  draw : " << _lastDrawingTime << "Clock per sec " << CLOCKS_PER_SEC << endl;
 	//cout << time << endl;
-	if (_needToDraw)// && time > 0.01)
+	if (_needToDraw == true)// && time > 0.01)
 	//if (true)
 	{
 		// _lastDrawingTime = clock();

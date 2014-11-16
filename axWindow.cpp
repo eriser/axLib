@@ -70,6 +70,11 @@ axPoint axWindow::GetTopRightPosition() const
     return axPoint(_rect.position.x + _rect.size.x, _rect.position.y);
 }
 
+axPoint axWindow::GetNextPosRight(const int& delta) const
+{
+    return axPoint(_rect.position.x + _rect.size.x + delta, _rect.position.y);
+}
+
 axRect axWindow::GetAbsoluteRect() const
 {
 	axPoint pos = _rect.position;

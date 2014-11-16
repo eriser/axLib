@@ -60,6 +60,7 @@ private:
     sf_count_t m_count;
 
     axFloat *m_buffer, *m_start, *m_end;
+    
 };
 
 #endif // __AX_AUDIO_BUFFER__.

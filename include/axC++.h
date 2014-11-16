@@ -62,6 +62,8 @@
 #define axCLIP( v, min, max ) if( v < min ) v = min; \
 							  else if (v > max) v = max;
 
+
+
 // Standard type.
 typedef float axFloat;
 typedef double axDouble;
@@ -86,6 +88,19 @@ typedef axTemplateRect<axFloatPoint, axFloatSize, axDouble> axFloatRect;
 // Range.
 typedef axRange<axDouble> axFloatRange;
 typedef axRange<axInt> axIntRange;
+
+template<typename T>
+T axClamp(T d, T min, T max)
+{
+    const T t = d < min ? min : d;
+    return t > max ? max : t;
+}
+
+//axDouble axClampFloatRange(axDouble value, const axFloatRange& range)
+//{
+//    return axClamp<axDouble>(value, range.left, range.right);
+//}
+
 
 // Flag.
 typedef uint16_t axFlag;

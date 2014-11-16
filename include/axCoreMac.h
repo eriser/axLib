@@ -41,7 +41,7 @@ public:
     virtual axRect GetScreenRect()
     {
         // NEED TO CHANGE THIS !!!.
-        return axRect(0, GetYTestValue(), 600, 400);
+        return axRect(0, GetYTestValue(), 800, 400);
     }
     
     virtual string OpenFileDialog()

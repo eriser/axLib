@@ -36,6 +36,7 @@ axPanel(app, parent, rect)
     sld_info.backSliderContourColor = axColor(0.2, 0.2, 0.2);
     
     axSliderEvents sld_evts;
+    sld_evts.slider_value_change = GetOnSlider1();
     
     axSlider* sld1 = new axSlider(app, this, axRect(40, 80, 300, 15),
                                   sld_evts, sld_info);
@@ -122,6 +123,11 @@ axPanel(app, parent, rect)
     }
     
     
+}
+
+void SliderPanel::OnSlider1(const axSliderMsg& msg)
+{
+    std::cout << msg.GetValue() << std::endl;
 }
 
 void SliderPanel::OnPaint()

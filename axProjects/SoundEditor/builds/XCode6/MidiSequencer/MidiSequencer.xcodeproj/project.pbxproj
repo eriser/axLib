@@ -40,14 +40,17 @@
 		7C20B71719EDC09300D6ED6F /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70519EDC09300D6ED6F /* axAudioBuffer.cpp */; };
 		7C20B71819EDC09300D6ED6F /* axAudioEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70719EDC09300D6ED6F /* axAudioEnvelope.cpp */; };
 		7C20B71919EDC09300D6ED6F /* axAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70919EDC09300D6ED6F /* axAudioFilter.cpp */; };
-		7C20B71A19EDC09300D6ED6F /* axMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70B19EDC09300D6ED6F /* axMidi.cpp */; };
-		7C20B71C19EDC09300D6ED6F /* DrumSampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70F19EDC09300D6ED6F /* DrumSampler.cpp */; };
 		7C20B71D19EDC09300D6ED6F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B71119EDC09300D6ED6F /* main.cpp */; };
-		7C20B71E19EDC09300D6ED6F /* MidiTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B71319EDC09300D6ED6F /* MidiTrack.cpp */; };
 		7C20B72219EDC92B00D6ED6F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72119EDC92B00D6ED6F /* OpenGL.framework */; };
 		7C20B72419EDC93300D6ED6F /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72319EDC93300D6ED6F /* GLKit.framework */; };
 		7C20B72619EDC94B00D6ED6F /* libpng15.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72519EDC94B00D6ED6F /* libpng15.framework */; };
 		7C4AC7F219EE9618008B1E5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C4AC7F119EE9618008B1E5D /* MainMenu.xib */; };
+		7C9E9AAB1A169BD300A41582 /* SoundEditorAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */; };
+		7C9E9AAE1A16A5DE00A41582 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AAC1A16A5DE00A41582 /* axAudioBufferPlayer.cpp */; };
+		7C9E9AB11A16A90B00A41582 /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AAF1A16A90B00A41582 /* axAudioUtils.cpp */; };
+		7C9E9AB31A16B91200A41582 /* axFileDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AB21A16B91200A41582 /* axFileDialog.mm */; };
+		7C9E9AB71A16C93F00A41582 /* axWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AB51A16C93F00A41582 /* axWaveform.cpp */; };
+		7CDEA94F1A18299D00EFFD28 /* axWaveformNavigator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,18 +134,24 @@
 		7C20B70819EDC09300D6ED6F /* axAudioEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioEnvelope.h; path = ../../../../axAudioEnvelope.h; sourceTree = "<group>"; };
 		7C20B70919EDC09300D6ED6F /* axAudioFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioFilter.cpp; path = ../../../../axAudioFilter.cpp; sourceTree = "<group>"; };
 		7C20B70A19EDC09300D6ED6F /* axAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioFilter.h; path = ../../../../axAudioFilter.h; sourceTree = "<group>"; };
-		7C20B70B19EDC09300D6ED6F /* axMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMidi.cpp; path = ../../../../axMidi.cpp; sourceTree = "<group>"; };
-		7C20B70C19EDC09300D6ED6F /* axMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMidi.h; path = ../../../../axMidi.h; sourceTree = "<group>"; };
-		7C20B70F19EDC09300D6ED6F /* DrumSampler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrumSampler.cpp; path = ../../../../DrumSampler.cpp; sourceTree = "<group>"; };
-		7C20B71019EDC09300D6ED6F /* DrumSampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrumSampler.h; path = ../../../../DrumSampler.h; sourceTree = "<group>"; };
 		7C20B71119EDC09300D6ED6F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../../main.cpp; sourceTree = "<group>"; };
 		7C20B71219EDC09300D6ED6F /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = ../../../../main.h; sourceTree = "<group>"; };
-		7C20B71319EDC09300D6ED6F /* MidiTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MidiTrack.cpp; path = ../../../../MidiTrack.cpp; sourceTree = "<group>"; };
-		7C20B71419EDC09300D6ED6F /* MidiTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidiTrack.h; path = ../../../../MidiTrack.h; sourceTree = "<group>"; };
 		7C20B72119EDC92B00D6ED6F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C20B72319EDC93300D6ED6F /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		7C20B72519EDC94B00D6ED6F /* libpng15.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libpng15.framework; path = ../../../../../../../../../Library/Frameworks/libpng15.framework; sourceTree = "<group>"; };
 		7C4AC7F119EE9618008B1E5D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundEditorAudio.cpp; path = ../../../../SoundEditorAudio.cpp; sourceTree = "<group>"; };
+		7C9E9AAA1A169BD300A41582 /* SoundEditorAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundEditorAudio.h; path = ../../../../SoundEditorAudio.h; sourceTree = "<group>"; };
+		7C9E9AAC1A16A5DE00A41582 /* axAudioBufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioBufferPlayer.cpp; path = ../../../../axAudioBufferPlayer.cpp; sourceTree = "<group>"; };
+		7C9E9AAD1A16A5DE00A41582 /* axAudioBufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioBufferPlayer.h; path = ../../../../axAudioBufferPlayer.h; sourceTree = "<group>"; };
+		7C9E9AAF1A16A90B00A41582 /* axAudioUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioUtils.cpp; path = ../../../../axAudioUtils.cpp; sourceTree = "<group>"; };
+		7C9E9AB01A16A90B00A41582 /* axAudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioUtils.h; path = ../../../../axAudioUtils.h; sourceTree = "<group>"; };
+		7C9E9AB21A16B91200A41582 /* axFileDialog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = axFileDialog.mm; path = ../../../../axFileDialog.mm; sourceTree = "<group>"; };
+		7C9E9AB41A16B93C00A41582 /* axFileDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = axFileDialog.h; path = ../../../../axFileDialog.h; sourceTree = "<group>"; };
+		7C9E9AB51A16C93F00A41582 /* axWaveform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axWaveform.cpp; path = ../../../../axWaveform.cpp; sourceTree = "<group>"; };
+		7C9E9AB61A16C93F00A41582 /* axWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axWaveform.h; path = ../../../../axWaveform.h; sourceTree = "<group>"; };
+		7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axWaveformNavigator.cpp; path = ../../../../axWaveformNavigator.cpp; sourceTree = "<group>"; };
+		7CDEA94E1A18299D00EFFD28 /* axWaveformNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axWaveformNavigator.h; path = ../../../../axWaveformNavigator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +182,7 @@
 				7C20B72319EDC93300D6ED6F /* GLKit.framework */,
 				7C20B72119EDC92B00D6ED6F /* OpenGL.framework */,
 				7C20B6A619EDBF9400D6ED6F /* axLib */,
-				7C20B68519EDBE6000D6ED6F /* MidiSequencer */,
+				7C20B68519EDBE6000D6ED6F /* SoundEditor */,
 				7C20B69919EDBE6100D6ED6F /* MidiSequencerTests */,
 				7C20B68419EDBE6000D6ED6F /* Products */,
 			);
@@ -188,10 +197,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7C20B68519EDBE6000D6ED6F /* MidiSequencer */ = {
+		7C20B68519EDBE6000D6ED6F /* SoundEditor */ = {
 			isa = PBXGroup;
 			children = (
 				7C4AC7F119EE9618008B1E5D /* MainMenu.xib */,
+				7C9E9AB41A16B93C00A41582 /* axFileDialog.h */,
+				7C9E9AB21A16B91200A41582 /* axFileDialog.mm */,
+				7C9E9AB81A16C9D300A41582 /* axAudio */,
 				7C20B71F19EDC09B00D6ED6F /* include */,
 				7C20B72019EDC0AB00D6ED6F /* source */,
 				7C20B68819EDBE6000D6ED6F /* AppDelegate.h */,
@@ -199,6 +211,7 @@
 				7C20B68D19EDBE6000D6ED6F /* Images.xcassets */,
 				7C20B68619EDBE6000D6ED6F /* Supporting Files */,
 			);
+			name = SoundEditor;
 			path = MidiSequencer;
 			sourceTree = "<group>";
 		};
@@ -313,15 +326,11 @@
 		7C20B71F19EDC09B00D6ED6F /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7CDEA94E1A18299D00EFFD28 /* axWaveformNavigator.h */,
+				7C9E9AAA1A169BD300A41582 /* SoundEditorAudio.h */,
+				7C9E9AB61A16C93F00A41582 /* axWaveform.h */,
 				7C20B70219EDC09300D6ED6F /* AudioWaveform.h */,
-				7C20B70419EDC09300D6ED6F /* axAudio.h */,
-				7C20B70619EDC09300D6ED6F /* axAudioBuffer.h */,
-				7C20B70819EDC09300D6ED6F /* axAudioEnvelope.h */,
-				7C20B70A19EDC09300D6ED6F /* axAudioFilter.h */,
-				7C20B70C19EDC09300D6ED6F /* axMidi.h */,
-				7C20B71019EDC09300D6ED6F /* DrumSampler.h */,
 				7C20B71219EDC09300D6ED6F /* main.h */,
-				7C20B71419EDC09300D6ED6F /* MidiTrack.h */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -329,15 +338,46 @@
 		7C20B72019EDC0AB00D6ED6F /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */,
+				7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */,
 				7C20B70119EDC09300D6ED6F /* AudioWaveform.cpp */,
+				7C9E9AB51A16C93F00A41582 /* axWaveform.cpp */,
+				7C20B71119EDC09300D6ED6F /* main.cpp */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+		7C9E9AB81A16C9D300A41582 /* axAudio */ = {
+			isa = PBXGroup;
+			children = (
+				7C9E9AB91A16CA4200A41582 /* include */,
+				7C9E9ABA1A16CA4800A41582 /* source */,
+			);
+			name = axAudio;
+			sourceTree = "<group>";
+		};
+		7C9E9AB91A16CA4200A41582 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7C20B70419EDC09300D6ED6F /* axAudio.h */,
+				7C9E9AAD1A16A5DE00A41582 /* axAudioBufferPlayer.h */,
+				7C9E9AB01A16A90B00A41582 /* axAudioUtils.h */,
+				7C20B70819EDC09300D6ED6F /* axAudioEnvelope.h */,
+				7C20B70A19EDC09300D6ED6F /* axAudioFilter.h */,
+				7C20B70619EDC09300D6ED6F /* axAudioBuffer.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		7C9E9ABA1A16CA4800A41582 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				7C9E9AAF1A16A90B00A41582 /* axAudioUtils.cpp */,
+				7C9E9AAC1A16A5DE00A41582 /* axAudioBufferPlayer.cpp */,
 				7C20B70319EDC09300D6ED6F /* axAudio.cpp */,
 				7C20B70519EDC09300D6ED6F /* axAudioBuffer.cpp */,
 				7C20B70719EDC09300D6ED6F /* axAudioEnvelope.cpp */,
 				7C20B70919EDC09300D6ED6F /* axAudioFilter.cpp */,
-				7C20B70B19EDC09300D6ED6F /* axMidi.cpp */,
-				7C20B70F19EDC09300D6ED6F /* DrumSampler.cpp */,
-				7C20B71119EDC09300D6ED6F /* main.cpp */,
-				7C20B71319EDC09300D6ED6F /* MidiTrack.cpp */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -441,9 +481,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C20B71C19EDC09300D6ED6F /* DrumSampler.cpp in Sources */,
+				7C9E9AAB1A169BD300A41582 /* SoundEditorAudio.cpp in Sources */,
 				7C20B6BC19EDBFB900D6ED6F /* axC++.cpp in Sources */,
 				7C20B68C19EDBE6000D6ED6F /* main.m in Sources */,
+				7CDEA94F1A18299D00EFFD28 /* axWaveformNavigator.cpp in Sources */,
 				7C20B6F919EDC03C00D6ED6F /* axDropMenu.cpp in Sources */,
 				7C20B6CC19EDBFB900D6ED6F /* axWindow.cpp in Sources */,
 				7C20B6C919EDBFB900D6ED6F /* axPanel.cpp in Sources */,
@@ -451,8 +492,9 @@
 				7C20B6BB19EDBFB900D6ED6F /* axApp.cpp in Sources */,
 				7C20B71619EDC09300D6ED6F /* axAudio.cpp in Sources */,
 				7C20B6FC19EDC03C00D6ED6F /* axMenu.cpp in Sources */,
+				7C9E9AB71A16C93F00A41582 /* axWaveform.cpp in Sources */,
+				7C9E9AB31A16B91200A41582 /* axFileDialog.mm in Sources */,
 				7C20B6BD19EDBFB900D6ED6F /* axColor.cpp in Sources */,
-				7C20B71A19EDC09300D6ED6F /* axMidi.cpp in Sources */,
 				7C20B6FF19EDC03C00D6ED6F /* axScrollBar.cpp in Sources */,
 				7C20B68A19EDBE6000D6ED6F /* AppDelegate.mm in Sources */,
 				7C20B6C419EDBFB900D6ED6F /* axFont.cpp in Sources */,
@@ -460,6 +502,7 @@
 				7C20B6FD19EDC03C00D6ED6F /* axNumberBox.cpp in Sources */,
 				7C20B70019EDC03C00D6ED6F /* axSlider.cpp in Sources */,
 				7C20B6FE19EDC03C00D6ED6F /* axPopupMenu.cpp in Sources */,
+				7C9E9AB11A16A90B00A41582 /* axAudioUtils.cpp in Sources */,
 				7C20B6BE19EDBFB900D6ED6F /* axCore.cpp in Sources */,
 				7C20B71D19EDC09300D6ED6F /* main.cpp in Sources */,
 				7C20B6C519EDBFB900D6ED6F /* axGC.cpp in Sources */,
@@ -474,8 +517,8 @@
 				7C20B6C319EDBFB900D6ED6F /* axEvent.cpp in Sources */,
 				7C20B6CD19EDBFB900D6ED6F /* axWindowTree.cpp in Sources */,
 				7C20B71519EDC09300D6ED6F /* AudioWaveform.cpp in Sources */,
-				7C20B71E19EDC09300D6ED6F /* MidiTrack.cpp in Sources */,
 				7C20B71819EDC09300D6ED6F /* axAudioEnvelope.cpp in Sources */,
+				7C9E9AAE1A16A5DE00A41582 /* axAudioBufferPlayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

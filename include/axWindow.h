@@ -33,6 +33,8 @@ public:
 
 	axPoint GetBottomLeftPosition() const;
     axPoint GetTopRightPosition() const;
+    axPoint GetNextPosRight(const int& delta) const;
+
 
 	bool IsShown() const
 	{

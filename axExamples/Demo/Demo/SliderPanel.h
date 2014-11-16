@@ -18,9 +18,11 @@ public:
                 axWindow* parent,
                 const axRect& rect);
     
-    
+    axEVENT(axSliderMsg, OnSlider1);
 private:
     virtual void OnPaint();
+    
+    void OnSlider1(const axSliderMsg& msg);
 };
 
 #endif /* defined(__Demo__SliderPanel__) */
