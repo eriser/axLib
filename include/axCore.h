@@ -24,7 +24,7 @@ public:
 
 	axSize GetGlobalSize() const;
 	virtual axRect GetScreenRect() = 0;
-	void UpdateAll();
+	virtual void UpdateAll();
 
 	virtual string OpenFileDialog() = 0;
 

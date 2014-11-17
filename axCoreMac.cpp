@@ -8,6 +8,15 @@
 
 #include "axCoreMac.h"
 
+/// @todo Put in axLib core lib.
+#include "axFileDialog.h"
+
+void axCoreMac::UpdateAll()
+{
+    axCore::UpdateAll();
+    std::cout << "UpdateAll" << std::endl;
+    TestFunctionInterface();
+}
 
 //void axMacCore::clear(float r, float g, float b,
 //                      float a, bool depth)

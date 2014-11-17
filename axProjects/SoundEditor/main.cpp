@@ -2,6 +2,7 @@
 #include "SoundEditorAudio.h"
 
 #include "axFileDialog.h"
+#include "axToolBar.h"
 #include "axWaveform.h"
 #include "axWaveformNavigator.h"
 
@@ -9,6 +10,14 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
 									 const axRect& rect):
 								     axPanel(app, parent, rect)
 {
+    axToolBarInfo tbar_info(axColor(0.6, 0.6, 0.6),
+                            axColor(0.6, 0.6, 0.6),
+                            axColor(0.0, 0.0, 0.0));
+    axToolBarEvents tbar_evts;
+    _toolbar = new axToolBar(app, this, axRect(1, 0, rect.size.x-1, 40),
+                             tbar_evts, tbar_info);
+    
+    
     axButtonInfo btn_info;
     btn_info.normal = axColor(0.8, 0.8, 0.8);
     btn_info.hover = axColor(0.9, 0.9, 0.9);
@@ -19,10 +28,10 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     axButtonEvents btn1_evts;
     btn1_evts.button_click = GetOnOpenDialog();
     
-    axSize btn_size(60, 25);
+    axSize btn_size(60, 30);
     
-    axButton* btn1 = new axButton(app, this,
-                                  axRect(axPoint(40, 40), btn_size),
+    axButton* btn1 = new axButton(app, _toolbar,
+                                  axRect(axPoint(5, 5), btn_size),
                                   btn1_evts,
                                   btn_info,
                                   "", "Open");
@@ -31,12 +40,14 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     axButtonEvents btn2_evts;
     btn2_evts.button_click = GetOnPlayButton();
     
-    axButton* btn2 = new axButton(app, this,
+    axButton* btn2 = new axButton(app, _toolbar,
                                   axRect(btn1->GetNextPosRight(5), btn_size),
                                   btn2_evts,
                                   btn_info,
                                   "", "Play");
-
+    
+    //---------------------------------------------------------------------------
+    
     std::string folder_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
     
     axSliderInfo sld_info;
@@ -61,21 +72,26 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     axSliderEvents sld_evts;
     sld_evts.slider_value_change = GetOnZoomValue();
     
-    axSlider* sld1 = new axSlider(app, this, axRect(axPoint(765, 90),
+    _zoomSlider = new axSlider(app, this, axRect(axPoint(765, 90),
                                                     axSize(15, 245)),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_VERTICAL |
                                   axSLIDER_FLAG_RIGHT_ALIGN |
                                   axSLIDER_FLAG_NO_SLIDER_LINE);
-    sld1->SetBackgroundAlpha(0.1);
-    sld1->SetValue(1.0);
+    _zoomSlider->SetBackgroundAlpha(0.1);
+    _zoomSlider->SetValue(1.0);
+    
+    
+    SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
     
     _waveform = new axWaveform(app, this, axRect(40, 90, 720, 200));
-    _waveform->SetAudioBuffer(SoundEditorAudio::GetInstance()->GetSoundBuffer());
+    _waveform->SetAudioBuffer(audio->GetSoundBuffer());
     
     _waveformNavig = new axWaveformNavigator(app, this, axRect(40, 290, 720, 45));
-    _waveformNavig->SetAudioBuffer(SoundEditorAudio::GetInstance()->GetSoundBuffer());
+    _waveformNavig->SetAudioBuffer(audio->GetSoundBuffer());
     _waveformNavig->SetValueChangeEvt(GetOnWaveformNavigator());
+    
+    audio->SetPlayingPositionEvent(_waveformNavig->GetOnPlayingPositionChange());
 }
 
 void SoundEditor::SetPlayAudioEvent(axEvtFunction(int) fct)
@@ -101,6 +117,9 @@ void SoundEditor::OnOpenDialog(const axButtonMsg& msg)
             {
                 _evtChangePathAudio(file_path);
                 _waveformNavig->SetAudioBuffer(SoundEditorAudio::GetInstance()->GetSoundBuffer());
+                _waveform->SetAudioBuffer(SoundEditorAudio::GetInstance()->GetSoundBuffer());
+                _waveformNavig->SetBorders(_waveform->GetBorders());
+                _zoomSlider->SetValue(1.0);
             }
         }
     }

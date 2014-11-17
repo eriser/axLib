@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+//#include "axApp.h"
+//#include "axTrempoline.h"
+#include "main.h"
 
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
@@ -16,6 +19,7 @@
 //#include "Main.h"
 
 axApp* GlobalApp = nullptr;
+axAppDelegate* GlobalAppDelegate;
 
 
 
@@ -23,6 +27,7 @@ axApp* GlobalApp = nullptr;
 
 - (id)initWithFrame:(NSRect)frame
 {
+    
     self = [super initWithFrame:frame];
     
     // below code helps optimize Open GL context
@@ -33,7 +38,7 @@ axApp* GlobalApp = nullptr;
         [self wantsBestResolutionOpenGLSurface];
     }
     
-//    cout << "TEST" << endl;
+    
     return self;
 }
 
@@ -43,6 +48,8 @@ axApp* GlobalApp = nullptr;
     //[[self window] setAcceptsMouseMovedEvents:YES];
     [self addTrackingRect:[self bounds] owner:self userData:NULL assumeInside:YES];
     [[self window] makeFirstResponder:self];
+    
+    GlobalAppDelegate = self;
 }
 
 - (void)prepareOpenGL
@@ -80,18 +87,36 @@ axApp* GlobalApp = nullptr;
     //     forMode:NSEventTrackingRunLoopMode];
 }
 
+-(id)MemberTestFunc
+{
+    NSLog(@"TESTTTTTTTTTT");
+    
+    [GlobalAppDelegate setNeedsDisplay:YES];
+//    [GlobalAppDelegate setNeedsDisplay:YES];
+
+//    [self setWindowsNeedUpdate:YES];
+    
+//    [[self delegate] setNeedsDisplay:YES];
+//    [[self superview] setNeedsDisplay:YES];
+    
+
+    return self;
+}
+
 // Working.
 -(void)mouseDown:(NSEvent *)event
 {
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
-    
+//    [self MemberTestFunc];
 //    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
 //    axPoint pos(locationInView.x, y - locationInView.y);
     axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
     
-    [self setNeedsDisplay:YES];
+//    [self setNeedsDisplay:YES];
+    //[self MemberTestFunc];
+//    [GlobalAppDelegate MemberTestFunc];
 }
 
 // Working.
@@ -105,7 +130,7 @@ axApp* GlobalApp = nullptr;
     axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
     
-    [self setNeedsDisplay:YES];
+//    [self setNeedsDisplay:YES];
 }
 
 // Working.
@@ -118,7 +143,7 @@ axApp* GlobalApp = nullptr;
 //    axPoint pos(locationInView.x, y - locationInView.y);
     axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
-    [self setNeedsDisplay:YES];
+//    [self setNeedsDisplay:YES];
 }
 
 // Working.
@@ -132,7 +157,9 @@ axApp* GlobalApp = nullptr;
     axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetWindowManager()->OnMouseMotion(pos);
     
-    [self setNeedsDisplay:YES];
+//    [self setNeedsDisplay:YES];
+    
+    
     
 }
 
@@ -166,6 +193,10 @@ axApp* GlobalApp = nullptr;
 // Each time window has to be redrawn, this method is called
 - (void)drawRect:(NSRect)bounds
 {
+    NSLog(@"DRAW RECT OBJECTIVE");
+    
+    
+    
     int frame_height = bounds.size.height;
 //    cout << "gg : " << bounds.origin.y << endl;
 //    CGPoint position = CGPointMake(0,0);

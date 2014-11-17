@@ -51,6 +51,7 @@
 		7C9E9AB31A16B91200A41582 /* axFileDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AB21A16B91200A41582 /* axFileDialog.mm */; };
 		7C9E9AB71A16C93F00A41582 /* axWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AB51A16C93F00A41582 /* axWaveform.cpp */; };
 		7CDEA94F1A18299D00EFFD28 /* axWaveformNavigator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */; };
+		7CDEA9521A19640100EFFD28 /* axToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEA9501A19640100EFFD28 /* axToolBar.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,9 @@
 		7C9E9AB61A16C93F00A41582 /* axWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axWaveform.h; path = ../../../../axWaveform.h; sourceTree = "<group>"; };
 		7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axWaveformNavigator.cpp; path = ../../../../axWaveformNavigator.cpp; sourceTree = "<group>"; };
 		7CDEA94E1A18299D00EFFD28 /* axWaveformNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axWaveformNavigator.h; path = ../../../../axWaveformNavigator.h; sourceTree = "<group>"; };
+		7CDEA9501A19640100EFFD28 /* axToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axToolBar.cpp; path = ../../../../axToolBar.cpp; sourceTree = "<group>"; };
+		7CDEA9511A19640100EFFD28 /* axToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axToolBar.h; path = ../../../../axToolBar.h; sourceTree = "<group>"; };
+		7CDEA9531A1A6FEB00EFFD28 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 		7C20B67A19EDBE6000D6ED6F = {
 			isa = PBXGroup;
 			children = (
+				7CDEA9531A1A6FEB00EFFD28 /* AppKit.framework */,
 				7C20B72519EDC94B00D6ED6F /* libpng15.framework */,
 				7C20B72319EDC93300D6ED6F /* GLKit.framework */,
 				7C20B72119EDC92B00D6ED6F /* OpenGL.framework */,
@@ -210,6 +215,8 @@
 				7C20B68919EDBE6000D6ED6F /* AppDelegate.mm */,
 				7C20B68D19EDBE6000D6ED6F /* Images.xcassets */,
 				7C20B68619EDBE6000D6ED6F /* Supporting Files */,
+				7CDEA9501A19640100EFFD28 /* axToolBar.cpp */,
+				7CDEA9511A19640100EFFD28 /* axToolBar.h */,
 			);
 			name = SoundEditor;
 			path = MidiSequencer;
@@ -483,6 +490,7 @@
 			files = (
 				7C9E9AAB1A169BD300A41582 /* SoundEditorAudio.cpp in Sources */,
 				7C20B6BC19EDBFB900D6ED6F /* axC++.cpp in Sources */,
+				7CDEA9521A19640100EFFD28 /* axToolBar.cpp in Sources */,
 				7C20B68C19EDBE6000D6ED6F /* main.m in Sources */,
 				7CDEA94F1A18299D00EFFD28 /* axWaveformNavigator.cpp in Sources */,
 				7C20B6F919EDC03C00D6ED6F /* axDropMenu.cpp in Sources */,

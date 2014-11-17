@@ -5,6 +5,7 @@
 
 class axWaveform;
 class axWaveformNavigator;
+class axToolBar;
 
 class SoundEditor: public axPanel
 {
@@ -23,8 +24,12 @@ public:
     axEVENT(double, OnWaveformNavigator);
     
 private:
+    axToolBar* _toolbar;
     axWaveform* _waveform;
     axWaveformNavigator* _waveformNavig;
+    axSlider* _zoomSlider;
+    
+    
 	// Events.
 	virtual void OnPaint();
     void OnPlayButton(const axButtonMsg& msg);

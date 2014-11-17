@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "axApp.h"
+//#include "axApp.h"
 //#include "axTrempoline.h"
-#include "main.h"
+//#include "main.h"
+
 
 @interface axAppDelegate : NSOpenGLView
 {
@@ -19,12 +20,19 @@
     //our C++ renderer as I aim to minimize
     //ObjectiveC footprint and use clean C/C++ only, if possible
     //    axApp app;
+    
+    
 }
 //it's analogical to WM_PAINT event in Windows
 - (void) drawRect: (NSRect)bounds;
 - (void) mouseMoved:(NSEvent *)MyMouseMouse;
+
+- (id) MemberTestFunc;
+//+ (void) MemberTestFunc;
 //-(void)mouseMoved:(NSEvent *)event;
 
 @end
+
+
 
 

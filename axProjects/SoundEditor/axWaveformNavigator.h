@@ -31,11 +31,15 @@ public:
     
     void SetValueChangeEvt(axEvtFunction(double) fct);
     
+    axEVENT(double, OnPlayingPositionChange);
+    
 private:
     axAudioBuffer* _audioBuffer;
     
     double _leftBorder, _rightBorder;
     double _fillAlpha;
+    
+    double _playingPos;
     
     int _click_pos_delta_x;
     
@@ -54,6 +58,8 @@ private:
     virtual void OnMouseLeftUp(const axPoint& pos);
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();
+    
+    void OnPlayingPositionChange(const double& playing_pos);
 };
 
 #endif /* defined(__MidiSequencer__axWaveformNavigator__) */

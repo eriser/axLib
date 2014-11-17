@@ -21,11 +21,10 @@ public:
     static SoundEditorAudio* GetInstance();
     
     
-    
     axEVENT(int, OnPlay);
     axEVENT(std::string, OnChangeFilePath);
     
-    
+    void SetPlayingPositionEvent(axEvtFunction(double) fct);
     void SetSoundFilePath(const std::string& path);
     
     axAudioBuffer* GetSoundBuffer();
@@ -33,6 +32,10 @@ public:
 private:
     SoundEditorAudio();
     static SoundEditorAudio* _instance;
+    
+    axEvtFunction(double) _playingPositionEvt;
+    double _secToSendPlayingEvt;
+    static const double PLAYING_POSITION_TIME_INTERVAL;
     
     axAudioBuffer* _sndBuffer;
     axAudioBufferPlayer* _bufferPlayer;

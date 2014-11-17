@@ -11,4 +11,6 @@
 
 std::string axOpenFileDialog();
 
+void TestFunctionInterface();
+
 #endif

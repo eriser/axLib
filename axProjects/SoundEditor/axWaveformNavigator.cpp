@@ -17,12 +17,21 @@ _audioBuffer(nullptr)
     _leftBorder = 0.0;
     _rightBorder = 1.0;
     _fillAlpha = 0.0;
+    
+    _playingPos = 0.0;
 }
 
 void axWaveformNavigator::SetAudioBuffer(axAudioBuffer* buffer)
 {
     _audioBuffer = buffer;
     FillWaveformDrawingData();
+}
+
+void axWaveformNavigator::OnPlayingPositionChange(const double& playing_pos)
+{
+    _playingPos = axClamp<double>(playing_pos, 0.0, 1.0);
+//    std::cout << "Pos change : " << _playingPos << std::endl;
+    Update();
 }
 
 void axWaveformNavigator::FillWaveformDrawingData()
@@ -278,131 +287,37 @@ void axWaveformNavigator::OnPaint()
     axRect rect(GetRect());
     axRect rect0(axPoint(0, 0), rect.size);
     
+    // Draw background.
     gc->SetColor(axColor(0.5, 0.5, 0.5), 1.0);
     gc->DrawRectangle(rect0);
     
+    // Draw waveform.
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawLines(_waveformDrawingData);
     
-//    if(_audioBuffer != nullptr)
-//    {
-//        axBufferInfo b_info = _audioBuffer->GetBufferInfo();
-//        float* buffer = _audioBuffer->GetBuffer();
-        int middle_y = rect.size.y * 0.5;
-//
-//        gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-//        
-//        double nSamplesToProcess = double(b_info.frames);
-//        int index = 1 ;
-//        int nSamplePerPixel = 0;
-//        
-//        double min_value_pixel = 1000.0;
-//        double max_value_pixel = -1000.0;
-//        
-//        // Ratio of number of pixel over number of sample to draw.
-//        double r = double(rect.size.x-2) / nSamplesToProcess;
-//        
-//        for(int i = 1; i < ceil(nSamplesToProcess); i++, index++)
-//        {
-//            // Pixel position.
-//            double x_pos_left = double(i-1) * r;
-//            double x_pos_right = double(i) * r;
-//            
-//            double l_value = buffer[index - 1];
-//            double r_value = buffer[index];
-//            
-//            if(l_value < min_value_pixel) min_value_pixel = l_value;
-//            if(l_value > max_value_pixel) max_value_pixel = l_value;
-//            if(r_value < min_value_pixel) min_value_pixel = r_value;
-//            if(r_value > max_value_pixel) max_value_pixel = r_value;
-//            
-//            // Increment sample at each iteration.
-//            nSamplePerPixel++;
-//            
-//            // If pixel has change.
-//            if(int(x_pos_left) != int(x_pos_right))
-//            {
-//                if(nSamplePerPixel > 1)
-//                {
-//                    // Pixel value.
-//                    int y_pixel_left = middle_y - min_value_pixel * 0.9 * middle_y;
-//                    int y_pixel_right = middle_y - max_value_pixel * 0.9 * middle_y;
-//                    
-//                    // Draw min to max line on the left pixel.
-//                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                                 axPoint(x_pos_left, y_pixel_right));
-//                    
-//                    // Draw last value of left pixel and first value of right
-//                    // pixel. This is to make sure that horizontal lines will be
-//                    // drawn if necessary. A liason between each vertical lines.
-//                    y_pixel_left = middle_y - l_value * 0.9 * middle_y;
-//                    y_pixel_right = middle_y - r_value * 0.9 * middle_y;
-//                    
-//                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                                 axPoint(x_pos_right, y_pixel_right));
-//                }
-//                // One sample or less per pixel.
-//                else
-//                {
-//                    // Pixel value.
-//                    int y_pixel_left = middle_y - l_value * 0.9 * middle_y;
-//                    int y_pixel_right = middle_y - r_value * 0.9 * middle_y;
-//                    
-//                    gc->DrawLine(axPoint(x_pos_left, y_pixel_left),
-//                                 axPoint(x_pos_right, y_pixel_right));
-//                }
-//                
-//                nSamplePerPixel = 0;
-//                min_value_pixel = 1000.0;
-//                max_value_pixel = -1000.0;
-//            }
-//        }
-    
-        gc->SetColor(axColor(0.7, 0.7, 0.7), 0.4);
-        gc->DrawLine(axPoint(1, middle_y), axPoint(rect.size.x - 2, middle_y));
-//    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    //    if(_audioBuffer != nullptr)
-//    {
-//        axBufferInfo b_info = _audioBuffer->GetBufferInfo();
-//        float* buffer = _audioBuffer->GetBuffer();
-//        int middle_y = rect.size.y * 0.5;
-//        
-//        gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-//        double nSamplesToProcess = double(b_info.frames);
-//        
-//        for(int i = 1; i < ceil(nSamplesToProcess); i++)
-//        {
-//            int left = middle_y - buffer[i - 1] * 0.9 * middle_y;
-//            int right = middle_y - buffer[i] * 0.9 * middle_y;
-//            
-//            double r = rect.size.x / nSamplesToProcess;
-//            double x_pos_left = double(i-1) * r;
-//            double x_pos_right = double(i) * r;
-//            
-//            //gc->DrawLine(axPoint(x_pos_left, left), axPoint(x_pos_right, right));
-//        }
-//        
-//        gc->SetColor(axColor(0.7, 0.7, 0.7), 1.0);
-//        gc->DrawLine(axPoint(1, middle_y), axPoint(rect.size.x - 2, middle_y));
-//    }
+    // Draw middle line.
+    int middle_y = rect.size.y * 0.5;
+    gc->SetColor(axColor(0.7, 0.7, 0.7), 0.4);
+    gc->DrawLine(axPoint(1, middle_y), axPoint(rect.size.x - 2, middle_y));
     
     // Draw navigator borders.
     axRect borderRect(GetBorderRect());
     gc->SetColor(axColor(1.0, 0.0, 0.0, _fillAlpha));
     gc->DrawRectangle(borderRect);
     
+    // Draw navigator borders contour.
     gc->SetColor(axColor(1.0, 0.0, 0.0, 0.7));
     gc->DrawRectangleContour(borderRect);
     
+    // Draw playing cursor.
+    if(_playingPos != 0.0 && _playingPos < 1.0)
+    {
+        gc->SetColor(axColor(0.0, 0.1, 1.0), 0.7);
+        int x_pos = 1 + _playingPos * (rect.size.x - 2);
+        gc->DrawLine(axPoint(x_pos, 1), axPoint(x_pos, rect.size.y - 2));
+    }
+
+    // Draw background contour.
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawRectangleContour(rect0);
 }

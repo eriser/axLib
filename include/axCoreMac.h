@@ -15,6 +15,8 @@
 #include "axCore.h"
 
 
+
+
 class axCoreMac : public axCore
 {
 public:
@@ -62,6 +64,8 @@ public:
     {
         return true;
     }
+    
+    virtual void UpdateAll();
 
 };
 

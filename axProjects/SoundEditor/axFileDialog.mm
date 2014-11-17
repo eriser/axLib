@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
+
 #include <iostream>
+#import "AppDelegate.h"
+
 
 std::string axOpenFileDialog()
 {
@@ -29,4 +32,26 @@ std::string axOpenFileDialog()
     }
     
     return file_path;
+}
+
+void TestFunctionInterface()
+{
+//    [[NSApp delegate]setNeedsDisplay:YES];
+     NSLog(@"TestFunctionInterface");
+    axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
+    [appDelegate MemberTestFunc];
+//    [(axAppDelegate*)[[NSApplication sharedApplication] delegate]setNeedsDisplay:YES];
+
+//    axAppDelegate* appDelegate = (axAppDelegate*)[NSApp delegate];
+//    appDelegate.MemberTestFunc();
+//    [appDelegate MemberTestFunc];
+//    appDelegate->MemberTestFunc();
+//    NSLog([(axAppDelegate*)[[NSApplication sharedApplication]delegate]);
+
+//    [[(axAppDelegate*)[[NSApplication sharedApplication]delegate]MemberTestFunc ];
+    
+    
+//    ((axAppDelegate*)[[NSApplication sharedApplication]delegate]).MemberTestFunc();
+//    axAppDelegate *aD = ((axAppDelegate*)CCApplication::sharedApplication());
+//    aD->myAppDelegateMethod();
 }

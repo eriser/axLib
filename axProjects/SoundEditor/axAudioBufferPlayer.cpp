@@ -43,9 +43,23 @@ void axAudioBufferPlayer::Play()
     _playing = true;
 }
 
+bool axAudioBufferPlayer::IsPlaying() const
+{
+    return _playing;
+}
+
 void axAudioBufferPlayer::SetPlayingType(const axAudioBufferPlayingType& type)
 {
     _playingType = type;
+}
+
+double axAudioBufferPlayer::GetCursorPercentPosition() const
+{
+    double percent_pos = double(_bufferCurrentIndex) /
+    double(_buffer->GetBufferInfo().frames * _buffer->GetBufferInfo().channels);
+    
+//    std::cout << "Percent_pos : " << percent_pos << std::endl;
+    return percent_pos;
 }
 
 void axAudioBufferPlayer::ProcessSample(float* out)
@@ -62,10 +76,10 @@ void axAudioBufferPlayer::ProcessBlock(float* out, unsigned long frameCount)
         {
             ProcessMonoBlock(out, frameCount);
         }
-//        else if(nChan == 2)
-//        {
-//            ProcessStereoBlock(out, frameCount);
-//        }
+        else if(nChan == 2)
+        {
+            ProcessStereoBlock(out, frameCount);
+        }
         else
         {
             for(int i = 0; i < frameCount; i++)
@@ -140,36 +154,36 @@ void axAudioBufferPlayer::ProcessStereoSample(float* out)
 void axAudioBufferPlayer::ProcessStereoBlock(float* out,
                                              unsigned long frameCount)
 {
-//    float* buffer = _sndBuffer->GetBuffer();
-//    int nChannelBuffer = _sndBuffer->GetNumberChannels();
-//    unsigned int buffer_pos = _bufferCurrentFrame;
-//    float value = 0.0;
-//    
-//    for(int i = 0; i < frameCount; i++)
-//    {
-//        if(nChannelBuffer == 1)
-//        {
-//            value = buffer[buffer_pos];
-//            buffer_pos++;
-//            *out++ = value;
-//            *out++ = value;
-//            
-//            if(buffer_pos >= _sndBuffer->GetBufferInfo().frames)
-//            {
-//                buffer_pos = 0;
-//            }
-//        }
-//        else if(nChannelBuffer == 2)
-//        {
-//            *out++ = 0.0;
-//            *out++ = 0.0;
-//        }
-//        else
-//        {
-//            *out++ = 0.0;
-//            *out++ = 0.0;
-//        }
-//    }
-//    
-//    _bufferCurrentFrame = buffer_pos;
+    float* buf = _bufferData;
+    unsigned long buffer_total_frame = _buffer->GetBufferInfo().frames * 2;
+    unsigned long stereo_index = _bufferCurrentIndex;
+    
+    if(stereo_index + frameCount * 2 < buffer_total_frame * 2)
+    {
+        for(int i = 0; i < frameCount; i++)
+        {
+            *out++ = buf[stereo_index++];
+            *out++ = buf[stereo_index++];
+        }
+    }
+    else
+    {
+        for(int i = 0; i < frameCount; i++)
+        {
+            *out++ = _playing ? buf[stereo_index++] : 0.0f;
+            *out++ = _playing ? buf[stereo_index++] : 0.0f;
+            
+            if(stereo_index >= buffer_total_frame * 2)
+            {
+                if(_playingType == AUDIO_PLAYING_TYPE_PLAY_ONCE)
+                {
+                    _playing = false;
+                }
+                
+                stereo_index = 0;
+            }
+        }
+    }
+    
+    _bufferCurrentIndex = stereo_index;
 }

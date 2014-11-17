@@ -29,10 +29,14 @@ public:
         AUDIO_PLAYING_TYPE_REPEAT
     };
     
+    bool IsPlaying() const;
+    
     void SetPlayingType(const axAudioBufferPlayingType& type);
     
     void ProcessSample(float* out);
     void ProcessBlock(float* out, unsigned long frameCount);
+    
+    double GetCursorPercentPosition() const;
     
 private:
     unsigned long _bufferCurrentIndex;

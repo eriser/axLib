@@ -21,6 +21,8 @@ _audioBuffer(nullptr)
 void axWaveform::SetAudioBuffer(axAudioBuffer* buffer)
 {
     _audioBuffer = buffer;
+    _zoom = 1.0;
+    _leftPos = 0.0;
 }
 
 void axWaveform::SetZoom(const double& zoom)
@@ -30,7 +32,7 @@ void axWaveform::SetZoom(const double& zoom)
     
     if(nSamplesToProcess < 5.0)
     {
-        _zoom = 5.0 / b_info.frames;
+        _zoom = 5.0 / double(b_info.frames);
     }
     else
     {
@@ -39,7 +41,6 @@ void axWaveform::SetZoom(const double& zoom)
     
     if(_leftPos * b_info.frames + nSamplesToProcess > b_info.frames)
     {
-//        std::cout << "Error" << std::endl;
         _leftPos = double(b_info.frames - nSamplesToProcess) / double(b_info.frames);
     }
     

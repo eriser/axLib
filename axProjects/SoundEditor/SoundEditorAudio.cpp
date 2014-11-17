@@ -10,6 +10,8 @@
 #include "axAudioBuffer.h"
 #include "axAudioBufferPlayer.h"
 
+const double SoundEditorAudio::PLAYING_POSITION_TIME_INTERVAL = 0.2;
+
 SoundEditorAudio* SoundEditorAudio::_instance = nullptr;
 
 SoundEditorAudio* SoundEditorAudio::GetInstance()
@@ -25,6 +27,12 @@ SoundEditorAudio::SoundEditorAudio():
     
     _sndBuffer = new axAudioBuffer(snd_path);
     _bufferPlayer = new axAudioBufferPlayer(_sndBuffer);
+    _secToSendPlayingEvt = PLAYING_POSITION_TIME_INTERVAL;
+}
+
+void SoundEditorAudio::SetPlayingPositionEvent(axEvtFunction(double) fct)
+{
+    _playingPositionEvt = fct;
 }
 
 void SoundEditorAudio::OnPlay(const int& msg)
@@ -52,7 +60,26 @@ int SoundEditorAudio::CallbackAudio(const float* input,
                                     float* output,
                                     unsigned long frameCount)
 {
+    bool was_playing = _bufferPlayer->IsPlaying();
+    
     _bufferPlayer->ProcessBlock(output, frameCount);
 
+    bool is_playing = _bufferPlayer->IsPlaying();
+    
+    if(is_playing || was_playing != is_playing)
+    {
+        _secToSendPlayingEvt -= (frameCount / 44100.0);
+        
+        if(_secToSendPlayingEvt)
+        {
+            if(_playingPositionEvt)
+            {
+                _playingPositionEvt(_bufferPlayer->GetCursorPercentPosition());
+            }
+            
+            _secToSendPlayingEvt = PLAYING_POSITION_TIME_INTERVAL;
+        }
+    }
+    
     return 0;
 }
