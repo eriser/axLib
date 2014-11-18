@@ -2,10 +2,12 @@
 #define __MIDI_SEUENCER__
 
 #include "axLib.h"
+#include "SoundEditorAudio.h"
 
 class axWaveform;
 class axWaveformNavigator;
 class axToolBar;
+class axVolumeMeter;
 
 class SoundEditor: public axPanel
 {
@@ -22,21 +24,24 @@ public:
     axEVENT(axSliderMsg, OnZoomValue);
     axEVENT(axSliderMsg, OnSamplePosition);
     axEVENT(double, OnWaveformNavigator);
-    
+    axEVENT(axAudioPlayerMsg, OnPlayingPositionChange);
 private:
+    
     axToolBar* _toolbar;
     axWaveform* _waveform;
     axWaveformNavigator* _waveformNavig;
     axSlider* _zoomSlider;
-    
+    axVolumeMeter *_volumeMeterRight, *_volumeMeterLeft;
     
 	// Events.
 	virtual void OnPaint();
+    virtual void OnResize();
     void OnPlayButton(const axButtonMsg& msg);
     void OnOpenDialog(const axButtonMsg& msg);
     void OnZoomValue(const axSliderMsg& msg);
     void OnSamplePosition(const axSliderMsg& msg);
     void OnWaveformNavigator(const double&  left_border);
+    void OnPlayingPositionChange(const axAudioPlayerMsg& position);
     
     axEvtFunction(int) _evtPlayAudio;
     axEvtFunction(std::string) _evtChangePathAudio;

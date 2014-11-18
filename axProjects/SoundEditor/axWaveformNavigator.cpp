@@ -27,6 +27,12 @@ void axWaveformNavigator::SetAudioBuffer(axAudioBuffer* buffer)
     FillWaveformDrawingData();
 }
 
+void axWaveformNavigator::SetPlayingPos(const double& playing_pos)
+{
+    _playingPos = axClamp<double>(playing_pos, 0.0, 1.0);
+    Update();
+}
+
 void axWaveformNavigator::OnPlayingPositionChange(const double& playing_pos)
 {
     _playingPos = axClamp<double>(playing_pos, 0.0, 1.0);

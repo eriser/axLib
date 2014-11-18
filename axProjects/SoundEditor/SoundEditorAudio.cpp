@@ -30,7 +30,7 @@ SoundEditorAudio::SoundEditorAudio():
     _secToSendPlayingEvt = PLAYING_POSITION_TIME_INTERVAL;
 }
 
-void SoundEditorAudio::SetPlayingPositionEvent(axEvtFunction(double) fct)
+void SoundEditorAudio::SetPlayingPositionEvent(axEvtFunction(axAudioPlayerMsg) fct)
 {
     _playingPositionEvt = fct;
 }
@@ -63,8 +63,9 @@ int SoundEditorAudio::CallbackAudio(const float* input,
     bool was_playing = _bufferPlayer->IsPlaying();
     
     _bufferPlayer->ProcessBlock(output, frameCount);
-
+    
     bool is_playing = _bufferPlayer->IsPlaying();
+    
     
     if(is_playing || was_playing != is_playing)
     {
@@ -74,7 +75,9 @@ int SoundEditorAudio::CallbackAudio(const float* input,
         {
             if(_playingPositionEvt)
             {
-                _playingPositionEvt(_bufferPlayer->GetCursorPercentPosition());
+                axAudioPlayerMsg msg(_bufferPlayer->GetCursorPercentPosition(),
+                                     _bufferPlayer->GetCurrentVolume());
+                _playingPositionEvt(msg);
             }
             
             _secToSendPlayingEvt = PLAYING_POSITION_TIME_INTERVAL;

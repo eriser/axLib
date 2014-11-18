@@ -45,7 +45,6 @@ void axToolBar::OnPaint()
     gc->DrawRectangle(rect0);
     
     gc->SetColor(_info.contourColor, _bgAlpha);
-    gc->SetColor(_info.contourColor, _bgAlpha);
     gc->DrawRectangleContour(rect0);
 }
 

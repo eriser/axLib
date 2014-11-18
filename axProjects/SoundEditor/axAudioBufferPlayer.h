@@ -38,10 +38,14 @@ public:
     
     double GetCursorPercentPosition() const;
     
+    double GetCurrentVolume() const;
+    
 private:
     unsigned long _bufferCurrentIndex;
     axAudioBuffer* _buffer;
     float* _bufferData;
+    double _currentVolumeValue;
+    double _rms, _rmsNSamples;
     bool _playing;
     axAudioBufferPlayingType _playingType;
     

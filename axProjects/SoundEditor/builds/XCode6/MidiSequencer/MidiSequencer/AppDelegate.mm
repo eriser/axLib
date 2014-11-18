@@ -21,8 +21,6 @@
 axApp* GlobalApp = nullptr;
 axAppDelegate* GlobalAppDelegate;
 
-
-
 @implementation axAppDelegate
 
 - (id)initWithFrame:(NSRect)frame
@@ -89,7 +87,7 @@ axAppDelegate* GlobalAppDelegate;
 
 -(id)MemberTestFunc
 {
-    NSLog(@"TESTTTTTTTTTT");
+//    NSLog(@"TESTTTTTTTTTT");
     
     [GlobalAppDelegate setNeedsDisplay:YES];
 //    [GlobalAppDelegate setNeedsDisplay:YES];
@@ -102,6 +100,25 @@ axAppDelegate* GlobalAppDelegate;
 
     return self;
 }
+
+- (void)windowDidResize:(NSEvent *)event
+{
+    std::cout << "Resize. " << std::endl;
+}
+
+- (void)windowDidMove:(NSNotification *)notification
+{
+    std::cout << "Mouve. " << std::endl;
+}
+
+- (void) setFrameSize:(NSSize)newSize
+{
+    NSSize myNSWindowSize = [ [ self window ] frame ].size;
+    std::cout << "My size : " << myNSWindowSize.width << " " << myNSWindowSize.height << std::endl;
+//    std::cout << "New size : " << newSize.width << " " << newSize.height << std::endl;
+//    axApp::MainInstance->GetCore()->SetGlobalSize(axSize(newSize.width, newSize.height));
+}
+
 
 // Working.
 -(void)mouseDown:(NSEvent *)event
@@ -193,7 +210,7 @@ axAppDelegate* GlobalAppDelegate;
 // Each time window has to be redrawn, this method is called
 - (void)drawRect:(NSRect)bounds
 {
-    NSLog(@"DRAW RECT OBJECTIVE");
+//    NSLog(@"DRAW RECT OBJECTIVE");
     
     
     
@@ -204,8 +221,13 @@ axAppDelegate* GlobalAppDelegate;
     
 //    bounds.origin = CGPointMake(50,0);
 //    NSRect frame_rect = [self convertRectToBacking:[self drawRect]];
+    
+    // GetFrameSize :
+    //NSSize my_window = [ [ self window ] frame ].size;
+    
+    
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
-
+    
     axSize global_size = axApp::MainInstance->GetCore()->GetGlobalSize();
     if(global_size.x != backingBounds.size.width ||
        global_size.y != backingBounds.size.height)
@@ -230,10 +252,18 @@ axAppDelegate* GlobalAppDelegate;
 //        [self frame].size.height = [[self superview] frame].size.height;
 //    }
     
+    if ([self inLiveResize])
+    {
+        // Draw a quick approximation
+        std::cout << "Live resize drawing." << std::endl;
+    }
+    else
+    {
+        // Is only gonna draw if necessary.
+        axApp::MainInstance->GetCore()->DrawGLScene();
+        glFlush();
+    }
 
-    // Is only gonna draw if necessary.
-    axApp::MainInstance->GetCore()->DrawGLScene();
-    glFlush();
 }
 
 

@@ -9,13 +9,18 @@
 #include "axCoreMac.h"
 
 /// @todo Put in axLib core lib.
-#include "axFileDialog.h"
+#include "axCocoaInterfaceMac.h"
 
 void axCoreMac::UpdateAll()
 {
     axCore::UpdateAll();
-    std::cout << "UpdateAll" << std::endl;
+//    std::cout << "UpdateAll" << std::endl;
     TestFunctionInterface();
+}
+
+std::string axCoreMac::OpenFileDialog()
+{
+    return axOpenFileDialog();
 }
 
 //void axMacCore::clear(float r, float g, float b,

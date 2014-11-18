@@ -26,7 +26,9 @@
 //it's analogical to WM_PAINT event in Windows
 - (void) drawRect: (NSRect)bounds;
 - (void) mouseMoved:(NSEvent *)MyMouseMouse;
-
+- (void)windowDidResize:(NSEvent *)event;
+- (void)windowDidMove:(NSNotification *)notification;
+- (void) setFrameSize:(NSSize)newSize;
 - (id) MemberTestFunc;
 //+ (void) MemberTestFunc;
 //-(void)mouseMoved:(NSEvent *)event;

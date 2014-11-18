@@ -20,6 +20,10 @@
 class axCoreMac : public axCore
 {
 public:
+    axCoreMac()
+    {
+        
+    }
     virtual void MainLoop()
     {
         
@@ -43,13 +47,10 @@ public:
     virtual axRect GetScreenRect()
     {
         // NEED TO CHANGE THIS !!!.
-        return axRect(0, GetYTestValue(), 800, 400);
+        return axRect(0, GetYTestValue(), _size.x, _size.y);
     }
     
-    virtual string OpenFileDialog()
-    {
-        return "";
-    }
+    virtual string OpenFileDialog();
 
     virtual void KillGLWindow()
     {
@@ -68,19 +69,5 @@ public:
     virtual void UpdateAll();
 
 };
-
-//class axMacCoreImplementation : axMacCore
-//{
-//public:
-//    virtual void init();
-//    virtual void update();
-//    virtual void render();
-//    
-//private:
-//    float shift;
-//    float shift_direction;
-//    void draw_triangles();
-//};
-
 
 #endif

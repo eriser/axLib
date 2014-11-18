@@ -15,6 +15,31 @@
 class axAudioBuffer;
 class axAudioBufferPlayer;
 
+class axAudioPlayerMsg
+{
+public:
+    axAudioPlayerMsg(const double& pos, const double& vol)
+    {
+        position = pos;
+        volume = vol;
+    }
+    
+    double GetPosition() const
+    {
+        return position;
+    }
+    
+    double GetVolume() const
+    {
+        return volume;
+    }
+    
+private:
+    double position;
+    double volume;
+};
+
+
 class SoundEditorAudio: public axAudio
 {
 public:
@@ -24,7 +49,7 @@ public:
     axEVENT(int, OnPlay);
     axEVENT(std::string, OnChangeFilePath);
     
-    void SetPlayingPositionEvent(axEvtFunction(double) fct);
+    void SetPlayingPositionEvent(axEvtFunction(axAudioPlayerMsg) fct);
     void SetSoundFilePath(const std::string& path);
     
     axAudioBuffer* GetSoundBuffer();
@@ -33,7 +58,7 @@ private:
     SoundEditorAudio();
     static SoundEditorAudio* _instance;
     
-    axEvtFunction(double) _playingPositionEvt;
+    axEvtFunction(axAudioPlayerMsg) _playingPositionEvt;
     double _secToSendPlayingEvt;
     static const double PLAYING_POSITION_TIME_INTERVAL;
     

@@ -8,13 +8,17 @@
 
 #include "axAudioBufferPlayer.h"
 #include "axAudioBuffer.h"
+#include <cmath>
 
 axAudioBufferPlayer::axAudioBufferPlayer():
 _bufferCurrentIndex(0),
 _buffer(nullptr),
 _bufferData(nullptr),
 _playing(false),
-_playingType(AUDIO_PLAYING_TYPE_PLAY_ONCE)
+_playingType(AUDIO_PLAYING_TYPE_PLAY_ONCE),
+_currentVolumeValue(0.0),
+_rms(0.0),
+_rmsNSamples(1.0)
 {
     
 }
@@ -24,7 +28,10 @@ _bufferCurrentIndex(0),
 _buffer(buffer),
 _bufferData(_buffer->GetBuffer()),
 _playing(false),
-_playingType(AUDIO_PLAYING_TYPE_PLAY_ONCE)
+_playingType(AUDIO_PLAYING_TYPE_PLAY_ONCE),
+_currentVolumeValue(0.0),
+_rms(0.0),
+_rmsNSamples(1.0)
 {
     
 }
@@ -35,12 +42,18 @@ void axAudioBufferPlayer::SetBuffer(axAudioBuffer* buffer)
     _buffer = buffer;
     _bufferData = _buffer->GetBuffer();
     _playing = false;
+    _currentVolumeValue = 0.0;
+    _rms = 0.0;
+    _rmsNSamples = 1.0;
 }
 
 void axAudioBufferPlayer::Play()
 {
     _bufferCurrentIndex = 0;
     _playing = true;
+    _currentVolumeValue = 0.0;
+    _rms = 0.0;
+    _rmsNSamples = 1.0;
 }
 
 bool axAudioBufferPlayer::IsPlaying() const
@@ -60,6 +73,11 @@ double axAudioBufferPlayer::GetCursorPercentPosition() const
     
 //    std::cout << "Percent_pos : " << percent_pos << std::endl;
     return percent_pos;
+}
+
+double axAudioBufferPlayer::GetCurrentVolume() const
+{
+    return _rms * sqrt(2.0);
 }
 
 void axAudioBufferPlayer::ProcessSample(float* out)
@@ -94,6 +112,8 @@ void axAudioBufferPlayer::ProcessBlock(float* out, unsigned long frameCount)
     {
         for(int i = 0; i < frameCount; i++)
         {
+            _rms = 0.0;
+            _rmsNSamples = 1.0;
             *out++ = 0.0f;
             *out++ = 0.0f;
         }
@@ -114,11 +134,16 @@ void axAudioBufferPlayer::ProcessMonoBlock(float* out,
     unsigned long index = _bufferCurrentIndex;
     float value = 0.0;
     
+    _rms = 0.0;
+    
     if(index + frameCount < buffer_total_frame)
     {
         for(int i = 0; i < frameCount; i++)
         {
+            
             value = buf[index++];
+            _rms += value * value;
+//            _currentVolumeValue = value;
             *out++ = value;
             *out++ = value;
         }
@@ -128,6 +153,7 @@ void axAudioBufferPlayer::ProcessMonoBlock(float* out,
         for(int i = 0; i < frameCount; i++)
         {
             value = _playing ? buf[index++] : 0.0f;
+            _rms += value * value;
             *out++ = value;
             *out++ = value;
             
@@ -143,6 +169,7 @@ void axAudioBufferPlayer::ProcessMonoBlock(float* out,
         }
     }
     
+    _rms = sqrt(1.0 / double(frameCount) * _rms);
     _bufferCurrentIndex = index;
 }
 
@@ -158,11 +185,15 @@ void axAudioBufferPlayer::ProcessStereoBlock(float* out,
     unsigned long buffer_total_frame = _buffer->GetBufferInfo().frames * 2;
     unsigned long stereo_index = _bufferCurrentIndex;
     
+    _rms = 0.0;
+    
     if(stereo_index + frameCount * 2 < buffer_total_frame * 2)
     {
         for(int i = 0; i < frameCount; i++)
         {
-            *out++ = buf[stereo_index++];
+            float v = buf[stereo_index++];
+            _rms += v * v;
+            *out++ = v;
             *out++ = buf[stereo_index++];
         }
     }
@@ -170,7 +201,9 @@ void axAudioBufferPlayer::ProcessStereoBlock(float* out,
     {
         for(int i = 0; i < frameCount; i++)
         {
-            *out++ = _playing ? buf[stereo_index++] : 0.0f;
+            float v = _playing ? buf[stereo_index++] : 0.0f;
+            _rms += v * v;
+            *out++ = v;
             *out++ = _playing ? buf[stereo_index++] : 0.0f;
             
             if(stereo_index >= buffer_total_frame * 2)
@@ -185,5 +218,6 @@ void axAudioBufferPlayer::ProcessStereoBlock(float* out,
         }
     }
     
+    _rms = sqrt(1.0 / double(frameCount) * _rms);
     _bufferCurrentIndex = stereo_index;
 }

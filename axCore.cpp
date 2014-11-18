@@ -57,6 +57,8 @@ void axCore::ResizeGLScene(const int& width, const int& height, double y)
     glTranslated(0.0, y, 0.0);
 	_needToDraw = true;
 	_popupNeedToDraw = true;
+    
+    _windowManager->OnSize();
 
 }
 
@@ -149,11 +151,17 @@ void axCore::ResizePopGLScene(const int& width, const int& height)
 	_needToDraw = true;
 	_popupNeedToDraw = true;
 
+    
 }
 
 axSize axCore::GetGlobalSize() const
 {
 	return _size;
+}
+
+void axCore::SetGlobalSize(const axSize& size)
+{
+    _size = size;
 }
 
 void axCore::UpdateAll()

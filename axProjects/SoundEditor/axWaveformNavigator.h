@@ -28,7 +28,7 @@ public:
     void SetBorders(const axFloatRange& borders);
     void SetLeftBorder(const double& pos);
     void SetRightBorder(const double& pos);
-    
+    void SetPlayingPos(const double& playing_pos);
     void SetValueChangeEvt(axEvtFunction(double) fct);
     
     axEVENT(double, OnPlayingPositionChange);

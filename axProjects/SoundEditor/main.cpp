@@ -1,16 +1,17 @@
 #include "main.h"
 #include "SoundEditorAudio.h"
 
-#include "axFileDialog.h"
+//#include "axFileDialog.h"
 #include "axToolBar.h"
 #include "axWaveform.h"
 #include "axWaveformNavigator.h"
+#include "axVolumeMeter.h"
 
 SoundEditor::SoundEditor(axApp* app, axWindow* parent,
 									 const axRect& rect):
 								     axPanel(app, parent, rect)
 {
-    axToolBarInfo tbar_info(axColor(0.6, 0.6, 0.6),
+    axToolBarInfo tbar_info(axColor(0.2, 0.2, 0.2),
                             axColor(0.6, 0.6, 0.6),
                             axColor(0.0, 0.0, 0.0));
     axToolBarEvents tbar_evts;
@@ -91,12 +92,34 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     _waveformNavig->SetAudioBuffer(audio->GetSoundBuffer());
     _waveformNavig->SetValueChangeEvt(GetOnWaveformNavigator());
     
-    audio->SetPlayingPositionEvent(_waveformNavig->GetOnPlayingPositionChange());
+    audio->SetPlayingPositionEvent(GetOnPlayingPositionChange());
+    
+    
+    // Volume meters.
+    axVolumeMeterInfo meter_info(axColor(0.4, 0.4, 0.4),
+                                 axColor(0.6, 0.6, 0.6),
+                                 axColor(0.0, 0.0, 0.0));
+    
+    _volumeMeterLeft = new axVolumeMeter(app, this,
+                                          axRect(24, 90, 8, 200),
+                                          meter_info);
+    
+    _volumeMeterRight = new axVolumeMeter(app, this,
+                                          axRect(32, 90, 8, 200),
+                                          meter_info);
 }
 
 void SoundEditor::SetPlayAudioEvent(axEvtFunction(int) fct)
 {
     _evtPlayAudio = fct;
+}
+
+void SoundEditor::OnPlayingPositionChange(const axAudioPlayerMsg& msg)
+{
+    _waveformNavig->SetPlayingPos(msg.GetPosition());
+    _volumeMeterRight->SetValue(msg.GetVolume());
+    _volumeMeterLeft->SetValue(msg.GetVolume());
+    std::cout << msg.GetVolume() << std::endl;
 }
 
 void SoundEditor::SetChangePathAudioEvent(axEvtFunction(std::string) fct)
@@ -106,7 +129,7 @@ void SoundEditor::SetChangePathAudioEvent(axEvtFunction(std::string) fct)
 
 void SoundEditor::OnOpenDialog(const axButtonMsg& msg)
 {
-    std::string file_path = axOpenFileDialog();
+    std::string file_path = GetApp()->OpenFileDialog();//axOpenFileDialog();
     
     if(!file_path.empty())
     {
@@ -149,6 +172,14 @@ void SoundEditor::OnSamplePosition(const axSliderMsg& msg)
 void SoundEditor::OnWaveformNavigator(const double&  left_border)
 {
     _waveform->SetLeftPosition(left_border);
+}
+
+void SoundEditor::OnResize()
+{
+    this->SetSize(GetApp()->GetCore()->GetGlobalSize());
+    
+    std::cout << GetSize().x << " " << GetSize().y << std::endl;
+    std::cout << "RESIZE SoundEditor. " << std::endl;
 }
 
 void SoundEditor::OnPaint()

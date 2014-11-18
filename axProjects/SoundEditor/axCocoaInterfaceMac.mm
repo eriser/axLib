@@ -37,7 +37,7 @@ std::string axOpenFileDialog()
 void TestFunctionInterface()
 {
 //    [[NSApp delegate]setNeedsDisplay:YES];
-     NSLog(@"TestFunctionInterface");
+//     NSLog(@"TestFunctionInterface");
     axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
     [appDelegate MemberTestFunc];
 //    [(axAppDelegate*)[[NSApplication sharedApplication] delegate]setNeedsDisplay:YES];

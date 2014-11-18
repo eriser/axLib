@@ -23,6 +23,8 @@ public:
 	virtual bool CreatePopupWindow(char* title, int width, int height) = 0;
 
 	axSize GetGlobalSize() const;
+    
+    void SetGlobalSize(const axSize& size);
 	virtual axRect GetScreenRect() = 0;
 	virtual void UpdateAll();
 

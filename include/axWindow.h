@@ -87,6 +87,8 @@ public:
 	virtual void OnMouseLeftDragging(const axPoint& pos){}
 	//virtual void Update(){}
 
+    virtual void OnResize(){}
+    
 	axGC* GetGC();
 
 	void Reparent(axWindow* parent, const axPoint& position);

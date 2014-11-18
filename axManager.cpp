@@ -204,7 +204,11 @@ void axManager::OnUpdate()
 
 void axManager::OnSize()
 {
-	//DEBUG
+    for (auto& x : _windows)
+    {
+        axWindow* win = x.second;
+        win->OnResize();
+    }
 }
 
 void axManager::GrabMouse(axWindow* win)
