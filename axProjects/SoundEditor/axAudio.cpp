@@ -33,7 +33,7 @@ int axAudio::InitAudio()
     }
     
     
-    outputParameters.device = 1; //Pa_GetDefaultOutputDevice();
+    outputParameters.device = 2; //Pa_GetDefaultOutputDevice();
     
     // cout << "OUTPU : " << outputParameters.device.name << endl;
     if(outputParameters.device == paNoDevice)

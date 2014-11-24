@@ -52,10 +52,16 @@ class axAudioFilter
 public:
 	axAudioFilter();
 	axFloat Process(axFloat in);
+    void ProcessMonoBlock(float* out,
+                          unsigned long frameCount);
 	t_out ProcessStereo(t_out in);
 	void SetFreq(axFloat f);
 	void SetQ(axFloat f);
 	void SetGain(axFloat f);
+    
+    axFloat GetFreq() const;
+    axFloat GetQ() const;
+    axFloat GetGain() const;
 
 	void SetFreqEnvelopePtr(axFloat* ptr);
 	void SetFreqEnvelopeAmountPtr(axFloat* ptr);

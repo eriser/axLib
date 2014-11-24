@@ -28,10 +28,16 @@ public:
     
     axFloatRange GetBorders() const;
     
+    std::vector<float>* _envBuffer;
+    std::vector<axFloatPoint>* _envPoints;
+    
+    void ShowEnv(const bool& show);
+    
 private:
     axAudioBuffer* _audioBuffer;
     
     double _zoom, _leftPos;
+    bool _showEnv;
     
     // Events.
     virtual void OnPaint();

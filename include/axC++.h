@@ -62,7 +62,7 @@
 #define axCLIP( v, min, max ) if( v < min ) v = min; \
 							  else if (v > max) v = max;
 
-
+#define axOUTPUT_VARIABLE(v) std::cout << #v << " : " << v << std::endl;
 
 // Standard type.
 typedef float axFloat;
@@ -75,7 +75,7 @@ typedef unsigned char axByte;
 
 // Point.
 typedef axTemplate2DPoint<axInt> axPoint;
-typedef axTemplate2DPoint<axDouble> axFloatPoint;
+typedef axTemplate2DPoint<double> axFloatPoint;
 
 // Size.
 typedef axTemplate2DPoint<axInt> axSize;
@@ -88,6 +88,8 @@ typedef axTemplateRect<axFloatPoint, axFloatSize, axDouble> axFloatRect;
 // Range.
 typedef axRange<axDouble> axFloatRange;
 typedef axRange<axInt> axIntRange;
+
+typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
 
 template<typename T>
 T axClamp(T d, T min, T max)

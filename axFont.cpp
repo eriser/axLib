@@ -174,7 +174,7 @@ void axFont::SetFontType(const string& font_type)
 	// FreeType error code. 0 means success.
 	if(FT_Done_Face(_face) == 0)
 	{
-		const char* c = font_type.c_str();
+//		const char* c = font_type.c_str();
 
 		// FreeType error code. 0 means success.
 		if (FT_New_Face(_freeType, font_type.c_str(), 0, &_face) == 0)

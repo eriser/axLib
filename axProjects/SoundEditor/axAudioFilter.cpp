@@ -18,7 +18,7 @@ axAudioFilter::axAudioFilter()
 	envAmnt[0] = nullptr;
 	envAmnt[1] = nullptr;
 
-	//Compute_Variables(freq, q);
+	Compute_Variables(freq, q);
 }
 void axAudioFilter::SetFreq(axFloat f)
 {
@@ -37,6 +37,19 @@ void axAudioFilter::SetGain(axFloat f)
 {
 	CLIP(f, 1, 3);
 	gain = f;
+}
+
+axFloat axAudioFilter::GetFreq() const
+{
+    return freq;
+}
+axFloat axAudioFilter::GetQ() const
+{
+    return q;
+}
+axFloat axAudioFilter::GetGain() const
+{
+    return gain;
 }
 
 void axAudioFilter::SetFreqEnvelopePtr(axFloat* ptr)
@@ -97,6 +110,31 @@ axFloat axAudioFilter::Process(axFloat in)
 	x1 = in;
 
 	return v * gain;
+}
+
+void axAudioFilter::ProcessMonoBlock(float* out,
+                                     unsigned long frameCount)
+{
+    double before_value = 0.0;
+
+    if (init)
+    {
+        x1 = x2 = y1 = y2 = *out;
+        init = false;
+    }
+    
+    for(int i = 0; i < frameCount; i++)
+    {
+        before_value = *out;
+        double after_process = ((b0 * before_value) + (b1 * x1) + (b2 * x2) - (a1 * y1) - (a2 * y2)) / a0;
+        *out++ = after_process * gain;
+        
+        
+        y2 = y1;
+        y1 = after_process;
+        x2 = x1;
+        x1 = before_value;
+    }
 }
 
 t_out axAudioFilter::ProcessStereo(t_out in)

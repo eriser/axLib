@@ -44,7 +44,9 @@
 		7C20B72219EDC92B00D6ED6F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72119EDC92B00D6ED6F /* OpenGL.framework */; };
 		7C20B72419EDC93300D6ED6F /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72319EDC93300D6ED6F /* GLKit.framework */; };
 		7C20B72619EDC94B00D6ED6F /* libpng15.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72519EDC94B00D6ED6F /* libpng15.framework */; };
+		7C3CF6A81A1C0B4900C11E33 /* EnvelopeEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CF6A61A1C0B4900C11E33 /* EnvelopeEditor.cpp */; };
 		7C4AC7F219EE9618008B1E5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C4AC7F119EE9618008B1E5D /* MainMenu.xib */; };
+		7C5508271A2380CA005B4465 /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5508251A2380CA005B4465 /* axToggle.cpp */; };
 		7C9E9AAB1A169BD300A41582 /* SoundEditorAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */; };
 		7C9E9AAE1A16A5DE00A41582 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AAC1A16A5DE00A41582 /* axAudioBufferPlayer.cpp */; };
 		7C9E9AB11A16A90B00A41582 /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AAF1A16A90B00A41582 /* axAudioUtils.cpp */; };
@@ -141,7 +143,11 @@
 		7C20B72119EDC92B00D6ED6F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C20B72319EDC93300D6ED6F /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		7C20B72519EDC94B00D6ED6F /* libpng15.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libpng15.framework; path = ../../../../../../../../../Library/Frameworks/libpng15.framework; sourceTree = "<group>"; };
+		7C3CF6A61A1C0B4900C11E33 /* EnvelopeEditor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnvelopeEditor.cpp; path = ../../../../EnvelopeEditor.cpp; sourceTree = "<group>"; };
+		7C3CF6A71A1C0B4900C11E33 /* EnvelopeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvelopeEditor.h; path = ../../../../EnvelopeEditor.h; sourceTree = "<group>"; };
 		7C4AC7F119EE9618008B1E5D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		7C5508251A2380CA005B4465 /* axToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axToggle.cpp; path = ../../../../../axWidgets/axToggle.cpp; sourceTree = "<group>"; };
+		7C5508261A2380CA005B4465 /* axToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axToggle.h; path = ../../../../../axWidgets/axToggle.h; sourceTree = "<group>"; };
 		7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundEditorAudio.cpp; path = ../../../../SoundEditorAudio.cpp; sourceTree = "<group>"; };
 		7C9E9AAA1A169BD300A41582 /* SoundEditorAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundEditorAudio.h; path = ../../../../SoundEditorAudio.h; sourceTree = "<group>"; };
 		7C9E9AAC1A16A5DE00A41582 /* axAudioBufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioBufferPlayer.cpp; path = ../../../../axAudioBufferPlayer.cpp; sourceTree = "<group>"; };
@@ -218,8 +224,6 @@
 				7C20B68919EDBE6000D6ED6F /* AppDelegate.mm */,
 				7C20B68D19EDBE6000D6ED6F /* Images.xcassets */,
 				7C20B68619EDBE6000D6ED6F /* Supporting Files */,
-				7CDEA9501A19640100EFFD28 /* axToolBar.cpp */,
-				7CDEA9511A19640100EFFD28 /* axToolBar.h */,
 			);
 			name = SoundEditor;
 			path = MidiSequencer;
@@ -310,6 +314,8 @@
 		7C20B6D019EDBFF500D6ED6F /* axWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				7C5508251A2380CA005B4465 /* axToggle.cpp */,
+				7C5508261A2380CA005B4465 /* axToggle.h */,
 				7C20B6E519EDC03C00D6ED6F /* axButton.cpp */,
 				7C20B6E619EDC03C00D6ED6F /* axButton.h */,
 				7C20B6E719EDC03C00D6ED6F /* axDropMenu.cpp */,
@@ -337,9 +343,11 @@
 			isa = PBXGroup;
 			children = (
 				7CDEA9561A1ACEA000EFFD28 /* axVolumeMeter.h */,
+				7C3CF6A71A1C0B4900C11E33 /* EnvelopeEditor.h */,
 				7CDEA94E1A18299D00EFFD28 /* axWaveformNavigator.h */,
 				7C9E9AAA1A169BD300A41582 /* SoundEditorAudio.h */,
 				7C9E9AB61A16C93F00A41582 /* axWaveform.h */,
+				7CDEA9511A19640100EFFD28 /* axToolBar.h */,
 				7C20B70219EDC09300D6ED6F /* AudioWaveform.h */,
 				7C20B71219EDC09300D6ED6F /* main.h */,
 			);
@@ -350,6 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				7CDEA9551A1ACEA000EFFD28 /* axVolumeMeter.cpp */,
+				7C3CF6A61A1C0B4900C11E33 /* EnvelopeEditor.cpp */,
+				7CDEA9501A19640100EFFD28 /* axToolBar.cpp */,
 				7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */,
 				7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */,
 				7C20B70119EDC09300D6ED6F /* AudioWaveform.cpp */,
@@ -495,6 +505,7 @@
 			files = (
 				7C9E9AAB1A169BD300A41582 /* SoundEditorAudio.cpp in Sources */,
 				7C20B6BC19EDBFB900D6ED6F /* axC++.cpp in Sources */,
+				7C5508271A2380CA005B4465 /* axToggle.cpp in Sources */,
 				7CDEA9521A19640100EFFD28 /* axToolBar.cpp in Sources */,
 				7C20B68C19EDBE6000D6ED6F /* main.m in Sources */,
 				7CDEA94F1A18299D00EFFD28 /* axWaveformNavigator.cpp in Sources */,
@@ -506,6 +517,7 @@
 				7C20B71619EDC09300D6ED6F /* axAudio.cpp in Sources */,
 				7C20B6FC19EDC03C00D6ED6F /* axMenu.cpp in Sources */,
 				7C9E9AB71A16C93F00A41582 /* axWaveform.cpp in Sources */,
+				7C3CF6A81A1C0B4900C11E33 /* EnvelopeEditor.cpp in Sources */,
 				7C9E9AB31A16B91200A41582 /* axCocoaInterfaceMac.mm in Sources */,
 				7C20B6BD19EDBFB900D6ED6F /* axColor.cpp in Sources */,
 				7C20B6FF19EDC03C00D6ED6F /* axScrollBar.cpp in Sources */,

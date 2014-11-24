@@ -82,7 +82,10 @@ int axCore::InitGL()
 	glClearDepth(1.0f);		
 
 	// Enables Depth Testing
-	glEnable(GL_DEPTH_TEST);		
+	glEnable(GL_DEPTH_TEST);
+    
+    glEnable(GL_BLEND); // Enable blending.
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// The type of depth testing to do.
 	glDepthFunc(GL_LEQUAL);				
@@ -190,14 +193,6 @@ int axCore::DrawGLScene()
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluOrtho2D(0.0, _size.x, _size.y, 0.0);
-//        GLKMatrix4MakeOrtho (
-//                             0.0,
-//                             _size.x,
-//                             _size.y,
-//                             0.0,
-//                             0.0,
-//                             1.0
-//                             );
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

@@ -14,6 +14,7 @@
 
 class axAudioBuffer;
 class axAudioBufferPlayer;
+class axAudioFilter;
 
 class axAudioPlayerMsg
 {
@@ -54,6 +55,9 @@ public:
     
     axAudioBuffer* GetSoundBuffer();
     
+    axAudioFilter* GetFilter();
+    axAudioBufferPlayer* GetBufferPlayer();
+    
 private:
     SoundEditorAudio();
     static SoundEditorAudio* _instance;
@@ -64,6 +68,7 @@ private:
     
     axAudioBuffer* _sndBuffer;
     axAudioBufferPlayer* _bufferPlayer;
+    axAudioFilter* _filter;
     
     // Events.
     void OnPlay(const int& msg);

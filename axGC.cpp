@@ -66,41 +66,44 @@ void axGC::SetColor(const axColor& color, const float& alpha)
 
 void axGC::DrawRectangle(const axRect& rect)
 {
-	axFloatRect frect = RectToFloatRect(rect +_win->GetAbsoluteRect().position);
-	frect.position.x  -= _win->GetScrollDecay().x;
-	frect.position.y  -= _win->GetScrollDecay().y;
+    axPoint real_pos = _win->GetAbsoluteRect().position;
+    
+    glPushMatrix();
+    glTranslated(real_pos.x, real_pos.y, 0.0);
+    
+    axFloatRect frect = RectToFloatRect(rect);
+    axRectFloatPoints points = frect.GetPoints(); // Order : bl, tl, tr, br.
+    // GLubyte indices[] = {0,1,2, 0,2,3}; // GL_TRIANGLES.
+    GLubyte indices[] = {0, 1,2, 2,3}; // GL_TRIANGLE_FAN.
+    
+    // For scroll bar.
+    //	frect.position.x  -= floor(_win->GetScrollDecay().x);
+    //	frect.position.y  -= _win->GetScrollDecay().y;
+    
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(2, GL_DOUBLE, 0, &points); // The value of z defaults is 0.
+    // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+    glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_BYTE, indices);
+    glDisableClientState(GL_VERTEX_ARRAY);
+    
+    glPopMatrix();
+}
 
-	GLfloat z = 0;
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	//GL_LINE_LOOP !!!!!!!!!!!!!!!!!!
-	glBegin(GL_QUADS);
-	// Bottom left.
-	glVertex3f(frect.position.x, frect.position.y, z);
-
-	// Bottom Right.
-	glVertex3f(frect.position.x + frect.size.x,
-		frect.position.y, z);
-
-	// Top Right.
-	glVertex3f(frect.position.x + frect.size.x,
-		frect.position.y + frect.size.y, z);
-
-	// Top Left
-	glVertex3f(frect.position.x, frect.position.y + frect.size.y, z);
-
-	glEnd();
+void axGC::DrawRoundedRectangle(const axRect& rect)
+{
 
 }
 
 void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 {
-	axFloatRect frect = RectToFloatRect(rect + _win->GetAbsoluteRect().position);
-	frect.position.x  -= floor(_win->GetScrollDecay().x);
-	frect.position.y  -= _win->GetScrollDecay().y;
+    axPoint real_pos = _win->GetAbsoluteRect().position;
+	axFloatRect frect = RectToFloatRect(rect);
+//	frect.position.x  -= floor(_win->GetScrollDecay().x);
+//	frect.position.y  -= _win->GetScrollDecay().y;
 
+    glPushMatrix();
+    glTranslated(real_pos.x, real_pos.y, 0.0);
+    
 	// Note that OpenGL coordinate space has no notion of integers, 
 	// everything is a float and the "centre" of an OpenGL pixel is 
 	// really at the 0.5,0.5 instead of its top-left corner. 
@@ -109,35 +112,15 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 	frect.position.x -= 0.5; // Seems to be only on linux and mac.
 
 	glLineWidth((GLfloat)linewidth);
+    
+    axRectFloatPoints points = frect.GetPoints(); // Order : bl, tl, tr, br.
+    GLubyte indices[] = {1,2, 2,3, 3,0, 0,1};
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(2, GL_DOUBLE, 0, &points); // The value of z defaults is 0.
+    glDrawElements(GL_LINE_LOOP, 8, GL_UNSIGNED_BYTE, indices);
+    glDisableClientState(GL_VERTEX_ARRAY);
 
-	glEnable(GL_BLEND); //Enable blending.
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	glBegin(GL_LINE_LOOP);
-
-	// Top
-	glVertex3f(frect.position.x , frect.position.y, 0);
-	glVertex3f(frect.position.x + frect.size.x,
-		frect.position.y, 0);
-
-	// Right
-	glVertex3f(frect.position.x + frect.size.x,
-		frect.position.y, 0);
-	glVertex3f(frect.position.x + frect.size.x,
-		frect.position.y + frect.size.y, 0);
-
-	// Bottom.
-	glVertex3f(frect.position.x + frect.size.x,
-		frect.position.y + frect.size.y /*- 1*/, 0);
-	glVertex3f(frect.position.x,
-		frect.position.y + frect.size.y /*- 1*/, 0);
-
-	// Left
-	glVertex3f(frect.position.x /*+ 1*/,
-		frect.position.y, 0);
-	glVertex3f(frect.position.x /*+ 1*/,
-		frect.position.y + frect.size.y, 0);
-	glEnd();
+    glPopMatrix();
     
     glLineWidth(1.0f);
 }
@@ -197,10 +180,33 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 
 	glEnd();
 
-	glDisable(GL_BLEND);
+//	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 }
 
+//glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+
+struct axRectPointsOrder
+{
+    axRectPointsOrder(){}
+    axRectPointsOrder(const axRectFloatPoints& points):
+    top_left(points.top_left),
+    top_right(points.top_right),
+    bottom_left(points.bottom_left),
+    bottom_right(points.bottom_right)
+    {
+    }
+    axRectPointsOrder(const axFloatPoint& tl,
+                      const axFloatPoint& tr,
+                      const axFloatPoint& bl,
+                      const axFloatPoint& br):
+    top_left(tl), top_right(tr), bottom_left(bl),bottom_right(br)
+    {
+        
+    }
+    
+    axFloatPoint top_left, top_right, bottom_left, bottom_right;
+};
 void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 {
 	axPoint pos = position + _win->GetAbsoluteRect().position;
@@ -234,7 +240,7 @@ void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 	glTexCoord2d(1.0, 1.0);
 	glVertex2d(pos.x + img_size.x, pos.y);
 	glEnd();
-	glDisable(GL_BLEND);
+//	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 }
 
@@ -272,7 +278,7 @@ void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& 
 	glVertex2d(pos.x + img_size.x, pos.y);
 	glEnd();
 
-	glDisable(GL_BLEND);
+//	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 }
 
@@ -320,7 +326,7 @@ void axGC::DrawPartOfImage(axImage* img,
 	glTexCoord2d(img_x, y);
 	glVertex2d(pos.x + sizeInImage.x, pos.y);
 	glEnd();
-	glDisable(GL_BLEND);
+//	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 }
 

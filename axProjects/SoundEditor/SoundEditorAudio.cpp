@@ -9,6 +9,7 @@
 #include "SoundEditorAudio.h"
 #include "axAudioBuffer.h"
 #include "axAudioBufferPlayer.h"
+#include "axAudioFilter.h"
 
 const double SoundEditorAudio::PLAYING_POSITION_TIME_INTERVAL = 0.2;
 
@@ -23,11 +24,15 @@ SoundEditorAudio::SoundEditorAudio():
     axAudio()
 {
     std::string app_path("/Users/alexarse/Project/axLib/axProjects/SoundEditor/");
-    std::string snd_path = app_path + ("808 Samples/snare (41).wav");
+    std::string snd_path = app_path + ("808 Samples/bass (8).wav");
     
     _sndBuffer = new axAudioBuffer(snd_path);
     _bufferPlayer = new axAudioBufferPlayer(_sndBuffer);
     _secToSendPlayingEvt = PLAYING_POSITION_TIME_INTERVAL;
+    
+    _filter = new axAudioFilter();
+    _filter->SetFreq(40.0);
+    _filter->SetQ(5.0);
 }
 
 void SoundEditorAudio::SetPlayingPositionEvent(axEvtFunction(axAudioPlayerMsg) fct)
@@ -56,6 +61,16 @@ axAudioBuffer* SoundEditorAudio::GetSoundBuffer()
     return _sndBuffer;
 }
 
+axAudioFilter* SoundEditorAudio::GetFilter()
+{
+    return _filter;
+}
+
+axAudioBufferPlayer* SoundEditorAudio::GetBufferPlayer()
+{
+    return _bufferPlayer;
+}
+
 int SoundEditorAudio::CallbackAudio(const float* input,
                                     float* output,
                                     unsigned long frameCount)
@@ -63,6 +78,8 @@ int SoundEditorAudio::CallbackAudio(const float* input,
     bool was_playing = _bufferPlayer->IsPlaying();
     
     _bufferPlayer->ProcessBlock(output, frameCount);
+    
+//    _filter->ProcessMonoBlock(output, frameCount);
     
     bool is_playing = _bufferPlayer->IsPlaying();
     

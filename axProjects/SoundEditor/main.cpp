@@ -1,11 +1,19 @@
 #include "main.h"
 #include "SoundEditorAudio.h"
 
-//#include "axFileDialog.h"
 #include "axToolBar.h"
 #include "axWaveform.h"
 #include "axWaveformNavigator.h"
 #include "axVolumeMeter.h"
+
+#include "axAudioBuffer.h"
+#include "axAudioFilter.h"
+#include "axAudioBufferPlayer.h"
+
+
+#include <chrono>
+#include <future>
+#include <thread>
 
 SoundEditor::SoundEditor(axApp* app, axWindow* parent,
 									 const axRect& rect):
@@ -47,6 +55,36 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
                                   btn_info,
                                   "", "Play");
     
+    _showEnv = false;
+    
+    
+    axToggleInfo tog_info;
+    tog_info.normal = axColor(0.8, 0.8, 0.8);
+    tog_info.hover = axColor(0.9, 0.9, 0.9);
+    tog_info.clicking = axColor(0.7, 0.7, 0.7);
+    tog_info.contour = axColor(0.0, 0.0, 0.0);
+    tog_info.selected = axColor(0.8, 0.3, 0.3);
+    tog_info.selected_hover = axColor(0.9, 0.3, 0.3);
+    tog_info.selected_clicking = axColor(0.7, 0.3, 0.3);
+    
+    axToggleEvents tog1_evts;
+    tog1_evts.button_click = GetOnEnvToggle();
+    
+    axToggle* tog1 = new axToggle(app, _toolbar,
+                                  axRect(btn2->GetNextPosRight(5), btn_size),
+                                  tog1_evts,
+                                  tog_info,
+                                  "", "Env");
+    
+    
+    axButtonEvents btn4_evts;
+    btn4_evts.button_click = GetOnTimerButton();
+    
+    axButton* btn4 = new axButton(app, _toolbar,
+                                  axRect(tog1->GetNextPosRight(5), btn_size),
+                                  btn4_evts,
+                                  btn_info,
+                                  "", "Timer");
     //---------------------------------------------------------------------------
     
     std::string folder_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
@@ -82,6 +120,8 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     _zoomSlider->SetBackgroundAlpha(0.1);
     _zoomSlider->SetValue(1.0);
     
+
+    
     
     SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
     
@@ -107,7 +147,14 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     _volumeMeterRight = new axVolumeMeter(app, this,
                                           axRect(32, 90, 8, 200),
                                           meter_info);
+    
+    _envEditor = new EnvelopeEditor(app, this, axRect(1, 40, rect.size.x-1, 40));
+    _envEditor->Hide();
+    
+    _envEditor->SetEnvChangeEvent(GetOnEnvelopeChange());
 }
+
+
 
 void SoundEditor::SetPlayAudioEvent(axEvtFunction(int) fct)
 {
@@ -156,11 +203,46 @@ void SoundEditor::OnPlayButton(const axButtonMsg& msg)
     }
 }
 
+
+void SoundEditor::OnTimerButton(const axButtonMsg& msg)
+{
+    axOUTPUT_VARIABLE(msg.GetSender()->GetId());
+}
+
+void SoundEditor::OnEnvToggle(const axToggleMsg& msg)
+{
+//    std::cout << "ENV" << std::endl;
+    if(_showEnv == true)
+    {
+        _showEnv = false;
+        _envEditor->Hide();
+    }
+    else
+    {
+        _showEnv = true;
+        _envEditor->Show();
+        SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
+        axAudioFilter* audio_filter = audio->GetFilter();
+        
+        _envEditor->ProcessEnvelope(audio_filter->GetFreq(),
+                        audio_filter->GetQ(),
+                        audio_filter->GetGain());
+    }
+    
+    _waveform->ShowEnv(_showEnv);
+}
+
 void SoundEditor::OnZoomValue(const axSliderMsg& msg)
 {
     _waveform->SetZoom(msg.GetValue());
     _waveformNavig->SetBorders(_waveform->GetBorders());
     Update();
+}
+
+void SoundEditor::OnEnvelopeChange(const EnvelopeEditorMsg& msg)
+{
+    _waveform->_envBuffer = msg.GetBuffer();
+    _waveform->_envPoints = msg.GetPoints();
 }
 
 void SoundEditor::OnSamplePosition(const axSliderMsg& msg)

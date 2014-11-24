@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C25BFA91A0700EB00943748 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C25BFA81A0700EB00943748 /* AppDelegate.mm */; };
 		7C25BFAB1A0700EB00943748 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C25BFAA1A0700EB00943748 /* main.m */; };
 		7C25BFAD1A0700EB00943748 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C25BFAC1A0700EB00943748 /* Images.xcassets */; };
 		7C25BFC71A07015700943748 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25BFC51A07015700943748 /* GLKit.framework */; };
@@ -44,13 +43,13 @@
 		7C25C02A1A07E83C00943748 /* KnobPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C25C0281A07E83C00943748 /* KnobPanel.cpp */; };
 		7C25C02D1A07ED0000943748 /* NumberBoxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C25C02B1A07ED0000943748 /* NumberBoxPanel.cpp */; };
 		7C25C0301A07EDCD00943748 /* PaintPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C25C02E1A07EDCD00943748 /* PaintPanel.cpp */; };
+		7CD9E5D91A2361F4002EA201 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9E5D81A2361F4002EA201 /* axCocoaInterfaceMac.mm */; };
+		7CD9E5DC1A236259002EA201 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9E5DB1A236259002EA201 /* AppDelegate.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7C25BFA21A0700EB00943748 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C25BFA61A0700EB00943748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C25BFA71A0700EB00943748 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7C25BFA81A0700EB00943748 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		7C25BFAA1A0700EB00943748 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C25BFAC1A0700EB00943748 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7C25BFC51A07015700943748 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +122,10 @@
 		7C25C02C1A07ED0000943748 /* NumberBoxPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberBoxPanel.h; sourceTree = "<group>"; };
 		7C25C02E1A07EDCD00943748 /* PaintPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PaintPanel.cpp; sourceTree = "<group>"; };
 		7C25C02F1A07EDCD00943748 /* PaintPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintPanel.h; sourceTree = "<group>"; };
+		7CD9E5D71A2361F4002EA201 /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axCocoaInterfaceMac.h; path = ../../axProjects/SoundEditor/axCocoaInterfaceMac.h; sourceTree = "<group>"; };
+		7CD9E5D81A2361F4002EA201 /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = axCocoaInterfaceMac.mm; path = ../../axProjects/SoundEditor/axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
+		7CD9E5DA1A236259002EA201 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../axProjects/SoundEditor/builds/XCode6/MidiSequencer/MidiSequencer/AppDelegate.h; sourceTree = "<group>"; };
+		7CD9E5DB1A236259002EA201 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ../../../axProjects/SoundEditor/builds/XCode6/MidiSequencer/MidiSequencer/AppDelegate.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,9 +165,9 @@
 		7C25BFA41A0700EB00943748 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				7CD9E5DA1A236259002EA201 /* AppDelegate.h */,
+				7CD9E5DB1A236259002EA201 /* AppDelegate.mm */,
 				7C25BFCB1A0702A400943748 /* MainMenu.xib */,
-				7C25BFA71A0700EB00943748 /* AppDelegate.h */,
-				7C25BFA81A0700EB00943748 /* AppDelegate.mm */,
 				7C25BFAC1A0700EB00943748 /* Images.xcassets */,
 				7C25BFA51A0700EB00943748 /* Supporting Files */,
 				7C25C01F1A07039500943748 /* main.cpp */,
@@ -195,6 +198,8 @@
 		7C25BFCD1A0702D000943748 /* axLib */ = {
 			isa = PBXGroup;
 			children = (
+				7CD9E5D71A2361F4002EA201 /* axCocoaInterfaceMac.h */,
+				7CD9E5D81A2361F4002EA201 /* axCocoaInterfaceMac.mm */,
 				7C25BFD01A0702ED00943748 /* axWidgets */,
 				7C25BFCF1A0702E600943748 /* include */,
 				7C25BFCE1A0702D600943748 /* source */,
@@ -353,8 +358,10 @@
 				7C25C0211A07039500943748 /* main.cpp in Sources */,
 				7C25BFFA1A07033100943748 /* axFont.cpp in Sources */,
 				7C25C0241A070ABA00943748 /* ButtonPanel.cpp in Sources */,
+				7CD9E5DC1A236259002EA201 /* AppDelegate.mm in Sources */,
 				7C25BFAB1A0700EB00943748 /* main.m in Sources */,
 				7C25C0171A07034C00943748 /* axDropMenu.cpp in Sources */,
+				7CD9E5D91A2361F4002EA201 /* axCocoaInterfaceMac.mm in Sources */,
 				7C25C0191A07034C00943748 /* axKnob.cpp in Sources */,
 				7C25BFF81A07033100943748 /* axCoreMac.cpp in Sources */,
 				7C25C0301A07EDCD00943748 /* PaintPanel.cpp in Sources */,
@@ -369,7 +376,6 @@
 				7C25BFFC1A07033100943748 /* axImage.cpp in Sources */,
 				7C25BFFE1A07033100943748 /* axObject.cpp in Sources */,
 				7C25C01A1A07034C00943748 /* axMenu.cpp in Sources */,
-				7C25BFA91A0700EB00943748 /* AppDelegate.mm in Sources */,
 				7C25C02A1A07E83C00943748 /* KnobPanel.cpp in Sources */,
 				7C25C01C1A07034C00943748 /* axPopupMenu.cpp in Sources */,
 				7C25BFF71A07033100943748 /* axCore.cpp in Sources */,

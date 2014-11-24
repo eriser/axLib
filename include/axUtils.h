@@ -116,6 +116,24 @@ public:
 	}
 };
 
+template<typename T>
+struct axRectPoints
+{
+    axRectPoints(){}
+    
+    axRectPoints(const T& bl,
+                 const T& tl,
+                 const T& tr,
+                 const T& br):
+    bottom_left(bl),
+    top_left(tl),
+    top_right(tr),
+    bottom_right(br)
+    {
+    }
+    
+    T bottom_left, top_left, top_right, bottom_right;
+};
 
 template < typename CPos, typename CSize, typename T >
 class axTemplateRect
@@ -247,6 +265,14 @@ public:
 			}
 		}
 	}
+    
+    axRectPoints<CPos> GetPoints() const
+    {
+        return axRectPoints<CPos>(CPos(position.x, position.y + size.y),
+                                  CPos(position.x, position.y),
+                                  CPos(position.x + size.x, position.y),
+                                  CPos(position.x + size.x, position.y + size.y));
+    }
 };
 
 #endif
