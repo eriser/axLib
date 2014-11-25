@@ -1,5 +1,6 @@
 #include "axGC.h"
 #include "axWindow.h"
+#include "axMath.h"
 
 axGC::axGC(axWindow* win):
 	_font("tt")
@@ -8,32 +9,8 @@ axGC::axGC(axWindow* win):
 
 }
 
-// axFloatRect RectToFloatRect(const axRect& rect)
-// {
-// 	// axPoint pos(_win->GetScrollDecay());
-
-// 	// if(pos.y != 0)
-// 	// {
-// 	// 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y - pos.y),
-// 	// 				   axFloat(rect.size.x), axFloat(rect.size.y));
-// 	// }
-
-
-// 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y),
-// 					   axFloat(rect.size.x), axFloat(rect.size.y));
-// }
-
 axFloatRect axGC::RectToFloatRect(const axRect& rect)
 {
-	// axPoint pos(_win->GetScrollDecay());
-
-	// if(pos.y != 0)
-	// {
-	// 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y - pos.y),
-	// 				   axFloat(rect.size.x), axFloat(rect.size.y));
-	// }
-
-
 	return axFloatRect(axFloat(rect.position.x), axFloat(rect.position.y),
 					   axFloat(rect.size.x), axFloat(rect.size.y));
 }
@@ -66,14 +43,13 @@ void axGC::SetColor(const axColor& color, const float& alpha)
 
 void axGC::DrawRectangle(const axRect& rect)
 {
-    axPoint real_pos = _win->GetAbsoluteRect().position;
+    axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
+    axMatrix4 mview;
     
-    glPushMatrix();
-    glTranslated(real_pos.x, real_pos.y, 0.0);
+    mview.Identity().Translate(_win->GetAbsoluteRect().position).Process();
     
     axFloatRect frect = RectToFloatRect(rect);
     axRectFloatPoints points = frect.GetPoints(); // Order : bl, tl, tr, br.
-    // GLubyte indices[] = {0,1,2, 0,2,3}; // GL_TRIANGLES.
     GLubyte indices[] = {0, 1,2, 2,3}; // GL_TRIANGLE_FAN.
     
     // For scroll bar.
@@ -81,28 +57,28 @@ void axGC::DrawRectangle(const axRect& rect)
     //	frect.position.y  -= _win->GetScrollDecay().y;
     
     glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(2, GL_DOUBLE, 0, &points); // The value of z defaults is 0.
-    // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+    glVertexPointer(2, GL_DOUBLE, 0, &points);
     glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_BYTE, indices);
     glDisableClientState(GL_VERTEX_ARRAY);
     
-    glPopMatrix();
+    mview_before.Load();
 }
 
 void axGC::DrawRoundedRectangle(const axRect& rect)
 {
-
+    /// @todo.
 }
 
 void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 {
-    axPoint real_pos = _win->GetAbsoluteRect().position;
+    axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
+    axMatrix4 mview;
+    
+    mview.Identity().Translate(_win->GetAbsoluteRect().position).Process();
+    
 	axFloatRect frect = RectToFloatRect(rect);
 //	frect.position.x  -= floor(_win->GetScrollDecay().x);
 //	frect.position.y  -= _win->GetScrollDecay().y;
-
-    glPushMatrix();
-    glTranslated(real_pos.x, real_pos.y, 0.0);
     
 	// Note that OpenGL coordinate space has no notion of integers, 
 	// everything is a float and the "centre" of an OpenGL pixel is 
@@ -120,7 +96,7 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
     glDrawElements(GL_LINE_LOOP, 8, GL_UNSIGNED_BYTE, indices);
     glDisableClientState(GL_VERTEX_ARRAY);
 
-    glPopMatrix();
+    mview_before.Load();
     
     glLineWidth(1.0f);
 }
@@ -416,39 +392,15 @@ void axGC::DrawLines(const vector<axPoint>& pts, float width)
 
     glPushMatrix();
     glTranslated(real_pos.x, real_pos.y, 0.0);
-	//axPoint p1 = pt1 + real_pos;
-	//axPoint p2 = pt2 + real_pos;
-
-//	glEnable(GL_LINE_SMOOTH);
-////	glEnable(GL_POLYGON_SMOOTH);
-////	glEnable(GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-//	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 
 	glLineWidth(width);
 
-//    GLfloat vertices[] = {...}; // 36 of vertex coords
-//    ...
-//    // activate and specify pointer to vertex array
     glEnableClientState(GL_VERTEX_ARRAY);
     glVertexPointer(2, GL_INT, 0, pts.data());
-//
-//    // draw a cube
     glDrawArrays(GL_LINES, 0, int(pts.size()));
-    
-    // deactivate vertex arrays after drawing
     glDisableClientState(GL_VERTEX_ARRAY);
     
     glPopMatrix();
-//    glTranslated(-real_pos.x, -real_pos.y, 0.0);
-    
-//	glBegin(GL_LINES);
-//	for (const axPoint& pt : pts)
-//	{
-//		glVertex2f(pt.x + real_pos.x, pt.y + real_pos.y);
-//	}
-//	glEnd();
 }
 
 void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)

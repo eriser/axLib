@@ -29,25 +29,25 @@ public:
 		_sender = nullptr;
 	}
 
-	axToggleMsg(axToggle* sender, const string& msg)
+	axToggleMsg(axToggle* sender, const bool& selected)
 	{
 		_sender = sender;
-		_msg = msg;
+		_selected = selected;
 	}
 
 	axToggle* GetSender() const
 	{
 		return _sender;
 	}
-
-	string GetMsg() const
-	{
-		return _msg;
-	}
+    
+    bool GetMsg() const
+    {
+        return _selected;
+    }
 
 private:
 	axToggle* _sender;
-	string _msg;
+    bool _selected;
 };
 
 struct axToggleEvents

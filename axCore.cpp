@@ -1,5 +1,6 @@
 #include "axCore.h"
-#include <GLKit/GLKMath.h>
+//#include <GLKit/GLKMath.h>
+#include "axMath.h"
 
 axCore::axCore():
 	// Members.
@@ -40,21 +41,15 @@ void axCore::ResizeGLScene(const int& width, const int& height, double y)
 	// Reset the current viewport.
 	glViewport(0, _y_test, width, h);
 
-	// Select the projection matrix.
-	glMatrixMode(GL_PROJECTION);	
-
-	// Reset the projection matrix.
-	glLoadIdentity();									
-
-	// Calculate the aspect ratio of the window.
-	gluPerspective(45.0f, (GLfloat)width / (GLfloat)h, 0.1f, 100.0f);
-
+    axMatrix4 proj;
+    axOrtho2D(proj.Identity().GetData(), _size);
+    
 	// Select the modelview matrix.
 	glMatrixMode(GL_MODELVIEW);			
-
-	// Reset the modelview matrix.
-//	glLoadIdentity();
-    glTranslated(0.0, y, 0.0);
+    
+    axMatrix4 mview;
+    mview.Translate(axPoint(0, y)).Process();
+    
 	_needToDraw = true;
 	_popupNeedToDraw = true;
     
@@ -175,50 +170,36 @@ void axCore::UpdateAll()
 
 int axCore::DrawGLScene()
 {
-    
-	//glViewport(0, 0, att.width, att.height);
-	// /float time = float(clock() - _lastDrawingTime) / CLOCKS_PER_SEC;
-	// cout << "time  draw : " << _lastDrawingTime << "Clock per sec " << CLOCKS_PER_SEC << endl;
-	//cout << time << endl;
-	if (_needToDraw == true)// && time > 0.01)
-	//if (true)
+	if (_needToDraw == true)
 	{
-		// _lastDrawingTime = clock();
 		_needToDraw = false;
 	
 		// Clear screen and depth buffer.
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//glViewport(0, 0, _size.x, _size.y);
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		gluOrtho2D(0.0, _size.x, _size.y, 0.0);
-
+        // Set projection matrix.
+        axMatrix4 proj;
+        axOrtho2D(proj.Identity().GetData(), _size);
+        
+        // Set modelview matrix.
 		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-	
-		axFloatRect rect(0 - 1.0, 0 - 1, _size.x * 2.0, _size.y * 2.0);
+        axMatrix4 mview;
+        glLoadMatrixd(mview.Identity().GetData());
 
-		glColor3d(0.0, 0.0, 0.0);
-		GLfloat z = 0;
+        // Draw black rectangle.
+        glColor4d(0.0, 0.0, 0.0, 1.0);
+        
+		axFloatRect rect(-1.0, -1.0, _size.x * 2.0, _size.y * 2.0);
+        axRectFloatPoints points = rect.GetPoints();
+        GLubyte indices[] = {0, 1,2, 2,3};
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glVertexPointer(2, GL_DOUBLE, 0, &points);
+        glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_BYTE, indices);
+        glDisableClientState(GL_VERTEX_ARRAY);
 
-		glBegin(GL_QUADS);
-		// Bottom left.
-		glVertex3f(rect.position.x, rect.position.y, z); 
-
-		// Bottom Right.
-		glVertex3f(rect.position.x + rect.size.x, 
-				   rect.position.y, z); 
-
-		// Top Right.
-		glVertex3f(rect.position.x + rect.size.x, 
-				   rect.position.y + rect.size.y, z); 
-
-		// Top Left
-		glVertex3f(rect.position.x, rect.position.y + rect.size.y, z); 
-		glEnd();
-
+        // Draw all windows.
 		_windowManager->OnPaint();
+        
 		return true;
 	}
 	return false;
@@ -240,6 +221,9 @@ int axCore::DrawGLPopScene()
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluOrtho2D(0.0, _popSize.x, _popSize.y, 0.0);
+        
+        
+        
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 

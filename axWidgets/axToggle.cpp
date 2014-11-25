@@ -102,7 +102,7 @@ void axToggle::OnMouseLeftDown(const axPoint& pos)
         
         if (_events.button_click)
         {
-            _events.button_click(axToggleMsg(this, _msg));
+            _events.button_click(axToggleMsg(this, _selected));
         }
     }
 
@@ -140,7 +140,7 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
             {
                 if (_events.button_click)
                 {
-                    _events.button_click(axToggleMsg(this, _msg));
+                    _events.button_click(axToggleMsg(this, _selected));
                 }
             }
 		}
