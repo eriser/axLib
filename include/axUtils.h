@@ -33,9 +33,9 @@ using namespace std;
 
 #define DEPRECATED_ATTRIBUTE __attribute__((deprecated))
 
-DEPRECATED_ATTRIBUTE
+//DEPRECATED_ATTRIBUTE
 string axFloatToString( const double& value, int num_char = 4 );
-DEPRECATED_ATTRIBUTE
+//DEPRECATED_ATTRIBUTE
 string axIntToString(const int &value );
 
 string OpenFileDialog(const string& app_name, string folder_path = "");

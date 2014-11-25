@@ -9,6 +9,7 @@
 #ifndef test_axCore_h
 #define test_axCore_h
 
+#ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
 
@@ -70,5 +71,7 @@ public:
     virtual void UpdateAll();
 
 };
+
+#endif // __APPLE__
 
 #endif

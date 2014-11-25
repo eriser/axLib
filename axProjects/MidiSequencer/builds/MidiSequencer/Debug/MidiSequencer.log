@@ -1,226 +1,147 @@
-﻿  main.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(250): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(305): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(343): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(441): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(454): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(89): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(90): warning C4305: 'argument' : truncation from 'double' to 'const float'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(113): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(24): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(29): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(30): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(68): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(80): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(81): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(82): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(85): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(98): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(105): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(107): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(111): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(112): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(116): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(122): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(140): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(141): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(143): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(154): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(182): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(200): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(201): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(202): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(203): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(204): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(213): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(214): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(215): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(216): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(217): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(299): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(325): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(347): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(510): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\main.cpp(529): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-  DrumSampler.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(250): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(305): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(343): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(441): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(454): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(17): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(29): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(43): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(63): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(113): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(119): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(125): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(130): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(135): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(140): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(146): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(152): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(161): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(239): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(245): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(250): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(277): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(289): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(305): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\drumsampler.cpp(327): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-  Generating Code...
-  Compiling...
-  axMidi.cpp
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(250): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(305): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(343): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(441): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(454): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axmidi.cpp(50): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axmidi.cpp(90): warning C4101: 'result' : unreferenced local variable
-  axAudio.cpp
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(250): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(305): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(343): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(441): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(454): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(41): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(128): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(121): warning C4101: 'nSubTrack' : unreferenced local variable
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(174): warning C4305: '=' : truncation from 'double' to 'axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(217): warning C4244: 'initializing' : conversion from 'double' to 'long', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(218): warning C4244: 'initializing' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(225): warning C4244: '=' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(237): warning C4244: '*=' : conversion from 'double' to 'float', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.cpp(268): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-  MidiTrack.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(250): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(305): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(343): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(441): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(454): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(89): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(90): warning C4305: 'argument' : truncation from 'double' to 'const float'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.h(113): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(51): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(53): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(54): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(57): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(59): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(60): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(65): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(80): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(90): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(100): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(175): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(184): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(194): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(238): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(239): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(240): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(244): warning C4305: '=' : truncation from 'double' to 'float'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(246): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(247): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(248): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(249): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(288): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(289): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(348): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(349): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(407): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(420): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(421): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(423): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(439): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(452): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(457): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(486): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(489): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(508): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(519): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(580): warning C4244: 'argument' : conversion from 'const double' to 'const float', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(677): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(680): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(686): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(698): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(728): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(729): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(736): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(756): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(813): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(816): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(820): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\miditrack.cpp(828): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-  AudioWaveform.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(250): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(305): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(343): warning C4018: '<=' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(441): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\axaudio.h(454): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(32): warning C4244: 'argument' : conversion from 'axFloat' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(52): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(127): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(138): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axprojects\midisequencer\audiowaveform.cpp(139): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-  libpng16.lib(png.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
-audioeffect.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
-  Generating code
-  Finished generating code
-libpng16.lib(png.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(png.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngread.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngread.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngerror.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngerror.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngget.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngget.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngwrite.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwrite.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngmem.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngmem.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngrio.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngrio.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngrutil.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngrutil.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngrtran.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngrtran.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngtrans.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngtrans.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngset.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngset.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngwutil.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwutil.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngwio.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwio.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-libpng16.lib(pngwtran.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwtran.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(adler32.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(adler32.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(crc32.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(crc32.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(deflate.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(deflate.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(inffast.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(inffast.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(inflate.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(inflate.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(inftrees.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(inftrees.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(trees.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(trees.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-zlib.lib(zutil.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(zutil.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(autofit.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(autofit.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(bdf.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(bdf.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(cff.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(cff.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(ftbase.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(ftbase.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(ftbitmap.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(ftbitmap.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(ftdebug.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(ftdebug.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(ftgzip.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(ftgzip.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(ftinit.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(ftinit.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(ftlzw.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(ftlzw.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(ftsystem.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(ftsystem.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(smooth.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(smooth.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(pcf.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(pcf.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(pfr.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(pfr.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(psaux.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(psaux.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(pshinter.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(pshinter.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(psmodule.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(psmodule.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(raster.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(raster.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(sfnt.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(sfnt.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(truetype.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(truetype.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(type1.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(type1.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(type1cid.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(type1cid.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(type42.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(type42.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-freetype253_D.lib(winfnt.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freetype253_D.lib(winfnt.obj)' or at 'C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\vc100.pdb'; linking object as if no debug info
-  MidiSequencer.vcxproj -> C:\Users\alexarse\Desktop\axLib\axProjects\MidiSequencer\builds\Debug\MidiSequencer.exe
+﻿Build started 11/25/2014 5:47:07 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\axProjects\MidiSequencer\builds\MidiSequencer\MidiSequencer.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\alexarse\Desktop\axLib\libs\portmidi\porttime /IC:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_win /IC:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_common /IC:\libsndfile\include /IC:\Users\alexarse\Desktop\axLib\libs\portaudio\include /IC:\Users\alexarse\Desktop\axLib /IC:\Users\alexarse\Desktop\axLib\include /IC:\Users\alexarse\Desktop\axLib\libs\lpng1610 /I"C:\Users\alexarse\Desktop\axLib\libs\freetype-2.5.3/include" /I"C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\pluginterfaces\vst2.x" /I"C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\public.sdk\source\vst2.x" /I"C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\..\libs\VST3 SDK\public.sdk\source\vst2.x\audioeffect.cpp" "..\..\..\..\libs\VST3 SDK\public.sdk\source\vst2.x\audioeffectx.cpp" ..\..\AudioWaveform.cpp ..\..\axAudio.cpp ..\..\axAudioBuffer.cpp ..\..\axAudioEnvelope.cpp ..\..\axAudioFilter.cpp ..\..\axMidi.cpp ..\..\axVstInterface.cpp ..\..\DrumSampler.cpp ..\..\main.cpp ..\..\MidiTrack.cpp
+         MidiTrack.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\miditrack.h(4): fatal error C1083: Cannot open include file: 'axLib.h': No such file or directory
+         main.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\main.h(4): fatal error C1083: Cannot open include file: 'axLib.h': No such file or directory
+         DrumSampler.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\drumsampler.h(4): fatal error C1083: Cannot open include file: 'axLib.h': No such file or directory
+         axVstInterface.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(5): error C2146: syntax error : missing ';' before identifier 'VSTCALLBACK'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(5): error C2146: syntax error : missing ';' before identifier 'hostCallback'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(5): error C2065: 'AEffect' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(5): error C2065: 'effect' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(5): error C2065: 'VstInt32' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(5): error C2146: syntax error : missing ')' before identifier 'opcode'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(6): error C2059: syntax error : ')'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(6): error C2143: syntax error : missing ';' before '{'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(6): error C2447: '{' : missing function header (old-style formal list?)
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(29): error C2653: 'axVstInterface' : is not a class or namespace name
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(30): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(33): error C2550: 'axVstInterface' : constructor initializer lists are only allowed on constructor definitions
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(35): error C2065: '_inBuffer' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(35): error C2061: syntax error : identifier 'axFloat'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(36): error C2065: '_outBuffer' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(36): error C2061: syntax error : identifier 'axFloat'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(40): error C2065: '_inBuffer' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(40): error C2061: syntax error : identifier 'axFloat'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(41): error C2065: '_outBuffer' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(41): error C2061: syntax error : identifier 'axFloat'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(43): warning C4508: 'axVstInterface' : function should return a value; 'void' return type assumed
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(45): error C2653: 'axVstInterface' : is not a class or namespace name
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(45): error C2039: 'string' : is not a member of 'std'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(45): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(45): error C2143: syntax error : missing ',' before '&'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(47): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(47): error C2065: 'NULL' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(50): error C2065: 'HMODULE' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(50): error C2146: syntax error : missing ';' before identifier 'modulePtr'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(50): error C2065: 'modulePtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(50): error C3861: 'LoadLibrary': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(51): error C2065: 'modulePtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(51): error C2065: 'NULL' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(53): error C3861: 'printf': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(54): error C3861: 'GetLastError': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(58): error C2065: 'vstPluginFuncPtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(58): error C2146: syntax error : missing ';' before identifier 'mainEntryPoint'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(58): error C2065: 'mainEntryPoint' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(58): error C2146: syntax error : missing ';' before identifier 'GetProcAddress'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(58): error C2065: 'modulePtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(58): error C3861: 'GetProcAddress': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(60): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(60): error C3861: 'mainEntryPoint': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(64): error C3861: 'configurePluginCallbacks': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(66): error C2065: 'cout' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(66): error C2065: 'endl' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(70): error C2065: 'VstInt32' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(70): error C2146: syntax error : missing ';' before identifier 'nParam'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(70): error C2065: 'nParam' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(70): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(70): error C2227: left of '->numParams' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(71): error C2065: 'cout' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(71): error C2065: 'nParam' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(71): error C2065: 'endl' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(73): error C2065: 'dispatcherFuncPtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(73): error C2146: syntax error : missing ';' before identifier 'dispatcher'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(73): error C2065: 'dispatcher' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(73): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(73): error C2227: left of '->dispatcher' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(76): error C2065: 'AudioEffect' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(76): error C2065: 'aef' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(76): error C2059: syntax error : ')'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(78): error C2065: 'nParam' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(80): error C2065: 'aef' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(80): error C2227: left of '->getParameterName' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(82): error C2065: 'cout' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(82): error C2065: 'endl' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(104): error C2653: 'axVstInterface' : is not a class or namespace name
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(109): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(109): error C2227: left of '->magic' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(109): error C2065: 'kEffectMagic' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(111): error C3861: 'printf': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(116): error C2065: 'dispatcherFuncPtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(116): error C2146: syntax error : missing ';' before identifier 'dispatcher'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(116): error C2065: 'dispatcher' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(116): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(116): error C2227: left of '->dispatcher' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(120): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(120): error C2227: left of '->getParameter' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(120): error C2065: 'getParameterFuncPtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(120): error C2146: syntax error : missing ';' before identifier '_plugin'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(121): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(121): error C2227: left of '->processReplacing' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(121): error C2065: 'processFuncPtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(121): error C2146: syntax error : missing ';' before identifier '_plugin'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(122): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(122): error C2227: left of '->setParameter' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(122): error C2065: 'setParameterFuncPtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(122): error C2146: syntax error : missing ';' before identifier '_plugin'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(131): error C2653: 'axVstInterface' : is not a class or namespace name
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(133): error C2065: 'dispatcherFuncPtr' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(133): error C2146: syntax error : missing ';' before identifier 'dispatcher'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(133): error C2065: 'dispatcher' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(133): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(133): error C2227: left of '->dispatcher' must point to class/struct/union/generic type
+                 type is 'unknown-type'
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(135): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(135): error C2065: 'effOpen' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(135): error C2065: 'NULL' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(135): error C3861: 'dispatcher': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(139): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(139): error C2065: 'effSetSampleRate' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(139): error C2065: 'NULL' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(139): error C3861: 'dispatcher': identifier not found
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(141): error C2065: '_plugin' : undeclared identifier
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axvstinterface.cpp(141): fatal error C1003: error count exceeds 100; stopping compilation
+         axMidi.cpp
+         axAudioFilter.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axaudiofilter.h(12): fatal error C1083: Cannot open include file: 'axUtils.h': No such file or directory
+         axAudioEnvelope.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axaudioenvelope.h(10): fatal error C1083: Cannot open include file: 'axUtils.h': No such file or directory
+         axAudioBuffer.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axaudiobuffer.h(10): fatal error C1083: Cannot open include file: 'sndfile.h': No such file or directory
+         axAudio.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\axaudio.h(18): fatal error C1083: Cannot open include file: 'axUtils.h': No such file or directory
+         AudioWaveform.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axprojects\midisequencer\audiowaveform.h(4): fatal error C1083: Cannot open include file: 'axLib.h': No such file or directory
+         audioeffectx.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\libs\vst3 sdk\public.sdk\source\vst2.x\audioeffect.h(38): fatal error C1083: Cannot open include file: 'pluginterfaces/vst2.x/aeffect.h': No such file or directory
+         audioeffect.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\libs\vst3 sdk\public.sdk\source\vst2.x\audioeffect.h(38): fatal error C1083: Cannot open include file: 'pluginterfaces/vst2.x/aeffect.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\axProjects\MidiSequencer\builds\MidiSequencer\MidiSequencer.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.21

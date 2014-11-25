@@ -1,87 +1,39 @@
-﻿  axWindowTree.cpp
-  axWindow.cpp
-  axWin32Utils.cpp
-  axSlider.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(29): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(30): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(39): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(40): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(57): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(91): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(95): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(296): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(326): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.cpp(390): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-  axScrollBar.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(18): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(25): warning C4930: 'std::function<void (axButtonMsg)> btnFct(void)': prototyped function not called (was a variable definition intended?)
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(65): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(137): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(146): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(149): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(152): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(153): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axscrollbar.cpp(215): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-  axPopupMenu.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axpopupmenu.cpp(23): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axwidgets\axpopupmenu.cpp(25): warning C4018: '<' : signed/unsigned mismatch
-  axNumberBox.cpp
-  axMenu.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axmenu.cpp(85): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axwidgets\axmenu.cpp(156): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axmenu.cpp(158): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-  axKnob.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axknob.cpp(68): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axknob.cpp(90): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
-  axGrid.cpp
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(24): warning C4305: 'argument' : truncation from 'double' to 'const axFloat'
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(87): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(93): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(101): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(155): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(162): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(167): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axwidgets\axgrid.cpp(178): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-  axDropMenu.cpp
-  axButton.cpp
-  axUtils.cpp
-  axPanel.cpp
-  axObject.cpp
-  axManager.cpp
-  axImage.cpp
-  axGC.cpp
-c:\users\alexarse\desktop\axlib\axgc.cpp(90): warning C4244: '-=' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(233): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(321): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axgc.cpp(340): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axgc.cpp(350): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(353): warning C4018: '<' : signed/unsigned mismatch
-c:\users\alexarse\desktop\axlib\axgc.cpp(413): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(439): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(440): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axgc.cpp(454): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-  axFont.cpp
-c:\users\alexarse\desktop\axlib\axfont.cpp(49): warning C4244: 'initializing' : conversion from 'std::streamsize' to 'unsigned int', possible loss of data
-c:\users\alexarse\desktop\axlib\axfont.cpp(60): warning C4244: 'argument' : conversion from 'std::streamsize' to 'unsigned int', possible loss of data
-c:\users\alexarse\desktop\axlib\axfont.cpp(67): warning C4244: 'argument' : conversion from 'std::streamsize' to 'FT_Long', possible loss of data
-c:\users\alexarse\desktop\axlib\axfont.cpp(139): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-  axEvent.cpp
-  Generating Code...
-  Compiling...
-  axDebugWin32.cpp
-  axCoreWin32.cpp
-  axCore.cpp
-c:\users\alexarse\desktop\axlib\axcore.cpp(178): warning C4244: 'argument' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axcore.cpp(180): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
-c:\users\alexarse\desktop\axlib\axcore.cpp(224): warning C4244: 'argument' : conversion from 'double' to 'axFloat', possible loss of data
-c:\users\alexarse\desktop\axlib\axcore.cpp(226): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
-  axColor.cpp
-  axC++.cpp
-  axApp.cpp
-  Generating Code...
-  axGL.vcxproj -> C:\Users\alexarse\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib
+﻿Build started 11/25/2014 5:46:55 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\VisualStudio2013\axGL\axGL.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../../libs/freetype-2.5.3/include" /I../../../libs/lpng1610 /I../../../include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\axMath.cpp
+         axMath.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib" /NOLOGO Debug\axApp.obj
+         Debug\axC++.obj
+         Debug\axColor.obj
+         Debug\axCore.obj
+         Debug\axCoreWin32.obj
+         Debug\axDebugWin32.obj
+         Debug\axEvent.obj
+         Debug\axFont.obj
+         Debug\axGC.obj
+         Debug\axImage.obj
+         Debug\axManager.obj
+         Debug\axMath.obj
+         Debug\axObject.obj
+         Debug\axPanel.obj
+         Debug\axUtils.obj
+         Debug\axButton.obj
+         Debug\axDropMenu.obj
+         Debug\axGrid.obj
+         Debug\axKnob.obj
+         Debug\axMenu.obj
+         Debug\axNumberBox.obj
+         Debug\axPopupMenu.obj
+         Debug\axScrollBar.obj
+         Debug\axSlider.obj
+         Debug\axWin32Utils.obj
+         Debug\axWindow.obj
+         Debug\axWindowTree.obj
+         axGL.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\axLib\builds\VisualStudio2013\Debug\axGL.lib
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\VisualStudio2013\axGL\axGL.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.79
