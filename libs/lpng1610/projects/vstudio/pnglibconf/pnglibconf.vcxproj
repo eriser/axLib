@@ -16,7 +16,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v110_wp80</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\zlib.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />

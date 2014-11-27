@@ -39,16 +39,24 @@ void axCore::ResizeGLScene(const int& width, const int& height, double y)
 	_size = axSize(width, h);
 
 	// Reset the current viewport.
-	glViewport(0, _y_test, width, h);
+	//--------------------------------------------------
+	//--------------------------------------------------
+	//glViewport(0, _y_test, width, h);
+	glViewport(0, 0, width, h);
+	//--------------------------------------------------
+	//--------------------------------------------------
 
-    axMatrix4 proj;
-    axOrtho2D(proj.Identity().GetData(), _size);
-    
+    //axMatrix4 proj;
+    //axOrtho2D(proj.Identity().GetData(), _size);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0, _size.x, _size.y, 0);
+
 	// Select the modelview matrix.
 	glMatrixMode(GL_MODELVIEW);			
     
-    axMatrix4 mview;
-    mview.Translate(axPoint(0, y)).Process();
+ /*   axMatrix4 mview;
+    mview.Translate(axPoint(0, y)).Process();*/
     
 	_needToDraw = true;
 	_popupNeedToDraw = true;
@@ -178,13 +186,19 @@ int axCore::DrawGLScene()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Set projection matrix.
-        axMatrix4 proj;
-        axOrtho2D(proj.Identity().GetData(), _size);
+        //axMatrix4 proj;
+        //axOrtho2D(proj.Identity().GetData(), _size);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluOrtho2D(0, _size.x, _size.y, 0);
+		//gl
         
         // Set modelview matrix.
+		//glMatrixMode(GL_MODELVIEW);
+  //      axMatrix4 mview;
+  //      glLoadMatrixd(mview.Identity().GetData());
 		glMatrixMode(GL_MODELVIEW);
-        axMatrix4 mview;
-        glLoadMatrixd(mview.Identity().GetData());
+		glLoadIdentity();
 
         // Draw black rectangle.
         glColor4d(0.0, 0.0, 0.0, 1.0);

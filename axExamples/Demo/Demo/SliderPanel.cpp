@@ -14,8 +14,9 @@ SliderPanel::SliderPanel(axApp* app,
 // Parent.
 axPanel(app, parent, rect)
 {
-    std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
-    
+   // std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+	std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
+
     axSliderInfo sld_info;
     sld_info.img_path = app_path + std::string("sliderPlain.png");
     sld_info.btn_size = axSize(12, 12);

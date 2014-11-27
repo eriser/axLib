@@ -132,3 +132,13 @@ void axMain::MainEntryPoint(axApp* app)
     MainPanel* mainPanel = new MainPanel(app, nullptr,
                                             axRect(1, 1, 550, 499));
 }
+
+int main(int argc, char* argv[])
+{
+	axApp app(axSize(550, 499));
+	axMain* main = new axMain();
+	main->MainEntryPoint(&app);
+
+	app.MainLoop();
+	return 0;
+}

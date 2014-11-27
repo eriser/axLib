@@ -50,16 +50,21 @@ void axGC::DrawRectangle(const axRect& rect)
     
     axFloatRect frect = RectToFloatRect(rect);
     axRectFloatPoints points = frect.GetPoints(); // Order : bl, tl, tr, br.
-    GLubyte indices[] = {0, 1,2, 2,3}; // GL_TRIANGLE_FAN.
     
     // For scroll bar.
     //	frect.position.x  -= floor(_win->GetScrollDecay().x);
     //	frect.position.y  -= _win->GetScrollDecay().y;
     
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(2, GL_DOUBLE, 0, &points);
-    glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_BYTE, indices);
-    glDisableClientState(GL_VERTEX_ARRAY);
+	//GLubyte indices[] = { 0, 1, 2, 2, 3 }; // GL_TRIANGLE_FAN.
+    //glEnableClientState(GL_VERTEX_ARRAY);
+    //glVertexPointer(2, GL_DOUBLE, 0, &points);
+    //glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_BYTE, indices);
+    //glDisableClientState(GL_VERTEX_ARRAY);
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(2, GL_DOUBLE, 0, &points);
+	glDrawArrays(GL_QUADS, 0, 4);
+	glDisableClientState(GL_VERTEX_ARRAY);
     
     mview_before.Load();
 }
@@ -73,7 +78,6 @@ void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
 {
     axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
     axMatrix4 mview;
-    
     mview.Identity().Translate(_win->GetAbsoluteRect().position).Process();
     
 	axFloatRect frect = RectToFloatRect(rect);

@@ -1,36 +1,35 @@
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\debug\zlib.bsc
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\adler32.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\compress.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\crc32.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\deflate.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\infback.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\inffast.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\inflate.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\inftrees.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\trees.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\uncompr.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\zutil.sbr
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\zutil.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\uncompr.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\trees.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\inftrees.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\inflate.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\inffast.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\infback.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\deflate.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\crc32.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\compress.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\adler32.obj
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\vc100.pdb
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\debug\zlib.lib
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\zlib.vcxprojresolveassemblyreference.cache
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\bscmake.command.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\bscmake.read.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\bscmake.write.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\cl.command.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\cl.read.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\cl.write.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\lib-link.read.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\lib-link.write.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\lib.command.1.tlog
-c:\users\alexarse\desktop\axgl\lpng1610\projects\vstudio\zlib\debug\zlib.write.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\debug\zlib.bsc
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\adler32.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\compress.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\crc32.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\deflate.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\infback.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\inffast.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\inflate.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\inftrees.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\trees.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\uncompr.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\zutil.sbr
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\zutil.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\uncompr.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\trees.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\inftrees.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\inflate.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\inffast.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\infback.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\deflate.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\crc32.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\compress.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\adler32.obj
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\vc100.pdb
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\debug\zlib.lib
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\bscmake.command.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\bscmake.read.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\bscmake.write.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\cl.command.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\cl.read.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\cl.write.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\lib-link.read.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\lib-link.write.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\lib.command.1.tlog
+c:\users\alexandre arsenault\desktop\axlib\libs\lpng1610\projects\vstudio\zlib\debug\lib.read.1.tlog

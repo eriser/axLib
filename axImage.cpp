@@ -1,4 +1,5 @@
 #include "axImage.h"
+#include "png.h"
 
 axImageGlobalMapLoader axImage::_globalMap;
 

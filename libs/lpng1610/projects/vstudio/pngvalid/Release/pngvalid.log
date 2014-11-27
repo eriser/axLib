@@ -1,17 +1,17 @@
-﻿Build started 11/04/2014 8:56:36 AM.
-     1>Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\pngvalid\pngvalid.vcxproj" on node 3 (Build target(s)).
+﻿Build started 11/25/2014 6:28:47 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngvalid\pngvalid.vcxproj" on node 3 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Ox /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D PNG_USE_DLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /MD /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /FR"Release\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\contrib\libtests\pngvalid.c
          pngvalid.c
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Release\pngvalid.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Release\ libpng16.lib zlib.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Release\pngvalid.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Release\pngvalid.lib" /MACHINE:X86 /SAFESEH Release\pngvalid.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Release\pngvalid.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Release\\" libpng16.lib zlib.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Release\pngvalid.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Release\pngvalid.lib" /MACHINE:X86 /SAFESEH Release\pngvalid.obj
          Generating code
          Finished generating code
-         pngvalid.vcxproj -> C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Release\pngvalid.exe
+         pngvalid.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Release\pngvalid.exe
        BscMake:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Release\pngvalid.bsc" Release\pngvalid.sbr
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Release\pngvalid.bsc" Release\pngvalid.sbr
        CustomBuildStep:
-         "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Release\pngvalid.exe" --touch "Release\pngvalid.out"
+         "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Release\pngvalid.exe" --touch "Release\pngvalid.out"
          :VCEnd
          Gamma correction error summary
          
@@ -54,8 +54,8 @@
           16 bit gray:  309.24044
           16 bit color: 310.97330
          PASS: pngvalid --touch Release\pngvalid.out (floating point arithmetic)
-     1>Done Building Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\pngvalid\pngvalid.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngvalid\pngvalid.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:26.78
+Time Elapsed 00:00:17.89

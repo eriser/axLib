@@ -1,9 +1,9 @@
-﻿Build started 07/04/2014 9:59:01 AM.
-     1>Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\libpng\libpng.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/25/2014 6:52:05 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\libpng\libpng.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /Zi /nologo /W4 /WX /Od /Oi /Oy- /GL /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _MBCS /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy /fp:precise /fp:except- /Zc:wchar_t- /Zc:forScope /Yc"pngpriv.h" /Fp"Debug\libpng16.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\png.c
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /Zi /nologo /W4 /WX /Od /Oi /Oy- /GL /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _MBCS /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy /fp:precise /fp:except- /Zc:wchar_t- /Zc:forScope /Yc"pngpriv.h" /Fp"Debug\libpng16.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\png.c
          png.c
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /Zi /nologo /W4 /WX /Od /Oi /Oy- /GL /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _MBCS /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy /fp:precise /fp:except- /Zc:wchar_t- /Zc:forScope /Yu"pngpriv.h" /Fp"Debug\libpng16.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\pngerror.c ..\..\..\pngget.c ..\..\..\pngmem.c ..\..\..\pngpread.c ..\..\..\pngread.c ..\..\..\pngrio.c ..\..\..\pngrtran.c ..\..\..\pngrutil.c ..\..\..\pngset.c ..\..\..\pngtrans.c ..\..\..\pngwio.c ..\..\..\pngwrite.c ..\..\..\pngwtran.c ..\..\..\pngwutil.c
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /Zi /nologo /W4 /WX /Od /Oi /Oy- /GL /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D _MBCS /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy /fp:precise /fp:except- /Zc:wchar_t- /Zc:forScope /Yu"pngpriv.h" /Fp"Debug\libpng16.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\pngerror.c ..\..\..\pngget.c ..\..\..\pngmem.c ..\..\..\pngpread.c ..\..\..\pngread.c ..\..\..\pngrio.c ..\..\..\pngrtran.c ..\..\..\pngrutil.c ..\..\..\pngset.c ..\..\..\pngtrans.c ..\..\..\pngwio.c ..\..\..\pngwrite.c ..\..\..\pngwtran.c ..\..\..\pngwutil.c
          pngerror.c
          pngget.c
          pngmem.c
@@ -19,9 +19,9 @@
          pngwtran.c
          pngwutil.c
        ResourceCompile:
-         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /nologo /fo"Debug\pngwin.res" ..\..\..\scripts\pngwin.rc 
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /nologo /fo"Debug\pngwin.res" ..\..\..\scripts\pngwin.rc 
        Lib:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\libpng16.lib" /NOLOGO /LTCG Debug\pngwin.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\libpng16.lib" /NOLOGO /LTCG Debug\pngwin.res
          Debug\png.obj
          Debug\pngerror.obj
          Debug\pngget.obj
@@ -38,11 +38,11 @@
          Debug\pngwtran.obj
          Debug\pngwutil.obj
      1>LINK : warning LNK4068: /MACHINE not specified; defaulting to X86
-         libpng.vcxproj -> C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\libpng16.lib
+         libpng.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\libpng16.lib
        BscMake:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\libpng16.bsc" Debug\png.sbr Debug\pngerror.sbr Debug\pngget.sbr Debug\pngmem.sbr Debug\pngpread.sbr Debug\pngread.sbr Debug\pngrio.sbr Debug\pngrtran.sbr Debug\pngrutil.sbr Debug\pngset.sbr Debug\pngtrans.sbr Debug\pngwio.sbr Debug\pngwrite.sbr Debug\pngwtran.sbr Debug\pngwutil.sbr
-     1>Done Building Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\libpng\libpng.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\libpng16.bsc" Debug\png.sbr Debug\pngerror.sbr Debug\pngget.sbr Debug\pngmem.sbr Debug\pngpread.sbr Debug\pngread.sbr Debug\pngrio.sbr Debug\pngrtran.sbr Debug\pngrutil.sbr Debug\pngset.sbr Debug\pngtrans.sbr Debug\pngwio.sbr Debug\pngwrite.sbr Debug\pngwtran.sbr Debug\pngwutil.sbr
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\libpng\libpng.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.28
+Time Elapsed 00:00:04.34

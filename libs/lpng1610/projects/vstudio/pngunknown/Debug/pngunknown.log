@@ -1,10 +1,10 @@
-﻿Build started 07/04/2014 9:59:09 AM.
-     1>Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/25/2014 6:52:10 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" on node 5 (Rebuild target(s)).
      1>ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Od /Oi /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D PNG_USE_DLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\contrib\libtests\pngunknown.c
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Od /Oi /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D PNG_USE_DLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\contrib\libtests\pngunknown.c
          pngunknown.c
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\ libpng16.lib /MANIFEST /ManifestFile:"Debug\pngunknown.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.lib" /MACHINE:X86 Debug\pngunknown.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngunknown.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\\" libpng16.lib /MANIFEST /ManifestFile:"Debug\pngunknown.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngunknown.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngunknown.lib" /MACHINE:X86 Debug\pngunknown.obj
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_read_end referenced in function _check
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_read_row referenced in function _check
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_image_width referenced in function _check
@@ -23,9 +23,9 @@
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_valid referenced in function _get_valid
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_user_chunk_ptr referenced in function _read_callback
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_unknown_chunks referenced in function _get_unknown
-     1>C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\Debug\pngunknown.exe : fatal error LNK1120: 18 unresolved externals
-     1>Done Building Project "C:\Users\alexarse\Desktop\axGL\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" (Build target(s)) -- FAILED.
+     1>C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngunknown.exe : fatal error LNK1120: 18 unresolved externals
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" (Rebuild target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:00.86
+Time Elapsed 00:00:00.73
