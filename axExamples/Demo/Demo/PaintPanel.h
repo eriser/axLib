@@ -14,8 +14,7 @@
 class PaintPanel : public axPanel
 {
 public:
-    PaintPanel(axApp* app,
-                axWindow* parent,
+    PaintPanel(axWindow* parent,
                 const axRect& rect);
     
     

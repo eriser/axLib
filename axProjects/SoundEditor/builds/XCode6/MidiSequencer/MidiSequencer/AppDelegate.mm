@@ -57,7 +57,8 @@ axAppDelegate* GlobalAppDelegate;
     [[self window] setAcceptsMouseMovedEvents:YES];
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
     
-    axApp::MainInstance = new axApp();
+//    axApp::MainInstance = new axApp();
+    axApp* app = axApp::CreateApp();
     axMain::MainEntryPoint(axApp::MainInstance);
     
 //    cout << "TEST2" << endl;
@@ -129,7 +130,15 @@ axAppDelegate* GlobalAppDelegate;
 //    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
 //    axPoint pos(locationInView.x, y - locationInView.y);
     axPoint pos(locationInView.x, locationInView.y);
-    axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
+    
+    axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(pos);
+    if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
+//    if(!gotEvtFromPopup)
+//    {
+//        axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
+//    }
+    
     
 //    [self setNeedsDisplay:YES];
     //[self MemberTestFunc];
@@ -145,7 +154,10 @@ axAppDelegate* GlobalAppDelegate;
 //    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
 //    axPoint pos(locationInView.x, y - locationInView.y);
     axPoint pos(locationInView.x, locationInView.y);
-    axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
+    axApp::MainInstance->GetPopupManager()->OnMouseLeftUp(pos);
+    //if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
+
     
 //    [self setNeedsDisplay:YES];
 }
@@ -159,7 +171,10 @@ axAppDelegate* GlobalAppDelegate;
 //    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
 //    axPoint pos(locationInView.x, y - locationInView.y);
     axPoint pos(locationInView.x, locationInView.y);
-    axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
+    axApp::MainInstance->GetPopupManager()->OnMouseLeftDragging(pos);
+    if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
+    
 //    [self setNeedsDisplay:YES];
 }
 
@@ -172,7 +187,14 @@ axAppDelegate* GlobalAppDelegate;
 //    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
 //    axPoint pos(locationInView.x, y - locationInView.y);
     axPoint pos(locationInView.x, locationInView.y);
-    axApp::MainInstance->GetWindowManager()->OnMouseMotion(pos);
+    
+    axApp::MainInstance->GetPopupManager()->OnMouseMotion(pos);
+    if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        axApp::MainInstance->GetWindowManager()->OnMouseMotion(pos);
+    
+    
+    
+    
     
 //    [self setNeedsDisplay:YES];
     

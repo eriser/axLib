@@ -1,8 +1,6 @@
 #include "axToggle.h"
 
-axToggle::axToggle(
-                   axApp* app,
-                   axWindow* parent,
+axToggle::axToggle(axWindow* parent,
                    const axRect& rect,
                    const axToggleEvents& events,
                    const axToggleInfo& info,
@@ -11,7 +9,7 @@ axToggle::axToggle(
                    axFlag flags,
                    string msg) :
 // Heritage.
-axPanel(app, parent, rect),
+axPanel(parent, rect),
 // Members.
 _events(events),
 _info(info),
@@ -27,11 +25,10 @@ _msg(msg)
     _btnImg = new axImage(img_path);
 }
 
-axToggle::axToggle(axApp* app,
-                   axWindow* parent,
+axToggle::axToggle(axWindow* parent,
                    const axToggleEvents& events,
                    const string& path):
-axPanel(app, parent, axRect(0, 0, 20, 20)),
+axPanel(parent, axRect(0, 0, 20, 20)),
 // Members.
 _events(events),
 _nCurrentImg(axTOG_NORMAL),
@@ -79,34 +76,38 @@ void axToggle::SetBackgroundAlpha(const float& alpha)
 
 void axToggle::OnMouseLeftDown(const axPoint& pos)
 {
-    // Only switch selection on toggle_on_left_down.
-    if (axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
+    if(_selected && axFlag_exist(axTOGGLE_CANT_UNSELECT_WITH_MOUSE, _flags))
     {
-        _selected = !_selected;
-    }
-
-    if(_selected)
-    {
-        _currentColor = &_info.selected_clicking;
+        // Don't do anything.
     }
     else
     {
-        _currentColor = &_info.clicking;
-    }
-	
-	GrabMouse();
-
-    if (axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
-    {
-        
-        
-        if (_events.button_click)
+        // Only switch selection on toggle_on_left_down.
+        if (axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
         {
-            _events.button_click(axToggleMsg(this, _selected));
+            _selected = !_selected;
         }
+        
+        if(_selected)
+        {
+            _currentColor = &_info.selected_clicking;
+        }
+        else
+        {
+            _currentColor = &_info.clicking;
+        }
+        
+        GrabMouse();
+        
+        if (axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
+        {
+            if (_events.button_click)
+            {
+                _events.button_click(axToggleMsg(this, _selected, _msg));
+            }
+        }
+        Update();
     }
-
-	Update();
 }
 
 void axToggle::OnMouseLeftUp(const axPoint& pos)
@@ -138,9 +139,10 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
             // If toggle on left up.
             if (!axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
             {
+                std::cout << "axToggle::OnMouseLeftUp" << std::endl;
                 if (_events.button_click)
                 {
-                    _events.button_click(axToggleMsg(this, _selected));
+                    _events.button_click(axToggleMsg(this, _selected, _msg));
                 }
             }
 		}

@@ -1,14 +1,13 @@
 #include "axScrollBar.h"
 
 axScrollBar::axScrollBar(
-	axApp* app,
 	axWindow* parent,
 	const axRect& rect,
 	const axScrollBarEvents& events,
 	const axScrollBarInfo& info,
 	axFlag flags) :
 	// Heritage.
-	axPanel(app, parent, rect),
+	axPanel(parent, rect),
 	// Members.
 	_events(events),
 	_info(info),
@@ -24,13 +23,13 @@ axScrollBar::axScrollBar(
 
 	function<void (axButtonMsg)> btnFct();
 
-	_btn[0] = new axButton(app, this, 
+	_btn[0] = new axButton(this, 
 						   axRect(0, 0, 14, 14), 
 						   axButtonEvents(), 
 						   btn_info, 
 						   "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/scrollBar_up.png");
 
-	_btn[1] = new axButton(app, this, 
+	_btn[1] = new axButton(this, 
 						   axRect(0, rect.size.y - 14, 14, 14), 
 						   axButtonEvents(), 
 						   btn_info, 

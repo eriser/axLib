@@ -153,8 +153,7 @@ struct axSliderInfo
 class axSlider : public axPanel
 {
 public:
-	axSlider(axApp* app,
-			 axWindow* parent,
+	axSlider(axWindow* parent,
 			 const axRect& rect,
 			 const axSliderEvents& events,
 			 const axSliderInfo& info,

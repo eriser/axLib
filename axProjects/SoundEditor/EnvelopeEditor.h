@@ -44,8 +44,7 @@ private:
 class EnvelopeEditor: public axPanel
 {
 public:
-    EnvelopeEditor(axApp* app,
-                   axWindow* parent,
+    EnvelopeEditor(axWindow* parent,
                    const axRect& rect);
     
     void SetEnvChangeEvent(axEvtFunction(EnvelopeEditorMsg) fct);

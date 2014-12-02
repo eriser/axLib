@@ -1,8 +1,6 @@
 #include "axButton.h"
 
-axButton::axButton(
-	axApp* app,
-	axWindow* parent,
+axButton::axButton(axWindow* parent,
 	const axRect& rect,
 	const axButtonEvents& events,
 	const axButtonInfo& info,
@@ -11,7 +9,7 @@ axButton::axButton(
 	axFlag flags,
 	string msg) :
 	// Heritage.
-	axPanel(app, parent, rect),
+	axPanel(parent, rect),
 	// Members.
 	_events(events),
 	_info(info),
@@ -32,11 +30,10 @@ axButton::axButton(
 	
 }
 
-axButton::axButton(axApp* app,
-		 axWindow* parent,
+axButton::axButton(axWindow* parent,
 		 const axButtonEvents& events,
 		 const string& path):
-		 axPanel(app, parent, axRect(0, 0, 20, 20)),
+		 axPanel(parent, axRect(0, 0, 20, 20)),
 		// Members.
 		_events(events),
 		_nCurrentImg(axBTN_NORMAL),
@@ -122,14 +119,22 @@ void axButton::SetBackgroundAlpha(const float& alpha)
 	Update();
 }
 
+void axButton::SetLabel(const std::string& label)
+{
+    _label = label;
+    Update();
+}
+
 void axButton::OnMouseLeftDown(const axPoint& pos)
 {
 	_currentColor = &_info.clicking;
+    _nCurrentImg = axBTN_DOWN;
 
 	GrabMouse();
 
 	if (_events.button_click)
 	{
+//        std::cout << "axButton::OnMouseLeftDown::EVT EXIST." << std::endl;
 		_events.button_click(axButtonMsg(this, _msg));
 	}
 
@@ -154,6 +159,7 @@ void axButton::OnMouseLeftUp(const axPoint& pos)
 			{
 				_currentColor = &_info.selected;
 				_nCurrentImg = axBTN_SELECTED;
+                std::cout << "Btn selected." << std::endl;
 			}
 			else
 			{
@@ -222,19 +228,11 @@ void axButton::OnPaint()
 
 	}
 
-
-	//DSTREAM << "DRAWSTRING" << endl;
-	//string t = "4";
-
-
 	if_not_empty(_label)
 	{
-		// cout << "FONT" << endl;
 		gc->SetColor(_info.font_color, 1.0);
-		//gc->SetFontType("/home/alexarse/Desktop/axLib/ressources/axFonts/FreeSans.ttf");
 		gc->SetFontSize(12);
 		gc->DrawStringAlignedCenter(_label, rect0);
-		// cout << "END FONT" << endl;
 	}
 
 	gc->SetColor(_info.contour, _bgAlpha);

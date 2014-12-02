@@ -8,14 +8,13 @@
 
 #include "axToolBar.h"
 
-axToolBar::axToolBar(axApp* app,
-                     axWindow* parent,
+axToolBar::axToolBar(axWindow* parent,
                      const axRect& rect,
                      const axToolBarEvents& events,
                      const axToolBarInfo& info,
                      axFlag flags) :
 // Heritage.
-axPanel(app, parent, rect),
+axPanel(parent, rect),
 // Members.
 _events(events),
 _info(info),

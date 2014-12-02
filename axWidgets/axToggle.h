@@ -18,6 +18,7 @@
 #define axTOGGLE_SINGLE_IMG	axFLAG_1
 #define axTOGGLE_IMG_RESIZE	axFLAG_2
 #define axTOGGLE_CLICK_ON_LEFT_DOWN axFLAG_3
+#define axTOGGLE_CANT_UNSELECT_WITH_MOUSE axFLAG_4
 
 class axToggle;
 
@@ -33,21 +34,35 @@ public:
 	{
 		_sender = sender;
 		_selected = selected;
+        _msg = std::string("");
 	}
+    
+    axToggleMsg(axToggle* sender, const bool& selected, const std::string& msg)
+    {
+        _sender = sender;
+        _selected = selected;
+        _msg = msg;
+    }
 
 	axToggle* GetSender() const
 	{
 		return _sender;
 	}
     
-    bool GetMsg() const
+    bool GetSelected() const
     {
         return _selected;
+    }
+    
+    string GetMsg() const
+    {
+        return _msg;
     }
 
 private:
 	axToggle* _sender;
     bool _selected;
+    std::string _msg;
 };
 
 struct axToggleEvents
@@ -125,8 +140,7 @@ struct axToggleInfo
 class axToggle : public axPanel
 {
 public:
-	axToggle(axApp* app,
-             axWindow* parent,
+	axToggle(axWindow* parent,
              const axRect& rect,
              const axToggleEvents& events,
              const axToggleInfo& info,
@@ -135,8 +149,7 @@ public:
              axFlag flags = 0,
              string msg = "");
 
-	axToggle(axApp* app,
-			 axWindow* parent,
+	axToggle(axWindow* parent,
 			 const axToggleEvents& events,
 			 const string& path);
 

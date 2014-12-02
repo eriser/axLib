@@ -88,8 +88,7 @@ struct axScrollBarInfo
 class axScrollBar : public axPanel
 {
 public:
-	axScrollBar(axApp* app,
-		axWindow* parent,
+	axScrollBar(axWindow* parent,
 		const axRect& rect,
 		const axScrollBarEvents& events,
 		const axScrollBarInfo& info,

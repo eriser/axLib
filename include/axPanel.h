@@ -7,8 +7,8 @@
 class axPanel : public axWindow
 {
 public:
-	axPanel(axApp* app, axWindow* parent, const axRect& rect);
-	axPanel(int f, axApp* app, axWindow* parent, const axRect& rect);
+	axPanel(axWindow* parent, const axRect& rect);
+	axPanel(int f, axWindow* parent, const axRect& rect);
 
 	void UpdateAll();
 	virtual void Update();
@@ -28,7 +28,7 @@ public:
 
 
 private:
-	axApp* _app;
+	//axApp* _app;
 
 	bool _isInPopup;
 };

@@ -1,8 +1,6 @@
 #include "axGrid.h"
 
-axGrid::axGrid(
-	axApp* app,
-	axWindow* parent,
+axGrid::axGrid(axWindow* parent,
 	const axRect& rect,
 	const axGridEvents& events,
 	const axGridInfo& info,
@@ -11,7 +9,7 @@ axGrid::axGrid(
 	axFlag flags,
 	string msg) :
 	// Heritage.
-	axPanel(app, parent, rect),
+	axPanel(parent, rect),
 	// Members.
 	_events(events),
 	_info(info),

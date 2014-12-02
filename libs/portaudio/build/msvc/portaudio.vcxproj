@@ -221,7 +221,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\src\common;..\..\include;.\;..\..\src\os\win;C:\Users\alexarse\Desktop\axLib\libs\ASIOSDK2.3\host;C:\Users\alexarse\Desktop\axLib\libs\ASIOSDK2.3\common;C:\Users\alexarse\Desktop\axLib\libs\ASIOSDK2.3\host\pc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src\common;..\..\include;.\;..\..\src\os\win;../../../../libs/ASIOSDK2.3/host;../../../../libs/ASIOSDK2.3/common;../../../../libs/ASIOSDK2.3/host\pc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_USRDLL;PA_ENABLE_DEBUG_OUTPUT;_CRT_SECURE_NO_DEPRECATE;PAWIN_USE_WDMKS_DEVICE_INFO;PA_USE_ASIO=1;PA_USE_DS=0;PA_USE_WMME=1;PA_USE_WASAPI=0;PA_USE_WDMKS=0;PA_WDMKS_NO_KSGUID_LIB=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>

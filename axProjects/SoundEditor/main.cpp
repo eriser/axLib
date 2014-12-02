@@ -15,15 +15,15 @@
 #include <future>
 #include <thread>
 
-SoundEditor::SoundEditor(axApp* app, axWindow* parent,
-									 const axRect& rect):
-								     axPanel(app, parent, rect)
+SoundEditor::SoundEditor(axWindow* parent,
+						 const axRect& rect):
+						 axPanel(parent, rect)
 {
     axToolBarInfo tbar_info(axColor(0.2, 0.2, 0.2),
                             axColor(0.6, 0.6, 0.6),
                             axColor(0.0, 0.0, 0.0));
     axToolBarEvents tbar_evts;
-    _toolbar = new axToolBar(app, this, axRect(1, 0, rect.size.x-1, 40),
+    _toolbar = new axToolBar(this, axRect(1, 0, rect.size.x-1, 40),
                              tbar_evts, tbar_info);
     
     
@@ -39,7 +39,7 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     
     axSize btn_size(60, 30);
     
-    axButton* btn1 = new axButton(app, _toolbar,
+    axButton* btn1 = new axButton(_toolbar,
                                   axRect(axPoint(5, 5), btn_size),
                                   btn1_evts,
                                   btn_info,
@@ -49,7 +49,7 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     axButtonEvents btn2_evts;
     btn2_evts.button_click = GetOnPlayButton();
     
-    axButton* btn2 = new axButton(app, _toolbar,
+    axButton* btn2 = new axButton(_toolbar,
                                   axRect(btn1->GetNextPosRight(5), btn_size),
                                   btn2_evts,
                                   btn_info,
@@ -70,7 +70,7 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     axToggleEvents tog1_evts;
     tog1_evts.button_click = GetOnEnvToggle();
     
-    axToggle* tog1 = new axToggle(app, _toolbar,
+    axToggle* tog1 = new axToggle(_toolbar,
                                   axRect(btn2->GetNextPosRight(5), btn_size),
                                   tog1_evts,
                                   tog_info,
@@ -80,14 +80,15 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     axButtonEvents btn4_evts;
     btn4_evts.button_click = GetOnTimerButton();
     
-    axButton* btn4 = new axButton(app, _toolbar,
+    axButton* btn4 = new axButton(_toolbar,
                                   axRect(tog1->GetNextPosRight(5), btn_size),
                                   btn4_evts,
                                   btn_info,
                                   "", "Timer");
     //---------------------------------------------------------------------------
     
-    std::string folder_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+    //std::string folder_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+	std::string folder_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/");
     
     axSliderInfo sld_info;
     sld_info.img_path = folder_path + std::string("sliderPlain.png");
@@ -111,7 +112,7 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     axSliderEvents sld_evts;
     sld_evts.slider_value_change = GetOnZoomValue();
     
-    _zoomSlider = new axSlider(app, this, axRect(axPoint(765, 90),
+    _zoomSlider = new axSlider(this, axRect(axPoint(765, 90),
                                                     axSize(15, 245)),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_VERTICAL |
@@ -125,10 +126,10 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
     
     SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
     
-    _waveform = new axWaveform(app, this, axRect(40, 90, 720, 200));
+    _waveform = new axWaveform(this, axRect(40, 90, 720, 200));
     _waveform->SetAudioBuffer(audio->GetSoundBuffer());
     
-    _waveformNavig = new axWaveformNavigator(app, this, axRect(40, 290, 720, 45));
+    _waveformNavig = new axWaveformNavigator(this, axRect(40, 290, 720, 45));
     _waveformNavig->SetAudioBuffer(audio->GetSoundBuffer());
     _waveformNavig->SetValueChangeEvt(GetOnWaveformNavigator());
     
@@ -140,15 +141,15 @@ SoundEditor::SoundEditor(axApp* app, axWindow* parent,
                                  axColor(0.6, 0.6, 0.6),
                                  axColor(0.0, 0.0, 0.0));
     
-    _volumeMeterLeft = new axVolumeMeter(app, this,
+    _volumeMeterLeft = new axVolumeMeter(this,
                                           axRect(24, 90, 8, 200),
                                           meter_info);
     
-    _volumeMeterRight = new axVolumeMeter(app, this,
+    _volumeMeterRight = new axVolumeMeter(this,
                                           axRect(32, 90, 8, 200),
                                           meter_info);
     
-    _envEditor = new EnvelopeEditor(app, this, axRect(1, 40, rect.size.x-1, 40));
+    _envEditor = new EnvelopeEditor(this, axRect(1, 40, rect.size.x-1, 40));
     _envEditor->Hide();
     
     _envEditor->SetEnvChangeEvent(GetOnEnvelopeChange());
@@ -290,8 +291,7 @@ axMain::axMain()
 void axMain::MainEntryPoint(axApp* app)
 {
     SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
-    SoundEditor* sound_editor = new SoundEditor(app,
-                                                nullptr,
+    SoundEditor* sound_editor = new SoundEditor(nullptr,
                                                 axRect(0, 0, 800, 400));
     
     sound_editor->SetPlayAudioEvent(audio->GetOnPlay());
@@ -299,7 +299,35 @@ void axMain::MainEntryPoint(axApp* app)
     
     audio->InitAudio();
     audio->StartAudio();
-    
 }
+
+void SoundEditorMain::MainEntry()
+{
+	SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
+	SoundEditor* sound_editor = new SoundEditor(nullptr,
+		axRect(0, 0, 800, 400));
+
+	sound_editor->SetPlayAudioEvent(audio->GetOnPlay());
+	sound_editor->SetChangePathAudioEvent(audio->GetOnChangeFilePath());
+
+	audio->InitAudio();
+	audio->StartAudio();
+}
+
+#define axImplementApp(x)  int main(int argc, char* argv[]){axApp* app = axApp::CreateApp(axSize(800, 400));\
+axMain* main = new x();main->MainEntryPoint(app);app->MainLoop(); delete main; return 0;}
+
+axImplementApp(SoundEditorMain);
+//int main(int argc, char* argv[])
+//{
+//	axApp* app = axApp::CreateApp(axSize(800, 400));
+//	axMain* main = new axMain();
+//	main->MainEntryPoint(app);
+//
+//	app->MainLoop();
+//
+//	delete main;
+//	return 0;
+//}
 
 

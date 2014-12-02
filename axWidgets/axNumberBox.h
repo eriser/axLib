@@ -113,8 +113,7 @@ struct axNumberBoxInfo
 class axNumberBox: public axPanel
 {
 public:
-    axNumberBox(axApp* app,
-                axWindow* parent,
+    axNumberBox(axWindow* parent,
                 const axRect& rect,
                 const axNumberBoxEvents& events,
                 const axNumberBoxInfo& info,

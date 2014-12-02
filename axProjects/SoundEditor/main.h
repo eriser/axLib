@@ -14,8 +14,7 @@ class axVolumeMeter;
 class SoundEditor: public axPanel
 {
 public:
-	SoundEditor(axApp* app,
-                axWindow* parent,
+	SoundEditor(axWindow* parent,
                 const axRect& rect);
     
     void SetPlayAudioEvent(axEvtFunction(int) fct);
@@ -66,7 +65,16 @@ class axMain
 public:
     axMain();
     static void MainEntryPoint(axApp* app);
+
+	virtual void MainEntry() = 0;
 };
 
+class SoundEditorMain : public axMain
+{
+public:
+	SoundEditorMain(){}
+
+	virtual void MainEntry();
+};
 
 #endif // __MIDI_SEUENCER__

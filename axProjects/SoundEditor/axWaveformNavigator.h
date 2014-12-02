@@ -16,8 +16,7 @@ class axAudioBuffer;
 class axWaveformNavigator : public axPanel
 {
 public:
-    axWaveformNavigator(axApp* app,
-                        axWindow* parent,
+    axWaveformNavigator(axWindow* parent,
                         const axRect& rect);
     
     void SetAudioBuffer(axAudioBuffer* buffer);

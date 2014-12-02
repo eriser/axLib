@@ -12,7 +12,9 @@
 #include "axCoreWin32.h"
 #endif //_MSC_VER
 
+#ifdef __APPLE__
 #include "axCoreMac.h"
+#endif
 
 #include "axC++.h"
 
@@ -20,8 +22,23 @@
 class axApp
 {
 public:
-    static axApp* MainInstance;
+	static axApp* MainInstance;
 	axApp();
+
+	inline static axApp* GetInstance()
+	{
+		return MainInstance;
+	}
+
+	inline static axApp* CreateApp()
+	{
+		return MainInstance == nullptr ? MainInstance = new axApp() : MainInstance;
+	}
+
+	inline static axApp* CreateApp(const axSize& frame_size)
+	{
+		return MainInstance == nullptr ? MainInstance = new axApp(frame_size) : MainInstance;
+	}
 	// ~axApp();
 
 	axApp(const axSize& frame_size);
@@ -31,8 +48,10 @@ public:
 	void CreatePopupWindow(const axSize& size);
 
 	axManager* GetWindowManager();
+    axManager* GetPopupManager();
 
 	void AddWindow(axWindow* win);
+    
 	void AddPopWindow(axWindow* win);
 
 	void UpdateAll();
@@ -47,16 +66,6 @@ public:
 
 	string GetAppDirectory();
     
-//    static void CallMainEntryPoint(axApp* app)
-//    {
-//        _mainFunction(app);
-//    }
-//    
-//    static void ConnectMainEntryPoint(void (*fct)(axApp*) )
-//    {
-//        _mainFunction = fct;
-//    }
-
 private:
 	axCore* _core;
 };

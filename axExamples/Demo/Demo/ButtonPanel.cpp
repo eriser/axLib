@@ -8,13 +8,14 @@
 
 #include "ButtonPanel.h"
 
-ButtonPanel::ButtonPanel(axApp* app,
-                         axWindow* parent,
+ButtonPanel::ButtonPanel(axWindow* parent,
                          const axRect& rect):
 // Parent.
-axPanel(app, parent, rect)
+axPanel(parent, rect)
 {
-	std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
+    std::string app_path("");
+//    std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
     axButtonInfo btn1_info;
     btn1_info.normal = axColor(0.8, 0.8, 0.8);
     btn1_info.hover = axColor(0.9, 0.9, 0.9);
@@ -24,13 +25,13 @@ axPanel(app, parent, rect)
     
     axButtonEvents btn1_evts;
     
-    axButton* btn1 = new axButton(app, this,
+    axButton* btn1 = new axButton(this,
                                   axRect(40, 40, 60, 25),
                                   btn1_evts,
                                   btn1_info,
                                   "", "Btn1");
     
-    axButton* btn2 = new axButton(app, this,
+    axButton* btn2 = new axButton(this,
                                   axRect(110, 40, 60, 25),
                                   btn1_evts,
                                   btn1_info,
@@ -38,7 +39,7 @@ axPanel(app, parent, rect)
                                   "Btn2");
     btn2->SetBackgroundAlpha(0.0);
     
-    axButton* btn3 = new axButton(app, this,
+    axButton* btn3 = new axButton(this,
                                   axRect(180, 40, 60, 25),
                                   btn1_evts,
                                   btn1_info,
@@ -47,7 +48,7 @@ axPanel(app, parent, rect)
     btn3->SetBackgroundAlpha(0.0);
     
     std::string img_path = app_path + std::string("button.png");
-    axButton* btn4 = new axButton(app, this,
+    axButton* btn4 = new axButton(this,
                                   axRect(250, 40, 60, 25),
                                   btn1_evts,
                                   btn1_info,
@@ -63,7 +64,7 @@ axPanel(app, parent, rect)
     btn2_info.contour = axColor(0.0, 0.0, 0.0);
     btn2_info.selected = btn2_info.normal;
 
-    axButton* btn5 = new axButton(app, this,
+    axButton* btn5 = new axButton(this,
                                   axRect(320, 40, 60, 25),
                                   btn1_evts,
                                   btn2_info,
@@ -72,15 +73,16 @@ axPanel(app, parent, rect)
                                   axBUTTON_SINGLE_IMG |
                                   axBUTTON_IMG_RESIZE);
     
-    axButton* btn6 = new axButton(app, this,
+    axButton* btn6 = new axButton(this,
                                   axRect(390, 40, 25, 25),
                                   btn1_evts,
                                   btn1_info,
-                                  app_path + std::string("play.png"),
+                                  app_path + std::string("playTest.png"),
                                   "",
                                   axBUTTON_IMG_RESIZE);
     
     btn6->SetBackgroundAlpha(0.0);
+    
 }
 
 void ButtonPanel::OnPaint()

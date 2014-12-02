@@ -74,8 +74,7 @@ struct axKnobInfo
 class axKnob: public axPanel
 {
 public:
-    axKnob(axApp* app,
-           axWindow* parent,
+    axKnob(axWindow* parent,
            const axRect& rect,
            const axKnobEvents& events,
            const axKnobInfo& info,

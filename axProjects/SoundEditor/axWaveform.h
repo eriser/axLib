@@ -16,8 +16,7 @@ class axAudioBuffer;
 class axWaveform : public axPanel
 {
 public:
-    axWaveform(axApp* app,
-                axWindow* parent,
+    axWaveform(axWindow* parent,
                 const axRect& rect);
     
     void SetAudioBuffer(axAudioBuffer* buffer);

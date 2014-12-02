@@ -1,5 +1,4 @@
 #include "axCore.h"
-//#include <GLKit/GLKMath.h>
 #include "axMath.h"
 
 axCore::axCore():
@@ -8,7 +7,9 @@ axCore::axCore():
 	_popupNeedToDraw(true)
 {
 	_windowManager = new axManager();
+    _windowManager->_managerName = std::string("WindowManager");
 	 _popupManager = new axManager();
+    _popupManager->_managerName = std::string("PopupManager");
 
 	 //_lastDrawingTime = clock();
     
@@ -41,8 +42,11 @@ void axCore::ResizeGLScene(const int& width, const int& height, double y)
 	// Reset the current viewport.
 	//--------------------------------------------------
 	//--------------------------------------------------
-	//glViewport(0, _y_test, width, h);
-	glViewport(0, 0, width, h);
+#ifdef __APPLE__
+	glViewport(0, _y_test, width, h);
+#else
+    glViewport(0, 0, width, h);
+#endif // __APPLE__
 	//--------------------------------------------------
 	//--------------------------------------------------
 
@@ -213,6 +217,7 @@ int axCore::DrawGLScene()
 
         // Draw all windows.
 		_windowManager->OnPaint();
+        _popupManager->OnPaint();
         
 		return true;
 	}

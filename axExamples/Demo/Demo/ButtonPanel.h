@@ -14,8 +14,7 @@
 class ButtonPanel : public axPanel
 {
 public:
-    ButtonPanel(axApp* app,
-                axWindow* parent,
+    ButtonPanel(axWindow* parent,
                 const axRect& rect);
     
     

@@ -1,7 +1,6 @@
 #include "axSlider.h"
 
-axSlider::axSlider(axApp* app,
-	axWindow* parent,
+axSlider::axSlider(axWindow* parent,
 	const axRect& rect,
 	const axSliderEvents& events,
 	const axSliderInfo& info,
@@ -9,7 +8,7 @@ axSlider::axSlider(axApp* app,
 	//string label,
 	axFlag flags) :
 	// Heritage.
-	axPanel(app, parent, rect),
+	axPanel(parent, rect),
 	// Members.
 	_events(events),
 	_info(info),

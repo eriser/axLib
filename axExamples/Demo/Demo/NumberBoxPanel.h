@@ -14,7 +14,7 @@
 class NumberBoxPanel : public axPanel
 {
 public:
-    NumberBoxPanel(axApp* app,
+    NumberBoxPanel(
               axWindow* parent,
               const axRect& rect);
     

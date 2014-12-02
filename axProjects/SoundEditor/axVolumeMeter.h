@@ -36,8 +36,7 @@ struct axVolumeMeterInfo
 class axVolumeMeter: public axPanel
 {
 public:
-    axVolumeMeter(axApp* app,
-              axWindow* parent,
+    axVolumeMeter(axWindow* parent,
               const axRect& rect,
               const axVolumeMeterInfo& info,
               axFlag flags = 0);

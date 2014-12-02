@@ -9,11 +9,10 @@
 #include "NumberBoxPanel.h"
 
 
-NumberBoxPanel::NumberBoxPanel(axApp* app,
-                     axWindow* parent,
+NumberBoxPanel::NumberBoxPanel(axWindow* parent,
                      const axRect& rect):
 // Parent.
-axPanel(app, parent, rect)
+axPanel(parent, rect)
 {
     axNumberBoxInfo box_info(axColor(0.7, 0.7, 0.7),
                              axColor(0.3, 0.3, 0.3),
@@ -22,7 +21,7 @@ axPanel(app, parent, rect)
                              axColor(0.0, 0.0, 0.0),
                              axColor(0.0, 0.0, 0.0));
     
-    axNumberBox* box1 = new axNumberBox(app, this,
+    axNumberBox* box1 = new axNumberBox(this,
                                         axRect(40, 40, 40, 20),
                                         axNumberBoxEvents(),
                                         box_info);

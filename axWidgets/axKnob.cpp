@@ -3,14 +3,13 @@
 /********************************************************************************//**
 * axKnob.
 ***********************************************************************************/
-axKnob::axKnob( axApp* app,
-                axWindow* parent,
+axKnob::axKnob( axWindow* parent,
                 const axRect& rect,
                 const axKnobEvents& events,
                 const axKnobInfo& info,
                 axFlag flags,
                 double value):
-                axPanel(app, parent, rect),
+                axPanel(parent, rect),
                 _events(events),
                 _info(info),
                 // m_knobImg( info.img_path.c_str() ),

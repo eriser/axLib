@@ -14,8 +14,7 @@
 class SliderPanel : public axPanel
 {
 public:
-    SliderPanel(axApp* app,
-                axWindow* parent,
+    SliderPanel(axWindow* parent,
                 const axRect& rect);
     
     axEVENT(axSliderMsg, OnSlider1);

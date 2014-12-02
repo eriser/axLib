@@ -38,7 +38,21 @@ public:
 
 	bool IsShown() const
 	{
-		return !_isHidden;
+        const axWindow* win = this;
+        
+        while(win != nullptr)
+        {
+            if(win->_isHidden)
+            {
+                return false;
+            }
+            
+            win = win->GetParent();
+            
+        }
+        return true;
+//		return !_isHidden;
+        
 	}
 
 	void Show()
@@ -70,7 +84,7 @@ public:
 
 	virtual void OnMouseLeftDown(const axPoint& pos)
 	{
-
+        //std::cout << "axWindow::OnMouseLeftDown." << std::endl;
 	}
 
 	virtual void OnMouseLeftUp(const axPoint& pos)

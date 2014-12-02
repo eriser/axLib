@@ -1,7 +1,6 @@
 #include "axNumberBox.h"
 
-axNumberBox::axNumberBox(axApp* app,
-						 axWindow* parent,
+axNumberBox::axNumberBox(axWindow* parent,
 						 const axRect& rect,
 						 const axNumberBoxEvents& events,
 						 const axNumberBoxInfo& info,
@@ -13,7 +12,7 @@ axNumberBox::axNumberBox(axApp* app,
                          axControlInterpolation interpolation,
                          string label):
 
-                        axPanel(app, parent, rect),
+                        axPanel(parent, rect),
 						// Members.
 						_events(events),
 						_info(info),

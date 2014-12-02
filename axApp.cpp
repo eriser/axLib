@@ -95,7 +95,6 @@ string axApp::GetCurrentAppDirectory()
 
 void axApp::MainLoop()
 {
-	//axCORE->MainLoop();
 	_core->MainLoop();
 }
 
@@ -108,7 +107,11 @@ void axApp::UpdateAll()
 axManager* axApp::GetWindowManager()
 {
 	return _core->GetWindowManager();
-	//return axCORE->GetWindowManager();
+}
+
+axManager* axApp::GetPopupManager()
+{
+    return _core->GetPopupManager();
 }
 
 void axApp::AddWindow(axWindow* win)
@@ -118,8 +121,8 @@ void axApp::AddWindow(axWindow* win)
 
 void axApp::AddPopWindow(axWindow* win)
 {
-	cerr << "POP WINDOW ERROR" << endl;
-	// _core->GetPopupManager()->Add(win);
+    //std::cout << "axApp::AddPopWindow" << std::endl;
+	_core->GetPopupManager()->Add(win);
 }
 
 

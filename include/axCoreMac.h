@@ -15,61 +15,30 @@
 
 #include "axCore.h"
 
-
-
-
 class axCoreMac : public axCore
 {
 public:
-    axCoreMac()
-    {
-        
-    }
-    virtual void MainLoop()
-    {
-        
-    }
+    axCoreMac();
     
-    virtual void Init(const axPoint& frame_size)
-    {
-        std::cout << "Init axCoreMac." << std::endl;
-        InitGL();
-    }
-
-    virtual string GetAppDirectory()
-    {
-        return "";
-    }
+    virtual void MainLoop();
     
-    virtual bool CreatePopupWindow(char* title, int width, int height)
-    {
-        return false;
-    }
+    virtual void Init(const axPoint& frame_size);
 
-    virtual axRect GetScreenRect()
-    {
-        // NEED TO CHANGE THIS !!!.
-        return axRect(0, GetYTestValue(), _size.x, _size.y);
-    }
+    virtual string GetAppDirectory();
+    
+    virtual bool CreatePopupWindow(char* title, int width, int height);
+
+    virtual axRect GetScreenRect();
     
     virtual string OpenFileDialog();
 
-    virtual void KillGLWindow()
-    {
-        
-    }
-    virtual void KillPopGLWindow()
-    {
-        
-    }
+    virtual void KillGLWindow();
     
-    virtual bool CreateGLWindow(char* title, int width, int height, int bits)
-    {
-        return true;
-    }
+    virtual void KillPopGLWindow();
+    
+    virtual bool CreateGLWindow(char* title, int width, int height, int bits);
     
     virtual void UpdateAll();
-
 };
 
 #endif // __APPLE__

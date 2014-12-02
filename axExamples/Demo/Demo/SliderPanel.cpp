@@ -8,14 +8,14 @@
 
 #include "SliderPanel.h"
 
-SliderPanel::SliderPanel(axApp* app,
-                         axWindow* parent,
+SliderPanel::SliderPanel(axWindow* parent,
                          const axRect& rect):
 // Parent.
-axPanel(app, parent, rect)
+axPanel(parent, rect)
 {
-   // std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
-	std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
+    std::string app_path("");
+//    std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
 
     axSliderInfo sld_info;
     sld_info.img_path = app_path + std::string("sliderPlain.png");
@@ -39,31 +39,31 @@ axPanel(app, parent, rect)
     axSliderEvents sld_evts;
     sld_evts.slider_value_change = GetOnSlider1();
     
-    axSlider* sld1 = new axSlider(app, this, axRect(40, 80, 300, 15),
+    axSlider* sld1 = new axSlider(this, axRect(40, 80, 300, 15),
                                   sld_evts, sld_info);
     
     sld1->SetBackgroundAlpha(0.3);
     
-    axSlider* sld2 = new axSlider(app, this, axRect(40, 100, 300, 15),
+    axSlider* sld2 = new axSlider(this, axRect(40, 100, 300, 15),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_BACK_SLIDER);
     
     sld2->SetBackgroundAlpha(0.3);
     
-    axSlider* sld3 = new axSlider(app, this, axRect(40, 120, 300, 15),
+    axSlider* sld3 = new axSlider(this, axRect(40, 120, 300, 15),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_NO_SLIDER_LINE);
     
     sld3->SetBackgroundAlpha(0.3);
     
     
-    axSlider* sld4 = new axSlider(app, this, axRect(40, 140, 300, 15),
+    axSlider* sld4 = new axSlider(this, axRect(40, 140, 300, 15),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_CLICK_ANYWHERE);
     
     sld4->SetBackgroundAlpha(0.3);
     
-    axSlider* sld5 = new axSlider(app, this, axRect(40, 160, 300, 15),
+    axSlider* sld5 = new axSlider(this, axRect(40, 160, 300, 15),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_CLICK_ANYWHERE |
                                   axSLIDER_FLAG_RIGHT_ALIGN);
@@ -73,7 +73,7 @@ axPanel(app, parent, rect)
     sld_info.img_path = "";
     sld_info.btn_size = axSize(12, 12);
     sld_info.slider_width = 13;
-    axSlider* sld6 = new axSlider(app, this, axRect(40, 180, 300, 15),
+    axSlider* sld6 = new axSlider(this, axRect(40, 180, 300, 15),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_CLICK_ANYWHERE);
     
@@ -83,7 +83,7 @@ axPanel(app, parent, rect)
     sld_info.img_path = "";
     sld_info.btn_size = axSize(12, 12);
     sld_info.slider_width = 6;
-    axSlider* sld7 = new axSlider(app, this, axRect(40, 200, 300, 15),
+    axSlider* sld7 = new axSlider(this, axRect(40, 200, 300, 15),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_CLICK_ANYWHERE|
                                   axSLIDER_FLAG_MIDDLE_ALIGN);
@@ -91,7 +91,7 @@ axPanel(app, parent, rect)
     sld7->SetBackgroundAlpha(0.3);
     
     
-    axSlider* sld8 = new axSlider(app, this, axRect(40, 240, 15, 100),
+    axSlider* sld8 = new axSlider(this, axRect(40, 240, 15, 100),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_CLICK_ANYWHERE|
                                   axSLIDER_FLAG_VERTICAL |
@@ -99,7 +99,7 @@ axPanel(app, parent, rect)
     
     sld8->SetBackgroundAlpha(0.3);
     
-    axSlider* sld9 = new axSlider(app, this, axRect(60, 240, 15, 100),
+    axSlider* sld9 = new axSlider(this, axRect(60, 240, 15, 100),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_CLICK_ANYWHERE |
                                   axSLIDER_FLAG_VERTICAL |
@@ -114,7 +114,7 @@ axPanel(app, parent, rect)
     int x = 80;
     for(int i = 0; i < 5; i++, x+= 15)
     {
-        axSlider* sld = new axSlider(app, this, axRect(x, 240, 15, 100),
+        axSlider* sld = new axSlider(this, axRect(x, 240, 15, 100),
                                      sld_evts, sld_info,
                                      axSLIDER_FLAG_CLICK_ANYWHERE |
                                      axSLIDER_FLAG_VERTICAL |

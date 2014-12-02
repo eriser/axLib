@@ -4,9 +4,9 @@
 /********************************************************************************//**
 * axMenuNode.
 ***********************************************************************************/
-axMenuNode::axMenuNode( axApp* app, axWindow* parent,
+axMenuNode::axMenuNode( axWindow* parent,
                         const axRect& rect):
-                        axPanel(app, parent, rect),
+                        axPanel(parent, rect),
                         // Members.
                         m_label("ROOT"),
                         m_img(nullptr),
@@ -29,7 +29,7 @@ axMenuNode::axMenuNode( axMenuNode* parent,
                         const string& label,
                         string img_path,
                         axMenuNodeSelectionMode mode ):
-                        axPanel( parent->GetApp(), parent, axRect(0, 0, 20, 20) ),
+                        axPanel(parent, axRect(0, 0, 20, 20) ),
                         // Members.
                         //m_img( img_path ),
                         m_parentNode( parent ),
@@ -179,8 +179,8 @@ void axMenuNode::OnPaint()
 /********************************************************************************//**
 * axMenu.
 ***********************************************************************************/
-axMenu::axMenu(axApp* app, axWindow* parent, const axRect& rect):
-               axPanel(app, parent, rect)
+axMenu::axMenu(axWindow* parent, const axRect& rect):
+               axPanel(parent, rect)
 {
     m_root = NULL;
 }

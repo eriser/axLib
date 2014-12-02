@@ -1,22 +1,10 @@
-﻿Build started 11/27/2014 1:19:28 PM.
+﻿Build started 11/27/2014 2:02:14 PM.
      1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\axGL\axGL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../../../libs/freetype-2.5.3/include" /I../../../../libs/lpng1610 /I../../../../ /I../../../../include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\..\axGC.cpp
-         axGC.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(195): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(232): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(320): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(339): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(349): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(352): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(375): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(379): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(383): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(387): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(429): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(430): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(443): warning C4244: 'argument' : conversion from 'const double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(464): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../../../libs/freetype-2.5.3/include" /I../../../../libs/lpng1610 /I../../../../ /I../../../../include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Demo\main.cpp
+         main.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\Debug\axGL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"../../../../libs/freetype-2.5.3/objs/win32/vc2010" /LIBPATH:../../../../libs/lpng1610/projects/vstudio/Debug opengl32.lib glu32.lib libpng16.lib zlib.lib freetype253_D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\Debug\axGL.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\Debug\axGL.lib" /MACHINE:X86 Debug\axApp.obj
          Debug\axC++.obj
@@ -62,4 +50,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.89
+Time Elapsed 00:00:03.03

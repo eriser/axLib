@@ -14,8 +14,7 @@
 class KnobPanel : public axPanel
 {
 public:
-    KnobPanel(axApp* app,
-                axWindow* parent,
+    KnobPanel(axWindow* parent,
                 const axRect& rect);
     
     

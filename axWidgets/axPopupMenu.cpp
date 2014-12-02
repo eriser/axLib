@@ -1,13 +1,14 @@
 #include "axPopupMenu.h"
 
-axPopupMenu::axPopupMenu(axApp* app,
-	axWindow* parent,
+axPopupMenu::axPopupMenu(axWindow* parent,
 	const axRect& rect,
 	const axPopupMenuEvents& events,
 	const axPopupMenuInfo& info,
 	const vector<string>& labels,
 	axFlag flag) :
-	axPanel(app, parent, rect),
+    axPanel(3, nullptr, rect),
+//	axPanel(3, parent, rect),
+//    axPanel(parent, rect),
 	_events(events),
 	_info(info),
 	_flag(flag),
@@ -15,35 +16,80 @@ axPopupMenu::axPopupMenu(axApp* app,
 	_labels(labels),
 	_lastSelected(nullptr)
 {
-	axSize btn_size(rect.size.x, LABEL_HEIGHT);
+	axSize tog_size(rect.size.x, LABEL_HEIGHT);
 	//axRect rect(0, i * LABEL_HEIGHT, GetSize().x, LABEL_HEIGHT);
 
-	axButtonEvents btn_event;//(GetOnButtonClick());
-	axButtonInfo btn_info("../../../ressources/axObjects/axStandardButton.axobj");
-	btn_info.contour = axColor(0.4, 0.4, 0.4);
-
+	axToggleEvents tog_event;//(GetOnButtonClick());
+    tog_event.button_click = GetOnButtonClick();
+    
+//	axButtonInfo btn_info("../../../ressources/axObjects/axStandardButton.axobj");
+    
+    axToggleInfo tog_info;
+    tog_info.normal = axColor(0.8, 0.8, 0.8);
+    tog_info.hover = axColor(0.9, 0.9, 0.9);
+    tog_info.clicking = axColor(0.7, 0.7, 0.7);
+    
+    tog_info.selected = axColor(0.8, 0.4, 0.4);
+    tog_info.selected_hover = axColor(0.9, 0.4, 0.4);
+    tog_info.selected_clicking = axColor(0.7, 0.4, 0.4);
+    
+    tog_info.contour = axColor(0.0, 0.0, 0.0);
+    tog_info.font_color = axColor(0.0, 0.0, 0.0);
+    
 	for (int i = 0; i < _labels.size(); i++)
 	{
-		_btns.push_back(new axButton(app, this, 
-						axRect(axPoint(0, i * LABEL_HEIGHT), btn_size), 
-						btn_event, btn_info, "", _labels[i]));
+		_btns.push_back(new axToggle(this,
+						axRect(axPoint(0, i * LABEL_HEIGHT), tog_size),
+						tog_event, tog_info, "", _labels[i],
+                        axTOGGLE_CANT_UNSELECT_WITH_MOUSE,
+                        _labels[i]));
 	}
 
-	SetSize(axSize(btn_size.x, _btns.size() * LABEL_HEIGHT));
+	SetSize(axSize(tog_size.x, _btns.size() * LABEL_HEIGHT));
 }
 
-void axPopupMenu::OnButtonClick(const axButtonMsg& msg)
+void axPopupMenu::SetSelectedIndex(const int& index)
 {
-	//DSTREAM << "KK" << endl;
-	if (_lastSelected == nullptr)
-		_lastSelected = msg.GetSender();
+    if(index >= 0 && index < _btns.size())
+    {
+        _btns[index]->SetSelected(true);
+        
+        if (_lastSelected == nullptr)
+        {
+            _lastSelected = _btns[index];
+        }
+        else if (_btns[index] != _lastSelected)
+        {
+            _lastSelected->SetSelected(false);
+            _lastSelected = _btns[index];
+        }
+    }
+    else
+    {
+        std::cerr << "ERROR : axPopupMenu : INDEX OUT OF RANGE" << std::endl;
+    }
 
+}
+
+void axPopupMenu::OnButtonClick(const axToggleMsg& msg)
+{
+	if (_lastSelected == nullptr)
+    {
+		_lastSelected = msg.GetSender();
+    }
 	else if (msg.GetSender() != _lastSelected)
 	{
 		_lastSelected->SetSelected(false);
 		_lastSelected = msg.GetSender();
 	}
+    
+    if(_events.selection_change)
+    {
+        _events.selection_change(axPopupMenuMsg(msg.GetMsg()));
+    }
 }
+
+
 
 void axPopupMenu::OnMouseMotion(const axPoint& pos)
 {

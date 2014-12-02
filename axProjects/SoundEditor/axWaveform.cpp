@@ -9,9 +9,9 @@
 #include "axWaveform.h"
 #include "axAudioBuffer.h"
 
-axWaveform::axWaveform(axApp* app, axWindow* parent,
+axWaveform::axWaveform(axWindow* parent,
                          const axRect& rect):
-axPanel(app, parent, rect),
+axPanel(parent, rect),
 _audioBuffer(nullptr)
 {
     _zoom = 1.0;

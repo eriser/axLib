@@ -12,11 +12,12 @@
 #include "axAudioFilter.h"
 //#include "axAudioBufferPlayer.h"
 
-EnvelopeEditor::EnvelopeEditor(axApp* app, axWindow* parent,
+EnvelopeEditor::EnvelopeEditor(axWindow* parent,
                                const axRect& rect):
-axPanel(app, parent, rect)
+axPanel(parent, rect)
 {
-    std::string folder_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+	//std::string folder_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+	std::string folder_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/");
     
     axSliderInfo sld_info;
     sld_info.img_path = folder_path + std::string("sliderPlain.png");
@@ -52,7 +53,7 @@ axPanel(app, parent, rect)
     
     axSliderEvents sld_evts;
     sld_evts.slider_value_change = GetOnFilterValue();
-    axSlider* sld = new axSlider(app, this, axRect(axPoint(10, 5),
+    axSlider* sld = new axSlider(this, axRect(axPoint(10, 5),
                                                    axSize(200, 15)),
                                  sld_evts, sld_info,
                                  axSLIDER_FLAG_NO_SLIDER_LINE);
@@ -60,7 +61,7 @@ axPanel(app, parent, rect)
     sld->SetValue(1.0);
     
     sld_evts.slider_value_change = GetOnFilterQValue();
-    axSlider* sld2 = new axSlider(app, this, axRect(sld->GetNextPosRight(5),
+    axSlider* sld2 = new axSlider(this, axRect(sld->GetNextPosRight(5),
                                                     axSize(200, 15)),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_NO_SLIDER_LINE);
@@ -68,7 +69,7 @@ axPanel(app, parent, rect)
     sld2->SetValue(1.0);
     
     sld_evts.slider_value_change = GetOnFilterGainValue();
-    axSlider* sld3 = new axSlider(app, this, axRect(sld2->GetNextPosRight(5),
+    axSlider* sld3 = new axSlider(this, axRect(sld2->GetNextPosRight(5),
                                                     axSize(200, 15)),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_NO_SLIDER_LINE);

@@ -20,6 +20,7 @@ public:
 	axManager* GetPopupManager();
 	virtual string GetAppDirectory() = 0;
 
+    
 	virtual bool CreatePopupWindow(char* title, int width, int height) = 0;
 
 	axSize GetGlobalSize() const;
@@ -56,7 +57,6 @@ protected:
 	//clock_t _lastDrawingTime;
     
     double _y_test;
-
 };
 
 //extern axCore* axCORE;

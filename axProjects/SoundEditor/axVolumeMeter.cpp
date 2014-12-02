@@ -8,14 +8,13 @@
 
 #include "axVolumeMeter.h"
 
-axVolumeMeter::axVolumeMeter(axApp* app,
-                     axWindow* parent,
+axVolumeMeter::axVolumeMeter(axWindow* parent,
                      const axRect& rect,
 //                     const axToolBarEvents& events,
                      const axVolumeMeterInfo& info,
                      axFlag flags) :
 // Heritage.
-axPanel(app, parent, rect),
+axPanel(parent, rect),
 // Members.
 //_events(events),
 _info(info),

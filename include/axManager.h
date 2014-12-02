@@ -24,6 +24,7 @@ public:
 	void InitManager(const axSize& size);
 
 	void Add(axWindow* win);
+    void AddPriorityWindow(axWindow* win);
 
 	bool IsGrab();
 	bool IsMouseHoverWindow(axWindow* win);
@@ -54,7 +55,10 @@ public:
     // bool IsCtrlDown();
     // bool IsAltDown();
     // bool IsShiftDown();
+    
+    bool IsEventReachWindow() const;
 
+    std::string _managerName;
 
 private:
 	axWindowMap _windows; // Map for drawing windows.
@@ -65,6 +69,12 @@ private:
 	axWindow* _pastWindow;
 	axWindow* _currentWindow;
 	axPoint _mousePosition;
+    
+    bool _evtHasReachWindow;
+    
+    
+    void VerifyAndProcessWindowChange();
+
 };
 
 #endif //__AX_MANAGER__

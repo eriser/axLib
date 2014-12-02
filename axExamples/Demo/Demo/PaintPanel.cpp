@@ -8,14 +8,14 @@
 
 #include "PaintPanel.h"
 
-PaintPanel::PaintPanel(axApp* app,
-                     axWindow* parent,
+PaintPanel::PaintPanel(axWindow* parent,
                      const axRect& rect):
 // Parent.
-axPanel(app, parent, rect)
+axPanel(parent, rect)
 {
-    //std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
-	std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
+//    std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
+    std::string app_path("");
+	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
     dog_cat_img = new axImage(app_path + std::string("whiskers-wags-dog-cat.png"));
 }
 

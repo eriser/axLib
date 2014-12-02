@@ -10,22 +10,21 @@
 #define __Demo__main__
 
 #include "axLib.h"
-//#include "ButtonPanel.h"
 
 class MainPanel : public axPanel
 {
 public:
-    MainPanel(axApp* app, axWindow* parent, const axRect& rect);
+    MainPanel(axWindow* parent, const axRect& rect);
     
-    axEVENT(axButtonMsg, OnTabClick);
+    axEVENT(axToggleMsg, OnTabClick);
     
 private:
     virtual void OnPaint();
     
-    void OnTabClick(const axButtonMsg& msg);
+    void OnTabClick(const axToggleMsg& msg);
     
     std::vector<std::string> _tabBtnLabels;
-    std::vector<axButton*> _tabBtns;
+    std::vector<axToggle*> _tabBtns;
     std::vector<axPanel*> _panels;
 //    ButtonPanel* btn_panel;
     

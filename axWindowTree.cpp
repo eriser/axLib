@@ -108,10 +108,13 @@ void axWindowTree::AddWindow(axWindow* win)
 	// with nullptr parent.
 	if (_nodes.size() == 0 && windows.size() == 0)
 	{
+        // First top level window.
 		_nodes.push_back(new axWindowNode(win));
 	}
 	else if (windows.size() == 0)
 	{
+        // Second or more top level windows.
+        std::cout << "Add second top layer node." << std::endl;
 		_nodes.push_back(new axWindowNode(win));
 	}
 	else
@@ -173,12 +176,11 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 					break;
 				}
 			}
-
-			//node = n;
+            
 		} while (n != node);
 	}
 
-	if_not_null(node)
+	if(node != nullptr && node->window->IsShown())
 	{
 		return node->window;
 	}

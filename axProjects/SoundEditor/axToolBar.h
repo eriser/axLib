@@ -63,8 +63,7 @@ struct axToolBarInfo
 class axToolBar: public axPanel
 {
 public:
-    axToolBar(axApp* app,
-              axWindow* parent,
+    axToolBar(axWindow* parent,
               const axRect& rect,
               const axToolBarEvents& events,
               const axToolBarInfo& info,

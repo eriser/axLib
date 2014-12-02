@@ -9,9 +9,9 @@
 #include "axWaveformNavigator.h"
 #include "axAudioBuffer.h"
 
-axWaveformNavigator::axWaveformNavigator(axApp* app, axWindow* parent,
+axWaveformNavigator::axWaveformNavigator(axWindow* parent,
                                          const axRect& rect):
-axPanel(app, parent, rect),
+axPanel(parent, rect),
 _audioBuffer(nullptr)
 {
     _leftBorder = 0.0;

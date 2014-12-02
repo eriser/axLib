@@ -1,35 +1,44 @@
 #include "axPanel.h"
+#include "axApp.h"
 
-axPanel::axPanel(axApp* app, axWindow* parent, const axRect& rect) : 
+axPanel::axPanel(axWindow* parent, const axRect& rect) : 
 		axWindow(parent, rect)
 {
 	if (parent != nullptr)
 	{
 		if (parent->GetIsPopup())
 		{
-			app->AddPopWindow(this);
-			GetIsPopup() = true;
+            GetIsPopup() = true;
+			axApp::GetInstance()->AddPopWindow(this);
 		}
 		else
 		{
-			app->AddWindow(this);
+			axApp::GetInstance()->AddWindow(this);
 		}
 	}
 	else
 	{
-		app->AddWindow(this);
+        if(GetIsPopup())
+        {
+            axApp::GetInstance()->AddPopWindow(this);
+        }
+        else
+        {
+            axApp::GetInstance()->AddWindow(this);
+        }
+		
 	}
 
-	_app = app;
+	//_app = app;
 	//_isInPopup = false;
 }
 
-axPanel::axPanel(int f, axApp* app, axWindow* parent, const axRect& rect) :
+axPanel::axPanel(int f, axWindow* parent, const axRect& rect) :
 axWindow(parent, rect)
 {
-	app->AddPopWindow(this);
-	_app = app;
-	GetIsPopup() = true;
+    //std::cout << "axPanel : Add popup window" << std::endl;
+    GetIsPopup() = true;
+	axApp::GetInstance()->AddPopWindow(this);
 }
 
 void axPanel::BlockDrawing()
@@ -65,22 +74,40 @@ void axPanel::UnBlockDrawing()
 
 axApp* axPanel::GetApp()
 {
-	return _app;
+	//return _app;
+	return axApp::GetInstance();
+
 }
 
 void axPanel::GrabMouse()
 {
-	_app->GetWindowManager()->GrabMouse(this);
+    if(GetIsPopup())
+    {
+        axApp::GetInstance()->GetPopupManager()->GrabMouse(this);
+    }
+    else
+    {
+        axApp::GetInstance()->GetWindowManager()->GrabMouse(this);
+    }
+	
 }
 
 void axPanel::UnGrabMouse()
 {
-	_app->GetWindowManager()->UnGrabMouse();
+    if(GetIsPopup())
+    {
+        axApp::GetInstance()->GetPopupManager()->UnGrabMouse();
+    }
+    else
+    {
+        axApp::GetInstance()->GetWindowManager()->UnGrabMouse();
+    }
+	
 }
 
 void axPanel::UpdateAll()
 {
-	_app->UpdateAll();
+	axApp::GetInstance()->UpdateAll();
 }
 
 void axPanel::Update()
@@ -90,12 +117,28 @@ void axPanel::Update()
 
 bool axPanel::IsGrabbed()
 {
-	return _app->GetWindowManager()->IsGrab();
+    if(GetIsPopup())
+    {
+        return axApp::GetInstance()->GetPopupManager()->IsGrab();
+    }
+    else
+    {
+        return axApp::GetInstance()->GetWindowManager()->IsGrab();
+    }
+	
 }
 
 bool axPanel::IsMouseHoverWindow()
 {
-	return _app->GetWindowManager()->IsMouseHoverWindow(this);
+    if(GetIsPopup())
+    {
+        return axApp::GetInstance()->GetPopupManager()->IsMouseHoverWindow(this);
+    }
+    else
+    {
+        return axApp::GetInstance()->GetWindowManager()->IsMouseHoverWindow(this);
+    }
+	
 }
 
 void axPanel::DeleteWindow(axWindow* win)

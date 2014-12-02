@@ -109,8 +109,7 @@ struct axGridInfo
 class axGrid : public axPanel
 {
 public:
-	axGrid(axApp* app,
-		axWindow* parent,
+	axGrid(axWindow* parent,
 		const axRect& rect,
 		const axGridEvents& events,
 		const axGridInfo& info,

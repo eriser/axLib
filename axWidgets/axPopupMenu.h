@@ -6,7 +6,7 @@
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
-#include "axButton.h"
+#include "axToggle.h"
 
 /**************************************************************************//**
 * axPopupMenuMsg
@@ -75,17 +75,17 @@ struct axPopupMenuInfo
 class axPopupMenu : public axPanel
 {
 public:
-	axPopupMenu(axApp* app,
-				axWindow* parent,
+	axPopupMenu(axWindow* parent,
 				const axRect& rect,
 				const axPopupMenuEvents& events,
 				const axPopupMenuInfo& info,
-				const vector<string>& labels,
+                const std::vector<std::string>& labels,
 				axFlag flags = 0);
 
 	//~axPopupMenu();
 
 	int GetIndexValue() { return _index; }
+    void SetSelectedIndex(const int& index);
 	
 
 private:
@@ -93,12 +93,12 @@ private:
 	axPopupMenuInfo _info;
 	axFlag _flag;
 	vector<string> _labels;
-	vector<axButton*> _btns;
+	vector<axToggle*> _btns;
 	int _index;
-	axButton* _lastSelected;
+	axToggle* _lastSelected;
 
-	axEVENT(axButtonMsg, OnButtonClick);
-	void OnButtonClick(const axButtonMsg& msg);
+	axEVENT(axToggleMsg, OnButtonClick);
+	void OnButtonClick(const axToggleMsg& msg);
 
 	virtual void OnPaint();
 	virtual void OnMouseMotion(const axPoint& pos);

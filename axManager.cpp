@@ -6,7 +6,8 @@ axManager::axManager() :
 	// Members
 	_mouseCaptureWindow(nullptr),
 	_pastWindow(nullptr),
-	_currentWindow(nullptr)
+	_currentWindow(nullptr),
+    _evtHasReachWindow(false)
 {
 	//DEBUG
 
@@ -23,10 +24,24 @@ void axManager::InitManager(const axSize& size)
 
 }
 
+bool axManager::IsEventReachWindow() const
+{
+    return _evtHasReachWindow;
+}
+
 void axManager::Add(axWindow* win)
 {
+    if(win->GetIsPopup() == true)
+    {
+        std::cout << "axManager::Add in PopupManager." << std::endl;
+    }
 	_windows.insert(axWindowPair(win->GetId(), win));
 	_windowTree.AddWindow(win);
+}
+
+void axManager::AddPriorityWindow(axWindow* win)
+{
+    
 }
 
 void axManager::OnPaint()
@@ -42,6 +57,7 @@ void axManager::OnPaint()
 
 //    cout << "Win manager paint. : " << _windows.size() << endl;
     
+    // Should be order already (child ralative to parent).
 	for (auto& x : _windows)
 	{
 		axWindow* win = x.second;
@@ -67,11 +83,35 @@ void axManager::OnPaint()
 		}
 	}
 }
+
+void axManager::VerifyAndProcessWindowChange()
+{
+    if (_pastWindow != _currentWindow)
+    {
+        if_not_null(_currentWindow)
+        {
+            _currentWindow->OnMouseEnter();
+        }
+        
+        if_not_null(_pastWindow)
+        {
+            _pastWindow->OnMouseLeave();
+        }
+        
+        _pastWindow = _currentWindow;
+    }
+}
+
 void axManager::OnMouseLeftDragging(const axPoint& pos)
 {
     if(_mouseCaptureWindow != nullptr)
     {
         _mouseCaptureWindow->OnMouseLeftDragging(pos);
+        _evtHasReachWindow = true;
+    }
+    else
+    {
+        _evtHasReachWindow = false;
     }
 }
 
@@ -79,35 +119,28 @@ void axManager::OnMouseMotion(const axPoint& pos)
 {
 	_mousePosition = pos;
 
+    // Only for Windows and Linux
 	if_not_null(_mouseCaptureWindow)
 	{
 		_mouseCaptureWindow->OnMouseLeftDragging(pos);
+        _evtHasReachWindow = true;
 	}
 	else
 	{
 		axWindow* win = _windowTree.FindMousePosition(pos);
 		_currentWindow = win;
 
-		if_not_null(win)
+		if_not_null(_currentWindow)
 		{
-			win->OnMouseMotion(pos);
+			_currentWindow->OnMouseMotion(pos);
+            _evtHasReachWindow = true;
 		}
+        else
+        {
+            _evtHasReachWindow = false;
+        }
 
-		// Generate MouseEnter and MouseLeave Event.
-		if (_pastWindow != win)
-		{
-			if_not_null(win)
-			{
-				win->OnMouseEnter();
-			}
-			
-			if_not_null(_pastWindow)
-			{
-				_pastWindow->OnMouseLeave();
-			}
-
-			_pastWindow = win;
-		}
+        VerifyAndProcessWindowChange();
 	}
 }
 
@@ -118,6 +151,7 @@ void axManager::OnMouseLeftDown(const axPoint& pos)
 	if_not_null(_mouseCaptureWindow)
 	{
 		_mouseCaptureWindow->OnMouseLeftDown(pos);
+        _evtHasReachWindow = true;
 	}
 	else
 	{
@@ -126,23 +160,16 @@ void axManager::OnMouseLeftDown(const axPoint& pos)
 
 		if_not_null(win)
 		{
-			win->OnMouseLeftDown(pos);
+            win->OnMouseLeftDown(pos);
+            _evtHasReachWindow = true;
 		}
+        else
+        {
+            _evtHasReachWindow = false;
+        }
 
-		if (_pastWindow != win)
-		{
-			if_not_null(win)
-			{
-				win->OnMouseEnter();
-			}
+        VerifyAndProcessWindowChange();
 
-			if_not_null(_pastWindow)
-			{
-				_pastWindow->OnMouseLeave();
-			}
-
-			_pastWindow = win;
-		}
 	}
 }
 
@@ -154,6 +181,8 @@ void axManager::OnMouseLeftUp(const axPoint& pos)
 	{
 		_currentWindow = _windowTree.FindMousePosition(pos);
 		_mouseCaptureWindow->OnMouseLeftUp(pos);
+        _evtHasReachWindow = true;
+        //return true;
 	}
 	else
 	{
@@ -163,33 +192,31 @@ void axManager::OnMouseLeftUp(const axPoint& pos)
 		if_not_null(win)
 		{
 			win->OnMouseLeftUp(pos);
+            _evtHasReachWindow = true;
 		}
+        else
+        {
+            _evtHasReachWindow = false;
+        }
 
-		if (_pastWindow != win)
-		{
-			if_not_null(win)
-			{
-				win->OnMouseEnter();
-			}
-
-			if_not_null(_pastWindow)
-			{
-				_pastWindow->OnMouseLeave();
-			}
-
-			_pastWindow = win;
-		}
+        VerifyAndProcessWindowChange();
 	}
+    
+    //return false;
 }
 
 void axManager::OnMouseRightDown()
 {
 	//DEBUG
+//    return false;
+    _evtHasReachWindow = false;
 }
 
 void axManager::OnMouseRightUp()
 {
 	//DEBUG
+//    return false;
+    _evtHasReachWindow = false;
 }
 
 void axManager::OnFocusIn()
@@ -230,39 +257,3 @@ bool axManager::IsMouseHoverWindow(axWindow* win)
 {
 	return (_currentWindow == win);
 }
-
-//void axManager::DrawMouse(axImage* img, const axPoint& position)
-//{
-//	axPoint pos = position;;
-//
-//	glColor4f(1.0, 1.0, 1.0, 1.0);
-//
-//	glEnable(GL_TEXTURE_2D);
-//	glEnable(GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//
-//	glBindTexture(GL_TEXTURE_2D, img->GetTexture());
-//	glDepthMask(GL_TRUE);
-//	axSize img_size = img->GetSize();
-//
-//	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
-//	glBegin(GL_QUADS);
-//	// Buttom left.
-//	glTexCoord2d(0.0, 1.0);
-//	glVertex2d(pos.x, pos.y);
-//
-//	// Top left.
-//	glTexCoord2d(0.0, 0.0);
-//	glVertex2d(pos.x, pos.y + img_size.y);
-//
-//	// Top right.
-//	glTexCoord2d(1.0, 0.0);
-//	glVertex2d(pos.x + img_size.x, pos.y + img_size.y);
-//
-//	// Buttom right.
-//	glTexCoord2d(1.0, 1.0);
-//	glVertex2d(pos.x + img_size.x, pos.y);
-//	glEnd();
-//	glDisable(GL_BLEND);
-//	glDisable(GL_TEXTURE_2D);
-//}

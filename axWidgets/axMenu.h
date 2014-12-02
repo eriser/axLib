@@ -44,7 +44,7 @@ class axMenuNode: public axPanel
 {
 public:
     // Root Node.
-    axMenuNode(axApp* app, axWindow* parent, const axRect& rect);
+    axMenuNode(axWindow* parent, const axRect& rect);
 
     axMenuNode( axMenuNode* parent,
                 const string& label,
@@ -127,7 +127,7 @@ private:
 class axMenu: public axPanel
 {
 public:
-    axMenu(axApp* app, axWindow* parent, const axRect& rect);
+    axMenu(axWindow* parent, const axRect& rect);
     // axMenu(axApp* app, axWindow* parent, const axRect& rect, string test);
 
     bool AddRootNode(axMenuNode* node);
