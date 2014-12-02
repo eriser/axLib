@@ -13,4 +13,6 @@ std::string axOpenFileDialog();
 
 void TestFunctionInterface();
 
+std::string CocoaGetAppDirectory();
+
 #endif

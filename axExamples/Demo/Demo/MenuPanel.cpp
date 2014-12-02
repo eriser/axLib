@@ -13,9 +13,9 @@ MenuPanel::MenuPanel(axWindow* parent,
 // Parent.
 axPanel(parent, rect)
 {
-//    std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
-    std::string app_path("");
+    std::string app_path(axApp::GetInstance()->GetAppDirectory());
 	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
+    
     axButtonInfo btn1_info;
     btn1_info.normal = axColor(0.8, 0.8, 0.8);
     btn1_info.hover = axColor(0.9, 0.9, 0.9);

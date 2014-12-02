@@ -13,8 +13,8 @@ PaintPanel::PaintPanel(axWindow* parent,
 // Parent.
 axPanel(parent, rect)
 {
-//    std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
-    std::string app_path("");
+    std::string app_path(axApp::GetInstance()->GetAppDirectory());
+    
 	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
     dog_cat_img = new axImage(app_path + std::string("whiskers-wags-dog-cat.png"));
 }

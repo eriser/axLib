@@ -55,3 +55,10 @@ void TestFunctionInterface()
 //    axAppDelegate *aD = ((axAppDelegate*)CCApplication::sharedApplication());
 //    aD->myAppDelegateMethod();
 }
+
+std::string CocoaGetAppDirectory()
+{
+//    NSString *myPath = [[NSBundle mainBundle] bundlePath];
+    NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
+    return std::string([curDir UTF8String]);
+}

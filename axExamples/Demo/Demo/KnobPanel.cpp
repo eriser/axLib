@@ -13,9 +13,8 @@ KnobPanel::KnobPanel(axWindow* parent,
 // Parent.
 axPanel(parent, rect)
 {
+    std::string app_path(axApp::GetInstance()->GetAppDirectory());
 	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
-//	std::string app_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
-    std::string app_path("");
 
     axKnobInfo knob_info(axColor(0.3, 0.3, 0.3),
                          axColor("#AAAAAA"),

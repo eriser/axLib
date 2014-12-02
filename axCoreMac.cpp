@@ -29,7 +29,7 @@ void axCoreMac::Init(const axPoint& frame_size)
 
 string axCoreMac::GetAppDirectory()
 {
-    return "";
+    return std::string(CocoaGetAppDirectory() + std::string("/"));
 }
 
 bool axCoreMac::CreatePopupWindow(char* title, int width, int height)
