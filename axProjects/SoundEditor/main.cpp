@@ -317,7 +317,7 @@ void SoundEditorMain::MainEntry()
 #define axImplementApp(x)  int main(int argc, char* argv[]){axApp* app = axApp::CreateApp(axSize(800, 400));\
 axMain* main = new x();main->MainEntryPoint(app);app->MainLoop(); delete main; return 0;}
 
-axImplementApp(SoundEditorMain);
+//axImplementApp(SoundEditorMain);
 //int main(int argc, char* argv[])
 //{
 //	axApp* app = axApp::CreateApp(axSize(800, 400));

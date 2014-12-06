@@ -30,7 +30,8 @@ private:
 
 	static axEventManager* _instance;
 
-	std::deque<axBindedEvent> _fcts;
+//	std::deque<axBindedEvent> _fcts;
+    std::deque<std::function<void()>> _fcts;
 	std::multimap<axID, axEventFct> _event_fct_map;
 };
 

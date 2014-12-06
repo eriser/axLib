@@ -9,26 +9,27 @@
 #ifndef __Demo__main__
 #define __Demo__main__
 
-#include "axLib.h"
+//#include "axLib.h"
+#include "axLibFramework.h"
 
-class MainPanel : public axPanel
-{
-public:
-    MainPanel(axWindow* parent, const axRect& rect);
-    
-    axEVENT(axToggleMsg, OnTabClick);
-    
-private:
-    virtual void OnPaint();
-    
-    void OnTabClick(const axToggleMsg& msg);
-    
-    std::vector<std::string> _tabBtnLabels;
-    std::vector<axToggle*> _tabBtns;
-    std::vector<axPanel*> _panels;
-//    ButtonPanel* btn_panel;
-    
-};
+//class MainPanel : public axPanel
+//{
+//public:
+//    MainPanel(axWindow* parent, const axRect& rect);
+//    
+//    axEVENT(axToggleMsg, OnTabClick);
+//    
+//private:
+//    virtual void OnPaint();
+//    
+//    void OnTabClick(const axToggleMsg& msg);
+//    
+//    std::vector<std::string> _tabBtnLabels;
+//    std::vector<axToggle*> _tabBtns;
+//    std::vector<axPanel*> _panels;
+////    ButtonPanel* btn_panel;
+//    
+//};
 
 class axMain
 {

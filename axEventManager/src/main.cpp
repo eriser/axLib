@@ -1,4 +1,6 @@
-#include "main.h"
+#include "axEventManager.h"
+#include "axEvent.h"
+#include "axTimer.h"
 
 class MyClass : public axObject
 {
@@ -28,7 +30,7 @@ int main(int argc, char* argv[])
 
 	std::cout << "TEST" << std::endl;
 	// Create event manager.
-	axManager::Instance();
+	axEventManager* evtManager = axEventManager::Instance();
 	
 	MyClass myclass1(2.2);
 	MyClass myclass2(3.3);
@@ -41,7 +43,7 @@ int main(int argc, char* argv[])
 
 	while (1)
 	{
-		axManager::Instance()->CallNext();
+		evtManager->CallNext();
 	}
 
 	//system("pause");

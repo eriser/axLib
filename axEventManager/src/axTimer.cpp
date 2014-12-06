@@ -28,7 +28,6 @@ void axTimer::timer_thread(axEventManager& evtManager,
 {
 	while (1)
 	{
-		
 		axMsg* msg = axTimerMsg::CreateTimerMsg("Timer", 
 					 timer._ms_since_timer_start);
 		
