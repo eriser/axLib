@@ -24,4 +24,4 @@ dependencies: /Users/alexarse/Project/axLib/axCoreMac.cpp \
   /Users/alexarse/Development/freetype-2.4.0/include/freetype/ftsystem.h \
   /Users/alexarse/Development/freetype-2.4.0/include/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \
-  /Users/alexarse/Project/axLib/axProjects/SoundEditor/axCocoaInterfaceMac.h
+  /Users/alexarse/Project/axLib/axCocoaInterfaceMac.h

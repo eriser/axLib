@@ -25,6 +25,7 @@ axAppDelegate* GlobalAppDelegate;
 
 - (id)initWithFrame:(NSRect)frame
 {
+    [self installRunLoopObserver];
     
     self = [super initWithFrame:frame];
     
@@ -35,7 +36,6 @@ axAppDelegate* GlobalAppDelegate;
     {
         [self wantsBestResolutionOpenGLSurface];
     }
-    
     
     return self;
 }
@@ -215,6 +215,54 @@ axAppDelegate* GlobalAppDelegate;
     //    [[self window] setAcceptsMouseMovedEvents:NO];
 }
 
+//- (void)run
+//{
+//    std::cout << "Run" << std::endl;
+//}
+
+static int test_value = 0;
+void MyRunLoopObserver(CFRunLoopObserverRef observer,
+                       CFRunLoopActivity activity,
+                       void* info)
+{
+    std::cout << "Run : " << test_value++ << std::endl;
+    
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+//    dispatch_async(queue, ^{
+//        // Perform async operation
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            // Update UI
+//        });
+//    });
+}
+
+-(void) installRunLoopObserver
+{
+    std::cout << "Install run observer." << std::endl;
+    
+//    NSNotification* myNotification = [NSNotification notificationWithName:@"MyIdleNotification" object:self];
+//    
+//    [[NSNotificationQueue defaultQueue] enqueueNotification:myNotification postingStyle:NSPostWhenIdle];
+//    
+    /////////
+    CFRunLoopObserverRef myObserver = NULL;
+    int myActivities = kCFRunLoopBeforeWaiting;//kCFRunLoopAllActivities;
+    
+    // Create observer reference.
+    myObserver = CFRunLoopObserverCreate(NULL,
+                                         myActivities,
+                                         YES, 0,
+                                         &MyRunLoopObserver,
+                                         NULL);
+
+    if(myObserver)
+    {
+        CFRunLoopAddObserver(CFRunLoopGetCurrent(),
+                             myObserver,
+                             kCFRunLoopCommonModes);
+    }
+    
+}
 
 // Timer callback method
 - (void)timerFired:(id)sender
