@@ -24,7 +24,7 @@ axPanel(parent, rect)
     btn1_info.selected = btn1_info.normal;
     
     axButtonEvents btn1_evts;
-    btn1_evts.button_click = GetOnPopupMenu();
+    //btn1_evts.button_click = GetOnPopupMenu();
     
     _btnPopMenu = new axButton(this,
                                axRect(40, 40, 70, 25),
@@ -33,7 +33,7 @@ axPanel(parent, rect)
                                "", "Test1");
     
     axButtonEvents btn2_evts;
-    btn2_evts.button_click = GetOnTestBtnUnder();
+    //btn2_evts.button_click = GetOnTestBtnUnder();
 
     axButton* btn2 = new axButton(this,
                                   axRect(_btnPopMenu->GetBottomLeftPosition(),

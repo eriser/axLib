@@ -40,13 +40,16 @@ class axTimer : public axObject
 public:
     axTimer(axEventFunction fct, int ms);
     axTimer(int ms);
+    axTimer();
     
 //    static void timer_thread(axEventManager& evtManager,
 //                             axTimer& timer,
 //                             int ms);
     
 //    static void* timer_thread(void *ptr);
-    static void timer_thread(axTimer& timer, int ms);
+    static void timer_thread(axTimer& timer, int interval_ms, int length_ms);
+    
+    void StartTimer(const int& interval_ms, const int& length_ms);
     
 private:
     std::thread _timerThread;

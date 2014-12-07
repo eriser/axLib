@@ -27,6 +27,11 @@ axButton::axButton(axWindow* parent,
 	//{
 		_btnImg = new axImage(img_path);
 	//}
+    
+    if(_events.button_click)
+    {
+        AddConnection(axButtonEvents::BUTTON_CLICK, _events.button_click);
+    }
 	
 }
 

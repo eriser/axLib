@@ -26,6 +26,10 @@ private:
     void OnButtonWithEvtManager(const axButtonMsg& msg);
     
     void OnTimerEvent(const axTimerMsg& msg);
+    
+    axTimer* _timer;
+    
+    axColor _colorTimer;
 };
 
 #endif /* defined(__Demo__ButtonPanel__) */

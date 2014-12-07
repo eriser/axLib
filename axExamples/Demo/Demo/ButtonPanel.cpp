@@ -24,6 +24,7 @@ axPanel(parent, rect)
     btn1_info.selected = btn1_info.normal;
     
     axButtonEvents btn1_evts;
+    btn1_evts.button_click = GetOnButtonWithEvtManager();
     
     axButton* btn1 = new axButton(this,
                                   axRect(40, 40, 60, 25),
@@ -31,13 +32,13 @@ axPanel(parent, rect)
                                   btn1_info,
                                   "", "Btn1");
     
-    btn1->AddConnection(axButtonEvents::BUTTON_CLICK,
-                        GetOnButtonWithEvtManager());
+//    btn1->AddConnection(axButtonEvents::BUTTON_CLICK,
+//                        GetOnButtonWithEvtManager());
     
     
     axButton* btn2 = new axButton(this,
                                   axRect(110, 40, 60, 25),
-                                  btn1_evts,
+                                  axButtonEvents(),
                                   btn1_info,
                                   app_path + std::string("btn.png"),
                                   "Btn2");
@@ -45,7 +46,7 @@ axPanel(parent, rect)
     
     axButton* btn3 = new axButton(this,
                                   axRect(180, 40, 60, 25),
-                                  btn1_evts,
+                                  axButtonEvents(),
                                   btn1_info,
                                   app_path + std::string("btn2.png"),
                                   "Btn3");
@@ -54,7 +55,7 @@ axPanel(parent, rect)
     std::string img_path = app_path + std::string("button.png");
     axButton* btn4 = new axButton(this,
                                   axRect(250, 40, 60, 25),
-                                  btn1_evts,
+                                  axButtonEvents(),
                                   btn1_info,
                                   img_path,
                                   "Btn4",
@@ -70,7 +71,7 @@ axPanel(parent, rect)
 
     axButton* btn5 = new axButton(this,
                                   axRect(320, 40, 60, 25),
-                                  btn1_evts,
+                                  axButtonEvents(),
                                   btn2_info,
                                   img_path,
                                   "Btn5",
@@ -79,7 +80,7 @@ axPanel(parent, rect)
     
     axButton* btn6 = new axButton(this,
                                   axRect(390, 40, 25, 25),
-                                  btn1_evts,
+                                  axButtonEvents(),
                                   btn1_info,
                                   app_path + std::string("playTest.png"),
                                   "",
@@ -87,19 +88,25 @@ axPanel(parent, rect)
     
     btn6->SetBackgroundAlpha(0.0);
     
-    axTimer* timer1 = new axTimer(200);
-    timer1->AddConnection(0, GetOnTimerEvent());
+    _timer = new axTimer();
+    _timer->AddConnection(0, GetOnTimerEvent());
+    
+    _colorTimer = axColor(0.4, 0.4, 0.4);
     
 }
 
 void ButtonPanel::OnButtonWithEvtManager(const axButtonMsg& msg)
 {
     std::cout << "Button event." << std::endl;
+    _timer->StartTimer(20, 200);
 }
 
 void ButtonPanel::OnTimerEvent(const axTimerMsg& msg)
 {
-    std::cout << "Timer : " << msg.GetTime() << std::endl;
+//    std::cout << "Timer : " << msg.GetTime() << std::endl;
+    double timer_ratio = msg.GetTime() / double(200 - 20) * 0.4;
+    _colorTimer = axColor(timer_ratio, timer_ratio, timer_ratio);
+    Update();
 }
 
 void ButtonPanel::OnPaint()
@@ -108,7 +115,7 @@ void ButtonPanel::OnPaint()
     axRect rect(GetRect());
     axRect rect0(axPoint(0, 0), rect.size);
     
-    gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
+    gc->SetColor(_colorTimer, 1.0);
     gc->DrawRectangle(rect0);
     
 //    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);

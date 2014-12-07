@@ -153,11 +153,12 @@ private:
 struct axButtonEvents
 {
 //	axEvtFunction(axButtonMsg) button_click;
-	std::function<void (axButtonMsg)> button_click;
+//	std::function<void (axButtonMsg)> button_click;
+    axEventFunction button_click;
 	
 	axButtonEvents(){}
-	axButtonEvents(std::function<void (axButtonMsg)>& fct){ button_click = fct; }
-    
+//	axButtonEvents(std::function<void (axButtonMsg)>& fct){ button_click = fct; }
+    axButtonEvents(axEventFunction& fct){ button_click = fct; }
     enum : axEventId { BUTTON_CLICK };
 };
 
