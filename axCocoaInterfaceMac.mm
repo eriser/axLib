@@ -62,3 +62,14 @@ std::string CocoaGetAppDirectory()
     NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
     return std::string([curDir UTF8String]);
 }
+
+void AddEventToDispatchQueue()
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        // Perform async operation
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            // Update UI
+        });
+    });
+}

@@ -1,6 +1,7 @@
 dependencies: /Users/alexarse/Project/axLib/axWidgets/axSlider.cpp \
   /Users/alexarse/Project/axLib/axWidgets/axSlider.h \
   /Users/alexarse/Project/axLib/include/axEvent.h \
+  /Users/alexarse/Project/axLib/axMsg.h \
   /Users/alexarse/Project/axLib/include/axPanel.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
   /Users/alexarse/Project/axLib/include/axCoreMac.h \

@@ -11,6 +11,7 @@ dependencies: \
   /Users/alexarse/Project/axLib/include/axWindow.h \
   /Users/alexarse/Project/axLib/include/axObject.h \
   /Users/alexarse/Project/axLib/include/axEvent.h \
+  /Users/alexarse/Project/axLib/axMsg.h \
   /Users/alexarse/Project/axLib/include/axGC.h \
   /Users/alexarse/Project/axLib/include/axImage.h \
   /Users/alexarse/Project/axLib/include/axColor.h \
@@ -29,6 +30,9 @@ dependencies: \
   /Users/alexarse/Development/freetype-2.4.0/include/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \
   /Users/alexarse/Project/axLib/include/axPanel.h \
+  /Users/alexarse/Project/axLib/axEventManager.h \
+  /Users/alexarse/Project/axLib/axEvent.h \
+  /Users/alexarse/Project/axLib/axTimer.h \
   /Users/alexarse/Project/axLib/axWidgets/axWidget.h \
   /Users/alexarse/Project/axLib/axWidgets/axButton.h \
   /Users/alexarse/Project/axLib/axWidgets/axToggle.h \

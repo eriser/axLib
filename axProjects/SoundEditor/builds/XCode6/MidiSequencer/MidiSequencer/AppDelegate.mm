@@ -58,6 +58,7 @@ axAppDelegate* GlobalAppDelegate;
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
     
 //    axApp::MainInstance = new axApp();
+    axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
     axMain::MainEntryPoint(axApp::MainInstance);
     
@@ -225,15 +226,9 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
                        CFRunLoopActivity activity,
                        void* info)
 {
-    std::cout << "Run : " << test_value++ << std::endl;
-    
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-//    dispatch_async(queue, ^{
-//        // Perform async operation
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            // Update UI
-//        });
-//    });
+//    std::cout << "Run" << std::endl;
+
+    axEventManager::GetInstance()->CallNext();
 }
 
 -(void) installRunLoopObserver

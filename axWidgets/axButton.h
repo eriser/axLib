@@ -9,6 +9,7 @@
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
+#include "axMsg.h"
 #include <fstream>
 
 // enum axType
@@ -86,33 +87,67 @@
 
 class axButton;
 
-class axButtonMsg
+//class axButtonMsg
+//{
+//public:
+//	axButtonMsg()
+//	{
+//		_sender = nullptr;
+//	}
+//
+//	axButtonMsg(axButton* sender, const string& msg)
+//	{
+//		_sender = sender;
+//		_msg = msg;
+//	}
+//
+//	axButton* GetSender() const
+//	{
+//		return _sender;
+//	}
+//
+//	string GetMsg() const
+//	{
+//		return _msg;
+//	}
+//
+//private:
+//	axButton* _sender;
+//	string _msg;
+//};
+
+class axButtonMsg : public axMsg
 {
 public:
-	axButtonMsg()
-	{
-		_sender = nullptr;
-	}
-
-	axButtonMsg(axButton* sender, const string& msg)
-	{
-		_sender = sender;
-		_msg = msg;
-	}
-
-	axButton* GetSender() const
-	{
-		return _sender;
-	}
-
-	string GetMsg() const
-	{
-		return _msg;
-	}
-
+    axButtonMsg()
+    {
+        _sender = nullptr;
+    }
+    
+    axButtonMsg(axButton* sender, const string& msg)
+    {
+        _sender = sender;
+        _msg = msg;
+    }
+    
+    axButton* GetSender() const
+    {
+        return _sender;
+    }
+    
+    string GetMsg() const
+    {
+        return _msg;
+    }
+    
+    axMsg* GetCopy()
+    {
+        return new axButtonMsg(*this);
+    }
+    
 private:
-	axButton* _sender;
-	string _msg;
+    axButton* _sender;
+    string _msg;
 };
 
 struct axButtonEvents
@@ -122,6 +157,8 @@ struct axButtonEvents
 	
 	axButtonEvents(){}
 	axButtonEvents(std::function<void (axButtonMsg)>& fct){ button_click = fct; }
+    
+    enum : axEventId { BUTTON_CLICK };
 };
 
 struct axButtonInfo

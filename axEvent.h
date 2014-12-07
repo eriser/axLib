@@ -29,7 +29,7 @@ typedef void axEvt;
 
 #define axNULL ( 0 )
 
-typedef unsigned long axID;
+//typedef unsigned long axID;
 
 extern unsigned long axID_COUNT;
 

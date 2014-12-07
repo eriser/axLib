@@ -1,6 +1,7 @@
 dependencies: /Users/alexarse/Project/axLib/axWidgets/axPopupMenu.cpp \
   /Users/alexarse/Project/axLib/axWidgets/axPopupMenu.h \
   /Users/alexarse/Project/axLib/include/axEvent.h \
+  /Users/alexarse/Project/axLib/axMsg.h \
   /Users/alexarse/Project/axLib/include/axPanel.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
   /Users/alexarse/Project/axLib/include/axCoreMac.h \

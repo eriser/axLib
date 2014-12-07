@@ -15,4 +15,6 @@ void TestFunctionInterface();
 
 std::string CocoaGetAppDirectory();
 
+void AddEventToDispatchQueue();
+
 #endif

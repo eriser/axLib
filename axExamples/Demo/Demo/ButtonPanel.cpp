@@ -31,6 +31,10 @@ axPanel(parent, rect)
                                   btn1_info,
                                   "", "Btn1");
     
+    btn1->AddConnection(axButtonEvents::BUTTON_CLICK,
+                        GetOnButtonWithEvtManager());
+    
+    
     axButton* btn2 = new axButton(this,
                                   axRect(110, 40, 60, 25),
                                   btn1_evts,
@@ -83,6 +87,19 @@ axPanel(parent, rect)
     
     btn6->SetBackgroundAlpha(0.0);
     
+    axTimer* timer1 = new axTimer(200);
+    timer1->AddConnection(0, GetOnTimerEvent());
+    
+}
+
+void ButtonPanel::OnButtonWithEvtManager(const axButtonMsg& msg)
+{
+    std::cout << "Button event." << std::endl;
+}
+
+void ButtonPanel::OnTimerEvent(const axTimerMsg& msg)
+{
+    std::cout << "Timer : " << msg.GetTime() << std::endl;
 }
 
 void ButtonPanel::OnPaint()

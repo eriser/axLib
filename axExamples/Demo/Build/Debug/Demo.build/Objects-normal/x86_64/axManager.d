@@ -5,6 +5,7 @@ dependencies: /Users/alexarse/Project/axLib/axManager.cpp \
   /Users/alexarse/Project/axLib/include/axWindow.h \
   /Users/alexarse/Project/axLib/include/axObject.h \
   /Users/alexarse/Project/axLib/include/axEvent.h \
+  /Users/alexarse/Project/axLib/axMsg.h \
   /Users/alexarse/Project/axLib/include/axGC.h \
   /Users/alexarse/Project/axLib/include/axImage.h \
   /Users/alexarse/Project/axLib/include/axColor.h \

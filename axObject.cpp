@@ -1,24 +1,39 @@
+//#include "axObject.h"
+//// #include "axEventManager.h"
+//
+//axID axObject::_global_id_count = 0;
+//
+//axObject::axObject() :
+//_id(IncrementGlobalIdCount())
+//{
+//}
+//
+//axID axObject::IncrementGlobalIdCount()
+//{
+//	return ++_global_id_count;
+//}
+//
+//void axObject::SetIdForReparenting(const axID& id)
+//{
+//	_id = id;
+//}
+
 #include "axObject.h"
-// #include "axEventManager.h"
+#include "axEventManager.h"
 
 axID axObject::_global_id_count = 0;
 
-axObject::axObject() :
-_id(IncrementGlobalIdCount())
+void axObject::AddConnection(const axEventId& evtId, axEventFunction fct) const
 {
+    axEventManager::GetInstance()->AddConnection(_id, evtId, fct);
 }
 
-axID axObject::IncrementGlobalIdCount()
+void axObject::PushEvent(const axEventId& evtId, axMsg* msg)
 {
-	return ++_global_id_count;
+    axEventManager::GetInstance()->PushEvent(_id, evtId, msg);
 }
 
 void axObject::SetIdForReparenting(const axID& id)
 {
 	_id = id;
 }
-
-// void axObject::AddConnection(axEventFct fct) const
-// {
-// 	axEventManager::Instance()->AddConnection(_id, fct);
-// }

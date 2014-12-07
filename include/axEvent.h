@@ -13,6 +13,31 @@
 
 #define axEvent virtual void
 
+// New event manager.
+//------------------------------------------------------------------------------
+
+#include "axMsg.h"
+typedef unsigned int axEventId;
+
+typedef std::function<void(axMsg*)> axEventFunction;
+
+#define axEVENT_ACCESOR(TYPE, FUNC) axEventFunction Get ## FUNC() \
+{ return [=](axMsg* x){ return this->FUNC(*static_cast<TYPE*>(x)); }; }
+
+class axBindedEvent
+{
+public:
+    axBindedEvent(axEventFunction& fct, axMsg* msg):
+    _fct(fct), _msg(msg){}
+    
+    void operator() (void) { _fct(_msg); delete _msg; }
+    
+private:
+    axEventFunction _fct;
+    axMsg* _msg;
+};
+//------------------------------------------------------------------------------
+
 #endif //__AX_EVENT__
 
 /// @}

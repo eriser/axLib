@@ -132,11 +132,12 @@ void axButton::OnMouseLeftDown(const axPoint& pos)
 
 	GrabMouse();
 
-	if (_events.button_click)
-	{
-//        std::cout << "axButton::OnMouseLeftDown::EVT EXIST." << std::endl;
-		_events.button_click(axButtonMsg(this, _msg));
-	}
+    PushEvent(axButtonEvents::BUTTON_CLICK, new axButtonMsg(this, _msg));
+//	if (_events.button_click)
+//	{
+////        std::cout << "axButton::OnMouseLeftDown::EVT EXIST." << std::endl;
+//		_events.button_click(axButtonMsg(this, _msg));
+//	}
 
 	Update();
 }

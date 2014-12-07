@@ -246,24 +246,24 @@ public:
     
 	bool Load(const string& path)
 	{
-		ifstream file;
-		file.open(path);
-
-		if (file.fail())
-		{
-			cerr << "Problem opening file " << path << endl;
-			return false;
-		}
-		else
-		{
-			if (!file.fail())
-			{
-				file >> position.x;
-				file >> position.y;
-				file >> size.x;
-				file >> size.y;
-			}
-		}
+//		ifstream file;
+//		file.open(path);
+//
+//		if (file.fail())
+//		{
+//			cerr << "Problem opening file " << path << endl;
+//			return false;
+//		}
+//		else
+//		{
+//			if (!file.fail())
+//			{
+//				file >> position.x;
+//				file >> position.y;
+//				file >> size.x;
+//				file >> size.y;
+//			}
+//		}
 	}
     
     axRectPoints<CPos> GetPoints() const

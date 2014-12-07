@@ -9,6 +9,9 @@
 #include "axC++.h"
 #include "axColor.h"
 
+#include "axEventManager.h"
+#include "axTimer.h"
+
 #include "axWidgets/axWidget.h"
 
 #endif //__AX_LIB__
