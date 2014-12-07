@@ -23,8 +23,9 @@ SoundEditorAudio* SoundEditorAudio::GetInstance()
 SoundEditorAudio::SoundEditorAudio():
     axAudio()
 {
+    std::string app_path(axApp::GetInstance()->GetAppDirectory());
     //std::string app_path("/Users/alexarse/Project/axLib/axProjects/SoundEditor/");
-	std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axProjects/SoundEditor/");
+//	std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axProjects/SoundEditor/");
     std::string snd_path = app_path + ("808 Samples/bass (8).wav");
     
     _sndBuffer = new axAudioBuffer(snd_path);

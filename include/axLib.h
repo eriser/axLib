@@ -11,6 +11,7 @@
 
 #include "axEventManager.h"
 #include "axTimer.h"
+#include "axMsg.h"
 
 #include "axWidgets/axWidget.h"
 

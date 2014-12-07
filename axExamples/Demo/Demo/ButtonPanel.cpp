@@ -105,7 +105,7 @@ void ButtonPanel::OnTimerEvent(const axTimerMsg& msg)
 {
 //    std::cout << "Timer : " << msg.GetTime() << std::endl;
     double timer_ratio = msg.GetTime() / double(200 - 20) * 0.4;
-    _colorTimer = axColor(timer_ratio, timer_ratio, timer_ratio);
+    _colorTimer = axColor(timer_ratio, timer_ratio, 0.4);
     Update();
 }
 
@@ -117,18 +117,8 @@ void ButtonPanel::OnPaint()
     
     gc->SetColor(_colorTimer, 1.0);
     gc->DrawRectangle(rect0);
-    
-//    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-//    gc->SetFontSize(12);
-////    gc->DrawStringAlignedCenter("test", rect0);
-//    gc->DrawString("regular", axPoint(350, 80));
-//    gc->DrawString("with back slider", axPoint(350, 100));
-//    gc->DrawString("no slider", axPoint(350, 120));
-//    gc->DrawString("click anywhere", axPoint(350, 140));
-//    gc->DrawString("right align", axPoint(350, 160));
-//    gc->DrawString("no button", axPoint(350, 180));
-//    gc->DrawString("center align", axPoint(350, 200));
-//    
+
+   
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawRectangleContour(rect0);
 }

@@ -88,7 +88,8 @@ SoundEditor::SoundEditor(axWindow* parent,
     //---------------------------------------------------------------------------
     
     //std::string folder_path("/Users/alexarse/Project/axLib/axExamples/Demo/");
-	std::string folder_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/");
+	//std::string folder_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/");
+    std::string folder_path(axApp::GetInstance()->GetAppDirectory());
     
     axSliderInfo sld_info;
     sld_info.img_path = folder_path + std::string("sliderPlain.png");

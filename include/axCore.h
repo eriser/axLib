@@ -32,6 +32,8 @@ public:
 	virtual string OpenFileDialog() = 0;
 
 	void DeletePopWindow();
+    
+    virtual void PushEventOnSystemQueue() = 0;
 
 
 	int InitGL();

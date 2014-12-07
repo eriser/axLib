@@ -68,3 +68,8 @@ std::string axCoreMac::OpenFileDialog()
 {
     return axOpenFileDialog();
 }
+
+void axCoreMac::PushEventOnSystemQueue()
+{
+    AddEventToDispatchQueue();
+}

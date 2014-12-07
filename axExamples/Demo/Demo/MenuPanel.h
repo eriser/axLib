@@ -17,8 +17,8 @@ public:
     MenuPanel(axWindow* parent,
                 const axRect& rect);
     
-    axEVENT(axButtonMsg, OnPopupMenu);
-    axEVENT(axButtonMsg, OnTestBtnUnder);
+    axEVENT_ACCESOR(axButtonMsg, OnPopupMenu);
+    axEVENT_ACCESOR(axButtonMsg, OnTestBtnUnder);
     axEVENT(axPopupMenuMsg, OnPopupMenuChoice);
 private:
     virtual void OnPaint();

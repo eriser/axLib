@@ -20,10 +20,10 @@ public:
     void SetPlayAudioEvent(axEvtFunction(int) fct);
     void SetChangePathAudioEvent(axEvtFunction(std::string) fct);
     
-    axEVENT(axButtonMsg, OnPlayButton);
-    axEVENT(axButtonMsg, OnTimerButton);
+    axEVENT_ACCESOR(axButtonMsg, OnPlayButton);
+    axEVENT_ACCESOR(axButtonMsg, OnTimerButton);
     axEVENT(axToggleMsg, OnEnvToggle);
-    axEVENT(axButtonMsg, OnOpenDialog);
+    axEVENT_ACCESOR(axButtonMsg, OnOpenDialog);
     axEVENT(axSliderMsg, OnZoomValue);
     axEVENT(axSliderMsg, OnSamplePosition);
     axEVENT(double, OnWaveformNavigator);

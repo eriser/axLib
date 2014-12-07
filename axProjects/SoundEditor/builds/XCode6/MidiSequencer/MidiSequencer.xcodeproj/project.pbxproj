@@ -47,11 +47,14 @@
 		7C3CF6A81A1C0B4900C11E33 /* EnvelopeEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CF6A61A1C0B4900C11E33 /* EnvelopeEditor.cpp */; };
 		7C4AC7F219EE9618008B1E5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C4AC7F119EE9618008B1E5D /* MainMenu.xib */; };
 		7C5508271A2380CA005B4465 /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C5508251A2380CA005B4465 /* axToggle.cpp */; };
+		7C7E1BA01A34BF5C00490EE3 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B991A34BF5C00490EE3 /* axCocoaInterfaceMac.mm */; };
+		7C7E1BA11A34BF5C00490EE3 /* axEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B9A1A34BF5C00490EE3 /* axEventManager.cpp */; };
+		7C7E1BA21A34BF5C00490EE3 /* axMsg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B9C1A34BF5C00490EE3 /* axMsg.cpp */; };
+		7C7E1BA31A34BF5C00490EE3 /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B9E1A34BF5C00490EE3 /* axTimer.cpp */; };
 		7C83C5B71A24E024009D55A3 /* axMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C83C5B61A24E024009D55A3 /* axMath.cpp */; };
 		7C9E9AAB1A169BD300A41582 /* SoundEditorAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */; };
 		7C9E9AAE1A16A5DE00A41582 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AAC1A16A5DE00A41582 /* axAudioBufferPlayer.cpp */; };
 		7C9E9AB11A16A90B00A41582 /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AAF1A16A90B00A41582 /* axAudioUtils.cpp */; };
-		7C9E9AB31A16B91200A41582 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AB21A16B91200A41582 /* axCocoaInterfaceMac.mm */; };
 		7C9E9AB71A16C93F00A41582 /* axWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E9AB51A16C93F00A41582 /* axWaveform.cpp */; };
 		7CDEA94F1A18299D00EFFD28 /* axWaveformNavigator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */; };
 		7CDEA9521A19640100EFFD28 /* axToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEA9501A19640100EFFD28 /* axToolBar.cpp */; };
@@ -149,6 +152,14 @@
 		7C4AC7F119EE9618008B1E5D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		7C5508251A2380CA005B4465 /* axToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axToggle.cpp; path = ../../../../../axWidgets/axToggle.cpp; sourceTree = "<group>"; };
 		7C5508261A2380CA005B4465 /* axToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axToggle.h; path = ../../../../../axWidgets/axToggle.h; sourceTree = "<group>"; };
+		7C7E1B981A34BF5C00490EE3 /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axCocoaInterfaceMac.h; path = ../../../../../axCocoaInterfaceMac.h; sourceTree = "<group>"; };
+		7C7E1B991A34BF5C00490EE3 /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = axCocoaInterfaceMac.mm; path = ../../../../../axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
+		7C7E1B9A1A34BF5C00490EE3 /* axEventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEventManager.cpp; path = ../../../../../axEventManager.cpp; sourceTree = "<group>"; };
+		7C7E1B9B1A34BF5C00490EE3 /* axEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEventManager.h; path = ../../../../../axEventManager.h; sourceTree = "<group>"; };
+		7C7E1B9C1A34BF5C00490EE3 /* axMsg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMsg.cpp; path = ../../../../../axMsg.cpp; sourceTree = "<group>"; };
+		7C7E1B9D1A34BF5C00490EE3 /* axMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMsg.h; path = ../../../../../axMsg.h; sourceTree = "<group>"; };
+		7C7E1B9E1A34BF5C00490EE3 /* axTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axTimer.cpp; path = ../../../../../axTimer.cpp; sourceTree = "<group>"; };
+		7C7E1B9F1A34BF5C00490EE3 /* axTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axTimer.h; path = ../../../../../axTimer.h; sourceTree = "<group>"; };
 		7C83C5B61A24E024009D55A3 /* axMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMath.cpp; path = ../../../../../axMath.cpp; sourceTree = "<group>"; };
 		7C83C5B81A24E034009D55A3 /* axMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMath.h; path = ../../../../../include/axMath.h; sourceTree = "<group>"; };
 		7C9E9AA91A169BD300A41582 /* SoundEditorAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundEditorAudio.cpp; path = ../../../../SoundEditorAudio.cpp; sourceTree = "<group>"; };
@@ -157,8 +168,6 @@
 		7C9E9AAD1A16A5DE00A41582 /* axAudioBufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioBufferPlayer.h; path = ../../../../axAudioBufferPlayer.h; sourceTree = "<group>"; };
 		7C9E9AAF1A16A90B00A41582 /* axAudioUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioUtils.cpp; path = ../../../../axAudioUtils.cpp; sourceTree = "<group>"; };
 		7C9E9AB01A16A90B00A41582 /* axAudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioUtils.h; path = ../../../../axAudioUtils.h; sourceTree = "<group>"; };
-		7C9E9AB21A16B91200A41582 /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = axCocoaInterfaceMac.mm; path = ../../../../axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
-		7C9E9AB41A16B93C00A41582 /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = axCocoaInterfaceMac.h; path = ../../../../axCocoaInterfaceMac.h; sourceTree = "<group>"; };
 		7C9E9AB51A16C93F00A41582 /* axWaveform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axWaveform.cpp; path = ../../../../axWaveform.cpp; sourceTree = "<group>"; };
 		7C9E9AB61A16C93F00A41582 /* axWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axWaveform.h; path = ../../../../axWaveform.h; sourceTree = "<group>"; };
 		7CDEA94D1A18299D00EFFD28 /* axWaveformNavigator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axWaveformNavigator.cpp; path = ../../../../axWaveformNavigator.cpp; sourceTree = "<group>"; };
@@ -218,8 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				7C4AC7F119EE9618008B1E5D /* MainMenu.xib */,
-				7C9E9AB41A16B93C00A41582 /* axCocoaInterfaceMac.h */,
-				7C9E9AB21A16B91200A41582 /* axCocoaInterfaceMac.mm */,
 				7C9E9AB81A16C9D300A41582 /* axAudio */,
 				7C20B71F19EDC09B00D6ED6F /* include */,
 				7C20B72019EDC0AB00D6ED6F /* source */,
@@ -261,6 +268,14 @@
 		7C20B6A619EDBF9400D6ED6F /* axLib */ = {
 			isa = PBXGroup;
 			children = (
+				7C7E1B981A34BF5C00490EE3 /* axCocoaInterfaceMac.h */,
+				7C7E1B991A34BF5C00490EE3 /* axCocoaInterfaceMac.mm */,
+				7C7E1B9A1A34BF5C00490EE3 /* axEventManager.cpp */,
+				7C7E1B9B1A34BF5C00490EE3 /* axEventManager.h */,
+				7C7E1B9C1A34BF5C00490EE3 /* axMsg.cpp */,
+				7C7E1B9D1A34BF5C00490EE3 /* axMsg.h */,
+				7C7E1B9E1A34BF5C00490EE3 /* axTimer.cpp */,
+				7C7E1B9F1A34BF5C00490EE3 /* axTimer.h */,
 				7C83C5B81A24E034009D55A3 /* axMath.h */,
 				7C83C5B61A24E024009D55A3 /* axMath.cpp */,
 				7C20B6D019EDBFF500D6ED6F /* axWidgets */,
@@ -523,11 +538,11 @@
 				7C20B6FC19EDC03C00D6ED6F /* axMenu.cpp in Sources */,
 				7C9E9AB71A16C93F00A41582 /* axWaveform.cpp in Sources */,
 				7C3CF6A81A1C0B4900C11E33 /* EnvelopeEditor.cpp in Sources */,
-				7C9E9AB31A16B91200A41582 /* axCocoaInterfaceMac.mm in Sources */,
 				7C83C5B71A24E024009D55A3 /* axMath.cpp in Sources */,
 				7C20B6BD19EDBFB900D6ED6F /* axColor.cpp in Sources */,
 				7C20B6FF19EDC03C00D6ED6F /* axScrollBar.cpp in Sources */,
 				7CDEA9571A1ACEA000EFFD28 /* axVolumeMeter.cpp in Sources */,
+				7C7E1BA11A34BF5C00490EE3 /* axEventManager.cpp in Sources */,
 				7C20B68A19EDBE6000D6ED6F /* AppDelegate.mm in Sources */,
 				7C20B6C419EDBFB900D6ED6F /* axFont.cpp in Sources */,
 				7C20B71719EDC09300D6ED6F /* axAudioBuffer.cpp in Sources */,
@@ -535,6 +550,7 @@
 				7C20B70019EDC03C00D6ED6F /* axSlider.cpp in Sources */,
 				7C20B6FE19EDC03C00D6ED6F /* axPopupMenu.cpp in Sources */,
 				7C9E9AB11A16A90B00A41582 /* axAudioUtils.cpp in Sources */,
+				7C7E1BA21A34BF5C00490EE3 /* axMsg.cpp in Sources */,
 				7C20B6BE19EDBFB900D6ED6F /* axCore.cpp in Sources */,
 				7C20B71D19EDC09300D6ED6F /* main.cpp in Sources */,
 				7C20B6C519EDBFB900D6ED6F /* axGC.cpp in Sources */,
@@ -547,9 +563,11 @@
 				7C20B6C819EDBFB900D6ED6F /* axObject.cpp in Sources */,
 				7C20B6F819EDC03C00D6ED6F /* axButton.cpp in Sources */,
 				7C20B6C319EDBFB900D6ED6F /* axEvent.cpp in Sources */,
+				7C7E1BA31A34BF5C00490EE3 /* axTimer.cpp in Sources */,
 				7C20B6CD19EDBFB900D6ED6F /* axWindowTree.cpp in Sources */,
 				7C20B71519EDC09300D6ED6F /* AudioWaveform.cpp in Sources */,
 				7C20B71819EDC09300D6ED6F /* axAudioEnvelope.cpp in Sources */,
+				7C7E1BA01A34BF5C00490EE3 /* axCocoaInterfaceMac.mm in Sources */,
 				7C9E9AAE1A16A5DE00A41582 /* axAudioBufferPlayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

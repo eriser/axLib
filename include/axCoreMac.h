@@ -31,6 +31,8 @@ public:
     virtual axRect GetScreenRect();
     
     virtual string OpenFileDialog();
+    
+    virtual void PushEventOnSystemQueue();
 
     virtual void KillGLWindow();
     

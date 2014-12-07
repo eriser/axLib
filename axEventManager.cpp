@@ -1,5 +1,5 @@
 #include "axEventManager.h"
-#include "axCocoaInterfaceMac.h"
+#include "axApp.h"
 #include <iostream>
 
 std::mutex manager_mutex;
@@ -66,6 +66,8 @@ void axEventManager::PushEvent(const axID& id,
         // Pair of the first and last element of this id.
         auto range(it->second.equal_range(evtId));
         
+        axCore* core = axApp::GetInstance()->GetCore();
+        
         // Add every connected functions from this id to the event queue.
         for (axEventMultimapIterator i = range.first; i != range.second; ++i)
         {
@@ -74,7 +76,8 @@ void axEventManager::PushEvent(const axID& id,
 
             // Add binded function to event queue.bn
             AddFunction(axBindedEvent(i->second, msg_copy));
-            AddEventToDispatchQueue();
+            
+            core->PushEventOnSystemQueue();
         }
     }
     

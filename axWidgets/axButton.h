@@ -10,73 +10,7 @@
 #include "axGC.h"
 #include "axImage.h"
 #include "axMsg.h"
-#include <fstream>
-
-// enum axType
-// {
-// 	axCOLOR,
-// 	axINT,
-// 	axFLOAT
-// };
-
-//typedef unsigned int axType;
-
-// class axInfo
-// {
-// public:
-// 	axInfo()
-// 	{
-// 	}
-
-// 	bool Load()
-// 	{
-// 		Fill();
-// 		return true;
-// 	}
-
-// 	bool Load(const string& info_path)
-// 	{
-// 		Fill();
-// 		cout << "Size : " << _colors.size() << endl;
-// 		return true;
-// 	}
-
-// 	virtual void Fill() = 0;
-
-// 	axColor& operator [](pair<axColor, std::string>& col)
-// 	{
-// 		return _colors[col.second];
-// 	}
-
-// private:
-// 	map<string, axColor> _colors;
-// };
-
-// #define axAddInfo(type, label) (*this)[pair<type, string>(type(), label)]
-
-// class axInfoTest : public axInfo
-// {
-// public:
-// 	axInfoTest()
-// 	{
-// 		Load();
-// 	}
-
-// 	axInfoTest(const string& path)
-// 	{	
-// 		Load(path);
-// 	}
-
-// 	virtual void Fill()
-// 	{
-// 		axAddInfo(axColor, "normal");
-// 		axAddInfo(axColor, "hover");
-// 		axAddInfo(axColor, "clicking");
-// 		axAddInfo(axColor, "selected");
-// 		axAddInfo(axColor, "contour");
-// 		axAddInfo(axColor, "font");
-// 	}
-// };
+//#include <fstream>
 
 /**************************************************************************//**
  * axButtonFlags.
@@ -86,35 +20,6 @@
 #define axBUTTON_CANT_BE_SELECTED axFLAG_3 // Not implemented yet.
 
 class axButton;
-
-//class axButtonMsg
-//{
-//public:
-//	axButtonMsg()
-//	{
-//		_sender = nullptr;
-//	}
-//
-//	axButtonMsg(axButton* sender, const string& msg)
-//	{
-//		_sender = sender;
-//		_msg = msg;
-//	}
-//
-//	axButton* GetSender() const
-//	{
-//		return _sender;
-//	}
-//
-//	string GetMsg() const
-//	{
-//		return _msg;
-//	}
-//
-//private:
-//	axButton* _sender;
-//	string _msg;
-//};
 
 class axButtonMsg : public axMsg
 {
@@ -152,14 +57,12 @@ private:
 
 struct axButtonEvents
 {
-//	axEvtFunction(axButtonMsg) button_click;
-//	std::function<void (axButtonMsg)> button_click;
-    axEventFunction button_click;
-	
-	axButtonEvents(){}
-//	axButtonEvents(std::function<void (axButtonMsg)>& fct){ button_click = fct; }
-    axButtonEvents(axEventFunction& fct){ button_click = fct; }
     enum : axEventId { BUTTON_CLICK };
+    
+	axButtonEvents(){}
+    axButtonEvents(axEventFunction& fct){ button_click = fct; }
+    
+    axEventFunction button_click;
 };
 
 struct axButtonInfo

@@ -40,9 +40,9 @@ public:
     
     enum : axEventId { EVT_FCT_1 = 0, EVT_FCT_2 = 1};
     
-    axEVENT(MyClassMsg, MyFct); // 0.
-    axEVENT(MyClassMsg, MyFct2); // 1.
-    axEVENT(axTimerMsg, MyTimerFct); // 0.
+    axEVENT(MyClassMsg, MyFct);
+    axEVENT(MyClassMsg, MyFct2);
+    axEVENT(axTimerMsg, MyTimerFct);
     
 private:
     void MyFct(const MyClassMsg& msg)
@@ -76,7 +76,7 @@ int main()
     std::cout << "Push Event." << std::endl;
     evtManager->PushEvent(a.GetId(),
                           MyClass::EVT_FCT_1,
-                          new MyClassMsg(23.78));
+                          new MyClassMsg(999));
     
     a.PushEvent(MyClass::EVT_FCT_1, new MyClassMsg(28.78));
     a.PushEvent(MyClass::EVT_FCT_2, new MyClassMsg(24.78));
