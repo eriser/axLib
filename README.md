@@ -56,7 +56,6 @@ public:
               const axRect& rect);
 
 private:
-    
     // axEvents.
     virtual void OnPaint();
 };
