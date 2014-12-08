@@ -47,7 +47,7 @@ axAppDelegate* GlobalAppDelegate;
     
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
-    axMain::MainEntryPoint(axApp::MainInstance);
+    axMain::MainEntryPoint(app);
 }
 
 -(void)awakeFromNib

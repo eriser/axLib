@@ -44,4 +44,5 @@ dependencies: \
   /Users/alexarse/Project/axLib/axWidgets/axGrid.h \
   /Users/alexarse/Project/axLib/axWidgets/axMenu.h \
   /Users/alexarse/Project/axLib/axWidgets/axKnob.h \
-  /Users/alexarse/Project/axLib/axWidgets/axScrollBar.h
+  /Users/alexarse/Project/axLib/axWidgets/axScrollBar.h \
+  /Users/alexarse/Project/axLib/axMain.h

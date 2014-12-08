@@ -132,10 +132,6 @@ void MainPanel::OnPaint()
     
 }
 
-axMain::axMain()
-{
-}
-
 void axMain::MainEntryPoint(axApp* app)
 {
     MainPanel* mainPanel = new MainPanel(nullptr,

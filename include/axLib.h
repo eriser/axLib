@@ -15,4 +15,6 @@
 
 #include "axWidgets/axWidget.h"
 
+#include "axMain.h"
+
 #endif //__AX_LIB__

@@ -46,6 +46,7 @@
 		7C7E1B821A33EAD200490EE3 /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B7E1A33EAD200490EE3 /* axTimer.cpp */; };
 		7C7E1B971A349E8C00490EE3 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B961A349E8C00490EE3 /* axCocoaInterfaceMac.mm */; };
 		7C7E1DA31A35D7CB00490EE3 /* axSerialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1CB51A35D7CB00490EE3 /* axSerialize.cpp */; };
+		7C8B540D1A36174F003821A9 /* axMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C8B540B1A36174F003821A9 /* axMain.cpp */; };
 		7CB98D441A27DF1B007D6B47 /* axMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98D431A27DF1B007D6B47 /* axMath.cpp */; };
 		7CB98D481A27E3AE007D6B47 /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98D461A27E3AE007D6B47 /* axToggle.cpp */; };
 		7CB98D4B1A27EE15007D6B47 /* MenuPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98D491A27EE15007D6B47 /* MenuPanel.cpp */; };
@@ -138,6 +139,8 @@
 		7C7E1B961A349E8C00490EE3 /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = axCocoaInterfaceMac.mm; path = ../../axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
 		7C7E1CB51A35D7CB00490EE3 /* axSerialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axSerialize.cpp; path = ../../axSerialize.cpp; sourceTree = "<group>"; };
 		7C7E1CB61A35D7CB00490EE3 /* axSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axSerialize.h; path = ../../axSerialize.h; sourceTree = "<group>"; };
+		7C8B540B1A36174F003821A9 /* axMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMain.cpp; path = ../../axMain.cpp; sourceTree = "<group>"; };
+		7C8B540C1A36174F003821A9 /* axMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMain.h; path = ../../axMain.h; sourceTree = "<group>"; };
 		7CB98D431A27DF1B007D6B47 /* axMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMath.cpp; path = ../../axMath.cpp; sourceTree = "<group>"; };
 		7CB98D451A27DF32007D6B47 /* axMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMath.h; path = ../../include/axMath.h; sourceTree = "<group>"; };
 		7CB98D461A27E3AE007D6B47 /* axToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axToggle.cpp; path = ../../axWidgets/axToggle.cpp; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 		7C25BFCD1A0702D000943748 /* axLib */ = {
 			isa = PBXGroup;
 			children = (
+				7C8B540B1A36174F003821A9 /* axMain.cpp */,
+				7C8B540C1A36174F003821A9 /* axMain.h */,
 				7C7E1CB51A35D7CB00490EE3 /* axSerialize.cpp */,
 				7C7E1CB61A35D7CB00490EE3 /* axSerialize.h */,
 				7C7E1B951A349E8C00490EE3 /* axCocoaInterfaceMac.h */,
@@ -398,6 +403,7 @@
 				7CD9E5DC1A236259002EA201 /* AppDelegate.mm in Sources */,
 				7C25BFAB1A0700EB00943748 /* main.m in Sources */,
 				7C25C0171A07034C00943748 /* axDropMenu.cpp in Sources */,
+				7C8B540D1A36174F003821A9 /* axMain.cpp in Sources */,
 				7C25C0191A07034C00943748 /* axKnob.cpp in Sources */,
 				7C25BFF81A07033100943748 /* axCoreMac.cpp in Sources */,
 				7C25C0301A07EDCD00943748 /* PaintPanel.cpp in Sources */,

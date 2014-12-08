@@ -43,6 +43,7 @@ dependencies: /Users/alexarse/Project/axLib/axExamples/Demo/Demo/main.cpp \
   /Users/alexarse/Project/axLib/axWidgets/axMenu.h \
   /Users/alexarse/Project/axLib/axWidgets/axKnob.h \
   /Users/alexarse/Project/axLib/axWidgets/axScrollBar.h \
+  /Users/alexarse/Project/axLib/axMain.h \
   /Users/alexarse/Project/axLib/axExamples/Demo/Demo/ButtonPanel.h \
   /Users/alexarse/Project/axLib/axExamples/Demo/Demo/SliderPanel.h \
   /Users/alexarse/Project/axLib/axExamples/Demo/Demo/KnobPanel.h \

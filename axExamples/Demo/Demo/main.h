@@ -30,12 +30,5 @@ private:
     
 };
 
-class axMain
-{
-public:
-    axMain();
-    
-    static void MainEntryPoint(axApp* app);
-};
 
 #endif /* defined(__Demo__main__) */

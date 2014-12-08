@@ -14,4 +14,15 @@ dependencies: /Users/alexarse/Project/axLib/axFont.cpp \
   /Users/alexarse/Development/freetype-2.4.0/include/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axC++.h \
   /Users/alexarse/Project/axLib/include/axUtils.h \
-  /Users/alexarse/Project/axLib/include/axImage.h
+  /Users/alexarse/Project/axLib/include/axImage.h \
+  /Users/alexarse/Project/axLib/include/axApp.h \
+  /Users/alexarse/Project/axLib/include/axCoreMac.h \
+  /Users/alexarse/Project/axLib/include/axCore.h \
+  /Users/alexarse/Project/axLib/include/axManager.h \
+  /Users/alexarse/Project/axLib/include/axWindow.h \
+  /Users/alexarse/Project/axLib/include/axObject.h \
+  /Users/alexarse/Project/axLib/include/axEvent.h \
+  /Users/alexarse/Project/axLib/axMsg.h \
+  /Users/alexarse/Project/axLib/include/axGC.h \
+  /Users/alexarse/Project/axLib/include/axColor.h \
+  /Users/alexarse/Project/axLib/include/axWindowTree.h
