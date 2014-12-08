@@ -14,17 +14,203 @@ NumberBoxPanel::NumberBoxPanel(axWindow* parent,
 // Parent.
 axPanel(parent, rect)
 {
-    axNumberBoxInfo box_info(axColor(0.7, 0.7, 0.7),
-                             axColor(0.3, 0.3, 0.3),
-                             axColor(0.2, 0.2, 0.2),
-                             axColor(0.2, 0.2, 0.2),
-                             axColor(0.0, 0.0, 0.0),
-                             axColor(0.0, 0.0, 0.0));
+    std::string app_path(axApp::GetInstance()->GetAppDirectory());
+    
+    _squareColor = axColor(0.0, 0.0, 0.0, 1.0);
+    _squareColorBottom = axColor(1.0, 0.0, 0.0, 1.0);
+    _squareContourColor = axColor(0.0, 0.0, 0.0);
+    
+    axNumberBoxInfo box_info(axColor(0.7, 0.7, 0.7, 0.0),
+                             axColor(0.3, 0.3, 0.3, 0.0),
+                             axColor(0.2, 0.2, 0.2, 0.0),
+                             axColor(0.2, 0.2, 0.2, 0.0),
+                             axColor(0.0, 0.0, 0.0, 0.0),
+                             axColor(0.0, 0.0, 0.0, 1.0));
     
     axNumberBox* box1 = new axNumberBox(this,
                                         axRect(40, 40, 40, 20),
                                         axNumberBoxEvents(),
-                                        box_info);
+                                        box_info,
+                                        app_path + std::string("NumberBox.png"),
+                                        axNUMBER_BOX_SINGLE_IMG);
+    
+    axNumberBox* box2 = new axNumberBox(this,
+                                        axRect(100, 40, 40, 20),
+                                        axNumberBoxEvents(),
+                                        box_info,
+                                        app_path + std::string("NumberBoxFull.png"));
+    
+    axNumberBoxInfo box_info3(axColor(0.7, 0.7, 0.7),
+                              axColor(0.3, 0.3, 0.3),
+                              axColor(0.2, 0.2, 0.2),
+                              axColor(0.2, 0.2, 0.2),
+                              axColor(0.0, 0.0, 0.0),
+                              axColor(0.0, 0.0, 0.0));
+    
+    axNumberBox* box3 = new axNumberBox(this,
+                                        axRect(200, 40, 40, 20),
+                                        axNumberBoxEvents(),
+                                        box_info3);
+    
+    axNumberBoxEvents box_evts;
+    box_evts.value_change = GetOnNumberBoxRed();
+    
+    axNumberBox* box_red = new axNumberBox(this,
+                                           axRect(40, 140, 40, 20),
+                                           box_evts,
+                                           box_info,
+                                           app_path + std::string("NumberBoxFull.png"));
+    
+    box_evts.value_change = GetOnNumberBoxGreen();
+    
+    axNumberBox* box_green = new axNumberBox(this,
+                                           axRect(40, 165, 40, 20),
+                                           box_evts,
+                                           box_info,
+                                           app_path + std::string("NumberBoxFull.png"));
+    
+    box_evts.value_change = GetOnNumberBoxBlue();
+    
+    axNumberBox* box_blue = new axNumberBox(this,
+                                           axRect(40, 190, 40, 20),
+                                           box_evts,
+                                           box_info,
+                                           app_path + std::string("NumberBoxFull.png"));
+    
+    box_evts.value_change = GetOnNumberBoxAlpha();
+    axNumberBox* box_alpha = new axNumberBox(this,
+                                            axRect(40, 215, 40, 20),
+                                            box_evts,
+                                            box_info,
+                                            app_path + std::string("NumberBoxFull.png"),
+                                            axFLAG_NONE,
+                                            1.0);
+    
+    ///---------------
+    box_evts.value_change = GetOnNumberBoxRedBottom();
+    
+    axNumberBox* box_red_botom =
+    new axNumberBox(this,
+                    axRect(195, 140, 40, 20),
+                    box_evts,
+                    box_info,
+                    app_path + std::string("NumberBoxFull.png"),
+                    axFLAG_NONE,
+                    1.0);
+    
+    box_evts.value_change = GetOnNumberBoxGreenBottom();
+    
+    axNumberBox* box_green_botom =
+    new axNumberBox(this,
+                    axRect(195, 165, 40, 20),
+                    box_evts,
+                    box_info,
+                    app_path + std::string("NumberBoxFull.png"));
+    
+    box_evts.value_change = GetOnNumberBoxBlueBottom();
+    
+    axNumberBox* box_blue_botom =
+    new axNumberBox(this,
+                    axRect(195, 190, 40, 20),
+                    box_evts,
+                    box_info,
+                    app_path + std::string("NumberBoxFull.png"));
+    
+    box_evts.value_change = GetOnNumberBoxAlphaBottom();
+    axNumberBox* box_alpha_botom =
+    new axNumberBox(this,
+                    axRect(195, 215, 40, 20),
+                    box_evts,
+                    box_info,
+                    app_path + std::string("NumberBoxFull.png"),
+                    axFLAG_NONE,
+                    1.0);
+    
+    _squareRect = axRect(90, 140, 100, 100);
+}
+
+void NumberBoxPanel::OnNumberBoxRed(const axNumberBoxMsg& msg)
+{
+//    std::cout << "Red : " << msg.GetValue() << std::endl;
+
+    _squareColor = axColor(msg.GetValue(),
+                           _squareColor.GetGreen(),
+                           _squareColor.GetBlue(),
+                           _squareColor.GetAlpha());
+    
+    Update();
+}
+
+void NumberBoxPanel::OnNumberBoxGreen(const axNumberBoxMsg& msg)
+{
+    _squareColor = axColor(_squareColor.GetRed(),
+                           msg.GetValue(),
+                           _squareColor.GetBlue(),
+                           _squareColor.GetAlpha());
+    
+    Update();
+}
+
+void NumberBoxPanel::OnNumberBoxBlue(const axNumberBoxMsg& msg)
+{
+    _squareColor = axColor(_squareColor.GetRed(),
+                           _squareColor.GetGreen(),
+                           msg.GetValue(),
+                           _squareColor.GetAlpha());
+    
+    Update();
+}
+
+void NumberBoxPanel::OnNumberBoxAlpha(const axNumberBoxMsg& msg)
+{
+    _squareColor = axColor(_squareColor.GetRed(),
+                           _squareColor.GetGreen(),
+                           _squareColor.GetBlue(),
+                           msg.GetValue());
+    
+    Update();
+}
+
+void NumberBoxPanel::OnNumberBoxRedBottom(const axNumberBoxMsg& msg)
+{
+    //    std::cout << "Red : " << msg.GetValue() << std::endl;
+    
+    _squareColorBottom = axColor(msg.GetValue(),
+                                 _squareColorBottom.GetGreen(),
+                                 _squareColorBottom.GetBlue(),
+                                 _squareColorBottom.GetAlpha());
+    
+    Update();
+}
+
+void NumberBoxPanel::OnNumberBoxGreenBottom(const axNumberBoxMsg& msg)
+{
+    _squareColorBottom = axColor(_squareColorBottom.GetRed(),
+                                 msg.GetValue(),
+                                 _squareColorBottom.GetBlue(),
+                                 _squareColorBottom.GetAlpha());
+    
+    Update();
+}
+
+void NumberBoxPanel::OnNumberBoxBlueBottom(const axNumberBoxMsg& msg)
+{
+    _squareColorBottom = axColor(_squareColorBottom.GetRed(),
+                                 _squareColorBottom.GetGreen(),
+                                 msg.GetValue(),
+                                 _squareColorBottom.GetAlpha());
+    
+    Update();
+}
+
+void NumberBoxPanel::OnNumberBoxAlphaBottom(const axNumberBoxMsg& msg)
+{
+    _squareColorBottom = axColor(_squareColorBottom.GetRed(),
+                                 _squareColorBottom.GetGreen(),
+                                 _squareColorBottom.GetBlue(),
+                                 msg.GetValue());
+    
+    Update();
 }
 
 void NumberBoxPanel::OnPaint()
@@ -35,6 +221,13 @@ void NumberBoxPanel::OnPaint()
     
     gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
     gc->DrawRectangle(rect0);
+    
+    gc->SetColor(_squareColor);
+    gc->DrawRectangle(_squareRect);
+    gc->DrawRectangleColorFade(_squareRect, _squareColor, _squareColorBottom);
+    
+    gc->SetColor(_squareContourColor);
+    gc->DrawRectangleContour(_squareRect);
     
     //    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     //    gc->SetFontSize(12);

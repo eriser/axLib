@@ -388,6 +388,32 @@ void axGC::DrawRectangleColorFade(const axRect& rectangle,
 	glEnd();
 }
 
+void axGC::DrawRectangleColorFade(const axRect& rectangle,
+                                  const axColor& c1,
+                                  const axColor& c2)
+{
+    axFloatRect rect = RectToFloatRect(rectangle + _win->GetAbsoluteRect().position);
+//    rect.position.x  -= _win->GetScrollDecay().x;
+//    rect.position.y  -= _win->GetScrollDecay().y;
+    
+    glBegin(GL_QUADS);
+    SetColor(c1);
+    glVertex3f(rect.position.x, rect.position.y, 0); // Bottom left.
+    
+    //SetColor(c1);
+    glVertex3f(rect.position.x + rect.size.x,
+               rect.position.y, 0); // Bottom Right.
+    
+    SetColor(c2);
+    glVertex3f(rect.position.x + rect.size.x,
+               rect.position.y + rect.size.y, 0); // Top Right.
+    
+    //SetColor(c2);
+    glVertex3f(rect.position.x,
+               rect.position.y + rect.size.y, 0); // Top Left
+    glEnd();
+}
+
 void axGC::DrawLines(const vector<axPoint>& pts, float width)
 {
 	axPoint real_pos = _win->GetAbsoluteRect().position;

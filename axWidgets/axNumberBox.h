@@ -12,6 +12,7 @@
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
+#include "axMsg.h"
 
  enum axControlType
 {
@@ -40,14 +41,15 @@ enum axControlInterpolation
  /*************************************************************************//**
  * axNumberBoxFlags.
 ******************************************************************************/
-#define axNUMBER_BOX_FLAG_LABEL    axFLAG_1
-#define axNUMBER_BOX_FLAG_SLIDER   axFLAG_2
-#define axNUMBER_BOX_FLAG_NO_MOUSE axFLAG_3
+#define axNUMBER_BOX_SINGLE_IMG    axFLAG_1
+#define axNUMBER_BOX_FLAG_LABEL    axFLAG_2
+#define axNUMBER_BOX_FLAG_SLIDER   axFLAG_3
+#define axNUMBER_BOX_FLAG_NO_MOUSE axFLAG_4
 
 /**************************************************************************//**
  * axNumberBoxMsg
 ******************************************************************************/
-class axNumberBoxMsg
+class axNumberBoxMsg : public axMsg
 {
 public:
     axNumberBoxMsg(const double& value):
@@ -59,6 +61,11 @@ public:
     {
         return _value;
     }
+    
+    axMsg* GetCopy()
+    {
+        return new axNumberBoxMsg(*this);
+    }
 
 private:
     double _value;
@@ -69,10 +76,12 @@ private:
 ******************************************************************************/
 struct axNumberBoxEvents
 {
-    axEvtFunction(axNumberBoxMsg) value_change;
-
+    enum : axEventId { VALUE_CHANGE };
+    
     axNumberBoxEvents(){}
-    axNumberBoxEvents(axEvtFunction(axNumberBoxMsg)& fct){ value_change = fct; }
+    axNumberBoxEvents(axEventFunction& fct){ value_change = fct; }
+    
+    axEventFunction value_change;
 };
 
 /**************************************************************************//**
@@ -117,6 +126,7 @@ public:
                 const axRect& rect,
                 const axNumberBoxEvents& events,
                 const axNumberBoxInfo& info,
+                std::string img_path = "",
                 axFlag flags = 0,
                 double value = 0.0,
                 axFloatRange range = axFloatRange(0.0, 1.0),
@@ -131,6 +141,7 @@ private:
     axNumberBoxEvents _events;
     axNumberBoxInfo _info;
     axFlag _flags;
+    axImage* _bgImg;
 
     axControlType _type;
     axControlUnit _unit;
@@ -138,12 +149,19 @@ private:
     axControlInterpolation _interpolation;
 
     axColor _currentColor;
+    int _nCurrentImg;
     double _value;
     double _zeroToOneValue;
     std::string _label;
 
     int _clickPosY;
 
+    enum axNumberBoxState
+    {
+        axNUM_BOX_NORMAL,
+        axNUM_BOX_DOWN,
+        axNUM_BOX_HOVER
+    };
 
     void OnPaint();
     void OnMouseEnter();

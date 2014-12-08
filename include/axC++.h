@@ -109,6 +109,7 @@ T axClamp(T d, T min, T max)
 typedef uint16_t axFlag;
 bool axFlag_exist(const axFlag& FLAG, axFlag flags);
 
+#define axFLAG_NONE 0
 #define axFLAG_1  1
 #define axFLAG_2  2
 #define axFLAG_3  4
