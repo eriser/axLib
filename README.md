@@ -54,7 +54,6 @@ class MyProject: public axPanel
 public:
     MyProject(axWindow* parent,
               const axRect& rect);
-
 private:
     // axEvents.
     virtual void OnPaint();
