@@ -142,12 +142,16 @@ void axMain::MainEntryPoint(axApp* app)
                                             axRect(1, 1, 550, 499));
 }
 
-//int main(int argc, char* argv[])
-//{
-//	axApp* app = axApp::CreateApp(axSize(550, 499));
-//	axMain* main = new axMain();
-//	main->MainEntryPoint(app);
-//
-//	app->MainLoop();
-//	return 0;
-//}
+/// @todo Chnage with macro implement app.
+#ifdef _MSC_VER
+int main(int argc, char* argv[])
+{
+	axEventManager::GetInstance();
+	axApp* app = axApp::CreateApp(axSize(550, 499));
+	axMain* main = new axMain();
+	main->MainEntryPoint(app);
+
+	app->MainLoop();
+	return 0;
+}
+#endif

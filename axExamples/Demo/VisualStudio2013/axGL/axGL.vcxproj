@@ -18,13 +18,16 @@
     <ClCompile Include="..\..\..\..\axCoreWin32.cpp" />
     <ClCompile Include="..\..\..\..\axDebugWin32.cpp" />
     <ClCompile Include="..\..\..\..\axEvent.cpp" />
+    <ClCompile Include="..\..\..\..\axEventManager.cpp" />
     <ClCompile Include="..\..\..\..\axFont.cpp" />
     <ClCompile Include="..\..\..\..\axGC.cpp" />
     <ClCompile Include="..\..\..\..\axImage.cpp" />
     <ClCompile Include="..\..\..\..\axManager.cpp" />
     <ClCompile Include="..\..\..\..\axMath.cpp" />
+    <ClCompile Include="..\..\..\..\axMsg.cpp" />
     <ClCompile Include="..\..\..\..\axObject.cpp" />
     <ClCompile Include="..\..\..\..\axPanel.cpp" />
+    <ClCompile Include="..\..\..\..\axTimer.cpp" />
     <ClCompile Include="..\..\..\..\axUtils.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axButton.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axDropMenu.cpp" />
@@ -42,11 +45,15 @@
     <ClCompile Include="..\..\Demo\ButtonPanel.cpp" />
     <ClCompile Include="..\..\Demo\KnobPanel.cpp" />
     <ClCompile Include="..\..\Demo\main.cpp" />
+    <ClCompile Include="..\..\Demo\MenuPanel.cpp" />
     <ClCompile Include="..\..\Demo\NumberBoxPanel.cpp" />
     <ClCompile Include="..\..\Demo\PaintPanel.cpp" />
     <ClCompile Include="..\..\Demo\SliderPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\axEventManager.h" />
+    <ClInclude Include="..\..\..\..\axMsg.h" />
+    <ClInclude Include="..\..\..\..\axTimer.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axButton.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axDropMenu.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axGrid.h" />
@@ -80,6 +87,7 @@
     <ClInclude Include="..\..\Demo\ButtonPanel.h" />
     <ClInclude Include="..\..\Demo\KnobPanel.h" />
     <ClInclude Include="..\..\Demo\main.h" />
+    <ClInclude Include="..\..\Demo\MenuPanel.h" />
     <ClInclude Include="..\..\Demo\NumberBoxPanel.h" />
     <ClInclude Include="..\..\Demo\PaintPanel.h" />
     <ClInclude Include="..\..\Demo\SliderPanel.h" />

@@ -8,7 +8,7 @@
 
 #include "axEventManager.h"
 #include "axObject.h"
-#include <pthread.h>
+//#include <pthread.h>
 
 class axTimerMsg : public axMsg
 {

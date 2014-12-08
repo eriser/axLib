@@ -1,4 +1,6 @@
 #include "axCoreWin32.h"
+#include "axEventManager.h"
+#include "axApp.h"
 #include <Winuser.h>
 #include <Windowsx.h>
 
@@ -56,7 +58,13 @@ string axCoreWin32::GetAppDirectory()
 	char str[MAX_PATH];
 	wcstombs(str, path, MAX_PATH);
 
-	return string(str);
+	std::string app_path(str);
+
+	size_t slash_pos = app_path.find_last_of('\\');
+	app_path = app_path.substr(0, slash_pos + 1);
+	//std::cout << "APPP DIRECTORY : " << app_path << std::endl;
+
+	return app_path;
 }
 
 bool axCoreWin32::CreatePopupWindow(char* title, int width, int height)
@@ -410,6 +418,9 @@ void axCoreWin32::MainLoop()
 	//while(GetMessage(&msg, NULL, 0, 0) != 0)
 	while (!done)
 	{
+
+		axEventManager::GetInstance()->CallNext();
+
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) // Comment.
 		{
 			if (msg.message == WM_QUIT)
@@ -469,8 +480,8 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 	if (hWnd == static_cast<axCoreWin32*>(axCORE)->GetMainWindowHandle())
 	{
 		windowManager = axCORE->GetWindowManager();
-		//SetFocus(hWnd);
 	}
+
 	//else if (hWnd == static_cast<axCoreWin32*>(axCORE)->GetPopupWindowHandle())
 	//{
 	//	windowManager = axCORE->GetPopupManager();
@@ -479,6 +490,7 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 	if (windowManager != nullptr)
 	{
+		axPoint mouse_position;
 		// Windows messages.
 		switch (uMsg)
 		{
@@ -544,24 +556,57 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 		}
 
 		case WM_MOUSEMOVE:
-			windowManager->OnMouseMotion(
-				axPoint(GET_X_LPARAM(lParam),
-				GET_Y_LPARAM(lParam)));
+			mouse_position = axPoint(GET_X_LPARAM(lParam),
+				GET_Y_LPARAM(lParam));
+
+			axApp::MainInstance->GetPopupManager()->OnMouseMotion(mouse_position);
+			if (axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+			{
+				axApp::MainInstance->GetWindowManager()->OnMouseMotion(mouse_position);
+			}
+
+			//windowManager->OnMouseMotion(
+			//	axPoint(GET_X_LPARAM(lParam),
+			//	GET_Y_LPARAM(lParam)));
 			return 0;
 
 		case WM_LBUTTONDOWN:
-			windowManager->OnMouseLeftDown(
-				axPoint(GET_X_LPARAM(lParam),
-				GET_Y_LPARAM(lParam)));
+			mouse_position = axPoint(GET_X_LPARAM(lParam),
+				GET_Y_LPARAM(lParam));
+
+			//windowManager->OnMouseLeftDown(
+			//	axPoint(GET_X_LPARAM(lParam),
+			//	GET_Y_LPARAM(lParam)));
+
+			axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(mouse_position);
+
+			if (axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+			{
+				axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(mouse_position);
+			}
 			return 0;
 
 		case WM_LBUTTONUP:
-			windowManager->OnMouseLeftUp(
-				axPoint(GET_X_LPARAM(lParam),
-				GET_Y_LPARAM(lParam)));
+			mouse_position = axPoint(GET_X_LPARAM(lParam),
+				GET_Y_LPARAM(lParam));
+
+			axApp::MainInstance->GetPopupManager()->OnMouseLeftUp(mouse_position);
+
+			/// @todo NEED TO CHANGE THIS.
+			//if (axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+			{
+				axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(mouse_position);
+			}
+
+			//windowManager->OnMouseLeftUp(
+			//	axPoint(GET_X_LPARAM(lParam),
+			//	GET_Y_LPARAM(lParam)));
 			return 0;
 
 		case WM_RBUTTONDOWN:
+			mouse_position = axPoint(GET_X_LPARAM(lParam),
+				GET_Y_LPARAM(lParam));
+
 			windowManager->OnMouseRightDown();
 			return 0;
 
@@ -704,4 +749,9 @@ int axCoreWin32::DrawGLScene()
 	//cout << "GL" << endl;
 	wglMakeCurrent(_hdc, _hrc);
 	return axCore::DrawGLScene();
+}
+
+void axCoreWin32::PushEventOnSystemQueue()
+{
+
 }

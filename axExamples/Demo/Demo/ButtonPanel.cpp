@@ -64,7 +64,7 @@ axPanel(parent, rect)
     axButton* btn5 = new axButton(this,
                                   axRect(320, 40, 60, 25),
                                   axButtonEvents(),
-                                  axButtonInfo("axButtonBlue.axobj"),
+								  axButtonInfo(app_path + std::string("axButtonBlue.axobj")),
                                   img_path,
                                   "Btn5",
                                   axBUTTON_SINGLE_IMG |

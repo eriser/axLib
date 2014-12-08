@@ -1,5 +1,5 @@
 #include "axFont.h"
-
+#include "axApp.h"
 //std::ifstream file("myfile", std::ios::binary);
 //file.seekg(0, std::ios::end);
 //std::streamsize size = file.tellg();
@@ -97,7 +97,9 @@ axFont::axFont(const string& font)
 //	if (_fontManager.LoadFont("C:/Users/Alexandre Arsenault/Desktop/axLib/ressources/axFonts/FreeSans.ttf", _face))
 //    if (_fontManager.LoadFont("/Users/alexarse/Project/axLib/ressources/axFonts/FreeSans.ttf",_face))
 //    if (_fontManager.LoadFont("FreeSans.ttf",_face))
-    if (_fontManager.LoadFont("FreeSans.ttf",_face))
+    
+	if (_fontManager.LoadFont(axApp::GetInstance()->GetAppDirectory() + 
+		std::string("FreeSans.ttf"), _face))
 	{
 		SetFontSize(12);
 	}

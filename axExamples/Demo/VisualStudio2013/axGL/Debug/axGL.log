@@ -1,10 +1,136 @@
-﻿Build started 11/27/2014 2:02:14 PM.
+﻿Build started 12/8/2014 12:19:44 PM.
      1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\axGL\axGL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../../../libs/freetype-2.5.3/include" /I../../../../libs/lpng1610 /I../../../../ /I../../../../include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Demo\main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../../../libs/freetype-2.5.3/include" /I../../../../libs/lpng1610 /I../../../../ /I../../../../include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\..\axApp.cpp ..\..\..\..\axC++.cpp ..\..\..\..\axColor.cpp ..\..\..\..\axCore.cpp ..\..\..\..\axCoreWin32.cpp ..\..\..\..\axDebugWin32.cpp ..\..\..\..\axEvent.cpp ..\..\..\..\axEventManager.cpp ..\..\..\..\axFont.cpp ..\..\..\..\axGC.cpp ..\..\..\..\axImage.cpp ..\..\..\..\axManager.cpp ..\..\..\..\axMath.cpp ..\..\..\..\axMsg.cpp ..\..\..\..\axObject.cpp ..\..\..\..\axPanel.cpp ..\..\..\..\axTimer.cpp ..\..\..\..\axUtils.cpp ..\..\..\..\axWidgets\axButton.cpp ..\..\..\..\axWidgets\axDropMenu.cpp ..\..\..\..\axWidgets\axGrid.cpp ..\..\..\..\axWidgets\axKnob.cpp ..\..\..\..\axWidgets\axMenu.cpp ..\..\..\..\axWidgets\axNumberBox.cpp ..\..\..\..\axWidgets\axPopupMenu.cpp ..\..\..\..\axWidgets\axScrollBar.cpp ..\..\..\..\axWidgets\axSlider.cpp ..\..\..\..\axWidgets\axToggle.cpp ..\..\..\..\axWin32Utils.cpp ..\..\..\..\axWindow.cpp ..\..\..\..\axWindowTree.cpp ..\..\Demo\ButtonPanel.cpp ..\..\Demo\KnobPanel.cpp ..\..\Demo\main.cpp ..\..\Demo\MenuPanel.cpp ..\..\Demo\NumberBoxPanel.cpp ..\..\Demo\PaintPanel.cpp ..\..\Demo\SliderPanel.cpp
+         SliderPanel.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(44): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(50): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(63): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(70): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(79): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(90): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(99): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(107): warning C4305: 'argument' : truncation from 'double' to 'const float'
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\sliderpanel.cpp(122): warning C4305: 'argument' : truncation from 'double' to 'const float'
+         PaintPanel.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axexamples\demo\demo\paintpanel.cpp(90): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         NumberBoxPanel.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         MenuPanel.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
          main.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(170): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(171): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         KnobPanel.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         ButtonPanel.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         axWindowTree.cpp
+         axWindow.cpp
+         axWin32Utils.cpp
+         axToggle.cpp
+         axSlider.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(34): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(35): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(44): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(45): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(64): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(68): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(74): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(105): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(109): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(316): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(346): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(410): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+         axScrollBar.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(24): warning C4930: 'std::function<void (axButtonMsg)> btnFct(void)': prototyped function not called (was a variable definition intended?)
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(64): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(145): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(152): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(214): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         axPopupMenu.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axpopupmenu.cpp(40): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axpopupmenu.cpp(61): warning C4018: '<' : signed/unsigned mismatch
+         axNumberBox.cpp
+         axMenu.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axmenu.cpp(85): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axmenu.cpp(156): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+         axKnob.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.h(179): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(67): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(89): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
+         axGrid.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(85): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(91): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(99): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(153): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(160): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(165): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(176): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+         axDropMenu.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axdropmenu.cpp(201): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axdropmenu.cpp(212): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+         axButton.cpp
+         Generating Code...
+         Compiling...
+         axUtils.cpp
+         axTimer.cpp
+         axPanel.cpp
+         axObject.cpp
+         axMsg.cpp
+         axMath.cpp
+         axManager.cpp
+         axImage.cpp
+         axGC.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(195): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(232): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(320): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(339): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(349): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(352): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(375): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(379): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(383): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(387): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(399): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(402): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(406): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(409): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(451): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(452): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(465): warning C4244: 'argument' : conversion from 'const double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axgc.cpp(486): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         axFont.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axfont.cpp(49): warning C4244: 'initializing' : conversion from 'std::streamsize' to 'unsigned int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axfont.cpp(60): warning C4244: 'argument' : conversion from 'std::streamsize' to 'unsigned int', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axfont.cpp(67): warning C4244: 'argument' : conversion from 'std::streamsize' to 'FT_Long', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axfont.cpp(144): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         axEventManager.cpp
+         axEvent.cpp
+         axDebugWin32.cpp
+         axCoreWin32.cpp
+         axCore.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\axcore.cpp(251): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>c:\users\alexandre arsenault\desktop\axlib\axcore.cpp(256): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axcore.cpp(260): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axcore.cpp(264): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\axcore.cpp(267): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+         axColor.cpp
+         axC++.cpp
+         axApp.cpp
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\Debug\axGL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"../../../../libs/freetype-2.5.3/objs/win32/vc2010" /LIBPATH:../../../../libs/lpng1610/projects/vstudio/Debug opengl32.lib glu32.lib libpng16.lib zlib.lib freetype253_D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\Debug\axGL.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\Demo\VisualStudio2013\Debug\axGL.lib" /MACHINE:X86 Debug\axApp.obj
          Debug\axC++.obj
@@ -13,13 +139,16 @@
          Debug\axCoreWin32.obj
          Debug\axDebugWin32.obj
          Debug\axEvent.obj
+         Debug\axEventManager.obj
          Debug\axFont.obj
          Debug\axGC.obj
          Debug\axImage.obj
          Debug\axManager.obj
          Debug\axMath.obj
+         Debug\axMsg.obj
          Debug\axObject.obj
          Debug\axPanel.obj
+         Debug\axTimer.obj
          Debug\axUtils.obj
          Debug\axButton.obj
          Debug\axDropMenu.obj
@@ -37,6 +166,7 @@
          Debug\ButtonPanel.obj
          Debug\KnobPanel.obj
          Debug\main.obj
+         Debug\MenuPanel.obj
          Debug\NumberBoxPanel.obj
          Debug\PaintPanel.obj
          Debug\SliderPanel.obj
@@ -50,4 +180,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.03
+Time Elapsed 00:00:36.02

@@ -25,6 +25,8 @@ public:
 
 	virtual string OpenFileDialog();
 
+	virtual void PushEventOnSystemQueue();
+
 	axPoint GetScreenRelativePosition();
 
 protected:
