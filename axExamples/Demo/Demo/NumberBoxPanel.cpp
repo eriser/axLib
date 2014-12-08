@@ -78,6 +78,7 @@ axPanel(parent, rect)
                                            app_path + std::string("NumberBoxFull.png"));
     
     box_evts.value_change = GetOnNumberBoxAlpha();
+    
     axNumberBox* box_alpha = new axNumberBox(this,
                                             axRect(40, 215, 40, 20),
                                             box_evts,
@@ -131,85 +132,49 @@ axPanel(parent, rect)
 
 void NumberBoxPanel::OnNumberBoxRed(const axNumberBoxMsg& msg)
 {
-//    std::cout << "Red : " << msg.GetValue() << std::endl;
-
-    _squareColor = axColor(msg.GetValue(),
-                           _squareColor.GetGreen(),
-                           _squareColor.GetBlue(),
-                           _squareColor.GetAlpha());
-    
+    _squareColor.SetRed(msg.GetValue());
     Update();
 }
 
 void NumberBoxPanel::OnNumberBoxGreen(const axNumberBoxMsg& msg)
 {
-    _squareColor = axColor(_squareColor.GetRed(),
-                           msg.GetValue(),
-                           _squareColor.GetBlue(),
-                           _squareColor.GetAlpha());
-    
+    _squareColor.SetGreen(msg.GetValue());
     Update();
 }
 
 void NumberBoxPanel::OnNumberBoxBlue(const axNumberBoxMsg& msg)
 {
-    _squareColor = axColor(_squareColor.GetRed(),
-                           _squareColor.GetGreen(),
-                           msg.GetValue(),
-                           _squareColor.GetAlpha());
-    
+    _squareColor.SetBlue(msg.GetValue());
     Update();
 }
 
 void NumberBoxPanel::OnNumberBoxAlpha(const axNumberBoxMsg& msg)
 {
-    _squareColor = axColor(_squareColor.GetRed(),
-                           _squareColor.GetGreen(),
-                           _squareColor.GetBlue(),
-                           msg.GetValue());
-    
+    _squareColor.SetAlpha(msg.GetValue());
     Update();
 }
 
 void NumberBoxPanel::OnNumberBoxRedBottom(const axNumberBoxMsg& msg)
 {
-    //    std::cout << "Red : " << msg.GetValue() << std::endl;
-    
-    _squareColorBottom = axColor(msg.GetValue(),
-                                 _squareColorBottom.GetGreen(),
-                                 _squareColorBottom.GetBlue(),
-                                 _squareColorBottom.GetAlpha());
-    
+    _squareColorBottom.SetRed(msg.GetValue());
     Update();
 }
 
 void NumberBoxPanel::OnNumberBoxGreenBottom(const axNumberBoxMsg& msg)
 {
-    _squareColorBottom = axColor(_squareColorBottom.GetRed(),
-                                 msg.GetValue(),
-                                 _squareColorBottom.GetBlue(),
-                                 _squareColorBottom.GetAlpha());
-    
+    _squareColorBottom.SetGreen(msg.GetValue());
     Update();
 }
 
 void NumberBoxPanel::OnNumberBoxBlueBottom(const axNumberBoxMsg& msg)
 {
-    _squareColorBottom = axColor(_squareColorBottom.GetRed(),
-                                 _squareColorBottom.GetGreen(),
-                                 msg.GetValue(),
-                                 _squareColorBottom.GetAlpha());
-    
+    _squareColorBottom.SetBlue(msg.GetValue());
     Update();
 }
 
 void NumberBoxPanel::OnNumberBoxAlphaBottom(const axNumberBoxMsg& msg)
 {
-    _squareColorBottom = axColor(_squareColorBottom.GetRed(),
-                                 _squareColorBottom.GetGreen(),
-                                 _squareColorBottom.GetBlue(),
-                                 msg.GetValue());
-    
+    _squareColorBottom.SetAlpha(msg.GetValue());
     Update();
 }
 
@@ -222,8 +187,6 @@ void NumberBoxPanel::OnPaint()
     gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
     gc->DrawRectangle(rect0);
     
-    gc->SetColor(_squareColor);
-    gc->DrawRectangle(_squareRect);
     gc->DrawRectangleColorFade(_squareRect, _squareColor, _squareColorBottom);
     
     gc->SetColor(_squareContourColor);

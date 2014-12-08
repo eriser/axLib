@@ -159,8 +159,8 @@ private:
     enum axNumberBoxState
     {
         axNUM_BOX_NORMAL,
-        axNUM_BOX_DOWN,
-        axNUM_BOX_HOVER
+        axNUM_BOX_HOVER,
+        axNUM_BOX_DOWN
     };
 
     void OnPaint();

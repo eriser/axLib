@@ -24,14 +24,13 @@ public:
 	axDouble GetBlue() const;
     axDouble GetAlpha() const;
     
+    void SetRed(const double& red);
+    void SetGreen(const double& green);
+    void SetBlue(const double& blue);
+    void SetAlpha(const double& alpha);
     
     void SerializeOutput(fstream& out);
     void SerializeInput(fstream& in);
-//    fstream& operator >> (fstream& in);
-//    friend ifstream& operator >> (fstream& in, axColor& color);
-    
-//    ofstream& operator << (ofstream& out);
-//    friend ofstream& operator << (ofstream& out, const axColor& color);
 
 private:
 	axDouble _r, _g, _b, _a;

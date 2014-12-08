@@ -72,6 +72,7 @@ void axNumberBox::OnMouseLeftDown(const axPoint& pos)
 {
 
 	_clickPosY = (pos - GetAbsoluteRect().position).y;
+    _nCurrentImg = axNUM_BOX_DOWN;
     GrabMouse();
     Update();
 
@@ -82,13 +83,17 @@ void axNumberBox::OnMouseLeftUp(const axPoint& pos)
     if(IsGrabbed())
     {
         UnGrabMouse();
-
-        if(!GetAbsoluteRect().IsPointInside(pos))
+        
+        if(IsMouseHoverWindow())
+        {
+            _currentColor = _info.hover;
+            _nCurrentImg = axNUM_BOX_HOVER;
+        }
+        else
         {
             _currentColor = _info.normal;
+            _nCurrentImg = axNUM_BOX_NORMAL;
         }
-        
-        _nCurrentImg = axNUM_BOX_NORMAL;
 
         PushEvent(axNumberBoxEvents::VALUE_CHANGE, new axNumberBoxMsg(_value));
         Update();
