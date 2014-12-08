@@ -1,11 +1,13 @@
 #axLib
 
-A C++ cross-platform framework to build highly customizable platform-independent graphic user interface.
+A C++ cross-platform framework to build highly customizable platform-independent graphical user interface.
 
 ## Features
-- Extensive use of C++11 syntax. 
-- Use of Standard Template Library (STL). 
+- Easy to setup.
+- Currently supports Mac OS X (10.10), Windows 7 and 8 and Linux (X11).
+- Extensive use of C++11 and Standard Template Library (STL) syntax. 
 - Use of C++11 lambda functions and threads for event management.
+- Minimize interaction with operating systems.
 
 ## Create Project from scratch
 
