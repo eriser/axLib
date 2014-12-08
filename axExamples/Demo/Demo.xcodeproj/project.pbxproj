@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7C25BFAB1A0700EB00943748 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C25BFAA1A0700EB00943748 /* main.m */; };
-		7C25BFAD1A0700EB00943748 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C25BFAC1A0700EB00943748 /* Images.xcassets */; };
 		7C25BFC71A07015700943748 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25BFC51A07015700943748 /* GLKit.framework */; };
 		7C25BFC81A07015700943748 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25BFC61A07015700943748 /* OpenGL.framework */; };
 		7C25BFCA1A07020400943748 /* libpng15.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25BFC91A07020400943748 /* libpng15.framework */; };
-		7C25BFCC1A0702A400943748 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C25BFCB1A0702A400943748 /* MainMenu.xib */; };
 		7C25BFF41A07033100943748 /* axApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C25BFE51A07033100943748 /* axApp.cpp */; };
 		7C25BFF51A07033100943748 /* axC++.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C25BFE61A07033100943748 /* axC++.cpp */; };
 		7C25BFF61A07033100943748 /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C25BFE71A07033100943748 /* axColor.cpp */; };
@@ -47,10 +45,12 @@
 		7C7E1B811A33EAD200490EE3 /* axMsg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B7C1A33EAD200490EE3 /* axMsg.cpp */; };
 		7C7E1B821A33EAD200490EE3 /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B7E1A33EAD200490EE3 /* axTimer.cpp */; };
 		7C7E1B971A349E8C00490EE3 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1B961A349E8C00490EE3 /* axCocoaInterfaceMac.mm */; };
+		7C7E1DA31A35D7CB00490EE3 /* axSerialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E1CB51A35D7CB00490EE3 /* axSerialize.cpp */; };
 		7CB98D441A27DF1B007D6B47 /* axMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98D431A27DF1B007D6B47 /* axMath.cpp */; };
 		7CB98D481A27E3AE007D6B47 /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98D461A27E3AE007D6B47 /* axToggle.cpp */; };
 		7CB98D4B1A27EE15007D6B47 /* MenuPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98D491A27EE15007D6B47 /* MenuPanel.cpp */; };
 		7CD9E5DC1A236259002EA201 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9E5DB1A236259002EA201 /* AppDelegate.mm */; };
+		7CFD777B1A35DDC700E68F25 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C25BFCB1A0702A400943748 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +136,8 @@
 		7C7E1B7F1A33EAD200490EE3 /* axTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axTimer.h; path = ../../axTimer.h; sourceTree = "<group>"; };
 		7C7E1B951A349E8C00490EE3 /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axCocoaInterfaceMac.h; path = ../../axCocoaInterfaceMac.h; sourceTree = "<group>"; };
 		7C7E1B961A349E8C00490EE3 /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = axCocoaInterfaceMac.mm; path = ../../axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
+		7C7E1CB51A35D7CB00490EE3 /* axSerialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axSerialize.cpp; path = ../../axSerialize.cpp; sourceTree = "<group>"; };
+		7C7E1CB61A35D7CB00490EE3 /* axSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axSerialize.h; path = ../../axSerialize.h; sourceTree = "<group>"; };
 		7CB98D431A27DF1B007D6B47 /* axMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMath.cpp; path = ../../axMath.cpp; sourceTree = "<group>"; };
 		7CB98D451A27DF32007D6B47 /* axMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMath.h; path = ../../include/axMath.h; sourceTree = "<group>"; };
 		7CB98D461A27E3AE007D6B47 /* axToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axToggle.cpp; path = ../../axWidgets/axToggle.cpp; sourceTree = "<group>"; };
@@ -218,6 +220,8 @@
 		7C25BFCD1A0702D000943748 /* axLib */ = {
 			isa = PBXGroup;
 			children = (
+				7C7E1CB51A35D7CB00490EE3 /* axSerialize.cpp */,
+				7C7E1CB61A35D7CB00490EE3 /* axSerialize.h */,
 				7C7E1B951A349E8C00490EE3 /* axCocoaInterfaceMac.h */,
 				7C7E1B961A349E8C00490EE3 /* axCocoaInterfaceMac.mm */,
 				7C7E1B7A1A33EAD200490EE3 /* axEventManager.cpp */,
@@ -369,8 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C25BFAD1A0700EB00943748 /* Images.xcassets in Resources */,
-				7C25BFCC1A0702A400943748 /* MainMenu.xib in Resources */,
+				7CFD777B1A35DDC700E68F25 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +403,7 @@
 				7C25C0301A07EDCD00943748 /* PaintPanel.cpp in Sources */,
 				7C7E1B811A33EAD200490EE3 /* axMsg.cpp in Sources */,
 				7C25C01B1A07034C00943748 /* axNumberBox.cpp in Sources */,
+				7C7E1DA31A35D7CB00490EE3 /* axSerialize.cpp in Sources */,
 				7C25BFF41A07033100943748 /* axApp.cpp in Sources */,
 				7C25C0161A07034C00943748 /* axButton.cpp in Sources */,
 				7C25C0001A07033100943748 /* axUtils.cpp in Sources */,

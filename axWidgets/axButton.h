@@ -88,28 +88,52 @@ struct axButtonInfo
 		selected(selected_color),
 		contour(contour_color),
 		font_color(font_color_){}
+    
+    axButtonInfo(const std::string& path)
+    {
+        SerializeInput(path);
+    }
 
-	axButtonInfo(const string& info_path)
-	{
-		ifstream file;
-		file.open(info_path);
+    void SerializeOutput(const std::string& path)
+    {
+        fstream file;
+        file.open(path, std::fstream::out | std::fstream::binary);
 
-		if (file.fail())
-		{
-			cerr << "Problem opening file " << info_path << endl;
-		}
-		else
-		{
-			string line;
+        if (file.fail())
+        {
+            std::cerr << "Problem opening file " << path << std::endl;
+        }
+        else
+        {
+            normal.SerializeOutput(file);
+            hover.SerializeOutput(file);
+            clicking.SerializeOutput(file);
+            selected.SerializeOutput(file);
+            contour.SerializeOutput(file);
+            font_color.SerializeOutput(file);
+        }
 
-			axColor* ptr = &normal;
-			while (file.good())
-			{
-				getline(file, line);
-				*ptr++ = axColor(line);
-			}
-		}
-	}
+    }
+    
+    void SerializeInput(const std::string& path)
+    {
+        fstream file;
+        file.open(path, std::fstream::in | std::fstream::binary);
+        
+        if (file.fail())
+        {
+            std::cerr << "Problem opening file " << path << std::endl;
+        }
+        else
+        {
+            normal.SerializeInput(file);
+            hover.SerializeInput(file);
+            clicking.SerializeInput(file);
+            selected.SerializeInput(file);
+            contour.SerializeInput(file);
+            font_color.SerializeInput(file);
+        }
+    }
 };
 
 #define axSTANDARD_BUTTON 	axButtonInfo( \

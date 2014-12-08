@@ -22,6 +22,12 @@ axSlider::axSlider(axWindow* parent,
 	_bg_alpha(1.0)
 {
 	_sliderPosition = 0;
+    
+    if(_events.slider_value_change)
+    {
+        AddConnection(axSliderEvents::VALUE_CHANGE,
+                      _events.slider_value_change);
+    }
 
 	if (axFlag_exist(axSLIDER_FLAG_VERTICAL, _flags))
 	{
@@ -105,12 +111,13 @@ void axSlider::OnMouseLeftDown(const axPoint& mousePos)
 
 		blockSliderPosition(pos);
 		GrabMouse();
-		//SendPaintEvent();
 
-		if (_events.slider_value_change)
-		{
-			_events.slider_value_change(axSliderMsg(_sliderValue));
-		}
+//		if (_events.slider_value_change)
+//		{
+//			_events.slider_value_change(axSliderMsg(_sliderValue));
+//		}
+        PushEvent(axSliderEvents::VALUE_CHANGE,
+                  new axSliderMsg(_sliderValue));
 		Update();
 	}
 	// Click on boutton to move.
@@ -139,10 +146,12 @@ void axSlider::OnMouseLeftDown(const axPoint& mousePos)
 			cout << "MOUSE GRAB" << endl;
 
 			// Send value change event.
-			if (_events.slider_value_change)
-			{
-				_events.slider_value_change(axSliderMsg(_sliderValue));
-			}
+//			if (_events.slider_value_change)
+//			{
+//				_events.slider_value_change(axSliderMsg(_sliderValue));
+//			}
+            PushEvent(axSliderEvents::VALUE_CHANGE,
+                      new axSliderMsg(_sliderValue));
 			Update();
 		}
 	}
@@ -172,10 +181,13 @@ void axSlider::OnMouseLeftDragging(const axPoint& p)
 
 	blockSliderPosition(pos);
 
-	if (_events.slider_value_change)
-	{
-		_events.slider_value_change(axSliderMsg(_sliderValue));
-	}
+//	if (_events.slider_value_change)
+//	{
+//		_events.slider_value_change(axSliderMsg(_sliderValue));
+//	}
+    
+    PushEvent(axSliderEvents::VALUE_CHANGE,
+              new axSliderMsg(_sliderValue));
 	
 	Update();
 }

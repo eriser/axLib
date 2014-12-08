@@ -62,21 +62,16 @@ axPanel(parent, rect)
                                   axBUTTON_SINGLE_IMG |
                                   axBUTTON_IMG_RESIZE);
     
-    axButtonInfo btn2_info;
-    btn2_info.normal = axColor(0.2, 0.8, 0.8);
-    btn2_info.hover = axColor(0.3, 0.9, 0.9);
-    btn2_info.clicking = axColor(0.1, 0.7, 0.7);
-    btn2_info.contour = axColor(0.0, 0.0, 0.0);
-    btn2_info.selected = btn2_info.normal;
-
     axButton* btn5 = new axButton(this,
                                   axRect(320, 40, 60, 25),
                                   axButtonEvents(),
-                                  btn2_info,
+                                  axButtonInfo("axButtonBlue.axobj"),
                                   img_path,
                                   "Btn5",
                                   axBUTTON_SINGLE_IMG |
                                   axBUTTON_IMG_RESIZE);
+    
+//    btn2_info.SerializeOutput("axButtonBlue.axobj");
     
     axButton* btn6 = new axButton(this,
                                   axRect(390, 40, 25, 25),
@@ -98,13 +93,13 @@ axPanel(parent, rect)
 void ButtonPanel::OnButtonWithEvtManager(const axButtonMsg& msg)
 {
     std::cout << "Button event." << std::endl;
-    _timer->StartTimer(20, 200);
+    _timer->StartTimer(20, 800);
 }
 
 void ButtonPanel::OnTimerEvent(const axTimerMsg& msg)
 {
 //    std::cout << "Timer : " << msg.GetTime() << std::endl;
-    double timer_ratio = msg.GetTime() / double(200 - 20) * 0.4;
+    double timer_ratio = msg.GetTime() / double(800 - 20) * 0.4;
     _colorTimer = axColor(timer_ratio, timer_ratio, 0.4);
     Update();
 }

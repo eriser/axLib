@@ -5,6 +5,7 @@ axPopupMenu::axPopupMenu(axWindow* parent,
 	const axPopupMenuEvents& events,
 	const axPopupMenuInfo& info,
 	const vector<string>& labels,
+    std::string bgImg,
 	axFlag flag) :
     axPanel(3, nullptr, rect),
 //	axPanel(3, parent, rect),
@@ -40,12 +41,19 @@ axPopupMenu::axPopupMenu(axWindow* parent,
 	{
 		_btns.push_back(new axToggle(this,
 						axRect(axPoint(0, i * LABEL_HEIGHT), tog_size),
-						tog_event, tog_info, "", _labels[i],
-                        axTOGGLE_CANT_UNSELECT_WITH_MOUSE,
+						tog_event, tog_info, bgImg, _labels[i],
+                        axTOGGLE_CANT_UNSELECT_WITH_MOUSE |
+                        axTOGGLE_SINGLE_IMG,
                         _labels[i]));
 	}
 
 	SetSize(axSize(tog_size.x, _btns.size() * LABEL_HEIGHT));
+    
+    if(_events.selection_change)
+    {
+        AddConnection(axPopupMenuEvents::SELECTION_CHANGE,
+                      _events.selection_change);
+    }
 }
 
 void axPopupMenu::SetSelectedIndex(const int& index)
@@ -83,10 +91,13 @@ void axPopupMenu::OnButtonClick(const axToggleMsg& msg)
 		_lastSelected = msg.GetSender();
 	}
     
-    if(_events.selection_change)
-    {
-        _events.selection_change(axPopupMenuMsg(msg.GetMsg()));
-    }
+    PushEvent(axPopupMenuEvents::SELECTION_CHANGE,
+              new axPopupMenuMsg(msg.GetMsg()));
+    
+//    if(_events.selection_change)
+//    {
+//        _events.selection_change(axPopupMenuMsg(msg.GetMsg()));
+//    }
 }
 
 

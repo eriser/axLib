@@ -17,19 +17,24 @@ public:
     MenuPanel(axWindow* parent,
                 const axRect& rect);
     
-    axEVENT_ACCESOR(axButtonMsg, OnPopupMenu);
-    axEVENT_ACCESOR(axButtonMsg, OnTestBtnUnder);
-    axEVENT(axPopupMenuMsg, OnPopupMenuChoice);
+    axEVENT_ACCESSOR(axButtonMsg, OnPopupMenu);
+    axEVENT_ACCESSOR(axButtonMsg, OnTestBtnUnder);
+    axEVENT_ACCESSOR(axPopupMenuMsg, OnPopupMenuChoice);
+    axEVENT_ACCESSOR(axDropMenuMsg, OnDropMenuChoice);
+    
 private:
     virtual void OnPaint();
     
     void OnPopupMenu(const axButtonMsg& msg);
     void OnPopupMenuChoice(const axPopupMenuMsg& msg);
     
+    void OnDropMenuChoice(const axDropMenuMsg& msg);
+    
     void OnTestBtnUnder(const axButtonMsg& msg);
     
     axButton* _btnPopMenu;
     axPopupMenu* _popMenu;
+    axDropMenu* _dropMenu;
 };
 
 #endif /* defined(__Demo__MenuPanel__) */

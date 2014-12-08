@@ -1,14 +1,5 @@
-//
-//  axAppDelegate.m
-//  test
-//
-//  Created by Caroline Ross on 2014-04-24.
-//  Copyright (c) 2014 alexarse. All rights reserved.
-//
 
 #import "AppDelegate.h"
-//#include "axApp.h"
-//#include "axTrempoline.h"
 #include "main.h"
 
 #include <OpenGL/OpenGL.h>
@@ -16,7 +7,6 @@
 
 #include <iostream>
 #include "axLib.h"
-//#include "Main.h"
 
 axApp* GlobalApp = nullptr;
 axAppDelegate* GlobalAppDelegate;
@@ -29,9 +19,8 @@ axAppDelegate* GlobalAppDelegate;
     
     self = [super initWithFrame:frame];
     
-    // below code helps optimize Open GL context
-    // initialization for the best available resolution
-    // important for Retina screens for example
+    // Helps optimize Open GL context initialization for the best available
+    // resolution, important for Retina screens for example.
     if (self)
     {
         [self wantsBestResolutionOpenGLSurface];
@@ -43,7 +32,6 @@ axAppDelegate* GlobalAppDelegate;
 
 - (void)viewDidMoveToWindow
 {
-    //[[self window] setAcceptsMouseMovedEvents:YES];
     [self addTrackingRect:[self bounds] owner:self userData:NULL assumeInside:YES];
     [[self window] makeFirstResponder:self];
     
@@ -57,14 +45,9 @@ axAppDelegate* GlobalAppDelegate;
     [[self window] setAcceptsMouseMovedEvents:YES];
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
     
-//    axApp::MainInstance = new axApp();
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
     axMain::MainEntryPoint(axApp::MainInstance);
-    
-//    cout << "TEST2" << endl;
-    //    axApp::MainInstance->CallMainEntryPoint(axApp::MainInstance);
-    //    Desktop* desktop = new Desktop(axApp::MainInstance, nullptr, axRect(0, 0, 200, 200));
 }
 
 -(void)awakeFromNib
@@ -89,17 +72,8 @@ axAppDelegate* GlobalAppDelegate;
 
 -(id)MemberTestFunc
 {
-//    NSLog(@"TESTTTTTTTTTT");
-    
     [GlobalAppDelegate setNeedsDisplay:YES];
-//    [GlobalAppDelegate setNeedsDisplay:YES];
-
-//    [self setWindowsNeedUpdate:YES];
     
-//    [[self delegate] setNeedsDisplay:YES];
-//    [[self superview] setNeedsDisplay:YES];
-    
-
     return self;
 }
 
@@ -117,8 +91,6 @@ axAppDelegate* GlobalAppDelegate;
 {
     NSSize myNSWindowSize = [ [ self window ] frame ].size;
     std::cout << "My size : " << myNSWindowSize.width << " " << myNSWindowSize.height << std::endl;
-//    std::cout << "New size : " << newSize.width << " " << newSize.height << std::endl;
-//    axApp::MainInstance->GetCore()->SetGlobalSize(axSize(newSize.width, newSize.height));
 }
 
 
@@ -127,23 +99,14 @@ axAppDelegate* GlobalAppDelegate;
 {
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
-//    [self MemberTestFunc];
-//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-//    axPoint pos(locationInView.x, y - locationInView.y);
+    
     axPoint pos(locationInView.x, locationInView.y);
     
     axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(pos);
     if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+    {
         axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
-//    if(!gotEvtFromPopup)
-//    {
-//        axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
-//    }
-    
-    
-//    [self setNeedsDisplay:YES];
-    //[self MemberTestFunc];
-//    [GlobalAppDelegate MemberTestFunc];
+    }
 }
 
 // Working.
@@ -151,16 +114,13 @@ axAppDelegate* GlobalAppDelegate;
 {
     NSPoint locationInView = [self convertPoint:[anEvent locationInWindow]
                                        fromView:nil];
-    
-//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-//    axPoint pos(locationInView.x, y - locationInView.y);
+
     axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetPopupManager()->OnMouseLeftUp(pos);
-    //if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
-        axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
 
-    
-//    [self setNeedsDisplay:YES];
+    // TODO :: Fix this.
+    axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
+
 }
 
 // Working.
@@ -169,14 +129,12 @@ axAppDelegate* GlobalAppDelegate;
     NSPoint locationInView = [self convertPoint:[theEvent locationInWindow]
                                        fromView:nil];
     
-//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-//    axPoint pos(locationInView.x, y - locationInView.y);
     axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetPopupManager()->OnMouseLeftDragging(pos);
     if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+    {
         axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
-    
-//    [self setNeedsDisplay:YES];
+    }
 }
 
 // Working.
@@ -184,50 +142,32 @@ axAppDelegate* GlobalAppDelegate;
 {
     NSPoint locationInView = [self convertPoint:[MyMouseMouse locationInWindow]
                                        fromView:nil];
-    
-//    int y = axApp::MainInstance->GetCore()->GetGlobalSize().y;
-//    axPoint pos(locationInView.x, y - locationInView.y);
+
     axPoint pos(locationInView.x, locationInView.y);
     
     axApp::MainInstance->GetPopupManager()->OnMouseMotion(pos);
     if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+    {
         axApp::MainInstance->GetWindowManager()->OnMouseMotion(pos);
-    
-    
-    
-    
-    
-//    [self setNeedsDisplay:YES];
-    
-    
-    
+    }
 }
 
 // Working.
 - (void)mouseEntered:(NSEvent *)theEvent
 {
     NSLog(@"Mouse enter");
-    //    [[self window] setAcceptsMouseMovedEvents:YES];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent
 {
     NSLog(@"Mouse leave");
-    //    [[self window] setAcceptsMouseMovedEvents:NO];
 }
-
-//- (void)run
-//{
-//    std::cout << "Run" << std::endl;
-//}
 
 static int test_value = 0;
 void MyRunLoopObserver(CFRunLoopObserverRef observer,
                        CFRunLoopActivity activity,
                        void* info)
 {
-//    std::cout << "Run" << std::endl;
-
     axEventManager::GetInstance()->CallNext();
 }
 
@@ -235,13 +175,9 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
 {
     std::cout << "Install run observer." << std::endl;
     
-//    NSNotification* myNotification = [NSNotification notificationWithName:@"MyIdleNotification" object:self];
-//    
-//    [[NSNotificationQueue defaultQueue] enqueueNotification:myNotification postingStyle:NSPostWhenIdle];
-//    
-    /////////
+    // Run loop observer.
     CFRunLoopObserverRef myObserver = NULL;
-    int myActivities = kCFRunLoopBeforeWaiting;//kCFRunLoopAllActivities;
+    int myActivities = kCFRunLoopAllActivities; //kCFRunLoopBeforeWaiting;
     
     // Create observer reference.
     myObserver = CFRunLoopObserverCreate(NULL,
@@ -275,48 +211,21 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
 // Each time window has to be redrawn, this method is called
 - (void)drawRect:(NSRect)bounds
 {
-//    NSLog(@"DRAW RECT OBJECTIVE");
-    
-    
-    
     int frame_height = bounds.size.height;
-//    cout << "gg : " << bounds.origin.y << endl;
-//    CGPoint position = CGPointMake(0,0);
-//    [self setFrame:(CGRect){.origin = position,.size = self.frame.size}];
-    
-//    bounds.origin = CGPointMake(50,0);
-//    NSRect frame_rect = [self convertRectToBacking:[self drawRect]];
-    
-    // GetFrameSize :
-    //NSSize my_window = [ [ self window ] frame ].size;
-    
-    
+
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
     
-    axSize global_size = axApp::MainInstance->GetCore()->GetGlobalSize();
+    axCore* core = axApp::MainInstance->GetCore();
+    
+    axSize global_size = core->GetGlobalSize();
     if(global_size.x != backingBounds.size.width ||
        global_size.y != backingBounds.size.height)
     {
-        axApp::MainInstance->GetCore()->ResizeGLScene(backingBounds.size.width,
-                                                      backingBounds.size.height,
-                                                      frame_height - backingBounds.size.height);
+        core->ResizeGLScene(backingBounds.size.width,
+                            backingBounds.size.height,
+                            frame_height - backingBounds.size.height);
     }
 
-//    NSRect frame = [self frame];
-//    frame.origin.y = 0;
-//    [self setFrame:frame];
-//    NSPoint pt;
-//    pt.x = 0;
-//    pt.y = 0;
-//    [self setFrameTopLeftPoint:pt];
-//    cout << "POSITION : " << backingBounds.origin.y << endl;
-//    cout << "HEIGHT : " << backingBounds.size.height << endl;
-//    cout << "FHEIGHT : " << frame_rect.size.height << endl;
-//    if ( [self frame].size.height < [[self superview] frame].size.height )
-//    {
-//        [self frame].size.height = [[self superview] frame].size.height;
-//    }
-    
     if ([self inLiveResize])
     {
         // Draw a quick approximation

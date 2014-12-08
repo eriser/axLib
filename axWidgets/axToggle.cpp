@@ -23,20 +23,26 @@ _msg(msg)
 {
 	_currentColor = &_info.normal;
     _btnImg = new axImage(img_path);
+    
+    if(_events.button_click)
+    {
+        AddConnection(axToggleEvents::BUTTON_CLICK,
+                      _events.button_click);
+    }
 }
 
-axToggle::axToggle(axWindow* parent,
-                   const axToggleEvents& events,
-                   const string& path):
-axPanel(parent, axRect(0, 0, 20, 20)),
-// Members.
-_events(events),
-_nCurrentImg(axTOG_NORMAL),
-_selected(false),
-_bgAlpha(1.0)
-{
-
-}
+//axToggle::axToggle(axWindow* parent,
+//                   const axToggleEvents& events,
+//                   const string& path):
+//axPanel(parent, axRect(0, 0, 20, 20)),
+//// Members.
+//_events(events),
+//_nCurrentImg(axTOG_NORMAL),
+//_selected(false),
+//_bgAlpha(1.0)
+//{
+//
+//}
 
 void axToggle::SetMsg(const string& msg)
 {
@@ -101,10 +107,12 @@ void axToggle::OnMouseLeftDown(const axPoint& pos)
         
         if (axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
         {
-            if (_events.button_click)
-            {
-                _events.button_click(axToggleMsg(this, _selected, _msg));
-            }
+            PushEvent(axToggleEvents::BUTTON_CLICK,
+                      new axToggleMsg(this, _selected, _msg));
+//            if (_events.button_click)
+//            {
+//                _events.button_click(axToggleMsg(this, _selected, _msg));
+//            }
         }
         Update();
     }
@@ -139,11 +147,13 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
             // If toggle on left up.
             if (!axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
             {
-                std::cout << "axToggle::OnMouseLeftUp" << std::endl;
-                if (_events.button_click)
-                {
-                    _events.button_click(axToggleMsg(this, _selected, _msg));
-                }
+//                std::cout << "axToggle::OnMouseLeftUp" << std::endl;
+                PushEvent(axToggleEvents::BUTTON_CLICK,
+                          new axToggleMsg(this, _selected, _msg));
+//                if (_events.button_click)
+//                {
+//                    _events.button_click(axToggleMsg(this, _selected, _msg));
+//                }
             }
 		}
 		else

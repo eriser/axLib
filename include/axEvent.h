@@ -21,7 +21,7 @@ typedef unsigned int axEventId;
 
 typedef std::function<void(axMsg*)> axEventFunction;
 
-#define axEVENT_ACCESOR(TYPE, FUNC) axEventFunction Get ## FUNC() \
+#define axEVENT_ACCESSOR(TYPE, FUNC) axEventFunction Get ## FUNC() \
 { return [=](axMsg* x){ return this->FUNC(*static_cast<TYPE*>(x)); }; }
 
 class axBindedEvent

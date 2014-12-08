@@ -138,11 +138,6 @@ void axButton::OnMouseLeftDown(const axPoint& pos)
 	GrabMouse();
 
     PushEvent(axButtonEvents::BUTTON_CLICK, new axButtonMsg(this, _msg));
-//	if (_events.button_click)
-//	{
-////        std::cout << "axButton::OnMouseLeftDown::EVT EXIST." << std::endl;
-//		_events.button_click(axButtonMsg(this, _msg));
-//	}
 
 	Update();
 }
@@ -221,9 +216,6 @@ void axButton::OnPaint()
 	{
 		if (axFlag_exist(axBUTTON_SINGLE_IMG, _flags))
 		{
-			//gc->DrawImageResize(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
-			//				    rect.size, axPoint(0, 0));
-
 			gc->DrawImageResize(_btnImg, axPoint(0, 0), rect.size, 1.0);
 		}
 		else

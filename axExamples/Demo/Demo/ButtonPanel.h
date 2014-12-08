@@ -17,8 +17,8 @@ public:
     ButtonPanel(axWindow* parent,
                 const axRect& rect);
     
-    axEVENT_ACCESOR(axButtonMsg, OnButtonWithEvtManager);
-    axEVENT_ACCESOR(axTimerMsg, OnTimerEvent);
+    axEVENT_ACCESSOR(axButtonMsg, OnButtonWithEvtManager);
+    axEVENT_ACCESSOR(axTimerMsg, OnTimerEvent);
     
 private:
     virtual void OnPaint();

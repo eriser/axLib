@@ -23,9 +23,11 @@ axEventManager* axEventManager::GetInstance()
 
 void axEventManager::AddFunction(axBindedEvent fct)
 {
-    manager_mutex.lock();
+    //manager_mutex.lock();
+    
     _evtQueue.push_back(fct);
-    manager_mutex.unlock();
+    
+    //manager_mutex.unlock();
 }
 
 int axEventManager::GetEventQueueSize() const
@@ -59,6 +61,8 @@ void axEventManager::PushEvent(const axID& id,
                                const axEventId& evtId,
                                axMsg* msg)
 {
+    manager_mutex.lock();
+    
     auto it = _event_fct_map.find(id);
     
     if(it != _event_fct_map.end())
@@ -81,6 +85,8 @@ void axEventManager::PushEvent(const axID& id,
         }
     }
     
+    manager_mutex.unlock();
+    
     delete msg;
 }
 
@@ -90,9 +96,11 @@ void axEventManager::CallNext()
     
     if (_evtQueue.size() != 0)
     {
+        manager_mutex.unlock();
         // Call function.
         _evtQueue[0]();
         
+        manager_mutex.lock();
         // Remove fct from queue.
         _evtQueue.pop_front();
     }

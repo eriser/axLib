@@ -5,6 +5,7 @@
 #define __AX_COLOR__
 
 #include "axC++.h"
+#include <fstream>
 
 class axColor
 {
@@ -22,6 +23,15 @@ public:
 	axDouble GetGreen() const;
 	axDouble GetBlue() const;
     axDouble GetAlpha() const;
+    
+    
+    void SerializeOutput(fstream& out);
+    void SerializeInput(fstream& in);
+//    fstream& operator >> (fstream& in);
+//    friend ifstream& operator >> (fstream& in, axColor& color);
+    
+//    ofstream& operator << (ofstream& out);
+//    friend ofstream& operator << (ofstream& out, const axColor& color);
 
 private:
 	axDouble _r, _g, _b, _a;

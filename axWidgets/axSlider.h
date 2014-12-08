@@ -6,6 +6,7 @@
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
+#include "axMsg.h"
 
 /**************************************************************************//**
  * axSliderFlags.
@@ -22,7 +23,7 @@
 /**************************************************************************//**
  * axSliderMsg
 ******************************************************************************/
-class axSliderMsg
+class axSliderMsg : public axMsg
 {
 public:
 	axSliderMsg(const double& value):
@@ -34,6 +35,11 @@ public:
 	{
 		return _value;
 	}
+    
+    axMsg* GetCopy()
+    {
+        return new axSliderMsg(*this);
+    }
 
 private:
 	double _value;
@@ -44,10 +50,12 @@ private:
 ******************************************************************************/
 struct axSliderEvents
 {
-	axEvtFunction(axSliderMsg) slider_value_change;
-
-	axSliderEvents(){}
-	axSliderEvents(axEvtFunction(axSliderMsg)& fct){ slider_value_change = fct; }
+    enum : axEventId { VALUE_CHANGE };
+    
+    axSliderEvents(){}
+    axSliderEvents(axEventFunction& fct){ slider_value_change = fct; }
+    
+    axEventFunction slider_value_change;
 };
 
 /**************************************************************************//**

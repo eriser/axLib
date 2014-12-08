@@ -37,6 +37,7 @@ dependencies: /Users/alexarse/Project/axLib/axExamples/Demo/Demo/main.cpp \
   /Users/alexarse/Project/axLib/axWidgets/axToggle.h \
   /Users/alexarse/Project/axLib/axWidgets/axNumberBox.h \
   /Users/alexarse/Project/axLib/axWidgets/axPopupMenu.h \
+  /Users/alexarse/Project/axLib/axWidgets/axDropMenu.h \
   /Users/alexarse/Project/axLib/axWidgets/axSlider.h \
   /Users/alexarse/Project/axLib/axWidgets/axGrid.h \
   /Users/alexarse/Project/axLib/axWidgets/axMenu.h \

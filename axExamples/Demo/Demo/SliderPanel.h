@@ -17,7 +17,8 @@ public:
     SliderPanel(axWindow* parent,
                 const axRect& rect);
     
-    axEVENT(axSliderMsg, OnSlider1);
+    axEVENT_ACCESSOR(axSliderMsg, OnSlider1);
+    
 private:
     virtual void OnPaint();
     

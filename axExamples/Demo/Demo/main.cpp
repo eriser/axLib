@@ -31,15 +31,11 @@ axPanel(parent, rect)
     
     axSize tabBtnSize(55, 25);
     
-    // This should't be needed.
-    // @todo Find a way to do the automatic cast.
-    std::function<void (axToggleMsg)> fct = GetOnTabClick();
-    
     // Tab button event.
-    axToggleEvents btn_evts(fct);
+    axToggleEvents btn_evts;
+    btn_evts.button_click = GetOnTabClick();
     
     // Tab buttons info.
-//    axButtonInfo btn_info(axSTANDARD_BUTTON);
     axToggleInfo btn_info;
     btn_info.normal = axColor(0.8, 0.8, 0.8);
     btn_info.hover = axColor(0.9, 0.9, 0.9);

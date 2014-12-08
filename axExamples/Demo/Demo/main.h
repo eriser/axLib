@@ -16,7 +16,7 @@ class MainPanel : public axPanel
 public:
     MainPanel(axWindow* parent, const axRect& rect);
     
-    axEVENT(axToggleMsg, OnTabClick);
+    axEVENT_ACCESSOR(axToggleMsg, OnTabClick);
     
 private:
     virtual void OnPaint();

@@ -27,7 +27,7 @@ axPanel(parent, rect)
     btn1_evts.button_click = GetOnPopupMenu();
     
     _btnPopMenu = new axButton(this,
-                               axRect(40, 40, 70, 25),
+                               axRect(40, 40, 100, 20),
                                btn1_evts,
                                btn1_info,
                                "", "Test1");
@@ -36,7 +36,7 @@ axPanel(parent, rect)
     btn2_evts.button_click = GetOnTestBtnUnder();
 
     axButton* btn2 = new axButton(this,
-                                  axRect(_btnPopMenu->GetBottomLeftPosition(),
+                                  axRect(_btnPopMenu->GetBottomLeftPosition() + axPoint(0, 10),
                                          axSize(70, 25)),
                                   btn2_evts,
                                   btn1_info,
@@ -53,18 +53,37 @@ axPanel(parent, rect)
     axPopupMenuEvents menu_evts;
     menu_evts.selection_change = GetOnPopupMenuChoice();
     
-    std::vector<std::string> menu_str = {"Test1", "Test2", "Test3", "Test4"};
+    std::vector<std::string> menu_str = {"None", "Test1",
+                                         "Test2", "Test3",
+                                         "Test4"};
     
     axPoint menu_pos = _btnPopMenu->GetAbsoluteRect().position;
     menu_pos.y += _btnPopMenu->GetSize().y;
     _popMenu = new axPopupMenu(this,
-                               axRect(menu_pos, axSize(70, 30)),
+                               axRect(menu_pos, axSize(100, 30)),
                                menu_evts, menu_info, menu_str);
     
     _popMenu->Hide();
     _popMenu->SetSelectedIndex(0);
     
     std::cout << "MenuPanel::_popMenu (id) = " << _popMenu->GetId() << std::endl;
+    
+    axDropMenuInfo drop_info;
+    drop_info.normal = axColor(0.8, 0.8, 0.8);
+    drop_info.hover = axColor(0.9, 0.9, 0.9);
+    drop_info.clicking = axColor(0.7, 0.7, 0.7);
+    drop_info.contour = axColor(0.0, 0.0, 0.0);
+    drop_info.selected = drop_info.normal;
+    
+    axDropMenuEvents drop_evts;
+    drop_evts.selection_change = GetOnDropMenuChoice();
+    
+    _dropMenu = new axDropMenu(this, axRect(250, 40, 100, 20),
+                               drop_evts,
+                               drop_info,
+                               app_path + std::string("DropMenuArrow.png"),
+                               app_path + std::string("button.png"),
+                               axDROP_MENU_SINGLE_IMG);
 }
 
 void MenuPanel::OnPopupMenu(const axButtonMsg& msg)
@@ -87,6 +106,11 @@ void MenuPanel::OnPopupMenuChoice(const axPopupMenuMsg& msg)
     _btnPopMenu->SetLabel(msg.GetMsg());
     
     Update();
+}
+
+void MenuPanel::OnDropMenuChoice(const axDropMenuMsg& msg)
+{
+    std::cout << "Drop choice : " << msg.GetMsg() << std::endl;
 }
 
 void MenuPanel::OnTestBtnUnder(const axButtonMsg& msg)

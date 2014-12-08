@@ -9,6 +9,7 @@
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
+#include "axMsg.h"
 #include <fstream>
 
 
@@ -22,7 +23,7 @@
 
 class axToggle;
 
-class axToggleMsg
+class axToggleMsg : public axMsg
 {
 public:
 	axToggleMsg()
@@ -58,6 +59,11 @@ public:
     {
         return _msg;
     }
+    
+    axMsg* GetCopy()
+    {
+        return new axToggleMsg(*this);
+    }
 
 private:
 	axToggle* _sender;
@@ -67,10 +73,12 @@ private:
 
 struct axToggleEvents
 {
-	std::function<void (axToggleMsg)> button_click;
+    enum : axEventId { BUTTON_CLICK };
+    
+	axEventFunction button_click;
 	
 	axToggleEvents(){}
-	axToggleEvents(std::function<void (axToggleMsg)>& fct){ button_click = fct; }
+	axToggleEvents(axEventFunction& fct){ button_click = fct; }
 };
 
 struct axToggleInfo
@@ -149,9 +157,9 @@ public:
              axFlag flags = 0,
              string msg = "");
 
-	axToggle(axWindow* parent,
-			 const axToggleEvents& events,
-			 const string& path);
+//	axToggle(axWindow* parent,
+//			 const axToggleEvents& events,
+//			 const string& path);
 
 	void SetBackgroundAlpha(const float& alpha);
 

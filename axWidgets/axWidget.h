@@ -5,6 +5,7 @@
 #include "axToggle.h"
 #include "axNumberBox.h"
 #include "axPopupMenu.h"
+#include "axDropMenu.h"
 #include "axSlider.h"
 #include "axGrid.h"
 #include "axMenu.h"
