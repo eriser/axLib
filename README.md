@@ -3,6 +3,7 @@ axLib
 
 Graphic User Interface with OpenGL
 
+![](https://github.com/github/training-kit/blob/master/images/professortocat.png)
 
 Installation
 ============
