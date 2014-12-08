@@ -14,7 +14,6 @@ ButtonPanel::ButtonPanel(axWindow* parent,
 axPanel(parent, rect)
 {
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
-	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
     
     axButtonInfo btn1_info;
     btn1_info.normal = axColor(0.8, 0.8, 0.8);
@@ -70,8 +69,6 @@ axPanel(parent, rect)
                                   "Btn5",
                                   axBUTTON_SINGLE_IMG |
                                   axBUTTON_IMG_RESIZE);
-    
-//    btn2_info.SerializeOutput("axButtonBlue.axobj");
     
     axButton* btn6 = new axButton(this,
                                   axRect(390, 40, 25, 25),

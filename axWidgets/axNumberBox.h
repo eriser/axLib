@@ -123,7 +123,7 @@ public:
                 axControlType type = axCTRL_FLOAT,
                 axControlUnit m_unit = axCTRL_NO_UNIT,
                 axControlInterpolation interpolation = axCTRL_LINEAR,
-                string label = "");
+                std::string label = "");
 
     double GetValue();
 
@@ -131,17 +131,16 @@ private:
     axNumberBoxEvents _events;
     axNumberBoxInfo _info;
     axFlag _flags;
-    // axSTANDARD_WIDGET_MEMBERS( axNumberBox );
+
     axControlType _type;
     axControlUnit _unit;
     axFloatRange _range;
     axControlInterpolation _interpolation;
-    // axFlag m_flags;
 
     axColor _currentColor;
     double _value;
     double _zeroToOneValue;
-    string _label;
+    std::string _label;
 
     int _clickPosY;
 
@@ -150,16 +149,9 @@ private:
     void OnMouseEnter();
     void OnMouseLeftDown(const axPoint& pos);
     void OnMouseLeftUp(const axPoint& pos);
-    // void OnMouseMotion(const axPoint& pos);
     void OnMouseLeftDragging(const axPoint& pos);
     void OnMouseLeave();
 
-    // void OnPaint();
-    // void OnMouseEnter();
-    // void OnMouseLeave();
-    // void OnMouseLeftDown();
-    // void OnMouseLeftUp();
-    // void OnLeftDragging();
 };
 
 #define axNUMBER_BOX_STANDARD axNumberBoxInfo( axColor("#AA1111"),          \
@@ -173,34 +165,5 @@ private:
                                             axColor("#AAAAAA"),          \
                                             axColor("#FF0000"),          \
                                             axColor("#000000") )
-
-///********************************************************************************//**
-//***********************************************************************************/
-//class axNumberBoxControl: public axWindow
-//{
-//public:
-//    axNumberBoxControl( axApp* app,
-//                        axWindow* parent,
-//                        const axID& id,
-//                        const string& label,
-//                        const axNumberBoxEvents& events,
-//                        const axNumberBoxInfo& box_info,
-//                        const axPoint& pos );
-
-//    double GetValue();
-
-//private:
-//    axWindow* m_parent;
-//    axNumberBox* m_numBox;
-//    axColor m_currentColor;
-//    axNumberBoxEvents m_eventID;
-//    string m_label;
-
-//    void OnPaint();
-
-//    void OnValueChange();
-
-//    EVENT( axNumberBoxControl, OnValueChange )
-//};
 
 #endif // __AX_NUMBER_BOX__

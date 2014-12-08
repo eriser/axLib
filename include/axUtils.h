@@ -48,6 +48,23 @@ struct axRange
     axRange() {}
     axRange( const T& minimum, const T& maximum ) :
              left( minimum ), right( maximum ) {}
+    
+    double GetZeroToOneValue(const double& value) const
+    {
+        double v = double(value - left) / double(right - left);
+        if(v > 1.0) v = 1.0;
+        if(v < 0.0) v = 0.0;
+        
+        return v;
+    }
+    
+    double GetValueFromZeroToOne(const double& value)
+    {
+        double v = value * double(right - left) + double(left);
+        if(v > right) v = right;
+        if(v < left) v = left;
+        return v;
+    }
 
     T left, right;
 };
