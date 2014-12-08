@@ -13,8 +13,8 @@
 #include "axTimer.h"
 #include "axMsg.h"
 
-#include "axWidgets/axWidget.h"
-
+//#include "axWidgets/axWidget.h"
+#include "axWidget.h"
 #include "axMain.h"
 
 #endif //__AX_LIB__
