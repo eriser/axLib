@@ -39,8 +39,9 @@ axPanel(parent, rect)
                                   axRect(110, 40, 60, 25),
                                   axButtonEvents(),
                                   btn1_info,
-                                  app_path + std::string("btn.png"),
-                                  "Btn2");
+                                  app_path + std::string("GrayButton.png"),
+                                  "Btn2",
+                                  axBUTTON_SINGLE_IMG);
     btn2->SetBackgroundAlpha(0.0);
     
     axButton* btn3 = new axButton(this,

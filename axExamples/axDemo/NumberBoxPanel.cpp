@@ -184,7 +184,7 @@ void NumberBoxPanel::OnPaint()
     axRect rect(GetRect());
     axRect rect0(axPoint(0, 0), rect.size);
     
-    gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
+    gc->SetColor(axColor(1.0, 1.0, 1.0), 1.0);
     gc->DrawRectangle(rect0);
     
     gc->DrawRectangleColorFade(_squareRect, _squareColor, _squareColorBottom);

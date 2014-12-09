@@ -42,12 +42,15 @@ axPanel(parent, rect)
                                   sld_evts, sld_info);
     
     sld1->SetBackgroundAlpha(0.3);
-    
+    sld_info.sliderColorNormal = axColor(0.8, 0.2, 0.9);
+
     axSlider* sld2 = new axSlider(this, axRect(40, 100, 300, 15),
                                   sld_evts, sld_info,
                                   axSLIDER_FLAG_BACK_SLIDER);
     
+    
     sld2->SetBackgroundAlpha(0.3);
+    sld_info.sliderColorNormal = axColor(0.2, 0.8, 0.2);
     
     axSlider* sld3 = new axSlider(this, axRect(40, 120, 300, 15),
                                   sld_evts, sld_info,
@@ -136,7 +139,7 @@ void SliderPanel::OnPaint()
     axRect rect(GetRect());
     axRect rect0(axPoint(0, 0), rect.size);
     
-    gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
+    gc->SetColor(axColor(1.0, 1.0, 1.0), 1.0);
     gc->DrawRectangle(rect0);
     
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);

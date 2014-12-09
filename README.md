@@ -12,19 +12,20 @@ A C++ cross-platform framework to build highly customizable platform-independent
 ## Build in Widgets
 - axButton
 
-![axButton image](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axButton.png)
-
+	![axButton image](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axButton.png)
 - axDropMenu
 - axGrid
 - axKnob
 - axMenu
 - axNumberBox
+
+	![axNumberBox](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axNumberBox.png)
 - axPopupMenu
 - axScrollBar
 - axSlider
 - axToggle
 
-## Create Project from scratch
+## Create Project
 
 
 ### Mac OS 10.10 (Yosemite) - Xcode 6.1
@@ -45,7 +46,7 @@ A C++ cross-platform framework to build highly customizable platform-independent
 	* **AppDelegate.h** 
 	* **AppDelegate.m** 
 	* **MainMenu.xib**
-	
+
 6. Drag or include these folders in project navigator.
 	* **axLib/include/**
 	* **axLib/source/**
