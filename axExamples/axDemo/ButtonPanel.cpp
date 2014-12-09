@@ -83,7 +83,7 @@ axPanel(parent, rect)
     _timer = new axTimer();
     _timer->AddConnection(0, GetOnTimerEvent());
     
-    _colorTimer = axColor(0.4, 0.4, 0.4);
+    _colorTimer = axColor(1.0, 1.0, 1.0);
     
 }
 

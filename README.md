@@ -35,12 +35,17 @@ A C++ cross-platform framework to build highly customizable platform-independent
 
 3. Delete test folder in project navigator and click on move to trash.
 
-4. Then go in project option under **Targets List** and delete test target.
+	 ![Delete test folder](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/ProjectFromScratch_Test.png)
+
+4. Then go in project option under **Targets List** right click and delete test target.
+
+	![Delete test](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/ProjectFromScratch_Tst2.png)
 
 5. Delete these files in project navigator and move to trash.
 	* **AppDelegate.h** 
 	* **AppDelegate.m** 
 	* **MainMenu.xib**
+	
 6. Drag or include these folders in project navigator.
 	* **axLib/include/**
 	* **axLib/source/**
@@ -57,6 +62,12 @@ A C++ cross-platform framework to build highly customizable platform-independent
 9. Add these flags to **Linking** tab under **Other Linker Flags** still in project configuration.
 	* **-lfreetype**
 	* **-lpng15**
+
+10. Change **Per-configuration Build Products Path** in **Build Locations** tab to :
+	* **$(SRCROOT)/Debug/**
+	* **$(SRCROOT)/Release/**
+
+11. Then copy **axLib/ressources/axFonts/FreeSans.ttf** into each folder created (Debug and Release).
 
 10. Finally create new **main.cpp** and **main.h** files and add them to project. 
 	* Continue to **Minimal implementation** section and copy code below for bare minimum implementation.
