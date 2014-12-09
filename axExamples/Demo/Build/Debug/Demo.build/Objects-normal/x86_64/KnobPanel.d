@@ -3,7 +3,7 @@ dependencies: \
   /Users/alexarse/Project/axLib/axExamples/Demo/Demo/KnobPanel.h \
   /Users/alexarse/Project/axLib/include/axLib.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
-  /Users/alexarse/Project/axLib/include/axCoreMac.h \
+  /Users/alexarse/Project/axLib/axMac/axCoreMac.h \
   /Users/alexarse/Project/axLib/include/axCore.h \
   /Users/alexarse/Project/axLib/include/axC++.h \
   /Users/alexarse/Project/axLib/include/axUtils.h \
@@ -11,28 +11,27 @@ dependencies: \
   /Users/alexarse/Project/axLib/include/axWindow.h \
   /Users/alexarse/Project/axLib/include/axObject.h \
   /Users/alexarse/Project/axLib/include/axEvent.h \
-  /Users/alexarse/Project/axLib/axMsg.h \
+  /Users/alexarse/Project/axLib/include/axMsg.h \
   /Users/alexarse/Project/axLib/include/axGC.h \
   /Users/alexarse/Project/axLib/include/axImage.h \
   /Users/alexarse/Project/axLib/include/axColor.h \
   /Users/alexarse/Project/axLib/include/axFont.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/ft2build.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/config/ftheader.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/freetype.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/config/ftconfig.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/config/ftoption.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/config/ftstdlib.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/fterrors.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/ftmoderr.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/fterrdef.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/fttypes.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/ftsystem.h \
-  /Users/alexarse/Development/freetype-2.4.0/include/freetype/ftimage.h \
+  /usr/local/include/ft2build.h \
+  /usr/local/include/freetype2/freetype/config/ftheader.h \
+  /usr/local/include/freetype2/freetype/freetype.h \
+  /usr/local/include/freetype2/freetype/config/ftconfig.h \
+  /usr/local/include/freetype2/freetype/config/ftoption.h \
+  /usr/local/include/freetype2/freetype/config/ftstdlib.h \
+  /usr/local/include/freetype2/freetype/fterrors.h \
+  /usr/local/include/freetype2/freetype/ftmoderr.h \
+  /usr/local/include/freetype2/freetype/fterrdef.h \
+  /usr/local/include/freetype2/freetype/fttypes.h \
+  /usr/local/include/freetype2/freetype/ftsystem.h \
+  /usr/local/include/freetype2/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \
   /Users/alexarse/Project/axLib/include/axPanel.h \
-  /Users/alexarse/Project/axLib/axEventManager.h \
-  /Users/alexarse/Project/axLib/axEvent.h \
-  /Users/alexarse/Project/axLib/axTimer.h \
+  /Users/alexarse/Project/axLib/include/axEventManager.h \
+  /Users/alexarse/Project/axLib/include/axTimer.h \
   /Users/alexarse/Project/axLib/axWidgets/axWidget.h \
   /Users/alexarse/Project/axLib/axWidgets/axButton.h \
   /Users/alexarse/Project/axLib/axWidgets/axToggle.h \
@@ -44,4 +43,4 @@ dependencies: \
   /Users/alexarse/Project/axLib/axWidgets/axMenu.h \
   /Users/alexarse/Project/axLib/axWidgets/axKnob.h \
   /Users/alexarse/Project/axLib/axWidgets/axScrollBar.h \
-  /Users/alexarse/Project/axLib/axMain.h
+  /Users/alexarse/Project/axLib/include/axMain.h

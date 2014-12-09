@@ -9,6 +9,20 @@ A C++ cross-platform framework to build highly customizable platform-independent
 - Use of C++11 lambda functions and threads for event management.
 - Minimize interaction with operating systems.
 
+## Build in Widgets
+- axButton
+![axButton image](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axButton.png)
+
+- axDropMenu
+- axGrid
+- axKnob
+- axMenu
+- axNumberBox
+- axPopupMenu
+- axScrollBar
+- axSlider
+- axToggle
+
 ## Create Project from scratch
 
 

@@ -1,2 +1,3 @@
-dependencies: /Users/alexarse/Project/axLib/axEvent.cpp \
-  /Users/alexarse/Project/axLib/axEvent.h
+dependencies: /Users/alexarse/Project/axLib/source/axEvent.cpp \
+  /Users/alexarse/Project/axLib/include/axEvent.h \
+  /Users/alexarse/Project/axLib/include/axMsg.h

@@ -1,7 +1,6 @@
-dependencies: /Users/alexarse/Project/axLib/axImage.cpp \
+dependencies: /Users/alexarse/Project/axLib/source/axImage.cpp \
   /Users/alexarse/Project/axLib/include/axImage.h \
   /Users/alexarse/Project/axLib/include/axC++.h \
   /Users/alexarse/Project/axLib/include/axUtils.h \
-  /Library/Frameworks/libpng15.framework/Headers/png.h \
-  /Library/Frameworks/libpng15.framework/Headers/pnglibconf.h \
-  /Library/Frameworks/libpng15.framework/Headers/pngconf.h
+  /usr/local/include/png.h /usr/local/include/pnglibconf.h \
+  /usr/local/include/pngconf.h
