@@ -1,36 +1,36 @@
-﻿Build started 11/25/2014 6:54:13 PM.
+﻿Build started 12/9/2014 12:35:36 PM.
      1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\freetype-2.5.3\builds\windows\vc2010\freetype.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\..\include /Zi /nologo /W4 /WX- /MP /Od /Oy- /D _DEBUG /D WIN32 /D _LIB /D _CRT_SECURE_NO_WARNINGS /D FT_DEBUG_LEVEL_ERROR /D FT_DEBUG_LEVEL_TRACE /D FT2_BUILD_LIBRARY /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Za /Zc:wchar_t /Zc:forScope /Fo".\..\..\..\objs\debug\\" /Fd".\..\..\..\objs\debug\vc120.pdb" /Gd /TC /wd4001 /analyze- /errorReport:prompt ..\..\..\src\autofit\autofit.c ..\..\..\src\bdf\bdf.c ..\..\..\src\cff\cff.c ..\..\..\src\base\ftbase.c ..\..\..\src\base\ftbitmap.c ..\..\..\src\cache\ftcache.c ..\..\..\src\base\ftfstype.c ..\..\..\src\base\ftgasp.c ..\..\..\src\base\ftglyph.c ..\..\..\src\gzip\ftgzip.c ..\..\..\src\base\ftinit.c ..\..\..\src\lzw\ftlzw.c ..\..\..\src\base\ftstroke.c ..\..\..\src\base\ftsystem.c ..\..\..\src\smooth\smooth.c ..\..\..\src\base\ftbbox.c ..\..\..\src\base\ftmm.c ..\..\..\src\base\ftpfr.c ..\..\..\src\base\ftsynth.c ..\..\..\src\base\fttype1.c ..\..\..\src\base\ftwinfnt.c ..\..\..\src\base\ftxf86.c ..\..\..\src\base\ftlcdfil.c ..\..\..\src\base\ftgxval.c ..\..\..\src\base\ftotval.c ..\..\..\src\base\ftpatent.c ..\..\..\src\pcf\pcf.c ..\..\..\src\pfr\pfr.c ..\..\..\src\psaux\psaux.c ..\..\..\src\pshinter\pshinter.c ..\..\..\src\psnames\psmodule.c ..\..\..\src\raster\raster.c ..\..\..\src\sfnt\sfnt.c ..\..\..\src\truetype\truetype.c ..\..\..\src\type1\type1.c ..\..\..\src\cid\type1cid.c ..\..\..\src\type42\type42.c ..\..\..\src\winfonts\winfnt.c
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\..\include /Zi /nologo /W4 /WX- /MP /Od /Oy- /D _DEBUG /D WIN32 /D _LIB /D _CRT_SECURE_NO_WARNINGS /D FT_DEBUG_LEVEL_ERROR /D FT_DEBUG_LEVEL_TRACE /D FT2_BUILD_LIBRARY /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Za /Zc:wchar_t /Zc:forScope /Fo".\..\..\..\objs\debug\\" /Fd".\..\..\..\objs\debug\vc120.pdb" /Gd /TC /wd4001 /analyze- /errorReport:prompt ..\..\..\src\autofit\autofit.c ..\..\..\src\base\ftbase.c ..\..\..\src\base\ftbbox.c ..\..\..\src\base\ftbitmap.c ..\..\..\src\base\ftfstype.c ..\..\..\src\base\ftgasp.c ..\..\..\src\base\ftglyph.c ..\..\..\src\base\ftgxval.c ..\..\..\src\base\ftinit.c ..\..\..\src\base\ftlcdfil.c ..\..\..\src\base\ftmm.c ..\..\..\src\base\ftotval.c ..\..\..\src\base\ftpatent.c ..\..\..\src\base\ftpfr.c ..\..\..\src\base\ftstroke.c ..\..\..\src\base\ftsynth.c ..\..\..\src\base\ftsystem.c ..\..\..\src\base\fttype1.c ..\..\..\src\base\ftwinfnt.c ..\..\..\src\base\ftxf86.c ..\..\..\src\bdf\bdf.c ..\..\..\src\cache\ftcache.c ..\..\..\src\cff\cff.c ..\..\..\src\cid\type1cid.c ..\..\..\src\gzip\ftgzip.c ..\..\..\src\lzw\ftlzw.c ..\..\..\src\pcf\pcf.c ..\..\..\src\pfr\pfr.c ..\..\..\src\psaux\psaux.c ..\..\..\src\pshinter\pshinter.c ..\..\..\src\psnames\psmodule.c ..\..\..\src\raster\raster.c ..\..\..\src\sfnt\sfnt.c ..\..\..\src\smooth\smooth.c ..\..\..\src\truetype\truetype.c ..\..\..\src\type1\type1.c ..\..\..\src\type42\type42.c ..\..\..\src\winfonts\winfnt.c
          autofit.c
-         bdf.c
-         cff.c
          ftbase.c
+         ftbbox.c
+         ftbitmap.c
+         ftfstype.c
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\autofit\afglobal.c(141): warning C4245: 'initializing' : conversion from 'int' to 'FT_UInt', signed/unsigned mismatch (..\..\..\src\autofit\autofit.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\autofit\afglobal.c(179): warning C4389: '==' : signed/unsigned mismatch (..\..\..\src\autofit\autofit.c)
-         ftbitmap.c
-     1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\autofit\afmodule.c(106): warning C4389: '==' : signed/unsigned mismatch (..\..\..\src\autofit\autofit.c)
-         ftcache.c
-         ftfstype.c
          ftgasp.c
          ftglyph.c
-         ftgzip.c
+     1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\autofit\afmodule.c(106): warning C4389: '==' : signed/unsigned mismatch (..\..\..\src\autofit\autofit.c)
+         ftgxval.c
          ftinit.c
-         ftlzw.c
-         ftstroke.c
-         ftsystem.c
-         smooth.c
-         ftbbox.c
+         ftlcdfil.c
          ftmm.c
+         ftotval.c
+         ftpatent.c
          ftpfr.c
+         ftstroke.c
          ftsynth.c
+         ftsystem.c
          fttype1.c
          ftwinfnt.c
          ftxf86.c
-         ftlcdfil.c
-         ftgxval.c
-         ftotval.c
-         ftpatent.c
+         bdf.c
+         ftcache.c
+         cff.c
+         type1cid.c
+         ftgzip.c
+         ftlzw.c
          pcf.c
          pfr.c
          psaux.c
@@ -38,9 +38,9 @@
          psmodule.c
          raster.c
          sfnt.c
+         smooth.c
          truetype.c
          type1.c
-         type1cid.c
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\sfobjs.c(504): warning C4244: '=' : conversion from 'FT_ULong' to 'FT_Byte', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\sfobjs.c(505): warning C4244: '=' : conversion from 'int' to 'FT_Byte', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\sfobjs.c(506): warning C4244: '=' : conversion from 'FT_UInt' to 'FT_Byte', possible loss of data (..\..\..\src\sfnt\sfnt.c)
@@ -50,9 +50,6 @@
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\sfobjs.c(646): warning C4244: '=' : conversion from 'FT_ULong' to 'FT_Byte', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\sfobjs.c(647): warning C4244: '=' : conversion from 'FT_ULong' to 'FT_Byte', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\sfobjs.c(648): warning C4244: '=' : conversion from 'FT_ULong' to 'FT_Byte', possible loss of data (..\..\..\src\sfnt\sfnt.c)
-     1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\truetype\ttgload.c(102): warning C4244: '=' : conversion from 'FT_Pos' to 'FT_Short', possible loss of data (..\..\..\src\truetype\truetype.c)
-     1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\truetype\ttgload.c(108): warning C4244: '=' : conversion from 'FT_Pos' to 'FT_Short', possible loss of data (..\..\..\src\truetype\truetype.c)
-         type42.c
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\ttsbit.c(291): warning C4244: '=' : conversion from 'FT_UInt' to 'FT_UShort', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\ttsbit.c(292): warning C4244: '=' : conversion from 'FT_UInt' to 'FT_UShort', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\ttsbit.c(803): warning C4244: 'initializing' : conversion from 'FT_Short' to 'FT_Char', possible loss of data (..\..\..\src\sfnt\sfnt.c)
@@ -63,7 +60,10 @@
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\ttsbit.c(808): warning C4244: 'initializing' : conversion from 'FT_UShort' to 'FT_Byte', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\ttsbit.c(1355): warning C4244: '=' : conversion from 'FT_Int' to 'FT_Short', possible loss of data (..\..\..\src\sfnt\sfnt.c)
      1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\sfnt\ttsbit.c(1356): warning C4244: '=' : conversion from 'int' to 'FT_Short', possible loss of data (..\..\..\src\sfnt\sfnt.c)
+         type42.c
          winfnt.c
+     1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\truetype\ttgload.c(102): warning C4244: '=' : conversion from 'FT_Pos' to 'FT_Short', possible loss of data (..\..\..\src\truetype\truetype.c)
+     1>c:\users\alexandre arsenault\desktop\axlib\libs\freetype-2.5.3\src\truetype\ttgload.c(108): warning C4244: '=' : conversion from 'FT_Pos' to 'FT_Short', possible loss of data (..\..\..\src\truetype\truetype.c)
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\..\include /Zi /nologo /W4 /WX- /MP /Od /Oy- /D _DEBUG /D WIN32 /D _LIB /D _CRT_SECURE_NO_WARNINGS /D FT_DEBUG_LEVEL_ERROR /D FT_DEBUG_LEVEL_TRACE /D FT2_BUILD_LIBRARY /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\..\..\..\objs\debug\\" /Fd".\..\..\..\objs\debug\vc120.pdb" /Gd /TC /wd4001 /analyze- /errorReport:prompt ..\ftdebug.c
          ftdebug.c
        Lib:
@@ -111,4 +111,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.31
+Time Elapsed 00:00:05.51

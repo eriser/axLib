@@ -1,5 +1,5 @@
-﻿Build started 11/25/2014 6:52:10 PM.
-     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" on node 5 (Rebuild target(s)).
+﻿Build started 12/9/2014 12:34:38 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" on node 5 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Od /Oi /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D PNG_USE_DLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\contrib\libtests\pngunknown.c
          pngunknown.c
@@ -24,8 +24,8 @@
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_user_chunk_ptr referenced in function _read_callback
      1>pngunknown.obj : error LNK2019: unresolved external symbol __imp__png_get_unknown_chunks referenced in function _get_unknown
      1>C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngunknown.exe : fatal error LNK1120: 18 unresolved externals
-     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" (Rebuild target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngunknown\pngunknown.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:00.73
+Time Elapsed 00:00:00.40
