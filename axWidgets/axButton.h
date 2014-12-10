@@ -17,7 +17,7 @@
 ******************************************************************************/
 #define axBUTTON_SINGLE_IMG	axFLAG_1
 #define axBUTTON_IMG_RESIZE	axFLAG_2
-#define axBUTTON_CANT_BE_SELECTED axFLAG_3 // Not implemented yet.
+#define axBUTTON_CAN_SELECTED axFLAG_3 // Not implemented yet.
 
 class axButton;
 
@@ -144,6 +144,13 @@ struct axButtonInfo
 							axColor(0.0, 0.0, 0.0),\
 							axColor(0.0, 0.0, 0.0)) 
 
+#define axBUTTON_TRANSPARENT 	axButtonInfo( \
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 1.0))
 
 class axButton : public axPanel
 {
@@ -162,7 +169,7 @@ public:
 			 const string& path);
 
     // Should be there since update axColor with alpha component.
-	void SetBackgroundAlpha(const float& alpha);
+//	void SetBackgroundAlpha(const float& alpha);
 
 	void SetMsg(const string& msg);
     
@@ -186,8 +193,8 @@ private:
 	enum axButtonState 
 	{
 		axBTN_NORMAL,
-		axBTN_DOWN,
 		axBTN_HOVER,
+        axBTN_DOWN,
 		axBTN_SELECTED
 	};
 
@@ -203,3 +210,5 @@ private:
 #endif //__AX_BUTTON__
 
 /// @}
+
+

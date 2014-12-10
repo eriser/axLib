@@ -118,11 +118,11 @@ void axButton::SetSelected(const bool& selected)
 	}
 }
 
-void axButton::SetBackgroundAlpha(const float& alpha)
-{
-	_bgAlpha = alpha;
-	Update();
-}
+//void axButton::SetBackgroundAlpha(const float& alpha)
+//{
+//	_bgAlpha = alpha;
+//	Update();
+//}
 
 void axButton::SetLabel(const std::string& label)
 {
@@ -209,7 +209,7 @@ void axButton::OnPaint()
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);
 
-	gc->SetColor(*_currentColor, _bgAlpha);
+	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
 
 	if (_btnImg->IsImageReady())
@@ -233,8 +233,7 @@ void axButton::OnPaint()
 		gc->DrawStringAlignedCenter(_label, rect0);
 	}
 
-	gc->SetColor(_info.contour, _bgAlpha);
-	gc->SetColor(_info.contour, _bgAlpha);
+	gc->SetColor(_info.contour);
 	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
 }
 
