@@ -73,7 +73,65 @@ A C++ cross-platform framework to build highly customizable platform-independent
 10. Finally create new **main.cpp** and **main.h** files and add them to project. 
 	* Continue to **Minimal implementation** section and copy code below for bare minimum implementation.
 
-### Minimal implementation.
+### Windows 7 and 8 - Visual Studio 2013
+1. Create a **AX_LIB** path variable to axLib main folder in **Control Panel** under **System**.
+
+	![System](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/sysprop.PNG)
+
+2. Compile **FreeType2** in **axLib/libs/freetype-2.5.3/builds/windows/vc2010/**.
+
+3. Compile **LibPng** in **axLib/libs/lpng1610/projects/vstudio/**.
+
+4. Create a C++ **Emtpy Project** in visual studio.
+
+	![Empty](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/console.PNG)
+
+5. Add these folders to project.
+	* **axLib/include/**
+	* **axLib/source/**
+	* **axLib/axWidgets/**
+	* **axLib/axWin32/**
+
+6. Add these folders in **Configuration Properties** under C/C++ General.
+
+	![Include](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/include.PNG)
+	
+	* **$(AX_LIB)/include/**
+	* **$(AX_LIB)/axWin32/**
+	* **$(AX_LIB)/axWidgets/**
+	* **$(AX_LIB)/libs/freetype-2.5.3/include/**
+	* **$(AX_LIB)/libs/lpng1610/**
+
+6. Add these folders in **Configuration Properties** under Linker General in **Additional Library Directories**.
+
+	![Lib directory](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/lib_dir.PNG)
+	
+	* **$(AX_LIB)/libs/lpng1610/projects/vstudio/Debug/**
+	* **$(AX_LIB)/libs/freetype-2.5.3/objs/win32/vc2010/**
+
+7. Then add these lines to **Linker Input** in **Additional Dependencies**.
+
+	![Lib directory](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/link_folder.PNG)
+
+	* **opengl32.lib**
+	* **glu32.lib**
+	* **libpng16.lib**
+	* **zlib.lib**
+	* **freetype253_D.lib**
+
+8. Add this macro in **Configuration Properties** under **C/C++ Preprocessor**.
+
+	![Lib directory](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/prepro.PNG)
+	
+	* **_CRT_SECURE_NO_WARNINGS**
+
+9. Finally create new main.cpp and main.h files and add them to project.
+
+	* Continue to Minimal implementation section and copy code below for bare minimum implementation.
+
+
+
+## Minimal implementation.
 main.h
 ``` cpp
 #ifndef __MINIMAL_PROJECT__
