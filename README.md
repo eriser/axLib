@@ -29,6 +29,8 @@ A C++ cross-platform framework to build highly customizable platform-independent
 
 [Creating axButton](https://github.com/alexarse/axLib/wiki/axButton)
 
+## Project examples
+...
 
 ## Create Project
 
