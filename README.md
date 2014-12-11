@@ -11,6 +11,7 @@ A C++ cross-platform framework to build highly customizable platform-independent
 
 ## Build in Widgets
 
+---------------------------------
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
 
