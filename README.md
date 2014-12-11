@@ -35,6 +35,8 @@ axButton        | axSlider          | axKnob            | axToggle          | ax
 ![SoundEditor]
 (https://dl.dropboxusercontent.com/u/26931825/axLibWebData/SoundEditor.png)
 
+![Buttons](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axButton.png)
+
 
 
 ## Create Project
