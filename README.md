@@ -11,10 +11,13 @@ A C++ cross-platform framework to build highly customizable platform-independent
 
 ## Build in Widgets
 
-Test | test
+axButton | axSlider
 --------------- | ---------------
-| **Content Cell**  | Content Cell  |
-| Content Cell  | Content Cell  |
+| **axButton**  | **axMenu**  |
+| **axDropMenu** | **axPopupMenu** |
+| **axGrid**	| **axScrollBar**	|
+| **axKnob** 	| **axNumberBox** |
+| **axToggle**	|				|
 
 - axButton
 
