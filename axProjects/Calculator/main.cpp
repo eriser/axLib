@@ -78,8 +78,8 @@ double CalculatorLogic::GetValue()
 //-----------------------------------------------------------------------------
 // Screen
 //-----------------------------------------------------------------------------
-CalcScreen::CalcScreen(axApp* app, axWindow* parent, const axRect& rect):
-axPanel(app, parent, rect), _value(0)
+CalcScreen::CalcScreen(axWindow* parent, const axRect& rect):
+axPanel(parent, rect), _value(0)
 {
 }
 
@@ -97,20 +97,20 @@ void CalcScreen::OnPaint()
 	gc->SetColor(axColor(0.5, 0.5, 0.5), 0.8);
 	gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
 
-
-	char buf[1024];
-	readlink("/proc/self/exe", buf, sizeof(buf)-1);
-	string path(buf);
-	path = path.substr(0, path.find_last_of("/"));
-	path.push_back('/');
-
-	string font_path = path + string("tmp/FreeSans.ttf");
+//
+//	char buf[1024];
+//	readlink("/proc/self/exe", buf, sizeof(buf)-1);
+//	string path(buf);
+//	path = path.substr(0, path.find_last_of("/"));
+//	path.push_back('/');
+//
+//	string font_path = path + string("tmp/FreeSans.ttf");
 	// cout << "Paint path : " << font_path << endl;
 
 
 	string val = to_string(_value);
-	gc->SetColor(axColor("#FFFFFF"));
-	gc->SetFontType(font_path);
+	gc->SetColor(axColor(0.0, 0.0, 0.0));
+//	gc->SetFontType(font_path);
 	gc->SetFontSize(14);
 	gc->DrawString(val, axPoint(5, 23));
 }
@@ -118,60 +118,69 @@ void CalcScreen::OnPaint()
 //-----------------------------------------------------------------------------
 // Calculator
 //-----------------------------------------------------------------------------
-Calculator::Calculator(axApp* app, axWindow* parent, const axRect& rect):
-			axPanel(app, parent, rect)
+Calculator::Calculator(axWindow* parent, const axRect& rect):
+			axPanel(parent, rect)
 {
-	_screen = new CalcScreen(app, this, axRect(5, 5, 155, 40));
+	_screen = new CalcScreen(this, axRect(5, 5, 155, 40));
 
-	std::function<void (axButtonMsg)> number_fct = GetOnNumber();
-	std::function<void (axButtonMsg)> oper_fct = GetOnOperation();
-	axButtonEvents number_event(number_fct);
-	axButtonEvents operation_event(oper_fct);
+//	std::function<void (axButtonMsg)> number_fct = GetOnNumber();
+//	std::function<void (axButtonMsg)> oper_fct = GetOnOperation();
+    axButtonEvents number_event;
+    number_event.button_click = GetOnNumber();
+    axButtonEvents operation_event;
+    operation_event.button_click = GetOnOperation();
 
-	char buf[1024];
-	readlink("/proc/self/exe", buf, sizeof(buf)-1);
-	string path(buf);
-	path = path.substr(0, path.find_last_of("/"));
-	path.push_back('/');
+//	char buf[1024];
+//	readlink("/proc/self/exe", buf, sizeof(buf)-1);
+//	string path(buf);
+//	path = path.substr(0, path.find_last_of("/"));
+//	path.push_back('/');
 
-	cout << path << endl;
+//	cout << path << endl;
+    
+    std::string path = axApp::GetInstance()->GetAppDirectory();
 
 	BtnInfo btns_info[20] =
 	{
-		BtnInfo(to_string(CALC_RESET), path+string("tmp/C.png"), operation_event),
-		BtnInfo(to_string(CALC_SIGN), path+string("tmp/signe.png"), operation_event),
-		BtnInfo(to_string(CALC_POW), path+string("tmp/pow.png"), operation_event),
-		BtnInfo(to_string(CALC_MODULO), path+string("tmp/modulo.png"), operation_event),
-		BtnInfo("7", path+string("tmp/7.png"), number_event),
-		BtnInfo("8", path+string("tmp/8.png"), number_event),
-		BtnInfo("9", path+string("tmp/9.png"), number_event),
-		BtnInfo(to_string(CALC_ADD), path + string("tmp/plus.png"), operation_event),
-		BtnInfo("4", path+string("tmp/4.png"), number_event),
-		BtnInfo("5", path+string("tmp/5.png"), number_event),
-		BtnInfo("6", path+string("tmp/6.png"), number_event),
-		BtnInfo(to_string(CALC_MIN), path + string("tmp/minus.png"), operation_event),
-		BtnInfo("1", path+string("tmp/1.png"), number_event),
-		BtnInfo("2", path+string("tmp/2.png"), number_event),
-		BtnInfo("3", path+string("tmp/3.png"), number_event),
-		BtnInfo(to_string(CALC_MUL), path + string("tmp/mul.png"), operation_event),
-		BtnInfo(".", path+string("tmp/dot.png"), number_event),
-		BtnInfo("0", path+string("tmp/0.png"), number_event),
-		BtnInfo(to_string(CALC_EQUAL), path+string("tmp/equal.png"), operation_event),
-		BtnInfo(to_string(CALC_DIV), path+string("tmp/div.png"), operation_event)
+		BtnInfo(to_string(CALC_RESET), path+string("C.png"), operation_event),
+		BtnInfo(to_string(CALC_SIGN), path+string("signe.png"), operation_event),
+		BtnInfo(to_string(CALC_POW), path+string("pow.png"), operation_event),
+		BtnInfo(to_string(CALC_MODULO), path+string("modulo.png"), operation_event),
+		BtnInfo("7", path+string("7.png"), number_event),
+		BtnInfo("8", path+string("8.png"), number_event),
+		BtnInfo("9", path+string("9.png"), number_event),
+		BtnInfo(to_string(CALC_ADD), path + string("plus.png"), operation_event),
+		BtnInfo("4", path+string("4.png"), number_event),
+		BtnInfo("5", path+string("5.png"), number_event),
+		BtnInfo("6", path+string("6.png"), number_event),
+		BtnInfo(to_string(CALC_MIN), path + string("minus.png"), operation_event),
+		BtnInfo("1", path+string("1.png"), number_event),
+		BtnInfo("2", path+string("2.png"), number_event),
+		BtnInfo("3", path+string("3.png"), number_event),
+		BtnInfo(to_string(CALC_MUL), path + string("mul.png"), operation_event),
+		BtnInfo(".", path+string("dot.png"), number_event),
+		BtnInfo("0", path+string("0.png"), number_event),
+		BtnInfo(to_string(CALC_EQUAL), path+string("equal.png"), operation_event),
+		BtnInfo(to_string(CALC_DIV), path+string("div.png"), operation_event)
 	};
 
-	createButtons(app, this, btns_info);
+	createButtons(this, btns_info);
 }
 
-void Calculator::createButtons(axApp* app, axWindow* parent, BtnInfo info[20])
+void Calculator::createButtons(axWindow* parent, BtnInfo info[20])
 {
-	char buf[1024];
-	readlink("/proc/self/exe", buf, sizeof(buf)-1);
-	string path(buf);
-	path = path.substr(0, path.find_last_of("/"));
-	path.push_back('/');
+//	char buf[1024];
+//	readlink("/proc/self/exe", buf, sizeof(buf)-1);
+//	string path(buf);
+//	path = path.substr(0, path.find_last_of("/"));
+//	path.push_back('/');
 
-	axButtonInfo btn_info(path + string("tmp/axStandardButton.axobj"));
+    axButtonInfo btn_info;//(path + string("tmp/axStandardButton.axobj"));
+    btn_info.normal = axColor(0.6, 0.6, 0.6);
+    btn_info.hover = axColor(0.8, 0.8, 0.8);
+    btn_info.clicking = axColor(0.5, 0.5, 0.5);
+    btn_info.contour = axColor(0.0, 0.0, 0.0);
+    btn_info.selected = btn_info.normal;
 
 	axSize btn_size(35, 35);
 	int delta = btn_size.x + 5;
@@ -182,7 +191,7 @@ void Calculator::createButtons(axApp* app, axWindow* parent, BtnInfo info[20])
 	for (int i = 0; i < 20; i++, i % 4 ? pos.x += delta : pos(5, pos.y+=delta))
 	{
 		axRect btn_rect(pos, btn_size);
-		_btns.push_back(new axButton(app, this,	btn_rect, info[i].events, 
+		_btns.push_back(new axButton(this,	btn_rect, info[i].events,
 			btn_info, info[i].img, "", 0, info[i].msg));						 
 	}
 }
@@ -199,13 +208,27 @@ void Calculator::OnOperation(const axButtonMsg& msg)
 	_screen->SetValue(_logic.GetValue());
 }
 
-//---------------------------------------------------------------------------
-int main()
+void Calculator::OnPaint()
 {
-	axApp app(axSize(165, 255));
-	Calculator* calc = new Calculator(&app, nullptr, axRect(0, 0, 250, 250));
-	
-	app.MainLoop();
-
-	return 0;
+    axGC* gc = GetGC();
+    axRect rect(GetRect());
+    
+    gc->SetColor(axColor(0.4, 0.4, 0.4));
+    gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
 }
+
+
+void axMain::MainEntryPoint(axApp* app)
+{
+    Calculator* calc = new Calculator(nullptr, axRect(0, 0, 200, 255));
+}
+//---------------------------------------------------------------------------
+//int main()
+//{
+//	axApp app(axSize(165, 255));
+//	Calculator* calc = new Calculator(nullptr, axRect(0, 0, 250, 250));
+//	
+//	app.MainLoop();
+//
+//	return 0;
+//}

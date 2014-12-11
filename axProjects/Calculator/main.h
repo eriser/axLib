@@ -42,7 +42,7 @@ private:
 class CalcScreen : public axPanel
 {
 public:
-	CalcScreen(axApp* app, axWindow* parent, const axRect& rect);
+	CalcScreen(axWindow* parent, const axRect& rect);
 
 	void SetValue(const double& value);
 
@@ -54,10 +54,10 @@ private:
 class Calculator: public axPanel
 {
 public:
-	Calculator(axApp* app, axWindow* parent, const axRect& rect);
+	Calculator(axWindow* parent, const axRect& rect);
 
-	axEVENT(axButtonMsg, OnNumber);
-	axEVENT(axButtonMsg, OnOperation);
+	axEVENT_ACCESSOR(axButtonMsg, OnNumber);
+	axEVENT_ACCESSOR(axButtonMsg, OnOperation);
 
 private:
 	vector<axButton*> _btns;
@@ -75,10 +75,11 @@ private:
 		axButtonEvents events;
 	};
 			 
-	void createButtons(axApp* app, axWindow* parent, BtnInfo info[20]);
+	void createButtons(axWindow* parent, BtnInfo info[20]);
 
 	// Events
 	void OnOperation(const axButtonMsg& msg);
 	void OnNumber(const axButtonMsg& msg);
+    void OnPaint();
 };
 //-----------------------------------------------------------------------------

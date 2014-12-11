@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C0352251A395E980025338C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352241A395E980025338C /* main.m */; };
+		7C0352271A395E980025338C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0352261A395E980025338C /* Images.xcassets */; };
+		7C0352881A395EBF0025338C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352411A395EBF0025338C /* AppDelegate.mm */; };
+		7C0352891A395EBF0025338C /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352431A395EBF0025338C /* axCocoaInterfaceMac.mm */; };
+		7C03528A1A395EBF0025338C /* axCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352441A395EBF0025338C /* axCoreMac.cpp */; };
+		7C03528C1A395EBF0025338C /* axButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352481A395EBF0025338C /* axButton.cpp */; };
+		7C03528D1A395EBF0025338C /* axDropMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03524A1A395EBF0025338C /* axDropMenu.cpp */; };
+		7C03528E1A395EBF0025338C /* axGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03524C1A395EBF0025338C /* axGrid.cpp */; };
+		7C03528F1A395EBF0025338C /* axKnob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03524E1A395EBF0025338C /* axKnob.cpp */; };
+		7C0352901A395EBF0025338C /* axMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352501A395EBF0025338C /* axMenu.cpp */; };
+		7C0352911A395EBF0025338C /* axNumberBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352521A395EBF0025338C /* axNumberBox.cpp */; };
+		7C0352921A395EBF0025338C /* axPopupMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352541A395EBF0025338C /* axPopupMenu.cpp */; };
+		7C0352931A395EBF0025338C /* axScrollBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352561A395EBF0025338C /* axScrollBar.cpp */; };
+		7C0352941A395EBF0025338C /* axSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352581A395EBF0025338C /* axSlider.cpp */; };
+		7C0352951A395EBF0025338C /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03525A1A395EBF0025338C /* axToggle.cpp */; };
+		7C0352961A395EBF0025338C /* axApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352741A395EBF0025338C /* axApp.cpp */; };
+		7C0352971A395EBF0025338C /* axC++.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352751A395EBF0025338C /* axC++.cpp */; };
+		7C0352981A395EBF0025338C /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352761A395EBF0025338C /* axColor.cpp */; };
+		7C0352991A395EBF0025338C /* axCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352771A395EBF0025338C /* axCore.cpp */; };
+		7C03529A1A395EBF0025338C /* axEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352781A395EBF0025338C /* axEvent.cpp */; };
+		7C03529B1A395EBF0025338C /* axEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352791A395EBF0025338C /* axEventManager.cpp */; };
+		7C03529C1A395EBF0025338C /* axFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03527A1A395EBF0025338C /* axFont.cpp */; };
+		7C03529D1A395EBF0025338C /* axGC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03527B1A395EBF0025338C /* axGC.cpp */; };
+		7C03529E1A395EBF0025338C /* axImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03527C1A395EBF0025338C /* axImage.cpp */; };
+		7C03529F1A395EBF0025338C /* axMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03527D1A395EBF0025338C /* axMain.cpp */; };
+		7C0352A01A395EBF0025338C /* axManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03527E1A395EBF0025338C /* axManager.cpp */; };
+		7C0352A11A395EBF0025338C /* axMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03527F1A395EBF0025338C /* axMath.cpp */; };
+		7C0352A21A395EBF0025338C /* axMsg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352801A395EBF0025338C /* axMsg.cpp */; };
+		7C0352A31A395EBF0025338C /* axObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352811A395EBF0025338C /* axObject.cpp */; };
+		7C0352A41A395EBF0025338C /* axPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352821A395EBF0025338C /* axPanel.cpp */; };
+		7C0352A51A395EBF0025338C /* axSerialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352831A395EBF0025338C /* axSerialize.cpp */; };
+		7C0352A61A395EBF0025338C /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352841A395EBF0025338C /* axTimer.cpp */; };
+		7C0352A71A395EBF0025338C /* axUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352851A395EBF0025338C /* axUtils.cpp */; };
+		7C0352A81A395EBF0025338C /* axWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352861A395EBF0025338C /* axWindow.cpp */; };
+		7C0352A91A395EBF0025338C /* axWindowTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352871A395EBF0025338C /* axWindowTree.cpp */; };
+		7C0352B81A395EE80025338C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C0352B21A395EE80025338C /* MainMenu.xib */; };
+		7C0352B91A395EE80025338C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352B31A395EE80025338C /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7C03521C1A395E980025338C /* axCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = axCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C0352201A395E980025338C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C0352241A395E980025338C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7C0352261A395E980025338C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7C0352401A395EBF0025338C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7C0352411A395EBF0025338C /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		7C0352421A395EBF0025338C /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCocoaInterfaceMac.h; sourceTree = "<group>"; };
+		7C0352431A395EBF0025338C /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
+		7C0352441A395EBF0025338C /* axCoreMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axCoreMac.cpp; sourceTree = "<group>"; };
+		7C0352451A395EBF0025338C /* axCoreMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCoreMac.h; sourceTree = "<group>"; };
+		7C0352481A395EBF0025338C /* axButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axButton.cpp; sourceTree = "<group>"; };
+		7C0352491A395EBF0025338C /* axButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axButton.h; sourceTree = "<group>"; };
+		7C03524A1A395EBF0025338C /* axDropMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDropMenu.cpp; sourceTree = "<group>"; };
+		7C03524B1A395EBF0025338C /* axDropMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDropMenu.h; sourceTree = "<group>"; };
+		7C03524C1A395EBF0025338C /* axGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGrid.cpp; sourceTree = "<group>"; };
+		7C03524D1A395EBF0025338C /* axGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGrid.h; sourceTree = "<group>"; };
+		7C03524E1A395EBF0025338C /* axKnob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axKnob.cpp; sourceTree = "<group>"; };
+		7C03524F1A395EBF0025338C /* axKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axKnob.h; sourceTree = "<group>"; };
+		7C0352501A395EBF0025338C /* axMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMenu.cpp; sourceTree = "<group>"; };
+		7C0352511A395EBF0025338C /* axMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMenu.h; sourceTree = "<group>"; };
+		7C0352521A395EBF0025338C /* axNumberBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axNumberBox.cpp; sourceTree = "<group>"; };
+		7C0352531A395EBF0025338C /* axNumberBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axNumberBox.h; sourceTree = "<group>"; };
+		7C0352541A395EBF0025338C /* axPopupMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPopupMenu.cpp; sourceTree = "<group>"; };
+		7C0352551A395EBF0025338C /* axPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPopupMenu.h; sourceTree = "<group>"; };
+		7C0352561A395EBF0025338C /* axScrollBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axScrollBar.cpp; sourceTree = "<group>"; };
+		7C0352571A395EBF0025338C /* axScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axScrollBar.h; sourceTree = "<group>"; };
+		7C0352581A395EBF0025338C /* axSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axSlider.cpp; sourceTree = "<group>"; };
+		7C0352591A395EBF0025338C /* axSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axSlider.h; sourceTree = "<group>"; };
+		7C03525A1A395EBF0025338C /* axToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axToggle.cpp; sourceTree = "<group>"; };
+		7C03525B1A395EBF0025338C /* axToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axToggle.h; sourceTree = "<group>"; };
+		7C03525C1A395EBF0025338C /* axWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWidget.h; sourceTree = "<group>"; };
+		7C03525E1A395EBF0025338C /* axApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axApp.h; sourceTree = "<group>"; };
+		7C03525F1A395EBF0025338C /* axC++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "axC++.h"; sourceTree = "<group>"; };
+		7C0352601A395EBF0025338C /* axColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axColor.h; sourceTree = "<group>"; };
+		7C0352611A395EBF0025338C /* axCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCore.h; sourceTree = "<group>"; };
+		7C0352621A395EBF0025338C /* axEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axEvent.h; sourceTree = "<group>"; };
+		7C0352631A395EBF0025338C /* axEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axEventManager.h; sourceTree = "<group>"; };
+		7C0352641A395EBF0025338C /* axFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFont.h; sourceTree = "<group>"; };
+		7C0352651A395EBF0025338C /* axGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGC.h; sourceTree = "<group>"; };
+		7C0352661A395EBF0025338C /* axImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axImage.h; sourceTree = "<group>"; };
+		7C0352671A395EBF0025338C /* axLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axLib.h; sourceTree = "<group>"; };
+		7C0352681A395EBF0025338C /* axMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMain.h; sourceTree = "<group>"; };
+		7C0352691A395EBF0025338C /* axManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axManager.h; sourceTree = "<group>"; };
+		7C03526A1A395EBF0025338C /* axMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMath.h; sourceTree = "<group>"; };
+		7C03526B1A395EBF0025338C /* axMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMsg.h; sourceTree = "<group>"; };
+		7C03526C1A395EBF0025338C /* axObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axObject.h; sourceTree = "<group>"; };
+		7C03526D1A395EBF0025338C /* axPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPanel.h; sourceTree = "<group>"; };
+		7C03526E1A395EBF0025338C /* axSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axSerialize.h; sourceTree = "<group>"; };
+		7C03526F1A395EBF0025338C /* axTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axTimer.h; sourceTree = "<group>"; };
+		7C0352701A395EBF0025338C /* axUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axUtils.h; sourceTree = "<group>"; };
+		7C0352711A395EBF0025338C /* axWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindow.h; sourceTree = "<group>"; };
+		7C0352721A395EBF0025338C /* axWindowTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindowTree.h; sourceTree = "<group>"; };
+		7C0352741A395EBF0025338C /* axApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axApp.cpp; sourceTree = "<group>"; };
+		7C0352751A395EBF0025338C /* axC++.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "axC++.cpp"; sourceTree = "<group>"; };
+		7C0352761A395EBF0025338C /* axColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axColor.cpp; sourceTree = "<group>"; };
+		7C0352771A395EBF0025338C /* axCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axCore.cpp; sourceTree = "<group>"; };
+		7C0352781A395EBF0025338C /* axEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axEvent.cpp; sourceTree = "<group>"; };
+		7C0352791A395EBF0025338C /* axEventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axEventManager.cpp; sourceTree = "<group>"; };
+		7C03527A1A395EBF0025338C /* axFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axFont.cpp; sourceTree = "<group>"; };
+		7C03527B1A395EBF0025338C /* axGC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGC.cpp; sourceTree = "<group>"; };
+		7C03527C1A395EBF0025338C /* axImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axImage.cpp; sourceTree = "<group>"; };
+		7C03527D1A395EBF0025338C /* axMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMain.cpp; sourceTree = "<group>"; };
+		7C03527E1A395EBF0025338C /* axManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axManager.cpp; sourceTree = "<group>"; };
+		7C03527F1A395EBF0025338C /* axMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMath.cpp; sourceTree = "<group>"; };
+		7C0352801A395EBF0025338C /* axMsg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMsg.cpp; sourceTree = "<group>"; };
+		7C0352811A395EBF0025338C /* axObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axObject.cpp; sourceTree = "<group>"; };
+		7C0352821A395EBF0025338C /* axPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPanel.cpp; sourceTree = "<group>"; };
+		7C0352831A395EBF0025338C /* axSerialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axSerialize.cpp; sourceTree = "<group>"; };
+		7C0352841A395EBF0025338C /* axTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTimer.cpp; sourceTree = "<group>"; };
+		7C0352851A395EBF0025338C /* axUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axUtils.cpp; sourceTree = "<group>"; };
+		7C0352861A395EBF0025338C /* axWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindow.cpp; sourceTree = "<group>"; };
+		7C0352871A395EBF0025338C /* axWindowTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindowTree.cpp; sourceTree = "<group>"; };
+		7C0352B21A395EE80025338C /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		7C0352B31A395EE80025338C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
+		7C0352B41A395EE80025338C /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = ../main.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7C0352191A395E980025338C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C0352131A395E980025338C = {
+			isa = PBXGroup;
+			children = (
+				7C0352AA1A395EE80025338C /* axCalculator */,
+				7C0352B31A395EE80025338C /* main.cpp */,
+				7C0352B41A395EE80025338C /* main.h */,
+				7C03523F1A395EBF0025338C /* axMac */,
+				7C0352471A395EBF0025338C /* axWidgets */,
+				7C03525D1A395EBF0025338C /* include */,
+				7C0352731A395EBF0025338C /* source */,
+				7C03521E1A395E980025338C /* axCalculator */,
+				7C03521D1A395E980025338C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7C03521D1A395E980025338C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C03521C1A395E980025338C /* axCalculator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C03521E1A395E980025338C /* axCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				7C0352261A395E980025338C /* Images.xcassets */,
+				7C03521F1A395E980025338C /* Supporting Files */,
+			);
+			path = axCalculator;
+			sourceTree = "<group>";
+		};
+		7C03521F1A395E980025338C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C0352201A395E980025338C /* Info.plist */,
+				7C0352241A395E980025338C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7C03523F1A395EBF0025338C /* axMac */ = {
+			isa = PBXGroup;
+			children = (
+				7C0352401A395EBF0025338C /* AppDelegate.h */,
+				7C0352411A395EBF0025338C /* AppDelegate.mm */,
+				7C0352421A395EBF0025338C /* axCocoaInterfaceMac.h */,
+				7C0352431A395EBF0025338C /* axCocoaInterfaceMac.mm */,
+				7C0352441A395EBF0025338C /* axCoreMac.cpp */,
+				7C0352451A395EBF0025338C /* axCoreMac.h */,
+			);
+			name = axMac;
+			path = ../../../axMac;
+			sourceTree = "<group>";
+		};
+		7C0352471A395EBF0025338C /* axWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				7C0352481A395EBF0025338C /* axButton.cpp */,
+				7C0352491A395EBF0025338C /* axButton.h */,
+				7C03524A1A395EBF0025338C /* axDropMenu.cpp */,
+				7C03524B1A395EBF0025338C /* axDropMenu.h */,
+				7C03524C1A395EBF0025338C /* axGrid.cpp */,
+				7C03524D1A395EBF0025338C /* axGrid.h */,
+				7C03524E1A395EBF0025338C /* axKnob.cpp */,
+				7C03524F1A395EBF0025338C /* axKnob.h */,
+				7C0352501A395EBF0025338C /* axMenu.cpp */,
+				7C0352511A395EBF0025338C /* axMenu.h */,
+				7C0352521A395EBF0025338C /* axNumberBox.cpp */,
+				7C0352531A395EBF0025338C /* axNumberBox.h */,
+				7C0352541A395EBF0025338C /* axPopupMenu.cpp */,
+				7C0352551A395EBF0025338C /* axPopupMenu.h */,
+				7C0352561A395EBF0025338C /* axScrollBar.cpp */,
+				7C0352571A395EBF0025338C /* axScrollBar.h */,
+				7C0352581A395EBF0025338C /* axSlider.cpp */,
+				7C0352591A395EBF0025338C /* axSlider.h */,
+				7C03525A1A395EBF0025338C /* axToggle.cpp */,
+				7C03525B1A395EBF0025338C /* axToggle.h */,
+				7C03525C1A395EBF0025338C /* axWidget.h */,
+			);
+			name = axWidgets;
+			path = ../../../axWidgets;
+			sourceTree = "<group>";
+		};
+		7C03525D1A395EBF0025338C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7C03525E1A395EBF0025338C /* axApp.h */,
+				7C03525F1A395EBF0025338C /* axC++.h */,
+				7C0352601A395EBF0025338C /* axColor.h */,
+				7C0352611A395EBF0025338C /* axCore.h */,
+				7C0352621A395EBF0025338C /* axEvent.h */,
+				7C0352631A395EBF0025338C /* axEventManager.h */,
+				7C0352641A395EBF0025338C /* axFont.h */,
+				7C0352651A395EBF0025338C /* axGC.h */,
+				7C0352661A395EBF0025338C /* axImage.h */,
+				7C0352671A395EBF0025338C /* axLib.h */,
+				7C0352681A395EBF0025338C /* axMain.h */,
+				7C0352691A395EBF0025338C /* axManager.h */,
+				7C03526A1A395EBF0025338C /* axMath.h */,
+				7C03526B1A395EBF0025338C /* axMsg.h */,
+				7C03526C1A395EBF0025338C /* axObject.h */,
+				7C03526D1A395EBF0025338C /* axPanel.h */,
+				7C03526E1A395EBF0025338C /* axSerialize.h */,
+				7C03526F1A395EBF0025338C /* axTimer.h */,
+				7C0352701A395EBF0025338C /* axUtils.h */,
+				7C0352711A395EBF0025338C /* axWindow.h */,
+				7C0352721A395EBF0025338C /* axWindowTree.h */,
+			);
+			name = include;
+			path = ../../../include;
+			sourceTree = "<group>";
+		};
+		7C0352731A395EBF0025338C /* source */ = {
+			isa = PBXGroup;
+			children = (
+				7C0352741A395EBF0025338C /* axApp.cpp */,
+				7C0352751A395EBF0025338C /* axC++.cpp */,
+				7C0352761A395EBF0025338C /* axColor.cpp */,
+				7C0352771A395EBF0025338C /* axCore.cpp */,
+				7C0352781A395EBF0025338C /* axEvent.cpp */,
+				7C0352791A395EBF0025338C /* axEventManager.cpp */,
+				7C03527A1A395EBF0025338C /* axFont.cpp */,
+				7C03527B1A395EBF0025338C /* axGC.cpp */,
+				7C03527C1A395EBF0025338C /* axImage.cpp */,
+				7C03527D1A395EBF0025338C /* axMain.cpp */,
+				7C03527E1A395EBF0025338C /* axManager.cpp */,
+				7C03527F1A395EBF0025338C /* axMath.cpp */,
+				7C0352801A395EBF0025338C /* axMsg.cpp */,
+				7C0352811A395EBF0025338C /* axObject.cpp */,
+				7C0352821A395EBF0025338C /* axPanel.cpp */,
+				7C0352831A395EBF0025338C /* axSerialize.cpp */,
+				7C0352841A395EBF0025338C /* axTimer.cpp */,
+				7C0352851A395EBF0025338C /* axUtils.cpp */,
+				7C0352861A395EBF0025338C /* axWindow.cpp */,
+				7C0352871A395EBF0025338C /* axWindowTree.cpp */,
+			);
+			name = source;
+			path = ../../../source;
+			sourceTree = "<group>";
+		};
+		7C0352AA1A395EE80025338C /* axCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				7C0352B21A395EE80025338C /* MainMenu.xib */,
+			);
+			name = axCalculator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7C03521B1A395E980025338C /* axCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C0352391A395E980025338C /* Build configuration list for PBXNativeTarget "axCalculator" */;
+			buildPhases = (
+				7C0352181A395E980025338C /* Sources */,
+				7C0352191A395E980025338C /* Frameworks */,
+				7C03521A1A395E980025338C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = axCalculator;
+			productName = axCalculator;
+			productReference = 7C03521C1A395E980025338C /* axCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C0352141A395E980025338C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alexandre Arsenault";
+				TargetAttributes = {
+					7C03521B1A395E980025338C = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 7C0352171A395E980025338C /* Build configuration list for PBXProject "axCalculator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7C0352131A395E980025338C;
+			productRefGroup = 7C03521D1A395E980025338C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C03521B1A395E980025338C /* axCalculator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7C03521A1A395E980025338C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C0352271A395E980025338C /* Images.xcassets in Resources */,
+				7C0352B81A395EE80025338C /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C0352181A395E980025338C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C0352941A395EBF0025338C /* axSlider.cpp in Sources */,
+				7C0352A31A395EBF0025338C /* axObject.cpp in Sources */,
+				7C0352B91A395EE80025338C /* main.cpp in Sources */,
+				7C03529C1A395EBF0025338C /* axFont.cpp in Sources */,
+				7C03528C1A395EBF0025338C /* axButton.cpp in Sources */,
+				7C0352981A395EBF0025338C /* axColor.cpp in Sources */,
+				7C03529A1A395EBF0025338C /* axEvent.cpp in Sources */,
+				7C0352A71A395EBF0025338C /* axUtils.cpp in Sources */,
+				7C0352951A395EBF0025338C /* axToggle.cpp in Sources */,
+				7C03529B1A395EBF0025338C /* axEventManager.cpp in Sources */,
+				7C0352A81A395EBF0025338C /* axWindow.cpp in Sources */,
+				7C03529E1A395EBF0025338C /* axImage.cpp in Sources */,
+				7C0352A11A395EBF0025338C /* axMath.cpp in Sources */,
+				7C0352891A395EBF0025338C /* axCocoaInterfaceMac.mm in Sources */,
+				7C03528A1A395EBF0025338C /* axCoreMac.cpp in Sources */,
+				7C0352911A395EBF0025338C /* axNumberBox.cpp in Sources */,
+				7C03529D1A395EBF0025338C /* axGC.cpp in Sources */,
+				7C0352A01A395EBF0025338C /* axManager.cpp in Sources */,
+				7C0352A51A395EBF0025338C /* axSerialize.cpp in Sources */,
+				7C0352921A395EBF0025338C /* axPopupMenu.cpp in Sources */,
+				7C0352931A395EBF0025338C /* axScrollBar.cpp in Sources */,
+				7C0352881A395EBF0025338C /* AppDelegate.mm in Sources */,
+				7C03528E1A395EBF0025338C /* axGrid.cpp in Sources */,
+				7C0352961A395EBF0025338C /* axApp.cpp in Sources */,
+				7C03529F1A395EBF0025338C /* axMain.cpp in Sources */,
+				7C03528D1A395EBF0025338C /* axDropMenu.cpp in Sources */,
+				7C0352971A395EBF0025338C /* axC++.cpp in Sources */,
+				7C0352A21A395EBF0025338C /* axMsg.cpp in Sources */,
+				7C0352A41A395EBF0025338C /* axPanel.cpp in Sources */,
+				7C0352901A395EBF0025338C /* axMenu.cpp in Sources */,
+				7C03528F1A395EBF0025338C /* axKnob.cpp in Sources */,
+				7C0352A61A395EBF0025338C /* axTimer.cpp in Sources */,
+				7C0352251A395E980025338C /* main.m in Sources */,
+				7C0352A91A395EBF0025338C /* axWindowTree.cpp in Sources */,
+				7C0352991A395EBF0025338C /* axCore.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7C0352371A395E980025338C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/usr/local/include/freetype2/\n/usr/local/include/freetype2/",
+					"/usr/local/include/\n/usr/local/include/freetype2/",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lfreetype",
+					"-lpng15",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7C0352381A395E980025338C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/usr/local/include/freetype2/\n/usr/local/include/freetype2/",
+					"/usr/local/include/\n/usr/local/include/freetype2/",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-lfreetype",
+					"-lpng15",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7C03523A1A395E980025338C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = axCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7C03523B1A395E980025338C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = axCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C0352171A395E980025338C /* Build configuration list for PBXProject "axCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C0352371A395E980025338C /* Debug */,
+				7C0352381A395E980025338C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C0352391A395E980025338C /* Build configuration list for PBXNativeTarget "axCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C03523A1A395E980025338C /* Debug */,
+				7C03523B1A395E980025338C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7C0352141A395E980025338C /* Project object */;
+}

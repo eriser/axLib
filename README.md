@@ -38,7 +38,8 @@ A C++ cross-platform framework to build highly customizable platform-independent
 ## Project examples
 
 ![MidiSequencer]
-(https://dl.dropboxusercontent.com/u/26931825/axLibWebData/MidiSequencer.png)
+(https://dl.dropboxusercontent.com/u/26931825/axLibWebData/MidiSequencer.png) ![Calculator]
+(https://dl.dropboxusercontent.com/u/26931825/axLibWebData/Calculator.png)
 
 ![SoundEditor]
 (https://dl.dropboxusercontent.com/u/26931825/axLibWebData/SoundEditor.png)
