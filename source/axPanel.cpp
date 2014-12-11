@@ -105,6 +105,43 @@ void axPanel::UnGrabMouse()
 	
 }
 
+void axPanel::GrabKey()
+{
+    if(GetIsPopup())
+    {
+        axApp::GetInstance()->GetPopupManager()->GrabKey(this);
+    }
+    else
+    {
+        axApp::GetInstance()->GetWindowManager()->GrabKey(this);
+    }
+}
+
+void axPanel::UnGrabKey()
+{
+    if(GetIsPopup())
+    {
+        axApp::GetInstance()->GetPopupManager()->UnGrabKey();
+    }
+    else
+    {
+        axApp::GetInstance()->GetWindowManager()->UnGrabKey();
+    }
+}
+
+bool axPanel::IsKeyGrab()
+{
+    if(GetIsPopup())
+    {
+        return axApp::GetInstance()->GetPopupManager()->IsKeyGrab(this);
+    }
+    else
+    {
+        return axApp::GetInstance()->GetWindowManager()->IsKeyGrab(this);
+    }
+    
+}
+
 void axPanel::UpdateAll()
 {
 	axApp::GetInstance()->UpdateAll();

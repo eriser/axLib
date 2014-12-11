@@ -32,7 +32,7 @@ string axCoreMac::GetAppDirectory()
     return std::string(CocoaGetAppDirectory() + std::string("/"));
 }
 
-bool axCoreMac::CreatePopupWindow(char* title, int width, int height)
+bool axCoreMac::CreatePopupWindow(const char* title, int width, int height)
 {
     return false;
 }
@@ -53,7 +53,7 @@ void axCoreMac::KillPopGLWindow()
     
 }
 
-bool axCoreMac::CreateGLWindow(char* title, int width, int height, int bits)
+bool axCoreMac::CreateGLWindow(const char* title, int width, int height, int bits)
 {
     return true;
 }

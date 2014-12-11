@@ -174,6 +174,29 @@ axAppDelegate* GlobalAppDelegate;
     NSLog(@"Mouse leave");
 }
 
+- (void)keyDown: (NSEvent *) event
+{
+    unsigned short key = [event keyCode];
+    
+    // Delete.
+    if(key == 51)
+    {
+        axApp::MainInstance->GetWindowManager()->OnBackSpaceDown();
+    }
+    // Enter.
+    else if(key == 36)
+    {
+        
+    }
+    else
+    {
+        std::string str = [[event characters] UTF8String];
+        axApp::MainInstance->GetWindowManager()->OnKeyDown(str[0]);
+    }
+    
+}
+
+
 static int test_value = 0;
 void MyRunLoopObserver(CFRunLoopObserverRef observer,
                        CFRunLoopActivity activity,

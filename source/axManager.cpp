@@ -7,7 +7,8 @@ axManager::axManager() :
 	_mouseCaptureWindow(nullptr),
 	_pastWindow(nullptr),
 	_currentWindow(nullptr),
-    _evtHasReachWindow(false)
+    _evtHasReachWindow(false),
+    _keyGrabbedWindow(nullptr)
 {
 	//DEBUG
 
@@ -229,6 +230,28 @@ void axManager::OnUpdate()
 	//DEBUG
 }
 
+void axManager::OnKeyDown(const char& key)
+{
+//    std::cout << key << std::endl;
+    if(_keyGrabbedWindow != nullptr)
+    {
+        _keyGrabbedWindow->OnKeyDown(key);
+    }
+}
+
+void axManager::OnKeyUp(const char& key)
+{
+    
+}
+
+void axManager::OnBackSpaceDown()
+{
+    if(_keyGrabbedWindow != nullptr)
+    {
+        _keyGrabbedWindow->OnBackSpaceDown();
+    }
+}
+
 void axManager::OnSize()
 {
     for (auto& x : _windows)
@@ -257,3 +280,20 @@ bool axManager::IsMouseHoverWindow(axWindow* win)
 {
 	return (_currentWindow == win);
 }
+
+void axManager::GrabKey(axWindow* win)
+{
+    _keyGrabbedWindow = win;
+}
+
+void axManager::UnGrabKey()
+{
+    _keyGrabbedWindow = nullptr;
+}
+
+bool axManager::IsKeyGrab(axWindow* win) const
+{
+    return (win == _keyGrabbedWindow);
+}
+
+

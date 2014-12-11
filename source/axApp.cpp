@@ -55,7 +55,7 @@ string axApp::OpenFileDialog()
 	return _core->OpenFileDialog();
 }
 
-bool axApp::CreatePopupWindow(char* title, int x, int y)
+bool axApp::CreatePopupWindow(const char* title, int x, int y)
 {
 	return _core->CreatePopupWindow("Popup", x, y);
 }

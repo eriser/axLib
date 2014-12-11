@@ -140,7 +140,7 @@ bool axImageGlobalMapLoader::InitImage(const string& path,
 	png_read_update_info(png_ptr, info_ptr);
 
 	// Row size in bytes.
-	int rowbytes = png_get_rowbytes(png_ptr, info_ptr);
+	int rowbytes = (int)png_get_rowbytes(png_ptr, info_ptr);
 
 	// OpenGL glTexImage2d requires rows to be 4-byte aligned.
 	rowbytes += 3 - ((rowbytes - 1) % 4);

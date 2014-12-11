@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C0350DE1A3912040025338C /* AnimationPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0350DC1A3912040025338C /* AnimationPanel.cpp */; };
+		7C0352BC1A3A051C0025338C /* axTextControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352BA1A3A051C0025338C /* axTextControl.cpp */; };
 		7C262FA81A366F9E00544ACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C262FA71A366F9E00544ACE /* main.m */; };
 		7C262FAA1A366F9E00544ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FA91A366F9E00544ACE /* Images.xcassets */; };
 		7C26300B1A36705F00544ACE /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C262FC41A36705F00544ACE /* AppDelegate.mm */; };
@@ -56,6 +57,8 @@
 /* Begin PBXFileReference section */
 		7C0350DC1A3912040025338C /* AnimationPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationPanel.cpp; sourceTree = "<group>"; };
 		7C0350DD1A3912040025338C /* AnimationPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationPanel.h; sourceTree = "<group>"; };
+		7C0352BA1A3A051C0025338C /* axTextControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTextControl.cpp; sourceTree = "<group>"; };
+		7C0352BB1A3A051C0025338C /* axTextControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axTextControl.h; sourceTree = "<group>"; };
 		7C262F9F1A366F9D00544ACE /* axDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = axDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C262FA31A366F9E00544ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C262FA71A366F9E00544ACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 				7C262FDA1A36705F00544ACE /* axScrollBar.h */,
 				7C262FDB1A36705F00544ACE /* axSlider.cpp */,
 				7C262FDC1A36705F00544ACE /* axSlider.h */,
+				7C0352BA1A3A051C0025338C /* axTextControl.cpp */,
+				7C0352BB1A3A051C0025338C /* axTextControl.h */,
 				7C262FDD1A36705F00544ACE /* axToggle.cpp */,
 				7C262FDE1A36705F00544ACE /* axToggle.h */,
 				7C262FDF1A36705F00544ACE /* axWidget.h */,
@@ -384,6 +389,7 @@
 				7C26303F1A3670BB00544ACE /* NumberBoxPanel.cpp in Sources */,
 				7C2630261A36705F00544ACE /* axObject.cpp in Sources */,
 				7C26301F1A36705F00544ACE /* axFont.cpp in Sources */,
+				7C0352BC1A3A051C0025338C /* axTextControl.cpp in Sources */,
 				7C26300F1A36705F00544ACE /* axButton.cpp in Sources */,
 				7C26301B1A36705F00544ACE /* axColor.cpp in Sources */,
 				7C26301D1A36705F00544ACE /* axEvent.cpp in Sources */,
@@ -439,6 +445,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -462,7 +469,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -492,6 +499,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -509,7 +517,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

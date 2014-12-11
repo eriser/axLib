@@ -84,6 +84,24 @@ axPanel(parent, rect)
                                app_path + std::string("DropMenuArrow.png"),
                                app_path + std::string("button.png"),
                                axDROP_MENU_SINGLE_IMG);
+    
+    
+    
+    
+    //--------------------------------------------------------------------------
+    axTextControlEvents txtEvents;
+    axTextControlInfo txtInfo;
+    txtInfo.normal = axColor(0.9, 0.9, 0.9);
+    txtInfo.hover = axColor(0.9, 0.9, 0.9);
+    txtInfo.clicking = axColor(0.7, 0.7, 0.7);
+    txtInfo.contour = axColor(0.0, 0.0, 0.0);
+    txtInfo.cursor = axColor(1.0, 0.0, 0.0);
+    
+    
+    _txtCtrl = new axTextControl(this,
+                                 axRect(100, 200, 180, 25),
+                                 txtEvents,
+                                 txtInfo);
 }
 
 void MenuPanel::OnPopupMenu(const axButtonMsg& msg)

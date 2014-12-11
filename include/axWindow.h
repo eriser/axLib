@@ -100,11 +100,16 @@ public:
 	virtual void Update() = 0;
 	virtual void OnMouseLeftDragging(const axPoint& pos){}
 	//virtual void Update(){}
+    
+    virtual void OnKeyDown(const char& key){}
+    virtual void OnBackSpaceDown(){}
 
     virtual void OnResize(){}
     
 	axGC* GetGC();
 
+    
+    
 	void Reparent(axWindow* parent, const axPoint& position);
 
 	bool& GetIsPopup()

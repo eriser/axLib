@@ -19,6 +19,11 @@ public:
 	bool IsMouseHoverWindow();
 	void DeleteWindow(axWindow* win);
 
+    void GrabKey();
+    void UnGrabKey();
+    
+    bool IsKeyGrab();
+    
 	axApp* GetApp();
 
 	void BlockDrawing();

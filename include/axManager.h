@@ -49,8 +49,14 @@ public:
     // void OnCtrl();
     // void OnAlt();
     // void OnShift();
-    // void OnKeyDown();
-    // void OnKeyUp();
+    void OnKeyDown(const char& key);
+    void OnKeyUp(const char& key);
+    void OnBackSpaceDown();
+    
+    void GrabKey(axWindow* win);
+    void UnGrabKey();
+    
+    bool IsKeyGrab(axWindow* win) const;
 
     // bool IsCtrlDown();
     // bool IsAltDown();
@@ -70,7 +76,10 @@ private:
 	axWindow* _currentWindow;
 	axPoint _mousePosition;
     
+    axWindow* _keyGrabbedWindow;
+    
     bool _evtHasReachWindow;
+    
     
     
     void VerifyAndProcessWindowChange();

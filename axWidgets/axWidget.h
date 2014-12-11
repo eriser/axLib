@@ -11,5 +11,6 @@
 #include "axMenu.h"
 #include "axKnob.h"
 #include "axScrollBar.h"
+#include "axTextControl.h"
 
 #endif //__AX_WIDGET__

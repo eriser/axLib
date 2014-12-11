@@ -32,7 +32,7 @@ void axEventManager::AddFunction(axBindedEvent fct)
 
 int axEventManager::GetEventQueueSize() const
 {
-    return _evtQueue.size();
+    return (int)_evtQueue.size();
 }
 
 void axEventManager::AddConnection(const axID& id,

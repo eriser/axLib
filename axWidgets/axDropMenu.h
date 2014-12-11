@@ -13,8 +13,6 @@
 #include "axPopupMenu.h"
 
 #define axDROP_MENU_SINGLE_IMG	axFLAG_1
-//#define axBUTTON_IMG_RESIZE	axFLAG_2
-//#define axBUTTON_CANT_BE_SELECTED axFLAG_3 // Not implemented yet.
 
 class axDropMenu;
 

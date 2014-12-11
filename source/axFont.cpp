@@ -57,7 +57,7 @@ bool axFontGlobalManager::LoadFont(const string& path, FT_Face& face)
 
 		if (file.read(buffer, size))
 		{
-			axFontStruct font_info(buffer, size);
+			axFontStruct font_info(buffer, (unsigned int)size);
 			_fontMap.insert(pair<std::string, axFontStruct>(path, font_info));
 
 			FT_New_Memory_Face(_freeType,

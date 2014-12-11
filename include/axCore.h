@@ -21,7 +21,7 @@ public:
 	virtual string GetAppDirectory() = 0;
 
     
-	virtual bool CreatePopupWindow(char* title, int width, int height) = 0;
+	virtual bool CreatePopupWindow(const char* title, int width, int height) = 0;
 
 	axSize GetGlobalSize() const;
     
@@ -43,7 +43,7 @@ public:
 	virtual int DrawGLPopScene();
 	virtual void KillGLWindow() = 0;
 	virtual void KillPopGLWindow() = 0;
-	virtual bool CreateGLWindow(char* title, int width, int height, int bits) = 0;
+	virtual bool CreateGLWindow(const char* title, int width, int height, int bits) = 0;
     
     double GetYTestValue()
     {

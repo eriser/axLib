@@ -120,22 +120,16 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 
 	glBindTexture(GL_TEXTURE_2D, texture);
 
-	axREMOVE_ON_RELEASE
-	(
-		GLenum err = glGetError();
-
-		if (err != GL_NO_ERROR)
-		{
-			DSTREAM(3) << "GL TEXTURE ERROR : " << " " <<
-				gluErrorString(err) << endl;
-		}
-	)
-
-	//if (err != GL_NO_ERROR)
-	//{
-	//	cout << "GL TEXTURE ERROR : " << hex << err << " " << 
-	//			 gluErrorString(err) << endl;
-	//}
+//	axREMOVE_ON_RELEASE
+//	(
+//		GLenum err = glGetError();
+//
+//		if (err != GL_NO_ERROR)
+//		{
+//			DSTREAM(3) << "GL TEXTURE ERROR : " << " " <<
+//				gluErrorString(err) << endl;
+//		}
+//	)
 
 	glDepthMask(GL_TRUE);
 	axSize img_size = rect.size;
@@ -331,6 +325,47 @@ void axGC::DrawString(const string& text, const axPoint& pos)
 	}
 }
 
+axPoint axGC::DrawChar(const char& key, const axPoint& pos)
+{
+    // axPoint pos = position + _win->GetAbsoluteRect().position;
+    // pos -= _win->GetScrollDecay();
+    
+    int x = pos.x;
+    
+        _font.SetChar(key);
+        axPoint delta = _font.GetDelta();
+    
+    std::cout << "Delta : " << delta.x << std::endl;
+    
+        DrawTexture(_font.GetTexture(),
+                    axRect(axPoint(x + delta.x, pos.y - delta.y + _font.GetFontSize()),
+                           _font.GetSize()));
+        
+        x += _font.GetNextPosition();
+    
+    return axPoint(x, pos.y);
+}
+
+
+// Just blocking x axis for now.
+void axGC::BlockDrawing(const axRect& rect)
+{
+    axRect r = rect;
+    r.position += _win->GetAbsoluteRect().position;
+    
+    glScissor(0,
+              r.position.y,
+              r.position.x + r.size.x,
+              5000);
+    
+    glEnable(GL_SCISSOR_TEST);
+}
+
+void axGC::UnBlockDrawing()
+{
+    glDisable(GL_SCISSOR_TEST);
+}
+
 void axGC::DrawStringAlignedCenter(const string& text,
 								   //const axPoint& pos,
 								   const axRect& rect)
@@ -439,12 +474,12 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 	axPoint p1 = pt1 + real_pos;
 	axPoint p2 = pt2 + real_pos;
 
-	glEnable(GL_LINE_SMOOTH);
-	glEnable(GL_POLYGON_SMOOTH);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+//	glEnable(GL_LINE_SMOOTH);
+//	glEnable(GL_POLYGON_SMOOTH);
+//	glEnable(GL_BLEND);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+//	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 
 	glLineWidth(width);
 

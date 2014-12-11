@@ -50,23 +50,18 @@ void axCore::ResizeGLScene(const int& width, const int& height, double y)
 	//--------------------------------------------------
 	//--------------------------------------------------
 
-    //axMatrix4 proj;
-    //axOrtho2D(proj.Identity().GetData(), _size);
 	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluOrtho2D(0, _size.x, _size.y, 0);
+
+    axMatrix4 proj;
+    axOrtho2D(proj.Identity().GetData(), _size);
 
 	// Select the modelview matrix.
-	glMatrixMode(GL_MODELVIEW);			
-    
- /*   axMatrix4 mview;
-    mview.Translate(axPoint(0, y)).Process();*/
+	glMatrixMode(GL_MODELVIEW);
     
 	_needToDraw = true;
 	_popupNeedToDraw = true;
     
     _windowManager->OnSize();
-
 }
 
 void axCore::DeletePopWindow()
@@ -147,11 +142,8 @@ void axCore::ResizePopGLScene(const int& width, const int& height)
 	// Select the projection matrix.
 	glMatrixMode(GL_PROJECTION);
 
-	// Reset the projection matrix.
-	glLoadIdentity();
-
-	// Calculate the aspect ratio of the window.
-	gluPerspective(45.0f, (GLfloat)width / (GLfloat)h, 0.1f, 100.0f);
+    axMatrix4 proj;
+    axOrtho2D(proj.Identity().GetData(), _size);
 
 	// Select the modelview matrix.
 	glMatrixMode(GL_MODELVIEW);
@@ -190,23 +182,19 @@ int axCore::DrawGLScene()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Set projection matrix.
-        //axMatrix4 proj;
-        //axOrtho2D(proj.Identity().GetData(), _size);
 		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		gluOrtho2D(0, _size.x, _size.y, 0);
-		//gl
         
-        // Set modelview matrix.
-		//glMatrixMode(GL_MODELVIEW);
-  //      axMatrix4 mview;
-  //      glLoadMatrixd(mview.Identity().GetData());
+        axMatrix4 proj;
+        axOrtho2D(proj.Identity().GetData(), _size);
+
+        
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
         // Draw black rectangle.
         glColor4d(0.0, 0.0, 0.0, 1.0);
         
+        // Draw black rectangle.
 		axFloatRect rect(-1.0, -1.0, _size.x * 2.0, _size.y * 2.0);
         axRectFloatPoints points = rect.GetPoints();
         GLubyte indices[] = {0, 1,2, 2,3};
@@ -238,8 +226,8 @@ int axCore::DrawGLPopScene()
 
 		//glViewport(0, 0, _size.x, _size.y);
 		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		gluOrtho2D(0.0, _popSize.x, _popSize.y, 0.0);
+        axMatrix4 proj;
+        axOrtho2D(proj.Identity().GetData(), _size);
         
         
         

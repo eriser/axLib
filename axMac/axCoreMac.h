@@ -26,7 +26,7 @@ public:
 
     virtual string GetAppDirectory();
     
-    virtual bool CreatePopupWindow(char* title, int width, int height);
+    virtual bool CreatePopupWindow(const char* title, int width, int height);
 
     virtual axRect GetScreenRect();
     
@@ -38,7 +38,7 @@ public:
     
     virtual void KillPopGLWindow();
     
-    virtual bool CreateGLWindow(char* title, int width, int height, int bits);
+    virtual bool CreateGLWindow(const char* title, int width, int height, int bits);
     
     virtual void UpdateAll();
     

@@ -49,11 +49,15 @@ public:
                          const axPoint& pos,
                          double alpha = 1.0);
 
+    axPoint DrawChar(const char& key, const axPoint& pos);
+    
 	void DrawString(const string& text, const axPoint& pos);
 
 	void DrawStringAlignedCenter(const string& text, 
 								 //const axPoint& pos, 
 								 const axRect& rect);
+    
+    
 
 	void SetFontType(const string& font_type){ _font.SetFontType(font_type); }
 
@@ -82,6 +86,10 @@ public:
 	void DrawTexture(GLuint texture,
                      const axRect& rect,
                      axColor color = axColor(0.0, 0.0, 0.0));
+    
+    // Just blocking x axis for now.
+    void BlockDrawing(const axRect& rect);
+    void UnBlockDrawing();
 
 private:
 	axWindow* _win;

@@ -21,7 +21,7 @@ axScrollBar::axScrollBar(
 						  axColor(0.0, 0.0, 0.0),
 						  axColor(0.0, 0.0, 0.0));
 
-	function<void (axButtonMsg)> btnFct();
+	//function<void (axButtonMsg)> btnFct();
 
 	_btn[0] = new axButton(this, 
 						   axRect(0, 0, 14, 14), 

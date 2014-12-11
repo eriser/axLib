@@ -18,12 +18,9 @@ axPopupMenu::axPopupMenu(axWindow* parent,
 	_lastSelected(nullptr)
 {
 	axSize tog_size(rect.size.x, LABEL_HEIGHT);
-	//axRect rect(0, i * LABEL_HEIGHT, GetSize().x, LABEL_HEIGHT);
 
-	axToggleEvents tog_event;//(GetOnButtonClick());
+	axToggleEvents tog_event;
     tog_event.button_click = GetOnButtonClick();
-    
-//	axButtonInfo btn_info("../../../ressources/axObjects/axStandardButton.axobj");
     
     axToggleInfo tog_info;
     tog_info.normal = axColor(0.8, 0.8, 0.8);
@@ -47,7 +44,7 @@ axPopupMenu::axPopupMenu(axWindow* parent,
                         _labels[i]));
 	}
 
-	SetSize(axSize(tog_size.x, _btns.size() * LABEL_HEIGHT));
+	SetSize(axSize(tog_size.x, (int)_btns.size() * LABEL_HEIGHT));
     
     if(_events.selection_change)
     {

@@ -60,7 +60,7 @@ public:
 
 	string OpenFileDialog();
 
-	bool CreatePopupWindow(char*, int, int);
+	bool CreatePopupWindow(const char*, int, int);
 
 	string GetCurrentAppDirectory();
 
