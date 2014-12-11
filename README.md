@@ -19,6 +19,13 @@ axButton | axSlider
 | **axKnob** 	| **axNumberBox** |
 | **axToggle**	|				|
 
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
+
 - axButton
 
 	![axButton image](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axButton.png)
