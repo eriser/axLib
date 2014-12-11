@@ -27,7 +27,9 @@ A C++ cross-platform framework to build highly customizable platform-independent
 
 ## Code examples
 
-[Creating axButton](https://github.com/alexarse/axLib/wiki/axButton)
+[Create axButton](https://github.com/alexarse/axLib/wiki/axButton)
+
+[Custom Animated Button](https://github.com/alexarse/axLib/wiki/Custom-animated-button.)
 
 ## Project examples
 ...
