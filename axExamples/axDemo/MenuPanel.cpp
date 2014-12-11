@@ -89,19 +89,26 @@ axPanel(parent, rect)
     
     
     //--------------------------------------------------------------------------
-    axTextControlEvents txtEvents;
-    axTextControlInfo txtInfo;
+    axTextBoxEvents txtEvents;
+    axTextBoxInfo txtInfo;
     txtInfo.normal = axColor(0.9, 0.9, 0.9);
     txtInfo.hover = axColor(0.9, 0.9, 0.9);
     txtInfo.clicking = axColor(0.7, 0.7, 0.7);
     txtInfo.contour = axColor(0.0, 0.0, 0.0);
     txtInfo.cursor = axColor(1.0, 0.0, 0.0);
     
-    
-    _txtCtrl = new axTextControl(this,
-                                 axRect(100, 200, 180, 25),
-                                 txtEvents,
-                                 txtInfo);
+    _txtCtrl = new axTextBox(this,
+                             axRect(100, 200, 180, 25),
+                             txtEvents,
+                             txtInfo,
+                             "",
+                             "",
+                             axTEXT_BOX_FLASHING_CURSOR);
+}
+
+void MenuPanel::OnMouseLeftDown(const axPoint& pos)
+{
+    _txtCtrl->UnGrabKey();
 }
 
 void MenuPanel::OnPopupMenu(const axButtonMsg& msg)

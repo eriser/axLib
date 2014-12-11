@@ -178,6 +178,8 @@ axAppDelegate* GlobalAppDelegate;
 {
     unsigned short key = [event keyCode];
     
+    std::cout << "KEY : " << key << std::endl;
+    
     // Delete.
     if(key == 51)
     {
@@ -187,6 +189,16 @@ axAppDelegate* GlobalAppDelegate;
     else if(key == 36)
     {
         
+    }
+    // Left arrow.
+    else if(key == 123)
+    {
+        axApp::MainInstance->GetWindowManager()->OnLeftArrowDown();
+    }
+    // Right arrow.
+    else if(key == 123)
+    {
+        axApp::MainInstance->GetWindowManager()->OnRightArrowDown();
     }
     else
     {

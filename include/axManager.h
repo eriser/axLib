@@ -52,6 +52,8 @@ public:
     void OnKeyDown(const char& key);
     void OnKeyUp(const char& key);
     void OnBackSpaceDown();
+    void OnLeftArrowDown();
+    void OnRightArrowDown();
     
     void GrabKey(axWindow* win);
     void UnGrabKey();

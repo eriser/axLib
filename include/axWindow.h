@@ -82,15 +82,9 @@ public:
 	virtual void OnRightDragging(){}
 	virtual void OnMouseMotion(const axPoint& pos){}
 
-	virtual void OnMouseLeftDown(const axPoint& pos)
-	{
-        //std::cout << "axWindow::OnMouseLeftDown." << std::endl;
-	}
+    virtual void OnMouseLeftDown(const axPoint& pos){}
 
-	virtual void OnMouseLeftUp(const axPoint& pos)
-	{
-
-	}
+    virtual void OnMouseLeftUp(const axPoint& pos){}
 
 	virtual void OnMouseRightDown(){}
 	virtual void OnMouseRightUp(){}
@@ -103,6 +97,10 @@ public:
     
     virtual void OnKeyDown(const char& key){}
     virtual void OnBackSpaceDown(){}
+    virtual void OnLeftArrowDown(){}
+    virtual void OnRightArrowDown(){}
+    virtual void OnWasKeyUnGrabbed(){}
+    virtual void OnWasKeyGrabbed(){}
 
     virtual void OnResize(){}
     

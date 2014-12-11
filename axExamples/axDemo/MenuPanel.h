@@ -32,6 +32,8 @@ private:
     
     void OnDropMenuChoice(const axDropMenuMsg& msg);
     
+    void OnMouseLeftDown(const axPoint& pos);
+    
     void OnTestBtnUnder(const axButtonMsg& msg);
     
     axButton* _btnPopMenu;
@@ -39,7 +41,7 @@ private:
     axDropMenu* _dropMenu;
     
     
-    axTextControl* _txtCtrl;
+    axTextBox* _txtCtrl;
     
 };
 

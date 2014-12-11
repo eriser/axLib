@@ -283,17 +283,50 @@ bool axManager::IsMouseHoverWindow(axWindow* win)
 
 void axManager::GrabKey(axWindow* win)
 {
+    if(_keyGrabbedWindow != win)
+    {
+        if(_keyGrabbedWindow != nullptr)
+        {
+            _keyGrabbedWindow->OnWasKeyUnGrabbed();
+        }
+        
+        win->OnWasKeyGrabbed();
+    }
+    
     _keyGrabbedWindow = win;
 }
 
 void axManager::UnGrabKey()
 {
-    _keyGrabbedWindow = nullptr;
+    if(_keyGrabbedWindow != nullptr)
+    {
+        _keyGrabbedWindow->OnWasKeyUnGrabbed();
+        _keyGrabbedWindow = nullptr;
+    }
+    
 }
 
 bool axManager::IsKeyGrab(axWindow* win) const
 {
     return (win == _keyGrabbedWindow);
+}
+
+void axManager::OnLeftArrowDown()
+{
+    if(_keyGrabbedWindow != nullptr)
+    {
+        _keyGrabbedWindow->OnLeftArrowDown();
+    }
+
+}
+
+void axManager::OnRightArrowDown()
+{
+    if(_keyGrabbedWindow != nullptr)
+    {
+        _keyGrabbedWindow->OnRightArrowDown();
+    }
+ 
 }
 
 

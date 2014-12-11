@@ -1,9 +1,9 @@
-#include "axTextControl.h"
+#include "axTextBox.h"
 
-axTextControl::axTextControl(axWindow* parent,
+axTextBox::axTextBox(axWindow* parent,
                              const axRect& rect,
-                             const axTextControlEvents& events,
-                             const axTextControlInfo& info,
+                             const axTextBoxEvents& events,
+                             const axTextBoxInfo& info,
                              string img_path,
                              string label,
                              axFlag flags) :
@@ -15,7 +15,9 @@ _info(info),
 _label(label),
 _flags(flags),
 _nCurrentImg(axBTN_NORMAL),
-_cursorBarXPosition(5)
+_cursorBarXPosition(5),
+_flashingCursor(nullptr),
+_cursorFlashActive(true)
 {
 	_currentColor = &_info.normal;
 
@@ -23,56 +25,91 @@ _cursorBarXPosition(5)
     
     if(_events.button_click)
     {
-        AddConnection(axTextControlEvents::BUTTON_CLICK, _events.button_click);
+        AddConnection(axTextBoxEvents::BUTTON_CLICK, _events.button_click);
     }
-	
+    
+    if(axFlag_exist(axTEXT_BOX_FLASHING_CURSOR, _flags))
+    {
+        _flashingCursor = new axTimer();
+        _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
+    }
 }
 
-void axTextControl::SetLabel(const std::string& label)
+void axTextBox::SetLabel(const std::string& label)
 {
     _label = label;
     Update();
 }
 
-void axTextControl::OnMouseLeftDown(const axPoint& pos)
+void axTextBox::OnMouseLeftDown(const axPoint& pos)
 {
     GrabKey();
     Update();
 }
 
-void axTextControl::OnMouseLeftUp(const axPoint& pos)
+void axTextBox::OnFlashingCursorTimer(const axTimerMsg& msg)
+{
+    _cursorFlashActive = !_cursorFlashActive;
+    Update();
+}
+
+void axTextBox::OnMouseLeftUp(const axPoint& pos)
 {
 
 }
 
-void axTextControl::OnMouseEnter()
+void axTextBox::OnMouseEnter()
 {
 
 }
 
-void axTextControl::OnMouseLeave()
+void axTextBox::OnMouseLeave()
 {
 
 }
 
-void axTextControl::OnKeyDown(const char& key)
+void axTextBox::OnWasKeyUnGrabbed()
+{
+    _flashingCursor->StopTimer();
+    Update();
+}
+
+void axTextBox::OnWasKeyGrabbed()
+{
+    if(axFlag_exist(axTEXT_BOX_FLASHING_CURSOR, _flags))
+    {
+        _flashingCursor->StartTimer(500);
+    }
+    
+    Update();
+}
+
+void axTextBox::OnKeyDown(const char& key)
 {
     if(_cursorBarXPosition < GetRect().size.x - 10)
     {
         _label.push_back(key);
         Update();
     }
-    
-    
 }
 
-void axTextControl::OnBackSpaceDown()
+void axTextBox::OnBackSpaceDown()
 {
     _label.pop_back();
     Update();
 }
 
-void axTextControl::OnPaint()
+void axTextBox::OnLeftArrowDown()
+{
+    
+}
+
+void axTextBox::OnRightArrowDown()
+{
+    
+}
+
+void axTextBox::OnPaint()
 {
 	axGC* gc = GetGC();
 	axRect rect(GetRect());
@@ -100,7 +137,7 @@ void axTextControl::OnPaint()
         _cursorBarXPosition = 5;
     }
 
-    if(IsKeyGrab())
+    if(IsKeyGrab() && _cursorFlashActive)
     {
         gc->SetColor(_info.cursor);
   

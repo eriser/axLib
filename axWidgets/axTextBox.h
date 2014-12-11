@@ -10,31 +10,30 @@
 #include "axGC.h"
 #include "axImage.h"
 #include "axMsg.h"
+#include "axTimer.h"
 
 /**************************************************************************//**
- * axTextControlFlags.
+ * axTextBoxFlags.
 ******************************************************************************/
-#define axBUTTON_SINGLE_IMG	axFLAG_1
-#define axBUTTON_IMG_RESIZE	axFLAG_2
-#define axBUTTON_CAN_SELECTED axFLAG_3 // Not implemented yet.
+#define axTEXT_BOX_FLASHING_CURSOR	axFLAG_1
 
-class axTextControl;
+class axTextBox;
 
-class axTextControlMsg : public axMsg
+class axTextBoxMsg : public axMsg
 {
 public:
-    axTextControlMsg()
+    axTextBoxMsg()
     {
         _sender = nullptr;
     }
     
-    axTextControlMsg(axTextControl* sender, const string& msg)
+    axTextBoxMsg(axTextBox* sender, const string& msg)
     {
         _sender = sender;
         _msg = msg;
     }
     
-    axTextControl* GetSender() const
+    axTextBox* GetSender() const
     {
         return _sender;
     }
@@ -46,25 +45,25 @@ public:
     
     axMsg* GetCopy()
     {
-        return new axTextControlMsg(*this);
+        return new axTextBoxMsg(*this);
     }
     
 private:
-    axTextControl* _sender;
+    axTextBox* _sender;
     string _msg;
 };
 
-struct axTextControlEvents
+struct axTextBoxEvents
 {
     enum : axEventId { BUTTON_CLICK };
     
-	axTextControlEvents(){}
-    axTextControlEvents(axEventFunction& fct){ button_click = fct; }
+	axTextBoxEvents(){}
+    axTextBoxEvents(axEventFunction& fct){ button_click = fct; }
     
     axEventFunction button_click;
 };
 
-struct axTextControlInfo
+struct axTextBoxInfo
 {
 	axColor normal;
 	axColor hover;
@@ -73,8 +72,8 @@ struct axTextControlInfo
 	axColor contour;
 	axColor font_color;
 
-	axTextControlInfo(){}
-	axTextControlInfo(
+	axTextBoxInfo(){}
+	axTextBoxInfo(
 		const axColor& normal_color,
 		const axColor& hover_color,
 		const axColor& clicked_color,
@@ -88,7 +87,7 @@ struct axTextControlInfo
 		contour(contour_color),
 		font_color(font_color_){}
     
-    axTextControlInfo(const std::string& path)
+    axTextBoxInfo(const std::string& path)
     {
         SerializeInput(path);
     }
@@ -135,29 +134,13 @@ struct axTextControlInfo
     }
 };
 
-//#define axSTANDARD_BUTTON 	axButtonInfo( \
-//							axColor(0.5, 0.5, 0.5),\
-//							axColor(0.6, 0.6, 0.6),\
-//							axColor(0.4, 0.4, 0.4),\
-//							axColor(0.5, 0.5, 0.5),\
-//							axColor(0.0, 0.0, 0.0),\
-//							axColor(0.0, 0.0, 0.0)) 
-//
-//#define axBUTTON_TRANSPARENT 	axButtonInfo( \
-//axColor(0.0, 0.0, 0.0, 0.0),\
-//axColor(0.0, 0.0, 0.0, 0.0),\
-//axColor(0.0, 0.0, 0.0, 0.0),\
-//axColor(0.0, 0.0, 0.0, 0.0),\
-//axColor(0.0, 0.0, 0.0, 0.0),\
-//axColor(0.0, 0.0, 0.0, 1.0))
-
-class axTextControl : public axPanel
+class axTextBox : public axPanel
 {
 public:
-	axTextControl(axWindow* parent,
+	axTextBox(axWindow* parent,
                   const axRect& rect,
-                  const axTextControlEvents& events,
-                  const axTextControlInfo& info,
+                  const axTextBoxEvents& events,
+                  const axTextBoxInfo& info,
                   string img_path = "",
                   string label = "",
                   axFlag flags = 0);
@@ -165,9 +148,11 @@ public:
     void SetLabel(const std::string& label);
 
     
+    axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);
+    
 protected:
-    axTextControlEvents _events;
-    axTextControlInfo _info;
+    axTextBoxEvents _events;
+    axTextBoxInfo _info;
     string _label;
     axImage* _btnImg;
     axFlag _flags;
@@ -177,13 +162,15 @@ protected:
     
     int _cursorBarXPosition;
     
-    enum axTextControlState
+    enum axTextBoxState
     {
         axBTN_NORMAL,
         axBTN_HOVER,
         axBTN_DOWN,
         axBTN_SELECTED
     };
+    
+    axTimer* _flashingCursor;
     
 	virtual void OnPaint();
 	virtual void OnMouseLeftDown(const axPoint& pos);
@@ -193,6 +180,15 @@ protected:
     
     virtual void OnKeyDown(const char& key);
     virtual void OnBackSpaceDown();
+    
+    virtual void OnLeftArrowDown();
+    virtual void OnRightArrowDown();
+    virtual void OnWasKeyUnGrabbed();
+    virtual void OnWasKeyGrabbed();
+    
+    void OnFlashingCursorTimer(const axTimerMsg& msg);
+    
+    bool _cursorFlashActive;
 };
 
 #endif //__AX_BUTTON__
