@@ -17,8 +17,7 @@
 class MidiPartitionTrack: public axPanel
 {
 public:
-	MidiPartitionTrack(axApp* app, 
-				   axWindow* parent, 
+	MidiPartitionTrack(axWindow* parent,
 				   const axRect& rect);
 
 private:
@@ -53,8 +52,7 @@ struct CircleInfo
 class MidiPartition: public axPanel
 {
 public:
-	MidiPartition(axApp* app, 
-				   axWindow* parent, 
+	MidiPartition(axWindow* parent,
 				   const axRect& rect);
 
 private:
@@ -100,7 +98,7 @@ private:
 class MidiSequencer: public axPanel
 {
 public:
-	MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, Audio* audio);
+	MidiSequencer(axWindow* parent, const axRect& rect, Audio* audio);
 
 	void AddNewTrack(const string& trackName, Audio* audio, int num);
 
@@ -112,7 +110,7 @@ public:
 	void SetPreset(DrumMachinePreset* preset);
 	
 
-	axEVENT(axButtonMsg, OnColorChange);
+	axEVENT_ACCESSOR(axButtonMsg, OnColorChange);
 	axEVENT(int, OnChangeTrackHeight);
 
 private:
@@ -140,12 +138,11 @@ private:
 class DrumMachine: public axPanel
 {
 public:
-	DrumMachine(axApp* app, 
-				   axWindow* parent, 
-				   const axRect& rect, Audio* audio);
+	DrumMachine(axWindow* parent,
+                const axRect& rect, Audio* audio);
 
 	axEVENT(int, OnChangeTrackHeight);
-	axEVENT(axButtonMsg, OnChangeTemplate);
+	axEVENT_ACCESSOR(axButtonMsg, OnChangeTemplate);
 
 	void ExecApplication(const string& app_name);
 
@@ -176,8 +173,7 @@ private:
 class ScrollDrumMachine: public axPanel
 {
 public:
-	ScrollDrumMachine(axApp* app, 
-				   axWindow* parent, 
+	ScrollDrumMachine(axWindow* parent, 
 				   const axRect& rect, Audio* audio);
 
 	axEVENT(axScrollBarMsg, OnScroll);
@@ -191,42 +187,5 @@ private:
 	// Events.
 	virtual void OnPaint();
 };
-
-
-class axMain
-{
-public:
-    axMain()
-    {
-    }
-    
-    static void MainEntryPoint(axApp* app)
-    {
-        AudioMidiSeq* audio = new AudioMidiSeq();
-        //axMidi* midi = new axMidi(audio);
-        
-        //        axApp* app = new axApp(axSize(570, 600));
-        
-        ScrollDrumMachine* machine = new ScrollDrumMachine(app,
-                                                           nullptr,
-                                                           axRect(0, 0, 570, 600),
-                                                           audio);
-        
-        // DrumMachinePreset test("presets/presets.txt");
-        audio->StartAudio();
-        //        midi->StartStream();
-        
-        // machine->SetPreset("presets/presets.txt");
-//        app->MainLoop();
-        
-        //midi->StopStream();
-        
-//        //        delete midi;
-//        delete audio;
-//        delete app;
-        
-    }
-};
-
 
 #endif // __MIDI_SEUENCER__

@@ -3,8 +3,8 @@
 //-----------------------------------------------------------------------------
 // MidiPartitionTrack.
 //-----------------------------------------------------------------------------
-MidiPartitionTrack::MidiPartitionTrack(axApp* app, axWindow* parent, const axRect& rect):
-			axPanel(app, parent, rect),
+MidiPartitionTrack::MidiPartitionTrack(axWindow* parent, const axRect& rect):
+			axPanel(parent, rect),
 			_nPart(4)
 {
 
@@ -37,8 +37,8 @@ void MidiPartitionTrack::OnPaint()
 	gc->DrawRectangleContour(rect0);
 }
 
-MidiPartition::MidiPartition(axApp* app, axWindow* parent, const axRect& rect):
-			axPanel(app, parent, rect),
+MidiPartition::MidiPartition(axWindow* parent, const axRect& rect):
+			axPanel(parent, rect),
 			_heightlighted_bar(-1),
 			_nSlice(10),
 			_heighlighted_circle(0),
@@ -170,8 +170,8 @@ void MidiPartition::OnPaint()
 //-----------------------------------------------------------------------------
 // MidiSequencer.
 //-----------------------------------------------------------------------------
-MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, Audio* audio):
-			axPanel(app, parent, rect)
+MidiSequencer::MidiSequencer(axWindow* parent, const axRect& rect, Audio* audio):
+			axPanel(parent, rect)
 {
 	string path = GetCurrentAppDirectory();
 
@@ -186,13 +186,13 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 						  axColor(0.0, 0.0, 0.0),
 						  axColor(0.0, 0.0, 0.0));
 
-	function<void (axButtonMsg)> btnFct(GetOnColorChange());
-
+    axButtonEvents btnEvents;
+    btnEvents.button_click = GetOnColorChange();
 	int x = 0, y = 0, xDelta = 20;
 
-	btns.push_back(new axButton(app, this, 
+	btns.push_back(new axButton(this,
 								 axRect(x, y, 20, 20), 
-								 axButtonEvents(btnFct), 
+								 btnEvents,
 								 btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btn.png", "", btnFlags,
 								 to_string(CHOICE_RED)));
 
@@ -203,9 +203,9 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 	btn_info.selected = axColor(0.0, 0.8, 0.0);
 	btn_info.normal = axColor(0.0, 0.8, 0.0);
 
-	btns.push_back(new axButton(app, this, 
+	btns.push_back(new axButton(this,
 								axRect(x, y, 20, 20), 
-								axButtonEvents(btnFct), 
+								btnEvents,
 								btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btn.png", "", btnFlags,
 								to_string(CHOICE_GREEN)));
 
@@ -216,15 +216,15 @@ MidiSequencer::MidiSequencer(axApp* app, axWindow* parent, const axRect& rect, A
 	btn_info.selected = axColor(0.0, 0.0, 0.8);
 	btn_info.normal = axColor(0.0, 0.0, 0.8);
 
-	btns.push_back(new axButton(app, this, 
+	btns.push_back(new axButton(this,
 							axRect(x, y, 20, 20), 
-							axButtonEvents(btnFct),
+							btnEvents,
 							btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btn.png", "",
 							btnFlags, to_string(CHOICE_BLUE)));
 
 	_trackSize = axSize(rect.size.x, 90);
 
-	LineSelection* lines = new LineSelection(app, this, axRect(60, 0, rect.size.x - 60, 20));
+	LineSelection* lines = new LineSelection(this, axRect(60, 0, rect.size.x - 60, 20));
 
 
 	//AddNewTrack("Kick",		audio, 0);
@@ -264,7 +264,7 @@ void MidiSequencer::AddNewTrack(const string& trackName, Audio* audio, int num)
 {
 	if(_midiTracks.size() == 0)
 	{
-		_midiTracks.push_back(new MidiTrack(GetApp(), this, 
+		_midiTracks.push_back(new MidiTrack(this,
 											axRect(axPoint(0, 20), 
 											_trackSize), 
 											trackName, audio, num));
@@ -275,7 +275,7 @@ void MidiSequencer::AddNewTrack(const string& trackName, Audio* audio, int num)
 	}
 	else
 	{
-		_midiTracks.push_back(new MidiTrack(GetApp(), this,
+		_midiTracks.push_back(new MidiTrack(this,
 											axRect(GetNextTrackPosition(),
 											_trackSize),
 											trackName, audio, num));
@@ -374,13 +374,15 @@ void DrumMachine::ExecApplication(const string& app_name)
 //-----------------------------------------------------------------------------
 // DrumMachine.
 //-----------------------------------------------------------------------------
-DrumMachine::DrumMachine(axApp* app, 
-				   		 axWindow* parent, 
-				   		 const axRect& rect, Audio* audio):
-						 axPanel(app, parent, rect),
+DrumMachine::DrumMachine(axWindow* parent,
+				   		 const axRect& rect,
+                         Audio* audio):
+						 axPanel(parent, rect),
 						 _audio(audio)
 {
-	function<void (axButtonMsg)> btnFct(GetOnChangeTemplate());
+//	function<void (axButtonMsg)> btnFct(GetOnChangeTemplate());
+    axButtonEvents btnEvents;
+    btnEvents.button_click = GetOnChangeTemplate();
 
 	// string dir(app->GetCurrentAppDirectory());
 
@@ -402,7 +404,7 @@ DrumMachine::DrumMachine(axApp* app,
 	//							 "", "Open");
 
 	//cout << "MIDI SEQ :" << rect.size.x - 10 << endl;
-	_midiSeq = new MidiSequencer(app, this, axRect(5, 70, rect.size.x - 10, 50), _audio);
+	_midiSeq = new MidiSequencer(this, axRect(5, 70, rect.size.x - 10, 50), _audio);
 
 	axEvtFunction(int) trackResizeFct(GetOnChangeTrackHeight());
 	_midiSeq->SetTrackResizeFct(trackResizeFct);
@@ -413,7 +415,7 @@ DrumMachine::DrumMachine(axApp* app,
 
 
 	//----------------------------------------------------------------------
-	_drumSampler = new DrumSampler(app, this, 
+	_drumSampler = new DrumSampler(this,
 		axRect(_midiSeq->GetBottomLeftPosition() + axPoint(0, 5), 
 			   axSize(rect.size.x - 10, 330)), _audio);
 	//----------------------------------------------------------------------
@@ -485,19 +487,19 @@ void DrumMachine::OnPaint()
 }
 
 
-ScrollDrumMachine::ScrollDrumMachine(axApp* app, axWindow* parent, 
+ScrollDrumMachine::ScrollDrumMachine(axWindow* parent,
 									 const axRect& rect, Audio* audio):
-								     axPanel(app, parent, rect)
+								     axPanel(parent, rect)
 {
 	function<void (axScrollBarMsg)> scroll(GetOnScroll());
-	scroll_bar = new axScrollBar(app, this, 
+	scroll_bar = new axScrollBar(this,
 								 axRect(rect.size.x -14 - 45, 0, 14, rect.size.y), 
 								 axScrollBarEvents(scroll), 
 								 axScrollBarInfo());
 
 
 	scroll_bar->setInputInfo(rect.size.y, 605, 0);
-	_drum = new DrumMachine(app, this, axRect(45, 0, rect.size.x - 90 - 14, 800), audio);
+	_drum = new DrumMachine(this, axRect(45, 0, rect.size.x - 90 - 14, 800), audio);
 
 	_side_img = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/woodSide.png");
 
@@ -534,6 +536,16 @@ void ScrollDrumMachine::OnPaint()
 
 	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangleContour(rect0);
+}
+
+void axMain::MainEntryPoint(axApp* app)
+{
+//    axApp::GetInstance()->GetCore()->ResizeFrame(axSize(570, 600));
+    AudioMidiSeq* audio = new AudioMidiSeq();
+    ScrollDrumMachine* machine = new ScrollDrumMachine(nullptr,
+                                                       axRect(0, 0, 570, 600),
+                                                       audio);
+    audio->StartAudio();
 }
 
 

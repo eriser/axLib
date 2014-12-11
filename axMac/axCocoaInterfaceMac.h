@@ -9,6 +9,8 @@
 #ifndef MidiSequencer_axFileDialog_h
 #define MidiSequencer_axFileDialog_h
 
+#include "axC++.h"
+
 std::string axOpenFileDialog();
 
 void TestFunctionInterface();
@@ -16,5 +18,7 @@ void TestFunctionInterface();
 std::string CocoaGetAppDirectory();
 
 void AddEventToDispatchQueue();
+
+void axCocoaResizeFrame(const axSize& size);
 
 #endif

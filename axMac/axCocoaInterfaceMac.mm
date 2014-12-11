@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 Alexandre Arsenault. All rights reserved.
 //
 
+#include "axCocoaInterfaceMac.h"
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
 #include <iostream>
 #import "AppDelegate.h"
+
 
 
 std::string axOpenFileDialog()
@@ -72,4 +74,13 @@ void AddEventToDispatchQueue()
             // Update UI
         });
     });
+}
+
+void axCocoaResizeFrame(const axSize& size)
+{
+    axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
+    
+    NSSize nSize = {static_cast<CGFloat>(size.x), static_cast<CGFloat>(size.y)};
+    
+    [appDelegate SetFrameSize:nSize];
 }

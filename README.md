@@ -36,7 +36,8 @@ A C++ cross-platform framework to build highly customizable platform-independent
 - Use of axTimer object.
 
 ## Project examples
-...
+
+[[https://dl.dropboxusercontent.com/u/26931825/axLibWebData/MidiSequencer.png | height = 100px ]]
 
 ## Create Project
 

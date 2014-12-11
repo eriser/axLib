@@ -64,6 +64,14 @@ void axCoreMac::UpdateAll()
     TestFunctionInterface();
 }
 
+void axCoreMac::ResizeFrame(const axSize& size)
+{
+//    ResizeGLScene(size.x, size.y);
+    axCocoaResizeFrame(size);
+    ResizeGLScene(size.x, size.y);
+    
+}
+
 std::string axCoreMac::OpenFileDialog()
 {
     return axOpenFileDialog();

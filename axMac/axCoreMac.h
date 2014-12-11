@@ -41,6 +41,8 @@ public:
     virtual bool CreateGLWindow(char* title, int width, int height, int bits);
     
     virtual void UpdateAll();
+    
+    virtual void ResizeFrame(const axSize& size);
 };
 
 #endif // __APPLE__

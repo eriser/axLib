@@ -3,11 +3,11 @@
 /*******************************************************************************//**
  * axWaveform.
  **********************************************************************************/
-axWaveform::axWaveform(axApp* app, axWindow* parent, const axRect& rect,
+axWaveform::axWaveform(axWindow* parent, const axRect& rect,
                        const axWaveformEvents& events,
                        const axWaveformInfo& waveInfo, 
 					   const string& snd_path):
-                       axPanel(app, parent, rect),
+                       axPanel(parent, rect),
                         // Members.
                         m_info(waveInfo)
                         // m_eventID( events )

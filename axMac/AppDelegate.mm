@@ -51,6 +51,8 @@ axAppDelegate* GlobalAppDelegate;
 
 -(void)awakeFromNib
 {
+    
+    
     //when UI is created and properly initialized,
     // we set the timer to continual, real-time rendering
     //a 1ms time interval
@@ -88,8 +90,18 @@ axAppDelegate* GlobalAppDelegate;
 
 - (void) setFrameSize:(NSSize)newSize
 {
-    NSSize myNSWindowSize = [ [ self window ] frame ].size;
-    std::cout << "My size : " << myNSWindowSize.width << " " << myNSWindowSize.height << std::endl;
+    //NSSize myNSWindowSize = [ [ self window ] frame ].size;
+    //std::cout << "My size : " << myNSWindowSize.width << " " << myNSWindowSize.height << std::endl;
+}
+
+- (void) SetFrameSize:(NSSize)newSize
+{
+    std::cout << "SetFrameSize : RESIZE. " << std::endl;
+    
+    [[GlobalAppDelegate window] setFrame:NSMakeRect(0.f, 0.f, 800, newSize.height) display:YES animate:YES];
+    //[[[GlobalAppDelegate openGLContext] view] setFrame:NSMakeRect(0.f, 0.f, 800, 800)];
+    //[[[GlobalAppDelegate openGLContext] view] setFrameSize:newSize];
+
 }
 
 

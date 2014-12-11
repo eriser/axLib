@@ -29,6 +29,7 @@
 - (void)windowDidResize:(NSEvent *)event;
 - (void)windowDidMove:(NSNotification *)notification;
 - (void) setFrameSize:(NSSize)newSize;
+- (void) SetFrameSize:(NSSize)newSize;
 - (id) MemberTestFunc;
 //+ (void) MemberTestFunc;
 //-(void)mouseMoved:(NSEvent *)event;

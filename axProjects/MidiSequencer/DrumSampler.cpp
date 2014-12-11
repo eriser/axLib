@@ -3,12 +3,12 @@
 //-----------------------------------------------------------------------------
 // SynthControl.
 //-----------------------------------------------------------------------------
-SynthControl::SynthControl(axApp* app, axWindow* parent,
+SynthControl::SynthControl(axWindow* parent,
 						const axRect& rect,
 						const string& snd_path,
 						Audio* audio,
 						const int& track_num) :
-	axPanel(app, parent, rect),
+	axPanel(parent, rect),
 	_trackNum(track_num)
 {
 	_audio = static_cast<AudioMidiSeq*>(audio);
@@ -21,17 +21,17 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 		axColor(0.0, 0.0, 0.0),
 		axColor(0.8, 0.8, 0.8));
 
-	function<void(axButtonMsg)> btnFct(GetOnOpenFile());
-	
-
-	axButton* btn = new axButton(app, this, btnFct, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/axBtnOpen.axobj");
+    axButtonEvents btnEvents;
+    btnEvents.button_click = GetOnOpenFile();
+	axButton* btn = new axButton(this, axRect(20, 5, 60, 20),
+                                 btnEvents, btn_info, "", "Open");
 
 	axWaveformInfo waveinfo(axColor(0.7, 0.7, 0.7), // Waveform.
 							axColor(0.4, 0.4, 0.4), // Background.
 							axColor(0.5, 0.5, 0.5), // Lines.
 							axColor(0.0, 0.0, 0.0));
 
-	_wave = new axWaveform(app, this,
+	_wave = new axWaveform(this,
 									  axRect(20, 30, 405, 80),
 									  axWaveformEvents(),
 									  waveinfo,
@@ -48,52 +48,52 @@ SynthControl::SynthControl(axApp* app, axWindow* parent,
 						 "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/knob_dark.png",
 						 "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/knob_dark.png");
 
-	axEvtFunction(axKnobMsg) fct = GetOnFilterFrequency();
-	axKnobEvents freq_evt(fct);
-	axKnob* knob = new axKnob(app, this, axRect(19, 156, 46, 46),
+	axKnobEvents freq_evt;
+    freq_evt.value_change = GetOnFilterFrequency();
+	axKnob* knob = new axKnob(this, axRect(19, 156, 46, 46),
 							  freq_evt, knob_info);
 
 	knob->SetBackgroundAlpha(0.0);
 	knob->SetValue(1.0);
 
-	fct = GetOnFilterRes();
-	axKnob* res = new axKnob(app, this, axRect(59, 156, 46, 46),
-							 axKnobEvents(fct), knob_info);
+	freq_evt.value_change = GetOnFilterRes();
+	axKnob* res = new axKnob(this, axRect(59, 156, 46, 46),
+							 freq_evt, knob_info);
 	res->SetBackgroundAlpha(0.0);
 	res->SetValue(0.00707);
 
-	fct = GetOnFilterEnvelope();
-	axKnob* env = new axKnob(app, this, axRect(98, 156, 46, 46),
-		axKnobEvents(fct), knob_info);
+	freq_evt.value_change = GetOnFilterEnvelope();
+	axKnob* env = new axKnob(this, axRect(98, 156, 46, 46),
+		freq_evt, knob_info);
 	env->SetBackgroundAlpha(0.0);
 
 
-	fct = GetOnAttack();
-	axKnob* att = new axKnob(app, this, axRect(163, 156, 46, 46),
-		axKnobEvents(fct), knob_info);
+	freq_evt.value_change = GetOnAttack();
+	axKnob* att = new axKnob(this, axRect(163, 156, 46, 46),
+		freq_evt, knob_info);
 	att->SetBackgroundAlpha(0.0);
 
-	fct = GetOnDecay();
-	axKnob* dec = new axKnob(app, this, axRect(202, 156, 46, 46),
-		axKnobEvents(fct), knob_info);
+	freq_evt.value_change = GetOnDecay();
+	axKnob* dec = new axKnob(this, axRect(202, 156, 46, 46),
+		freq_evt, knob_info);
 	dec->SetBackgroundAlpha(0.0);
 	dec->SetValue(1.0);
 
-	fct = GetOnTuning();
-	axKnob* pitch = new axKnob(app, this, axRect(269, 156, 46, 46),
-		axKnobEvents(fct), knob_info);
+	freq_evt.value_change = GetOnTuning();
+	axKnob* pitch = new axKnob(this, axRect(269, 156, 46, 46),
+		freq_evt, knob_info);
 	pitch->SetBackgroundAlpha(0.0);
 	pitch->SetValue(0.5);
 
-	fct = GetOnTuningEnv();
-	axKnob* env_pitch = new axKnob(app, this, axRect(308, 156, 46, 46),
-		axKnobEvents(fct), knob_info);
+	freq_evt.value_change = GetOnTuningEnv();
+	axKnob* env_pitch = new axKnob(this, axRect(308, 156, 46, 46),
+		freq_evt, knob_info);
 	env_pitch->SetBackgroundAlpha(0.0);
 	env_pitch->SetValue(0.0);
 
-	fct = GetOnGain();
-	axKnob* gain = new axKnob(app, this, axRect(376, 156, 46, 46),
-		axKnobEvents(fct), knob_info);
+	freq_evt.value_change = GetOnGain();
+	axKnob* gain = new axKnob(this, axRect(376, 156, 46, 46),
+		freq_evt, knob_info);
 	gain->SetBackgroundAlpha(0.0);
 	gain->SetValue(0.5);
 }
@@ -166,9 +166,9 @@ void SynthControl::OnPaint()
 
 
 //-----------------------------------------------------------------------------
-DrumPad::DrumPad(axApp* app, axWindow* parent,
+DrumPad::DrumPad(axWindow* parent,
 	const axRect& rect, const int& track_id, axEvtFunction(DrumPadMsg) click_evt) :
-	axPanel(app, parent, rect)
+	axPanel(parent, rect)
 {
 	_trackName = "";
 	_clickEvent = click_evt;
@@ -263,8 +263,8 @@ void DrumPad::OnPaint()
 
 
 
-DrumSampler::DrumSampler(axApp* app, axWindow* parent, const axRect& rect, Audio* audio) :
-			 axPanel(app, parent, rect)
+DrumSampler::DrumSampler(axWindow* parent, const axRect& rect, Audio* audio) :
+			 axPanel(parent, rect)
 {
 	_topBar = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/tool.png");
 
@@ -277,9 +277,11 @@ DrumSampler::DrumSampler(axApp* app, axWindow* parent, const axRect& rect, Audio
 	int pad_size = (rect.size.x - (8+1) * 5.0) / double(_pads.size());
 
 	axEvtFunction(DrumPadMsg) padClickFct(GetOnDrumPadClick());
+    
+    
 	for (int i = 0; i < 8; i++)
 	{
-		_pads[i] = new DrumPad(app, this, axRect(x, 25, pad_size, 60), 
+		_pads[i] = new DrumPad(this, axRect(x, 25, pad_size, 60),
 							   i, padClickFct);
 		x += pad_size + 5;
 		_pads[i]->SetTrackName(_audio->GetAudioTrack(i)->GetTrackName());
@@ -288,7 +290,7 @@ DrumSampler::DrumSampler(axApp* app, axWindow* parent, const axRect& rect, Audio
 
 	for (int i = 0; i < _synths.size(); i++)
 	{
-		_synths[i] = new SynthControl(app, this, 
+		_synths[i] = new SynthControl(this, 
 						axRect(7, 93, rect.size.x - 14, 220/* rect.size.y - 80*/),
 						_audio->GetSoundPath(i), audio, i);
 
@@ -317,7 +319,7 @@ void DrumSampler::OnDrumPadClick(const DrumPadMsg& msg)
 }
 
 void DrumSampler::OnPaint()
-{
+{    
 	axGC* gc = GetGC();
 	//BlockDrawing();
 

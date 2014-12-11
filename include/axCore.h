@@ -35,6 +35,7 @@ public:
     
     virtual void PushEventOnSystemQueue() = 0;
 
+    virtual void ResizeFrame(const axSize& size) = 0;
 
 	int InitGL();
 	void ResizePopGLScene(const int& width, const int& height);

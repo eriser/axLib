@@ -36,8 +36,7 @@ struct MultipleSliderMsg
 class MultipleSlider: public axPanel
 {
 public:
-	MultipleSlider(axApp* app, 
-				   axWindow* parent, 
+	MultipleSlider(axWindow* parent,
 				   const axRect& rect, 
 				   const axColor& bgColor,
 				   const int& barIndex,
@@ -47,9 +46,9 @@ public:
 
 	void SetValue(const int& index, const double& value);
 
-	axEVENT(axSliderMsg, OnSlider1Move);
-	axEVENT(axSliderMsg, OnSlider2Move);
-	axEVENT(axSliderMsg, OnSlider3Move);
+	axEVENT_ACCESSOR(axSliderMsg, OnSlider1Move);
+	axEVENT_ACCESSOR(axSliderMsg, OnSlider2Move);
+	axEVENT_ACCESSOR(axSliderMsg, OnSlider3Move);
 
 private:
 		int _nSlider;
@@ -73,7 +72,7 @@ private:
 class MidiTrackName: public axPanel
 {
 public:
-	MidiTrackName(axApp* app, axWindow* parent, const axRect& rect, const string& name);
+	MidiTrackName(axWindow* parent, const axRect& rect, const string& name);
 
 private:
 	string _trackName;
@@ -103,10 +102,10 @@ struct MidiNoteParams
 class MidiVelocity: public axPanel
 {
 public:
-	MidiVelocity(axApp* app, axWindow* parent, 
+	MidiVelocity(axWindow* parent,
 				 const axRect& rect, 
 				 axEvtFunction(MultipleSliderMsg) fct,
-				 axEvtFunction(axNumberBoxMsg) sfct);
+				 axEventFunction sfct);
 
 	void SetNumberOfSlider(const int& nb)
 	{
@@ -119,14 +118,14 @@ public:
 	void SetPreset(TrackInfo* info);
 
 	axEVENT(MultipleSliderMsg, OnChangeVelocity);
-	axEVENT(axNumberBoxMsg, OnStandardDeviation);
+	axEVENT_ACCESSOR(axNumberBoxMsg, OnStandardDeviation);
 
 private:
 
 	vector<MultipleSlider*> _sliders;
 
 	axEvtFunction(MultipleSliderMsg) _velocity_fct;
-	axEvtFunction(axNumberBoxMsg) _standard_deviation_fct;
+	axEventFunction _standard_deviation_fct;
 
 	void OnChangeVelocity(const MultipleSliderMsg& vel);
 
@@ -144,7 +143,7 @@ private:
 class MidiTrackSequence: public axPanel
 {
 public:
-	MidiTrackSequence(axApp* app, axWindow* parent, const axRect& rect, Audio* audio, int num);
+	MidiTrackSequence(axWindow* parent, const axRect& rect, Audio* audio, int num);
 
 	void SetNumberOfSubTrack(const int& n)
 	{
@@ -203,7 +202,7 @@ private:
 class LineSelection: public axPanel
 {
 public:
-	LineSelection(axApp* app, axWindow* parent, const axRect& rect);
+	LineSelection(axWindow* parent, const axRect& rect);
 
 private:
 	// Events.
@@ -226,7 +225,7 @@ struct MidiTrackEvents
 class MidiTrack: public axPanel
 {
 public:
-	MidiTrack(axApp* app, axWindow* parent, 
+	MidiTrack(axWindow* parent, 
 			  const axRect& rect, 
 			  const string& trackName, 
 			  Audio* audio, int track_number);
@@ -246,11 +245,11 @@ public:
 
 	void SetColorSelection(const ColorChoice& choice);
 
-	axEVENT(axButtonMsg, OnAddSeparation);
-	axEVENT(axButtonMsg, OnRemoveSeparation);
-	axEVENT(axButtonMsg, OnMinimize);
+	axEVENT_ACCESSOR(axButtonMsg, OnAddSeparation);
+	axEVENT_ACCESSOR(axButtonMsg, OnRemoveSeparation);
+	axEVENT_ACCESSOR(axButtonMsg, OnMinimize);
 	axEVENT(MultipleSliderMsg, OnVelocity);
-	axEVENT(axNumberBoxMsg, OnStandardDeviation);
+	axEVENT_ACCESSOR(axNumberBoxMsg, OnStandardDeviation);
 	
 	
 private:

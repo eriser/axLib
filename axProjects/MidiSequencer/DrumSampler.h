@@ -12,14 +12,13 @@
 class SynthControl : public axPanel
 {
 public:
-	SynthControl(axApp* app,
-				 axWindow* parent,
+	SynthControl(axWindow* parent,
 				 const axRect& rect, 
 				 const string& snd_path,
 				 Audio* audio,
 				 const int& track_num);
 
-	axEVENT(axButtonMsg, OnOpenFile);
+	axEVENT_ACCESSOR(axButtonMsg, OnOpenFile);
 	axEVENT(axKnobMsg, OnFilterFrequency);
 	axEVENT(axKnobMsg, OnFilterRes);
 	axEVENT(axKnobMsg, OnFilterEnvelope);
@@ -84,8 +83,7 @@ private:
 class DrumPad : public axPanel
 {
 public:
-	DrumPad(axApp* app,
-		axWindow* parent,
+	DrumPad(axWindow* parent,
 		const axRect& rect, 
 		const int& track_id,
 		axEvtFunction(DrumPadMsg) click_evt);
@@ -115,8 +113,7 @@ private:
 class DrumSampler : public axPanel
 {
 public:
-	DrumSampler(axApp* app,
-		axWindow* parent,
+	DrumSampler(axWindow* parent,
 		const axRect& rect, Audio* audio);
 
 	//axEVENT(axButtonMsg, OnOpenFile);

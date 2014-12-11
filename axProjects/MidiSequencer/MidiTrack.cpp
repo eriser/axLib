@@ -33,12 +33,12 @@ void ExecApplication(const string& app_name)
   //}
 }
 
-MultipleSlider::MultipleSlider(axApp* app, axWindow* parent, 
+MultipleSlider::MultipleSlider(axWindow* parent,
                                const axRect& rect, 
                                const axColor& bgColor, 
                                const int& barIndex,
                                axEvtFunction(MultipleSliderMsg)& slider_fct):
-      axPanel(app, parent, rect),
+      axPanel(parent, rect),
       // Members.
       _barIndex(barIndex),
       _slider_fct(slider_fct)
@@ -71,34 +71,37 @@ MultipleSlider::MultipleSlider(axApp* app, axWindow* parent,
                 axSLIDER_FLAG_RIGHT_ALIGN;
 
 
-    axEvtFunction(axSliderMsg) sld_fct(GetOnSlider1Move());
+//    axEvtFunction(axSliderMsg) sld_fct(GetOnSlider1Move());
+    
+    axSliderEvents sldEvents;
+    sldEvents.slider_value_change = GetOnSlider1Move();
     // function<void(const axSliderMsg&)> sld_fct(GetOnSliderMove());
 
 	double left = position_ratio * 0.0;
 	double right = position_ratio * 1.0;
-	sliders[0] = new axSlider(app, this, 
+	sliders[0] = new axSlider(this,
 		axRect(left, 0, right - left, rect.size.y),
-	              axSliderEvents(sld_fct), sld_info, slider_flags);
+	              sldEvents, sld_info, slider_flags);
     //sliders[0] = new axSlider(app, this, 
     //              axRect(0, 0, size_x, rect.size.y), 
     //              axSliderEvents(sld_fct), sld_info, slider_flags);
 
 	left = position_ratio * 1.0;
 	right = position_ratio * 2.0;
-    sld_fct = GetOnSlider2Move();
-	sliders[1] = new axSlider(app, this, 
+    sldEvents.slider_value_change = GetOnSlider2Move();
+	sliders[1] = new axSlider(this,
 		axRect(left, 0, right - left, rect.size.y),
-	              axSliderEvents(sld_fct), sld_info, slider_flags);
+	              sldEvents, sld_info, slider_flags);
     //sliders[1] = new axSlider(app, this, 
     //              axRect(size_x, 0, size_x, rect.size.y), 
     //              axSliderEvents(sld_fct), sld_info, slider_flags);
 
 	left = position_ratio * 2.0;
 	right = position_ratio * 3.0;
-    sld_fct = GetOnSlider3Move();
-	sliders[2] = new axSlider(app, this, 
+    sldEvents.slider_value_change = GetOnSlider3Move();
+	sliders[2] = new axSlider(this,
 		axRect(left, 0, right - left, rect.size.y),
-	            axSliderEvents(sld_fct), sld_info, slider_flags);
+	            sldEvents, sld_info, slider_flags);
     //sliders[2] = new axSlider(app, this, 
     //            axRect(size_x * 2, 0, size_x, rect.size.y), 
     //            axSliderEvents(sld_fct), sld_info, slider_flags);
@@ -220,9 +223,9 @@ void MultipleSlider::OnPaint()
 //------------------------------------------------------------------------------
 // MidiTrackSequence.
 //------------------------------------------------------------------------------
-MidiTrackSequence::MidiTrackSequence(axApp* app, axWindow* parent, 
+MidiTrackSequence::MidiTrackSequence(axWindow* parent,
                   const axRect& rect, Audio* audio, int num):
-                  axPanel(app, parent, rect),
+                  axPanel(parent, rect),
                   _track_number(num)
 {
 	_audio = static_cast<AudioMidiSeq*>(audio);
@@ -465,10 +468,10 @@ void MidiTrackSequence::OnPaint()
 //-----------------------------------------------------------------------------
 // MidiTrackName.
 //-----------------------------------------------------------------------------
-MidiTrackName::MidiTrackName(axApp* app, axWindow* parent, 
+MidiTrackName::MidiTrackName(axWindow* parent,
                const axRect& rect, 
                const string& name):
-      axPanel(app, parent, rect),
+      axPanel(parent, rect),
       _trackName(name)
 {
 
@@ -496,9 +499,9 @@ void MidiTrackName::OnPaint()
 //-----------------------------------------------------------------------------
 // MidiTrack.
 //-----------------------------------------------------------------------------
-MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect, 
+MidiTrack::MidiTrack(axWindow* parent, const axRect& rect,
            const string& trackName, Audio* audio, int track_number):
-      axPanel(app, parent, rect),
+      axPanel(parent, rect),
       _track_number(track_number),
       _nSubTrack(2)
       
@@ -512,22 +515,25 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
                         axColor(0.0, 0.0, 0.0),
                         axColor(0.8, 0.8, 0.8));
 
-  function<void (axButtonMsg)> btnFct(GetOnAddSeparation());
+//  function<void (axButtonMsg)> btnFct(GetOnAddSeparation());
 
   int x = 10, y = 10, xDelta = 25;
 
   int height = 30.0 / double(_nSubTrack);
 
-  _addBtn = new axButton(app, this, 
+    axButtonEvents btnEvents;
+    btnEvents.button_click = GetOnAddSeparation();
+    
+  _addBtn = new axButton(this,
                axRect(rect.size.x - 14, 0, 14, height), 
-               axButtonEvents(btnFct), 
+               btnEvents, 
 			   btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btnhigh.png", "+",
 			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
 
-  btnFct = GetOnRemoveSeparation();
-  _removeBtn = new axButton(app, this, 
+  btnEvents.button_click = GetOnRemoveSeparation();
+  _removeBtn = new axButton(this,
                axRect(rect.size.x - 14, height, 14, height), 
-               axButtonEvents(btnFct), 
+               btnEvents,
                btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btnhigh.png", "-",
 			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
 
@@ -536,21 +542,21 @@ MidiTrack::MidiTrack(axApp* app, axWindow* parent, const axRect& rect,
   //                 axRect(0, 0, 60, 30), 
   //                 trackName);
 
-  btnFct = GetOnMinimize();
-  axButton* name = new axButton(app, this, 
+  btnEvents.button_click = GetOnMinimize();
+  axButton* name = new axButton(this,
                axRect(0, 0, 60, 30), 
-               axButtonEvents(btnFct), 
+               btnEvents,
 			   btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/miditrackname.png", trackName, axBUTTON_SINGLE_IMG);
 
-  _trackSeq = new MidiTrackSequence(app, this, 
+  _trackSeq = new MidiTrackSequence(this,
                     axRect(60, 0, 
                          rect.size.x - 60 - 14, 
                          30), 
                         audio, _track_number);
-
+//
   axEvtFunction(MultipleSliderMsg) fct(GetOnVelocity());
-  axEvtFunction(axNumberBoxMsg) sfct(GetOnStandardDeviation());
-  _velocity = new MidiVelocity(app, this, axRect(0, 30, rect.size.x, 60), fct, sfct);
+  axEventFunction sfct(GetOnStandardDeviation());
+  _velocity = new MidiVelocity(this, axRect(0, 30, rect.size.x, 60), fct, sfct);
 
 
   _nSubTrack = 1;
@@ -661,8 +667,8 @@ void MidiTrack::OnPaint()
 //-----------------------------------------------------------------------------
 // LineSelection.
 //-----------------------------------------------------------------------------
-LineSelection::LineSelection(axApp* app, axWindow* parent, const axRect& rect):
-      axPanel(app, parent, rect)
+LineSelection::LineSelection(axWindow* parent, const axRect& rect):
+      axPanel(parent, rect)
 {
     
 }
@@ -712,12 +718,11 @@ void LineSelection::OnPaint()
 //-----------------------------------------------------------------------------
 // MidiVelocity.
 //-----------------------------------------------------------------------------
-MidiVelocity::MidiVelocity(axApp* app,  
-                           axWindow* parent, 
+MidiVelocity::MidiVelocity(axWindow* parent,
                            const axRect& rect, 
                            axEvtFunction(MultipleSliderMsg) fct,
-                           axEvtFunction(axNumberBoxMsg) sfct):
-                           axPanel(app, parent, rect),
+                           axEventFunction sfct):
+                           axPanel(parent, rect),
                            // Members.
                            _velocity_fct(fct),
                            _standard_deviation_fct(sfct)
@@ -737,7 +742,7 @@ MidiVelocity::MidiVelocity(axApp* app,
         }
 
         axEvtFunction(MultipleSliderMsg) sldfct(GetOnChangeVelocity());
-        _sliders.push_back(new MultipleSlider(app, this, r, color, i, sldfct));
+        _sliders.push_back(new MultipleSlider(this, r, color, i, sldfct));
     }
 
 
@@ -760,12 +765,13 @@ MidiVelocity::MidiVelocity(axApp* app,
                              axColor(0.0, 0.0, 0.0),
                              axColor(0.0, 0.0, 0.0));
 
-    axEvtFunction(axNumberBoxMsg) evt(GetOnStandardDeviation());
+//    axEvtFunction(axNumberBoxMsg) evt(GetOnStandardDeviation());
+    axNumberBoxEvents numEvents;
+    numEvents.value_change = GetOnStandardDeviation();
 
-
-    axNumberBox* box1 = new axNumberBox(app, this, 
+    axNumberBox* box1 = new axNumberBox(this,
                            axRect(15, 10, 40, 20), 
-                           axNumberBoxEvents(evt), 
+                           numEvents,
                            box_info);
 
 }
@@ -795,11 +801,10 @@ void MidiVelocity::OnChangeVelocity(const MultipleSliderMsg& msg)
 
 void MidiVelocity::OnStandardDeviation(const axNumberBoxMsg& msg)
 {
-    
-
     if(_standard_deviation_fct)
     {
-      _standard_deviation_fct(msg);
+       //------------------------------------------------------------------------------------------
+      //_standard_deviation_fct(new const axNumberBoxMsg(*msg));
     }
 }
 

@@ -40,8 +40,7 @@ struct axWaveformInfo
 class axWaveform: public axPanel
 {
 public:
-    axWaveform( axApp* app,
-                axWindow* parent,
+    axWaveform(axWindow* parent,
                 const axRect& rect,
                 const axWaveformEvents& events,
                 const axWaveformInfo& waveInfo,
