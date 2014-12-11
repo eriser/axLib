@@ -13,7 +13,7 @@ A C++ cross-platform framework to build highly customizable platform-independent
 
 Test | test
 --------------- | ---------------
-| Content Cell  | Content Cell  |
+| **Content Cell**  | Content Cell  |
 | Content Cell  | Content Cell  |
 
 - axButton
