@@ -20,12 +20,12 @@ public:
     void SetPlayAudioEvent(axEvtFunction(int) fct);
     void SetChangePathAudioEvent(axEvtFunction(std::string) fct);
     
-    axEVENT_ACCESOR(axButtonMsg, OnPlayButton);
-    axEVENT_ACCESOR(axButtonMsg, OnTimerButton);
-    axEVENT(axToggleMsg, OnEnvToggle);
-    axEVENT_ACCESOR(axButtonMsg, OnOpenDialog);
-    axEVENT(axSliderMsg, OnZoomValue);
-    axEVENT(axSliderMsg, OnSamplePosition);
+    axEVENT_ACCESSOR(axButtonMsg, OnPlayButton);
+    axEVENT_ACCESSOR(axButtonMsg, OnTimerButton);
+    axEVENT_ACCESSOR(axToggleMsg, OnEnvToggle);
+    axEVENT_ACCESSOR(axButtonMsg, OnOpenDialog);
+    axEVENT_ACCESSOR(axSliderMsg, OnZoomValue);
+    axEVENT_ACCESSOR(axSliderMsg, OnSamplePosition);
     axEVENT(double, OnWaveformNavigator);
     axEVENT(axAudioPlayerMsg, OnPlayingPositionChange);
     
@@ -59,22 +59,5 @@ private:
     axEvtFunction(std::string) _evtChangePathAudio;
 };
 
-
-class axMain
-{
-public:
-    axMain();
-    static void MainEntryPoint(axApp* app);
-
-	virtual void MainEntry() = 0;
-};
-
-class SoundEditorMain : public axMain
-{
-public:
-	SoundEditorMain(){}
-
-	virtual void MainEntry();
-};
 
 #endif // __MIDI_SEUENCER__

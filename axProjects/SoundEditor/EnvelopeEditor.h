@@ -53,9 +53,9 @@ public:
                          const double& q,
                          const double& gain);
     
-    axEVENT(axSliderMsg, OnFilterValue);
-    axEVENT(axSliderMsg, OnFilterQValue);
-    axEVENT(axSliderMsg, OnFilterGainValue);
+    axEVENT_ACCESSOR(axSliderMsg, OnFilterValue);
+    axEVENT_ACCESSOR(axSliderMsg, OnFilterQValue);
+    axEVENT_ACCESSOR(axSliderMsg, OnFilterGainValue);
     
 private:
     std::vector<float> _envBuffer;

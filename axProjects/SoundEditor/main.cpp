@@ -285,9 +285,9 @@ void SoundEditor::OnPaint()
 //------------------------------------------------------------------------------
 // Main.
 //------------------------------------------------------------------------------
-axMain::axMain()
-{
-}
+//axMain::axMain()
+//{
+//}
 
 void axMain::MainEntryPoint(axApp* app)
 {
@@ -302,18 +302,18 @@ void axMain::MainEntryPoint(axApp* app)
     audio->StartAudio();
 }
 
-void SoundEditorMain::MainEntry()
-{
-	SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
-	SoundEditor* sound_editor = new SoundEditor(nullptr,
-		axRect(0, 0, 800, 400));
-
-	sound_editor->SetPlayAudioEvent(audio->GetOnPlay());
-	sound_editor->SetChangePathAudioEvent(audio->GetOnChangeFilePath());
-
-	audio->InitAudio();
-	audio->StartAudio();
-}
+//void SoundEditorMain::MainEntry()
+//{
+//	SoundEditorAudio* audio = SoundEditorAudio::GetInstance();
+//	SoundEditor* sound_editor = new SoundEditor(nullptr,
+//		axRect(0, 0, 800, 400));
+//
+//	sound_editor->SetPlayAudioEvent(audio->GetOnPlay());
+//	sound_editor->SetChangePathAudioEvent(audio->GetOnChangeFilePath());
+//
+//	audio->InitAudio();
+//	audio->StartAudio();
+//}
 
 #define axImplementApp(x)  int main(int argc, char* argv[]){axApp* app = axApp::CreateApp(axSize(800, 400));\
 axMain* main = new x();main->MainEntryPoint(app);app->MainLoop(); delete main; return 0;}
