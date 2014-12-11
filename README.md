@@ -37,7 +37,7 @@ A C++ cross-platform framework to build highly customizable platform-independent
 
 ## Project examples
 
-![Delete test folder][(https://dl.dropboxusercontent.com/u/26931825/axLibWebData/ProjectFromScratch_Test.png) | height = 100px]
+![MidiSequencer](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/ProjectFromScratch_Test.png)
 
 ## Create Project
 
