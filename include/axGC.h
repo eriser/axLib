@@ -46,7 +46,8 @@ public:
 	void DrawPartOfImage(axImage* img,
                          const axPoint& posInImage,
                          const axSize& sizeInImage,
-                         const axPoint& pos);
+                         const axPoint& pos,
+                         double alpha = 1.0);
 
 	void DrawString(const string& text, const axPoint& pos);
 

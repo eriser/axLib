@@ -6,13 +6,25 @@ axTimer::axTimer(axEventFunction fct, int ms)
 //    InitTimer(ms);
 }
 
-axTimer::axTimer()
+axTimer::axTimer():
+_isRunning(false)
 {
     //InitTimer(ms);
 }
 
+bool axTimer::IsRunning() const
+{
+    return _isRunning;
+}
+
 void axTimer::StartTimer(const int& interval_ms, const int& length_ms)
 {
+    timer_mutex.lock();
+    
+    _isRunning = true;
+    
+    timer_mutex.unlock();
+    
     // Return true if the thread object identifies an active thread
     // of execution, false otherwise.
     if(_timerThread.joinable() == false)
@@ -22,6 +34,44 @@ void axTimer::StartTimer(const int& interval_ms, const int& length_ms)
                                    interval_ms,
                                    length_ms);
         _timerThread.detach();
+    }
+}
+
+void axTimer::StartTimer(const int& interval_ms)
+{
+    timer_mutex.lock();
+    
+    _isRunning = true;
+    
+    timer_mutex.unlock();
+    
+    // Return true if the thread object identifies an active thread
+    // of execution, false otherwise.
+    if(_timerThread.joinable() == false)
+    {
+        _timerThread = std::thread(timer_thread_no_end,
+                                   std::ref(*this),
+                                   interval_ms);
+        _timerThread.detach();
+    }
+}
+
+void axTimer::StopTimer()
+{
+    timer_mutex.lock();
+    _isRunning = false;
+    timer_mutex.unlock();
+}
+
+void axTimer::timer_thread_no_end(axTimer& timer, int interval_ms)
+{
+    int count_ms = 0;
+    
+    while (timer.IsRunning())
+    {
+        timer.PushEvent(0, new axTimerMsg(count_ms));
+        count_ms += interval_ms;
+        std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms));
     }
 }
 

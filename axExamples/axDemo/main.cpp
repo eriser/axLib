@@ -13,6 +13,7 @@
 #include "NumberBoxPanel.h"
 #include "PaintPanel.h"
 #include "MenuPanel.h"
+#include "AnimationPanel.h"
 
 MainPanel::MainPanel(axWindow* parent, const axRect& rect):
 // Parent.
@@ -79,6 +80,7 @@ axPanel(parent, rect)
     _panels[3] = new NumberBoxPanel(this, panel_rect);
     _panels[4] = new MenuPanel(this, panel_rect);
     _panels[7] = new PaintPanel(this, panel_rect);
+    _panels[8] = new AnimationPanel(this, panel_rect);
     
     _tabBtns[0]->SetSelected(true);
     _panels[0]->Show();
@@ -87,6 +89,7 @@ axPanel(parent, rect)
     _panels[3]->Hide();
     _panels[4]->Hide();
     _panels[7]->Hide();
+    _panels[8]->Hide();
 }
 
 void MainPanel::OnTabClick(const axToggleMsg& msg)

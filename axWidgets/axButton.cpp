@@ -175,7 +175,6 @@ void axButton::OnMouseLeftUp(const axPoint& pos)
 
 void axButton::OnMouseEnter()
 {
-	//DSTREAM << "ENTER" << endl;
 	if (!IsGrabbed())
 	{
 		_currentColor = &_info.hover;

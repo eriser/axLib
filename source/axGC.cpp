@@ -265,7 +265,8 @@ void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& 
 void axGC::DrawPartOfImage(axImage* img,
 					 const axPoint& posInImage,
 					 const axSize& sizeInImage,
-					 const axPoint& position)
+					 const axPoint& position,
+                     double alpha)
 {
 	axPoint pos = position + _win->GetAbsoluteRect().position;
 	pos -= _win->GetScrollDecay();
@@ -278,7 +279,7 @@ void axGC::DrawPartOfImage(axImage* img,
 	double x = posInImage.x / double(img_size.x);
 	double y = 1.0 - posInImage.y / double(img_size.y);
 
-	glColor4f(1.0, 1.0, 1.0, 1.0);
+	glColor4f(1.0, 1.0, 1.0, alpha);
 
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);

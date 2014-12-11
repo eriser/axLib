@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0350DE1A3912040025338C /* AnimationPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0350DC1A3912040025338C /* AnimationPanel.cpp */; };
 		7C262FA81A366F9E00544ACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C262FA71A366F9E00544ACE /* main.m */; };
 		7C262FAA1A366F9E00544ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C262FA91A366F9E00544ACE /* Images.xcassets */; };
 		7C26300B1A36705F00544ACE /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C262FC41A36705F00544ACE /* AppDelegate.mm */; };
@@ -53,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C0350DC1A3912040025338C /* AnimationPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationPanel.cpp; sourceTree = "<group>"; };
+		7C0350DD1A3912040025338C /* AnimationPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationPanel.h; sourceTree = "<group>"; };
 		7C262F9F1A366F9D00544ACE /* axDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = axDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C262FA31A366F9E00544ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C262FA71A366F9E00544ACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 		7C262FA11A366F9E00544ACE /* axDemo */ = {
 			isa = PBXGroup;
 			children = (
+				7C0350DC1A3912040025338C /* AnimationPanel.cpp */,
+				7C0350DD1A3912040025338C /* AnimationPanel.h */,
 				7C26302D1A3670BB00544ACE /* ButtonPanel.cpp */,
 				7C26302E1A3670BB00544ACE /* ButtonPanel.h */,
 				7C26302F1A3670BB00544ACE /* KnobPanel.cpp */,
@@ -384,6 +389,7 @@
 				7C26301D1A36705F00544ACE /* axEvent.cpp in Sources */,
 				7C26302A1A36705F00544ACE /* axUtils.cpp in Sources */,
 				7C2630181A36705F00544ACE /* axToggle.cpp in Sources */,
+				7C0350DE1A3912040025338C /* AnimationPanel.cpp in Sources */,
 				7C26301E1A36705F00544ACE /* axEventManager.cpp in Sources */,
 				7C26302B1A36705F00544ACE /* axWindow.cpp in Sources */,
 				7C2630211A36705F00544ACE /* axImage.cpp in Sources */,
@@ -562,6 +568,7 @@
 				7C262FBE1A366F9E00544ACE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

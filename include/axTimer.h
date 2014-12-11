@@ -29,9 +29,10 @@ public:
         return new axTimerMsg(*this);
     }
     
+    
+    
 private:
     unsigned int _time;
-    
 };
 
 
@@ -42,11 +43,18 @@ public:
     axTimer();
     
     static void timer_thread(axTimer& timer, int interval_ms, int length_ms);
-    
+    static void timer_thread_no_end(axTimer& timer, int interval_ms);
     void StartTimer(const int& interval_ms, const int& length_ms);
+    void StartTimer(const int& interval_ms);
+    
+    bool IsRunning() const;
+    
+    void StopTimer();
     
 private:
     std::thread _timerThread;
+    std::mutex timer_mutex;
+    bool _isRunning;
     
     void InitTimer(int ms);
 };

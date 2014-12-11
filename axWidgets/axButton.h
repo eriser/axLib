@@ -177,34 +177,34 @@ public:
     
     void SetLabel(const std::string& label);
 
-private:
-	axButtonEvents _events;
-	axButtonInfo _info;
-	axColor* _currentColor;
-	axImage* _btnImg;
-	string _label;
-	string _msg;
-	
-	bool _selected;
-	axFlag _flags;
-	axColor test;
-	axFloat _bgAlpha;
-
-	enum axButtonState 
-	{
-		axBTN_NORMAL,
-		axBTN_HOVER,
+    
+protected:
+    axButtonEvents _events;
+    axButtonInfo _info;
+    string _label;
+    axImage* _btnImg;
+    axFlag _flags;
+    string _msg;
+    
+    axColor* _currentColor;
+    bool _selected;
+    int _nCurrentImg;
+    axColor test; // Should be remove.
+    axFloat _bgAlpha; // Should be remove.
+    
+    enum axButtonState
+    {
+        axBTN_NORMAL,
+        axBTN_HOVER,
         axBTN_DOWN,
-		axBTN_SELECTED
-	};
-
-	int _nCurrentImg;
-
-	axEvent OnPaint();
-	axEvent OnMouseLeftDown(const axPoint& pos);
-	axEvent OnMouseLeftUp(const axPoint& pos);
-	axEvent OnMouseEnter();
-	axEvent OnMouseLeave();
+        axBTN_SELECTED
+    };
+    
+	virtual void OnPaint();
+	virtual void OnMouseLeftDown(const axPoint& pos);
+	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseEnter();
+	virtual void OnMouseLeave();
 };
 
 #endif //__AX_BUTTON__

@@ -31,26 +31,20 @@ axPanel(parent, rect)
                                   btn1_info,
                                   "", "Btn1");
     
-//    btn1->AddConnection(axButtonEvents::BUTTON_CLICK,
-//                        GetOnButtonWithEvtManager());
-    
-    
     axButton* btn2 = new axButton(this,
                                   axRect(110, 40, 60, 25),
                                   axButtonEvents(),
-                                  btn1_info,
+                                  axBUTTON_TRANSPARENT,
                                   app_path + std::string("GrayButton.png"),
                                   "Btn2",
                                   axBUTTON_SINGLE_IMG);
-    btn2->SetBackgroundAlpha(0.0);
     
     axButton* btn3 = new axButton(this,
                                   axRect(180, 40, 60, 25),
                                   axButtonEvents(),
-                                  btn1_info,
+                                  axBUTTON_TRANSPARENT,
                                   app_path + std::string("btn2.png"),
                                   "Btn3");
-    btn3->SetBackgroundAlpha(0.0);
     
     std::string img_path = app_path + std::string("button.png");
     axButton* btn4 = new axButton(this,
@@ -74,12 +68,10 @@ axPanel(parent, rect)
     axButton* btn6 = new axButton(this,
                                   axRect(390, 40, 25, 25),
                                   axButtonEvents(),
-                                  btn1_info,
+                                  axBUTTON_TRANSPARENT,
                                   app_path + std::string("playTest.png"),
                                   "",
                                   axBUTTON_IMG_RESIZE);
-    
-    btn6->SetBackgroundAlpha(0.0);
     
     _timer = new axTimer();
     _timer->AddConnection(0, GetOnTimerEvent());
