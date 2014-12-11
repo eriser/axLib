@@ -16,21 +16,6 @@ axButton        | axSlider          | axKnob            | axToggle          | ax
 | **axNumberBox**  | **axGrid**     | **axPopupMenu**   | **axDropMenu**    | **axScrollBar**   |
 
 
-- axButton
-
-	![axButton image](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axButton.png)
-- axDropMenu
-- axGrid
-- axKnob
-- axMenu
-- axNumberBox
-
-	![axNumberBox](https://dl.dropboxusercontent.com/u/26931825/axLibWebData/axNumberBox.png)
-- axPopupMenu
-- axScrollBar
-- axSlider
-- axToggle
-
 ## Code examples
 
 [Create axButton](https://github.com/alexarse/axLib/wiki/axButton) 
