@@ -201,7 +201,7 @@ void axMain::MainEntryPoint(axApp* app)
 }
 ```
 
-## Git instruction.
+## Git instructions.
 For now, all development is made on **dev** branch. But Release-xx.xx.xx branches will be use when new release approaches.
 
 To add a new feature, you just need to create a new branch from dev.
