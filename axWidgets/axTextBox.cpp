@@ -16,8 +16,10 @@ _label(label),
 _flags(flags),
 _nCurrentImg(axBTN_NORMAL),
 _cursorBarXPosition(5),
+_lastCharXPosition(5),
 _flashingCursor(nullptr),
-_cursorFlashActive(true)
+_cursorFlashActive(true),
+_isHightlight(false)
 {
 	_currentColor = &_info.normal;
 
@@ -33,6 +35,8 @@ _cursorFlashActive(true)
         _flashingCursor = new axTimer();
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
+    
+    _cursorIndex = _label.size();
 }
 
 void axTextBox::SetLabel(const std::string& label)
@@ -44,6 +48,10 @@ void axTextBox::SetLabel(const std::string& label)
 void axTextBox::OnMouseLeftDown(const axPoint& pos)
 {
     GrabKey();
+    if(_isHightlight)
+    {
+        _isHightlight = false;
+    }
     Update();
 }
 
@@ -68,14 +76,25 @@ void axTextBox::OnMouseLeave()
 
 }
 
+void axTextBox::OnMouseLeftDoubleClick(const axPoint& pos)
+{
+    _isHightlight = true;
+    Update();
+}
+
 void axTextBox::OnWasKeyUnGrabbed()
 {
     _flashingCursor->StopTimer();
+    
+    _currentColor = &_info.normal;
+    
     Update();
 }
 
 void axTextBox::OnWasKeyGrabbed()
 {
+    _currentColor = &_info.selected;
+    
     if(axFlag_exist(axTEXT_BOX_FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StartTimer(500);
@@ -86,27 +105,140 @@ void axTextBox::OnWasKeyGrabbed()
 
 void axTextBox::OnKeyDown(const char& key)
 {
-    if(_cursorBarXPosition < GetRect().size.x - 10)
+    if(_isHightlight)
     {
-        _label.push_back(key);
+        _label.resize(0);
+        _label.insert(0, &key);
+        _cursorIndex = 1;
+        _isHightlight = false;
         Update();
+    }
+    else
+    {
+        if(_lastCharXPosition < GetRect().size.x - 10)
+        {
+            _label.insert(_cursorIndex, &key);
+            ++_cursorIndex;
+            Update();
+        }
     }
 }
 
 void axTextBox::OnBackSpaceDown()
 {
-    _label.pop_back();
-    Update();
+    if(_isHightlight)
+    {
+        _label.resize(0);
+        _cursorIndex = 0;
+        _isHightlight = false;
+        Update();
+    }
+    else if(_label.size() && _cursorIndex)
+    {
+        _label.erase(_cursorIndex-1, 1);
+        --_cursorIndex;
+        
+        if(_cursorIndex < 0)
+        {
+            _cursorIndex = 0;
+        }
+        Update();
+    }
+    
+}
+
+void axTextBox::OnKeyDeleteDown()
+{
+    if(_isHightlight)
+    {
+        _label.resize(0);
+        _cursorIndex = 0;
+        _isHightlight = false;
+        Update();
+    }
+    else if(_label.size() && _cursorIndex < _label.size())
+    {
+        _label.erase(_cursorIndex, 1);
+        --_cursorIndex;
+        
+        if(_cursorIndex < 0)
+        {
+            _cursorIndex = 0;
+        }
+        Update();
+    }
 }
 
 void axTextBox::OnLeftArrowDown()
 {
+    --_cursorIndex;
     
+    if(_cursorIndex < 0)
+    {
+        _cursorIndex = 0;
+    }
+    
+    if(_isHightlight)
+    {
+        _isHightlight = false;
+    }
+
+    
+    Update();
 }
 
 void axTextBox::OnRightArrowDown()
 {
+    ++_cursorIndex;
     
+    if(_cursorIndex > _label.size())
+    {
+        _cursorIndex = _label.size();
+    }
+    
+    if(_isHightlight)
+    {
+        _isHightlight = false;
+    }
+
+    
+    Update();
+}
+
+void axTextBox::DrawContourRectangle(axGC* gc)
+{
+    axRect rect(GetRect());
+    
+    if(axFlag_exist(axTEXT_BOX_CONTOUR_HIGHLIGHT, _flags))
+    {
+        if(IsKeyGrab())
+        {
+            if(axFlag_exist(axTEXT_BOX_CONOUR_NO_FADE, _flags)) // Shadow fade.
+            {
+                gc->SetColor(_info.selected_shadow);
+                gc->DrawRectangle(axRect(axPoint(-5, -5),
+                                         axSize(rect.size + axSize(9, 9))));
+            }
+            else
+            {
+                axColor col(_info.selected_shadow);
+                gc->SetColor(col);
+                
+                int nRect = 5;
+                for(int i = 0; i < nRect; i++)
+                {
+                    gc->DrawRectangleContour(axRect(axPoint(-i, -i),
+                                                    axSize(rect.size + axSize(2*i, 2*i))));
+                    
+                    double alpha = _info.selected_shadow.GetAlpha();
+                    double mu = double(i) / double(nRect);
+                    
+                    col.SetAlpha(alpha - alpha * mu);
+                    gc->SetColor(col);
+                }
+            }
+        }
+    }
 }
 
 void axTextBox::OnPaint()
@@ -114,23 +246,42 @@ void axTextBox::OnPaint()
 	axGC* gc = GetGC();
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);
+    
+    DrawContourRectangle(gc);
 
 	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
     
-    gc->SetColor(_info.font_color);
     axPoint next_pos(5, 5);
-    
-    gc->BlockDrawing(rect0);
     
     if_not_empty(_label)
     {
-        for(const auto& c : _label)
+        _cursorBarXPosition = 5;
+        
+        for(int i = 0; i < _label.size(); i++)
         {
-            next_pos = gc->DrawChar(c, next_pos);
+            int x_past_pos = next_pos.x;
+            
+            gc->SetColor(_info.font_color);
+            next_pos = gc->DrawChar(_label[i], next_pos);
+            
+            
+            if(_isHightlight) // hightlight on.
+            {
+                gc->SetColor(_info.hightlight);
+                gc->DrawRectangle(axRect(x_past_pos, 5,
+                                         next_pos.x - x_past_pos, rect0.size.y - 10));
+            }
+            
+            if(_cursorIndex - 1 == i)
+            {
+                _cursorBarXPosition = next_pos.x;
+            }
+            
+            
         }
         
-        _cursorBarXPosition = next_pos.x;
+        _lastCharXPosition = next_pos.x;
     }
     else
     {
@@ -144,12 +295,7 @@ void axTextBox::OnPaint()
         gc->DrawLine(axPoint(_cursorBarXPosition, 5),
                      axPoint(_cursorBarXPosition, rect0.size.y - 5));
     }
-    
-    gc->UnBlockDrawing();
-    
 
 	gc->SetColor(_info.contour);
 	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
 }
-
-

@@ -113,10 +113,24 @@ axAppDelegate* GlobalAppDelegate;
     
     axPoint pos(locationInView.x, locationInView.y);
     
-    axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(pos);
-    if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+    // Double click.
+    if (event.clickCount == 2)
     {
-        axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
+        axApp::MainInstance->GetPopupManager()->OnMouseLeftDoubleClick(pos);
+        if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        {
+            axApp::MainInstance->GetWindowManager()->OnMouseLeftDoubleClick(pos);
+        }
+    }
+    
+    // Simple click.
+    else
+    {
+        axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(pos);
+        if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        {
+            axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
+        }
     }
 }
 
@@ -180,15 +194,20 @@ axAppDelegate* GlobalAppDelegate;
     
     std::cout << "KEY : " << key << std::endl;
     
-    // Delete.
+    // BackSpace.
     if(key == 51)
     {
         axApp::MainInstance->GetWindowManager()->OnBackSpaceDown();
     }
+    // Delete
+    else if(key == 117)
+    {
+        axApp::MainInstance->GetWindowManager()->OnKeyDeleteDown();
+    }
     // Enter.
     else if(key == 36)
     {
-        
+        axApp::MainInstance->GetWindowManager()->OnKeyDeleteDown();
     }
     // Left arrow.
     else if(key == 123)
@@ -196,7 +215,7 @@ axAppDelegate* GlobalAppDelegate;
         axApp::MainInstance->GetWindowManager()->OnLeftArrowDown();
     }
     // Right arrow.
-    else if(key == 123)
+    else if(key == 124)
     {
         axApp::MainInstance->GetWindowManager()->OnRightArrowDown();
     }

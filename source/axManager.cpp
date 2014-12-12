@@ -145,6 +145,34 @@ void axManager::OnMouseMotion(const axPoint& pos)
 	}
 }
 
+void axManager::OnMouseLeftDoubleClick(const axPoint& pos)
+{
+    _mousePosition = pos;
+    
+    if_not_null(_mouseCaptureWindow)
+    {
+        //_mouseCaptureWindow->OnMouseLeftDown(pos);
+        //_evtHasReachWindow = true;
+    }
+    else
+    {
+        axWindow* win = _windowTree.FindMousePosition(pos);
+        _currentWindow = win;
+        
+        if_not_null(win)
+        {
+            win->OnMouseLeftDoubleClick(pos);
+            _evtHasReachWindow = true;
+        }
+        else
+        {
+            _evtHasReachWindow = false;
+        }
+        
+        VerifyAndProcessWindowChange();
+    }
+}
+
 void axManager::OnMouseLeftDown(const axPoint& pos)
 {
 	_mousePosition = pos;
@@ -326,7 +354,14 @@ void axManager::OnRightArrowDown()
     {
         _keyGrabbedWindow->OnRightArrowDown();
     }
- 
+}
+
+void axManager::OnKeyDeleteDown()
+{
+    if(_keyGrabbedWindow != nullptr)
+    {
+        _keyGrabbedWindow->OnKeyDeleteDown();
+    }
 }
 
 

@@ -83,6 +83,7 @@ public:
 	virtual void OnMouseMotion(const axPoint& pos){}
 
     virtual void OnMouseLeftDown(const axPoint& pos){}
+    virtual void OnMouseLeftDoubleClick(const axPoint& pos){}
 
     virtual void OnMouseLeftUp(const axPoint& pos){}
 
@@ -97,10 +98,12 @@ public:
     
     virtual void OnKeyDown(const char& key){}
     virtual void OnBackSpaceDown(){}
+    virtual void OnKeyDeleteDown(){}
     virtual void OnLeftArrowDown(){}
     virtual void OnRightArrowDown(){}
     virtual void OnWasKeyUnGrabbed(){}
     virtual void OnWasKeyGrabbed(){}
+    
 
     virtual void OnResize(){}
     

@@ -15,7 +15,9 @@
 /**************************************************************************//**
  * axTextBoxFlags.
 ******************************************************************************/
-#define axTEXT_BOX_FLASHING_CURSOR	axFLAG_1
+#define axTEXT_BOX_FLASHING_CURSOR      axFLAG_1
+#define axTEXT_BOX_CONTOUR_HIGHLIGHT    axFLAG_2
+#define axTEXT_BOX_CONOUR_NO_FADE       axFLAG_3
 
 class axTextBox;
 
@@ -67,25 +69,30 @@ struct axTextBoxInfo
 {
 	axColor normal;
 	axColor hover;
-	axColor clicking;
+    axColor hightlight; // This needs to be transparent.
+	axColor selected;
+    axColor selected_shadow;
 	axColor cursor;
 	axColor contour;
 	axColor font_color;
 
 	axTextBoxInfo(){}
-	axTextBoxInfo(
-		const axColor& normal_color,
-		const axColor& hover_color,
-		const axColor& clicked_color,
-		const axColor& cursor_color,
-		const axColor& contour_color,
-		const axColor& font_color_) :
-		normal(normal_color),
-		hover(hover_color),
-		clicking(clicked_color),
-		cursor(cursor_color),
-		contour(contour_color),
-		font_color(font_color_){}
+	axTextBoxInfo(const axColor& normal_color,
+                  const axColor& hover_color,
+                  const axColor& hightlight_color,
+                  const axColor& selected_color,
+                  const axColor& selected_shadow_color,
+                  const axColor& cursor_color,
+                  const axColor& contour_color,
+                  const axColor& font_color_) :
+    normal(normal_color),
+    hover(hover_color),
+    hightlight(hightlight_color),
+    selected(selected_color),
+    selected_shadow(selected_shadow_color),
+    cursor(cursor_color),
+    contour(contour_color),
+    font_color(font_color_){}
     
     axTextBoxInfo(const std::string& path)
     {
@@ -105,7 +112,7 @@ struct axTextBoxInfo
         {
             normal.SerializeOutput(file);
             hover.SerializeOutput(file);
-            clicking.SerializeOutput(file);
+            selected.SerializeOutput(file);
             cursor.SerializeOutput(file);
             contour.SerializeOutput(file);
             font_color.SerializeOutput(file);
@@ -126,7 +133,7 @@ struct axTextBoxInfo
         {
             normal.SerializeInput(file);
             hover.SerializeInput(file);
-            clicking.SerializeInput(file);
+            selected.SerializeInput(file);
             cursor.SerializeInput(file);
             contour.SerializeInput(file);
             font_color.SerializeInput(file);
@@ -159,8 +166,10 @@ protected:
         
     axColor* _currentColor;
     int _nCurrentImg;
+    int _cursorIndex;
+    bool _isHightlight;
     
-    int _cursorBarXPosition;
+    int _cursorBarXPosition, _lastCharXPosition;
     
     enum axTextBoxState
     {
@@ -177,7 +186,7 @@ protected:
 	virtual void OnMouseLeftUp(const axPoint& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
-    
+    virtual void OnMouseLeftDoubleClick(const axPoint& pos);
     virtual void OnKeyDown(const char& key);
     virtual void OnBackSpaceDown();
     
@@ -185,6 +194,10 @@ protected:
     virtual void OnRightArrowDown();
     virtual void OnWasKeyUnGrabbed();
     virtual void OnWasKeyGrabbed();
+    virtual void OnKeyDeleteDown();
+    
+    //
+    virtual void DrawContourRectangle(axGC* gc);
     
     void OnFlashingCursorTimer(const axTimerMsg& msg);
     

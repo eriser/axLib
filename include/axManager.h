@@ -39,6 +39,7 @@ public:
 	void OnMouseMotion(const axPoint& pos);
     void OnMouseLeftDragging(const axPoint& pos);
 	void OnMouseLeftDown(const axPoint& pos);
+    void OnMouseLeftDoubleClick(const axPoint& pos);
 	void OnMouseLeftUp(const axPoint& pos);
 	void OnMouseRightDown();
 	void OnMouseRightUp();
@@ -51,6 +52,7 @@ public:
     // void OnShift();
     void OnKeyDown(const char& key);
     void OnKeyUp(const char& key);
+    void OnKeyDeleteDown();
     void OnBackSpaceDown();
     void OnLeftArrowDown();
     void OnRightArrowDown();

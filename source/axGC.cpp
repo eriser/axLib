@@ -335,7 +335,7 @@ axPoint axGC::DrawChar(const char& key, const axPoint& pos)
         _font.SetChar(key);
         axPoint delta = _font.GetDelta();
     
-    std::cout << "Delta : " << delta.x << std::endl;
+    //std::cout << "Delta : " << delta.x << std::endl;
     
         DrawTexture(_font.GetTexture(),
                     axRect(axPoint(x + delta.x, pos.y - delta.y + _font.GetFontSize()),
