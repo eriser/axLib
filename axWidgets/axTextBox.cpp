@@ -19,7 +19,8 @@ _cursorBarXPosition(5),
 _lastCharXPosition(5),
 _flashingCursor(nullptr),
 _cursorFlashActive(true),
-_isHightlight(false)
+_isHightlight(false),
+_findClickCursorIndex(false)
 {
 	_currentColor = &_info.normal;
 
@@ -47,11 +48,16 @@ void axTextBox::SetLabel(const std::string& label)
 
 void axTextBox::OnMouseLeftDown(const axPoint& pos)
 {
-    GrabKey();
+    _findClickCursorIndex = true;
+    _clickPosition = pos - GetAbsoluteRect().position;
+    
     if(_isHightlight)
     {
         _isHightlight = false;
     }
+    
+    GrabMouse();
+    GrabKey();
     Update();
 }
 
@@ -63,7 +69,10 @@ void axTextBox::OnFlashingCursorTimer(const axTimerMsg& msg)
 
 void axTextBox::OnMouseLeftUp(const axPoint& pos)
 {
-
+    if(IsGrabbed())
+    {
+        UnGrabMouse();
+    }
 }
 
 void axTextBox::OnMouseEnter()
@@ -74,6 +83,13 @@ void axTextBox::OnMouseEnter()
 void axTextBox::OnMouseLeave()
 {
 
+}
+
+void axTextBox::OnMouseLeftDragging(const axPoint& pos)
+{
+    _clickPosition = pos - GetAbsoluteRect().position;
+    Update();
+    
 }
 
 void axTextBox::OnMouseLeftDoubleClick(const axPoint& pos)
@@ -265,7 +281,6 @@ void axTextBox::OnPaint()
             gc->SetColor(_info.font_color);
             next_pos = gc->DrawChar(_label[i], next_pos);
             
-            
             if(_isHightlight) // hightlight on.
             {
                 gc->SetColor(_info.hightlight);
@@ -273,12 +288,29 @@ void axTextBox::OnPaint()
                                          next_pos.x - x_past_pos, rect0.size.y - 10));
             }
             
-            if(_cursorIndex - 1 == i)
+            if(_findClickCursorIndex)
+            {
+                if(_clickPosition.x >= x_past_pos &&
+                   _clickPosition.x < next_pos.x)
+                {
+                    _cursorIndex = i;
+                    _cursorBarXPosition = x_past_pos;
+                }
+                else if(i == _label.size() - 1 && _clickPosition.x > next_pos.x)
+                {
+                    _cursorIndex = i + 1;
+                    _cursorBarXPosition = next_pos.x;
+                }
+            }
+            else if(_cursorIndex - 1 == i)
             {
                 _cursorBarXPosition = next_pos.x;
             }
-            
-            
+        }
+        
+        if(_findClickCursorIndex)
+        {
+            _findClickCursorIndex = false;
         }
         
         _lastCharXPosition = next_pos.x;

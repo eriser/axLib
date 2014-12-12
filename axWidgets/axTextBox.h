@@ -168,6 +168,8 @@ protected:
     int _nCurrentImg;
     int _cursorIndex;
     bool _isHightlight;
+    bool _findClickCursorIndex;
+    axPoint _clickPosition;
     
     int _cursorBarXPosition, _lastCharXPosition;
     
@@ -183,6 +185,7 @@ protected:
     
 	virtual void OnPaint();
 	virtual void OnMouseLeftDown(const axPoint& pos);
+    virtual void OnMouseLeftDragging(const axPoint& pos);
 	virtual void OnMouseLeftUp(const axPoint& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
