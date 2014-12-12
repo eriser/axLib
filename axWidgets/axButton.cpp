@@ -1,32 +1,151 @@
+/*******************************************************************************
+ * Copyright (c) 2013 Alexandre Arsenault.
+ *
+ * This file is part of axLibrary.
+ *
+ * axLibrary is free or commercial software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 or any later version of the
+ * License or use a commercial axLibrary License.
+ *
+ * axLibrary is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with axLibrary. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * To release a closed-source product which uses axLibrary, commercial
+ * licenses are available, email alx.arsenault@gmail.com for more information.
+ ******************************************************************************/
 #include "axButton.h"
 
+
+/*******************************************************************************
+ * axButonMsg.
+ ******************************************************************************/
+axButtonMsg::axButtonMsg()
+{
+    _sender = nullptr;
+}
+
+axButtonMsg::axButtonMsg(axButton* sender, const string& msg)
+{
+    _sender = sender;
+    _msg = msg;
+}
+
+axButton* axButtonMsg::GetSender() const
+{
+    return _sender;
+}
+
+string axButtonMsg::GetMsg() const
+{
+    return _msg;
+}
+
+axMsg* axButtonMsg::GetCopy()
+{
+    return new axButtonMsg(*this);
+}
+
+/*******************************************************************************
+ * axButonInfo.
+ ******************************************************************************/
+axButtonInfo::axButtonInfo()
+{
+    
+}
+
+axButtonInfo::axButtonInfo(const axColor& normal_color,
+                           const axColor& hover_color,
+                           const axColor& clicked_color,
+                           const axColor& selected_color,
+                           const axColor& contour_color,
+                           const axColor& font_color_) :
+normal(normal_color),
+hover(hover_color),
+clicking(clicked_color),
+selected(selected_color),
+contour(contour_color),
+font_color(font_color_)
+{
+    
+}
+
+axButtonInfo::axButtonInfo(const std::string& path)
+{
+    SerializeInput(path);
+}
+
+void axButtonInfo::SerializeOutput(const std::string& path)
+{
+    fstream file;
+    file.open(path, std::fstream::out | std::fstream::binary);
+    
+    if (file.fail())
+    {
+        std::cerr << "Problem opening file " << path << std::endl;
+    }
+    else
+    {
+        normal.SerializeOutput(file);
+        hover.SerializeOutput(file);
+        clicking.SerializeOutput(file);
+        selected.SerializeOutput(file);
+        contour.SerializeOutput(file);
+        font_color.SerializeOutput(file);
+    }
+    
+}
+
+void axButtonInfo::SerializeInput(const std::string& path)
+{
+    fstream file;
+    file.open(path, std::fstream::in | std::fstream::binary);
+    
+    if (file.fail())
+    {
+        std::cerr << "Problem opening file " << path << std::endl;
+    }
+    else
+    {
+        normal.SerializeInput(file);
+        hover.SerializeInput(file);
+        clicking.SerializeInput(file);
+        selected.SerializeInput(file);
+        contour.SerializeInput(file);
+        font_color.SerializeInput(file);
+    }
+}
+
+/*******************************************************************************
+ * axButon.
+ ******************************************************************************/
 axButton::axButton(axWindow* parent,
-	const axRect& rect,
-	const axButtonEvents& events,
-	const axButtonInfo& info,
-	string img_path,
-	string label,
-	axFlag flags,
-	string msg) :
-	// Heritage.
-	axPanel(parent, rect),
-	// Members.
-	_events(events),
-	_info(info),
-	_label(label),
-	_flags(flags),
-	_nCurrentImg(axBTN_NORMAL),
-	_selected(false),
-	test(1.0, 1.0, 0.0),
-	_bgAlpha(1.0),
-	_msg(msg)
+                   const axRect& rect,
+                   const axButtonEvents& events,
+                   const axButtonInfo& info,
+                   string img_path,
+                   string label,
+                   axFlag flags,
+                   string msg) :
+// Heritage.
+axPanel(parent, rect),
+// Members.
+_events(events),
+_info(info),
+_label(label),
+_flags(flags),
+_nCurrentImg(axBTN_NORMAL),
+_selected(false),
+_msg(msg)
 {
 	_currentColor = &_info.normal;
 
-	//if_not_empty(img_path)
-	//{
-		_btnImg = new axImage(img_path);
-	//}
+    _btnImg = new axImage(img_path);
     
     if(_events.button_click)
     {
@@ -36,14 +155,14 @@ axButton::axButton(axWindow* parent,
 }
 
 axButton::axButton(axWindow* parent,
-		 const axButtonEvents& events,
-		 const string& path):
-		 axPanel(parent, axRect(0, 0, 20, 20)),
-		// Members.
-		_events(events),
-		_nCurrentImg(axBTN_NORMAL),
-		_selected(false),
-		_bgAlpha(1.0)
+                   const axButtonEvents& events,
+                   const string& path):
+// Heritage.
+axPanel(parent, axRect(0, 0, 20, 20)),
+// Members.
+_events(events),
+_nCurrentImg(axBTN_NORMAL),
+_selected(false)
 {
 	ifstream file;
 	file.open(path);
@@ -117,12 +236,6 @@ void axButton::SetSelected(const bool& selected)
 		}
 	}
 }
-
-//void axButton::SetBackgroundAlpha(const float& alpha)
-//{
-//	_bgAlpha = alpha;
-//	Update();
-//}
 
 void axButton::SetLabel(const std::string& label)
 {

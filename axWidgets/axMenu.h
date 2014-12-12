@@ -1,4 +1,4 @@
-/********************************************************************************//**
+/*******************************************************************************
  * Copyright (c) 2013 Alexandre Arsenault.
  *
  * This file is part of axLibrary.
@@ -17,11 +17,17 @@
  * along with axLibrary. If not, see <http://www.gnu.org/licenses/>.
  *
  * To release a closed-source product which uses axLibrary, commercial
- * licenses are available, visit www.axLibrary.com for more information.
- ***********************************************************************************/
+ * licenses are available, email alx.arsenault@gmail.com for more information.
+ ******************************************************************************/
 
 #ifndef __AX_MENU__
 #define __AX_MENU__
+
+/// @defgroup Widgets
+/// @{
+
+/// @defgroup Menu
+/// @{
 
 #include "axEvent.h"
 #include "axPanel.h"
@@ -137,4 +143,6 @@ private:
     void OnPaint();
 };
 
+/// @}
+/// @}
 #endif // __AX_MENU__

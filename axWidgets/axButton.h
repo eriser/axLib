@@ -1,8 +1,40 @@
-/// @defgroup Widgets 
-/// @{
+/*******************************************************************************
+ * Copyright (c) 2013 Alexandre Arsenault.
+ *
+ * This file is part of axLibrary.
+ *
+ * axLibrary is free or commercial software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 or any later version of the
+ * License or use a commercial axLibrary License.
+ *
+ * axLibrary is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with axLibrary. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * To release a closed-source product which uses axLibrary, commercial
+ * licenses are available, email alx.arsenault@gmail.com for more information.
+ ******************************************************************************/
 
 #ifndef __AX_BUTTON__
 #define __AX_BUTTON__
+
+/*******************************************************************************
+ * @file    axButton.h
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   axButton.
+ * @date    19/07/2013
+ ******************************************************************************/
+
+/// @defgroup Widgets
+/// @{
+
+/// @defgroup Button
+/// @{
 
 #include "axEvent.h"
 #include "axPanel.h"
@@ -10,51 +42,40 @@
 #include "axGC.h"
 #include "axImage.h"
 #include "axMsg.h"
-//#include <fstream>
 
-/**************************************************************************//**
- * axButtonFlags.
-******************************************************************************/
+/*******************************************************************************
+ * axButonFlags.
+ ******************************************************************************/
 #define axBUTTON_SINGLE_IMG	axFLAG_1
 #define axBUTTON_IMG_RESIZE	axFLAG_2
 #define axBUTTON_CAN_SELECTED axFLAG_3 // Not implemented yet.
 
 class axButton;
 
+/*******************************************************************************
+ * axButonMsg.
+ ******************************************************************************/
 class axButtonMsg : public axMsg
 {
 public:
-    axButtonMsg()
-    {
-        _sender = nullptr;
-    }
+    axButtonMsg();
     
-    axButtonMsg(axButton* sender, const string& msg)
-    {
-        _sender = sender;
-        _msg = msg;
-    }
+    axButtonMsg(axButton* sender, const string& msg);
     
-    axButton* GetSender() const
-    {
-        return _sender;
-    }
+    axButton* GetSender() const;
     
-    string GetMsg() const
-    {
-        return _msg;
-    }
+    string GetMsg() const;
     
-    axMsg* GetCopy()
-    {
-        return new axButtonMsg(*this);
-    }
+    axMsg* GetCopy();
     
 private:
     axButton* _sender;
     string _msg;
 };
 
+/*******************************************************************************
+ * axButonEvents.
+ ******************************************************************************/
 struct axButtonEvents
 {
     enum : axEventId { BUTTON_CLICK };
@@ -65,6 +86,9 @@ struct axButtonEvents
     axEventFunction button_click;
 };
 
+/*******************************************************************************
+ * axButonInfo.
+ ******************************************************************************/
 struct axButtonInfo
 {
 	axColor normal;
@@ -74,84 +98,24 @@ struct axButtonInfo
 	axColor contour;
 	axColor font_color;
 
-	axButtonInfo(){}
-	axButtonInfo(
-		const axColor& normal_color,
-		const axColor& hover_color,
-		const axColor& clicked_color,
-		const axColor& selected_color,
-		const axColor& contour_color,
-		const axColor& font_color_) :
-		normal(normal_color),
-		hover(hover_color),
-		clicking(clicked_color),
-		selected(selected_color),
-		contour(contour_color),
-		font_color(font_color_){}
+    axButtonInfo();
+    axButtonInfo(const axColor& normal_color,
+                 const axColor& hover_color,
+                 const axColor& clicked_color,
+                 const axColor& selected_color,
+                 const axColor& contour_color,
+                 const axColor& font_color);
     
-    axButtonInfo(const std::string& path)
-    {
-        SerializeInput(path);
-    }
+    axButtonInfo(const std::string& path);
 
-    void SerializeOutput(const std::string& path)
-    {
-        fstream file;
-        file.open(path, std::fstream::out | std::fstream::binary);
-
-        if (file.fail())
-        {
-            std::cerr << "Problem opening file " << path << std::endl;
-        }
-        else
-        {
-            normal.SerializeOutput(file);
-            hover.SerializeOutput(file);
-            clicking.SerializeOutput(file);
-            selected.SerializeOutput(file);
-            contour.SerializeOutput(file);
-            font_color.SerializeOutput(file);
-        }
-
-    }
+    void SerializeOutput(const std::string& path);
     
-    void SerializeInput(const std::string& path)
-    {
-        fstream file;
-        file.open(path, std::fstream::in | std::fstream::binary);
-        
-        if (file.fail())
-        {
-            std::cerr << "Problem opening file " << path << std::endl;
-        }
-        else
-        {
-            normal.SerializeInput(file);
-            hover.SerializeInput(file);
-            clicking.SerializeInput(file);
-            selected.SerializeInput(file);
-            contour.SerializeInput(file);
-            font_color.SerializeInput(file);
-        }
-    }
+    void SerializeInput(const std::string& path);
 };
 
-#define axSTANDARD_BUTTON 	axButtonInfo( \
-							axColor(0.5, 0.5, 0.5),\
-							axColor(0.6, 0.6, 0.6),\
-							axColor(0.4, 0.4, 0.4),\
-							axColor(0.5, 0.5, 0.5),\
-							axColor(0.0, 0.0, 0.0),\
-							axColor(0.0, 0.0, 0.0)) 
-
-#define axBUTTON_TRANSPARENT 	axButtonInfo( \
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 1.0))
-
+/*******************************************************************************
+ * axButon.
+ ******************************************************************************/
 class axButton : public axPanel
 {
 public:
@@ -168,16 +132,12 @@ public:
 			 const axButtonEvents& events,
 			 const string& path);
 
-    // Should be there since update axColor with alpha component.
-//	void SetBackgroundAlpha(const float& alpha);
-
 	void SetMsg(const string& msg);
     
 	void SetSelected(const bool& selected);
     
     void SetLabel(const std::string& label);
 
-    
 protected:
     axButtonEvents _events;
     axButtonInfo _info;
@@ -189,8 +149,6 @@ protected:
     axColor* _currentColor;
     bool _selected;
     int _nCurrentImg;
-    axColor test; // Should be remove.
-    axFloat _bgAlpha; // Should be remove.
     
     enum axButtonState
     {
@@ -207,8 +165,29 @@ protected:
 	virtual void OnMouseLeave();
 };
 
-#endif //__AX_BUTTON__
+/*******************************************************************************
+ * axButonInfo template.
+ ******************************************************************************/
+#define axSTANDARD_BUTTON 	axButtonInfo( \
+axColor(0.5, 0.5, 0.5),\
+axColor(0.6, 0.6, 0.6),\
+axColor(0.4, 0.4, 0.4),\
+axColor(0.5, 0.5, 0.5),\
+axColor(0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0))
+
+#define axBUTTON_TRANSPARENT 	axButtonInfo( \
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 1.0))
 
 /// @}
+/// @}
+#endif //__AX_BUTTON__
+
+
 
 

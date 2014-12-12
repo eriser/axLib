@@ -1,8 +1,29 @@
-/// @defgroup Core 
-/// @{
-
+/*******************************************************************************
+ * Copyright (c) 2013 Alexandre Arsenault.
+ *
+ * This file is part of axLibrary.
+ *
+ * axLibrary is free or commercial software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 or any later version of the
+ * License or use a commercial axLibrary License.
+ *
+ * axLibrary is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with axLibrary. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * To release a closed-source product which uses axLibrary, commercial
+ * licenses are available, email alx.arsenault@gmail.com for more information.
+ ******************************************************************************/
 #ifndef __AX_APP__
 #define __AX_APP__
+
+/// @defgroup Core
+/// @{
 
 #ifdef __linux__
 #include "axCoreX11.h"
@@ -39,7 +60,6 @@ public:
 	{
 		return MainInstance == nullptr ? MainInstance = new axApp(frame_size) : MainInstance;
 	}
-	// ~axApp();
 
 	axApp(const axSize& frame_size);
 
@@ -70,8 +90,5 @@ private:
 	axCore* _core;
 };
 
-//extern axCore* axCORE;
-
-#endif //__AX_APP__
-
 /// @}
+#endif //__AX_APP__
