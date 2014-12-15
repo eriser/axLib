@@ -100,6 +100,16 @@ axApp* axPanel::GetApp()
 
 }
 
+void axPanel::ShowMouse()
+{
+    axApp::GetInstance()->GetCore()->ShowMouse();
+}
+
+void axPanel::HideMouse()
+{
+    axApp::GetInstance()->GetCore()->HideMouse();
+}
+
 void axPanel::GrabMouse()
 {
     if(GetIsPopup())

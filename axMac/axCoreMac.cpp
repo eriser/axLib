@@ -94,3 +94,13 @@ void axCoreMac::PushEventOnSystemQueue()
 {
     AddEventToDispatchQueue();
 }
+
+void axCoreMac::HideMouse()
+{
+    axCocoaHideMouse();
+}
+
+void axCoreMac::ShowMouse()
+{
+    axCocoaShowMouse();
+}

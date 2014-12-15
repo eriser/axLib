@@ -97,3 +97,28 @@ void axCocoaResizeFrame(const axSize& size)
     
     [appDelegate SetFrameSize:nSize];
 }
+
+static axPoint hide_mouse_position;
+
+void axCocoaHideMouse()
+{
+    [NSCursor hide];
+    NSPoint mPos = [NSEvent mouseLocation];
+    hide_mouse_position.x = mPos.x;
+    hide_mouse_position.y = mPos.y;
+}
+
+void axCocoaShowMouse()
+{
+    NSRect e = [[NSScreen mainScreen] frame];
+    
+    CGPoint pt = CGPointMake(hide_mouse_position.x,
+                           e.size.height - hide_mouse_position.y);
+    CGDisplayErr err;
+    if ((err = CGWarpMouseCursorPosition(pt)) != CGEventNoErr)
+    {
+        NSLog(@"CGWarpMouseCursorPosition returned: \"%d\"", err);
+    }
+    
+    [NSCursor unhide];
+}

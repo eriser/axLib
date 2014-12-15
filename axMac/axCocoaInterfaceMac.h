@@ -34,4 +34,7 @@ void AddEventToDispatchQueue();
 
 void axCocoaResizeFrame(const axSize& size);
 
+void axCocoaHideMouse();
+void axCocoaShowMouse();
+
 #endif

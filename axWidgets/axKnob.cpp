@@ -25,21 +25,26 @@
 * axKnob.
 ***********************************************************************************/
 axKnob::axKnob( axWindow* parent,
-                const axRect& rect,
-                const axKnobEvents& events,
-                const axKnobInfo& info,
-                axFlag flags,
-                double value):
-                axPanel(parent, rect),
-                _events(events),
-                _info(info),
-                // m_knobImg( info.img_path.c_str() ),
-                m_currentBgColor( _info.bgColorNormal ),
-                m_nCurrentImg( 0 ),
-                m_knobValue( 0 )
+               const axRect& rect,
+               const axKnobEvents& events,
+               const axKnobInfo& info,
+               axFlag flags,
+               double value):
+// Heritage.
+axPanel(parent, rect),
+// Members.
+_events(events),
+_info(info),
+m_currentBgColor(_info.bgColorNormal),
+//m_nCurrentImg(0),
+m_knobValue(0.0),
+_zeroToOneValue(0.0),
+_range(0.0, 1.0)
 {
     m_knobImg = new axImage(_info.img_path);
 	_bgAlpha = 1.0;
+    
+    m_nCurrentImg = m_knobValue * (_info.n_knob - 1);
 }
 
 void  axKnob::OnMouseLeftDown(const axPoint& pos)
@@ -48,6 +53,8 @@ void  axKnob::OnMouseLeftDown(const axPoint& pos)
 
     GrabMouse();
     Update();
+    
+    HideMouse();
 
     if(_events.value_change)
     {
@@ -60,6 +67,7 @@ void axKnob::OnMouseLeftUp(const axPoint& pos)
 {
     if( IsGrabbed() )
     {
+        ShowMouse();
         UnGrabMouse();
         Update();
 
@@ -70,43 +78,40 @@ void axKnob::OnMouseLeftUp(const axPoint& pos)
     }
 }
 
-void  axKnob::OnMouseLeftDragging(const axPoint& pos)
+void  axKnob::OnMouseLeftDragging(const axPoint& position)
 {
     int cur_img = m_nCurrentImg;
-
-
-    // double v = - GetDeltaFromUpDownDirectionPoint().y / 1000.0;
-
     axPoint pt(GetAbsoluteRect().position);
-    axPoint p = pos - pt;
-    _clickPosY = p.y - _clickPosY;
-    double v = -_clickPosY / 1000.0;
+    axPoint p = position - pt;
+    
+    double delta = p.y - _clickPosY;
+    
+    _clickPosY = p.y;
+    
+    double v = -delta / 100.0;
+    _zeroToOneValue += v;
+    
+    _zeroToOneValue = axClamp<double>(_zeroToOneValue, 0.0, 1.0);
+    m_knobValue = _range.GetValueFromZeroToOne(_zeroToOneValue);
 
-
-    m_knobValue += v;
-    axCLIP( m_knobValue, 0.0, 1.0 );
     m_nCurrentImg = m_knobValue * ( _info.n_knob - 1 ) ;
-
+    
     if( m_nCurrentImg != cur_img )
     {
         Update();
     }
 
-    // cout << "Draggin" << endl;
-
     if(_events.value_change)
     {
         _events.value_change(axKnobMsg(m_knobValue));
     }
-
-    // GetParent()->TriggerEvent( m_eventsID.motion );
 }
 
 void axKnob::SetValue(const axFloat& value)
 {
 	int cur_img = m_nCurrentImg;
-	m_knobValue = value;
-	axCLIP(m_knobValue, 0.0, 1.0);
+	_zeroToOneValue = axClamp<double>(value, 0.0, 1.0);
+    m_knobValue = _zeroToOneValue;
 	m_nCurrentImg = m_knobValue * (_info.n_knob - 1);
 
 	if (m_nCurrentImg != cur_img)
@@ -131,66 +136,7 @@ void axKnob::OnPaint()
     gc->DrawRectangle(rect0);
 
     gc->DrawPartOfImage(m_knobImg,
-                       axPoint( m_nCurrentImg * _info.knob_size.x, 0),
-                       _info.knob_size,
-                       axPoint( 0, 0 ) );
-    // FlipScreen( gc );
+                        axPoint( m_nCurrentImg * _info.knob_size.x, 0),
+                        _info.knob_size,
+                        axPoint(0, 0));
 }
-
-// /********************************************************************************//**
-// * axKnobControl.
-// ***********************************************************************************/
-// axKnobControl::axKnobControl( axApp* app,
-//                               axWindow* parent,
-//                               const axID& id,
-//                               const axKnobEvents& events,
-//                               const axKnobInfo& info,
-//                               const axPoint& pos ):
-//                               axWindow( app, parent, id,
-//                                         axRect( pos, info.knob_size + axSize( 14, 40 ) ) ),
-//                               // Members.
-//                               m_currentBgColor( info.bgColorNormal )
-// {
-//     SetCustomPaint( true );
-//     axKnobEvents knob_events;
-
-//     knob_events.motion = axID_ANY;
-//     axRect knob_rect( axPoint( 7, 20 ), info.knob_size );
-//     m_knob = new axKnob( app, this, axID_ANY, knob_rect, knob_events, info );
-
-//     Connect( knob_events.motion, EVT( OnKnobChange ) );
-// }
-
-// void axKnobControl::OnKnobChange()
-// {
-//     Update();
-// }
-
-// void axKnobControl::OnPaint()
-// {
-//     axGC gc( GetBackBuffer() );
-//     axSize size = GetSize();
-
-//     gc.SetBackgroundColor( m_currentBgColor );
-//     gc.SetForegroundColor( m_currentBgColor );
-
-//     gc.DrawRectangle( axRect(0, 0, size.x, size.y) );
-//     gc.DrawRectangle( axRect(0, 0, size.x, size.y) );
-
-//     gc.SetColor( m_currentBgColor );
-//     gc.DrawRectangleContour( axRect(0, 0, size.x, size.y) );
-
-//     gc.DrawTextAligned( "Freq", axTEXT_CENTER,
-//                         m_currentBgColor.GetColorRGB(),
-//                         "8",
-//                         axRect( axPoint(0, 0), axSize( size.x, 20) ) );
-
-//     string s = axFloatToString( m_knob->GetValue() );
-
-//     gc.DrawTextAligned( s, axTEXT_CENTER,
-//                         m_currentBgColor.GetColorRGB(),
-//                         "8",
-//                         axRect( axPoint(0, 20 + m_knob->GetSize().y - 3 ), axSize( size.x, 20) ) );
-//     FlipScreen( gc );
-// }
-

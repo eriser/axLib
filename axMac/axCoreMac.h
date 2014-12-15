@@ -56,6 +56,9 @@ public:
     virtual void UpdateAll();
     
     virtual void ResizeFrame(const axSize& size);
+    
+    virtual void HideMouse();
+    virtual void ShowMouse();
 };
 
 #endif // __APPLE__

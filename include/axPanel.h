@@ -46,6 +46,9 @@ public:
     void GrabKey();
     void UnGrabKey();
     
+    void ShowMouse();
+    void HideMouse();
+    
     bool IsKeyGrab();
     
 	axApp* GetApp();

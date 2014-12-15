@@ -130,6 +130,7 @@ private:
     double m_knobValue;
     int _clickPosY;
 	float _bgAlpha;
+    double _zeroToOneValue;
 
     void OnPaint();
     void OnMouseLeftDragging(const axPoint& pos);
