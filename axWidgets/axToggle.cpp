@@ -39,7 +39,7 @@ _flags(flags),
 _nCurrentImg(axTOG_NORMAL),
 _selected(false),
 test(1.0, 1.0, 0.0),
-_bgAlpha(1.0),
+//_bgAlpha(1.0),
 _msg(msg)
 {
 	_currentColor = &_info.normal;
@@ -78,6 +78,7 @@ void axToggle::SetSelected(const bool& selected)
 
 		if (_selected == true)
 		{
+            _nCurrentImg = axTOG_SELECTED;
 			if (_currentColor == &_info.normal)
 			{
 				_currentColor = &_info.selected;
@@ -86,6 +87,7 @@ void axToggle::SetSelected(const bool& selected)
 		}
 		else
 		{
+            _nCurrentImg = axTOG_NORMAL;
 			if (_currentColor == &_info.selected)
 			{
 				_currentColor = &_info.normal;
@@ -240,7 +242,7 @@ void axToggle::OnPaint()
 	axRect rect(GetRect());
 	axRect rect0(axPoint(0, 0), rect.size);
 
-	gc->SetColor(*_currentColor, _bgAlpha);
+	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
 
 	if (_btnImg->IsImageReady())
@@ -251,8 +253,10 @@ void axToggle::OnPaint()
 		}
 		else
 		{
-			gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
-							    rect.size, axPoint(0, 0));
+            gc->DrawPartOfImageResize(_btnImg,
+                                      axPoint(0, _nCurrentImg * _btnImg->GetSize().y / 4),
+                                      axSize(_btnImg->GetSize().x, _btnImg->GetSize().y / 4),
+                                      axRect(axPoint(0, 0), GetRect().size));
 		}
 
 	}
@@ -264,8 +268,7 @@ void axToggle::OnPaint()
 		gc->DrawStringAlignedCenter(_label, rect0);
 	}
 
-	gc->SetColor(_info.contour, _bgAlpha);
-	gc->SetColor(_info.contour, _bgAlpha);
+	gc->SetColor(_info.contour);
 	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
 }
 

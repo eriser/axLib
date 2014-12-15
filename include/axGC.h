@@ -67,6 +67,12 @@ public:
                          const axSize& sizeInImage,
                          const axPoint& pos,
                          double alpha = 1.0);
+    
+    void DrawPartOfImageResize(axImage* img,
+                               const axPoint& posInImage,
+                               const axSize& sizeInImage,
+                               const axRect& rect,
+                               double alpha = 1.0);
 
     axPoint DrawChar(const char& key, const axPoint& pos);
     

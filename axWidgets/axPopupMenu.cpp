@@ -22,21 +22,21 @@
 #include "axPopupMenu.h"
 
 axPopupMenu::axPopupMenu(axWindow* parent,
-	const axRect& rect,
-	const axPopupMenuEvents& events,
-	const axPopupMenuInfo& info,
-	const vector<string>& labels,
-    std::string bgImg,
-	axFlag flag) :
-    axPanel(3, nullptr, rect),
-//	axPanel(3, parent, rect),
-//    axPanel(parent, rect),
-	_events(events),
-	_info(info),
-	_flag(flag),
-	_index(-1),
-	_labels(labels),
-	_lastSelected(nullptr)
+                         const axRect& rect,
+                         const axPopupMenuEvents& events,
+                         const axPopupMenuInfo& info,
+                         const vector<string>& labels,
+                         std::string bgImg,
+                         axFlag flag) :
+// Heritage.
+axPanel(3, nullptr, rect),
+// members.
+_events(events),
+_info(info),
+_flag(flag),
+_index(-1),
+_labels(labels),
+_lastSelected(nullptr)
 {
 	axSize tog_size(rect.size.x, LABEL_HEIGHT);
 
@@ -44,24 +44,23 @@ axPopupMenu::axPopupMenu(axWindow* parent,
     tog_event.button_click = GetOnButtonClick();
     
     axToggleInfo tog_info;
-    tog_info.normal = axColor(0.8, 0.8, 0.8);
-    tog_info.hover = axColor(0.9, 0.9, 0.9);
-    tog_info.clicking = axColor(0.7, 0.7, 0.7);
+    tog_info.normal = axColor(0.8, 0.8, 0.8, 0.6);
+    tog_info.hover = axColor(0.9, 0.9, 0.9, 0.6);
+    tog_info.clicking = axColor(0.7, 0.7, 0.7, 0.6);
     
-    tog_info.selected = axColor(0.8, 0.4, 0.4);
-    tog_info.selected_hover = axColor(0.9, 0.4, 0.4);
-    tog_info.selected_clicking = axColor(0.7, 0.4, 0.4);
+    tog_info.selected = axColor(0.8, 0.4, 0.4, 0.6);
+    tog_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.6);
+    tog_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.6);
     
-    tog_info.contour = axColor(0.0, 0.0, 0.0);
-    tog_info.font_color = axColor(0.0, 0.0, 0.0);
+    tog_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
+    tog_info.font_color = axColor(0.0, 0.0, 0.0, 1.0);
     
 	for (int i = 0; i < _labels.size(); i++)
 	{
 		_btns.push_back(new axToggle(this,
 						axRect(axPoint(0, i * LABEL_HEIGHT), tog_size),
 						tog_event, tog_info, bgImg, _labels[i],
-                        axTOGGLE_CANT_UNSELECT_WITH_MOUSE |
-                        axTOGGLE_SINGLE_IMG,
+                        axTOGGLE_CANT_UNSELECT_WITH_MOUSE,
                         _labels[i]));
 	}
 

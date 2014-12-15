@@ -27,8 +27,10 @@ axDropMenu::axDropMenu(axWindow* parent,
                        const axDropMenuInfo& info,
                        std::string img_path,
                        std::string bg_img_path,
+                       std::string toogle_img_path,
+                       const std::vector<std::string>& menu_str,
                        axFlag flags,
-                       string msg) :
+                       std::string msg) :
 // Heritage.
 axPanel(parent, rect),
 // Members.
@@ -51,17 +53,15 @@ _msg(msg)
                       _events.selection_change);
     }
     
-    axPopupMenuInfo menu_info(axColor(1.0, 0.0, 0.0),
-                              axColor(0.2, 0.8, 0.8),
-                              axColor(0.2, 0.8, 0.8),
-                              axColor(0.2, 0.8, 0.8),
-                              axColor(0.2, 0.8, 0.8),
-                              axColor(0.0, 0.0, 0.0));
+    axPopupMenuInfo menu_info(axColor(1.0, 1.0, 0.0, 0.0),
+                              axColor(0.2, 0.8, 0.8, 0.0),
+                              axColor(0.2, 0.8, 0.8, 0.0),
+                              axColor(0.2, 0.8, 0.8, 0.0),
+                              axColor(0.2, 0.8, 0.8, 0.0),
+                              axColor(0.0, 0.0, 0.0, 0.0));
     
     axPopupMenuEvents menu_evts;
     menu_evts.selection_change = GetOnPopupMenuChoice();
-    
-    std::vector<std::string> menu_str = {"None", "Test1", "Test2", "Test3", "Test4"};
     
     // Popup menu position.
     axPoint menu_pos = GetAbsoluteRect().position;
@@ -69,7 +69,10 @@ _msg(msg)
     
     _popMenu = new axPopupMenu(this,
                                axRect(menu_pos, axSize(rect.size.x, 30)),
-                               menu_evts, menu_info, menu_str, bg_img_path);
+                               menu_evts,
+                               menu_info,
+                               menu_str,
+                               toogle_img_path);
     
     _popMenu->Hide();
     _popMenu->SetSelectedIndex(0);
@@ -113,7 +116,7 @@ void axDropMenu::OnPopupMenuChoice(const axPopupMenuMsg& msg)
     _label = msg.GetMsg();
     
     PushEvent(axDropMenuEvents::SELECTION_CHANGE,
-              new axDropMenuMsg(this, _msg));
+              new axDropMenuMsg(this, _label));
     Update();
 }
 
@@ -206,11 +209,19 @@ void axDropMenu::OnPaint()
     gc->SetColor(*_currentColor);
     gc->DrawRectangle(rect0);
     
-    if(_bgImg->IsImageReady())
+    if (_bgImg->IsImageReady())
     {
-        gc->DrawImageResize(_bgImg,
-                            axPoint(0, 0),
-                            rect.size, 1.0);
+        if (axFlag_exist(axDROP_MENU_SINGLE_BACKGROUND_IMG, _flags))
+        {
+            gc->DrawImageResize(_bgImg, axPoint(0, 0), rect.size, 1.0);
+        }
+        else
+        {
+            gc->DrawPartOfImageResize(_bgImg,
+                                      axPoint(0, _nCurrentImg * _bgImg->GetSize().y / 3),
+                                      axSize(_bgImg->GetSize().x, _bgImg->GetSize().y / 3),
+                                      axRect(axPoint(0, 0), GetRect().size));
+        }
     }
     
     if (_btnImg->IsImageReady())

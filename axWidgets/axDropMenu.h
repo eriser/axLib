@@ -30,7 +30,6 @@
  * @date    12/12/2014
  ******************************************************************************/
 
-
 /// @defgroup Widgets
 /// @{
 
@@ -45,10 +44,17 @@
 #include "axMsg.h"
 #include "axPopupMenu.h"
 
+/*******************************************************************************
+ * axDropMenuFlags.
+ ******************************************************************************/
 #define axDROP_MENU_SINGLE_IMG	axFLAG_1
+#define axDROP_MENU_SINGLE_BACKGROUND_IMG axFLAG_2
 
 class axDropMenu;
 
+/*******************************************************************************
+ * axDropMenuMsg.
+ ******************************************************************************/
 class axDropMenuMsg : public axMsg
 {
 public:
@@ -83,6 +89,9 @@ private:
     string _msg;
 };
 
+/*******************************************************************************
+ * axDropMenuEvents.
+ ******************************************************************************/
 struct axDropMenuEvents
 {
     enum : axEventId { SELECTION_CHANGE };
@@ -93,6 +102,9 @@ struct axDropMenuEvents
     axEventFunction selection_change;
 };
 
+/*******************************************************************************
+ * axDropMenuInfo.
+ ******************************************************************************/
 struct axDropMenuInfo
 {
     axColor normal;
@@ -103,13 +115,12 @@ struct axDropMenuInfo
     axColor font_color;
     
     axDropMenuInfo(){}
-    axDropMenuInfo(
-                 const axColor& normal_color,
-                 const axColor& hover_color,
-                 const axColor& clicked_color,
-                 const axColor& selected_color,
-                 const axColor& contour_color,
-                 const axColor& font_color_) :
+    axDropMenuInfo(const axColor& normal_color,
+                   const axColor& hover_color,
+                   const axColor& clicked_color,
+                   const axColor& selected_color,
+                   const axColor& contour_color,
+                   const axColor& font_color_) :
     normal(normal_color),
     hover(hover_color),
     clicking(clicked_color),
@@ -119,6 +130,9 @@ struct axDropMenuInfo
     
 };
 
+/*******************************************************************************
+ * axDropMenu.
+ ******************************************************************************/
 class axDropMenu : public axPanel
 {
 public:
@@ -126,10 +140,12 @@ public:
                const axRect& rect,
                const axDropMenuEvents& events,
                const axDropMenuInfo& info,
-               string img_path = "",
-               string bg_img_path = "",
+               std::string img_path = "",
+               std::string bg_img_path = "",
+               std::string toogle_img_path = "",
+               const std::vector<std::string>& menu_str = {},
                axFlag flags = 0,
-               string msg = "");
+               std::string msg = "");
 
     void SetMsg(const string& msg);
     
@@ -157,8 +173,8 @@ private:
     enum axDropMenuState
     {
         axDROP_NORMAL,
-        axDROP_DOWN,
         axDROP_HOVER,
+        axDROP_DOWN,
         axDROP_SELECTED
     };
     
@@ -173,6 +189,16 @@ private:
     void OnPopupMenuChoice(const axPopupMenuMsg& msg);
 };
 
+/*******************************************************************************
+ * axDropMenuInfo template.
+ ******************************************************************************/
+#define axDROP_MENU_TRANSPARENT 	axDropMenuInfo( \
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 1.0))
 
 /// @}
 /// @}

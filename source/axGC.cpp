@@ -295,16 +295,64 @@ void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& 
 }
 
 void axGC::DrawPartOfImage(axImage* img,
-					 const axPoint& posInImage,
-					 const axSize& sizeInImage,
-					 const axPoint& position,
-                     double alpha)
+                           const axPoint& posInImage,
+                           const axSize& sizeInImage,
+                           const axPoint& position,
+                           double alpha)
 {
-//	axPoint pos = position + _win->GetAbsoluteRect().position;
+    //	axPoint pos = position + _win->GetAbsoluteRect().position;
     
     axPoint pos = position;
-	//pos -= _win->GetScrollDecay();
+    //pos -= _win->GetScrollDecay();
+    
+    axSize img_size = img->GetSize();
+    
+    double img_x = (posInImage.x + sizeInImage.x) / double(img_size.x),
+    img_y = 1.0 - (posInImage.y + sizeInImage.y) / double(img_size.y);
+    
+    double x = posInImage.x / double(img_size.x);
+    double y = 1.0 - posInImage.y / double(img_size.y);
+    
+    glColor4f(1.0, 1.0, 1.0, alpha);
+    
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    glBindTexture(GL_TEXTURE_2D, img->GetTexture());
+    glDepthMask(GL_TRUE);
+    
+    // OpenGL stores texture upside down so glTexCoord2d must be flipped.
+    glBegin(GL_QUADS);
+    
+    // Buttom left.
+    glTexCoord2d(x, y);
+    glVertex2d(pos.x, pos.y);
+    
+    // Top left.
+    glTexCoord2d(x, img_y);
+    glVertex2d(pos.x, pos.y + sizeInImage.y);
+    
+    // Top right.
+    glTexCoord2d(img_x, img_y);
+    glVertex2d(pos.x + sizeInImage.x, pos.y + sizeInImage.y);
+    
+    // Buttom right.
+    glTexCoord2d(img_x, y);
+    glVertex2d(pos.x + sizeInImage.x, pos.y);
+    glEnd();
+    //	glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
+}
 
+
+void axGC::DrawPartOfImageResize(axImage* img,
+					 const axPoint& posInImage,
+					 const axSize& sizeInImage,
+					 const axRect& rect,
+                     double alpha)
+{
+    axPoint pos = rect.position;
 	axSize img_size = img->GetSize();
 
 	double img_x = (posInImage.x + sizeInImage.x) / double(img_size.x),
@@ -331,15 +379,15 @@ void axGC::DrawPartOfImage(axImage* img,
 
 	// Top left.
 	glTexCoord2d(x, img_y);
-	glVertex2d(pos.x, pos.y + sizeInImage.y);
+	glVertex2d(pos.x, pos.y + rect.size.y);
 
 	// Top right.
 	glTexCoord2d(img_x, img_y);
-	glVertex2d(pos.x + sizeInImage.x, pos.y + sizeInImage.y);
+	glVertex2d(pos.x + rect.size.x, pos.y + rect.size.y);
 
 	// Buttom right.
 	glTexCoord2d(img_x, y);
-	glVertex2d(pos.x + sizeInImage.x, pos.y);
+	glVertex2d(pos.x + rect.size.x, pos.y);
 	glEnd();
 //	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
@@ -427,13 +475,13 @@ void axGC::DrawStringAlignedCenter(const string& text,
 	for (int i = 0; i < text.size(); i++)
 	{
 		_font.SetChar(text[i]);
-		length += _font.GetSize().x;// +_font.GetNextPosition();
-		
+		length += _font.GetNextPosition();
+        
 		if (_font.GetSize().y > height)
 			height = _font.GetSize().y;
 	}
 
-	axPoint pos(rect.position.x  + ceil((rect.size.x - length) * 0.5),
+	axPoint pos(rect.position.x + (rect.size.x - length) * 0.5,
 		rect.position.y + ceil((rect.size.y - height) * 0.5));
 
 	int x = pos.x;
@@ -443,7 +491,7 @@ void axGC::DrawStringAlignedCenter(const string& text,
 		axPoint delta = _font.GetDelta();
 
 		DrawTexture(_font.GetTexture(),
-			axRect(axPoint(x + delta.x, pos.y - delta.y + height/*_font.GetFontSize()*/),
+			axRect(axPoint(x + delta.x, pos.y - delta.y + height),
 			_font.GetSize()));
 
 		x += _font.GetNextPosition();

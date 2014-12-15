@@ -165,6 +165,15 @@ struct axToggleInfo
 							axColor(0.0, 0.0, 0.0),\
 							axColor(0.0, 0.0, 0.0)) 
 
+#define axTOGGLE_TRANSPARENT 	axToggleInfo( \
+axColor(0.5, 0.5, 0.5, 0.0),\
+axColor(0.6, 0.6, 0.6, 0.0),\
+axColor(0.4, 0.4, 0.4, 0.0),\
+axColor(0.5, 0.5, 0.5, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 1.0))
 
 class axToggle : public axPanel
 {

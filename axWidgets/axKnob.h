@@ -35,7 +35,7 @@
 /**************************************************************************//**
  * axKnobMsg
 ******************************************************************************/
-class axKnobMsg
+class axKnobMsg : public axMsg
 {
 public:
     axKnobMsg(const double& value):
@@ -47,6 +47,11 @@ public:
     {
         return _value;
     }
+    
+    axMsg* GetCopy()
+    {
+        return new axKnobMsg(*this);
+    }
 
 private:
     double _value;
@@ -57,10 +62,10 @@ private:
 ******************************************************************************/
 struct axKnobEvents
 {
-    axEvtFunction(axKnobMsg) value_change;
+    axEventFunction value_change;
 
     axKnobEvents(){}
-    axKnobEvents(axEvtFunction(axKnobMsg)& fct){ value_change = fct; }
+    axKnobEvents(axEventFunction& fct){ value_change = fct; }
 };
 
 /********************************************************************************//**
@@ -141,24 +146,30 @@ private:
 /********************************************************************************//**
  * axKnobControl.
  ***********************************************************************************/
-// class axKnobControl: public axWindow
-// {
-// public:
-//     axKnobControl( axApp* app,
-//                    axWindow* parent,
-//                    const axID& id,
-//                    const axKnobEvents& events,
-//                    const axKnobInfo& info,
-//                    const axPoint& position );
-// private:
-//     axKnob* m_knob;
-//     axColor m_currentBgColor;
-
-//     void OnPaint();
-//     void OnKnobChange();
-
-//     EVENT( axKnobControl, OnKnobChange )
-// };
+ class axKnobControl: public axPanel
+ {
+ public:
+     axKnobControl(axWindow* parent,
+                   const axRect& rect,
+                   const axKnobEvents& events,
+                   const axKnobInfo& info,
+                   const std::string& label,
+                   axFlag flags = 0,
+                   double value = 0.0);
+     
+     axEVENT_ACCESSOR(axKnobMsg, OnKnobValueChange);
+     
+     void SetValue(const double& value);
+     
+ private:
+     axKnob* _knob;
+     std::string _label;
+     std::string _value;
+     
+     void OnKnobValueChange(const axKnobMsg& msg);
+     
+     void OnPaint();
+ };
 
 /********************************************************************************//**
  * Knob Templates.

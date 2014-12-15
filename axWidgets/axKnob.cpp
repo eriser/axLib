@@ -45,6 +45,11 @@ _range(0.0, 1.0)
 	_bgAlpha = 1.0;
     
     m_nCurrentImg = m_knobValue * (_info.n_knob - 1);
+    
+    if(_events.value_change)
+    {
+        AddConnection(0, _events.value_change);
+    }
 }
 
 void  axKnob::OnMouseLeftDown(const axPoint& pos)
@@ -56,10 +61,11 @@ void  axKnob::OnMouseLeftDown(const axPoint& pos)
     
     HideMouse();
 
-    if(_events.value_change)
-    {
-        _events.value_change(axKnobMsg(m_knobValue));
-    }
+//    if(_events.value_change)
+//    {
+//        _events.value_change(axKnobMsg(m_knobValue));
+//    }
+    PushEvent(0, new axKnobMsg(m_knobValue));
 
 }
 
@@ -71,10 +77,11 @@ void axKnob::OnMouseLeftUp(const axPoint& pos)
         UnGrabMouse();
         Update();
 
-        if(_events.value_change)
-        {
-            _events.value_change(axKnobMsg(m_knobValue));
-        }
+        PushEvent(0, new axKnobMsg(m_knobValue));
+//        if(_events.value_change)
+//        {
+//            _events.value_change(axKnobMsg(m_knobValue));
+//        }
     }
 }
 
@@ -101,10 +108,11 @@ void  axKnob::OnMouseLeftDragging(const axPoint& position)
         Update();
     }
 
-    if(_events.value_change)
-    {
-        _events.value_change(axKnobMsg(m_knobValue));
-    }
+//    if(_events.value_change)
+//    {
+//        _events.value_change(axKnobMsg(m_knobValue));
+//    }
+    PushEvent(0, new axKnobMsg(m_knobValue));
 }
 
 void axKnob::SetValue(const axFloat& value)
@@ -119,10 +127,11 @@ void axKnob::SetValue(const axFloat& value)
 		Update();
 	}
 
-	if (_events.value_change)
-	{
-		_events.value_change(axKnobMsg(m_knobValue));
-	}
+//	if (_events.value_change)
+//	{
+//		_events.value_change(axKnobMsg(m_knobValue));
+//	}
+    PushEvent(0, new axKnobMsg(m_knobValue));
 }
 
 void axKnob::OnPaint()
@@ -131,7 +140,7 @@ void axKnob::OnPaint()
     axSize size = GetSize();
     axRect rect0(0, 0, size.x, size.y);
 	
-	gc->SetColor(m_currentBgColor, _bgAlpha);
+	gc->SetColor(m_currentBgColor);
 
     gc->DrawRectangle(rect0);
 
@@ -139,4 +148,68 @@ void axKnob::OnPaint()
                         axPoint( m_nCurrentImg * _info.knob_size.x, 0),
                         _info.knob_size,
                         axPoint(0, 0));
+}
+
+axKnobControl::axKnobControl(axWindow* parent,
+                             const axRect& rect,
+                             const axKnobEvents& events,
+                             const axKnobInfo& info,
+                             const std::string& label,
+                             axFlag flags,
+                             double value):
+// Heritage.
+axPanel(parent, rect),
+// Members.
+_label(label),
+_value("0.00")
+{
+    //---------------------------------------------------
+    axKnobEvents evts;
+    evts.value_change = GetOnKnobValueChange();
+    
+    _knob = new axKnob(this, axRect(7, 20, 46, 46),
+                       evts, info, flags, value);
+    
+    if(events.value_change)
+    {
+        _knob->AddConnection(0, events.value_change);
+    }
+}
+
+void axKnobControl::SetValue(const double& value)
+{
+    _knob->SetValue(value);
+}
+
+void axKnobControl::OnKnobValueChange(const axKnobMsg& msg)
+{
+    std::string v = to_string(msg.GetValue());
+    v.resize(4);
+    _value = v;
+    Update();
+}
+
+void axKnobControl::OnPaint()
+{
+    axGC* gc = GetGC();
+    axRect rect0(axPoint(0, 0), GetRect().size);
+    
+    gc->SetColor(axColor(0.5, 0.5, 0.5, 0.3));
+    gc->DrawRectangle(rect0);
+    
+    axRect labelRect(0, 0, rect0.size.x - 1, 20);
+    gc->SetColor(axColor(0.6, 0.6, 0.6, 0.3));
+    gc->DrawRectangle(labelRect);
+    
+    gc->SetFontSize(12);
+    gc->SetColor(axColor(0.0, 0.0, 0.0));
+    gc->DrawStringAlignedCenter(_label, labelRect);
+    
+    gc->SetFontSize(10);
+    gc->DrawStringAlignedCenter(_value, axRect(0, rect0.size.y - 20,
+                                               rect0.size.x, 20));
+    
+    gc->SetColor(axColor(0.0, 0.0, 0.0, 0.3));
+    gc->DrawRectangleContour(rect0);
+
 }

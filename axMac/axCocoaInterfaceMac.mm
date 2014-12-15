@@ -51,29 +51,12 @@ std::string axOpenFileDialog()
 
 void TestFunctionInterface()
 {
-//    [[NSApp delegate]setNeedsDisplay:YES];
-//     NSLog(@"TestFunctionInterface");
     axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
     [appDelegate MemberTestFunc];
-//    [(axAppDelegate*)[[NSApplication sharedApplication] delegate]setNeedsDisplay:YES];
-
-//    axAppDelegate* appDelegate = (axAppDelegate*)[NSApp delegate];
-//    appDelegate.MemberTestFunc();
-//    [appDelegate MemberTestFunc];
-//    appDelegate->MemberTestFunc();
-//    NSLog([(axAppDelegate*)[[NSApplication sharedApplication]delegate]);
-
-//    [[(axAppDelegate*)[[NSApplication sharedApplication]delegate]MemberTestFunc ];
-    
-    
-//    ((axAppDelegate*)[[NSApplication sharedApplication]delegate]).MemberTestFunc();
-//    axAppDelegate *aD = ((axAppDelegate*)CCApplication::sharedApplication());
-//    aD->myAppDelegateMethod();
 }
 
 std::string CocoaGetAppDirectory()
 {
-//    NSString *myPath = [[NSBundle mainBundle] bundlePath];
     NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
     return std::string([curDir UTF8String]);
 }

@@ -57,6 +57,14 @@ string OpenFileDialog(const string& app_name, string folder_path = "");
 
 string axGetExtension(const string& path);
 
+template <typename T>
+double axLineairInterpole(const T& y1,
+                          const T& y2,
+                          const T& mu)
+{
+    return y1 + mu * (y2 - y1);
+}
+
 template < typename T >
 struct axRange
 {

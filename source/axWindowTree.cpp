@@ -103,7 +103,6 @@ void EndDrawing(axWindow* win)
 
 void DrawWindow(axWindow* win)
 {
-//    axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
     axMatrix4 mview;
     mview.Identity().Load();
 
@@ -111,47 +110,44 @@ void DrawWindow(axWindow* win)
                     win->GetScrollDecay()).Process();
 
     win->OnPaint();
-
-    /// @todo Add if scroll window.
-//    mview.Identity().Load();
-//    mview.Translate(win->GetAbsoluteRect().position).Process();
-//    win->OnPaintStatic();
-    ///--------
-
-//    mview_before.Load();
 }
-
-//void DrawWindowEnd(axWindow* win)
-//{
-//    
-//}
-
 
 void axWindowNode::DrawNode()
 {
-    for(axWindowNode* it : _childNodes)
+    if(window->IsShown())
     {
-        if(it->window != nullptr)
+        axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
+        
+        BeforeDrawing(window);
+        DrawWindow(window);
+        
+        
+        for(axWindowNode* it : _childNodes)
         {
-            if(it->window->IsShown())
+            if(it->window != nullptr)
             {
-                axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
-                
-                BeforeDrawing(it->window);
-                
-                DrawWindow(it->window);
-                it->DrawNode();
-                
-                axMatrix4 mview;
-                mview.Identity().Load();
-                mview.Translate(it->window->GetAbsoluteRect().position).Process();
-                it->window->OnPaintStatic();
-                
-                EndDrawing(it->window);
-                
-                mview_before.Load();
+                if(window->IsShown())
+                {
+                    axMatrix4 mview_child_before(GL_MODELVIEW_MATRIX);
+                    
+                    BeforeDrawing(it->window);
+                    
+                    DrawWindow(it->window);
+                    it->DrawNode();
+                    
+                    axMatrix4 mview;
+                    mview.Identity().Load();
+                    mview.Translate(it->window->GetAbsoluteRect().position).Process();
+                    it->window->OnPaintStatic();
+                    
+                    EndDrawing(it->window);
+                    
+                    mview_child_before.Load();
+                }
             }
+            
         }
+        EndDrawing(window);
     }
 }
 
@@ -308,6 +304,7 @@ void axWindowTree::DrawTree()
     {
         if(it != nullptr)
         {
+//            std::cout << "Draw node from tree." << std::endl;
             it->DrawNode();
         }
     }
