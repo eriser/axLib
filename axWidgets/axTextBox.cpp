@@ -59,6 +59,11 @@ _findClickCursorIndex(false)
     }
     
     _cursorIndex = _label.size();
+    
+    SetShownRect(axRect(-5,
+                        -5,
+                        rect.size.x + 10,
+                        rect.size.y + 10));
 }
 
 void axTextBox::SetLabel(const std::string& label)

@@ -26,9 +26,10 @@
 /// @{
 
 #include "axC++.h"
-#include "axWindow.h"
 #include <map>
 #include <deque>
+
+class axWindow;
 
 /***************************************************************************//*
  * axWindowNode
@@ -52,6 +53,8 @@ public:
 	vector<axWindowNode*>& GetChild();
 
 	axWindow* window;
+    
+    void DrawNode();
 
 private:
 	vector<axWindowNode*> _childNodes;
@@ -93,6 +96,8 @@ public:
 	axWindow* FindMousePosition(const axPoint& pos);
 
 	vector<axWindowNode*> GetMainNode();
+    
+    void DrawTree();
 
 private:
 	vector<axWindowNode*> _nodes;

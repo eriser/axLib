@@ -11,6 +11,22 @@
 
 #include "axLib.h"
 
+class MyScrollPanel : public axPanel
+{
+public:
+    MyScrollPanel(axWindow* parent,
+                const axRect& rect,
+                  const axSize& seenSize);
+    
+    axEVENT_ACCESSOR(axButtonMsg, OnBtn);
+    
+private:
+    virtual void OnPaint();
+    virtual void OnPaintStatic();
+    
+    void OnBtn(const axButtonMsg& msg);
+};
+
 class SliderPanel : public axPanel
 {
 public:
@@ -23,6 +39,8 @@ private:
     virtual void OnPaint();
     
     void OnSlider1(const axSliderMsg& msg);
+    
+    MyScrollPanel* _scrollPanel;
 };
 
 #endif /* defined(__Demo__SliderPanel__) */

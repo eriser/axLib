@@ -29,8 +29,6 @@
 #include "axColor.h"
 #include "axFont.h"
 
-#include <cmath>
-
 class axWindow;
 
 class axGC
@@ -74,17 +72,11 @@ public:
     
 	void DrawString(const string& text, const axPoint& pos);
 
-	void DrawStringAlignedCenter(const string& text, 
-								 //const axPoint& pos, 
-								 const axRect& rect);
+	void DrawStringAlignedCenter(const string& text, const axRect& rect);
     
-    
-
 	void SetFontType(const string& font_type){ _font.SetFontType(font_type); }
 
-	void SetFontSize(const int& size) { _font.SetFontSize(size); }
-
-
+    void SetFontSize(const int& size);
 
 	void DrawRectangleColorFade(const axRect& rect,
                                 const axColor& c1,
@@ -102,7 +94,9 @@ public:
     void SetLineWidth(const double& width);
     void SeDefaultLine();
     
-	void DrawCircle(const axPoint& pos, float r, int num_segments);
+	void DrawCircle(const axPoint& pos,
+                    const double& radius,
+                    const int& nSegments);
 	
 	void DrawTexture(GLuint texture,
                      const axRect& rect,
@@ -111,17 +105,17 @@ public:
     // Just blocking x axis for now.
     void BlockDrawing(const axRect& rect);
     void UnBlockDrawing();
+    
+//    void BeginDrawing();
+//    
+//    void EndDrawing();
 
 private:
 	axWindow* _win;
 	axFont _font;
-	//axRect _win_abs_position;
-
+    
 	axFloatRect RectToFloatRect(const axRect& rect);
-	
 };
-
-// axFloatRect RectToFloatRect(const axRect& rect);
 
 /// @}
 #endif //__AX_GC__

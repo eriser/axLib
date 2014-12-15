@@ -20,6 +20,10 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axWindowTree.h"
+#include "axWindow.h"
+#include "axApp.h"
+#include "axCore.h"
+#include "axMath.h"
 
 axWindowNode::axWindowNode(axWindow* win)
 {
@@ -60,6 +64,95 @@ axWindowNode* axWindowNode::Get(axWindow* win)
 vector<axWindowNode*>& axWindowNode::GetChild()
 {
 	return _childNodes;
+}
+
+
+void BeforeDrawing(axWindow* win)
+{
+    if(win->IsBlockDrawing())
+    {
+        axMatrix4 mview;
+        mview.Identity().Load();
+        
+        axRect abs_rect = win->GetAbsoluteRect();
+        axRect shown_rect = win->GetShownRect();
+        
+        double delta_size_x = shown_rect.size.x - abs_rect.size.x;
+        double delta_size_y = shown_rect.size.y - abs_rect.size.y;
+        
+        double globalY = axApp::GetInstance()->GetCore()->GetGlobalSize().y;
+        double sumY = (abs_rect.position.y + shown_rect.position.y +
+                       abs_rect.size.y + delta_size_y);
+        
+        glScissor(abs_rect.position.x + shown_rect.position.x - 1,
+                  globalY - sumY,
+                  abs_rect.size.x + delta_size_x + 1,
+                  abs_rect.size.y + delta_size_y + 1);
+        
+        glEnable(GL_SCISSOR_TEST);
+    }
+}
+
+void EndDrawing(axWindow* win)
+{
+    if(win->IsBlockDrawing())
+    {
+        glDisable(GL_SCISSOR_TEST);
+    }
+}
+
+void DrawWindow(axWindow* win)
+{
+//    axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
+    axMatrix4 mview;
+    mview.Identity().Load();
+
+    mview.Translate(win->GetAbsoluteRect().position -
+                    win->GetScrollDecay()).Process();
+
+    win->OnPaint();
+
+    /// @todo Add if scroll window.
+//    mview.Identity().Load();
+//    mview.Translate(win->GetAbsoluteRect().position).Process();
+//    win->OnPaintStatic();
+    ///--------
+
+//    mview_before.Load();
+}
+
+//void DrawWindowEnd(axWindow* win)
+//{
+//    
+//}
+
+
+void axWindowNode::DrawNode()
+{
+    for(axWindowNode* it : _childNodes)
+    {
+        if(it->window != nullptr)
+        {
+            if(it->window->IsShown())
+            {
+                axMatrix4 mview_before(GL_MODELVIEW_MATRIX);
+                
+                BeforeDrawing(it->window);
+                
+                DrawWindow(it->window);
+                it->DrawNode();
+                
+                axMatrix4 mview;
+                mview.Identity().Load();
+                mview.Translate(it->window->GetAbsoluteRect().position).Process();
+                it->window->OnPaintStatic();
+                
+                EndDrawing(it->window);
+                
+                mview_before.Load();
+            }
+        }
+    }
 }
 
 //-----------------------------------------------------------------------------
@@ -207,4 +300,15 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 	}
 
 	return nullptr;
+}
+
+void axWindowTree::DrawTree()
+{
+    for (axWindowNode* it : _nodes)
+    {
+        if(it != nullptr)
+        {
+            it->DrawNode();
+        }
+    }
 }

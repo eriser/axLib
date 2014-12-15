@@ -226,7 +226,7 @@ protected:
 		_sliderYPos,
 		_delta_click;
 
-		float _bg_alpha;
+    float _bg_alpha;
 
 	double _sliderValue;
 

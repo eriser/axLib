@@ -39,65 +39,32 @@ public:
 
 	axWindow* GetParent() const;
 
-	//axID GetId() const;
 	axRect GetRect() const;
 	axRect GetAbsoluteRect() const;
+    
 	axSize GetSize() const;
 	void SetSize(const axSize& size);
 	void SetPosition(const axPoint& pos);
-
-	void SetScrollDecay(const axPoint& decay);
-	axPoint GetScrollDecay();
-
-	axPoint GetBottomLeftPosition() const;
+    
+    void SetShownRect(const axRect& size);
+    axRect GetShownRect() const;
+    
+    axPoint GetBottomLeftPosition() const;
     axPoint GetTopRightPosition() const;
     axPoint GetNextPosRight(const int& delta) const;
 
+	void SetScrollDecay(const axPoint& decay);
+	axPoint GetScrollDecay() const;
 
-	bool IsShown() const
-	{
-        const axWindow* win = this;
-        
-        while(win != nullptr)
-        {
-            if(win->_isHidden)
-            {
-                return false;
-            }
-            
-            win = win->GetParent();
-            
-        }
-        return true;
-//		return !_isHidden;
-        
-	}
-
-	void Show()
-	{
-		if (_isHidden != false)
-		{
-			_isHidden = false;
-			Update();
-		}
-	}
-
-	void Hide()
-	{
-		if (_isHidden != true)
-		{
-			_isHidden = true;
-			Update();
-		}
-		
-	}
-
-//protected:
-	friend class axManager;
+    bool IsShown() const;
+    void Show();
+    void Hide();
 
     // Drawing events.
 	virtual void OnPaint(){}
+    virtual void OnPaintStatic(){}
     virtual void Update() = 0;
+    virtual void OnResize(){}
     
     // Mouse events.
 	virtual void OnLeftDragging(){}
@@ -122,17 +89,25 @@ public:
     virtual void OnWasKeyUnGrabbed(){}
     virtual void OnWasKeyGrabbed(){}
     
-
-    virtual void OnResize(){}
-    
 	axGC* GetGC();
 
 	void Reparent(axWindow* parent, const axPoint& position);
 
+    /// @todo change this.
 	bool& GetIsPopup()
 	{
 		return _isPopup;
 	}
+    
+    bool IsBlockDrawing() const
+    {
+        return _isBlockDrawing;
+    }
+    
+    void SetBlockDrawing(const bool& block)
+    {
+        _isBlockDrawing = block;
+    }
 
 protected:
 	bool _isPopup;
@@ -142,8 +117,9 @@ private:
 	axRect _rect;
 	axPoint _absolutePosition;
 	axGC* _gc;
-	bool _isHidden;
+	bool _isHidden, _isBlockDrawing;
 	axPoint _scrollDecay;
+    axRect _shownRect;
 	
 	GLuint _texture;
 };

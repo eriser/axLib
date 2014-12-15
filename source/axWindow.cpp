@@ -22,14 +22,13 @@
 #include "axWindow.h"
 
 axWindow::axWindow(axWindow* parent, const axRect& rect):
-	//axObject(),
-	// Members.
-	_parent(parent),
-	//_id(NEXT_ID),
-	_rect(rect),
-	_isHidden(false),
-	_isPopup(false)
-	// _scrollDecay(0, 0)
+// Members.
+_parent(parent),
+_rect(rect),
+_isHidden(false),
+_isPopup(false),
+_isBlockDrawing(false),
+_shownRect(axPoint(0, 0), rect.size)
 {
 	if (parent == nullptr)
 	{
@@ -39,7 +38,7 @@ axWindow::axWindow(axWindow* parent, const axRect& rect):
 	{
 		_absolutePosition = parent->_absolutePosition + rect.position;
 	}
-
+    
 	_gc = new axGC(this);
 }
 
@@ -53,9 +52,45 @@ void axWindow::SetScrollDecay(const axPoint& decay)
 	_scrollDecay = decay;
 }
 
-axPoint axWindow::GetScrollDecay()
+axPoint axWindow::GetScrollDecay() const
 {
 	return _scrollDecay;
+}
+
+bool axWindow::IsShown() const
+{
+    const axWindow* win = this;
+    
+    while(win != nullptr)
+    {
+        if(win->_isHidden)
+        {
+            return false;
+        }
+        
+        win = win->GetParent();
+        
+    }
+    return true;
+    //		return !_isHidden;
+}
+
+void axWindow::Show()
+{
+    if (_isHidden != false)
+    {
+        _isHidden = false;
+        Update();
+    }
+}
+
+void axWindow::Hide()
+{
+    if (_isHidden != true)
+    {
+        _isHidden = true;
+        Update();
+    }
 }
 
 void axWindow::Reparent(axWindow* parent, const axPoint& position)
@@ -68,6 +103,16 @@ void axWindow::Reparent(axWindow* parent, const axPoint& position)
 	SetIdForReparenting(temp);
 
 	Update();
+}
+
+axRect axWindow::GetShownRect() const
+{
+    return _shownRect;
+}
+
+void axWindow::SetShownRect(const axRect& rect)
+{
+    _shownRect = rect;
 }
 
 // axID axWindow::GetId() const
@@ -105,6 +150,7 @@ axRect axWindow::GetAbsoluteRect() const
 	while (win->GetParent() != nullptr)
 	{
 		pos += win->GetParent()->GetRect().position;
+        pos -= win->GetParent()->GetScrollDecay();
 		win = win->GetParent();
 	}
 

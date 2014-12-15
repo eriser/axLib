@@ -42,7 +42,7 @@
 
 class axScrollBar;
 
-class axScrollBarMsg
+class axScrollBarMsg : public axMsg
 {
 public:
 	axScrollBarMsg()
@@ -65,6 +65,11 @@ public:
 	{
 		return _msg;
 	}
+    
+    axMsg* GetCopy()
+    {
+        return new axScrollBarMsg(*this);
+    }
 
 private:
 	axScrollBar* _sender;
@@ -73,11 +78,12 @@ private:
 
 struct axScrollBarEvents
 {
-	//axEvtFunction(axButtonMsg) button_click;
-	std::function<void (axScrollBarMsg)> value_change;
+	enum : axEventId { VALUE_CHANGE };
 	
 	axScrollBarEvents(){}
-	axScrollBarEvents(std::function<void (axScrollBarMsg)>& fct){ value_change = fct; }
+	axScrollBarEvents(axEventFunction& fct){ value_change = fct; }
+    
+    axEventFunction value_change;
 };
 
 struct axScrollBarInfo
@@ -109,44 +115,50 @@ struct axScrollBarInfo
 class axScrollBar : public axPanel
 {
 public:
-	axScrollBar(axWindow* parent,
-		const axRect& rect,
-		const axScrollBarEvents& events,
-		const axScrollBarInfo& info,
-		axFlag flags = 0);
+	axScrollBar(axWindow* parent, axWindow* handle,
+                const axRect& rect,
+                const axScrollBarEvents& events,
+                const axScrollBarInfo& info,
+                axFlag flags = 0);
 
-	double getZeroToOneValue();
-
-	// void setBackgroundImage(wxBitmap& bmp);
-	void setSliderPositionZeroToOne(const double& value);
-	void setInputTopDelta(int y);
-	void setInputFrameHeight(int y);
-	void setInputPanelHeight(int y);
-	void setInputInfo(int frameSize, int panelSize, int topDelta);
-	double getSliderValue() const;
-	inline void recalculateInputValue();
+//	double getZeroToOneValue();
+//
+//	// void setBackgroundImage(wxBitmap& bmp);
+//	void setSliderPositionZeroToOne(const double& value);
+//	void setInputTopDelta(int y);
+//	void setInputFrameHeight(int y);
+//	void setInputPanelHeight(int y);
+//	void setInputInfo(int frameSize, int panelSize, int topDelta);
+//	double getSliderValue() const;
+//	inline void recalculateInputValue();
+    
+    void SetPanelSize(const axSize& size);
 
 private:
 	axScrollBarEvents _events;
 	axScrollBarInfo _info;
 	axFlag _flags;
+    axWindow* _handle;
 
 	axButton* _btn[2];
 
 	//----------------------
-	int m_imgHeight, m_sliderHeight, m_sliderMaxHeight;
-	int m_inputFrameSize, m_inputPanelSize, m_inputTopDecay;
-	int m_yClickDelta;
-	
-	double m_value;
-	double m_sliderPosition, m_sliderValue;
-	int m_sliderPositionPixel;
+	int _imgHeight, _sliderHeight, _sliderMaxHeight, _sliderPos, _yClickDelta;
+    axSize _panelSize;
+    
+    axColor* _currentScrollBarColor;
+////	int m_yClickDelta;
+//	
+	double _value;
+//    double _sliderPosition;//, m_sliderValue;
+//	int m_sliderPositionPixel;
 
 
 	virtual void OnPaint();
 	virtual void OnMouseLeftDragging(const axPoint& pos);
 	virtual void OnMouseLeftDown(const axPoint& pos);
 	virtual void OnMouseLeftUp(const axPoint& pos);
+    virtual void OnMouseMotion(const axPoint& pos);
 	virtual void OnMouseEnter();
 	virtual void OnMouseLeave();
 };

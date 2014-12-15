@@ -28,6 +28,12 @@ void PaintPanel::OnPaint()
     gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
     gc->DrawRectangle(rect0);
     
+    
+    
+    gc->SetColor(axColor(0.9, 0.4, 0.4, 0.5));
+    gc->DrawRectangle(axRect(2, 2, 10, 10));
+    
+    gc->BlockDrawing(axRect(40, 40, 50, 50));
     gc->SetColor(axColor(0.9, 0.4, 0.4), 1.0);
     gc->DrawRectangle(axRect(40, 40, 50, 50));
     
@@ -109,7 +115,7 @@ void PaintPanel::OnPaint()
     gc->DrawRectangleContour(rect0);
     
     
-    
+    gc->UnBlockDrawing();
     
 
 }

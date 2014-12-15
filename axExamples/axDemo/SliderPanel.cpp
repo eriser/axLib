@@ -8,6 +8,91 @@
 
 #include "SliderPanel.h"
 
+MyScrollPanel::MyScrollPanel(axWindow* parent,
+                             const axRect& rect,
+                             const axSize& seenSize):
+// Parent.
+axPanel(parent, rect)
+{
+    SetBlockDrawing(true);
+    SetShownRect(axRect(axPoint(0, 0), seenSize));
+    
+    
+    axButtonInfo btn1_info;
+    btn1_info.normal = axColor(0.8, 0.8, 0.8);
+    btn1_info.hover = axColor(0.9, 0.9, 0.9);
+    btn1_info.clicking = axColor(0.7, 0.7, 0.7);
+    btn1_info.contour = axColor(0.0, 0.0, 0.0);
+    btn1_info.selected = btn1_info.normal;
+    
+    axButtonEvents btn1_evts;
+    btn1_evts.button_click = GetOnBtn();
+    
+    axButton* btn1 = new axButton(this,
+                                  axRect(40, 40, 60, 25),
+                                  btn1_evts,
+                                  btn1_info,
+                                  "", "Btn1");
+    
+    axButton* btn2 = new axButton(this,
+                                  axRect(40, 500, 60, 25),
+                                  btn1_evts,
+                                  btn1_info,
+                                  "", "Btn2");
+    
+    axScrollBarEvents scrollEvents;
+    axScrollBarInfo scroll_info;
+    scroll_info.normal = axColor(0.8, 0.8, 0.8);
+    scroll_info.hover = axColor(0.9, 0.9, 0.9);
+    scroll_info.clicking = axColor(0.7, 0.7, 0.7);
+    scroll_info.contour = axColor(0.0, 0.0, 0.0);
+    scroll_info.selected = scroll_info.normal;
+
+    axPoint pos(rect.position.x + rect.size.x, rect.position.y);
+    axScrollBar* _scrollBar = new axScrollBar(parent,
+                                              this,
+                                              axRect(pos,
+                                                     axSize(8, GetShownRect().size.y)),
+                                              scrollEvents,
+                                              scroll_info);
+    
+    _scrollBar->SetPanelSize(rect.size);
+}
+
+void MyScrollPanel::OnBtn(const axButtonMsg& msg)
+{
+    std::cout << "Btn" << std::endl;
+}
+
+void MyScrollPanel::OnPaintStatic()
+{
+    axGC* gc = GetGC();
+    axRect rect(GetShownRect());
+    //axRect rect0(axPoint(0, 0), rect.size);
+
+    gc->SetColor(axColor(0.0, 0.0, 0.0, 1.0));
+    gc->DrawRectangleContour(rect);
+}
+
+void MyScrollPanel::OnPaint()
+{
+    
+    axGC* gc = GetGC();
+    axRect rect(GetRect());
+    axRect rect0(axPoint(0, 0), rect.size);
+    
+//    gc->SetColor(axColor(1.0, 0.0, 1.0, 0.4));
+//    gc->DrawRectangle(rect0);
+    
+    gc->DrawRectangleColorFade(rect0,
+                               axColor(0.0, 1.0, 0.0),
+                               axColor(0.0, 0.0, 1.0));
+    
+    
+
+    
+}
+
 SliderPanel::SliderPanel(axWindow* parent,
                          const axRect& rect):
 // Parent.
@@ -126,11 +211,18 @@ axPanel(parent, rect)
     }
     
     
+    _scrollPanel = new MyScrollPanel(this, axRect(200, 250, 150, 600),
+                                     axSize(150, 200));
+//    _scrollPanel->SetShownRect(axRect(0, 0, 150, 200));
+    
+    
+    
 }
 
 void SliderPanel::OnSlider1(const axSliderMsg& msg)
 {
     std::cout << msg.GetValue() << std::endl;
+    _scrollPanel->SetScrollDecay(axPoint(0, msg.GetValue() * (600 - 200)));
 }
 
 void SliderPanel::OnPaint()

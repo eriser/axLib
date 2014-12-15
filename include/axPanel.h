@@ -26,6 +26,7 @@
 /// @{
 
 #include "axApp.h"
+#include "axWindow.h"
 
 class axPanel : public axWindow
 {

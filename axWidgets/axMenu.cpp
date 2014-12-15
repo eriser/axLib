@@ -46,18 +46,18 @@ axMenuNode::axMenuNode( axWindow* parent,
     SetSize(axSize(rect.size.x, axMENU_NODE_HEIGHT));
 }
 
-axMenuNode::axMenuNode( axMenuNode* parent,
-                        const string& label,
-                        string img_path,
-                        axMenuNodeSelectionMode mode ):
-                        axPanel(parent, axRect(0, 0, 20, 20) ),
-                        // Members.
-                        //m_img( img_path ),
-                        m_parentNode( parent ),
-                        m_label( label ),
-                        m_nCurrentImg( axMENU_NODE_IMAGE_NORMAL ),
-                        m_nSubNode( 0 ),
-                        m_nSubNodeMax( axMENU_NODE_INIT_ARRAY_SIZE )
+axMenuNode::axMenuNode(axMenuNode* parent,
+                       const string& label,
+                       string img_path,
+                       axMenuNodeSelectionMode mode ):
+// Heritage.
+axPanel(parent, axRect(0, 0, 20, 20)),
+// Members.
+m_parentNode(parent),
+m_label(label),
+m_nCurrentImg(axMENU_NODE_IMAGE_NORMAL),
+m_nSubNode(0),
+m_nSubNodeMax(axMENU_NODE_INIT_ARRAY_SIZE)
 {
     //m_nodes = new axMenuNode* [ m_nSubNodeMax ];
     m_delta = parent->GetDelta() + 8;
