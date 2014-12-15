@@ -23,6 +23,7 @@
 #define __AX_WIDGET__
 
 #include "axButton.h"
+#include "axAnimatedButton.h"
 #include "axToggle.h"
 #include "axNumberBox.h"
 #include "axPopupMenu.h"
