@@ -110,9 +110,9 @@ void CalcScreen::OnPaint()
 
 	string val = to_string(_value);
 	gc->SetColor(axColor(0.0, 0.0, 0.0));
-//	gc->SetFontType(font_path);
-	gc->SetFontSize(14);
-	gc->DrawString(val, axPoint(5, 23));
+    gc->SetFontType(std::string("digital-7 (mono).ttf"));
+	gc->SetFontSize(28);
+	gc->DrawString(val, axPoint(5, 2));
 }
 
 //-----------------------------------------------------------------------------
@@ -142,26 +142,26 @@ Calculator::Calculator(axWindow* parent, const axRect& rect):
 
 	BtnInfo btns_info[20] =
 	{
-		BtnInfo(to_string(CALC_RESET), path+string("C.png"), operation_event),
-		BtnInfo(to_string(CALC_SIGN), path+string("signe.png"), operation_event),
-		BtnInfo(to_string(CALC_POW), path+string("pow.png"), operation_event),
-		BtnInfo(to_string(CALC_MODULO), path+string("modulo.png"), operation_event),
-		BtnInfo("7", path+string("7.png"), number_event),
-		BtnInfo("8", path+string("8.png"), number_event),
-		BtnInfo("9", path+string("9.png"), number_event),
-		BtnInfo(to_string(CALC_ADD), path + string("plus.png"), operation_event),
-		BtnInfo("4", path+string("4.png"), number_event),
-		BtnInfo("5", path+string("5.png"), number_event),
-		BtnInfo("6", path+string("6.png"), number_event),
-		BtnInfo(to_string(CALC_MIN), path + string("minus.png"), operation_event),
-		BtnInfo("1", path+string("1.png"), number_event),
-		BtnInfo("2", path+string("2.png"), number_event),
-		BtnInfo("3", path+string("3.png"), number_event),
-		BtnInfo(to_string(CALC_MUL), path + string("mul.png"), operation_event),
-		BtnInfo(".", path+string("dot.png"), number_event),
-		BtnInfo("0", path+string("0.png"), number_event),
-		BtnInfo(to_string(CALC_EQUAL), path+string("equal.png"), operation_event),
-		BtnInfo(to_string(CALC_DIV), path+string("div.png"), operation_event)
+		BtnInfo(to_string(CALC_RESET), string("C"), operation_event),
+		BtnInfo(to_string(CALC_SIGN), string("+ -"), operation_event),
+		BtnInfo(to_string(CALC_POW), string("^"), operation_event),
+		BtnInfo(to_string(CALC_MODULO), string("%"), operation_event),
+		BtnInfo("7", string("7"), number_event),
+		BtnInfo("8", string("8"), number_event),
+		BtnInfo("9", string("9"), number_event),
+		BtnInfo(to_string(CALC_ADD), string("+"), operation_event),
+		BtnInfo("4", string("4"), number_event),
+		BtnInfo("5", string("5"), number_event),
+		BtnInfo("6", string("6"), number_event),
+		BtnInfo(to_string(CALC_MIN), string("-"), operation_event),
+		BtnInfo("1", string("1"), number_event),
+		BtnInfo("2", string("2"), number_event),
+		BtnInfo("3", string("3"), number_event),
+		BtnInfo(to_string(CALC_MUL), string("*"), operation_event),
+		BtnInfo(".", string("."), number_event),
+		BtnInfo("0", string("0"), number_event),
+		BtnInfo(to_string(CALC_EQUAL), string("="), operation_event),
+		BtnInfo(to_string(CALC_DIV), string("/"), operation_event)
 	};
 
 	createButtons(this, btns_info);
@@ -192,7 +192,7 @@ void Calculator::createButtons(axWindow* parent, BtnInfo info[20])
 	{
 		axRect btn_rect(pos, btn_size);
 		_btns.push_back(new axButton(this,	btn_rect, info[i].events,
-			btn_info, info[i].img, "", 0, info[i].msg));						 
+			btn_info, ""/*info[i].img*/, info[i].img, 0, info[i].msg));
 	}
 }
 

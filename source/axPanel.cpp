@@ -213,3 +213,26 @@ void axPanel::DeleteWindow(axWindow* win)
 {
 	//_app->GetWindowManager()->
 }
+
+axRect axPanel::GetWindowPixelData(unsigned char*& data) const
+{
+    axRect rect(GetAbsoluteRect());
+    rect.position.x -= 1;
+    rect.size.x += 1;
+    rect.position.y -= 1;
+    rect.size.y += 1;
+    
+    data = new unsigned char[rect.size.x * rect.size.y * 4];
+    
+    axSize globalSize(axApp::GetInstance()->GetCore()->GetGlobalSize());
+
+    glReadPixels(rect.position.x,
+                 globalSize.y - rect.position.y - rect.size.y,
+                 rect.size.x,
+                 rect.size.y,
+                 GL_RGBA, // Format.
+                 GL_UNSIGNED_BYTE, // Type.
+                 (void*)data);
+    
+    return rect;
+}

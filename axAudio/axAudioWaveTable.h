@@ -34,8 +34,11 @@ public:
     void ProcessSample(float* out);
     void ProcessBlock(float* out, unsigned long frameCount);
     
+    void SetFreq(const double& freq);
+    
 private:
     
+    double _freq = { 200.0 };
     float _data[axBUFFER_SIZE + 1];
     double _cPhase;
 

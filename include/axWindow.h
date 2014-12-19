@@ -83,6 +83,7 @@ public:
     // Keyboard events.
     virtual void OnKeyDown(const char& key){}
     virtual void OnBackSpaceDown(){}
+    virtual void OnEnterDown(){}
     virtual void OnKeyDeleteDown(){}
     virtual void OnLeftArrowDown(){}
     virtual void OnRightArrowDown(){}

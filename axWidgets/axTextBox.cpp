@@ -52,6 +52,11 @@ _findClickCursorIndex(false)
         AddConnection(axTextBoxEvents::BUTTON_CLICK, _events.button_click);
     }
     
+    if(_events.enter_click)
+    {
+        AddConnection(axTextBoxEvents::ENTER_CLICK, _events.enter_click);
+    }
+    
     if(axFlag_exist(axTEXT_BOX_FLASHING_CURSOR, _flags))
     {
         _flashingCursor = new axTimer();
@@ -70,6 +75,11 @@ void axTextBox::SetLabel(const std::string& label)
 {
     _label = label;
     Update();
+}
+
+std::string axTextBox::GetLabel() const
+{
+    return _label;
 }
 
 void axTextBox::OnMouseLeftDown(const axPoint& pos)
@@ -248,6 +258,12 @@ void axTextBox::OnRightArrowDown()
 
     
     Update();
+}
+
+void axTextBox::OnEnterDown()
+{
+    PushEvent(axTextBoxEvents::ENTER_CLICK, new axTextBoxMsg(this, _label));
+    UnGrabKey();
 }
 
 void axTextBox::DrawContourRectangle(axGC* gc)

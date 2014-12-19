@@ -34,5 +34,7 @@
 #include "axKnob.h"
 #include "axScrollBar.h"
 #include "axTextBox.h"
+#include "axTextControl.h"
+#include "axPlot.h"
 
 #endif //__AX_WIDGET__

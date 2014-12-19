@@ -57,8 +57,19 @@ void TestFunctionInterface()
 
 std::string CocoaGetAppDirectory()
 {
+#ifdef DEBUG
+    
     NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
     return std::string([curDir UTF8String]);
+#else // RELEASE.
+    
+    NSString *path = [[NSBundle mainBundle] executablePath];
+    std::string app_path([path UTF8String]);
+    app_path = app_path.substr(0, app_path.find_last_of("/"));
+    app_path = app_path.substr(0, app_path.find_last_of("/"));
+    return app_path + std::string("/Resources");
+    
+#endif // DEBUG.
 }
 
 void AddEventToDispatchQueue()

@@ -57,6 +57,8 @@ public:
 	void BlockDrawing(const axRect& rect);
 
 	void UnBlockDrawing();
+    
+    axRect GetWindowPixelData(unsigned char*& data) const;
 
 
 private:

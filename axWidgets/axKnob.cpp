@@ -167,7 +167,10 @@ _value("0.00")
     axKnobEvents evts;
     evts.value_change = GetOnKnobValueChange();
     
-    _knob = new axKnob(this, axRect(7, 20, 46, 46),
+    axPoint knobPos((rect.size.x - info.knob_size.x) * 0.5,
+                    20 + (rect.size.y - 40 - info.knob_size.y) * 0.5);
+
+    _knob = new axKnob(this, axRect(knobPos, info.knob_size),
                        evts, info, flags, value);
     
     if(events.value_change)

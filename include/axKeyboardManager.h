@@ -39,6 +39,7 @@ public:
     
     void OnKeyDown(const char& key);
     void OnKeyUp(const char& key);
+    void OnEnterDown();
     void OnKeyDeleteDown();
     void OnBackSpaceDown();
     void OnLeftArrowDown();

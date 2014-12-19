@@ -88,6 +88,11 @@ void axAudioWaveTable::SetWaveformType(const axWaveformType& type)
 
 }
 
+void axAudioWaveTable::SetFreq(const double& freq)
+{
+    _freq = freq;
+}
+
 double axAudioWaveTable::WaveInterpole(const double& freq,
                                        const unsigned int& len,
                                        const double& phase)
@@ -96,7 +101,7 @@ double axAudioWaveTable::WaveInterpole(const double& freq,
     
     //PHASOR --> A CHANGER ( ENLEVER FMOD )
     double v = 1.0 - _cPhase * axINVTWOPI;
-    _cPhase += ((two_pi / 44100.0) * (freq + phase));
+    _cPhase += ((two_pi / 44100.0) * (_freq + phase));
     
     if(_cPhase > two_pi)
     {

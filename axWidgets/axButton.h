@@ -81,7 +81,7 @@ struct axButtonEvents
     enum : axEventId { BUTTON_CLICK };
     
 	axButtonEvents(){}
-    axButtonEvents(axEventFunction& fct){ button_click = fct; }
+    axButtonEvents(const axEventFunction& fct){ button_click = fct; }
     
     axEventFunction button_click;
 };
@@ -120,13 +120,13 @@ class axButton : public axPanel
 {
 public:
 	axButton(axWindow* parent,
-		const axRect& rect,
-		const axButtonEvents& events,
-		const axButtonInfo& info,
-		string img_path = "",
-		string label = "",
-		axFlag flags = 0,
-		string msg = "");
+             const axRect& rect,
+             const axButtonEvents& events,
+             const axButtonInfo& info,
+             string img_path = "",
+             string label = "",
+             axFlag flags = 0,
+             string msg = "");
 
 	axButton(axWindow* parent,
 			 const axButtonEvents& events,

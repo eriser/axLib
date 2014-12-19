@@ -65,7 +65,7 @@ struct axKnobEvents
     axEventFunction value_change;
 
     axKnobEvents(){}
-    axKnobEvents(axEventFunction& fct){ value_change = fct; }
+    axKnobEvents(const axEventFunction& fct){ value_change = fct; }
 };
 
 /********************************************************************************//**

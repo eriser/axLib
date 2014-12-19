@@ -237,6 +237,7 @@ public:
 
     int InitAudio();
 	void StartAudio();
+    void StopAudio();
     
     virtual int CallbackAudio(const float *input,
                               float *output,

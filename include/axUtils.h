@@ -65,6 +65,13 @@ double axLineairInterpole(const T& y1,
     return y1 + mu * (y2 - y1);
 }
 
+template<typename T>
+T axClamp(T d, T min, T max)
+{
+    const T t = d < min ? min : d;
+    return t > max ? max : t;
+}
+
 template < typename T >
 struct axRange
 {
@@ -83,7 +90,7 @@ struct axRange
     
     double GetValueFromZeroToOne(const double& value)
     {
-        double v = value * double(right - left) + double(left);
+        double v = double(left) + value * double(right - left);
         if(v > right) v = right;
         if(v < left) v = left;
         return v;

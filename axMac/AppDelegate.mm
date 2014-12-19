@@ -209,7 +209,7 @@ axAppDelegate* GlobalAppDelegate;
     // Enter.
     else if(key == 36)
     {
-        axApp::MainInstance->GetWindowManager()->OnKeyDeleteDown();
+        axApp::MainInstance->GetWindowManager()->OnEnterDown();
     }
     // Left arrow.
     else if(key == 123)

@@ -33,7 +33,7 @@ int axAudio::InitAudio()
     }
     
     
-    outputParameters.device = 2; //Pa_GetDefaultOutputDevice();
+    outputParameters.device = 1; //Pa_GetDefaultOutputDevice();
     
     // cout << "OUTPU : " << outputParameters.device.name << endl;
     if(outputParameters.device == paNoDevice)
@@ -83,4 +83,15 @@ void axAudio::StartAudio()
         std::cerr << "Error." << std::endl;
 		exit(1);
 	}
+}
+
+void axAudio::StopAudio()
+{
+    err = Pa_StopStream( stream );
+    
+    if( err != paNoError )
+    {
+        std::cerr << "Error." << std::endl;
+        exit(1);
+    }
 }

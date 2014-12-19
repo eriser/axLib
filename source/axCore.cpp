@@ -57,6 +57,8 @@ void axCore::ResizeGLScene(const int& width, const int& height, double y)
         h = 1;
     }
     
+//    std::cout << "Y test : " << y << std::endl;
+    
     _y_test = y;
 	_size = axSize(width, h);
 

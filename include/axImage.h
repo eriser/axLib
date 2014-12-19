@@ -69,12 +69,16 @@ class axImage
 {
 public:
 	axImage(const string& path);
+    
+    axImage(void* data, const axSize& size);
 
 	GLuint GetTexture();
 	bool IsImageReady();
 	axSize GetSize();
 	int GetHeight();
 	int GetWidth();
+    
+    bool SaveImage(const std::string& path);
 
 private:
 	GLuint _texture;

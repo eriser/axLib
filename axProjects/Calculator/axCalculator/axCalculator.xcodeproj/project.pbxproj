@@ -44,6 +44,8 @@
 		7C0352A91A395EBF0025338C /* axWindowTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352871A395EBF0025338C /* axWindowTree.cpp */; };
 		7C0352B81A395EE80025338C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C0352B21A395EE80025338C /* MainMenu.xib */; };
 		7C0352B91A395EE80025338C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352B31A395EE80025338C /* main.cpp */; };
+		7C7AC6D41A43A6B4000DE899 /* axKeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7AC6D21A43A6B4000DE899 /* axKeyboardManager.cpp */; };
+		7C7AC6D51A43A6B4000DE899 /* axMouseManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7AC6D31A43A6B4000DE899 /* axMouseManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +124,10 @@
 		7C0352B21A395EE80025338C /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		7C0352B31A395EE80025338C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
 		7C0352B41A395EE80025338C /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = ../main.h; sourceTree = "<group>"; };
+		7C7AC6D21A43A6B4000DE899 /* axKeyboardManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axKeyboardManager.cpp; sourceTree = "<group>"; };
+		7C7AC6D31A43A6B4000DE899 /* axMouseManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMouseManager.cpp; sourceTree = "<group>"; };
+		7C7AC6D61A43A6C7000DE899 /* axKeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = axKeyboardManager.h; sourceTree = "<group>"; };
+		7C7AC6D71A43A6C7000DE899 /* axMouseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = axMouseManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,8 @@
 		7C03525D1A395EBF0025338C /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7C7AC6D61A43A6C7000DE899 /* axKeyboardManager.h */,
+				7C7AC6D71A43A6C7000DE899 /* axMouseManager.h */,
 				7C03525E1A395EBF0025338C /* axApp.h */,
 				7C03525F1A395EBF0025338C /* axC++.h */,
 				7C0352601A395EBF0025338C /* axColor.h */,
@@ -251,6 +259,8 @@
 		7C0352731A395EBF0025338C /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7C7AC6D21A43A6B4000DE899 /* axKeyboardManager.cpp */,
+				7C7AC6D31A43A6B4000DE899 /* axMouseManager.cpp */,
 				7C0352741A395EBF0025338C /* axApp.cpp */,
 				7C0352751A395EBF0025338C /* axC++.cpp */,
 				7C0352761A395EBF0025338C /* axColor.cpp */,
@@ -356,6 +366,7 @@
 				7C0352941A395EBF0025338C /* axSlider.cpp in Sources */,
 				7C0352A31A395EBF0025338C /* axObject.cpp in Sources */,
 				7C0352B91A395EE80025338C /* main.cpp in Sources */,
+				7C7AC6D51A43A6B4000DE899 /* axMouseManager.cpp in Sources */,
 				7C03529C1A395EBF0025338C /* axFont.cpp in Sources */,
 				7C03528C1A395EBF0025338C /* axButton.cpp in Sources */,
 				7C0352981A395EBF0025338C /* axColor.cpp in Sources */,
@@ -384,6 +395,7 @@
 				7C0352A41A395EBF0025338C /* axPanel.cpp in Sources */,
 				7C0352901A395EBF0025338C /* axMenu.cpp in Sources */,
 				7C03528F1A395EBF0025338C /* axKnob.cpp in Sources */,
+				7C7AC6D41A43A6B4000DE899 /* axKeyboardManager.cpp in Sources */,
 				7C0352A61A395EBF0025338C /* axTimer.cpp in Sources */,
 				7C0352251A395E980025338C /* main.m in Sources */,
 				7C0352A91A395EBF0025338C /* axWindowTree.cpp in Sources */,
@@ -534,6 +546,7 @@
 				7C03523B1A395E980025338C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

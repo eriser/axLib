@@ -45,6 +45,14 @@ void axKeyboardManager::OnKeyDown(const char& key)
     }
 }
 
+void axKeyboardManager::OnEnterDown()
+{
+    if(_keyGrabbedWindow != nullptr)
+    {
+        _keyGrabbedWindow->OnEnterDown();
+    }
+}
+
 void axKeyboardManager::OnKeyUp(const char& key)
 {
     

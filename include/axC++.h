@@ -108,12 +108,12 @@ typedef axRange<axInt> axIntRange;
 
 typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
 
-template<typename T>
-T axClamp(T d, T min, T max)
-{
-    const T t = d < min ? min : d;
-    return t > max ? max : t;
-}
+//template<typename T>
+//T axClamp(T d, T min, T max)
+//{
+//    const T t = d < min ? min : d;
+//    return t > max ? max : t;
+//}
 
 //axDouble axClampFloatRange(axDouble value, const axFloatRange& range)
 //{

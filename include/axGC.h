@@ -95,7 +95,11 @@ public:
                                 const axColor& c2);
 
 	void DrawLine(const axPoint& pt1, const axPoint& pt2, float width = 1.0);
+    void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2);
 	void DrawLines(const vector<axPoint>& pts, float width = 1.0);
+    
+    /// @todo This function is not done. (Add some param)
+    void DrawLineCubic(const axPoint& pt1, const axPoint& pt2);
 
     void SetLineWidth(const double& width);
     void SeDefaultLine();

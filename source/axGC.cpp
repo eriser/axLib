@@ -568,8 +568,24 @@ void axGC::DrawLines(const vector<axPoint>& pts, float width)
     glPopMatrix();
 }
 
+
+void axGC::DrawSmouthLine(const axPoint& pt1, const axPoint& pt2)
+{
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    
+    glBegin(GL_LINES);
+    glVertex2f(pt1.x, pt1.y);
+    glVertex2f(pt2.x, pt2.y);
+    glEnd();
+    
+    glDisable(GL_LINE_SMOOTH);
+}
+
 void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 {
+
+    
 //	axPoint real_pos = _win->GetAbsoluteRect().position;
 //    axPoint real_pos = _win->GetRect().position;
 //	real_pos.x  -= _win->GetScrollDecay().x;
@@ -591,6 +607,53 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 	glVertex2f(p1.x, p1.y);
 	glVertex2f(p2.x, p2.y);
 	glEnd();
+    
+//    glDisable(GL_LINE_SMOOTH);
+}
+
+void axGC::DrawLineCubic(const axPoint& pt1, const axPoint& pt2)
+{
+    // H1(t) = 2t^3 - 3t^2 + 1
+    // H2(t) = -2t^3 + 3t^2
+    // H3(t) = t^3 - 2t^2 + t
+    // H4(t) = t^3 - t^2
+    // V1 = Tengente at point 1.
+    // V2 = Tengente at point 2.
+    // P(t) = [H1(t) H2(t) H3(t) H4(t)] * [P1 P2 V1 V2];
+    // P(t) = H1(t) * P1.x + H2(t) * P2.x + H3(t) *
+    
+//    double t = 0.0;
+    
+    double v1x = 100.0, v1y = 200;
+    double v2x = 100.0, v2y = -200;
+    
+    double pp_x = pt1.x, pp_y = pt1.y;
+    
+    glBegin(GL_LINES);
+    for(int i = 1; i < 101; i++)
+    {
+        double t = i / double(101.0);
+        
+        double h1 = 2.0 * pow(t, 3.0) - 3.0 * pow(t, 2.0) + 1.0;
+        double h2 = -2.0 * pow(t, 3.0) + 3.0 * pow(t, 2.0);
+        double h3 = pow(t, 3.0) - 2.0 * pow(t, 2.0) + t;
+        double h4 = pow(t, 3.0) - pow(t, 2.0);
+        
+        double p_x = h1 * pt1.x + h2 * pt2.x + h3 * v1x + h4 * v2x;
+        double p_y = h1 * pt1.y + h2 * pt2.y + h3 * v1y + h4 * v2y;
+        
+        glVertex2f(pp_x, pp_y);
+        glVertex2f(p_x, p_y);
+        
+        pp_x = p_x;
+        pp_y = p_y;
+    }
+    glEnd();
+    
+    
+//    glVertex2f(pt1.x, pt1.y);
+//    glVertex2f(pt2.x, pt2.y);
+    
 }
 
 void axGC::SetLineWidth(const double& width)

@@ -19,8 +19,8 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#ifndef __AX_TEXT_CONTROL__
-#define __AX_TEXT_CONTROL__
+#ifndef __AX_TEXT_BOX__
+#define __AX_TEXT_BOX__
 
 /// @defgroup Widgets
 /// @{
@@ -78,12 +78,13 @@ private:
 
 struct axTextBoxEvents
 {
-    enum : axEventId { BUTTON_CLICK };
+    enum : axEventId { BUTTON_CLICK, ENTER_CLICK };
     
 	axTextBoxEvents(){}
     axTextBoxEvents(axEventFunction& fct){ button_click = fct; }
     
     axEventFunction button_click;
+    axEventFunction enter_click;
 };
 
 struct axTextBoxInfo
@@ -174,6 +175,8 @@ public:
                   axFlag flags = 0);
 
     void SetLabel(const std::string& label);
+    
+    std::string GetLabel() const;
 
     
     axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);
@@ -214,6 +217,7 @@ protected:
     virtual void OnKeyDown(const char& key);
     virtual void OnBackSpaceDown();
     
+    virtual void OnEnterDown();
     virtual void OnLeftArrowDown();
     virtual void OnRightArrowDown();
     virtual void OnWasKeyUnGrabbed();
@@ -229,5 +233,5 @@ protected:
 };
 
 /// @}
-#endif //__AX_BUTTON__
+#endif // __AX_TEXT_BOX__
 
