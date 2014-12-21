@@ -98,6 +98,8 @@ public:
     void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2);
 	void DrawLines(const vector<axPoint>& pts, float width = 1.0);
     
+    void DrawPoint(const axPoint& pt, const int& size);
+    
     /// @todo This function is not done. (Add some param)
     void DrawLineCubic(const axPoint& pt1, const axPoint& pt2);
 

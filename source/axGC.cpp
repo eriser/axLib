@@ -611,6 +611,16 @@ void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
 //    glDisable(GL_LINE_SMOOTH);
 }
 
+void axGC::DrawPoint(const axPoint& pt, const int& size)
+{
+    glEnable(GL_POINT_SMOOTH);
+    glPointSize(size);
+    glBegin(GL_POINTS);
+    glVertex2f(pt.x, pt.y);
+    glEnd();
+    glDisable(GL_POINT_SMOOTH);
+}
+
 void axGC::DrawLineCubic(const axPoint& pt1, const axPoint& pt2)
 {
     // H1(t) = 2t^3 - 3t^2 + 1

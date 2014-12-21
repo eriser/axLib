@@ -139,6 +139,16 @@ public:
         _expr = expr;
         Update();
     }
+    
+    int SetPoints(std::vector<axFloatPoint> points)
+    {
+        _points.push_back(points);
+        
+        Update();
+        
+        return (int)_points.size() - 1;
+    }
+    
 
 private:
     axPlotEvents _events;
@@ -148,6 +158,8 @@ private:
     axFloatRange _xRange, _yRange;
     std::vector<double> _xGridValue, _xGridDarkValue;
     std::vector<double> _yGridValue, _yGridDarkValue;
+    
+    std::vector<std::vector<axFloatPoint>> _points;
 
     void OnPaint();
 };
