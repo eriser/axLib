@@ -140,6 +140,22 @@ void axAudioFilter::ProcessStereoBlock(float* out,
                                        unsigned long frameCount)
 {
     double before_value = 0.0;
+    double f = freq;
+    bool needComputeCoefficients = false;
+    
+    if (env[0] != nullptr && envAmnt[0] != nullptr)
+    {
+//        cout << "ENV FREQ" << endl;
+        axFloat modEnvFreq = *env[0];
+        f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
+        f = axClamp<double>(f, 20.0, 20000.0);
+        needComputeCoefficients = true;
+    }
+    
+    if (needComputeCoefficients)
+    {
+        Compute_Variables(f, q);
+    }
     
     if (init)
     {
@@ -150,7 +166,8 @@ void axAudioFilter::ProcessStereoBlock(float* out,
     for(int i = 0; i < frameCount; i++)
     {
         before_value = *out;
-        double after_process = ((b0 * before_value) + (b1 * x1) + (b2 * x2) - (a1 * y1) - (a2 * y2)) / a0;
+        double after_process = ((b0 * before_value) + (b1 * x1) + (b2 * x2) -
+                                (a1 * y1) - (a2 * y2)) / a0;
         
         double v = after_process * gain;
         *out++ = v;
@@ -165,7 +182,7 @@ void axAudioFilter::ProcessStereoBlock(float* out,
 
 
 
-t_out axAudioFilter::ProcessStereo(t_out in)
+t_out axAudioFilter::ProcessStereo(t_out in) 
 {
 	t_out v;
 	axFloat f = freq;
@@ -184,9 +201,11 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 	//ENV FREQ
 	if (env[0] != nullptr && envAmnt[0] != nullptr)
 	{
-		cout << "ENV FREQ" << endl;
+//		cout << "ENV FREQ" << endl;
 		axFloat modEnvFreq = *env[0];
-		f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
+        axFloat freqModAdd = (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
+//        cout << "ENV FREQ : " << freqModAdd << endl;
+		f = f + freqModAdd;
 		CLIP(f, 20, 20000);
 		comp = 1;
 	} //---------------------------------------------------------------------------

@@ -122,6 +122,71 @@ public:
 		_bgAlpha = alpha;
 		Update();
 	}
+    
+    class axKnobBuilder
+    {
+    public:
+        axKnobBuilder(axWindow* parent,
+                      const axSize& size,
+                      const axKnobInfo& info,
+                      axFlag flags = 0,
+                      int nextPositionDelta = 5):
+        _parent(parent),
+        _size(size),
+        _info(info),
+        _flags(flags),
+        _nextPositionDelta(nextPositionDelta),
+        _pastKnob(nullptr)
+        {
+            
+        }
+        
+        axKnob* Create(const axPoint& pos, const axEventFunction& evt)
+        {
+            return _pastKnob = new axKnob(_parent, axRect(pos, _size), evt,
+                                          _info, _flags);
+        }
+        
+        axKnob* Create(const axPoint& pos)
+        {
+            axKnobEvents evts;
+            return _pastKnob = new axKnob(_parent, axRect(pos, _size), evts,
+                                          _info, _flags);
+        }
+        
+        axKnob* Create(const axEventFunction& evt)
+        {
+            if(_pastKnob != nullptr)
+            {
+                axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
+                return _pastKnob = new axKnob(_parent, axRect(pos, _size), evt,
+                                              _info, _flags);
+            }
+            
+            return nullptr;
+        }
+        
+        axKnob* Create()
+        {
+            if(_pastKnob != nullptr)
+            {
+                axKnobEvents evts;
+                axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
+                return _pastKnob = new axKnob(_parent, axRect(pos, _size),
+                                              evts, _info, _flags);
+            }
+            
+            return nullptr;
+        }
+        
+    private:
+        axWindow* _parent;
+        axKnobInfo _info;
+        axFlag _flags;
+        axSize _size;
+        int _nextPositionDelta;
+        axKnob* _pastKnob;
+    };
 
 private:
     axKnobEvents _events;

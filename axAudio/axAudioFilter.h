@@ -39,10 +39,17 @@ struct axAudioStereoOutput
 	axFloat left, right;
 };
 
-typedef struct _out //STEREO
+struct t_out //STEREO
 {
+    t_out(){}
+    
+    t_out(const axFloat& left, const axFloat& right):
+    l(left), r(right)
+    {
+    }
+    
 	axFloat l, r;
-} t_out;
+};
 
 //-----------------------------------------------------------------------------
 //  Audio_Filter
@@ -52,10 +59,10 @@ class axAudioFilter
 public:
 	axAudioFilter();
 	axFloat Process(axFloat in);
-    void ProcessMonoBlock(float* out,
-                          unsigned long frameCount);
-    void ProcessStereoBlock(float* out,
-                          unsigned long frameCount);
+    
+    void ProcessMonoBlock(float* out, unsigned long frameCount);
+    void ProcessStereoBlock(float* out, unsigned long frameCount);
+    
 	t_out ProcessStereo(t_out in);
 	void SetFreq(axFloat f);
 	void SetQ(axFloat f);
@@ -70,8 +77,9 @@ public:
 
 	axFloat* lfo[2];
 	axFloat* lfoAmnt[2];
-	axFloat* env[2];
-	axFloat* envAmnt[2];
+	
+    axFloat* env[2]; // 0 : Frequency envelope, 1 : Q envelope.
+	axFloat* envAmnt[2]; // 0 : Freq env amount, 1 : Q env amount.
 
 	//private:
 	axFloat freq, q, gain;
