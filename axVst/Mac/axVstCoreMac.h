@@ -39,6 +39,10 @@ public:
     
     virtual void InitManagers();
     
+    virtual axManager* GetWindowManager();
+    
+    virtual axManager* GetPopupManager();
+    
     virtual void Init(const axPoint& frame_size);
 
     virtual string GetAppDirectory();
@@ -65,8 +69,9 @@ public:
     virtual void ShowMouse();
     
 private:
-    
-    
+    int _currentManagerIndex;
+    std::vector<axManager*> _windowManagers;
+    std::vector<axManager*> _popupManagers;
 };
 
 #endif // __AX_VST_CORE_MAC__

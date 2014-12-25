@@ -29,7 +29,7 @@ axVstCoreMac::axVstCoreMac() :
 // Heritage.
 axCore()
 {
-    
+    _currentManagerIndex = 0;
 }
 
 void axVstCoreMac::MainLoop()
@@ -53,10 +53,29 @@ void axVstCoreMac::Init(const axPoint& frame_size)
 void axVstCoreMac::InitManagers()
 {
     std::cout << "axVstCoreMac::InitManagers()" << std::endl;
-    _windowManager = new axManager();
-    _windowManager->_managerName = std::string("WindowManager");
-    _popupManager = new axManager();
-    _popupManager->_managerName = std::string("PopupManager");
+//    _windowManager = new axManager();
+//    _windowManager->_managerName = std::string("WindowManager");
+//    _popupManager = new axManager();
+//    _popupManager->_managerName = std::string("PopupManager");
+    
+    axManager* winManager = new axManager();
+    winManager->_managerName = std::string("WindowManager");
+    
+    axManager* winPopManager = new axManager();
+    winPopManager->_managerName = std::string("PopupManager");
+    
+    _windowManagers.push_back(winManager);
+    _popupManagers.push_back(winPopManager);
+}
+
+axManager* axVstCoreMac::GetWindowManager()
+{
+    return _windowManagers[_currentManagerIndex];
+}
+
+axManager* axVstCoreMac::GetPopupManager()
+{
+    return _popupManagers[_currentManagerIndex];
 }
 
 string axVstCoreMac::GetAppDirectory()

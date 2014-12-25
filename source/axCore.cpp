@@ -97,15 +97,17 @@ void axCore::ResizeGLScene(const int& width, const int& height, double y)
 	_needToDraw = true;
 	_popupNeedToDraw = true;
     
-    _windowManager->OnSize();
+    //_windowManager->OnSize();
+    GetWindowManager()->OnSize();
 }
 
 void axCore::DeletePopWindow()
 {
  	KillPopGLWindow();
 
- 	delete _popupManager;
- 	_popupManager = nullptr;
+    std::cerr << "WARNING axCore::DeletePopWindow() not implemented properly." << std::endl;
+ 	//delete _popupManager;
+// 	_popupManager = nullptr;
 }
 
 int axCore::InitGL()										
@@ -240,8 +242,10 @@ int axCore::DrawGLScene()
         glDisableClientState(GL_VERTEX_ARRAY);
 
         // Draw all windows.
-		_windowManager->OnPaint();
-        _popupManager->OnPaint();
+//		_windowManager->OnPaint();
+//        _popupManager->OnPaint();
+        GetWindowManager()->OnPaint();
+        GetPopupManager()->OnPaint();
         
 		return true;
 	}
@@ -291,7 +295,7 @@ int axCore::DrawGLPopScene()
 		glVertex3f(rect.position.x, rect.position.y + rect.size.y, z);
 		glEnd();
 
-		_popupManager->OnPaint();
+		GetPopupManager()->OnPaint();
 		return true;
 	}
 	return false;
