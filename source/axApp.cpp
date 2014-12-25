@@ -37,10 +37,18 @@ axApp::axApp()
 	_core->Init(axSize(0, 0));
 #endif //_MSC_VER
     
+    
 #ifdef __APPLE__
+    
+#ifdef _AX_VST_APP_
+    _core = new axVstCoreMac();
+    _core->Init(axSize(1000, 717));
+#else
     _core = new axCoreMac();
     _core->Init(axSize(1000, 717));
-#endif
+#endif // _AX_VST_APP_
+    
+#endif // __APPLE__
     
 }
 
@@ -58,8 +66,15 @@ axApp::axApp(const axSize& frame_size)
 #endif // _MSC_VER
     
 #ifdef __APPLE__
+    
+#ifdef _AX_VST_APP_
+    _core = new axVstCoreMac();
+    _core->Init(frame_size);
+#else
     _core = new axCoreMac();
     _core->Init(frame_size);
+#endif // _AX_VST_APP_
+    
 #endif // __APPLE__
 }
 
@@ -121,7 +136,6 @@ void axApp::MainLoop()
 
 void axApp::UpdateAll()
 {
-	// axCORE->UpdateAll();
 	_core->UpdateAll();
 }
 

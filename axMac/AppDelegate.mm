@@ -39,19 +39,22 @@ axAppDelegate* GlobalAppDelegate;
     
     self = [super initWithFrame:frame];
     
+    std::cout << "axAppDelegate initWithFrame." << std::endl;
     // Helps optimize Open GL context initialization for the best available
     // resolution, important for Retina screens for example.
     if (self)
     {
         [self wantsBestResolutionOpenGLSurface];
     }
-    
+
     return self;
 }
 
 
 - (void)viewDidMoveToWindow
 {
+    std::cout << "axAppDelegate viewDidMoveToWindow." << std::endl;
+    
     [self addTrackingRect:[self bounds] owner:self userData:NULL assumeInside:YES];
     [[self window] makeFirstResponder:self];
     
@@ -68,6 +71,8 @@ axAppDelegate* GlobalAppDelegate;
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
     axMain::MainEntryPoint(app);
+    
+    [GlobalAppDelegate setNeedsDisplay:YES];
 }
 
 -(void)awakeFromNib
@@ -110,10 +115,14 @@ axAppDelegate* GlobalAppDelegate;
 // Working.
 -(void)mouseDown:(NSEvent *)event
 {
+    std::cout << "-(void)mouseDown:(NSEvent *)event" << std::endl;
+
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
     
     axPoint pos(locationInView.x, locationInView.y);
+    
+    std::cout << "Pos x = " << pos.x << " pos y = " << pos.y << std::endl;
     
     // Double click.
     if (event.clickCount == 2)

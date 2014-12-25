@@ -25,6 +25,8 @@
 /// @defgroup Core
 /// @{
 
+//#define _AX_VST_APP_ 1
+
 #ifdef __linux__
 #include "axCoreX11.h"
 #endif //__linux__
@@ -34,8 +36,12 @@
 #endif //_MSC_VER
 
 #ifdef __APPLE__
+#ifdef _AX_VST_APP_
+#include "axVstCoreMac.h"
+#else
 #include "axCoreMac.h"
-#endif
+#endif // _AX_VST_APP_
+#endif // __APPLE__
 
 #include "axC++.h"
 

@@ -130,13 +130,16 @@ public:
                       const axSize& size,
                       const axKnobInfo& info,
                       axFlag flags = 0,
-                      int nextPositionDelta = 5):
+                      int nextPositionDelta = 5,
+                      axDirection direction = axDIRECTION_RIGHT):
         _parent(parent),
         _size(size),
         _info(info),
         _flags(flags),
+        _direction(direction),
         _nextPositionDelta(nextPositionDelta),
         _pastKnob(nullptr)
+        
         {
             
         }
@@ -158,9 +161,26 @@ public:
         {
             if(_pastKnob != nullptr)
             {
-                axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
-                return _pastKnob = new axKnob(_parent, axRect(pos, _size), evt,
-                                              _info, _flags);
+                if(_direction == axDIRECTION_RIGHT)
+                {
+                    axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
+                    return _pastKnob = new axKnob(_parent, axRect(pos, _size), evt,
+                                                  _info, _flags);
+                }
+                else if(_direction == axDIRECTION_DOWN)
+                {
+                    
+                }
+                else if(_direction == axDIRECTION_LEFT)
+                {
+                    
+                }
+                
+                else //axDIRECTION_UP
+                {
+                    
+                }
+
             }
             
             return nullptr;
@@ -186,6 +206,7 @@ public:
         axSize _size;
         int _nextPositionDelta;
         axKnob* _pastKnob;
+        axDirection _direction;
     };
 
 private:
@@ -193,6 +214,7 @@ private:
     axKnobInfo _info;
     axFlag _flags;
     axFloatRange _range;
+    
 
     axImage* m_knobImg;
     axColor m_currentBgColor;

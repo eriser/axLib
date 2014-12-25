@@ -51,8 +51,10 @@ std::string axOpenFileDialog()
 
 void TestFunctionInterface()
 {
-    axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
-    [appDelegate MemberTestFunc];
+//    axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
+//    [appDelegate MemberTestFunc];
+    
+    [GlobalAppDelegate MemberTestFunc];
 }
 
 std::string CocoaGetAppDirectory()

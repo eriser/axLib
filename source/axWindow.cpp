@@ -141,6 +141,22 @@ axPoint axWindow::GetNextPosRight(const int& delta) const
     return axPoint(_rect.position.x + _rect.size.x + delta, _rect.position.y);
 }
 
+axPoint axWindow::GetNextPosDown(const int& delta) const
+{
+    return axPoint(_rect.position.x, _rect.position.y + _rect.size.y + delta);
+}
+
+axPoint axWindow::GetNextPosLeft(const int& delta) const
+{
+     return axPoint(_rect.position.x, _rect.position.y - delta);
+}
+
+axPoint axWindow::GetNextPosUp(const int& delta) const
+{
+    return axPoint(_rect.position.x, _rect.position.y - delta);
+}
+
+
 axRect axWindow::GetAbsoluteRect() const
 {
 	axPoint pos = _rect.position;

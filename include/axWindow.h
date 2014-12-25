@@ -51,7 +51,11 @@ public:
     
     axPoint GetBottomLeftPosition() const;
     axPoint GetTopRightPosition() const;
+    
     axPoint GetNextPosRight(const int& delta) const;
+    axPoint GetNextPosDown(const int& delta) const;
+    axPoint GetNextPosLeft(const int& delta) const;
+    axPoint GetNextPosUp(const int& delta) const;
 
 	void SetScrollDecay(const axPoint& decay);
 	axPoint GetScrollDecay() const;

@@ -65,6 +65,14 @@ double axLineairInterpole(const T& y1,
     return y1 + mu * (y2 - y1);
 }
 
+enum axDirection
+{
+    axDIRECTION_LEFT,
+    axDIRECTION_UP,
+    axDIRECTION_RIGHT,
+    axDIRECTION_DOWN
+};
+
 template<typename T>
 T axClamp(T d, T min, T max)
 {

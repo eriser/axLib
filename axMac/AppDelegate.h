@@ -21,6 +21,7 @@
  ******************************************************************************/
 #import <Cocoa/Cocoa.h>
 
+
 @interface axAppDelegate : NSOpenGLView
 {
   
@@ -30,13 +31,15 @@
 // Windows paint callback.
 - (void) drawRect: (NSRect)bounds;
 - (void) mouseMoved:(NSEvent *)MyMouseMouse;
-- (void)windowDidResize:(NSEvent *)event;
-- (void)windowDidMove:(NSNotification *)notification;
+- (void) windowDidResize:(NSEvent *)event;
+- (void) windowDidMove:(NSNotification *)notification;
 - (void) setFrameSize:(NSSize)newSize;
 - (void) SetFrameSize:(NSSize)newSize;
 - (id) MemberTestFunc;
 
 @end
+
+extern axAppDelegate* GlobalAppDelegate;
 
 
 

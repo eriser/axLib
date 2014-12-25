@@ -119,8 +119,10 @@ axFont::axFont(const string& font)
 //    if (_fontManager.LoadFont("/Users/alexarse/Project/axLib/ressources/axFonts/FreeSans.ttf",_face))
 //    if (_fontManager.LoadFont("FreeSans.ttf",_face))
     
-	if (_fontManager.LoadFont(axApp::GetInstance()->GetAppDirectory() + 
-		std::string("FreeSans.ttf"), _face))
+//	if (_fontManager.LoadFont(axApp::GetInstance()->GetAppDirectory() + 
+//		std::string("FreeSans.ttf"), _face))
+    if (_fontManager.LoadFont(std::string("/Users/alexarse/Project/axLib/ressources/axFonts/") +
+                              std::string("FreeSans.ttf"), _face))
 	{
 		SetFontSize(12);
 	}
