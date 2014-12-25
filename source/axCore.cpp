@@ -27,14 +27,27 @@ axCore::axCore():
 	_needToDraw(true),
 	_popupNeedToDraw(true)
 {
-	_windowManager = new axManager();
-    _windowManager->_managerName = std::string("WindowManager");
-	 _popupManager = new axManager();
-    _popupManager->_managerName = std::string("PopupManager");
+    _windowManager = nullptr;
+    _popupManager = nullptr;
+    
+    InitManagers();
+    
+//	_windowManager = new axManager();
+//    _windowManager->_managerName = std::string("WindowManager");
+//	 _popupManager = new axManager();
+//    _popupManager->_managerName = std::string("PopupManager");
 
 	 //_lastDrawingTime = clock();
     
     _y_test = 0.0;
+}
+
+void axCore::InitManagers()
+{
+    _windowManager = new axManager();
+    _windowManager->_managerName = std::string("WindowManager");
+    _popupManager = new axManager();
+    _popupManager->_managerName = std::string("PopupManager");
 }
 
 axManager* axCore::GetWindowManager()

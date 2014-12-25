@@ -77,6 +77,9 @@ public:
     
 protected:
     float fGain;
+    
+    int _pluginId;
+    static int pluginIdCounter;
     char programName[kVstMaxProgNameLen + 1];
 };
 

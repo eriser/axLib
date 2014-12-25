@@ -75,15 +75,14 @@ public:
     }
 
 protected:
-
 	axManager* _windowManager;
 	axManager* _popupManager;
 
 	bool _needToDraw, _popupNeedToDraw;
 	axSize _size, _popSize;
-	//clock_t _lastDrawingTime;
-    
     double _y_test;
+    
+    virtual void InitManagers();
 };
 
 /// @}

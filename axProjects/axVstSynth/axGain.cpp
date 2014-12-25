@@ -45,6 +45,9 @@ public:
     axTestPanel(axWindow* parent, const axRect& rect):
     axPanel(parent, rect)
     {
+        
+        std::cout << "axTestPanel ID : " << GetId() << std::endl;
+        
 //        axButton* btn = new axButton(this, axRect(30, 30, 50, 50),
 //                                     axButtonEvents(GetOnButtonClick()),
 //                                     axSTANDARD_BUTTON);
@@ -165,7 +168,7 @@ void axGainGUI::draw(ERect* rect)
 //    CreateNSWindow(systemWindow, win);
 //}
 
-
+int AGain::pluginIdCounter = 0;
 
 //------------------------------------------------------------------------------
 AGain::AGain (audioMasterCallback audioMaster) :
@@ -194,6 +197,8 @@ AudioEffectX(audioMaster, 1, 1)	// 1 program, 1 parameter only
     
     GlobalAGain = this;
     
+    _pluginId = pluginIdCounter++;
+    
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -204,9 +209,9 @@ AGain::~AGain ()
 
 void AGain::open()
 {
-    std::cout << "AGain::open." << std::endl;
-    std::cout << "AGAIN : uID" << getCurrentUniqueId() << std::endl;
-    std::cout << "AGAIN : program" << getProgram() << std::endl;
+    std::cout << "AGain::open ----- >  " << _pluginId << std::endl;
+//    std::cout << "AGAIN : uID" << getCurrentUniqueId() << std::endl;
+//    std::cout << "AGAIN : program" << getProgram() << std::endl;
 }
 
 //-------------------------------------------------------------------------------------------------------
