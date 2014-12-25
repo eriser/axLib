@@ -269,8 +269,6 @@ int axCore::DrawGLPopScene()
         axMatrix4 proj;
         axOrtho2D(proj.Identity().GetData(), _size);
         
-        
-        
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 

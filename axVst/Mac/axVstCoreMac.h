@@ -66,12 +66,20 @@ public:
     virtual void ResizeFrame(const axSize& size);
     
     virtual void HideMouse();
+    
     virtual void ShowMouse();
+    
+    int GetCurrentManagerIndex() const;
+    void SetAppDelegateHandle(const int& index, void* handle);
+    
+    
+    void* GetCurrentAppDelegate();
     
 private:
     int _currentManagerIndex;
     std::vector<axManager*> _windowManagers;
     std::vector<axManager*> _popupManagers;
+    std::vector<void*> _appDelegateHandles;
 };
 
 #endif // __AX_VST_CORE_MAC__

@@ -142,3 +142,33 @@ void* CreateNSWindow(void* ptr, void*& child)
     
     return (__bridge void*)parentView;
 }
+
+void* CreateNSWindowFromApp(void* parent, void*& child, void* appDelegate)
+{
+    std::cout << "CreateNSWindow(void* ptr, void*& child) in TestWindow.mm" << std::endl;
+    
+    bool appDelegateExist= false;
+    if(appDelegate != nullptr)
+    {
+        appDelegateExist = true;
+    }
+    
+    axAppDelegate* currentAppDelegate = (__bridge axAppDelegate*)appDelegate;
+    NSView* parentView = (__bridge NSView*)parent;
+    
+    if(!appDelegateExist)
+    {
+        std::cout << "CreateNSWindow GlobalAppDelegate in TestWindow.mm" << std::endl;
+        axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+        [parentView addSubview: app];
+    }
+    else
+    {
+        std::cout << "CreateNSWindow GlobalAppDelegate ELSE in TestWindow.mm" << std::endl;
+        //axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+        [parentView addSubview: currentAppDelegate];
+        
+    }
+    
+    return (__bridge void*)parentView;
+}

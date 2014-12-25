@@ -78,6 +78,29 @@ axManager* axVstCoreMac::GetPopupManager()
     return _popupManagers[_currentManagerIndex];
 }
 
+void axVstCoreMac::SetAppDelegateHandle(const int& index, void* handle)
+{
+    _appDelegateHandles.push_back(handle);
+}
+
+void* axVstCoreMac::GetCurrentAppDelegate()
+{
+    if(_appDelegateHandles.size())
+    {
+        return _appDelegateHandles[0];
+    }
+    else
+    {
+        return nullptr;
+    }
+    
+}
+
+int axVstCoreMac::GetCurrentManagerIndex() const
+{
+    return _currentManagerIndex;
+}
+
 string axVstCoreMac::GetAppDirectory()
 {
     std::cout << std::string(CocoaGetAppDirectory() + std::string("/")) << std::endl;

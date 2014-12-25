@@ -150,6 +150,20 @@ bool axGainGUI::getRect(ERect** rect)
 bool axGainGUI::open(void* ptr)
 {
     std::cout << "axGainGUI::open." << std::endl;
+    
+    
+//    CreateNSWindowFromApp(ptr, systemWindow, nullptr);
+//    axApp* app = axApp::GetInstance();
+//    if(app == nullptr)
+//    {
+//        CreateNSWindowFromApp(ptr, systemWindow, nullptr);
+//    }
+//    else
+//    {
+//        void* appDelegate = static_cast<axVstCoreMac*>(app->GetInstance()->GetCore())->GetCurrentAppDelegate();
+//        CreateNSWindowFromApp(ptr, systemWindow, appDelegate);
+//    }
+    
     CreateNSWindow(ptr, systemWindow);
     
     systemWindow = ptr;

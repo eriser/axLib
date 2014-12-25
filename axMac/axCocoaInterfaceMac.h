@@ -40,4 +40,6 @@ void axCocoaShowMouse();
 // For vst interface, 'parent' is given by host.
 void* CreateNSWindow(void* parent, void*& child);
 
+void* CreateNSWindowFromApp(void* parent, void*& child, void* appDelegate);
+
 #endif

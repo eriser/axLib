@@ -29,7 +29,7 @@
 #include "axLib.h"
 
 axApp* GlobalApp = nullptr;
-axAppDelegate* GlobalAppDelegate;
+axAppDelegate* GlobalAppDelegate = nullptr;
 
 @implementation axAppDelegate
 
@@ -68,13 +68,20 @@ axAppDelegate* GlobalAppDelegate;
     [[self window] setAcceptsMouseMovedEvents:YES];
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
     
-//#ifdef _AX_VST_APP_
-    // Nothing to do.
-//#else
+#ifdef _AX_VST_APP_
+    axEventManager::GetInstance();
+    axApp* app = axApp::CreateApp();
+    
+    axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(app->GetCore());
+//    int curManIndex = vstCoreMac->GetCurrentManagerIndex();
+    vstCoreMac->SetAppDelegateHandle(0,
+                                     (__bridge void*)GlobalAppDelegate);
+    axMain::MainEntryPoint(app);
+#else
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
     axMain::MainEntryPoint(app);
-//#endif // _AX_VST_APP_
+#endif // _AX_VST_APP_
     
     [GlobalAppDelegate setNeedsDisplay:YES];
 }
