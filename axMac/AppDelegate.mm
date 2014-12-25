@@ -68,9 +68,13 @@ axAppDelegate* GlobalAppDelegate;
     [[self window] setAcceptsMouseMovedEvents:YES];
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
     
+//#ifdef _AX_VST_APP_
+    // Nothing to do.
+//#else
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
     axMain::MainEntryPoint(app);
+//#endif // _AX_VST_APP_
     
     [GlobalAppDelegate setNeedsDisplay:YES];
 }

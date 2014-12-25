@@ -60,7 +60,6 @@ void TestFunctionInterface()
 std::string CocoaGetAppDirectory()
 {
 #ifdef DEBUG
-    
     NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
     return std::string([curDir UTF8String]);
 #else // RELEASE.
@@ -117,4 +116,29 @@ void axCocoaShowMouse()
     }
     
     [NSCursor unhide];
+}
+
+//------------------------------------------------------------------------------
+// Use for vst interface from host given parent.
+void* CreateNSWindow(void* ptr, void*& child)
+{
+    std::cout << "CreateNSWindow(void* ptr, void*& child) in TestWindow.mm" << std::endl;
+    
+    NSView* parentView = (__bridge NSView*)ptr;
+
+    if(GlobalAppDelegate == nullptr)
+    {
+        std::cout << "CreateNSWindow GlobalAppDelegate in TestWindow.mm" << std::endl;
+        axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+        [parentView addSubview: app];
+    }
+    else
+    {
+        std::cout << "CreateNSWindow GlobalAppDelegate ELSE in TestWindow.mm" << std::endl;
+        //axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+        [parentView addSubview: GlobalAppDelegate];
+
+    }
+    
+    return (__bridge void*)parentView;
 }

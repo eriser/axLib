@@ -23,7 +23,7 @@ class axGainGUI : public AEffEditor
 public:
     axGainGUI(AudioEffect* effect);
     
-    void MyOpen(void*& win);
+//    void MyOpen(void*& win);
     virtual bool open(void* ptr);
     virtual void draw(ERect* rect);
     virtual bool getRect(ERect** rect);
@@ -57,6 +57,8 @@ public:
     virtual void getProgramName (char* name);
     
     // Parameters
+    void SetParameterFromGUI(VstInt32 index, float value);
+    
     virtual void setParameter(VstInt32 index, float value);
     virtual float getParameter(VstInt32 index);
     virtual void getParameterLabel(VstInt32 index, char* label);

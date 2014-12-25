@@ -28,6 +28,8 @@
 
 #include "axCore.h"
 
+
+
 class axVstCoreMac : public axCore
 {
 public:
@@ -61,6 +63,7 @@ public:
     virtual void ShowMouse();
     
 private:
+    
     
 };
 

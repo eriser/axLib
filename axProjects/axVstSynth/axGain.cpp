@@ -12,9 +12,32 @@
 #include "axGain.h"
 #include "axLib.h"
 #include <iostream>
-#include "TestWindow.h"
+//#include "TestWindow.h"
+#include "axCocoaInterfaceMac.h"
 
 AGain* GlobalAGain = nullptr;
+
+class axVstParameterMsg : public axMsg
+{
+public:
+    axVstParameterMsg(const double& value):
+    _value(value)
+    {
+    }
+    
+    double GetValue() const
+    {
+        return _value;
+    }
+    
+    axMsg* GetCopy()
+    {
+        return new axVstParameterMsg(*this);
+    }
+    
+private:
+    double _value;
+};
 
 class axTestPanel : public axPanel
 {
@@ -34,8 +57,14 @@ public:
                              std::string("/Users/alexarse/Project/axLib/axExamples/axDemo/knob_dark.png"),
                              std::string("/Users/alexarse/Project/axLib/axExamples/axDemo/knob_dark.png"));
         
-        axKnob* knob = new axKnob(this, axRect(40, 40, 46, 46),
-                                  axKnobEvents(GetOnKnobGain()), knob_info);
+        _gainKnob = new axKnob(this, axRect(40, 40, 46, 46),
+                               axKnobEvents(GetOnKnobGain()), knob_info);
+        
+        axEventManager* evtManager = axEventManager::GetInstance();
+        
+        evtManager->AddConnection(10000000,
+                                  14,
+                                  GetOnVstParameterValueChange());
         
 //        std::cout << axApp::GetInstance()->GetAppDirectory() << std::endl;
     }
@@ -43,12 +72,28 @@ public:
     axEVENT_ACCESSOR(axButtonMsg, OnButtonClick);
     axEVENT_ACCESSOR(axKnobMsg, OnKnobGain);
     
+    axEVENT_ACCESSOR(axVstParameterMsg, OnVstParameterValueChange);
+    
 private:
+    axKnob* _gainKnob;
     
     void OnButtonClick(const axButtonMsg& msg)
     {
         std::cout << "Button click." << std::endl;
         GlobalAGain->setParameter (0, 0.5);
+    }
+    
+    void OnVstParameterValueChange(const axVstParameterMsg& msg)
+    {
+        std::cout << "OnVstParameterValueChange." << std::endl;
+        
+        if(_gainKnob->GetValue() != msg.GetValue())
+        {
+            _gainKnob->SetValue(msg.GetValue(), false);
+        }
+        
+        //std::cout << "Button click." << std::endl;
+        //GlobalAGain->setParameter (0, 0.5);
     }
     
     void OnKnobGain(const axKnobMsg& msg)
@@ -57,15 +102,14 @@ private:
         if(GlobalAGain != nullptr)
         {
             std::cout << "GlobalAGain exist." << std::endl;
-            GlobalAGain->setParameter(0, msg.GetValue());
-            GlobalAGain->updateDisplay();
+//            GlobalAGain->setParameter(0, msg.GetValue());
+            GlobalAGain->SetParameterFromGUI(0, msg.GetValue());
+//            GlobalAGain->updateDisplay();
         }
-        
     }
     
     void OnPaint()
     {
-        
         std::cout << "OnPaint" << std::endl;
         axGC* gc = GetGC();
         axRect rect = axRect(axPoint(0, 0), GetRect().size);
@@ -104,7 +148,7 @@ bool axGainGUI::open(void* ptr)
 {
     std::cout << "axGainGUI::open." << std::endl;
     CreateNSWindow(ptr, systemWindow);
-
+    
     systemWindow = ptr;
     
     return AEffEditor::open (ptr);
@@ -115,18 +159,13 @@ void axGainGUI::draw(ERect* rect)
     std::cout << "axGainGUI::draw(ERect* rect)" << std::endl;
 }
 
-void axGainGUI::MyOpen(void*& win)
-{
-    std::cout << "Myopen" << std::endl;
-    CreateNSWindow(systemWindow, win);
-}
+//void axGainGUI::MyOpen(void*& win)
+//{
+//    std::cout << "Myopen" << std::endl;
+//    CreateNSWindow(systemWindow, win);
+//}
 
-//------------------------------------------------------------------------------
-AudioEffect* createEffectInstance (audioMasterCallback audioMaster)
-{
-//    InitMacApp();
-    return new AGain(audioMaster);
-}
+
 
 //------------------------------------------------------------------------------
 AGain::AGain (audioMasterCallback audioMaster) :
@@ -166,14 +205,14 @@ AGain::~AGain ()
 void AGain::open()
 {
     std::cout << "AGain::open." << std::endl;
+    std::cout << "AGAIN : uID" << getCurrentUniqueId() << std::endl;
+    std::cout << "AGAIN : program" << getProgram() << std::endl;
 }
 
 //-------------------------------------------------------------------------------------------------------
 void AGain::setProgramName (char* name)
 {
     vst_strncpy(programName, name, kVstMaxProgNameLen);
-    
-    
 }
 
 //-----------------------------------------------------------------------------------------
@@ -190,9 +229,28 @@ void AGain::getProgramName (char* name)
 //}
 
 //-----------------------------------------------------------------------------------------
+void AGain::SetParameterFromGUI(VstInt32 index, float value)
+{
+    std::cout << "AGain::SetParameterFromGUI" << std::endl;
+    fGain = value;
+    updateDisplay();
+}
+
 void AGain::setParameter (VstInt32 index, float value)
 {
+    std::cout << "----------------------------AGain::setParameter" << std::endl;
+    
     fGain = value;
+    
+    
+    axEventManager* evtManager = axEventManager::GetInstance();
+    
+    if(evtManager != nullptr)
+    {
+        std::cout << "evtManager exist." << std::endl;
+        evtManager->PushEvent(10000000, 14,
+                              new axVstParameterMsg(value));
+    }
 }
 
 //-----------------------------------------------------------------------------------------
@@ -301,6 +359,14 @@ VstIntPtr AGain::dispatcher(VstInt32 opCode,
     }
     
     return AudioEffectX::dispatcher(opCode, index, value, ptr, opt);
+}
+
+//------------------------------------------------------------------------------
+AudioEffect* createEffectInstance (audioMasterCallback audioMaster)
+{
+    //    InitMacApp();
+    std::cout << "AudioEffect* createEffectInstance" << std::endl;
+    return new AGain(audioMaster);
 }
 
 void axMain::MainEntryPoint(axApp* app)

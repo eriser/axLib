@@ -115,7 +115,7 @@ public:
 
     double GetValue() { return m_knobValue; }
 
-	void SetValue(const axFloat& value);
+	void SetValue(const axFloat& value, bool callValueChangeEvent = true);
 
 	void SetBackgroundAlpha(const float& alpha)
 	{

@@ -3,7 +3,7 @@ dependencies: \
   /Users/alexarse/Project/axLib/axProjects/axVstSynth/axGain.h \
   /Users/alexarse/Project/axLib/include/axLib.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
-  /Users/alexarse/Project/axLib/axMac/axCoreMac.h \
+  /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
   /Users/alexarse/Project/axLib/include/axCore.h \
   /Users/alexarse/Project/axLib/include/axC++.h \
   /Users/alexarse/Project/axLib/include/axUtils.h \
@@ -55,4 +55,4 @@ dependencies: \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffect.h \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffectx.h \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/aeffeditor.h \
-  /Users/alexarse/Project/axLib/axProjects/axVstSynth/TestWindow.h
+  /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.h

@@ -16,7 +16,7 @@ dependencies: /Users/alexarse/Project/axLib/source/axFont.cpp \
   /Users/alexarse/Project/axLib/include/axUtils.h \
   /Users/alexarse/Project/axLib/include/axImage.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
-  /Users/alexarse/Project/axLib/axMac/axCoreMac.h \
+  /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
   /Users/alexarse/Project/axLib/include/axCore.h \
   /Users/alexarse/Project/axLib/include/axManager.h \
   /Users/alexarse/Project/axLib/include/axObject.h \

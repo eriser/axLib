@@ -23,7 +23,7 @@ dependencies: /Users/alexarse/Project/axLib/source/axGC.cpp \
   /Users/alexarse/Project/axLib/include/axMsg.h \
   /Users/alexarse/Project/axLib/include/axMath.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
-  /Users/alexarse/Project/axLib/axMac/axCoreMac.h \
+  /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
   /Users/alexarse/Project/axLib/include/axCore.h \
   /Users/alexarse/Project/axLib/include/axManager.h \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \

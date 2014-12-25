@@ -54,7 +54,6 @@
 		7CDA58591A49C26B005012AD /* axWindowTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA58311A49C26B005012AD /* axWindowTree.cpp */; };
 		7CDA585B1A49C381005012AD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA585A1A49C381005012AD /* OpenGL.framework */; };
 		7CDA585D1A49C396005012AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA585C1A49C396005012AD /* Cocoa.framework */; };
-		7CDA585F1A49DE15005012AD /* TestWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA585E1A49DE15005012AD /* TestWindow.mm */; };
 		7CDA58661A4C8038005012AD /* axVstCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA58641A4C8038005012AD /* axVstCoreMac.cpp */; };
 /* End PBXBuildFile section */
 
@@ -156,8 +155,6 @@
 		7CDA58311A49C26B005012AD /* axWindowTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindowTree.cpp; sourceTree = "<group>"; };
 		7CDA585A1A49C381005012AD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7CDA585C1A49C396005012AD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		7CDA585E1A49DE15005012AD /* TestWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestWindow.mm; sourceTree = "<group>"; };
-		7CDA58601A49F60D005012AD /* TestWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWindow.h; sourceTree = "<group>"; };
 		7CDA58641A4C8038005012AD /* axVstCoreMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axVstCoreMac.cpp; path = ../../axVst/Mac/axVstCoreMac.cpp; sourceTree = "<group>"; };
 		7CDA58651A4C8038005012AD /* axVstCoreMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstCoreMac.h; path = ../../axVst/Mac/axVstCoreMac.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,8 +175,6 @@
 		7CDA57351A499F08005012AD = {
 			isa = PBXGroup;
 			children = (
-				7CDA58601A49F60D005012AD /* TestWindow.h */,
-				7CDA585E1A49DE15005012AD /* TestWindow.mm */,
 				7CDA585C1A49C396005012AD /* Cocoa.framework */,
 				7CDA585A1A49C381005012AD /* OpenGL.framework */,
 				7CDA57DB1A49C250005012AD /* axLib */,
@@ -281,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				7CDA58611A4B8592005012AD /* include */,
-				7CDA57E51A49C26B005012AD /* axAnimatedButton.cpp */,
 				7CDA58621A4B8598005012AD /* source */,
 				7CDA58011A49C26B005012AD /* axWidget.h */,
 			);
@@ -374,6 +368,7 @@
 		7CDA58621A4B8598005012AD /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7CDA57E51A49C26B005012AD /* axAnimatedButton.cpp */,
 				7CDA57E71A49C26B005012AD /* axButton.cpp */,
 				7CDA57E91A49C26B005012AD /* axDropMenu.cpp */,
 				7CDA57EB1A49C26B005012AD /* axGrid.cpp */,
@@ -512,7 +507,6 @@
 				7CDA58321A49C26B005012AD /* AppDelegate.mm in Sources */,
 				7CDA57591A49A1B8005012AD /* axGain.cpp in Sources */,
 				7CDA58541A49C26B005012AD /* axPanel.cpp in Sources */,
-				7CDA585F1A49DE15005012AD /* TestWindow.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +577,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = _AX_VST_APP_;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

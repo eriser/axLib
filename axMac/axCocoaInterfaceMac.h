@@ -37,4 +37,7 @@ void axCocoaResizeFrame(const axSize& size);
 void axCocoaHideMouse();
 void axCocoaShowMouse();
 
+// For vst interface, 'parent' is given by host.
+void* CreateNSWindow(void* parent, void*& child);
+
 #endif

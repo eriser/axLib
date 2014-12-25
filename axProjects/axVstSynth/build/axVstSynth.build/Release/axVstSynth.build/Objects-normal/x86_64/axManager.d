@@ -27,5 +27,5 @@ dependencies: /Users/alexarse/Project/axLib/source/axManager.cpp \
   /usr/local/include/freetype2/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axMath.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
-  /Users/alexarse/Project/axLib/axMac/axCoreMac.h \
+  /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
   /Users/alexarse/Project/axLib/include/axCore.h

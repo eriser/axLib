@@ -115,7 +115,7 @@ void  axKnob::OnMouseLeftDragging(const axPoint& position)
     PushEvent(0, new axKnobMsg(m_knobValue));
 }
 
-void axKnob::SetValue(const axFloat& value)
+void axKnob::SetValue(const axFloat& value, bool callValueChangeEvent)
 {
 	int cur_img = m_nCurrentImg;
 	_zeroToOneValue = axClamp<double>(value, 0.0, 1.0);
@@ -131,7 +131,11 @@ void axKnob::SetValue(const axFloat& value)
 //	{
 //		_events.value_change(axKnobMsg(m_knobValue));
 //	}
-    PushEvent(0, new axKnobMsg(m_knobValue));
+    
+    if(callValueChangeEvent)
+    {
+        PushEvent(0, new axKnobMsg(m_knobValue));
+    }
 }
 
 void axKnob::OnPaint()

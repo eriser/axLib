@@ -1,6 +1,6 @@
 dependencies: /Users/alexarse/Project/axLib/source/axApp.cpp \
   /Users/alexarse/Project/axLib/include/axApp.h \
-  /Users/alexarse/Project/axLib/axMac/axCoreMac.h \
+  /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
   /Users/alexarse/Project/axLib/include/axCore.h \
   /Users/alexarse/Project/axLib/include/axC++.h \
   /Users/alexarse/Project/axLib/include/axUtils.h \

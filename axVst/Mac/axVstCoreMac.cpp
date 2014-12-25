@@ -23,7 +23,6 @@
 
 /// @todo Put in axLib core lib.
 #include "axCocoaInterfaceMac.h"
-
 #include  <unistd.h>
 
 axVstCoreMac::axVstCoreMac()
@@ -44,7 +43,6 @@ void axVstCoreMac::Init(const axPoint& frame_size)
 
 string axVstCoreMac::GetAppDirectory()
 {
-    
     //    char buf[1024];
 //    getcwd(buf, size_t(1024));
 ////    readlink("/proc/self/exe", buf, sizeof(buf)-1);
