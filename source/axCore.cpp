@@ -30,7 +30,7 @@ axCore::axCore():
     _windowManager = nullptr;
     _popupManager = nullptr;
     
-    InitManagers();
+//    InitManagers();
     
 //	_windowManager = new axManager();
 //    _windowManager->_managerName = std::string("WindowManager");

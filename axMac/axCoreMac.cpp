@@ -39,6 +39,7 @@ void axCoreMac::MainLoop()
 void axCoreMac::Init(const axPoint& frame_size)
 {
     std::cout << "Init axCoreMac." << std::endl;
+    InitManagers();
     InitGL();
 }
 

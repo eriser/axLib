@@ -15,6 +15,8 @@ axCoreWin32::axCoreWin32() : axCore()
 
 void axCoreWin32::Init(const axSize& frame_size)
 {
+    InitManagers();
+    
 	_popHwnd = nullptr;
 
 	char* test = "axCore";

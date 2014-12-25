@@ -25,7 +25,9 @@
 #include "axCocoaInterfaceMac.h"
 #include  <unistd.h>
 
-axVstCoreMac::axVstCoreMac()
+axVstCoreMac::axVstCoreMac() :
+// Heritage.
+axCore()
 {
     
 }
@@ -38,7 +40,23 @@ void axVstCoreMac::MainLoop()
 void axVstCoreMac::Init(const axPoint& frame_size)
 {
     std::cout << "Init axVstCoreMac." << std::endl;
+    InitManagers();
+    
+//    _windowManager = new axManager();
+//    _windowManager->_managerName = std::string("WindowManager");
+//    _popupManager = new axManager();
+//    _popupManager->_managerName = std::string("PopupManager");
+    
     InitGL();
+}
+
+void axVstCoreMac::InitManagers()
+{
+    std::cout << "axVstCoreMac::InitManagers()" << std::endl;
+    _windowManager = new axManager();
+    _windowManager->_managerName = std::string("WindowManager");
+    _popupManager = new axManager();
+    _popupManager->_managerName = std::string("PopupManager");
 }
 
 string axVstCoreMac::GetAppDirectory()
