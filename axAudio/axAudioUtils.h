@@ -17,4 +17,12 @@ struct axOuputStereo
     float left, right;
 };
 
+
+namespace axAudioUtils
+{
+    int SecondeToSample(const double& seconde,
+                        const int& samplingRate);
+}
+
+
 #endif /* defined(__MidiSequencer__axAudioUtils__) */

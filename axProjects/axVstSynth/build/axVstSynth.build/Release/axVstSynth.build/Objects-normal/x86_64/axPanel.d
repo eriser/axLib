@@ -12,6 +12,10 @@ dependencies: /Users/alexarse/Project/axLib/source/axPanel.cpp \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \
   /Users/alexarse/Project/axLib/include/axMouseManager.h \
   /Users/alexarse/Project/axLib/include/axKeyboardManager.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/audioeffectx.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/audioeffect.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffect.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffectx.h \
   /Users/alexarse/Project/axLib/include/axWindow.h \
   /Users/alexarse/Project/axLib/include/axGC.h \
   /Users/alexarse/Project/axLib/include/axImage.h \

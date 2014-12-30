@@ -35,11 +35,14 @@ void AddEventToDispatchQueue();
 void axCocoaResizeFrame(const axSize& size);
 
 void axCocoaHideMouse();
+
 void axCocoaShowMouse();
 
 // For vst interface, 'parent' is given by host.
-void* CreateNSWindow(void* parent, void*& child);
+//void* CreateNSWindow(void* parent, void*& child);
 
-void* CreateNSWindowFromApp(void* parent, void*& child, void* appDelegate);
+void* CreateNSWindowFromApp(void* parent, void*& child, void*& appDelegate);
+
+void axReInitApp(void* appDelegate);
 
 #endif

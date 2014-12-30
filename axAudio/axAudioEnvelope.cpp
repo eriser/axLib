@@ -29,10 +29,11 @@ unsigned int axAudioEnvelope::SecToSample(double seconde)
 {
 	return seconde * _sr;
 }
-double axAudioEnvelope::LineInterpolation(double y1, double y2, double mu)
-{
-	return y1 + mu * (y2 - y1);
-}
+
+//double axAudioEnvelope::LineInterpolation(double y1, double y2, double mu)
+//{
+//	return y1 + mu * (y2 - y1);
+//}
 
 void axAudioEnvelope::SetAttack(const axFloat& value)
 {
@@ -46,25 +47,35 @@ void axAudioEnvelope::SetDecay(const axFloat& value)
 	_nDecaySample = SecToSample(_decay);
 }
 
+void axAudioEnvelope::SetRelease(const axFloat& value)
+{
+    _release = value;
+}
+
 axFloat axAudioEnvelope::Process()
 {
+    
+    // Attack.
 	if (_buffePos < _nAttackSample)
 	{
 		_buffePos++;
-		return LineInterpolation(0.0, _sustain, 
-								 _buffePos / double(_nAttackSample));
+        double mu = _buffePos / double(_nAttackSample);
+        return axLineairInterpole<axFloat>(0.0, _sustain, mu);
+//		return LineInterpolation(0.0, _sustain, 
+//								 _buffePos / double(_nAttackSample));
 	}
+    
+    // Decay.
 	else if (_buffePos < _nDecaySample)
 	{
 		_buffePos++;
+        
+        double mu = (_buffePos - _nAttackSample) / double(_nDecaySample);
+        return axLineairInterpole<axFloat>(1.0, 0.0, mu);
 
-		return LineInterpolation(1.0, 0.0,
-			(_buffePos - _nAttackSample) / double(_nDecaySample));
+//		return LineInterpolation(1.0, 0.0,
+//			(_buffePos - _nAttackSample) / double(_nDecaySample));
 	}
 	
 	return 0.0;
-	//else if (_buffePos < _nDecaySample)
-	//{
-
-	//}
 }

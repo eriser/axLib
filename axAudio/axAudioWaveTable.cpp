@@ -7,7 +7,7 @@
 //
 
 #include "axAudioWaveTable.h"
-#include "axAudioBuffer.h"
+//#include "axAudioBuffer.h"
 #include "axAudioUtils.h"
 #include <cmath>
 #include "axUtils.h"
@@ -121,7 +121,12 @@ double axAudioWaveTable::WaveInterpole(const double& freq,
 
 void axAudioWaveTable::ProcessSample(float* out)
 {
-    
+    *out = WaveInterpole(200.0, axBUFFER_SIZE, 0);
+}
+
+void axAudioWaveTable::ProcessSample(double* out)
+{
+    *out = WaveInterpole(200.0, axBUFFER_SIZE, 0);
 }
 
 void axAudioWaveTable::ProcessBlock(float* out, unsigned long frameCount)

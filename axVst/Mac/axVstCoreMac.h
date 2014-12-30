@@ -27,8 +27,15 @@
 #include <OpenGL/glu.h>
 
 #include "axCore.h"
+#include "audioeffectx.h"
 
-
+struct axVstCoreData
+{
+    axManager* windowManager;
+    axManager* popupManager;
+    void* appDelegate;
+    AudioEffect* effect;
+};
 
 class axVstCoreMac : public axCore
 {
@@ -38,6 +45,8 @@ public:
     virtual void MainLoop();
     
     virtual void InitManagers();
+    
+    void ReInitApp();
     
     virtual axManager* GetWindowManager();
     
@@ -59,7 +68,10 @@ public:
     
     virtual void KillPopGLWindow();
     
-    virtual bool CreateGLWindow(const char* title, int width, int height, int bits);
+    virtual bool CreateGLWindow(const char* title,
+                                int width, int height, int bits);
+    
+    void ResizeGLScene(const int& width, const int& height, double y = 0);
     
     virtual void UpdateAll();
     
@@ -69,17 +81,30 @@ public:
     
     virtual void ShowMouse();
     
+    virtual int DrawGLScene();
+    
     int GetCurrentManagerIndex() const;
+    void SetCurrentManagerIndex(const int& index);
+    
+//    int GetCurrentManagerIndex() const;
+    
     void SetAppDelegateHandle(const int& index, void* handle);
     
+    axVstCoreData* GetVstCoreData();
+    
+    int GetNumberOfManager() const;
     
     void* GetCurrentAppDelegate();
     
+    std::vector<axVstCoreData>* GetManagerVector()
+    {
+        return &_managersData;
+    }
+    
 private:
     int _currentManagerIndex;
-    std::vector<axManager*> _windowManagers;
-    std::vector<axManager*> _popupManagers;
-    std::vector<void*> _appDelegateHandles;
+
+    std::vector<axVstCoreData> _managersData;
 };
 
 #endif // __AX_VST_CORE_MAC__

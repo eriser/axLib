@@ -10,4 +10,9 @@ dependencies: /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.cpp \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \
   /Users/alexarse/Project/axLib/include/axMouseManager.h \
   /Users/alexarse/Project/axLib/include/axKeyboardManager.h \
-  /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.h
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/audioeffectx.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/audioeffect.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffect.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffectx.h \
+  /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.h \
+  /Users/alexarse/Project/axLib/include/axMath.h

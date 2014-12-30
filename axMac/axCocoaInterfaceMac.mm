@@ -24,7 +24,15 @@
 #import <Cocoa/Cocoa.h>
 
 #include <iostream>
+
+#ifdef _AX_VST_APP_
+#include "axVstAppDelegate.h"
+#else
 #import "AppDelegate.h"
+#endif // _AX_VST_APP_
+
+#include "axLib.h"
+
 
 
 
@@ -54,7 +62,32 @@ void TestFunctionInterface()
 //    axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
 //    [appDelegate MemberTestFunc];
     
+    std::cout << "TestFunctionInterface" << std::endl;
+    
+    
+#ifdef _AX_VST_APP_
+    axApp* app = axApp::CreateApp();
+    axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(app->GetCore());
+    axVstAppDelegate* delegate = (__bridge axVstAppDelegate*)
+                                 vstCoreMac->GetCurrentAppDelegate();
+    
+    
+//    std::vector<axVstCoreData>* data = vstCoreMac->GetManagerVector();
+//    for(auto& n : *data)
+//    {
+//        if(n.appDelegate != nullptr)
+//        {
+//            axAppDelegate* d = (__bridge axAppDelegate*)n.appDelegate;
+//            [d MemberTestFunc];
+//        }
+//    }
+    
+    [delegate MemberTestFunc];
+
+#else
+    
     [GlobalAppDelegate MemberTestFunc];
+#endif // _AX_VST_APP_
 }
 
 std::string CocoaGetAppDirectory()
@@ -86,11 +119,15 @@ void AddEventToDispatchQueue()
 
 void axCocoaResizeFrame(const axSize& size)
 {
+#ifdef _AX_VST_APP_
+#else
     axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
     
     NSSize nSize = {static_cast<CGFloat>(size.x), static_cast<CGFloat>(size.y)};
     
     [appDelegate SetFrameSize:nSize];
+#endif
+
 }
 
 static axPoint hide_mouse_position;
@@ -120,55 +157,70 @@ void axCocoaShowMouse()
 
 //------------------------------------------------------------------------------
 // Use for vst interface from host given parent.
-void* CreateNSWindow(void* ptr, void*& child)
+//void* CreateNSWindow(void* ptr, void*& child)
+//{
+//    std::cout << "CreateNSWindow(void* ptr, void*& child) in TestWindow.mm" << std::endl;
+    
+//#ifdef _AX_VST_APP_
+//    NSView* parentView = (__bridge NSView*)ptr;
+//
+//    if(GlobalAppDelegate == nullptr)
+//    {
+////        std::cout << "CreateNSWindow GlobalAppDelegate in TestWindow.mm" << std::endl;
+//        axVstAppDelegate* app = [[axVstAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+//        GlobalAppDelegate = app;
+//        [parentView addSubview: app];
+//        
+//        return (__bridge void*)app;
+//    }
+//    else
+//    {
+////        std::cout << "CreateNSWindow GlobalAppDelegate ELSE in TestWindow.mm" << std::endl;
+//        //axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+//        [parentView addSubview: GlobalAppDelegate];
+//
+//    }
+//    
+//    //    return (__bridge void*)parentView;
+//    return (__bridge void*)GlobalAppDelegate;
+//
+//#else
+//    return nullptr;
+//#endif
+//}
+
+void* CreateNSWindowFromApp(void* parent, void*& child, void*& appDelegate)
 {
-    std::cout << "CreateNSWindow(void* ptr, void*& child) in TestWindow.mm" << std::endl;
     
-    NSView* parentView = (__bridge NSView*)ptr;
-
-    if(GlobalAppDelegate == nullptr)
-    {
-        std::cout << "CreateNSWindow GlobalAppDelegate in TestWindow.mm" << std::endl;
-        axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
-        [parentView addSubview: app];
-    }
-    else
-    {
-        std::cout << "CreateNSWindow GlobalAppDelegate ELSE in TestWindow.mm" << std::endl;
-        //axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
-        [parentView addSubview: GlobalAppDelegate];
-
-    }
-    
-    return (__bridge void*)parentView;
-}
-
-void* CreateNSWindowFromApp(void* parent, void*& child, void* appDelegate)
-{
-    std::cout << "CreateNSWindow(void* ptr, void*& child) in TestWindow.mm" << std::endl;
-    
-    bool appDelegateExist= false;
-    if(appDelegate != nullptr)
-    {
-        appDelegateExist = true;
-    }
-    
-    axAppDelegate* currentAppDelegate = (__bridge axAppDelegate*)appDelegate;
+#ifdef _AX_VST_APP_
     NSView* parentView = (__bridge NSView*)parent;
     
-    if(!appDelegateExist)
+    if(appDelegate == nullptr)
     {
-        std::cout << "CreateNSWindow GlobalAppDelegate in TestWindow.mm" << std::endl;
-        axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+        std::cout << "CREATE axVstAppDelegate WINDOW" << std::endl;
+        axVstAppDelegate* app = [[axVstAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+        appDelegate = (__bridge void*)app;
+        [appDelegate retain];
         [parentView addSubview: app];
     }
     else
     {
-        std::cout << "CreateNSWindow GlobalAppDelegate ELSE in TestWindow.mm" << std::endl;
-        //axAppDelegate* app = [[axAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
-        [parentView addSubview: currentAppDelegate];
-        
+        std::cout << "ATTACH WINDOW" << std::endl;
+        [parentView addSubview: (__bridge axVstAppDelegate*)appDelegate];
     }
     
     return (__bridge void*)parentView;
+    
+#else
+    
+#endif // _AX_VST_APP_
+}
+
+
+void axReInitApp(void* appDelegate)
+{
+#ifdef _AX_VST_APP_
+    axVstAppDelegate* app = (__bridge axVstAppDelegate*)appDelegate;
+    [app ReInit];
+#endif
 }

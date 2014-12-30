@@ -39,7 +39,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
     self = [super initWithFrame:frame];
     
-    std::cout << "axAppDelegate initWithFrame." << std::endl;
+//    std::cout << "axAppDelegate initWithFrame." << std::endl;
     // Helps optimize Open GL context initialization for the best available
     // resolution, important for Retina screens for example.
     if (self)
@@ -53,8 +53,6 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 
 - (void)viewDidMoveToWindow
 {
-    std::cout << "axAppDelegate viewDidMoveToWindow." << std::endl;
-    
     [self addTrackingRect:[self bounds] owner:self userData:NULL assumeInside:YES];
     [[self window] makeFirstResponder:self];
     
@@ -63,27 +61,38 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 
 - (void)prepareOpenGL
 {
+    
+    std::cout << "******************************* PREPARE OPENGL " << std::endl;
+    
     // Synchronize buffer swaps with vertical refresh rate
     GLint swapInt = 1;
     [[self window] setAcceptsMouseMovedEvents:YES];
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
     
 #ifdef _AX_VST_APP_
-    axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
-    
+
     axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(app->GetCore());
-//    int curManIndex = vstCoreMac->GetCurrentManagerIndex();
-    vstCoreMac->SetAppDelegateHandle(0,
-                                     (__bridge void*)GlobalAppDelegate);
+    axVstCoreData* coreData = vstCoreMac->GetVstCoreData();
+    
+    if(coreData->appDelegate == nullptr)
+    {
+        coreData->appDelegate = (__bridge void*)GlobalAppDelegate;
+    }
+
     axMain::MainEntryPoint(app);
+
+    axAppDelegate* d = (__bridge axAppDelegate*)coreData->appDelegate;
+    [d setNeedsDisplay:YES];
+    
 #else
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
     axMain::MainEntryPoint(app);
-#endif // _AX_VST_APP_
+
     
     [GlobalAppDelegate setNeedsDisplay:YES];
+#endif // _AX_VST_APP_
 }
 
 -(void)awakeFromNib
@@ -93,19 +102,42 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 
 -(id)MemberTestFunc
 {
+#ifdef _AX_VST_APP_
+    axApp* app = axApp::CreateApp();
+    axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(app->GetCore());
+    axAppDelegate* delegate = (__bridge axAppDelegate*)vstCoreMac->GetCurrentAppDelegate();
+////    axVstCoreData* coreData = vstCoreMac->GetVstCoreData();
+//    
+//    std::vector<axVstCoreData>* data = vstCoreMac->GetManagerVector();
+//    for(auto& n : *data)
+//    {
+//        if(n.appDelegate != nullptr)
+//        {
+//            axAppDelegate* d = (__bridge axAppDelegate*)n.appDelegate;
+//            [d setNeedsDisplay:YES];
+//        }
+//    }
+    
+//    axAppDelegate* d = (__bridge axAppDelegate*)coreData->appDelegate;
+    [delegate setNeedsDisplay:YES];
+    return delegate;
+#else
+    
     [GlobalAppDelegate setNeedsDisplay:YES];
     
     return self;
+#endif // _AX_VST_APP_
+
 }
 
 - (void)windowDidResize:(NSEvent *)event
 {
-    std::cout << "Resize. " << std::endl;
+//    std::cout << "Resize. " << std::endl;
 }
 
 - (void)windowDidMove:(NSNotification *)notification
 {
-    std::cout << "Mouve. " << std::endl;
+//    std::cout << "Mouve. " << std::endl;
 }
 
 - (void) setFrameSize:(NSSize)newSize
@@ -115,7 +147,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 
 - (void) SetFrameSize:(NSSize)newSize
 {
-    std::cout << "SetFrameSize : RESIZE. " << std::endl;
+//    std::cout << "SetFrameSize : RESIZE. " << std::endl;
     
     [[GlobalAppDelegate window] setFrame:NSMakeRect(0.f, 0.f, 800,
                                                     newSize.height)
@@ -126,14 +158,14 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 // Working.
 -(void)mouseDown:(NSEvent *)event
 {
-    std::cout << "-(void)mouseDown:(NSEvent *)event" << std::endl;
+//    std::cout << "-(void)mouseDown:(NSEvent *)event" << std::endl;
 
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
     
     axPoint pos(locationInView.x, locationInView.y);
     
-    std::cout << "Pos x = " << pos.x << " pos y = " << pos.y << std::endl;
+//    std::cout << "Pos x = " << pos.x << " pos y = " << pos.y << std::endl;
     
     // Double click.
     if (event.clickCount == 2)
@@ -202,19 +234,19 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 // Working.
 - (void)mouseEntered:(NSEvent *)theEvent
 {
-    NSLog(@"Mouse enter");
+//    NSLog(@"Mouse enter");
 }
 
 - (void)mouseExited:(NSEvent *)theEvent
 {
-    NSLog(@"Mouse leave");
+//    NSLog(@"Mouse leave");
 }
 
 - (void)keyDown: (NSEvent *) event
 {
     unsigned short key = [event keyCode];
     
-    std::cout << "KEY : " << key << std::endl;
+//    std::cout << "KEY : " << key << std::endl;
     
     // BackSpace.
     if(key == 51)
@@ -260,7 +292,7 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
 
 -(void) installRunLoopObserver
 {
-    std::cout << "Install run observer." << std::endl;
+//    std::cout << "Install run observer." << std::endl;
     
     // Run loop observer.
     CFRunLoopObserverRef myObserver = NULL;
@@ -316,7 +348,7 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     if ([self inLiveResize])
     {
         // Draw a quick approximation
-        std::cout << "Live resize drawing." << std::endl;
+//        std::cout << "Live resize drawing." << std::endl;
     }
     else
     {

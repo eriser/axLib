@@ -36,7 +36,7 @@ public:
 	virtual void MainLoop() = 0;
 	virtual void Init(const axPoint& frame_size) = 0;
 
-	void ResizeGLScene(const int& width, const int& height, double y = 0);
+	virtual void ResizeGLScene(const int& width, const int& height, double y = 0);
 	virtual axManager* GetWindowManager();
 	virtual axManager* GetPopupManager();
 	virtual string GetAppDirectory() = 0;

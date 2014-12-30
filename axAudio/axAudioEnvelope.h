@@ -11,7 +11,7 @@
 #include "axC++.h"
 
 //-----------------------------------------------------------------------------
-//  Audio_Filter
+//  axAudioEnvelope.
 //-----------------------------------------------------------------------------
 class axAudioEnvelope
 {
@@ -24,6 +24,7 @@ public:
 
 	void SetAttack(const axFloat& value);
 	void SetDecay(const axFloat& value);
+    void SetRelease(const axFloat& value);
 
 private:
 	axFloat _attack, _sustain, _decay, _release;
@@ -32,7 +33,7 @@ private:
 	bool _active;
 
 	unsigned int SecToSample(double seconde);
-	double LineInterpolation(double y1, double y2, double mu);
+	//double LineInterpolation(double y1, double y2, double mu);
 };
 
 

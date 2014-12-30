@@ -64,6 +64,7 @@ public:
     void ProcessStereoBlock(float* out, unsigned long frameCount);
     
 	t_out ProcessStereo(t_out in);
+    
 	void SetFreq(axFloat f);
 	void SetQ(axFloat f);
 	void SetGain(axFloat f);

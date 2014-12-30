@@ -32,6 +32,7 @@ public:
     void SetWaveformType(const axWaveformType& type);
     
     void ProcessSample(float* out);
+    void ProcessSample(double* out);
     void ProcessBlock(float* out, unsigned long frameCount);
     
     void SetFreq(const double& freq);

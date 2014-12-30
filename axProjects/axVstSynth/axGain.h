@@ -15,6 +15,10 @@
 
 #include "axLib.h"
 
+#include "axAudioWaveTable.h"
+#include "axAudioFilter.h"
+#include "axAudioEnvelope.h"
+
 #include "public.sdk/source/vst2.x/audioeffectx.h"
 #include "public.sdk/source/vst2.x/aeffeditor.h"
 
@@ -29,6 +33,8 @@ public:
     virtual bool getRect(ERect** rect);
 private:
     ERect _rect;
+    static bool _pluginHasBeenOpenOnHostInit;
+    static bool _isFirstTimeVstGUIOpen;
 };
 
 //-------------------------------------------------------------------------------------------------------
@@ -39,9 +45,9 @@ public:
     ~AGain();
     
     virtual void open();
+    virtual void close();
     
-    
-//    virtual VstInt32 getProgram();
+    virtual VstInt32 getProgram();
     
     // Processing
     virtual void processReplacing(float** inputs,
@@ -70,6 +76,12 @@ public:
     virtual bool getProductString(char* text);
     virtual VstInt32 getVendorVersion();
     
+    virtual VstInt32 canDo(char *text);
+    
+    VstInt32 processEvents(VstEvents* ev);
+    
+    virtual VstPlugCategory getPlugCategory();
+    
     virtual VstIntPtr dispatcher(VstInt32 opCode,
                                  VstInt32 index,
                                  VstIntPtr value,
@@ -77,10 +89,18 @@ public:
     
 protected:
     float fGain;
+    float _filterFreq;
     
     int _pluginId;
     static int pluginIdCounter;
     char programName[kVstMaxProgNameLen + 1];
+    
+    //------------------------
+    axAudioWaveTable* _waveTable;
+    axAudioFilter* _filter;
+    axAudioEnvelope* _env;
+    
+    double c0;
 };
 
 extern AGain* GlobalAGain;

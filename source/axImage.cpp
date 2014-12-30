@@ -34,25 +34,36 @@ axImageGlobalMapLoader::axImageGlobalMapLoader()
 
 bool axImageGlobalMapLoader::LoadImage(const string& path, GLuint& _texture, axSize& _size)
 {
-	std::map<std::string, axImageStruct>::iterator it = _imageMap.find(path);
+#ifdef _AX_VST_APP_
+    /// @todo Find a way to have a map with multiple opengl contexts.
+    if (InitImage(path, _texture, _size) == false)
+    {
+        return true;
+    }
+    
+    return false;
 
-	if (it != _imageMap.end())
-	{
-		_texture = it->second._texture;
-		_size = it->second._size;
-		return true;
-	}
-	else
-	{
-		if (InitImage(path, _texture, _size) == false)
-		{
-			axImageStruct img_info(_texture, _size);
-			_imageMap.insert(pair<std::string, axImageStruct>(path, img_info));
-			return true;
-		}
-	}
-
-	return false;
+#else
+    std::map<std::string, axImageStruct>::iterator it = _imageMap.find(path);
+    
+    if (it != _imageMap.end())
+    {
+        _texture = it->second._texture;
+        _size = it->second._size;
+        return true;
+    }
+    else
+    {
+        if (InitImage(path, _texture, _size) == false)
+        {
+            axImageStruct img_info(_texture, _size);
+            _imageMap.insert(pair<std::string, axImageStruct>(path, img_info));
+            return true;
+        }
+    }
+    
+    return false;
+#endif // _AX_VST_APP_
 }
 
 bool axImageGlobalMapLoader::InitImage(const string& path, 
