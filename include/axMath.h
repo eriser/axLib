@@ -30,7 +30,6 @@
 
 void displayModelviewMatrix(float MV[16]);
 
-//template<typename T>
 class axMatrix4
 {
 public:

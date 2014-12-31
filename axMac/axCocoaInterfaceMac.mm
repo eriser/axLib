@@ -212,7 +212,7 @@ void* CreateNSWindowFromApp(void* parent, void*& child, void*& appDelegate)
     return (__bridge void*)parentView;
     
 #else
-    
+    return nullptr;
 #endif // _AX_VST_APP_
 }
 

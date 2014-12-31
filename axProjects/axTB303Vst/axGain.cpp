@@ -649,16 +649,6 @@ VstIntPtr AGain::dispatcher(VstInt32 opCode,
 //------------------------------------------------------------------------------
 AudioEffect* createEffectInstance (audioMasterCallback audioMaster)
 {
-//    if(axApp::MainInstance == nullptr)
-//    {
-//        std::cout << "----------------axApp::MainInstance is null" << std::endl;
-//    }
-//    else
-//    {
-//        std::cout << "----------------axApp::MainInstance exist" << std::endl;
-//    }
-//    
-//    std::cout << "***********************createEffectInstance" << std::endl;
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
 
@@ -668,5 +658,4 @@ AudioEffect* createEffectInstance (audioMasterCallback audioMaster)
 void axMain::MainEntryPoint(axApp* app)
 {
     MyProject* myProject = new MyProject(nullptr, axRect(0, 0, 856, 273));
-    //axTestPanel* panel = new axTestPanel(nullptr, axRect(0, 0, 200, 200));
 }
