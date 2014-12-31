@@ -26,33 +26,16 @@
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
 
-#include "axCore.h"
-#include "audioeffectx.h"
+#include "axVstCore.h"
 
-struct axVstCoreData
-{
-    axManager* windowManager;
-    axManager* popupManager;
-    void* appDelegate;
-    AudioEffect* effect;
-};
-
-class axVstCoreMac : public axCore
+class axVstCoreMac : public axVstCore
 {
 public:
     axVstCoreMac();
     
     virtual void MainLoop();
     
-    virtual void InitManagers();
-    
-    void ReInitApp();
-    
-    virtual axManager* GetWindowManager();
-    
-    virtual axManager* GetPopupManager();
-    
-    virtual void Init(const axPoint& frame_size);
+    virtual void ReInitApp();
 
     virtual string GetAppDirectory();
     
@@ -71,8 +54,6 @@ public:
     virtual bool CreateGLWindow(const char* title,
                                 int width, int height, int bits);
     
-    void ResizeGLScene(const int& width, const int& height, double y = 0);
-    
     virtual void UpdateAll();
     
     virtual void ResizeFrame(const axSize& size);
@@ -81,30 +62,7 @@ public:
     
     virtual void ShowMouse();
     
-    virtual int DrawGLScene();
-    
-    int GetCurrentManagerIndex() const;
-    void SetCurrentManagerIndex(const int& index);
-    
-//    int GetCurrentManagerIndex() const;
-    
-    void SetAppDelegateHandle(const int& index, void* handle);
-    
-    axVstCoreData* GetVstCoreData();
-    
-    int GetNumberOfManager() const;
-    
-    void* GetCurrentAppDelegate();
-    
-    std::vector<axVstCoreData>* GetManagerVector()
-    {
-        return &_managersData;
-    }
-    
-private:
-    int _currentManagerIndex;
-
-    std::vector<axVstCoreData> _managersData;
+    virtual void SetAppDelegateHandle(const int& index, void* handle);
 };
 
 #endif // __APPLE__

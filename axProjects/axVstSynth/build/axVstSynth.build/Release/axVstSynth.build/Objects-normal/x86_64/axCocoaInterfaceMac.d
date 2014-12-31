@@ -6,6 +6,7 @@ dependencies: /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.mm \
   /Users/alexarse/Project/axLib/include/axLib.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
   /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
+  /Users/alexarse/Project/axLib/axVst/axVstCore.h \
   /Users/alexarse/Project/axLib/include/axCore.h \
   /Users/alexarse/Project/axLib/include/axManager.h \
   /Users/alexarse/Project/axLib/include/axObject.h \

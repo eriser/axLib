@@ -24,6 +24,7 @@ dependencies: /Users/alexarse/Project/axLib/source/axWindowTree.cpp \
   /usr/local/include/freetype2/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
   /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
+  /Users/alexarse/Project/axLib/axVst/axVstCore.h \
   /Users/alexarse/Project/axLib/include/axCore.h \
   /Users/alexarse/Project/axLib/include/axManager.h \
   /Users/alexarse/Project/axLib/include/axMouseManager.h \
