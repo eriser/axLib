@@ -52,7 +52,7 @@ _findClickCursorIndex(false)
         AddConnection(axTextControlEvents::BUTTON_CLICK, _events.button_click);
     }
     
-    if(axFlag_exist(axTEXT_CTRL_FLASHING_CURSOR, _flags))
+    if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
         _flashingCursor = new axTimer();
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
@@ -126,7 +126,7 @@ void axTextControl::OnMouseLeftDoubleClick(const axPoint& pos)
 
 void axTextControl::OnWasKeyUnGrabbed()
 {
-    if(axFlag_exist(axTEXT_CTRL_FLASHING_CURSOR, _flags))
+    if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StopTimer();
     }
@@ -140,7 +140,7 @@ void axTextControl::OnWasKeyGrabbed()
 {
     _currentColor = &_info.selected;
     
-    if(axFlag_exist(axTEXT_CTRL_FLASHING_CURSOR, _flags))
+    if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StartTimer(500);
     }
@@ -254,11 +254,11 @@ void axTextControl::DrawContourRectangle(axGC* gc)
 {
     axRect rect(GetRect());
     
-    if(axFlag_exist(axTEXT_CTRL_CONTOUR_HIGHLIGHT, _flags))
+    if(IsFlag(axTEXT_CTRL_CONTOUR_HIGHLIGHT, _flags))
     {
         if(IsKeyGrab())
         {
-            if(axFlag_exist(axTEXT_CTRL_CONOUR_NO_FADE, _flags)) // Shadow fade.
+            if(IsFlag(axTEXT_CTRL_CONOUR_NO_FADE, _flags)) // Shadow fade.
             {
                 gc->SetColor(_info.selected_shadow);
                 gc->DrawRectangle(axRect(axPoint(-5, -5),

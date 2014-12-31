@@ -152,7 +152,7 @@ void axNumberBox::OnPaint()
 
     if(_bgImg->IsImageReady())
     {
-        if (axFlag_exist(axNUMBER_BOX_SINGLE_IMG, _flags))
+        if (IsFlag(axNUMBER_BOX_SINGLE_IMG, _flags))
         {
             gc->DrawImageResize(_bgImg, axPoint(0, 0), rect0.size);
         }

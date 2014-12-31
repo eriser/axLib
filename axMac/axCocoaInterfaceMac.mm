@@ -47,7 +47,7 @@ std::string axOpenFileDialog()
     
     if ([openDlg runModalForDirectory:nil file:nil] == NSOKButton )
     {
-        NSArray* files = [openDlg filenames];
+        //NSArray* files = [openDlg filenames];
         for(NSString* filePath in [openDlg filenames])
         {
             file_path = std::string([filePath UTF8String]);

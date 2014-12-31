@@ -75,9 +75,9 @@
 
 //#define SPACE << " " <<
 
-/// @todo Make a template function Clamp.
-#define axCLIP( v, min, max ) if( v < min ) v = min; \
-							  else if (v > max) v = max;
+///// @todo Make a template function Clamp.
+//#define axCLIP( v, min, max ) if( v < min ) v = min; \
+//							  else if (v > max) v = max;
 
 #define axOUTPUT_VARIABLE(v) std::cout << #v << " : " << v << std::endl;
 
@@ -108,24 +108,17 @@ typedef axRange<axInt> axIntRange;
 
 typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
 
-//template<typename T>
-//T axClamp(T d, T min, T max)
-//{
-//    const T t = d < min ? min : d;
-//    return t > max ? max : t;
-//}
-
-//axDouble axClampFloatRange(axDouble value, const axFloatRange& range)
-//{
-//    return axClamp<axDouble>(value, range.left, range.right);
-//}
-
-
 // Flag.
 typedef uint16_t axFlag;
+
+[[deprecated]]
 bool axFlag_exist(const axFlag& FLAG, axFlag flags);
 
+
+bool IsFlag(const axFlag& FLAG, axFlag flags);
+
 #define axFLAG_NONE 0
+#define axFLAG_0  0
 #define axFLAG_1  1
 #define axFLAG_2  2
 #define axFLAG_3  4

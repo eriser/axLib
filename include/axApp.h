@@ -49,6 +49,7 @@
 class axApp
 {
 public:
+    #pragma message("WARNING: Should use GetInstance.")
 	static axApp* MainInstance;
 	axApp();
 
@@ -59,12 +60,14 @@ public:
 
 	inline static axApp* CreateApp()
 	{
-		return MainInstance == nullptr ? MainInstance = new axApp() : MainInstance;
+		return MainInstance == nullptr ?
+               MainInstance = new axApp() : MainInstance;
 	}
 
 	inline static axApp* CreateApp(const axSize& frame_size)
 	{
-		return MainInstance == nullptr ? MainInstance = new axApp(frame_size) : MainInstance;
+		return MainInstance == nullptr ?
+               MainInstance = new axApp(frame_size) : MainInstance;
 	}
 
 	axApp(const axSize& frame_size);
@@ -87,7 +90,8 @@ public:
 	string OpenFileDialog();
 
 	bool CreatePopupWindow(const char*, int, int);
-
+    
+    #pragma message("WARNING: Deprecate.")
 	string GetCurrentAppDirectory();
 
 	string GetAppDirectory();

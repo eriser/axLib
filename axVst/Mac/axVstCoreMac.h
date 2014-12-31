@@ -107,6 +107,6 @@ private:
     std::vector<axVstCoreData> _managersData;
 };
 
-#endif // __AX_VST_CORE_MAC__
+#endif // __APPLE__
 
-#endif
+#endif // __AX_VST_CORE_MAC__

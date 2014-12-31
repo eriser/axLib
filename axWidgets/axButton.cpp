@@ -326,7 +326,7 @@ void axButton::OnPaint()
 
 	if (_btnImg->IsImageReady())
 	{
-		if (axFlag_exist(axBUTTON_SINGLE_IMG, _flags))
+		if (IsFlag(axBUTTON_SINGLE_IMG, _flags))
 		{
 			gc->DrawImageResize(_btnImg, axPoint(0, 0), rect.size, 1.0);
 		}

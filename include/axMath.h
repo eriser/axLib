@@ -60,6 +60,20 @@ private:
 
 void axOrtho2D(double* data, const axSize& size);
 
+namespace axMath
+{
+    static const double e       =  2.718281828459045235360;
+    static const double pi      =  3.141592653589793238462;
+    static const double pi_2    =  1.570796326794896619231;
+    static const double pi_4    =  0.785398163397448309616;
+    static const double pi_180  =  0.017453292519943295769;
+    static const double _1_pi   =  0.318309886183790671538;
+    static const double _2_pi   =  0.636619772367581343076;
+    static const double _180_pi = 57.295779513082320876798;
+    static const double log2    =  0.693147180559945309417;
+    static const double sqrt2   =  1.414213562373095048801;
+}
+
 /// @}
 #endif // __AX_MATH__
 

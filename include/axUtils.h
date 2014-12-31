@@ -19,8 +19,17 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_UTILS__
 #define __AX_UTILS__
+
+/*******************************************************************************
+ * @file    axUtils.h
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   Defines template classes for point and rectangle, clamp and
+            interpolation.
+ * @date    19/07/2013
+ ******************************************************************************/
 
 /// @defgroup Utils
 /// @{
@@ -48,12 +57,17 @@ using namespace std;
 
 #define DEPRECATED_ATTRIBUTE __attribute__((deprecated))
 
-//DEPRECATED_ATTRIBUTE
+[[deprecated]]
+#pragma message("Use std::to_string instead.")
 string axFloatToString( const double& value, int num_char = 4 );
-//DEPRECATED_ATTRIBUTE
-string axIntToString(const int &value );
 
-string OpenFileDialog(const string& app_name, string folder_path = "");
+[[deprecated]]
+#pragma message("Use std::to_string instead.")
+string axIntToString(const int &value );
+//
+//[[deprecated]]
+//#pragma message("Use the one from axApp instead.")
+//string OpenFileDialog(const string& app_name, string folder_path = "");
 
 string axGetExtension(const string& path);
 

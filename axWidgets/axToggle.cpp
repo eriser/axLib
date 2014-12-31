@@ -105,14 +105,14 @@ void axToggle::SetBackgroundAlpha(const float& alpha)
 
 void axToggle::OnMouseLeftDown(const axPoint& pos)
 {
-    if(_selected && axFlag_exist(axTOGGLE_CANT_UNSELECT_WITH_MOUSE, _flags))
+    if(_selected && IsFlag(axTOGGLE_CANT_UNSELECT_WITH_MOUSE, _flags))
     {
         // Don't do anything.
     }
     else
     {
         // Only switch selection on toggle_on_left_down.
-        if (axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
+        if (IsFlag(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
         {
             _selected = !_selected;
         }
@@ -128,7 +128,7 @@ void axToggle::OnMouseLeftDown(const axPoint& pos)
         
         GrabMouse();
         
-        if (axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
+        if (IsFlag(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
         {
             PushEvent(axToggleEvents::BUTTON_CLICK,
                       new axToggleMsg(this, _selected, _msg));
@@ -151,7 +151,7 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
 		if (IsMouseHoverWindow())
 		{
             // Only invert selection on toggle_on_left_up.
-            if (!axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
+            if (!IsFlag(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
             {
                 _selected = !_selected;
             }
@@ -168,7 +168,7 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
 			_nCurrentImg = axTOG_HOVER;
             
             // If toggle on left up.
-            if (!axFlag_exist(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
+            if (!IsFlag(axTOGGLE_CLICK_ON_LEFT_DOWN, _flags))
             {
 //                std::cout << "axToggle::OnMouseLeftUp" << std::endl;
                 PushEvent(axToggleEvents::BUTTON_CLICK,
@@ -247,7 +247,7 @@ void axToggle::OnPaint()
 
 	if (_btnImg->IsImageReady())
 	{
-		if (axFlag_exist(axTOGGLE_SINGLE_IMG, _flags))
+		if (IsFlag(axTOGGLE_SINGLE_IMG, _flags))
 		{
 			gc->DrawImageResize(_btnImg, axPoint(0, 0), rect.size, 1.0);
 		}

@@ -25,3 +25,8 @@ bool axFlag_exist(const axFlag& FLAG, axFlag flags)
 {
 	return((flags & FLAG) != 0);
 }
+
+bool IsFlag(const axFlag& FLAG, axFlag flags)
+{
+    return((flags & FLAG) != 0);
+}
