@@ -69,7 +69,7 @@ static bool runLoopIsActive = false;
 {
     if (self)
     {
-        std::cout << "SELF exist." << std::endl;
+//        std::cout << "SELF exist." << std::endl;
         axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(axApp::MainInstance->GetCore());
         axVstAppDelegate* delegate = (__bridge axVstAppDelegate*)
                                      vstCoreMac->GetCurrentAppDelegate();
@@ -144,7 +144,7 @@ static bool runLoopIsActive = false;
     
     [delegate setNeedsDisplay:YES];
     
-    std::cout << "-(id)MemberTestFunc currentIndex : " << vstCoreMac->GetCurrentManagerIndex() << std::endl;
+//    std::cout << "-(id)MemberTestFunc currentIndex : " << vstCoreMac->GetCurrentManagerIndex() << std::endl;
     
     return delegate;
     
@@ -283,7 +283,7 @@ static bool runLoopIsActive = false;
     axVstAppDelegate* delegate = (__bridge axVstAppDelegate*)
                                  vstCoreMac->GetCurrentAppDelegate();
     
-    std::cout << "(void)mouseEntered currentIndex : " << vstCoreMac->GetCurrentManagerIndex() << std::endl;
+//    std::cout << "(void)mouseEntered currentIndex : " << vstCoreMac->GetCurrentManagerIndex() << std::endl;
     [[delegate openGLContext] makeCurrentContext];
 //
 //    [delegate addTrackingRect:[delegate bounds] owner:delegate userData:NULL assumeInside:YES];
@@ -399,7 +399,7 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     
     axCore* core = axApp::MainInstance->GetCore();
     axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(axApp::MainInstance->GetCore());
-    std::cout << "(void)drawRect currentIndex : " << vstCoreMac->GetCurrentManagerIndex() << std::endl;
+//    std::cout << "(void)drawRect currentIndex : " << vstCoreMac->GetCurrentManagerIndex() << std::endl;
 
     
     axSize global_size = core->GetGlobalSize();

@@ -22,24 +22,24 @@
 #include "axGrid.h"
 
 axGrid::axGrid(axWindow* parent,
-	const axRect& rect,
-	const axGridEvents& events,
-	const axGridInfo& info,
-	axSize grid_dimension,
-	//string label,
-	axFlag flags,
-	string msg) :
-	// Heritage.
-	axPanel(parent, rect),
-	// Members.
-	_events(events),
-	_info(info),
-	//_label(label),
-	_flags(flags),
-	_msg(msg),
-	_dimension(grid_dimension),
-	nGridElement(0),
-	_currentElementColor(0.0, 0.8, 0.0)
+               const axRect& rect,
+               const axGridEvents& events,
+               const axGridInfo& info,
+               axSize grid_dimension,
+               //string label,
+               axFlag flags,
+               string msg) :
+// Heritage.
+axPanel(parent, rect),
+// Members.
+_events(events),
+_info(info),
+//_label(label),
+_flags(flags),
+_msg(msg),
+_dimension(grid_dimension),
+nGridElement(0),
+_currentElementColor(0.0, 0.8, 0.0)
 {
 	_gridElements.resize(_dimension.y);
 

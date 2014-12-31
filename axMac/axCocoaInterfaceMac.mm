@@ -62,7 +62,7 @@ void TestFunctionInterface()
 //    axAppDelegate* appDelegate = (axAppDelegate*)[[NSApplication sharedApplication] delegate];
 //    [appDelegate MemberTestFunc];
     
-    std::cout << "TestFunctionInterface" << std::endl;
+//    std::cout << "TestFunctionInterface" << std::endl;
     
     
 #ifdef _AX_VST_APP_
@@ -197,15 +197,15 @@ void* CreateNSWindowFromApp(void* parent, void*& child, void*& appDelegate)
     
     if(appDelegate == nullptr)
     {
-        std::cout << "CREATE axVstAppDelegate WINDOW" << std::endl;
-        axVstAppDelegate* app = [[axVstAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
+//        std::cout << "CREATE axVstAppDelegate WINDOW" << std::endl;
+        axVstAppDelegate* app = [[axVstAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 856, 273)];
         appDelegate = (__bridge void*)app;
         [appDelegate retain];
         [parentView addSubview: app];
     }
     else
     {
-        std::cout << "ATTACH WINDOW" << std::endl;
+//        std::cout << "ATTACH WINDOW" << std::endl;
         [parentView addSubview: (__bridge axVstAppDelegate*)appDelegate];
     }
     

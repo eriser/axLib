@@ -200,8 +200,9 @@ void axFont::SetChar(const char& letter)
 void axFont::SetFontType(const string& font_type)
 {
     
-    if (_fontManager.LoadFont(axApp::GetInstance()->GetAppDirectory() +
-                              font_type, _face))
+//    if (_fontManager.LoadFont(axApp::GetInstance()->GetAppDirectory() +
+//                              font_type, _face))
+    if (_fontManager.LoadFont(font_type, _face))
     {
         SetFontSize(12);
     }

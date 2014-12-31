@@ -152,7 +152,7 @@ bool axGainGUI::_isFirstTimeVstGUIOpen = true;
 axGainGUI::axGainGUI(AudioEffect* effect):
 AEffEditor(effect)
 {
-    std::cout << "axGainGUI constructor." << std::endl;
+//    std::cout << "axGainGUI constructor." << std::endl;
     
     // Notify effect that "this is the editor".
     effect->setEditor(this);
@@ -176,7 +176,7 @@ bool axGainGUI::getRect(ERect** rect)
 
 bool axGainGUI::open(void* ptr)
 {
-    std::cout << "axGainGUI::open(void* ptr)" << std::endl;
+//    std::cout << "axGainGUI::open(void* ptr)" << std::endl;
     
     if(_isFirstTimeVstGUIOpen == true)
     {
@@ -205,7 +205,7 @@ bool axGainGUI::open(void* ptr)
        vstCoreMac->GetNumberOfManager() == 1 &&
        vstCoreMac->GetVstCoreData()->appDelegate == nullptr)
     {
-        std::cout << "First vst instance" << std::endl;
+//        std::cout << "First vst instance" << std::endl;
 
         vstCoreMac->SetCurrentManagerIndex(0);
         axVstCoreData* coreData = vstCoreMac->GetVstCoreData();
@@ -219,7 +219,7 @@ bool axGainGUI::open(void* ptr)
     else if(pluginIndex != vstCoreMac->GetCurrentManagerIndex() &&
        pluginIndex >= vstCoreMac->GetNumberOfManager())
     {
-        std::cout << "Second vst instance" << std::endl;
+//        std::cout << "Second vst instance" << std::endl;
         
         vstCoreMac->InitManagers();
         vstCoreMac->SetCurrentManagerIndex(pluginIndex);
@@ -236,7 +236,7 @@ bool axGainGUI::open(void* ptr)
     // Plugin instance already exist.
     else
     {
-        std::cout << "Reattach vst instance" << std::endl;
+//        std::cout << "Reattach vst instance" << std::endl;
         vstCoreMac->SetCurrentManagerIndex(pluginIndex);
         CreateNSWindowFromApp(ptr, systemWindow,
                               vstCoreMac->GetVstCoreData()->appDelegate);
@@ -261,7 +261,7 @@ bool axGainGUI::open(void* ptr)
 
 void axGainGUI::draw(ERect* rect)
 {
-    std::cout << "axGainGUI::draw(ERect* rect)" << std::endl;
+//    std::cout << "axGainGUI::draw(ERect* rect)" << std::endl;
 }
 
 //void axGainGUI::MyOpen(void*& win)
@@ -332,14 +332,14 @@ AGain::~AGain ()
 
 void AGain::open()
 {
-    std::cout << "AGain::open ----- >  " << _pluginId << std::endl;
+//    std::cout << "AGain::open ----- >  " << _pluginId << std::endl;
 //    std::cout << "AGAIN : uID" << getCurrentUniqueId() << std::endl;
 //    std::cout << "AGAIN : program" << getProgram() << std::endl;
 }
 
 void AGain::close()
 {
-    std::cout << "AGain::close ----- >  " << _pluginId << std::endl;
+//    std::cout << "AGain::close ----- >  " << _pluginId << std::endl;
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -379,14 +379,14 @@ void AGain::setParameter (VstInt32 index, float value)
     }
     else if(index == 1)
     {
-        std::cout << "filter param in : " << value << std::endl;
+//        std::cout << "filter param in : " << value << std::endl;
         axRange<float> filterRange(30.0, 5000.0);
         _filterFreq = filterRange.GetValueFromZeroToOne(value);
-        std::cout << "filter freq : " << _filterFreq << std::endl;
+//        std::cout << "filter freq : " << _filterFreq << std::endl;
         _filter->SetFreq(_filterFreq);
     }
     
-    std::cout << index << std::endl;
+//    std::cout << index << std::endl;
     
     
     
@@ -538,13 +538,13 @@ VstInt32 AGain::processEvents(VstEvents* ev)
                 
                 
                 
-                std::cout << "On : " << (int)midiData[1] << " " <<  (int)midiData[2] << std::endl;
+//                std::cout << "On : " << (int)midiData[1] << " " <<  (int)midiData[2] << std::endl;
 
             }
             // Note off.
             else if(status == 0x80)
             {
-                std::cout << "Off : " << (int)midiData[1] << " " <<  (int)midiData[2] << std::endl;
+//                std::cout << "Off : " << (int)midiData[1] << " " <<  (int)midiData[2] << std::endl;
 
             }
         }
@@ -646,16 +646,16 @@ VstIntPtr AGain::dispatcher(VstInt32 opCode,
 //------------------------------------------------------------------------------
 AudioEffect* createEffectInstance (audioMasterCallback audioMaster)
 {
-    if(axApp::MainInstance == nullptr)
-    {
-        std::cout << "----------------axApp::MainInstance is null" << std::endl;
-    }
-    else
-    {
-        std::cout << "----------------axApp::MainInstance exist" << std::endl;
-    }
-    
-    std::cout << "***********************createEffectInstance" << std::endl;
+//    if(axApp::MainInstance == nullptr)
+//    {
+//        std::cout << "----------------axApp::MainInstance is null" << std::endl;
+//    }
+//    else
+//    {
+//        std::cout << "----------------axApp::MainInstance exist" << std::endl;
+//    }
+//    
+//    std::cout << "***********************createEffectInstance" << std::endl;
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
 

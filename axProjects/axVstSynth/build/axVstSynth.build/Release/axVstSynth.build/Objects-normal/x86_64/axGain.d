@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/alexarse/Project/axLib/axProjects/axVstSynth/axGain.cpp \
-  /Users/alexarse/Project/axLib/axProjects/axVstSynth/axGain.h \
+  /Users/alexarse/Project/axLib/axProjects/axTB303Vst/axGain.cpp \
+  /Users/alexarse/Project/axLib/axProjects/axTB303Vst/axGain.h \
   /Users/alexarse/Project/axLib/include/axLib.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
   /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
@@ -59,4 +59,5 @@ dependencies: \
   /Users/alexarse/Project/axLib/axAudio/axAudioFilter.h \
   /Users/alexarse/Project/axLib/axAudio/axAudioEnvelope.h \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/aeffeditor.h \
+  /Users/alexarse/Project/axLib/axProjects/axTB303Vst/axTB303Vst.h \
   /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.h

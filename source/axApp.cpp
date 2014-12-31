@@ -42,7 +42,7 @@ axApp::axApp()
     
 #ifdef _AX_VST_APP_
     _core = new axVstCoreMac();
-    _core->Init(axSize(1000, 717));
+    _core->Init(axSize(800, 273));
 #else
     _core = new axCoreMac();
     _core->Init(axSize(1000, 717));
