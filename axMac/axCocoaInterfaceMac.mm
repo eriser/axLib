@@ -198,7 +198,8 @@ void* CreateNSWindowFromApp(void* parent, void*& child, void*& appDelegate)
     if(appDelegate == nullptr)
     {
 //        std::cout << "CREATE axVstAppDelegate WINDOW" << std::endl;
-        axVstAppDelegate* app = [[axVstAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, 856, 273)];
+        axSize size = axApp::GetInstance()->GetCore()->GetGlobalSize();
+        axVstAppDelegate* app = [[axVstAppDelegate alloc] initWithFrame: NSMakeRect(0, 0, size.x, size.y)];
         appDelegate = (__bridge void*)app;
         [appDelegate retain];
         [parentView addSubview: app];

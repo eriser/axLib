@@ -7,6 +7,7 @@
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axWindow.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axAudioEnvelope.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axAudioWaveTable.o
+/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axVstGuiMac.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axMouseManager.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axPopupMenu.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axColor.o
@@ -23,10 +24,12 @@
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axTextBox.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axScrollBar.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axFont.o
+/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axVst.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axImage.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axC++.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axMsg.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axObject.o
+/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axVstGui.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axCore.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axDropMenu.o
 /Users/alexarse/Project/axLib/axProjects/axVstSynth/build/axVstSynth.build/Release/axVstSynth.build/Objects-normal/x86_64/axVstCoreMac.o

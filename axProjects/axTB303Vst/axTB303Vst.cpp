@@ -179,8 +179,7 @@ axPanel(parent, rect)
     
         _ledImg = new axImage(app_path +
                               std::string("axLED_9x9.png"));
-//    _ledImg = new axImage(axApp::GetInstance()->GetAppDirectory() +
-//                          std::string("axLED_9x9.png"));
+
     _imgIndex = 0;
 }
 

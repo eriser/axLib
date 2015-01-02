@@ -38,6 +38,7 @@ void axVstCore::MainLoop()
 
 void axVstCore::Init(const axPoint& frame_size)
 {
+    _size = frame_size;
     InitManagers();
     InitGL();
 }

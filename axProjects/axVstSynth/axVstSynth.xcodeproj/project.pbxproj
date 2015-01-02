@@ -12,6 +12,9 @@
 		7C3BF2E71A530B170037AE6E /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3BF2DE1A530B170037AE6E /* axAudioUtils.cpp */; };
 		7C3BF2E81A530B170037AE6E /* axAudioWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3BF2E01A530B170037AE6E /* axAudioWaveTable.cpp */; };
 		7C88DAA11A549FF00030C869 /* axVstCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88DA9F1A549FF00030C869 /* axVstCore.cpp */; };
+		7C88DAB31A55B82A0030C869 /* axVst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88DAAF1A55B82A0030C869 /* axVst.cpp */; };
+		7C88DAB41A55B82A0030C869 /* axVstGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88DAB11A55B82A0030C869 /* axVstGui.cpp */; };
+		7C88DAB71A55B9E70030C869 /* axVstGuiMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88DAB51A55B9E70030C869 /* axVstGuiMac.cpp */; };
 		7CDA57501A49A157005012AD /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA574B1A49A157005012AD /* audioeffect.cpp */; };
 		7CDA57511A49A157005012AD /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA574D1A49A157005012AD /* audioeffectx.cpp */; };
 		7CDA57521A49A157005012AD /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA574F1A49A157005012AD /* vstplugmain.cpp */; };
@@ -71,6 +74,12 @@
 		7C3BF2E11A530B170037AE6E /* axAudioWaveTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioWaveTable.h; sourceTree = "<group>"; };
 		7C88DA9F1A549FF00030C869 /* axVstCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axVstCore.cpp; path = ../../axVst/axVstCore.cpp; sourceTree = "<group>"; };
 		7C88DAA01A549FF00030C869 /* axVstCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstCore.h; path = ../../axVst/axVstCore.h; sourceTree = "<group>"; };
+		7C88DAAF1A55B82A0030C869 /* axVst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axVst.cpp; path = ../../axVst/axVst.cpp; sourceTree = "<group>"; };
+		7C88DAB01A55B82A0030C869 /* axVst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVst.h; path = ../../axVst/axVst.h; sourceTree = "<group>"; };
+		7C88DAB11A55B82A0030C869 /* axVstGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axVstGui.cpp; path = ../../axVst/axVstGui.cpp; sourceTree = "<group>"; };
+		7C88DAB21A55B82A0030C869 /* axVstGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstGui.h; path = ../../axVst/axVstGui.h; sourceTree = "<group>"; };
+		7C88DAB51A55B9E70030C869 /* axVstGuiMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axVstGuiMac.cpp; path = ../../axVst/Mac/axVstGuiMac.cpp; sourceTree = "<group>"; };
+		7C88DAB61A55B9E70030C869 /* axVstGuiMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstGuiMac.h; path = ../../axVst/Mac/axVstGuiMac.h; sourceTree = "<group>"; };
 		7CDA573E1A499F08005012AD /* axVstSynth.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = axVstSynth.vst; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA57421A499F08005012AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CDA574A1A49A157005012AD /* aeffeditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aeffeditor.h; sourceTree = "<group>"; };
@@ -201,6 +210,8 @@
 		7C88DA9E1A549FD20030C869 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
+				7C88DAB51A55B9E70030C869 /* axVstGuiMac.cpp */,
+				7C88DAB61A55B9E70030C869 /* axVstGuiMac.h */,
 				7CDA586B1A4E3AA7005012AD /* axVstAppDelegate.h */,
 				7CDA586C1A4E3AA7005012AD /* axVstAppDelegate.mm */,
 				7CDA58641A4C8038005012AD /* axVstCoreMac.cpp */,
@@ -422,6 +433,10 @@
 		7CDA58631A4C8025005012AD /* axVst */ = {
 			isa = PBXGroup;
 			children = (
+				7C88DAAF1A55B82A0030C869 /* axVst.cpp */,
+				7C88DAB01A55B82A0030C869 /* axVst.h */,
+				7C88DAB11A55B82A0030C869 /* axVstGui.cpp */,
+				7C88DAB21A55B82A0030C869 /* axVstGui.h */,
 				7C88DA9F1A549FF00030C869 /* axVstCore.cpp */,
 				7C88DAA01A549FF00030C869 /* axVstCore.h */,
 				7C88DA9E1A549FD20030C869 /* Mac */,
@@ -505,6 +520,7 @@
 				7CDA58581A49C26B005012AD /* axWindow.cpp in Sources */,
 				7C3BF2E51A530B170037AE6E /* axAudioEnvelope.cpp in Sources */,
 				7C3BF2E81A530B170037AE6E /* axAudioWaveTable.cpp in Sources */,
+				7C88DAB71A55B9E70030C869 /* axVstGuiMac.cpp in Sources */,
 				7CDA58511A49C26B005012AD /* axMouseManager.cpp in Sources */,
 				7CDA583E1A49C26B005012AD /* axPopupMenu.cpp in Sources */,
 				7CDA58461A49C26B005012AD /* axColor.cpp in Sources */,
@@ -521,10 +537,12 @@
 				7CDA58411A49C26B005012AD /* axTextBox.cpp in Sources */,
 				7CDA583F1A49C26B005012AD /* axScrollBar.cpp in Sources */,
 				7CDA584A1A49C26B005012AD /* axFont.cpp in Sources */,
+				7C88DAB31A55B82A0030C869 /* axVst.cpp in Sources */,
 				7CDA584C1A49C26B005012AD /* axImage.cpp in Sources */,
 				7CDA58451A49C26B005012AD /* axC++.cpp in Sources */,
 				7CDA58521A49C26B005012AD /* axMsg.cpp in Sources */,
 				7CDA58531A49C26B005012AD /* axObject.cpp in Sources */,
+				7C88DAB41A55B82A0030C869 /* axVstGui.cpp in Sources */,
 				7CDA58471A49C26B005012AD /* axCore.cpp in Sources */,
 				7CDA58381A49C26B005012AD /* axDropMenu.cpp in Sources */,
 				7CDA58661A4C8038005012AD /* axVstCoreMac.cpp in Sources */,

@@ -59,5 +59,5 @@ dependencies: \
   /Users/alexarse/Project/axLib/axAudio/axAudioUtils.h \
   /Users/alexarse/Project/axLib/axAudio/axAudioFilter.h \
   /Users/alexarse/Project/axLib/axAudio/axAudioEnvelope.h \
-  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/aeffeditor.h \
-  /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.h
+  /Users/alexarse/Project/axLib/axVst/axVst.h \
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/aeffeditor.h

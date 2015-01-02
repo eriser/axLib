@@ -406,6 +406,8 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     if(global_size.x != backingBounds.size.width ||
        global_size.y != backingBounds.size.height)
     {
+        
+        std::cout << backingBounds.size.width << " " << backingBounds.size.height << std::endl;
         core->ResizeGLScene(backingBounds.size.width,
                             backingBounds.size.height,
                             frame_height - backingBounds.size.height);

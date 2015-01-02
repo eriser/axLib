@@ -304,7 +304,6 @@ void axWindowTree::DrawTree()
     {
         if(it != nullptr)
         {
-//            std::cout << "Draw node from tree." << std::endl;
             it->DrawNode();
         }
     }
