@@ -19,7 +19,7 @@ class axAudioWaveTable
 {
 public:
     axAudioWaveTable();
-//    axAudioWaveTable(axAudioBuffer* buffer);
+    axAudioWaveTable(axAudioBuffer* buffer);
     
     enum axWaveformType
     {
@@ -40,8 +40,11 @@ public:
 private:
     
     double _freq = { 200.0 };
-    float _data[axBUFFER_SIZE + 1];
+//    float _data[axBUFFER_SIZE + 1];
+    float* _data;
     double _cPhase;
+    int _bufferSize;
+    
 
     double WaveInterpole(const double& freq,
                          const unsigned int& len,

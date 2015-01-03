@@ -7,32 +7,45 @@
 //
 
 #include "axAudioWaveTable.h"
-//#include "axAudioBuffer.h"
+#include "axAudioBuffer.h"
 #include "axAudioUtils.h"
 #include <cmath>
 #include "axUtils.h"
 
 axAudioWaveTable::axAudioWaveTable():
-_cPhase(0.0)
+_cPhase(0.0),
+_bufferSize(axBUFFER_SIZE)
 {
+    _data = new float[_bufferSize + 1];
     SetWaveformType(axWAVE_TYPE_SINE);
 }
 
-//axAudioWaveTable::axAudioWaveTable(axAudioBuffer* buffer)
-//{
-//    
-//}
+axAudioWaveTable::axAudioWaveTable(axAudioBuffer* buffer)
+{
+    _bufferSize = (int)buffer->GetBufferInfo().frames;
+    _data = new float[_bufferSize + 1];
+    
+    axFloat* bufferData = buffer->GetBuffer();
+    
+    for(int i = 0; i < _bufferSize; i++)
+    {
+        _data[i] = bufferData[i];
+    }
+    
+    _data[_bufferSize] = bufferData[0];
+}
 
 void axAudioWaveTable::SetWaveformType(const axWaveformType& type)
 {
-    double buffer_size = axBUFFER_SIZE;
-    double one_over_buffer_size = 1.0 / buffer_size;
+    /// @todo Check for buffer size first.
+    _bufferSize = axBUFFER_SIZE;
+    double one_over_buffer_size = 1.0 / _bufferSize;
 
     switch(type)
     {
         case axWAVE_TYPE_SINE:
         {
-            for(int i = 0; i < axBUFFER_SIZE + 1; i++)
+            for(int i = 0; i < _bufferSize + 1; i++)
             {
                 _data[i] = sin(i * 2.0 * M_PI * one_over_buffer_size);
             }
@@ -40,9 +53,9 @@ void axAudioWaveTable::SetWaveformType(const axWaveformType& type)
             
         case axWAVE_TYPE_TRIANGLE:
         {
-            for(int i = 0; i < axBUFFER_SIZE; i++)
+            for(int i = 0; i < _bufferSize; i++)
             {
-                if(2 * i >= buffer_size)
+                if(2 * i >= _bufferSize)
                 {
                     _data[i] = 1 - 2.0 * i * one_over_buffer_size;
                 }
@@ -52,13 +65,13 @@ void axAudioWaveTable::SetWaveformType(const axWaveformType& type)
                     _data[i] = 2.0 * i * one_over_buffer_size;
                 }
             }
-            _data[axBUFFER_SIZE] = _data[0];
+            _data[_bufferSize] = _data[0];
             
         } break;
             
         case axWAVE_TYPE_SQUARE:
         {
-            for(int i = 0; i <  axBUFFER_SIZE + 1; i++)
+            for(int i = 0; i < _bufferSize + 1; i++)
             {
                 _data[i] = sin(i * 2.0 * M_PI * one_over_buffer_size);
                 
@@ -76,12 +89,12 @@ void axAudioWaveTable::SetWaveformType(const axWaveformType& type)
             
         case axWAVE_TYPE_SAW:
         {
-            for(int i = 0; i < axBUFFER_SIZE; i++)
+            for(int i = 0; i < _bufferSize; i++)
             {
                 _data[i] = 1.0 - ( i * one_over_buffer_size );
             }
             
-            _data[axBUFFER_SIZE] = _data[0];
+            _data[_bufferSize] = _data[0];
             
         } break;
     }
@@ -121,19 +134,19 @@ double axAudioWaveTable::WaveInterpole(const double& freq,
 
 void axAudioWaveTable::ProcessSample(float* out)
 {
-    *out = WaveInterpole(200.0, axBUFFER_SIZE, 0);
+    *out = WaveInterpole(200.0, _bufferSize, 0);
 }
 
 void axAudioWaveTable::ProcessSample(double* out)
 {
-    *out = WaveInterpole(200.0, axBUFFER_SIZE, 0);
+    *out = WaveInterpole(200.0, _bufferSize, 0);
 }
 
 void axAudioWaveTable::ProcessBlock(float* out, unsigned long frameCount)
 {
     for(int i = 0; i < frameCount; i++)
     {
-        double v = WaveInterpole(200.0, axBUFFER_SIZE, 0);
+        double v = WaveInterpole(200.0, _bufferSize, 0);
 
         *out++ = v;
         *out++ = v;

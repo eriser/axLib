@@ -12,6 +12,7 @@
 #include "axGain.h"
 #include "axLib.h"
 #include <iostream>
+#include "axAudioBuffer.h"
 
 #ifndef ST_RATIO
 #define ST_RATIO (1.0594630943592952)
@@ -126,125 +127,62 @@ private:
     }
 };
 
-//******************************************************************************
-// AGain.
-//******************************************************************************
-AGain::AGain(audioMasterCallback audioMaster):
-axVst(audioMaster, 2)
-{
-    AddParameter(axParameterInfo("Gain", "dB", 1.0));
-    AddParameter(axParameterInfo("Filter", "Hz", 5000.0));
-    
-    // default program name
 
-    vst_strncpy(programName, "axTB303", kVstMaxProgNameLen);
-//    _filterFreq = 5000.0;
+PolyPhonicChannel::PolyPhonicChannel(axAudioBuffer* waveTableAudioBuffer)
+{
+    std::cout << "Init poly voice." << std::endl;
+    
+    /// @todo Change this.
+    _processBuffer = new double*[2];
+    _processBuffer[0] = new double[8192];
+    _processBuffer[1] = new double[8192];
+    for(int i = 0; i < 8192; i++)
+    {
+        _processBuffer[0][i] = 0.0;
+        _processBuffer[1][i] = 0.0;
+    }
+    
+
+    
+//    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
+//    axAudioBuffer* audioBuffer = new axAudioBuffer(sndFile);
+    
+//    _waveTable = new axAudioWaveTable(waveTableAudioBuffer);
+//    delete audioBuffer;
     
     _waveTable = new axAudioWaveTable();
     _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SQUARE);
     
     _filter = new axAudioFilter();
-    _filter->SetFreq(_parameters[1].value);
+    _filter->SetFreq(5000.0);
     _filter->SetQ(0.707);
     _filter->SetGain(1.0);
     
     _env = new axAudioEnvelope();
     _env->SetAttack(0.001);
     _env->SetDecay(0.8);
-    
-    double c5 = 220.0 * pow(ST_RATIO, 3);
-    c0 = c5 * pow(0.5, 5);
-    
-    
-//    axVstCore* vstCore = static_cast<axVstCore*>
-//    (axApp::GetInstance()->GetCore());
-//    
-//    axVstCoreData* vstCoreData = vstCore->GetVstCoreData();
-    
-//    if(vstCoreData->effect != nullptr)
-//    {
-        axEventManager* evtManager = axEventManager::GetInstance();
-        
-        evtManager->AddConnection(10000000 + getProgram(),
-                                  0,
-                                  GetOnVstParameterValueChange());
-//    }
 }
 
-bool getProductString (char* text)
+double** PolyPhonicChannel::GetProcessedBuffers()
 {
-    vst_strncpy(text, "Gain", kVstMaxProductStrLen);
-    return true;
+    return _processBuffer;
 }
 
-VstInt32 AGain::processEvents(VstEvents* ev)
+void PolyPhonicChannel::TriggerNote(const double& freq)
 {
-    int numEvent = ev->numEvents;
-    
-    for(int i = 0; i < numEvent; i++)
-    {
-        if(ev->events[i]->type == kVstMidiType)
-        {
-            VstMidiEvent* event = (VstMidiEvent*)ev->events[i];
-            char* midiData = event->midiData;
-            
-            VstInt32 status = midiData[0] & 0xf0;   // ignoring channel
-            
-            // Note on.
-            if(status == 0x90)
-            {
-                int midiNote = (int)midiData[1];
-                double freq = c0 * pow(ST_RATIO, midiNote);
-                _waveTable->SetFreq(freq);
-                _env->TriggerNote();
-            }
-            // Note off.
-            else if(status == 0x80)
-            {
-                
-            }
-        }
-    }
-    
-    return 1;
+    _waveTable->SetFreq(freq);
+    _env->TriggerNote();
 }
 
-void AGain::processReplacing(float** inputs,
-                             float** outputs,
-                             VstInt32 sampleFrames)
+void PolyPhonicChannel::SetFilterFreq(const double& freq)
 {
-    (void)inputs;
-    float* out1 = outputs[0];
-    float* out2 = outputs[1];
-    float gain = _parameters[0].value;;
-    
-    while (--sampleFrames >= 0)
-    {
-        float value = 0.0;
-        _waveTable->ProcessSample(&value);
-        
-        t_out input_filter(value, value);
-        t_out filter_processed = _filter->ProcessStereo(input_filter);
-        
-        float env = _env->Process();
-        
-        *out1 = filter_processed.l * env * gain;
-        *out2 = filter_processed.r * env * gain;
-        
-        out1++;
-        out2++;
-    }
+    _filter->SetFreq(freq);
 }
 
-void AGain::processDoubleReplacing(double** inputs,
-                                   double** outputs,
-                                   VstInt32 sampleFrames)
+void PolyPhonicChannel::ProcessChannel(VstInt32 sampleFrames)
 {
-    (void)inputs;
-    
-    double* out1 = outputs[0];
-    double* out2 = outputs[1];
-    double gain = _parameters[0].value;
+    double* out1 = _processBuffer[0];
+    double* out2 = _processBuffer[1];
     
     while (--sampleFrames >= 0)
     {
@@ -256,11 +194,218 @@ void AGain::processDoubleReplacing(double** inputs,
         
         double env = _env->Process();
         
-        *out1 = filter_processed.l * env * gain;
-        *out2 = filter_processed.r * env * gain;
+        *out1++ = filter_processed.l * env;
+        *out2++ = filter_processed.r * env;
+    }
+}
+
+
+//******************************************************************************
+// AGain.
+//******************************************************************************
+AGain::AGain(audioMasterCallback audioMaster):
+axVst(audioMaster, 2)
+{
+    std::cout << "AGain constructor." << std::endl;
+    
+    AddParameter(axParameterInfo("Gain", "dB", 1.0));
+    AddParameter(axParameterInfo("Filter", "Hz", 5000.0));
+    
+    // Default program name
+    vst_strncpy(programName, "axTB303", kVstMaxProgNameLen);
+    
+    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
+    _waveTableAudioBuffer = new axAudioBuffer(sndFile);
+
+    _polyChannels.resize(10);
+    for(int i = 0; i < 10; i++)
+    {
+        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
+    }
+    
+    _polyChannelIndex = 0;
+    
+
+//    axAudioBuffer* audioBuffer = new axAudioBuffer(sndFile);
+    
+    
+    
+//    _waveTable = new axAudioWaveTable(audioBuffer);
+//    
+//    _filter = new axAudioFilter();
+//    _filter->SetFreq(_parameters[1].value);
+//    _filter->SetQ(0.707);
+//    _filter->SetGain(1.0);
+//    
+//    _env = new axAudioEnvelope();
+//    _env->SetAttack(0.001);
+//    _env->SetDecay(0.8);
+    
+    double c5 = 220.0 * pow(ST_RATIO, 3);
+    c0 = c5 * pow(0.5, 5);
+    
+
+    axEventManager* evtManager = axEventManager::GetInstance();
+    
+    evtManager->AddConnection(10000000 + getProgram(),
+                              0,
+                              GetOnVstParameterValueChange());
+}
+
+bool getProductString (char* text)
+{
+    vst_strncpy(text, "Gain", kVstMaxProductStrLen);
+    return true;
+}
+
+void AGain::OnVstMidiNoteOnEvent(const axVstMidiNoteMsg& msg)
+{
+    
+    int midiNote = (int)msg.GetNote();
+    double freq = c0 * pow(ST_RATIO, midiNote);
+    
+    
+    std::cout << "AGain( id : " << _pluginId << " ) " << "::OnVstMidiNoteOnEvent " << msg.GetNote() << std::endl;
+    _polyChannels[_polyChannelIndex]->TriggerNote(freq);
+    
+//    _waveTable->SetFreq(freq);
+//    _env->TriggerNote();
+    
+    if(_polyChannelIndex + 1 == 10)
+    {
+        _polyChannelIndex = 0;
+    }
+    else
+    {
+        _polyChannelIndex++;
+    }
+}
+
+void AGain::OnVstMidiNoteOffEvent(const axVstMidiNoteMsg& msg)
+{
+}
+
+//VstInt32 AGain::processEvents(VstEvents* ev)
+//{
+//    int numEvent = ev->numEvents;
+//    
+//    for(int i = 0; i < numEvent; i++)
+//    {
+//        if(ev->events[i]->type == kVstMidiType)
+//        {
+//            VstMidiEvent* event = (VstMidiEvent*)ev->events[i];
+//            char* midiData = event->midiData;
+//            
+//            VstInt32 status = midiData[0] & 0xf0;   // ignoring channel
+//            
+//            // Note on.
+//            if(status == 0x90)
+//            {
+//                int midiNote = (int)midiData[1];
+//                double freq = c0 * pow(ST_RATIO, midiNote);
+//                
+//                _polyChannels[_polyChannelIndex]->TriggerNote(freq);
+//            
+//                _waveTable->SetFreq(freq);
+//                _env->TriggerNote();
+//                
+//                if(_polyChannelIndex + 1 == 10)
+//                {
+//                    _polyChannelIndex = 0;
+//                }
+//                else
+//                {
+//                    _polyChannelIndex++;
+//                }
+//            }
+//            // Note off.
+//            else if(status == 0x80)
+//            {
+//                
+//            }
+//        }
+//    }
+//    
+//    return 1;
+//}
+
+void AGain::processReplacing(float** inputs,
+                             float** outputs,
+                             VstInt32 sampleFrames)
+{
+    (void)inputs;
+    
+    float* out1 = outputs[0];
+    float* out2 = outputs[1];
+    double gain = 1.0f; //_parameters[0].value;
+    
+    // Process all voices.
+    for(int i = 0; i < 10; i++)
+    {
+        _polyChannels[i]->ProcessChannel(sampleFrames);
+    }
+    
+    // Get poly channel buffers.
+    double* voices[10];
+    for(int i = 0; i < 10; i++)
+    {
+        voices[i] = _polyChannels[i]->GetProcessedBuffers()[0];
+    }
+    
+    // Output process loop..
+    for(int i = 0; i < sampleFrames; i++)
+    {
+        float v = 0.0;
+        for(int n = 0; n < 10; n++)
+        {
+            v = v + voices[n][i];
+        }
         
-        out1++;
-        out2++;
+//        if(v != 0.0)
+//        {
+//            std::cout << "V : " << v << std::endl;
+//
+//        }
+        
+        *out1++ = v * gain;
+        *out2++ = v * gain;
+    }
+}
+
+void AGain::processDoubleReplacing(double** inputs,
+                                   double** outputs,
+                                   VstInt32 sampleFrames)
+{
+    (void)inputs;
+    
+    double* out1 = outputs[0];
+    double* out2 = outputs[1];
+    double gain = 1.0; //_parameters[0].value;
+    
+    // Process all voices.
+    for(int i = 0; i < 10; i++)
+    {
+        _polyChannels[i]->ProcessChannel(sampleFrames);
+    }
+    
+    // Get poly channel buffers.
+    double* voices[10];
+    for(int i = 0; i < 10; i++)
+    {
+        voices[i] = _polyChannels[i]->GetProcessedBuffers()[0];
+    }
+    
+    // Output process loop..
+    for(int i = 0; i < sampleFrames; i++)
+    {
+        double v = 0.0;
+        for(int n = 0; n < 10; n++)
+        {
+            v = v + voices[n][i];
+        }
+        
+        *out1++ = v * gain;
+        *out2++ = v * gain;
     }
 }
 

@@ -61,6 +61,8 @@
 		7CDA585D1A49C396005012AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA585C1A49C396005012AD /* Cocoa.framework */; };
 		7CDA58661A4C8038005012AD /* axVstCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA58641A4C8038005012AD /* axVstCoreMac.cpp */; };
 		7CDA586D1A4E3AA7005012AD /* axVstAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA586C1A4E3AA7005012AD /* axVstAppDelegate.mm */; };
+		7CE2CC841A574297004DDCD4 /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CC801A574297004DDCD4 /* axAudioBuffer.cpp */; };
+		7CE2CC851A574297004DDCD4 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CC821A574297004DDCD4 /* axAudioBufferPlayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +178,10 @@
 		7CDA58651A4C8038005012AD /* axVstCoreMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstCoreMac.h; path = ../../axVst/Mac/axVstCoreMac.h; sourceTree = "<group>"; };
 		7CDA586B1A4E3AA7005012AD /* axVstAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstAppDelegate.h; path = ../../axVst/Mac/axVstAppDelegate.h; sourceTree = "<group>"; };
 		7CDA586C1A4E3AA7005012AD /* axVstAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = axVstAppDelegate.mm; path = ../../axVst/Mac/axVstAppDelegate.mm; sourceTree = "<group>"; };
+		7CE2CC801A574297004DDCD4 /* axAudioBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioBuffer.cpp; sourceTree = "<group>"; };
+		7CE2CC811A574297004DDCD4 /* axAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBuffer.h; sourceTree = "<group>"; };
+		7CE2CC821A574297004DDCD4 /* axAudioBufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioBufferPlayer.cpp; sourceTree = "<group>"; };
+		7CE2CC831A574297004DDCD4 /* axAudioBufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBufferPlayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +200,10 @@
 		7C3BF2D31A530B170037AE6E /* axAudio */ = {
 			isa = PBXGroup;
 			children = (
+				7CE2CC801A574297004DDCD4 /* axAudioBuffer.cpp */,
+				7CE2CC811A574297004DDCD4 /* axAudioBuffer.h */,
+				7CE2CC821A574297004DDCD4 /* axAudioBufferPlayer.cpp */,
+				7CE2CC831A574297004DDCD4 /* axAudioBufferPlayer.h */,
 				7C3BF2DA1A530B170037AE6E /* axAudioEnvelope.cpp */,
 				7C3BF2DB1A530B170037AE6E /* axAudioEnvelope.h */,
 				7C3BF2DC1A530B170037AE6E /* axAudioFilter.cpp */,
@@ -521,6 +531,7 @@
 				7C3BF2E51A530B170037AE6E /* axAudioEnvelope.cpp in Sources */,
 				7C3BF2E81A530B170037AE6E /* axAudioWaveTable.cpp in Sources */,
 				7C88DAB71A55B9E70030C869 /* axVstGuiMac.cpp in Sources */,
+				7CE2CC851A574297004DDCD4 /* axAudioBufferPlayer.cpp in Sources */,
 				7CDA58511A49C26B005012AD /* axMouseManager.cpp in Sources */,
 				7CDA583E1A49C26B005012AD /* axPopupMenu.cpp in Sources */,
 				7CDA58461A49C26B005012AD /* axColor.cpp in Sources */,
@@ -550,6 +561,7 @@
 				7C3BF2E61A530B170037AE6E /* axAudioFilter.cpp in Sources */,
 				7CDA584B1A49C26B005012AD /* axGC.cpp in Sources */,
 				7CDA583B1A49C26B005012AD /* axMenu.cpp in Sources */,
+				7CE2CC841A574297004DDCD4 /* axAudioBuffer.cpp in Sources */,
 				7CDA58481A49C26B005012AD /* axEvent.cpp in Sources */,
 				7C3BF2E71A530B170037AE6E /* axAudioUtils.cpp in Sources */,
 				7CDA58551A49C26B005012AD /* axSerialize.cpp in Sources */,
@@ -696,6 +708,7 @@
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				OTHER_LDFLAGS = (
 					"-lfreetype",
+					"-lsndfile",
 					"-lpng15",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

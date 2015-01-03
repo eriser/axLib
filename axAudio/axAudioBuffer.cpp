@@ -1,9 +1,13 @@
 #include "axAudioBuffer.h"
 
-axAudioBuffer::axAudioBuffer( const string& snd_path )
+//std::mutex axAudioBuffer::audio_buffer_mutex;
+
+axAudioBuffer::axAudioBuffer(const string& snd_path )
 {
+//    audio_buffer_mutex.lock();
     m_buffer = NULL;
 
+    
     switch ( OpenSoundFile( snd_path ) )
     {
         case axOPEN_SND_ERROR:
@@ -12,6 +16,7 @@ axAudioBuffer::axAudioBuffer( const string& snd_path )
 
         case axNO_ERROR : break;
     }
+//    audio_buffer_mutex.unlock();
 }
 
 axSOUND_ERROR axAudioBuffer::OpenSoundFile( const string& snd_path )
@@ -21,6 +26,7 @@ axSOUND_ERROR axAudioBuffer::OpenSoundFile( const string& snd_path )
 
     if( !( m_sndFile = sf_open( m_path.c_str(), SFM_READ, m_info ) ) )
     {
+        std::cerr << "Error : Can't open audio file." << std::endl;
         return axOPEN_SND_ERROR;
     }
 
@@ -32,12 +38,23 @@ axSOUND_ERROR axAudioBuffer::OpenSoundFile( const string& snd_path )
 
     m_buffer = new axFloat[m_info->frames * m_info->channels];
 
-    /*unsigned int numFrames = */sf_readf_float( m_sndFile, m_buffer, m_info->frames );
+    sf_count_t numFrames = sf_readf_float(m_sndFile, m_buffer, m_info->frames);
+    
+    if(numFrames == 0)
+    {
+        std::cerr << "Error : Can't copy audio file, frame number is null." << std::endl;
+    }
 
     m_start = m_buffer;
     m_end = &m_buffer[ m_info->frames * m_info->channels - 1 ];
 
-    sf_close( m_sndFile );
+    // Returns 0 on success, or an error number.
+    int close_error = sf_close(m_sndFile);
+    
+    if(close_error != 0)
+    {
+        std::cerr << "Error : Can't close audio file." << std::endl;
+    }
 
     return axNO_ERROR;
 }

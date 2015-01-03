@@ -60,4 +60,6 @@ dependencies: \
   /Users/alexarse/Project/axLib/axAudio/axAudioFilter.h \
   /Users/alexarse/Project/axLib/axAudio/axAudioEnvelope.h \
   /Users/alexarse/Project/axLib/axVst/axVst.h \
-  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/aeffeditor.h
+  /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/aeffeditor.h \
+  /Users/alexarse/Project/axLib/axAudio/axAudioBuffer.h \
+  /usr/local/include/sndfile.h

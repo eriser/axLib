@@ -22,6 +22,7 @@
 #include "axVst.h"
 
 #include "axEventManager.h"
+#include <iostream>
 
 #ifdef __APPLE__
 #include "axVstGuiMac.h"
@@ -40,8 +41,8 @@ AudioEffectX(audioMaster, 1, numberParameters)	// 1 program, 1 parameter only
     setNumInputs (2);		// stereo in
     setNumOutputs (2);		// stereo out
     setUniqueID ('Gain');	// identify
-    canProcessReplacing ();	// supports replacing output
-    canDoubleReplacing ();	// supports double precision processing
+    canProcessReplacing();	// supports replacing output
+    canDoubleReplacing();	// supports double precision processing
     
     vst_strncpy (programName, "axTB303", kVstMaxProgNameLen);	// default program name
     
@@ -56,21 +57,6 @@ AudioEffectX(audioMaster, 1, numberParameters)	// 1 program, 1 parameter only
     _canDoList.insert(std::string("receiveVstEvents"));
     _canDoList.insert(std::string("receiveVstMidiEvent"));
     _canDoList.insert(std::string("midiProgramNames"));
-    
-//    axEventManager::GetInstance()->AddConnection(_pluginId, 0, );
-    
-//    _parameters.push_back(axParameterInfo("Gain", "dB", 1.0));
-//    _parameters.push_back(axParameterInfo("Filter", "dB", 5000.0));
-    
-    //    if(!strcmp(text, "receiveVstEvents"))
-    //    {
-    //        return 1;
-    //    }
-    //    else if(!strcmp(text, "receiveVstMidiEvent"))
-    //    {
-    //        return 1;
-    //    }
-    //    else if(!strcmp(text, "midiProgramNames"))
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -91,6 +77,7 @@ void axVst::AddCapability(const std::string& capability)
 
 void axVst::open()
 {
+    std::cout << "axVst::open." << std::endl;
     //    std::cout << "axVst::open ----- >  " << _pluginId << std::endl;
     //    std::cout << "axVst : uID" << getCurrentUniqueId() << std::endl;
     //    std::cout << "axVst : program" << getProgram() << std::endl;
@@ -243,6 +230,11 @@ VstPlugCategory axVst::getPlugCategory()
     return kPlugCategSynth;
 }
 
+void axVst::setBlockSize(long blockSize)
+{
+    std::cout << "BlockSize : " << blockSize << std::endl;
+}
+
 VstInt32 axVst::canDo(char *text)
 {
     std::string needToDo(text);
@@ -282,12 +274,16 @@ VstInt32 axVst::processEvents(VstEvents* ev)
         {
             VstMidiEvent* event = (VstMidiEvent*)ev->events[i];
             char* midiData = event->midiData;
+
             
             VstInt32 status = midiData[0] & 0xf0;   // ignoring channel
             
             // Note on.
             if(status == 0x90)
             {
+//                axVstMidiNoteMsg msg((int)midiData[1], (int)midiData[2]);
+                int midiNote = (int)midiData[1];
+                OnVstMidiNoteOnEvent(axVstMidiNoteMsg(midiNote, 0));
 //                int midiNote = (int)midiData[1];
 //                
 //                //                n += oct + semi;
@@ -305,6 +301,8 @@ VstInt32 axVst::processEvents(VstEvents* ev)
             // Note off.
             else if(status == 0x80)
             {
+                int midiNote = (int)midiData[1];
+                OnVstMidiNoteOffEvent(axVstMidiNoteMsg(midiNote, 0));
                 //                std::cout << "Off : " << (int)midiData[1] << " " <<  (int)midiData[2] << std::endl;
                 
             }
@@ -317,7 +315,7 @@ VstInt32 axVst::processEvents(VstEvents* ev)
 //-----------------------------------------------------------------------------------------
 void axVst::processReplacing(float** inputs, float** outputs, VstInt32 sampleFrames)
 {
-    
+    std::cout << "No replacement float." << std::endl;
     //    float* in1  =  inputs[0];
     //    float* in2  =  inputs[1];
     float* out1 = outputs[0];
@@ -351,6 +349,7 @@ void axVst::processReplacing(float** inputs, float** outputs, VstInt32 sampleFra
 //-----------------------------------------------------------------------------------------
 void axVst::processDoubleReplacing(double** inputs, double** outputs, VstInt32 sampleFrames)
 {
+    std::cout << "No replacement double." << std::endl;
     //    double* in1  =  inputs[0];
     //    double* in2  =  inputs[1];
     double* out1 = outputs[0];

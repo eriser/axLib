@@ -22,6 +22,7 @@
 #include "axVstGui.h"
 #include "axApp.h"
 
+//std::mutex axVstGui::pluginOpenOrderMutex;
 bool axVstGui::_pluginHasBeenOpenOnHostInit = false;
 bool axVstGui::_isFirstTimeVstGUIOpen = true;
 

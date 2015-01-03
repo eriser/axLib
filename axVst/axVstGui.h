@@ -22,6 +22,9 @@
 #ifndef __AX_VST_GUI__
 #define __AX_VST_GUI__
 
+//#include <thread>
+//#include <mutex>
+
 #include "public.sdk/source/vst2.x/audioeffectx.h"
 #include "public.sdk/source/vst2.x/aeffeditor.h"
 
@@ -37,6 +40,7 @@ protected:
     ERect _rect;
     static bool _pluginHasBeenOpenOnHostInit;
     static bool _isFirstTimeVstGUIOpen;
+//    static std::mutex pluginOpenOrderMutex;
 };
 
 #endif // __AX_VST_GUI__

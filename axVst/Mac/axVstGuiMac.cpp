@@ -31,6 +31,7 @@ axVstGui(effect)
 
 bool axVstGuiMac::open(void* ptr)
 {
+//    pluginOpenOrderMutex.lock();
     if(_isFirstTimeVstGUIOpen == true)
     {
         _isFirstTimeVstGUIOpen = false;
@@ -48,7 +49,7 @@ bool axVstGuiMac::open(void* ptr)
     {
         pluginIndex = pluginIndex - 1;
     }
-    
+//    pluginOpenOrderMutex.unlock();
     
     axApp* app = axApp::GetInstance();
     axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(app->GetCore());

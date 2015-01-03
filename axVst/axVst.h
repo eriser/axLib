@@ -19,8 +19,16 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_VST__
 #define __AX_VST__
+
+/*******************************************************************************
+ * @file    axVst
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   Wrapper for vst AudioEffectX class.
+ * @date    02/01/2014
+ ******************************************************************************/
 
 #include "public.sdk/source/vst2.x/audioeffectx.h"
 #include "public.sdk/source/vst2.x/aeffeditor.h"
@@ -55,6 +63,33 @@ public:
 private:
     double _value;
     int _index;
+};
+
+class axVstMidiNoteMsg //: public axMsg
+{
+public:
+    axVstMidiNoteMsg(const int& note, const int& velocity):
+    _note(note), _velocity(velocity)
+    {
+    }
+    
+    int GetNote() const
+    {
+        return _note;
+    }
+    
+    int GetVelocity() const
+    {
+        return _velocity;
+    }
+    
+//    axMsg* GetCopy()
+//    {
+//        return new axVstMidiNoteMsg(*this);
+//    }
+    
+private:
+    int _note, _velocity;
 };
 
 class axVst : public AudioEffectX
@@ -96,6 +131,8 @@ public:
     virtual bool getProductString(char* text);
     virtual VstInt32 getVendorVersion();
     
+    virtual void setBlockSize(long blockSize);
+    
     virtual VstInt32 canDo(char *text);
     
     VstInt32 processEvents(VstEvents* ev);
@@ -109,23 +146,24 @@ public:
     
     enum axVstPlugCategory
     {
-        axVstPlugUnknown = 0,		// Unknown, category not implemented
-        axVstPlugEffect,			// Simple Effect
-        axVstPlugSynth,             // VST Instrument (Synths, samplers,...)
-        axVstPlugAnalysis,			// Scope, Tuner, ...
-        axVstPlugMastering,         // Dynamics, ...
-        axVstPlugSpacializer,		// Panners, ...
-        axVstPlugRoomFx,			// Delays and Reverbs
-        axVstPlugSurroundFx,		// Dedicated surround processor
-        axVstPlugRestoration,		// Denoiser, ...
+        axVstPlugUnknown = 0,		// Unknown, category not implemented.
+        axVstPlugEffect,			// Simple Effect.
+        axVstPlugSynth,             // VST Instrument (Synths, samplers).
+        axVstPlugAnalysis,			// Scope, Tuner.
+        axVstPlugMastering,         // Dynamics.
+        axVstPlugSpacializer,		// Panners.
+        axVstPlugRoomFx,			// Delays and Reverbs.
+        axVstPlugSurroundFx,		// Dedicated surround processor.
+        axVstPlugRestoration,		// Denoiser.
         axVstPlugOfflineProcess,	// Offline Process
-        axVstPlugShell,             // Plug-in is container of other plug-ins  @see effShellGetNextPlugin
-        axVstPlugGenerator,         // ToneGenerator, ...
+        axVstPlugShell,             // Plug-in is container of other plug-ins.
+        axVstPlugGenerator,         // ToneGenerator.
         
-        kPlugCategMaxCount
+        axVstPlugMaxCount
     };
     
-
+    virtual void OnVstMidiNoteOnEvent(const axVstMidiNoteMsg& msg){}
+    virtual void OnVstMidiNoteOffEvent(const axVstMidiNoteMsg& msg){}
     
 protected:
     int _pluginId;
@@ -156,6 +194,7 @@ protected:
     std::vector<axParameterInfo> _parameters;
     std::set<std::string> _canDoList;
     
+
 
     
     void AddParameter(const axParameterInfo& param);

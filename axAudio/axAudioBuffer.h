@@ -9,6 +9,8 @@
 
 #include "sndfile.h"
 #include <iostream>
+//#include <thread>
+//#include <mutex>
 
 using namespace std;
 
@@ -32,6 +34,8 @@ struct axBufferInfo
 //  sf_count_t frames;
 //  int samplerate, channels, format, sections, seekable;
 //} SF_INFO ;
+
+
 
 class axAudioBuffer
 {
@@ -60,6 +64,8 @@ private:
     sf_count_t m_count;
 
     axFloat *m_buffer, *m_start, *m_end;
+    
+//    static std::mutex audio_buffer_mutex;
     
 };
 
