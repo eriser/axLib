@@ -56,13 +56,7 @@ public:
             evtManager->AddConnection(10000000 + vstCoreData->effect->getProgram(),
                                       0,
                                       GetOnVstParameterValueChange());
-            
-//            AGain* aGain = static_cast<AGain*>(vstCoreData->effect);
-//            aGain->SetParameterFromGUI(0, msg.GetValue());
         }
-
-        
-        
     }
     
     axEVENT_ACCESSOR(axButtonMsg, OnButtonClick);
@@ -142,16 +136,23 @@ PolyPhonicChannel::PolyPhonicChannel(axAudioBuffer* waveTableAudioBuffer)
         _processBuffer[1][i] = 0.0;
     }
     
-
-    
 //    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
 //    axAudioBuffer* audioBuffer = new axAudioBuffer(sndFile);
     
-//    _waveTable = new axAudioWaveTable(waveTableAudioBuffer);
-//    delete audioBuffer;
-    
+//    axApp* app = axApp::GetInstance();
+////    app->GetResourceManager()->Lock();
+//    std::cout << "Init poly voice 2." << std::endl;
+//    axAudioBuffer* buf = app->GetResourceManager()->GetResource("wf1");
+//    std::cout << "Init poly voice 3." << std::endl;
+//    _waveTable = new axAudioWaveTable(buf);
+//    std::cout << "Init poly voice 4." << std::endl;
+//    app->GetResourceManager()->Unlock();
+
     _waveTable = new axAudioWaveTable();
     _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SQUARE);
+    
+//    _waveTable = new axAudioWaveTable(waveTableAudioBuffer);
+    
     
     _filter = new axAudioFilter();
     _filter->SetFreq(5000.0);
@@ -206,7 +207,7 @@ void PolyPhonicChannel::ProcessChannel(VstInt32 sampleFrames)
 AGain::AGain(audioMasterCallback audioMaster):
 axVst(audioMaster, 2)
 {
-    std::cout << "AGain constructor." << std::endl;
+//    std::cout << "AGain constructor." << std::endl;
     
     AddParameter(axParameterInfo("Gain", "dB", 1.0));
     AddParameter(axParameterInfo("Filter", "Hz", 5000.0));
@@ -214,18 +215,28 @@ axVst(audioMaster, 2)
     // Default program name
     vst_strncpy(programName, "axTB303", kVstMaxProgNameLen);
     
-    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
-    _waveTableAudioBuffer = new axAudioBuffer(sndFile);
-
-    _polyChannels.resize(10);
-    for(int i = 0; i < 10; i++)
-    {
-        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
-    }
+//    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
+//    _waveTableAudioBuffer = new axAudioBuffer(sndFile);
     
-    _polyChannelIndex = 0;
+//    axApp* app = axApp::GetInstance();
+//    axAudioBuffer* buf = app->GetResourceManager()->GetResource("wf1");
+//
+//    std::cout << "Buf size : " << buf->GetBufferInfo().frames << std::endl;
+    
+    
+    
+//    _polyChannels.resize(10);
+//    for(int i = 0; i < 10; i++)
+//    {
+////        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
+//        _polyChannels[i] = new PolyPhonicChannel(nullptr);
+//    }
+//    
+//    _polyChannelIndex = 0;
     
 
+    
+    
 //    axAudioBuffer* audioBuffer = new axAudioBuffer(sndFile);
     
     
@@ -252,7 +263,22 @@ axVst(audioMaster, 2)
                               GetOnVstParameterValueChange());
 }
 
-bool getProductString (char* text)
+void AGain::open()
+{
+    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
+    _waveTableAudioBuffer = new axAudioBuffer(sndFile);
+    
+    _polyChannels.resize(10);
+    for(int i = 0; i < 10; i++)
+    {
+        //        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
+        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
+    }
+    
+    _polyChannelIndex = 0;
+}
+
+bool AGain::getProductString (char* text)
 {
     vst_strncpy(text, "Gain", kVstMaxProductStrLen);
     return true;
@@ -412,11 +438,22 @@ void AGain::processDoubleReplacing(double** inputs,
 //******************************************************************************
 // Vst entry point.
 //******************************************************************************
-AudioEffect* createEffectInstance (audioMasterCallback audioMaster)
+AudioEffect* createEffectInstance(audioMasterCallback audioMaster)
 {
+    std::cout << "AudioEffect* createEffectInstance." << std::endl;
+    
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp(axSize(300, 130));
-    
+
+//    app->GetResourceManager()->Lock();
+//    if(app->GetResourceManager()->GetResource("wf1").is_null())
+//    {
+//        std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
+//        axAudioBuffer* audioFile = new axAudioBuffer(sndFile, 0);
+//        app->GetResourceManager()->Add(std::string("wf1"), audioFile);
+//    }
+//    app->GetResourceManager()->Unlock();
+
     return new AGain(audioMaster);
 }
 

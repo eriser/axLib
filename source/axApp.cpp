@@ -20,8 +20,11 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axApp.h"
+#include "axResourceManager.h"
 
 axApp* axApp::MainInstance = nullptr;
+
+axResourceManager* axApp::_resourceManager = nullptr;
 
 axApp::axApp()
 {
@@ -164,4 +167,10 @@ void axApp::AddPopWindow(axWindow* win)
 axCore* axApp::GetCore()
 {
 	return _core;
+}
+
+axResourceManager* axApp::GetResourceManager() const
+{
+    return _resourceManager == nullptr ?
+           _resourceManager = new axResourceManager() : _resourceManager;
 }

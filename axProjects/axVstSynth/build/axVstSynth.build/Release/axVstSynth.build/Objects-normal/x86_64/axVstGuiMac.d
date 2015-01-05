@@ -19,4 +19,6 @@ dependencies: /Users/alexarse/Project/axLib/axVst/Mac/axVstGuiMac.cpp \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \
   /Users/alexarse/Project/axLib/include/axMouseManager.h \
   /Users/alexarse/Project/axLib/include/axKeyboardManager.h \
+  /Users/alexarse/Project/axLib/include/axResourceManager.h \
+  /Users/alexarse/Project/axLib/include/axVar.h \
   /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.h

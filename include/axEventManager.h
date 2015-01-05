@@ -19,11 +19,18 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#ifndef __axManager__axEventManager__
-#define __axManager__axEventManager__
+#ifndef __AX_EVENT_MANAGER__
+#define __AX_EVENT_MANAGER__
 
 /// @defgroup Core
 /// @{
+
+/*******************************************************************************
+ * @file    axEventManager
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   Event queue of axEventFunction (std::function<void(axMsg*)>).
+ * @date    16/07/2014
+ ******************************************************************************/
 
 #include <deque>
 #include <map>
@@ -35,19 +42,9 @@
 
 extern std::mutex manager_mutex;
 
-
-//typedef std::multimap<axID, axEventFunction>::iterator axEventMapIterator;
-
-typedef std::multimap<axEventId, axEventFunction> axEventMultimap;
-typedef std::pair<const axEventId, axEventFunction> axEventMultimapPair;
-typedef axEventMultimap::iterator axEventMultimapIterator;
-
-typedef std::map<axID, axEventMultimap> axEventMap;
-typedef std::pair<axID, axEventMultimap> axEventMapPair;
-typedef axEventMap::iterator axEventMapIterator;
-
-typedef std::deque<axBindedEvent> axEventQueue;
-
+/*******************************************************************************
+ * axEventManager.
+ ******************************************************************************/
 class axEventManager
 {
 public:
@@ -71,9 +68,19 @@ private:
     
     static axEventManager* _instance;
     
+    typedef std::multimap<axEventId, axEventFunction> axEventMultimap;
+    typedef std::pair<const axEventId, axEventFunction> axEventMultimapPair;
+    typedef axEventMultimap::iterator axEventMultimapIterator;
+    
+    typedef std::map<axID, axEventMultimap> axEventMap;
+    typedef std::pair<axID, axEventMultimap> axEventMapPair;
+    typedef axEventMap::iterator axEventMapIterator;
+    
+    typedef std::deque<axBindedEvent> axEventQueue;
+    
     axEventQueue _evtQueue;
     axEventMap _event_fct_map;
 };
 
 /// @}
-#endif /* defined(__axManager__axEventManager__) */
+#endif // __AX_EVENT_MANAGER__

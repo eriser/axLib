@@ -17,4 +17,6 @@ dependencies: /Users/alexarse/Project/axLib/axVst/axVstGui.cpp \
   /Users/alexarse/Project/axLib/include/axMsg.h \
   /Users/alexarse/Project/axLib/include/axWindowTree.h \
   /Users/alexarse/Project/axLib/include/axMouseManager.h \
-  /Users/alexarse/Project/axLib/include/axKeyboardManager.h
+  /Users/alexarse/Project/axLib/include/axKeyboardManager.h \
+  /Users/alexarse/Project/axLib/include/axResourceManager.h \
+  /Users/alexarse/Project/axLib/include/axVar.h

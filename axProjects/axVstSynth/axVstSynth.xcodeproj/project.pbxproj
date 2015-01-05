@@ -63,6 +63,9 @@
 		7CDA586D1A4E3AA7005012AD /* axVstAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA586C1A4E3AA7005012AD /* axVstAppDelegate.mm */; };
 		7CE2CC841A574297004DDCD4 /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CC801A574297004DDCD4 /* axAudioBuffer.cpp */; };
 		7CE2CC851A574297004DDCD4 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CC821A574297004DDCD4 /* axAudioBufferPlayer.cpp */; };
+		7CE2CC901A59E386004DDCD4 /* axResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CC8E1A59E386004DDCD4 /* axResourceManager.cpp */; };
+		7CE2CC911A59E386004DDCD4 /* axVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2CC8F1A59E386004DDCD4 /* axVar.cpp */; };
+		7CE2CC931A5A3267004DDCD4 /* Piano.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7CE2CC921A5A3267004DDCD4 /* Piano.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,6 +185,11 @@
 		7CE2CC811A574297004DDCD4 /* axAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBuffer.h; sourceTree = "<group>"; };
 		7CE2CC821A574297004DDCD4 /* axAudioBufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioBufferPlayer.cpp; sourceTree = "<group>"; };
 		7CE2CC831A574297004DDCD4 /* axAudioBufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBufferPlayer.h; sourceTree = "<group>"; };
+		7CE2CC8C1A59E373004DDCD4 /* axResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axResourceManager.h; sourceTree = "<group>"; };
+		7CE2CC8D1A59E373004DDCD4 /* axVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axVar.h; sourceTree = "<group>"; };
+		7CE2CC8E1A59E386004DDCD4 /* axResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axResourceManager.cpp; sourceTree = "<group>"; };
+		7CE2CC8F1A59E386004DDCD4 /* axVar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axVar.cpp; sourceTree = "<group>"; };
+		7CE2CC921A5A3267004DDCD4 /* Piano.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Piano.wav; path = build/UninstalledProducts/Piano.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +247,7 @@
 				7CDA575A1A49B333005012AD /* PkgInfo */,
 				7CDA57571A49A1B8005012AD /* axGain.cpp */,
 				7CDA57581A49A1B8005012AD /* axGain.h */,
+				7CE2CC921A5A3267004DDCD4 /* Piano.wav */,
 				7CDA57481A49A149005012AD /* Vst */,
 				7CDA57401A499F08005012AD /* axVstSynth */,
 				7CDA573F1A499F08005012AD /* Products */,
@@ -340,6 +349,8 @@
 		7CDA58031A49C26B005012AD /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7CE2CC8C1A59E373004DDCD4 /* axResourceManager.h */,
+				7CE2CC8D1A59E373004DDCD4 /* axVar.h */,
 				7CDA58041A49C26B005012AD /* axApp.h */,
 				7CDA58051A49C26B005012AD /* axC++.h */,
 				7CDA58061A49C26B005012AD /* axColor.h */,
@@ -371,6 +382,7 @@
 		7CDA581B1A49C26B005012AD /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7CE2CC8F1A59E386004DDCD4 /* axVar.cpp */,
 				7CDA581C1A49C26B005012AD /* axApp.cpp */,
 				7CDA581D1A49C26B005012AD /* axC++.cpp */,
 				7CDA581E1A49C26B005012AD /* axColor.cpp */,
@@ -388,6 +400,7 @@
 				7CDA582A1A49C26B005012AD /* axMsg.cpp */,
 				7CDA582B1A49C26B005012AD /* axObject.cpp */,
 				7CDA582C1A49C26B005012AD /* axPanel.cpp */,
+				7CE2CC8E1A59E386004DDCD4 /* axResourceManager.cpp */,
 				7CDA582D1A49C26B005012AD /* axSerialize.cpp */,
 				7CDA582E1A49C26B005012AD /* axTimer.cpp */,
 				7CDA582F1A49C26B005012AD /* axUtils.cpp */,
@@ -510,6 +523,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE2CC931A5A3267004DDCD4 /* Piano.wav in Resources */,
 				7CDA575B1A49B334005012AD /* PkgInfo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +551,7 @@
 				7CDA58461A49C26B005012AD /* axColor.cpp in Sources */,
 				7CDA583A1A49C26B005012AD /* axKnob.cpp in Sources */,
 				7CDA58391A49C26B005012AD /* axGrid.cpp in Sources */,
+				7CE2CC911A59E386004DDCD4 /* axVar.cpp in Sources */,
 				7CDA58421A49C26B005012AD /* axTextControl.cpp in Sources */,
 				7CDA584D1A49C26B005012AD /* axKeyboardManager.cpp in Sources */,
 				7CDA583D1A49C26B005012AD /* axPlot.cpp in Sources */,
@@ -561,6 +576,7 @@
 				7C3BF2E61A530B170037AE6E /* axAudioFilter.cpp in Sources */,
 				7CDA584B1A49C26B005012AD /* axGC.cpp in Sources */,
 				7CDA583B1A49C26B005012AD /* axMenu.cpp in Sources */,
+				7CE2CC901A59E386004DDCD4 /* axResourceManager.cpp in Sources */,
 				7CE2CC841A574297004DDCD4 /* axAudioBuffer.cpp in Sources */,
 				7CDA58481A49C26B005012AD /* axEvent.cpp in Sources */,
 				7C3BF2E71A530B170037AE6E /* axAudioUtils.cpp in Sources */,

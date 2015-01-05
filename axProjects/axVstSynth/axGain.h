@@ -13,6 +13,7 @@ class PolyPhonicChannel
 public:
     PolyPhonicChannel(axAudioBuffer* waveTableAudioBuffer);
     
+
     void ProcessChannel(VstInt32 sampleFrames);
     
     double** GetProcessedBuffers();
@@ -36,7 +37,8 @@ public:
     AGain(audioMasterCallback audioMaster);
 
 //    VstInt32 processEvents(VstEvents* ev);
-    
+    virtual void open();
+    virtual bool getProductString (char* text);
     virtual void processReplacing(float** inputs,
                                   float** outputs,
                                   VstInt32 sampleFrames);

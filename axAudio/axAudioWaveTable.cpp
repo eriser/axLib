@@ -22,6 +22,9 @@ _bufferSize(axBUFFER_SIZE)
 
 axAudioWaveTable::axAudioWaveTable(axAudioBuffer* buffer)
 {
+//    _bufferSize = (int)buffer->GetBufferInfo().frames;
+//    _data = buffer->GetBuffer();
+
     _bufferSize = (int)buffer->GetBufferInfo().frames;
     _data = new float[_bufferSize + 1];
     

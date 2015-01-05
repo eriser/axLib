@@ -40,7 +40,9 @@ struct axBufferInfo
 class axAudioBuffer
 {
 public:
-    axAudioBuffer( const string& snd_path );
+    axAudioBuffer(const string& snd_path);
+    
+    axAudioBuffer(const std::string& path, const int& test);
 
     axSOUND_ERROR OpenSoundFile( const string& snd_path );
 
@@ -60,10 +62,12 @@ private:
     // Libsndfile.
     SNDFILE* m_sndFile;
     SF_INFO* m_info;
-    string m_path;
+    std::string m_path;
     sf_count_t m_count;
 
-    axFloat *m_buffer, *m_start, *m_end;
+    float *m_buffer, *m_start, *m_end;
+    
+    axBufferInfo _info;
     
 //    static std::mutex audio_buffer_mutex;
     

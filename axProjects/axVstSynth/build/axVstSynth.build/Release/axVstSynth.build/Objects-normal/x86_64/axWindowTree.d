@@ -33,4 +33,6 @@ dependencies: /Users/alexarse/Project/axLib/source/axWindowTree.cpp \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/audioeffect.h \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffect.h \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffectx.h \
+  /Users/alexarse/Project/axLib/include/axResourceManager.h \
+  /Users/alexarse/Project/axLib/include/axVar.h \
   /Users/alexarse/Project/axLib/include/axMath.h

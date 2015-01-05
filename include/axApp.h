@@ -44,6 +44,7 @@
 #endif // __APPLE__
 
 #include "axC++.h"
+#include "axResourceManager.h"
 
 // Is use as an adapter to global axCore class (axCORE).
 class axApp
@@ -96,8 +97,14 @@ public:
 
 	string GetAppDirectory();
     
+    axResourceManager* GetResourceManager() const;
+    
 private:
 	axCore* _core;
+    
+    static axResourceManager* _resourceManager;
+    
+    
 };
 
 /// @}
