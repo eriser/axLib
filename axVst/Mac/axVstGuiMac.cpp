@@ -31,6 +31,9 @@ axVstGui(effect)
 
 bool axVstGuiMac::open(void* ptr)
 {
+    
+    axVst* curVst = static_cast<axVst*>(getEffect());
+    
 //    pluginOpenOrderMutex.lock();
     if(_isFirstTimeVstGUIOpen == true)
     {

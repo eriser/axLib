@@ -32,12 +32,14 @@
 
 
 int axVst::pluginIdCounter = 0;
+std::mutex axVst::axVstPrivateMutex;
 
 //------------------------------------------------------------------------------
 axVst::axVst(audioMasterCallback audioMaster, const int& numberParameters) :
 // Heritage.
 AudioEffectX(audioMaster, 1, numberParameters)	// 1 program, 1 parameter only
 {
+    axVst::axVstPrivateMutex.lock();
     setNumInputs (2);		// stereo in
     setNumOutputs (2);		// stereo out
     setUniqueID ('Gain');	// identify
@@ -57,7 +59,10 @@ AudioEffectX(audioMaster, 1, numberParameters)	// 1 program, 1 parameter only
     _canDoList.insert(std::string("receiveVstEvents"));
     _canDoList.insert(std::string("receiveVstMidiEvent"));
     _canDoList.insert(std::string("midiProgramNames"));
+    axVst::axVstPrivateMutex.unlock();
 }
+
+
 
 //-------------------------------------------------------------------------------------------------------
 axVst::~axVst ()
@@ -65,14 +70,23 @@ axVst::~axVst ()
     // nothing to do here
 }
 
+int axVst::GetPluginId() const
+{
+    return _pluginId;
+}
+
 void axVst::AddParameter(const axParameterInfo& param)
 {
+    axVst::axVstPrivateMutex.lock();
     _parameters.push_back(param);
+    axVst::axVstPrivateMutex.unlock();
 }
 
 void axVst::AddCapability(const std::string& capability)
 {
+    axVst::axVstPrivateMutex.lock();
     _canDoList.insert(capability);
+    axVst::axVstPrivateMutex.unlock();
 }
 
 void axVst::open()
@@ -103,8 +117,11 @@ void axVst::getProgramName (char* name)
 
 VstInt32 axVst::getProgram()
 {
-    //     std::cout << "axVst::getProgram()" << std::endl;
-    return _pluginId;
+    std::cout << "axVst::getProgram." << std::endl;
+//    axVst::axVstPrivateMutex.lock();
+    VstInt32 progId = _pluginId;
+//    axVst::axVstPrivateMutex.unlock();
+    return progId;
 }
 
 void axVst::SetParameterFromGUI(VstInt32 index, float value)
@@ -121,15 +138,10 @@ void axVst::setParameter (VstInt32 index, float value)
     if(index < _parameters.size())
     {
         _parameters[index].value = value;
+
+        axEventManager::GetInstance()->PushEvent(10000000 + getProgram(),
+                          0, new axVstParameterMsg(value, index));
     }
-    
-    axEventManager* evtMan = axEventManager::GetInstance();
-    evtMan->PushEvent(10000000 + getProgram(),
-                      0, new axVstParameterMsg(value, index));
-    
-//    (10000000 + vstCoreData->effect->getProgram(),
-//                              0,
-//                              GetOnVstParameterValueChange());
 }
 
 float axVst::getParameter (VstInt32 index)

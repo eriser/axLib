@@ -8,6 +8,8 @@
 #include "axAudioEnvelope.h"
 #include "axVst.h"
 
+#include <mutex>
+
 class PolyPhonicChannel
 {
 public:
@@ -49,6 +51,10 @@ public:
     
     virtual void OnVstMidiNoteOnEvent(const axVstMidiNoteMsg& msg);
     virtual void OnVstMidiNoteOffEvent(const axVstMidiNoteMsg& msg);
+    
+    void SetFilterFreq(const double& freq);
+    
+    static std::mutex AGainMutex;
 
 private:
     axEVENT_ACCESSOR(axVstParameterMsg, OnVstParameterValueChange);

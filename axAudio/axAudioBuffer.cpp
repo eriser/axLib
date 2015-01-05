@@ -43,21 +43,21 @@ axAudioBuffer::axAudioBuffer(const std::string& path, const int& test)
     m_path = path;
     FILE* infile = fopen(path.c_str(),"rb");     // Open wave file in read mode
     header* meta = (header*)malloc(sizeof(header));   // header_p points to a header struct that contains the wave file metadata fields
-    
+    m_buffer = nullptr;
     if (infile)
     {
         fread(meta, 1, sizeof(header), infile);
         
-        cout << " Size of Header file is "<<sizeof(*meta)<<" bytes" << endl;
-        
-        cout << " Sampling rate of the input wave file is "<< meta->sample_rate <<" Hz" << endl;
-        
-        cout << " Number of samples in wave file are " << meta->subchunk2_size << " samples" << endl;
-        
-        cout << " The number of channels of the file is "<< meta->num_channels << " channels" << endl;
-        
-        cout << "Bit per sample " << meta->bits_per_sample << " -- " << sizeof(short int) << std::endl;
-        
+//        cout << " Size of Header file is "<<sizeof(*meta)<<" bytes" << endl;
+//        
+//        cout << " Sampling rate of the input wave file is "<< meta->sample_rate <<" Hz" << endl;
+//        
+//        cout << " Number of samples in wave file are " << meta->subchunk2_size << " samples" << endl;
+//        
+//        cout << " The number of channels of the file is "<< meta->num_channels << " channels" << endl;
+//        
+//        cout << "Bit per sample " << meta->bits_per_sample << " -- " << sizeof(short int) << std::endl;
+//        
         _info.frames = meta->subchunk2_size / sizeof(short int);
         _info.sample_rate = meta->sample_rate;
         _info.channels = meta->num_channels;
@@ -72,12 +72,14 @@ axAudioBuffer::axAudioBuffer(const std::string& path, const int& test)
         for(int i = 0; i < _info.frames; i++)
         {
             m_buffer[i] = 2.0 * tmp[i] / float(std::numeric_limits<short int>::max());
-            std::cout << "Value : " << m_buffer[i] << std::endl;
+//            std::cout << "Value : " << m_buffer[i] << std::endl;
         }
         
         delete[] tmp;
         delete meta;
     }
+    
+    fclose(infile);
 }
 
 

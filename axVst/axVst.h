@@ -36,6 +36,7 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <mutex>
 
 class axVstParameterMsg : public axMsg
 {
@@ -103,6 +104,8 @@ public:
     
     virtual VstInt32 getProgram();
     
+    int GetPluginId() const;
+    
     
     // Processing
     virtual void processReplacing(float** inputs,
@@ -168,6 +171,7 @@ public:
 protected:
     int _pluginId;
     static int pluginIdCounter;
+    static std::mutex axVstPrivateMutex;
     char programName[kVstMaxProgNameLen + 1];
     
     struct axParameterInfo

@@ -18,6 +18,9 @@
 #define ST_RATIO (1.0594630943592952)
 #endif
 
+// AGain static std::mutex.
+std::mutex AGain::AGainMutex;
+
 //******************************************************************************
 // axTestPanel.
 //******************************************************************************
@@ -39,11 +42,15 @@ public:
                              std::string("/Users/alexarse/Project/axLib/ressources/plastic_knob_50x50.png"),
                              std::string("/Users/alexarse/Project/axLib/ressources/plastic_knob_50x50.png"));
         
-        _gainKnob = new axKnob(this, axRect(40, 40, 50, 50),
-                               axKnobEvents(GetOnKnobGain()), knob_info);
+        axKnob::axKnobBuilder knobBuilder(this, axSize(50, 50), knob_info,
+                                          0, 10);
         
+        _gainKnob = knobBuilder.Create(axPoint(40, 40), GetOnKnobGain());
         _gainKnob->SetValue(1.0);
         
+        _filterKnob = knobBuilder.Create(GetOnKnobFilterFreq());
+        _filterKnob->SetValue(1.0);
+
         axVstCore* vstCore = static_cast<axVstCore*>
         (axApp::GetInstance()->GetCore());
         
@@ -61,11 +68,12 @@ public:
     
     axEVENT_ACCESSOR(axButtonMsg, OnButtonClick);
     axEVENT_ACCESSOR(axKnobMsg, OnKnobGain);
+    axEVENT_ACCESSOR(axKnobMsg, OnKnobFilterFreq);
     
     axEVENT_ACCESSOR(axVstParameterMsg, OnVstParameterValueChange);
     
 private:
-    axKnob* _gainKnob;
+    axKnob *_gainKnob, *_filterKnob;
     
     void OnButtonClick(const axButtonMsg& msg)
     {
@@ -87,10 +95,10 @@ private:
         }
         else if(msg.GetIndex() == 1)
         {
-//            if(_gainKnob->GetValue() != msg.GetValue())
-//            {
-//                _gainKnob->SetValue(msg.GetValue(), false);
-//            }
+            if(_filterKnob->GetValue() != msg.GetValue())
+            {
+                _filterKnob->SetValue(msg.GetValue(), false);
+            }
         }
     }
     
@@ -105,6 +113,21 @@ private:
         {
             AGain* aGain = static_cast<AGain*>(vstCoreData->effect);
             aGain->SetParameterFromGUI(0, msg.GetValue());
+        }
+    }
+    
+    void OnKnobFilterFreq(const axKnobMsg& msg)
+    {
+        axVstCore* vstCore = static_cast<axVstCore*>
+        (axApp::GetInstance()->GetCore());
+        
+        axVstCoreData* vstCoreData = vstCore->GetVstCoreData();
+        
+        if(vstCoreData->effect != nullptr)
+        {
+            AGain* aGain = static_cast<AGain*>(vstCoreData->effect);
+            aGain->SetParameterFromGUI(1, msg.GetValue());
+            aGain->SetFilterFreq(msg.GetValue());
         }
     }
     
@@ -124,7 +147,7 @@ private:
 
 PolyPhonicChannel::PolyPhonicChannel(axAudioBuffer* waveTableAudioBuffer)
 {
-    std::cout << "Init poly voice." << std::endl;
+//    std::cout << "Init poly voice." << std::endl;
     
     /// @todo Change this.
     _processBuffer = new double*[2];
@@ -148,12 +171,14 @@ PolyPhonicChannel::PolyPhonicChannel(axAudioBuffer* waveTableAudioBuffer)
 //    std::cout << "Init poly voice 4." << std::endl;
 //    app->GetResourceManager()->Unlock();
 
-    _waveTable = new axAudioWaveTable();
-    _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SQUARE);
-    
-//    _waveTable = new axAudioWaveTable(waveTableAudioBuffer);
     
     
+    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
+    axAudioBuffer* audioBuffer = new axAudioBuffer(sndFile, 0);
+    
+    _waveTable = new axAudioWaveTable(audioBuffer);
+//    _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SQUARE);
+
     _filter = new axAudioFilter();
     _filter->SetFreq(5000.0);
     _filter->SetQ(0.707);
@@ -162,6 +187,8 @@ PolyPhonicChannel::PolyPhonicChannel(axAudioBuffer* waveTableAudioBuffer)
     _env = new axAudioEnvelope();
     _env->SetAttack(0.001);
     _env->SetDecay(0.8);
+    
+    
 }
 
 double** PolyPhonicChannel::GetProcessedBuffers()
@@ -207,50 +234,12 @@ void PolyPhonicChannel::ProcessChannel(VstInt32 sampleFrames)
 AGain::AGain(audioMasterCallback audioMaster):
 axVst(audioMaster, 2)
 {
-//    std::cout << "AGain constructor." << std::endl;
-    
+    AGain::AGainMutex.lock();
     AddParameter(axParameterInfo("Gain", "dB", 1.0));
     AddParameter(axParameterInfo("Filter", "Hz", 5000.0));
     
     // Default program name
     vst_strncpy(programName, "axTB303", kVstMaxProgNameLen);
-    
-//    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
-//    _waveTableAudioBuffer = new axAudioBuffer(sndFile);
-    
-//    axApp* app = axApp::GetInstance();
-//    axAudioBuffer* buf = app->GetResourceManager()->GetResource("wf1");
-//
-//    std::cout << "Buf size : " << buf->GetBufferInfo().frames << std::endl;
-    
-    
-    
-//    _polyChannels.resize(10);
-//    for(int i = 0; i < 10; i++)
-//    {
-////        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
-//        _polyChannels[i] = new PolyPhonicChannel(nullptr);
-//    }
-//    
-//    _polyChannelIndex = 0;
-    
-
-    
-    
-//    axAudioBuffer* audioBuffer = new axAudioBuffer(sndFile);
-    
-    
-    
-//    _waveTable = new axAudioWaveTable(audioBuffer);
-//    
-//    _filter = new axAudioFilter();
-//    _filter->SetFreq(_parameters[1].value);
-//    _filter->SetQ(0.707);
-//    _filter->SetGain(1.0);
-//    
-//    _env = new axAudioEnvelope();
-//    _env->SetAttack(0.001);
-//    _env->SetDecay(0.8);
     
     double c5 = 220.0 * pow(ST_RATIO, 3);
     c0 = c5 * pow(0.5, 5);
@@ -261,21 +250,26 @@ axVst(audioMaster, 2)
     evtManager->AddConnection(10000000 + getProgram(),
                               0,
                               GetOnVstParameterValueChange());
+    
+    AGain::AGainMutex.unlock();
 }
 
 void AGain::open()
 {
-    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
-    _waveTableAudioBuffer = new axAudioBuffer(sndFile);
+//    std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
+//    _waveTableAudioBuffer = new axAudioBuffer(sndFile);
+    
+    AGain::AGainMutex.lock();
     
     _polyChannels.resize(10);
     for(int i = 0; i < 10; i++)
     {
-        //        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
-        _polyChannels[i] = new PolyPhonicChannel(_waveTableAudioBuffer);
+        _polyChannels[i] = new PolyPhonicChannel(nullptr);
     }
     
     _polyChannelIndex = 0;
+    
+    AGain::AGainMutex.unlock();
 }
 
 bool AGain::getProductString (char* text)
@@ -286,16 +280,11 @@ bool AGain::getProductString (char* text)
 
 void AGain::OnVstMidiNoteOnEvent(const axVstMidiNoteMsg& msg)
 {
-    
+    AGain::AGainMutex.lock();
     int midiNote = (int)msg.GetNote();
     double freq = c0 * pow(ST_RATIO, midiNote);
     
-    
-    std::cout << "AGain( id : " << _pluginId << " ) " << "::OnVstMidiNoteOnEvent " << msg.GetNote() << std::endl;
     _polyChannels[_polyChannelIndex]->TriggerNote(freq);
-    
-//    _waveTable->SetFreq(freq);
-//    _env->TriggerNote();
     
     if(_polyChannelIndex + 1 == 10)
     {
@@ -305,65 +294,33 @@ void AGain::OnVstMidiNoteOnEvent(const axVstMidiNoteMsg& msg)
     {
         _polyChannelIndex++;
     }
+    AGain::AGainMutex.unlock();
 }
 
 void AGain::OnVstMidiNoteOffEvent(const axVstMidiNoteMsg& msg)
 {
 }
 
-//VstInt32 AGain::processEvents(VstEvents* ev)
-//{
-//    int numEvent = ev->numEvents;
-//    
-//    for(int i = 0; i < numEvent; i++)
-//    {
-//        if(ev->events[i]->type == kVstMidiType)
-//        {
-//            VstMidiEvent* event = (VstMidiEvent*)ev->events[i];
-//            char* midiData = event->midiData;
-//            
-//            VstInt32 status = midiData[0] & 0xf0;   // ignoring channel
-//            
-//            // Note on.
-//            if(status == 0x90)
-//            {
-//                int midiNote = (int)midiData[1];
-//                double freq = c0 * pow(ST_RATIO, midiNote);
-//                
-//                _polyChannels[_polyChannelIndex]->TriggerNote(freq);
-//            
-//                _waveTable->SetFreq(freq);
-//                _env->TriggerNote();
-//                
-//                if(_polyChannelIndex + 1 == 10)
-//                {
-//                    _polyChannelIndex = 0;
-//                }
-//                else
-//                {
-//                    _polyChannelIndex++;
-//                }
-//            }
-//            // Note off.
-//            else if(status == 0x80)
-//            {
-//                
-//            }
-//        }
-//    }
-//    
-//    return 1;
-//}
+void AGain::SetFilterFreq(const double& freq)
+{
+    axRange<double> filterRange(30.0, 5000.0);
+    double hzValue = filterRange.GetValueFromZeroToOne(freq);
+    for(int i = 0; i < 10; i++)
+    {
+        _polyChannels[i]->SetFilterFreq(hzValue);
+    }
+}
 
 void AGain::processReplacing(float** inputs,
                              float** outputs,
                              VstInt32 sampleFrames)
 {
+    AGain::AGainMutex.lock();
     (void)inputs;
     
     float* out1 = outputs[0];
     float* out2 = outputs[1];
-    double gain = 1.0f; //_parameters[0].value;
+    double gain = 1.0;//_parameters[0].value;
     
     // Process all voices.
     for(int i = 0; i < 10; i++)
@@ -386,27 +343,24 @@ void AGain::processReplacing(float** inputs,
         {
             v = v + voices[n][i];
         }
-        
-//        if(v != 0.0)
-//        {
-//            std::cout << "V : " << v << std::endl;
-//
-//        }
-        
+
         *out1++ = v * gain;
         *out2++ = v * gain;
     }
+    
+    AGain::AGainMutex.unlock();
 }
 
 void AGain::processDoubleReplacing(double** inputs,
                                    double** outputs,
                                    VstInt32 sampleFrames)
 {
+    AGain::AGainMutex.lock();
     (void)inputs;
     
     double* out1 = outputs[0];
     double* out2 = outputs[1];
-    double gain = 1.0; //_parameters[0].value;
+    double gain = 1.0;//_parameters[0].value;
     
     // Process all voices.
     for(int i = 0; i < 10; i++)
@@ -433,6 +387,7 @@ void AGain::processDoubleReplacing(double** inputs,
         *out1++ = v * gain;
         *out2++ = v * gain;
     }
+    AGain::AGainMutex.unlock();
 }
 
 //******************************************************************************
@@ -440,19 +395,8 @@ void AGain::processDoubleReplacing(double** inputs,
 //******************************************************************************
 AudioEffect* createEffectInstance(audioMasterCallback audioMaster)
 {
-    std::cout << "AudioEffect* createEffectInstance." << std::endl;
-    
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp(axSize(300, 130));
-
-//    app->GetResourceManager()->Lock();
-//    if(app->GetResourceManager()->GetResource("wf1").is_null())
-//    {
-//        std::string sndFile("/Users/alexarse/Project/axLib/axProjects/axVstSynth/build/UninstalledProducts/Piano.wav");
-//        axAudioBuffer* audioFile = new axAudioBuffer(sndFile, 0);
-//        app->GetResourceManager()->Add(std::string("wf1"), audioFile);
-//    }
-//    app->GetResourceManager()->Unlock();
 
     return new AGain(audioMaster);
 }
