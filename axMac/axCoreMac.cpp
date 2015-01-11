@@ -54,7 +54,7 @@ string axCoreMac::GetAppDirectory()
 ////    //path.push_back('/');
 //    std::cout << "Path : " << path << std::endl;
 
-    std::cout << std::string(CocoaGetAppDirectory() + std::string("/")) << std::endl;
+//    std::cout << std::string(CocoaGetAppDirectory() + std::string("/")) << std::endl;
     return std::string(CocoaGetAppDirectory() + std::string("/"));
 }
 

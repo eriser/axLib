@@ -23,8 +23,6 @@
 #ifndef __AX_PLOT__
 #define __AX_PLOT__
 
-
-
 /*******************************************************************************
  * @file    axPlot.h
  * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
@@ -35,9 +33,8 @@
 /// @defgroup Widgets
 /// @{
 
-/// @defgroup NumberBox
+/// @defgroup Plot
 /// @{
-
 
 #include "axEvent.h"
 #include "axPanel.h"
@@ -45,11 +42,6 @@
 #include "axGC.h"
 #include "axImage.h"
 #include "axMsg.h"
-
-
-
-
-
 
 /*******************************************************************************
  * axPlotFlags.
@@ -164,4 +156,6 @@ private:
     void OnPaint();
 };
 
+/// @}
+/// @}
 #endif // __AX_PLOT__

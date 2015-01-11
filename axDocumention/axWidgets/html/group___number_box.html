@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,10 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#enumval-members">Enumerator</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">NumberBox<div class="ingroups"><a class="el" href="group___widgets.html">Widgets</a></div></div>  </div>
 </div><!--header-->
@@ -97,6 +94,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structax_number_box_info.html">axNumberBoxInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classax_number_box.html">axNumberBox</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classax_number_box_1_1ax_number_box_builder.html">axNumberBox::axNumberBoxBuilder</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -143,54 +142,6 @@ Enumerations</h2></td></tr>
 <tr class="memitem:ga5709d46af8c452fe1247e0f1a09653b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5709d46af8c452fe1247e0f1a09653b0"></a>enum &#160;</td><td class="memItemRight" valign="bottom">: axEventId { <b>VALUE_CHANGE</b>
  }</td></tr>
 <tr class="separator:ga5709d46af8c452fe1247e0f1a09653b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga41be6acc8273eef3cce7918864ad3d81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga41be6acc8273eef3cce7918864ad3d81"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxMsg::axNumberBoxMsg</b> (const double &amp;value)</td></tr>
-<tr class="separator:ga41be6acc8273eef3cce7918864ad3d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5f5d9003b3b414f35ab56a17d3ef3599"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5f5d9003b3b414f35ab56a17d3ef3599"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxMsg::GetValue</b> () const </td></tr>
-<tr class="separator:ga5f5d9003b3b414f35ab56a17d3ef3599"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga50296ad47e30d850b6979c85a61eff4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga50296ad47e30d850b6979c85a61eff4d"></a>
-axMsg *&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxMsg::GetCopy</b> ()</td></tr>
-<tr class="separator:ga50296ad47e30d850b6979c85a61eff4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac91972fdb237cdb75e50cdac04974bbb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac91972fdb237cdb75e50cdac04974bbb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxEvents::axNumberBoxEvents</b> (axEventFunction &amp;fct)</td></tr>
-<tr class="separator:gac91972fdb237cdb75e50cdac04974bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9c4d113ed26832ed849f7ab0f86b6eb6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9c4d113ed26832ed849f7ab0f86b6eb6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::axNumberBoxInfo</b> (const axColor &amp;normal_color, const axColor &amp;hover_color, const axColor &amp;clicked_color, const axColor &amp;selected_color, const axColor &amp;contour_color, const axColor &amp;font_color_)</td></tr>
-<tr class="separator:ga9c4d113ed26832ed849f7ab0f86b6eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ac5f6c7d4cead1955bd42d22743c5d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0ac5f6c7d4cead1955bd42d22743c5d7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBox::axNumberBox</b> (axWindow *parent, const axRect &amp;rect, const <a class="el" href="structax_number_box_events.html">axNumberBoxEvents</a> &amp;events, const <a class="el" href="structax_number_box_info.html">axNumberBoxInfo</a> &amp;info, std::string img_path=&quot;&quot;, axFlag flags=0, double value=0.0, axFloatRange range=axFloatRange(0.0, 1.0), axControlType type=axCTRL_FLOAT, axControlUnit m_unit=axCTRL_NO_UNIT, axControlInterpolation interpolation=axCTRL_LINEAR, std::string label=&quot;&quot;)</td></tr>
-<tr class="separator:ga0ac5f6c7d4cead1955bd42d22743c5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga02d9b4b6057c68b44c185b9ef898c1e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga02d9b4b6057c68b44c185b9ef898c1e0"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBox::GetValue</b> ()</td></tr>
-<tr class="separator:ga02d9b4b6057c68b44c185b9ef898c1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga565eb405131e7129db0caa7ca70f569b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga565eb405131e7129db0caa7ca70f569b"></a>
-axEventFunction&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxEvents::value_change</b></td></tr>
-<tr class="separator:ga565eb405131e7129db0caa7ca70f569b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c48d0860fc747ab05dc190bafbf13b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0c48d0860fc747ab05dc190bafbf13b3"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::normal</b></td></tr>
-<tr class="separator:ga0c48d0860fc747ab05dc190bafbf13b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad0c20d2e0b1ee28f0aa7a475e84f74af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad0c20d2e0b1ee28f0aa7a475e84f74af"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::hover</b></td></tr>
-<tr class="separator:gad0c20d2e0b1ee28f0aa7a475e84f74af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga324cd6d6ae438bb0eb3993e7bddcc7cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga324cd6d6ae438bb0eb3993e7bddcc7cf"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::clicking</b></td></tr>
-<tr class="separator:ga324cd6d6ae438bb0eb3993e7bddcc7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga72e386661c25716e054e9d84f84702b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga72e386661c25716e054e9d84f84702b1"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::selected</b></td></tr>
-<tr class="separator:ga72e386661c25716e054e9d84f84702b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf64211728b40569494361a441391cf0d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf64211728b40569494361a441391cf0d"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::contour</b></td></tr>
-<tr class="separator:gaf64211728b40569494361a441391cf0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga451cad65d80c54691e5dbc148922dbaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga451cad65d80c54691e5dbc148922dbaf"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::font_color</b></td></tr>
-<tr class="separator:ga451cad65d80c54691e5dbc148922dbaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -216,12 +167,13 @@ axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::f
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="structax_number_box_info.html">axNumberBoxInfo</a>( axColor(<span class="stringliteral">&quot;#AA1111&quot;</span>),          \</div>
-<div class="line">                                               axColor(<span class="stringliteral">&quot;#CC1111&quot;</span>),          \</div>
-<div class="line">                                               axColor(<span class="stringliteral">&quot;#FF1111&quot;</span>),          \</div>
-<div class="line">                                               axColor(<span class="stringliteral">&quot;#FF0000&quot;</span>),          \</div>
-<div class="line">                                               axColor(<span class="stringliteral">&quot;#000000&quot;</span>) )</div>
-<div class="ttc" id="structax_number_box_info_html"><div class="ttname"><a href="structax_number_box_info.html">axNumberBoxInfo</a></div><div class="ttdef"><b>Definition:</b> axNumberBox.h:120</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="structax_number_box_info.html">axNumberBoxInfo</a>( <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#AA1111&quot;</span>),          \</div>
+<div class="line">                                               <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#CC1111&quot;</span>),          \</div>
+<div class="line">                                               <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#FF1111&quot;</span>),          \</div>
+<div class="line">                                               <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#FF0000&quot;</span>),          \</div>
+<div class="line">                                               <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#000000&quot;</span>) )</div>
+<div class="ttc" id="classax_color_html"><div class="ttname"><a href="classax_color.html">axColor</a></div><div class="ttdef"><b>Definition:</b> axColor.h:31</div></div>
+<div class="ttc" id="structax_number_box_info_html"><div class="ttname"><a href="structax_number_box_info.html">axNumberBoxInfo</a></div><div class="ttdef"><b>Definition:</b> axNumberBox.h:121</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -234,19 +186,20 @@ axColor&#160;</td><td class="memItemRight" valign="bottom"><b>axNumberBoxInfo::f
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="structax_number_box_info.html">axNumberBoxInfo</a>( axColor(<span class="stringliteral">&quot;#FFFFFF&quot;</span>),          \</div>
-<div class="line">                                            axColor(<span class="stringliteral">&quot;#DDDDDD&quot;</span>),          \</div>
-<div class="line">                                            axColor(<span class="stringliteral">&quot;#AAAAAA&quot;</span>),          \</div>
-<div class="line">                                            axColor(<span class="stringliteral">&quot;#FF0000&quot;</span>),          \</div>
-<div class="line">                                            axColor(<span class="stringliteral">&quot;#000000&quot;</span>) )</div>
-<div class="ttc" id="structax_number_box_info_html"><div class="ttname"><a href="structax_number_box_info.html">axNumberBoxInfo</a></div><div class="ttdef"><b>Definition:</b> axNumberBox.h:120</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="structax_number_box_info.html">axNumberBoxInfo</a>( <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#FFFFFF&quot;</span>),          \</div>
+<div class="line">                                            <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#DDDDDD&quot;</span>),          \</div>
+<div class="line">                                            <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#AAAAAA&quot;</span>),          \</div>
+<div class="line">                                            <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#FF0000&quot;</span>),          \</div>
+<div class="line">                                            <a class="code" href="classax_color.html">axColor</a>(<span class="stringliteral">&quot;#000000&quot;</span>) )</div>
+<div class="ttc" id="classax_color_html"><div class="ttname"><a href="classax_color.html">axColor</a></div><div class="ttdef"><b>Definition:</b> axColor.h:31</div></div>
+<div class="ttc" id="structax_number_box_info_html"><div class="ttname"><a href="structax_number_box_info.html">axNumberBoxInfo</a></div><div class="ttdef"><b>Definition:</b> axNumberBox.h:121</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 13:51:53 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 10 2015 20:20:19 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

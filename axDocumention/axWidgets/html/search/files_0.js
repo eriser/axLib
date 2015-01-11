@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['axnumberbox_2eh',['axNumberBox.h',['../ax_number_box_8h.html',1,'']]]
+  ['axaudiobuffer_2eh',['axAudioBuffer.h',['../ax_audio_buffer_8h.html',1,'']]]
 ];

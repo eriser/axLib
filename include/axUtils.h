@@ -71,6 +71,11 @@ string axIntToString(const int &value );
 
 string axGetExtension(const string& path);
 
+typedef std::vector<std::pair<std::string, std::string>> axVectorPairString;
+typedef std::vector<std::string> axStringVector;
+axStringVector GetVectorFromStringDelimiter(const std::string& str,
+                                            const std::string& delimiter);
+
 template <typename T>
 double axLineairInterpole(const T& y1,
                           const T& y2,

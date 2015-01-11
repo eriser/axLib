@@ -22,21 +22,21 @@ axAudioFilter::axAudioFilter()
 }
 void axAudioFilter::SetFreq(axFloat f)
 {
-	CLIP(f, 20, 20000);
-	freq = f;
-	Compute_Variables(freq, q);
+//	CLIP(f, 20, 20000);
+//	freq = f;
+//	Compute_Variables(freq, q);
 }
 void axAudioFilter::SetQ(axFloat f)
 {
-	CLIP(f, 0.01, 50);
-	q = f;
-	Compute_Variables(freq, q);
+//	CLIP(f, 0.01, 50);
+//	q = f;
+//	Compute_Variables(freq, q);
 }
 
 void axAudioFilter::SetGain(axFloat f)
 {
-	CLIP(f, 1, 3);
-	gain = f;
+//	CLIP(f, 1, 3);
+//	gain = f;
 }
 
 axFloat axAudioFilter::GetFreq() const
@@ -187,45 +187,45 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 	t_out v;
 	axFloat f = freq;
 	axFloat r = q;
-	bool comp = 0;
+	bool comp = true;
 
-	//LFO FREQ --------------------------------------------------------------------
-	if (lfo[0] != NULL && lfoAmnt[0] != NULL)
-	{
-		axFloat modLfoFreq = *lfo[0];
-		//288 = 12 demiton * 12 * 2
-		f = f + (288 * *lfoAmnt[0] * modLfoFreq * (f * (ST_RATIO - 1.0) + 1.0));
-		CLIP(f, 20, 20000);
-		comp = 1;
-	}
+//	//LFO FREQ --------------------------------------------------------------------
+//	if (lfo[0] != NULL && lfoAmnt[0] != NULL)
+//	{
+//		axFloat modLfoFreq = *lfo[0];
+//		//288 = 12 demiton * 12 * 2
+//		f = f + (288 * *lfoAmnt[0] * modLfoFreq * (f * (ST_RATIO - 1.0) + 1.0));
+//		CLIP(f, 20, 20000);
+//		comp = 1;
+//	}
 	//ENV FREQ
-	if (env[0] != nullptr && envAmnt[0] != nullptr)
-	{
-//		cout << "ENV FREQ" << endl;
-		axFloat modEnvFreq = *env[0];
-        axFloat freqModAdd = (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
-//        cout << "ENV FREQ : " << freqModAdd << endl;
-		f = f + freqModAdd;
-		CLIP(f, 20, 20000);
-		comp = 1;
-	} //---------------------------------------------------------------------------
+//	if (env[0] != nullptr && envAmnt[0] != nullptr)
+//	{
+////		cout << "ENV FREQ" << endl;
+//		axFloat modEnvFreq = *env[0];
+//        axFloat freqModAdd = (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
+////        cout << "ENV FREQ : " << freqModAdd << endl;
+//		f = f + freqModAdd;
+//		CLIP(f, 20, 20000);
+//		comp = 1;
+//	} //---------------------------------------------------------------------------
 
 	//LFO RES ---------------------------------------------------------------------
-	if (lfo[1] != NULL && lfoAmnt[1] != NULL)
-	{
-		axFloat modLfoRes = *lfo[1];
-		r = r + (*lfoAmnt[1] * modLfoRes * 10.0);
-		CLIP(r, 0.01, 10);
-		comp = 1;
-	}
+//	if (lfo[1] != NULL && lfoAmnt[1] != NULL)
+//	{
+//		axFloat modLfoRes = *lfo[1];
+//		r = r + (*lfoAmnt[1] * modLfoRes * 10.0);
+//		CLIP(r, 0.01, 10);
+//		comp = 1;
+//	}
 	//ENV RES
-	if (env[1] != NULL && envAmnt[1] != NULL)
-	{
-		axFloat modEnvRes = *env[1];
-		r = r + (*envAmnt[1] * modEnvRes * 10.0);
-		CLIP(r, 0.01, 10);
-		comp = 1;
-	}//---------------------------------------------------------------------------
+//	if (env[1] != NULL && envAmnt[1] != NULL)
+//	{
+//		axFloat modEnvRes = *env[1];
+//		r = r + (*envAmnt[1] * modEnvRes * 10.0);
+//		CLIP(r, 0.01, 10);
+//		comp = 1;
+//	}//---------------------------------------------------------------------------
 
 	if (comp)
 		Compute_Variables(f, r);
@@ -237,6 +237,11 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 		init = false;
 	}
 
+    if(a0 == 0.0)
+    {
+        std::cout << "a0 is 0.0" << std::endl;
+    }
+    
 	//Compute_Variables(in, axFloat q)
 	v.l = ((b0 * in.l) + (b1 * x1) + (b2 * x2) - (a1 * y1) - (a2 * y2)) / a0;
 	v.r = ((b0 * in.r) + (b1 * rx1) + (b2 * rx2) - (a1 * ry1) - (a2 * ry2)) / a0;
@@ -254,19 +259,20 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 	v.l *= gain;
 	v.r *= gain;
 
-	return v;
+//	return v;
+    return in;
 }
-void axAudioFilter::Compute_Variables(axFloat freq, axFloat q)
+void axAudioFilter::Compute_Variables(axFloat ff, axFloat qq)
 {
-	MIN(freq, 1);
-	MAX(freq, 44100.0 * 0.5);
+	MIN(ff, 1);
+	MAX(ff, 44100.0 * 0.5);
 
-	MIN(q, 0.1);
-	MAX(q, 100);
+	MIN(qq, 0.1);
+	MAX(qq, 100);
 
-	w0 = TWOPI * freq / sr;
+	w0 = TWOPI * ff / double(sr);
 	c = cosf(w0);
-	alpha = sinf(w0) / (2.0 * q);
+	alpha = sinf(w0) / (2.0 * qq);
 
 	Biquad_Coeff(filterType);
 }

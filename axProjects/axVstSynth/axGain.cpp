@@ -59,10 +59,13 @@ public:
         if(vstCoreData->effect != nullptr)
         {
             axEventManager* evtManager = axEventManager::GetInstance();
-            
-            evtManager->AddConnection(10000000 + vstCoreData->effect->getProgram(),
+            axVst* curVst = static_cast<axVst*>(vstCoreData->effect);
+            evtManager->AddConnection(10000000 + curVst->GetPluginId(),
                                       0,
                                       GetOnVstParameterValueChange());
+//            evtManager->AddConnection(10000000 + vstCoreData->effect->getProgram(),
+//                                      0,
+//                                      GetOnVstParameterValueChange());
         }
     }
     
@@ -217,10 +220,25 @@ void PolyPhonicChannel::ProcessChannel(VstInt32 sampleFrames)
         double value = 0.0;
         _waveTable->ProcessSample(&value);
         
+        if(value != value)
+        {
+            std::cout << "Wavetable IS NAN" << std::endl;
+        }
+        
         t_out input_filter(value, value);
         t_out filter_processed = _filter->ProcessStereo(input_filter);
         
         double env = _env->Process();
+        
+//        if(env != env)
+//        {
+//            std::cout << "ENV IS NAN" << std::endl;
+//        }
+        
+        if(filter_processed.l != filter_processed.l)
+        {
+            std::cout << "FILTER IS NAN" << std::endl;
+        }
         
         *out1++ = filter_processed.l * env;
         *out2++ = filter_processed.r * env;
@@ -247,7 +265,11 @@ axVst(audioMaster, 2)
 
     axEventManager* evtManager = axEventManager::GetInstance();
     
-    evtManager->AddConnection(10000000 + getProgram(),
+//    evtManager->AddConnection(10000000 + getProgram(),
+//                              0,
+//                              GetOnVstParameterValueChange());
+    
+    evtManager->AddConnection(10000000 + GetPluginId(),
                               0,
                               GetOnVstParameterValueChange());
     
@@ -281,10 +303,13 @@ bool AGain::getProductString (char* text)
 void AGain::OnVstMidiNoteOnEvent(const axVstMidiNoteMsg& msg)
 {
     AGain::AGainMutex.lock();
+    
     int midiNote = (int)msg.GetNote();
     double freq = c0 * pow(ST_RATIO, midiNote);
     
     _polyChannels[_polyChannelIndex]->TriggerNote(freq);
+    
+    std::cout << "Midi event : " << GetPluginId() << " " << _polyChannelIndex << " " << msg.GetNote() << std::endl;
     
     if(_polyChannelIndex + 1 == 10)
     {
@@ -335,14 +360,20 @@ void AGain::processReplacing(float** inputs,
         voices[i] = _polyChannels[i]->GetProcessedBuffers()[0];
     }
     
+//    std::cout << "Audio callback : " << GetPluginId() << std::endl;
+    
     // Output process loop..
     for(int i = 0; i < sampleFrames; i++)
     {
         float v = 0.0;
         for(int n = 0; n < 10; n++)
         {
-            v = v + voices[n][i];
+            double channelValue = voices[n][i];
+            
+            v = v + channelValue;
         }
+        
+        //std::cout << "Audio callback : " << GetPluginId() << " " << v << std::endl;
 
         *out1++ = v * gain;
         *out2++ = v * gain;

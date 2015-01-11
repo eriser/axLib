@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,6 +101,11 @@ Macros</h2></td></tr>
 <tr class="memitem:ga9e9a2789b6fe29789db87df9b37e3275"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9e9a2789b6fe29789db87df9b37e3275"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>axDROP_MENU_SINGLE_IMG</b>&#160;&#160;&#160;axFLAG_1</td></tr>
 <tr class="separator:ga9e9a2789b6fe29789db87df9b37e3275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa3e6f909e8046769ceab34ad6b9f470"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafa3e6f909e8046769ceab34ad6b9f470"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>axDROP_MENU_SINGLE_BACKGROUND_IMG</b>&#160;&#160;&#160;axFLAG_2</td></tr>
+<tr class="separator:gafa3e6f909e8046769ceab34ad6b9f470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d090d5f01a71890a2b2c30812dad01a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>axDROP_MENU_TRANSPARENT</b></td></tr>
+<tr class="separator:ga7d090d5f01a71890a2b2c30812dad01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -109,10 +114,32 @@ Enumerations</h2></td></tr>
 <tr class="separator:ga333f29aa32e92f4d79281c2222c5d9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ga7d090d5f01a71890a2b2c30812dad01a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define axDROP_MENU_TRANSPARENT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="structax_drop_menu_info.html">axDropMenuInfo</a>( \</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 1.0))</div>
+<div class="ttc" id="classax_color_html"><div class="ttname"><a href="classax_color.html">axColor</a></div><div class="ttdef"><b>Definition:</b> axColor.h:31</div></div>
+<div class="ttc" id="structax_drop_menu_info_html"><div class="ttname"><a href="structax_drop_menu_info.html">axDropMenuInfo</a></div><div class="ttdef"><b>Definition:</b> axDropMenu.h:108</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 13:51:53 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 10 2015 20:20:19 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

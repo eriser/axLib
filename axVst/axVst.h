@@ -102,7 +102,7 @@ public:
     virtual void open();
     virtual void close();
     
-    virtual VstInt32 getProgram();
+//    virtual VstInt32 getProgram();
     
     int GetPluginId() const;
     

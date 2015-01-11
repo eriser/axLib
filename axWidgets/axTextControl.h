@@ -25,6 +25,9 @@
 /// @defgroup Widgets
 /// @{
 
+/// @defgroup TextControl
+/// @{
+
 #include "axEvent.h"
 #include "axPanel.h"
 #include "axColor.h"
@@ -229,5 +232,6 @@ protected:
 };
 
 /// @}
-#endif //__AX_BUTTON__
+/// @}
+#endif // __AX_TEXT_CONTROL__
 

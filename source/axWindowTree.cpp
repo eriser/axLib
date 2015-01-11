@@ -121,12 +121,11 @@ void axWindowNode::DrawNode()
         BeforeDrawing(window);
         DrawWindow(window);
         
-        
         for(axWindowNode* it : _childNodes)
         {
             if(it->window != nullptr)
             {
-                if(window->IsShown())
+                if(it->window->IsShown())
                 {
                     axMatrix4 mview_child_before(GL_MODELVIEW_MATRIX);
                     
@@ -224,7 +223,7 @@ void axWindowTree::AddWindow(axWindow* win)
 	else if (windows.size() == 0)
 	{
         // Second or more top level windows.
-        std::cout << "Add second top layer node." << std::endl;
+//        std::cout << "Add second top layer node." << std::endl;
 		_nodes.push_back(new axWindowNode(win));
 	}
 	else
@@ -280,7 +279,8 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 			n = node;
 			for (axWindowNode* it : n->GetChild())
 			{
-				if (it->window->GetAbsoluteRect().IsPointInside(pos) && it->window->IsShown())
+				if (it->window->GetAbsoluteRect().IsPointInside(pos) &&
+                    it->window->IsShown() &&  it->window->IsSelectable())
 				{
 					node = it;
 					break;

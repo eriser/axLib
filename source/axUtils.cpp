@@ -21,6 +21,26 @@
  ******************************************************************************/
 #include "axUtils.h"
 
+axStringVector GetVectorFromStringDelimiter(const std::string& str,
+                                            const std::string& delimiter)
+{
+    axStringVector vec;
+    
+    std::string r = str;
+    size_t pos = 0;
+    std::string token;
+    while ((pos = r.find(delimiter)) != std::string::npos)
+    {
+        token = r.substr(0, pos);
+        vec.push_back(token);
+        r.erase(0, pos + delimiter.length());
+    }
+    
+    vec.push_back(r);
+    
+    return vec;
+}
+
 string axFloatToString( const double& value, int num_char )
 {
     double v = value;

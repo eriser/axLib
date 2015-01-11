@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structax_knob_info-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">axKnobInfo Struct Reference<div class="ingroups"><a class="el" href="group___widgets.html">Widgets</a> &raquo; <a class="el" href="group___grid.html">Grid</a></div></div>  </div>
+<div class="title">axKnobInfo Struct Reference<div class="ingroups"><a class="el" href="group___widgets.html">Widgets</a> &raquo; <a class="el" href="group___knob.html">Knob</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -98,8 +98,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7e52514149955fd45c46f946c76d0569"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e52514149955fd45c46f946c76d0569"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axKnobInfo</b> (const axColor &amp;bg_normalColor, const axColor &amp;bg_hoverColor, const axColor &amp;bg_clickingColor, const unsigned int &amp;numberKnob, const axSize &amp;size, const string &amp;imgPath, const string &amp;sImgPath)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>axKnobInfo</b> (const <a class="el" href="classax_color.html">axColor</a> &amp;bg_normalColor, const <a class="el" href="classax_color.html">axColor</a> &amp;bg_hoverColor, const <a class="el" href="classax_color.html">axColor</a> &amp;bg_clickingColor, const unsigned int &amp;numberKnob, const <a class="el" href="classax_template2_d_point.html">axSize</a> &amp;size, const string &amp;imgPath, const string &amp;sImgPath)</td></tr>
 <tr class="separator:a7e52514149955fd45c46f946c76d0569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a26ea243a0d316edbcee8bd6c98edeb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a26ea243a0d316edbcee8bd6c98edeb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>axKnobInfo</b> (const std::string &amp;path)</td></tr>
+<tr class="separator:a6a26ea243a0d316edbcee8bd6c98edeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -110,30 +113,30 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>img_path</b></td></
 string&#160;</td><td class="memItemRight" valign="bottom"><b>selected_img_path</b></td></tr>
 <tr class="separator:a2abdc1b8d09dd48fc575f3fd69d3fed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7ac23d9d9662649cd7b43cfbd8c67f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7ac23d9d9662649cd7b43cfbd8c67f1"></a>
-axSize&#160;</td><td class="memItemRight" valign="bottom"><b>knob_size</b></td></tr>
+<a class="el" href="classax_template2_d_point.html">axSize</a>&#160;</td><td class="memItemRight" valign="bottom"><b>knob_size</b></td></tr>
 <tr class="separator:ad7ac23d9d9662649cd7b43cfbd8c67f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6aafdbc54f231d312aca03f8ff197c1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6aafdbc54f231d312aca03f8ff197c1c"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>n_knob</b></td></tr>
 <tr class="separator:a6aafdbc54f231d312aca03f8ff197c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f0847128afeece8aff370bc1643ef24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f0847128afeece8aff370bc1643ef24"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>bgColorNormal</b></td></tr>
+<a class="el" href="classax_color.html">axColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bgColorNormal</b></td></tr>
 <tr class="separator:a8f0847128afeece8aff370bc1643ef24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4fd3bfc146993132aaa85d7381e3166"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4fd3bfc146993132aaa85d7381e3166"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>bgColorHover</b></td></tr>
+<a class="el" href="classax_color.html">axColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bgColorHover</b></td></tr>
 <tr class="separator:ad4fd3bfc146993132aaa85d7381e3166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1729624a409c2e54edebd1f656895cd7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1729624a409c2e54edebd1f656895cd7"></a>
-axColor&#160;</td><td class="memItemRight" valign="bottom"><b>bgColorClicked</b></td></tr>
+<a class="el" href="classax_color.html">axColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bgColorClicked</b></td></tr>
 <tr class="separator:a1729624a409c2e54edebd1f656895cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structax_knob_info.html">axKnobInfo</a>. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="ax_knob_8h_source.html">axKnob.h</a></li>
+<li>axWidgets/<a class="el" href="ax_knob_8h_source.html">axKnob.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 13:51:53 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 10 2015 20:20:20 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -59,6 +59,8 @@ AudioEffectX(audioMaster, 1, numberParameters)	// 1 program, 1 parameter only
     _canDoList.insert(std::string("receiveVstEvents"));
     _canDoList.insert(std::string("receiveVstMidiEvent"));
     _canDoList.insert(std::string("midiProgramNames"));
+    
+//    curProgram = _pluginId;
     axVst::axVstPrivateMutex.unlock();
 }
 
@@ -115,14 +117,14 @@ void axVst::getProgramName (char* name)
     
 }
 
-VstInt32 axVst::getProgram()
-{
-    std::cout << "axVst::getProgram." << std::endl;
-//    axVst::axVstPrivateMutex.lock();
-    VstInt32 progId = _pluginId;
-//    axVst::axVstPrivateMutex.unlock();
-    return progId;
-}
+//VstInt32 axVst::getProgram()
+//{
+//    std::cout << "axVst::getProgram." << std::endl;
+////    axVst::axVstPrivateMutex.lock();
+//    VstInt32 progId = _pluginId;
+////    axVst::axVstPrivateMutex.unlock();
+//    return progId;
+//}
 
 void axVst::SetParameterFromGUI(VstInt32 index, float value)
 {
@@ -139,8 +141,11 @@ void axVst::setParameter (VstInt32 index, float value)
     {
         _parameters[index].value = value;
 
-        axEventManager::GetInstance()->PushEvent(10000000 + getProgram(),
-                          0, new axVstParameterMsg(value, index));
+//        axEventManager::GetInstance()->PushEvent(10000000 + getProgram(),
+//                          0, new axVstParameterMsg(value, index));
+        
+        axEventManager::GetInstance()->PushEvent(10000000 + GetPluginId(),
+                                                 0, new axVstParameterMsg(value, index));
     }
 }
 
@@ -278,6 +283,7 @@ VstInt32 axVst::canDo(char *text)
 
 VstInt32 axVst::processEvents(VstEvents* ev)
 {
+    axVst::axVstPrivateMutex.lock();
     int numEvent = ev->numEvents;
     
     for(int i = 0; i < numEvent; i++)
@@ -320,7 +326,7 @@ VstInt32 axVst::processEvents(VstEvents* ev)
             }
         }
     }
-    
+    axVst::axVstPrivateMutex.unlock();
     return 1;
 }
 
@@ -411,6 +417,8 @@ VstIntPtr axVst::dispatcher(VstInt32 opCode,
     {
         //        std::cout << "axVst::dispatcher : effClose." << std::endl;
     }
+//case effSetProgram:			if (value < numPrograms) setProgram ((VstInt32)value); break;
+//case effGetProgram:			v = getProgram ();									break;
     
     return AudioEffectX::dispatcher(opCode, index, value, ptr, opt);
 }

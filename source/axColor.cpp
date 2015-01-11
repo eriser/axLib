@@ -126,3 +126,21 @@ void axColor::SerializeInput(fstream& in)
 //    in.read(reinterpret_cast<char*>(&_b), sizeof(double));
 //    in.read(reinterpret_cast<char*>(&_a), sizeof(double));
 }
+
+void axColor::LoadFromString(const std::string& str)
+{
+    axStringVector strVec = GetVectorFromStringDelimiter(str, ",");
+    _r = stof(strVec[0]);
+    _g = stof(strVec[1]);
+    _b = stof(strVec[2]);
+    if(strVec.size() == 4)
+    {
+        _a = stof(strVec[3]);
+    }
+    else
+    {
+        _a = 1.0;
+    }
+    
+
+}

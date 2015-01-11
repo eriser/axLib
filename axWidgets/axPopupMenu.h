@@ -22,6 +22,12 @@
 #ifndef __AX_POPUP_MENU__
 #define __AX_POPUP_MENU__
 
+/// @defgroup Widgets
+/// @{
+
+/// @defgroup PopupMenu
+/// @{
+
 #include "axEvent.h"
 #include "axPanel.h"
 #include "axColor.h"
@@ -117,7 +123,6 @@ public:
 	int GetIndexValue() { return _index; }
     void SetSelectedIndex(const int& index);
 	
-
 private:
 	axPopupMenuEvents _events;
 	axPopupMenuInfo _info;
@@ -138,4 +143,6 @@ private:
 
 };
 
+/// @}
+/// @}
 #endif // __AX_POPUP_MENU__

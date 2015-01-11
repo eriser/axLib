@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,7 +98,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga7e723e082263af99ce6a7a9d2df8bd88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ax_button.html#ga7e723e082263af99ce6a7a9d2df8bd88">axBUTTON_SINGLE_IMG</a>&#160;&#160;&#160;axFLAG_1</td></tr>
+<tr class="memitem:ga7e723e082263af99ce6a7a9d2df8bd88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7e723e082263af99ce6a7a9d2df8bd88"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>axBUTTON_SINGLE_IMG</b>&#160;&#160;&#160;axFLAG_1</td></tr>
 <tr class="separator:ga7e723e082263af99ce6a7a9d2df8bd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1c21c774dd2b2c89350c754e6c1aef38"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1c21c774dd2b2c89350c754e6c1aef38"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>axBUTTON_IMG_RESIZE</b>&#160;&#160;&#160;axFLAG_2</td></tr>
@@ -125,19 +126,6 @@ Enumerations</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga7e723e082263af99ce6a7a9d2df8bd88"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define axBUTTON_SINGLE_IMG&#160;&#160;&#160;axFLAG_1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>axButtonFlags. </p>
-
-</div>
-</div>
 <a class="anchor" id="ga32d313b51eb13887e4c21edf8660e85a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -148,13 +136,14 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code" href="structax_button_info.html">axButtonInfo</a>( \</div>
-<div class="line">axColor(0.0, 0.0, 0.0, 0.0),\</div>
-<div class="line">axColor(0.0, 0.0, 0.0, 0.0),\</div>
-<div class="line">axColor(0.0, 0.0, 0.0, 0.0),\</div>
-<div class="line">axColor(0.0, 0.0, 0.0, 0.0),\</div>
-<div class="line">axColor(0.0, 0.0, 0.0, 0.0),\</div>
-<div class="line">axColor(0.0, 0.0, 0.0, 1.0))</div>
-<div class="ttc" id="structax_button_info_html"><div class="ttname"><a href="structax_button_info.html">axButtonInfo</a></div><div class="ttdef"><b>Definition:</b> axButton.h:70</div></div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0, 1.0))</div>
+<div class="ttc" id="structax_button_info_html"><div class="ttname"><a href="structax_button_info.html">axButtonInfo</a></div><div class="ttdef"><b>Definition:</b> axButton.h:92</div></div>
+<div class="ttc" id="classax_color_html"><div class="ttname"><a href="classax_color.html">axColor</a></div><div class="ttdef"><b>Definition:</b> axColor.h:31</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -168,20 +157,21 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code" href="structax_button_info.html">axButtonInfo</a>( \</div>
-<div class="line">                            axColor(0.5, 0.5, 0.5),\</div>
-<div class="line">                            axColor(0.6, 0.6, 0.6),\</div>
-<div class="line">                            axColor(0.4, 0.4, 0.4),\</div>
-<div class="line">                            axColor(0.5, 0.5, 0.5),\</div>
-<div class="line">                            axColor(0.0, 0.0, 0.0),\</div>
-<div class="line">                            axColor(0.0, 0.0, 0.0))</div>
-<div class="ttc" id="structax_button_info_html"><div class="ttname"><a href="structax_button_info.html">axButtonInfo</a></div><div class="ttdef"><b>Definition:</b> axButton.h:70</div></div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.5, 0.5, 0.5),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.6, 0.6, 0.6),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.4, 0.4, 0.4),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.5, 0.5, 0.5),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0),\</div>
+<div class="line"><a class="code" href="classax_color.html">axColor</a>(0.0, 0.0, 0.0))</div>
+<div class="ttc" id="structax_button_info_html"><div class="ttname"><a href="structax_button_info.html">axButtonInfo</a></div><div class="ttdef"><b>Definition:</b> axButton.h:92</div></div>
+<div class="ttc" id="classax_color_html"><div class="ttname"><a href="classax_color.html">axColor</a></div><div class="ttdef"><b>Definition:</b> axColor.h:31</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 13:11:22 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 10 2015 20:06:47 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

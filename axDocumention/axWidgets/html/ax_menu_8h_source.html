@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>axLib: axMenu.h Source File</title>
+<title>axLib: axWidgets/axMenu.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -65,13 +65,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -80,6 +79,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d36eaf78aeb856312aa0151ac91e286c.html">axWidgets</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">axMenu.h</div>  </div>
@@ -127,13 +131,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/********************************************************************************/</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classax_menu_node.html">   49</a></span>&#160;<span class="keyword">class </span><a class="code" href="classax_menu_node.html">axMenuNode</a>: <span class="keyword">public</span> axPanel</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classax_menu_node.html">   49</a></span>&#160;<span class="keyword">class </span><a class="code" href="classax_menu_node.html">axMenuNode</a>: <span class="keyword">public</span> <a class="code" href="classax_panel.html">axPanel</a></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Root Node.</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classax_menu_node.html#aa4d01471e8d425d4150277b6d69b8f36">axMenuNode</a>(axWindow* parent, <span class="keyword">const</span> axRect&amp; rect);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classax_menu_node.html">axMenuNode</a>(<a class="code" href="classax_window.html">axWindow</a>* parent, <span class="keyword">const</span> <a class="code" href="classax_template_rect.html">axRect</a>&amp; rect);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classax_menu_node.html#aa4d01471e8d425d4150277b6d69b8f36">axMenuNode</a>( <a class="code" href="classax_menu_node.html">axMenuNode</a>* parent,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classax_menu_node.html">axMenuNode</a>( <a class="code" href="classax_menu_node.html">axMenuNode</a>* parent,</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; label,</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordtype">string</span> img_path = <span class="stringliteral">&quot;&quot;</span>,</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                axMenuNodeSelectionMode mode = axMENU_SELECT_ANY );</div>
@@ -150,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">/********************************************************************************/</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    axPoint <a class="code" href="classax_menu_node.html#af2d2e8628b3b4e594a18b9e017e5297f">GetButtomPosition</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classax_template2_d_point.html">axPoint</a> <a class="code" href="classax_menu_node.html#af2d2e8628b3b4e594a18b9e017e5297f">GetButtomPosition</a>();</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span> GetDelta()</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
@@ -159,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    axMenuNodeSelectionMode m_select_mode;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    axImage* m_img;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="classax_image.html">axImage</a>* m_img;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">string</span> m_label;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">int</span> m_nCurrentImg;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> m_delta;</div>
@@ -183,16 +187,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> axMENU_NODE_HEIGHT = 25;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> ResizeNode();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnMouseLeftDown(<span class="keyword">const</span> axPoint&amp; pos);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnMouseLeftDown(<span class="keyword">const</span> <a class="code" href="classax_template2_d_point.html">axPoint</a>&amp; pos);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">void</span> OnPaint();</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/********************************************************************************/</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="classax_menu.html">  133</a></span>&#160;<span class="keyword">class </span><a class="code" href="classax_menu.html">axMenu</a>: <span class="keyword">public</span> axPanel</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="classax_menu.html">  133</a></span>&#160;<span class="keyword">class </span><a class="code" href="classax_menu.html">axMenu</a>: <span class="keyword">public</span> <a class="code" href="classax_panel.html">axPanel</a></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="classax_menu.html#a88acf9d98750a7dba495922ccf54a5b8">axMenu</a>(axWindow* parent, <span class="keyword">const</span> axRect&amp; rect);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="classax_menu.html">axMenu</a>(<a class="code" href="classax_window.html">axWindow</a>* parent, <span class="keyword">const</span> <a class="code" href="classax_template_rect.html">axRect</a>&amp; rect);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// axMenu(axApp* app, axWindow* parent, const axRect&amp; rect, string test);</span></div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">bool</span> AddRootNode(<a class="code" href="classax_menu_node.html">axMenuNode</a>* node);</div>
@@ -203,16 +207,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;};</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#endif // __AX_MENU__</span></div>
+<div class="ttc" id="classax_image_html"><div class="ttname"><a href="classax_image.html">axImage</a></div><div class="ttdef"><b>Definition:</b> axImage.h:68</div></div>
+<div class="ttc" id="classax_panel_html"><div class="ttname"><a href="classax_panel.html">axPanel</a></div><div class="ttdef"><b>Definition:</b> axPanel.h:31</div></div>
+<div class="ttc" id="classax_template2_d_point_html"><div class="ttname"><a href="classax_template2_d_point.html">axTemplate2DPoint&lt; axInt &gt;</a></div></div>
+<div class="ttc" id="classax_template_rect_html"><div class="ttname"><a href="classax_template_rect.html">axTemplateRect&lt; axPoint, axSize, axInt &gt;</a></div></div>
 <div class="ttc" id="classax_menu_node_html"><div class="ttname"><a href="classax_menu_node.html">axMenuNode</a></div><div class="ttdef"><b>Definition:</b> axMenu.h:49</div></div>
-<div class="ttc" id="classax_menu_node_html_af2d2e8628b3b4e594a18b9e017e5297f"><div class="ttname"><a href="classax_menu_node.html#af2d2e8628b3b4e594a18b9e017e5297f">axMenuNode::GetButtomPosition</a></div><div class="ttdeci">axPoint GetButtomPosition()</div><div class="ttdoc">Return buttom left position of the last node. Is used to place new node. </div><div class="ttdef"><b>Definition:</b> axMenu.cpp:145</div></div>
+<div class="ttc" id="classax_menu_node_html_af2d2e8628b3b4e594a18b9e017e5297f"><div class="ttname"><a href="classax_menu_node.html#af2d2e8628b3b4e594a18b9e017e5297f">axMenuNode::GetButtomPosition</a></div><div class="ttdeci">axPoint GetButtomPosition()</div><div class="ttdoc">Return buttom left position of the last node. Is used to place new node. </div></div>
 <div class="ttc" id="classax_menu_html"><div class="ttname"><a href="classax_menu.html">axMenu</a></div><div class="ttdef"><b>Definition:</b> axMenu.h:133</div></div>
-<div class="ttc" id="classax_menu_node_html_aa4d01471e8d425d4150277b6d69b8f36"><div class="ttname"><a href="classax_menu_node.html#aa4d01471e8d425d4150277b6d69b8f36">axMenuNode::axMenuNode</a></div><div class="ttdeci">axMenuNode(axWindow *parent, const axRect &amp;rect)</div><div class="ttdef"><b>Definition:</b> axMenu.cpp:28</div></div>
-<div class="ttc" id="classax_menu_node_html_a5c478eaf3e83539b72243fdd29299272"><div class="ttname"><a href="classax_menu_node.html#a5c478eaf3e83539b72243fdd29299272">axMenuNode::AddSubNode</a></div><div class="ttdeci">void AddSubNode(axMenuNode *node)</div><div class="ttdoc">Add a node to a parent node !IMPORTANT! Always add parent node to his parent before adding child node...</div><div class="ttdef"><b>Definition:</b> axMenu.cpp:68</div></div>
-<div class="ttc" id="classax_menu_html_a88acf9d98750a7dba495922ccf54a5b8"><div class="ttname"><a href="classax_menu.html#a88acf9d98750a7dba495922ccf54a5b8">axMenu::axMenu</a></div><div class="ttdeci">axMenu(axWindow *parent, const axRect &amp;rect)</div><div class="ttdef"><b>Definition:</b> axMenu.cpp:203</div></div>
+<div class="ttc" id="classax_window_html"><div class="ttname"><a href="classax_window.html">axWindow</a></div><div class="ttdef"><b>Definition:</b> axWindow.h:36</div></div>
+<div class="ttc" id="classax_menu_node_html_a5c478eaf3e83539b72243fdd29299272"><div class="ttname"><a href="classax_menu_node.html#a5c478eaf3e83539b72243fdd29299272">axMenuNode::AddSubNode</a></div><div class="ttdeci">void AddSubNode(axMenuNode *node)</div><div class="ttdoc">Add a node to a parent node !IMPORTANT! Always add parent node to his parent before adding child node...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 13:51:52 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 10 2015 20:20:14 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -25,12 +25,13 @@
 /// @defgroup Widgets
 /// @{
 
-/// @defgroup Grid
+/// @defgroup Knob
 /// @{
 
 #include "axWindow.h"
 #include "axImage.h"
 #include "axWidget.h"
+#include "axObjectLoader.h"
 
 /**************************************************************************//**
  * axKnobMsg
@@ -98,6 +99,48 @@ struct axKnobInfo
                 bgColorNormal( bg_normalColor ),
                 bgColorHover( bg_hoverColor ),
                 bgColorClicked( bg_clickingColor ){}
+    
+    axKnobInfo(){}
+
+    axKnobInfo(const std::string& path)
+    {
+        axWidgetLoader loader;
+        axVectorPairString att = loader.GetAttributes(path);
+
+        for(auto& n : att)
+        {
+            if(n.first == "normal")
+            {
+                bgColorNormal.LoadFromString(n.second);
+            }
+            else if(n.first == "hover")
+            {
+                bgColorHover.LoadFromString(n.second);
+            }
+            else if(n.first == "clicking")
+            {
+                bgColorClicked.LoadFromString(n.second);
+            }
+            else if(n.first == "nknob")
+            {
+                n_knob = stoi(n.second);
+            }
+            else if(n.first == "knob_size")
+            {
+                axStringVector strVec;
+                strVec = GetVectorFromStringDelimiter(n.second, ",");
+                knob_size = axSize(stoi(strVec[0]), stoi(strVec[1]));
+            }
+            else if(n.first == "img")
+            {
+                img_path = n.second;
+            }
+            else if(n.first == "selected_img")
+            {
+                selected_img_path = n.second;
+            }
+        }
+    }
 };
 
 /********************************************************************************//**
@@ -138,6 +181,17 @@ public:
         _flags(flags),
         _direction(direction),
         _nextPositionDelta(nextPositionDelta),
+        _pastKnob(nullptr)
+        
+        {
+            
+        }
+        
+        axKnobBuilder(axWindow* parent,
+                      axFlag flags = 0,
+                      int nextPositionDelta = 5,
+                      axDirection direction = axDIRECTION_RIGHT):
+        _parent(parent),
         _pastKnob(nullptr)
         
         {
@@ -198,6 +252,51 @@ public:
             
             return nullptr;
         }
+        
+        axKnob* Create(axVectorPairString attributes)
+        {
+            std::string name;
+            axPoint pos;
+            axKnobEvents evts;
+            for(auto& s : attributes)
+            {
+                if(s.first == "name")
+                {
+                    name = s.second;
+                }
+                else if(s.first == "rect")
+                {
+                    axStringVector strVec;
+                    strVec = GetVectorFromStringDelimiter(s.second, ",");
+                    
+                    pos = axPoint(stoi(strVec[0]),
+                                  stoi(strVec[1]));
+                    
+                    _size = axSize(stoi(strVec[2]),
+                                   stoi(strVec[3]));
+                }
+                else if(s.first == "info")
+                {
+                    _info = axKnobInfo(s.second);
+                }
+                else if(s.first == "flags")
+                {
+                    _flags = stoi(s.second);
+                }
+                else if(s.first == std::string("event"))
+                {
+                    evts.value_change = _parent->GetEventFunction(s.second);
+                }
+                
+            }
+            
+            axKnob* knob = new axKnob(_parent, axRect(pos, _size),
+                                               evts, _info);
+
+            _parent->GetResourceManager()->Add(name, knob);
+            return knob;
+        }
+
         
     private:
         axWindow* _parent;

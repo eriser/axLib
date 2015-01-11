@@ -97,7 +97,7 @@ struct axDropMenuEvents
     enum : axEventId { SELECTION_CHANGE };
     
     axDropMenuEvents(){}
-    axDropMenuEvents(axEventFunction& fct){ selection_change = fct; }
+    axDropMenuEvents(const axEventFunction& fct){ selection_change = fct; }
     
     axEventFunction selection_change;
 };

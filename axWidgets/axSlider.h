@@ -19,8 +19,15 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_SLIDER__
 #define __AX_SLIDER__
+
+/// @defgroup Widgets
+/// @{
+
+/// @defgroup Slider
+/// @{
 
 #include "axEvent.h"
 #include "axPanel.h"
@@ -320,4 +327,6 @@ protected:
 	axColor("#000000"), \
 	5)
 
+/// @}
+/// @}
 #endif // __AX_SLIDER__

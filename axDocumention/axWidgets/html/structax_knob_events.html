@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,9 +86,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structax_knob_events-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">axKnobEvents Struct Reference<div class="ingroups"><a class="el" href="group___widgets.html">Widgets</a> &raquo; <a class="el" href="group___grid.html">Grid</a></div></div>  </div>
+<div class="title">axKnobEvents Struct Reference<div class="ingroups"><a class="el" href="group___widgets.html">Widgets</a> &raquo; <a class="el" href="group___knob.html">Knob</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -96,22 +97,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afbf41f0bcb4b3f0f759593c0efa90ff6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afbf41f0bcb4b3f0f759593c0efa90ff6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axEvtFunction</b> (<a class="el" href="classax_knob_msg.html">axKnobMsg</a>) value_change</td></tr>
-<tr class="separator:afbf41f0bcb4b3f0f759593c0efa90ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3c24b026be646ec2b89baf6d96d6554"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad3c24b026be646ec2b89baf6d96d6554"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>axKnobEvents</b> (axEvtFunction(<a class="el" href="classax_knob_msg.html">axKnobMsg</a>)&amp;fct)</td></tr>
-<tr class="separator:ad3c24b026be646ec2b89baf6d96d6554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4241013bd3816bd66b2149495320139"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4241013bd3816bd66b2149495320139"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>axKnobEvents</b> (const axEventFunction &amp;fct)</td></tr>
+<tr class="separator:aa4241013bd3816bd66b2149495320139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ac9b4a4451f6fc1206b0412d69ed19d09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9b4a4451f6fc1206b0412d69ed19d09"></a>
+axEventFunction&#160;</td><td class="memItemRight" valign="bottom"><b>value_change</b></td></tr>
+<tr class="separator:ac9b4a4451f6fc1206b0412d69ed19d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structax_knob_events.html">axKnobEvents</a>. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="ax_knob_8h_source.html">axKnob.h</a></li>
+<li>axWidgets/<a class="el" href="ax_knob_8h_source.html">axKnob.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 13:51:53 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 10 2015 20:20:20 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

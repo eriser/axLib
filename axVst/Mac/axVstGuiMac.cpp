@@ -22,6 +22,7 @@
 #include "axVstGuiMac.h"
 #include "axApp.h"
 #include "axCocoaInterfaceMac.h"
+#include "axVst.h"
 
 axVstGuiMac::axVstGuiMac(AudioEffect* effect):
 axVstGui(effect)
@@ -39,14 +40,16 @@ bool axVstGuiMac::open(void* ptr)
     {
         _isFirstTimeVstGUIOpen = false;
         
-        if(getEffect()->getProgram() == 1)
+//        if(getEffect()->getProgram() == 1)
+        if(curVst->GetPluginId() == 1)
         {
             _pluginHasBeenOpenOnHostInit = true;
         }
     }
     
     //    int pluginIndex = getEffect()->getProgram() - 1;
-    int pluginIndex = getEffect()->getProgram();
+//    int pluginIndex = getEffect()->getProgram();
+    int pluginIndex = curVst->GetPluginId();
     
     if(_pluginHasBeenOpenOnHostInit == true)
     {

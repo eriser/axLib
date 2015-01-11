@@ -19,10 +19,14 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_SCROLL_BAR__
 #define __AX_SCROLL_BAR__
 
 /// @defgroup Widgets
+/// @{
+
+/// @defgroup ScrollBar
 /// @{
 
 #include "axEvent.h"
@@ -163,6 +167,7 @@ private:
 	virtual void OnMouseLeave();
 };
 
+/// @}
 /// @}
 #endif //__AX_SCROLL_BAR__
 

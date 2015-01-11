@@ -28,7 +28,8 @@ _rect(rect),
 _isHidden(false),
 _isPopup(false),
 _isBlockDrawing(false),
-_shownRect(axPoint(0, 0), rect.size)
+_shownRect(axPoint(0, 0), rect.size),
+_isSelectable(true)
 {
 	if (parent == nullptr)
 	{
@@ -63,7 +64,7 @@ bool axWindow::IsShown() const
     
     while(win != nullptr)
     {
-        if(win->_isHidden)
+        if(win->_isHidden == true)
         {
             return false;
         }
@@ -91,6 +92,9 @@ void axWindow::Hide()
         _isHidden = true;
         Update();
     }
+    
+//    _isHidden = true;
+//    Update();
 }
 
 void axWindow::Reparent(axWindow* parent, const axPoint& position)

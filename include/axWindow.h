@@ -28,6 +28,7 @@
 #include "axObject.h"
 #include "axC++.h"
 #include "axGC.h"
+#include "axResourceManager.h"
 
 class axApp;
 
@@ -104,6 +105,16 @@ public:
 		return _isPopup;
 	}
     
+    void SetSelectable(const bool& selectable)
+    {
+        _isSelectable = selectable;
+    }
+    
+    bool IsSelectable() const
+    {
+        return _isSelectable;
+    }
+    
     bool IsBlockDrawing() const
     {
         return _isBlockDrawing;
@@ -113,7 +124,30 @@ public:
     {
         _isBlockDrawing = block;
     }
+    
+    void AddEventFunction(const std::string& name, axEventFunction fct)
+    {
+        _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
+    }
+    
+    axEventFunction GetEventFunction(const std::string& name)
+    {
+        std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
+        
+        if(it != _evtMap.end())
+        {
+            return it->second;
+        }
+        
+        std::cerr << "Function : " << name << " doesn't exist." << std::endl;
+        return nullptr;
+    }
 
+    axResourceManager* GetResourceManager()
+    {
+        return &_resourceManager;
+    }
+    
 protected:
 	bool _isPopup;
     
@@ -125,8 +159,12 @@ private:
 	bool _isHidden, _isBlockDrawing;
 	axPoint _scrollDecay;
     axRect _shownRect;
+    bool _isSelectable;
 	
 	GLuint _texture;
+    
+    std::map<std::string, axEventFunction> _evtMap;
+    axResourceManager _resourceManager;
 };
 
 /// @}

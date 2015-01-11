@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getbuttomposition',['GetButtomPosition',['../classax_menu_node.html#af2d2e8628b3b4e594a18b9e017e5297f',1,'axMenuNode']]]
+  ['drawlinecubic',['DrawLineCubic',['../classax_g_c.html#a9c4de66a526e3e988856cb18c9bca628',1,'axGC']]]
 ];

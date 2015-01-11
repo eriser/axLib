@@ -72,6 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_vars.html"><span>Variables</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -80,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,23 +95,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>AddSubNode()
 : <a class="el" href="classax_menu_node.html#a5c478eaf3e83539b72243fdd29299272">axMenuNode</a>
 </li>
-<li>axKnob()
-: <a class="el" href="classax_knob.html#a8e180c6e9d4b7887f123497a1a4776a1">axKnob</a>
+<li>axLabelInfo()
+: <a class="el" href="structax_label_info.html#a0ab5ea8dd4874bf678b5d59dbdae3c7e">axLabelInfo</a>
 </li>
-<li>axMenu()
-: <a class="el" href="classax_menu.html#a88acf9d98750a7dba495922ccf54a5b8">axMenu</a>
+<li>DrawLineCubic()
+: <a class="el" href="classax_g_c.html#a9c4de66a526e3e988856cb18c9bca628">axGC</a>
 </li>
-<li>axMenuNode()
-: <a class="el" href="classax_menu_node.html#aa4d01471e8d425d4150277b6d69b8f36">axMenuNode</a>
+<li>FindMousePosition()
+: <a class="el" href="classax_window_tree.html#ae1ca7964e6321556f7c82eabe44cc0d7">axWindowTree</a>
+</li>
+<li>Get()
+: <a class="el" href="classax_window_tree.html#a697eda60f6df79bca4aae0b3f20f9a62">axWindowTree</a>
 </li>
 <li>GetButtomPosition()
 : <a class="el" href="classax_menu_node.html#af2d2e8628b3b4e594a18b9e017e5297f">axMenuNode</a>
+</li>
+<li>GetIsPopup()
+: <a class="el" href="classax_window.html#a49f80d7bd8b6ab9c590ad5ece44b0c07">axWindow</a>
+</li>
+<li>GetWindowParents()
+: <a class="el" href="classax_window_tree.html#a553a56d12da16d1995f9758e33be8b50">axWindowTree</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 13:51:53 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 10 2015 20:20:23 for axLib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

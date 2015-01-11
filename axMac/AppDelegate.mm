@@ -353,7 +353,7 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     else
     {
         // Is only gonna draw if necessary.
-        axApp::MainInstance->GetCore()->DrawGLScene();
+        core->DrawGLScene();
         glFlush();
     }
 

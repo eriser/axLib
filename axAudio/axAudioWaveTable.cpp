@@ -27,9 +27,14 @@ axAudioWaveTable::axAudioWaveTable(axAudioBuffer* buffer)
     
     axFloat* bufferData = buffer->GetBuffer();
     
+    
+//    std::cout << std::endl << std::endl << "axAudioWaveTable : " << std::endl;
     for(int i = 0; i < _bufferSize; i++)
     {
         _data[i] = bufferData[i];
+        
+//        if(i < 20)
+//            std::cout << "Copy data : " << _data[i] << std::endl;
     }
     
     _data[_bufferSize] = bufferData[0];
@@ -114,7 +119,7 @@ double axAudioWaveTable::WaveInterpole(const double& freq,
     
     //PHASOR --> A CHANGER ( ENLEVER FMOD )
     double v = 1.0 - _cPhase * axINVTWOPI;
-    _cPhase += ((two_pi / 44100.0) * (_freq + phase));
+    _cPhase += ((two_pi / 44100.0) * (freq + phase));
     
     if(_cPhase > two_pi)
     {
@@ -134,19 +139,34 @@ double axAudioWaveTable::WaveInterpole(const double& freq,
 
 void axAudioWaveTable::ProcessSample(float* out)
 {
-    *out = WaveInterpole(200.0, _bufferSize, 0);
+    *out = WaveInterpole(_freq, _bufferSize, 0);
+}
+
+void axAudioWaveTable::ProcessSample(float* out, float* freq)
+{
+    *out = WaveInterpole(*freq, _bufferSize, 0);
 }
 
 void axAudioWaveTable::ProcessSample(double* out)
 {
-    *out = WaveInterpole(200.0, _bufferSize, 0);
+    *out = WaveInterpole(_freq, _bufferSize, 0);
+}
+
+void axAudioWaveTable::ProcessSample(double* out, double* freq)
+{
+    *out = WaveInterpole(*freq, _bufferSize, 0);
+}
+
+double axAudioWaveTable::GetFreq() const
+{
+    return _freq;
 }
 
 void axAudioWaveTable::ProcessBlock(float* out, unsigned long frameCount)
 {
     for(int i = 0; i < frameCount; i++)
     {
-        double v = WaveInterpole(200.0, _bufferSize, 0);
+        double v = WaveInterpole(_freq, _bufferSize, 0);
 
         *out++ = v;
         *out++ = v;
