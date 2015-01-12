@@ -19,8 +19,16 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_TOGGLE__
 #define __AX_TOGGLE__
+
+/*******************************************************************************
+ * @file    axToggle
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   axToggle.
+ * @date    19/07/2013
+ ******************************************************************************/
 
 /// @defgroup Widgets
 /// @{
@@ -36,336 +44,122 @@
 #include "axMsg.h"
 #include <fstream>
 
-
-/**************************************************************************//**
- * axToggleFlags.
-******************************************************************************/
-#define axTOGGLE_SINGLE_IMG	axFLAG_1
-#define axTOGGLE_IMG_RESIZE	axFLAG_2
-#define axTOGGLE_CLICK_ON_LEFT_DOWN axFLAG_3
-#define axTOGGLE_CANT_UNSELECT_WITH_MOUSE axFLAG_4
-
-class axToggle;
-
-class axToggleMsg : public axMsg
-{
-public:
-	axToggleMsg()
-	{
-		_sender = nullptr;
-	}
-
-	axToggleMsg(axToggle* sender, const bool& selected)
-	{
-		_sender = sender;
-		_selected = selected;
-        _msg = std::string("");
-	}
-    
-    axToggleMsg(axToggle* sender, const bool& selected, const std::string& msg)
-    {
-        _sender = sender;
-        _selected = selected;
-        _msg = msg;
-    }
-
-	axToggle* GetSender() const
-	{
-		return _sender;
-	}
-    
-    bool GetSelected() const
-    {
-        return _selected;
-    }
-    
-    string GetMsg() const
-    {
-        return _msg;
-    }
-    
-    axMsg* GetCopy()
-    {
-        return new axToggleMsg(*this);
-    }
-
-private:
-	axToggle* _sender;
-    bool _selected;
-    std::string _msg;
-};
-
-struct axToggleEvents
-{
-    enum : axEventId { BUTTON_CLICK };
-    
-	axEventFunction button_click;
-	
-	axToggleEvents(){}
-	axToggleEvents(const axEventFunction& fct){ button_click = fct; }
-};
-
-struct axToggleInfo
-{
-	axColor normal;
-	axColor hover;
-	axColor clicking;
-    
-	axColor selected;
-    axColor selected_hover;
-    axColor selected_clicking;
-    
-    /// @todo Add select font color to axToggle.
-    axColor selected_font_color;
-    
-	axColor contour;
-	axColor font_color;
-
-	axToggleInfo(){}
-	axToggleInfo(
-		const axColor& normal_color,
-		const axColor& hover_color,
-		const axColor& clicked_color,
-		const axColor& selected_color,
-        const axColor& selectedHover_color,
-        const axColor& selectedClicking_color,
-		const axColor& contour_color,
-		const axColor& font_color_) :
-		normal(normal_color),
-		hover(hover_color),
-		clicking(clicked_color),
-		selected(selected_color),
-        selected_hover(selectedHover_color),
-        selected_clicking(selectedClicking_color),
-		contour(contour_color),
-		font_color(font_color_){}
-
-    void SerializeOutput(const std::string& path)
-    {
-        fstream file;
-        file.open(path, std::fstream::out | std::fstream::binary);
-        
-        if (file.fail())
-        {
-            std::cerr << "Problem opening file " << path << std::endl;
-        }
-        else
-        {
-            normal.SerializeOutput(file);
-            hover.SerializeOutput(file);
-            clicking.SerializeOutput(file);
-            
-            selected.SerializeOutput(file);
-            selected_hover.SerializeOutput(file);
-            selected_clicking.SerializeOutput(file);
-            
-            contour.SerializeOutput(file);
-            font_color.SerializeOutput(file);
-        }
-    }
-    
-    void SerializeInput(const std::string& path)
-    {
-        fstream file;
-        file.open(path, std::fstream::in | std::fstream::binary);
-        
-        if (file.fail())
-        {
-            std::cerr << "Problem opening file " << path << std::endl;
-        }
-        else
-        {
-            normal.SerializeInput(file);
-            hover.SerializeInput(file);
-            clicking.SerializeInput(file);
-            
-            selected.SerializeInput(file);
-            selected_hover.SerializeInput(file);
-            selected_clicking.SerializeInput(file);
-            
-            contour.SerializeInput(file);
-            font_color.SerializeInput(file);
-        }
-    }
-};
-
-#define axSTANDARD_TOGGLE 	axToggleInfo( \
-							axColor(0.5, 0.5, 0.5),\
-							axColor(0.6, 0.6, 0.6),\
-							axColor(0.4, 0.4, 0.4),\
-							axColor(0.5, 0.5, 0.5),\
-							axColor(0.0, 0.0, 0.0),\
-							axColor(0.0, 0.0, 0.0)) 
-
-#define axTOGGLE_TRANSPARENT 	axToggleInfo( \
-axColor(0.5, 0.5, 0.5, 0.0),\
-axColor(0.6, 0.6, 0.6, 0.0),\
-axColor(0.4, 0.4, 0.4, 0.0),\
-axColor(0.5, 0.5, 0.5, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 1.0))
-
+/*******************************************************************************
+ * axToggle.
+ ******************************************************************************/
 class axToggle : public axPanel
 {
 public:
-	axToggle(axWindow* parent,
-             const axRect& rect,
-             const axToggleEvents& events,
-             const axToggleInfo& info,
-             string img_path = "",
-             string label = "",
-             axFlag flags = 0,
-             string msg = "");
-
-	void SetBackgroundAlpha(const float& alpha);
-
-	void SetMsg(const string& msg);
-	void SetSelected(const bool& selected);
-    
-    class axToggleBuilder
+    /***************************************************************************
+     * axToggle::Flags.
+     **************************************************************************/
+    class Flags
     {
     public:
-        axToggleBuilder(axPanel* parent,
-                        const axSize& size,
-                        const axToggleInfo& info,
-                        string img_path = "",
-                        string label = "",
-                        axFlag flags = 0,
-                        int nextPositionDelta = 5,
-                        axDirection direction = axDIRECTION_RIGHT):
-        _parent(parent),
-        _size(size),
-        _info(info),
-        _img(img_path),
-        _label(label),
-        _flags(flags),
-        _direction(direction),
-        _nextPositionDelta(nextPositionDelta),
-        _past(nullptr)
-        {
-            
-        }
+        static const axFlag SINGLE_IMG;
+        static const axFlag IMG_RESIZE;
+        static const axFlag CLICK_ON_LEFT_DOWN;
+        static const axFlag CANT_UNSELECT_WITH_MOUSE;
+    };
+    
+    /***************************************************************************
+     * axToggle::Msg.
+     **************************************************************************/
+    class Msg : public axMsg
+    {
+    public:
+        Msg();
         
-        axToggleBuilder(axWindow* win):
-        _parent(win),
-        _past(nullptr)
-        {
-            
-        }
+        Msg(axToggle* sender, const bool& selected);
         
-        axToggle* Create(axVectorPairString attributes)
-        {
-            std::string name;
-            axPoint pos;
-            axToggleEvents evts;
-            for(auto& s : attributes)
-            {
-                if(s.first == "name")
-                {
-                    name = s.second;
-                }
-                else if(s.first == "rect")
-                {
-                    axStringVector strVec;
-                    strVec = GetVectorFromStringDelimiter(s.second, ",");
-                    
-                    pos = axPoint(stoi(strVec[0]),
-                                  stoi(strVec[1]));
-                    
-                    _size = axSize(stoi(strVec[2]),
-                                   stoi(strVec[3]));
-                }
-                else if(s.first == "info")
-                {
-                    _info.SerializeInput(s.second);
-                }
-                else if(s.first == "label")
-                {
-                    _label = s.second;
-                }
-                else if(s.first == "flags")
-                {
-                    _flags = stoi(s.second);
-                }
-                else if(s.first == std::string("event"))
-                {
-                    evts.button_click = _parent->GetEventFunction(s.second);
-                }
-
-            }
-            
-            axToggle* tog = new axToggle(_parent, axRect(pos, _size),
-                                         evts,
-                                         _info, _img, _label);
-            
-            _parent->GetResourceManager()->Add(name, tog);
-            return tog;
-
-        }
+        Msg(axToggle* sender, const bool& selected, const std::string& msg);
         
-        axToggle* Create(const axPoint& pos, const axEventFunction& evt)
-        {
-//            return _pastKnob = new axKnob(_parent, axRect(pos, _size), evt,
-//                                          _info, _flags);
-            return nullptr;
-        }
+        axToggle* GetSender() const;
         
-        axToggle* Create(const axPoint& pos)
-        {
-//            axKnobEvents evts;
-//            return _pastKnob = new axKnob(_parent, axRect(pos, _size), evts,
-//                                          _info, _flags);
-            return nullptr;
-
-        }
+        bool GetSelected() const;
         
-        axToggle* Create(const axEventFunction& evt)
-        {
-//            if(_pastKnob != nullptr)
-//            {
-//                if(_direction == axDIRECTION_RIGHT)
-//                {
-//                    axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
-//                    return _pastKnob = new axKnob(_parent, axRect(pos, _size), evt,
-//                                                  _info, _flags);
-//                }
-//                else if(_direction == axDIRECTION_DOWN)
-//                {
-//                    
-//                }
-//                else if(_direction == axDIRECTION_LEFT)
-//                {
-//                    
-//                }
-//                
-//                else //axDIRECTION_UP
-//                {
-//                    
-//                }
-//                
-//            }
-            
-            return nullptr;
-        }
+        string GetMsg() const;
         
-        axToggle* Create()
-        {
-//            if(_pastKnob != nullptr)
-//            {
-//                axKnobEvents evts;
-//                axPoint pos(_pastKnob->GetNextPosRight(_nextPositionDelta));
-//                return _pastKnob = new axKnob(_parent, axRect(pos, _size),
-//                                              evts, _info, _flags);
-//            }
-//            
-            return nullptr;
-        }
+        axMsg* GetCopy();
         
     private:
+        axToggle* _sender;
+        bool _selected;
+        std::string _msg;
+    };
+    
+    /***************************************************************************
+     * axToggle::Events.
+     **************************************************************************/
+    class Events
+    {
+    public:
+        enum : axEventId { BUTTON_CLICK };
+        
+        axEventFunction button_click;
+        
+        Events(){}
+        Events(const axEventFunction& fct){ button_click = fct; }
+    };
+    
+    /***************************************************************************
+     * axToggle::Info.
+     **************************************************************************/
+    class Info
+    {
+    public:
+        Info();
+        
+        Info(const axColor& normal_color,
+             const axColor& hover_color,
+             const axColor& clicked_color,
+             const axColor& selected_color,
+             const axColor& selectedHover_color,
+             const axColor& selectedClicking_color,
+             const axColor& contour_color,
+             const axColor& font_color_);
+        
+        void SerializeOutput(const std::string& path);
+        
+        void SerializeInput(const std::string& path);
+        
+        axColor normal;
+        axColor hover;
+        axColor clicking;
+        
+        axColor selected;
+        axColor selected_hover;
+        axColor selected_clicking;
+        
+        /// @todo Add select font color to axToggle.
+        axColor selected_font_color;
+        
+        axColor contour;
+        axColor font_color;
+    };
+    
+    /***************************************************************************
+     * axToggle::Builder.
+     **************************************************************************/
+    class Builder
+    {
+    public:
+        Builder(axPanel* parent,
+                const axSize& size,
+                const axToggle::Info& info,
+                string img_path = "",
+                string label = "",
+                axFlag flags = 0,
+                int nextPositionDelta = 5,
+                axDirection direction = axDIRECTION_RIGHT);
+        
+        Builder(axWindow* win);
+        
+        axToggle* Create(axVectorPairString attributes);
+    
+    private:
         axWindow* _parent;
-        axToggleInfo _info;
+        axToggle::Info _info;
         std::string _label;
         std::string _img;
         axFlag _flags;
@@ -375,14 +169,30 @@ public:
         axDirection _direction;
     };
     
+    /***************************************************************************
+     * axToggle::axToggle.
+     **************************************************************************/
+    axToggle(axWindow* parent,
+             const axRect& rect,
+             const axToggle::Events& events,
+             const axToggle::Info& info,
+             string img_path = "",
+             string label = "",
+             axFlag flags = 0,
+             string msg = "");
+    
+    void SetBackgroundAlpha(const float& alpha);
+    
+    void SetMsg(const string& msg);
+    void SetSelected(const bool& selected);
 
 private:
-	axToggleEvents _events;
-	axToggleInfo _info;
+    axToggle::Events _events;
+    axToggle::Info _info;
 	axColor* _currentColor;
 	axImage* _btnImg;
-	string _label;
-	string _msg;
+    std::string _label;
+    std::string _msg;
 	
 	bool _selected;
 	axFlag _flags;
@@ -399,13 +209,31 @@ private:
 
 	int _nCurrentImg;
 
-	axEvent OnPaint();
-	axEvent OnMouseLeftDown(const axPoint& pos);
-	axEvent OnMouseLeftUp(const axPoint& pos);
-	axEvent OnMouseEnter();
-	axEvent OnMouseLeave();
+    // Events.
+	virtual void OnPaint();
+	virtual void OnMouseLeftDown(const axPoint& pos);
+	virtual void OnMouseLeftUp(const axPoint& pos);
+	virtual void OnMouseEnter();
+	virtual void OnMouseLeave();
 };
 
+#define axSTANDARD_TOGGLE 	axToggleInfo( \
+axColor(0.5, 0.5, 0.5),\
+axColor(0.6, 0.6, 0.6),\
+axColor(0.4, 0.4, 0.4),\
+axColor(0.5, 0.5, 0.5),\
+axColor(0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0))
+
+#define axTOGGLE_TRANSPARENT 	axToggleInfo( \
+axColor(0.5, 0.5, 0.5, 0.0),\
+axColor(0.6, 0.6, 0.6, 0.0),\
+axColor(0.4, 0.4, 0.4, 0.0),\
+axColor(0.5, 0.5, 0.5, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 0.0),\
+axColor(0.0, 0.0, 0.0, 1.0))
 
 /// @}
 /// @}

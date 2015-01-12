@@ -132,8 +132,8 @@ private:
 	int _index;
 	axToggle* _lastSelected;
 
-	axEVENT_ACCESSOR(axToggleMsg, OnButtonClick);
-	void OnButtonClick(const axToggleMsg& msg);
+    axEVENT_ACCESSOR(axToggle::Msg, OnButtonClick);
+    void OnButtonClick(const axToggle::Msg& msg);
 
 	virtual void OnPaint();
 	virtual void OnMouseMotion(const axPoint& pos);

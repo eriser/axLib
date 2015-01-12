@@ -40,10 +40,10 @@ _lastSelected(nullptr)
 {
 	axSize tog_size(rect.size.x, LABEL_HEIGHT);
 
-	axToggleEvents tog_event;
+    axToggle::Events tog_event;
     tog_event.button_click = GetOnButtonClick();
     
-    axToggleInfo tog_info;
+    axToggle::Info tog_info;
     tog_info.normal = axColor(0.8, 0.8, 0.8, 0.6);
     tog_info.hover = axColor(0.9, 0.9, 0.9, 0.6);
     tog_info.clicking = axColor(0.7, 0.7, 0.7, 0.6);
@@ -60,7 +60,7 @@ _lastSelected(nullptr)
 		_btns.push_back(new axToggle(this,
 						axRect(axPoint(0, i * LABEL_HEIGHT), tog_size),
 						tog_event, tog_info, bgImg, _labels[i],
-                        axTOGGLE_CANT_UNSELECT_WITH_MOUSE,
+                                     axToggle::Flags::CANT_UNSELECT_WITH_MOUSE,
                         _labels[i]));
 	}
 
@@ -96,7 +96,7 @@ void axPopupMenu::SetSelectedIndex(const int& index)
 
 }
 
-void axPopupMenu::OnButtonClick(const axToggleMsg& msg)
+void axPopupMenu::OnButtonClick(const axToggle::Msg& msg)
 {
 	if (_lastSelected == nullptr)
     {

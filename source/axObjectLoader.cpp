@@ -94,71 +94,24 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
                               (attr->name(), attr->value()));
         }
         
-        
         if(objNode->name() == std::string("axToggle"))
         {
-//            axVectorPairString objData;
-            
-//            for (xml_attribute<>* attr = objNode->first_attribute();
-//                 attr; attr = attr->next_attribute())
-//            {
-//                objData.push_back(std::pair<std::string, std::string>
-//                                  (attr->name(), attr->value()));
-//            }
-//            
-            axToggle::axToggleBuilder toggleBuilder(win);
+            axToggle::Builder toggleBuilder(win);
             toggleBuilder.Create(objData);
         }
         else if(objNode->name() == std::string("axNumberBox"))
         {
-//            std::cout << "axNumberBox" << std::endl;
-//            axVectorPairString objData;
-//            
-//            for (xml_attribute<>* attr = objNode->first_attribute();
-//                 attr; attr = attr->next_attribute())
-//            {
-//                objData.push_back(std::pair<std::string, std::string>
-//                                  (attr->name(), attr->value()));
-//            }
-            
-            axNumberBox::axNumberBoxBuilder builder(win);
+            axNumberBox::Builder builder(win);
             builder.Create(objData);
         }
         else if(objNode->name() == std::string("axKnob"))
         {
-            //            std::cout << "axNumberBox" << std::endl;
-//            axVectorPairString objData;
-//            
-//            for (xml_attribute<>* attr = objNode->first_attribute();
-//                 attr; attr = attr->next_attribute())
-//            {
-//                objData.push_back(std::pair<std::string, std::string>
-//                                  (attr->name(), attr->value()));
-//            }
-            
-            axKnob::axKnobBuilder builder(win);
+            axKnob::Builder builder(win);
             builder.Create(objData);
         }
-        
-        else if(objNode->name() == std::string("axKnob"))
-        {
-            //            std::cout << "axNumberBox" << std::endl;
-//            axVectorPairString objData;
-//            
-//            for (xml_attribute<>* attr = objNode->first_attribute();
-//                 attr; attr = attr->next_attribute())
-//            {
-//                objData.push_back(std::pair<std::string, std::string>
-//                                  (attr->name(), attr->value()));
-//            }
-            
-            axKnob::axKnobBuilder builder(win);
-            builder.Create(objData);
-        }
-        
         else if(objNode->name() == std::string("axLabel"))
         {
-            axLabel::axLabelBuilder builder(win);
+            axLabel::Builder builder(win);
             builder.Create(objData);
         }
         else if(objNode->name() == std::string("axStaticImage"))
@@ -166,6 +119,7 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
             axStaticImage::axStaticImageBuilder builder(win);
             builder.Create(objData);
         }
+        
         objNode = objNode->next_sibling();
     }
 

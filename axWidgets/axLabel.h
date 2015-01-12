@@ -34,58 +34,62 @@
 #include "axObjectLoader.h"
 
 /*******************************************************************************
- * axLabelInfo.
- ******************************************************************************/
-struct axLabelInfo
-{
-    axLabelInfo();
-    
-    axLabelInfo(const axColor& normal_color,
-                const axColor& contour_color,
-                const axColor& fontColor,
-                const int fontSize);
-    
-    /// Constructor with axObj xml file.
-    /// @param path Path of the xml file.
-    axLabelInfo(const std::string& path); 
-    
-    axColor normal;
-    axColor contour;
-    axColor font_color;
-    int font_size;
-    std::string font_name;
-};
-
-/*******************************************************************************
  * axLabel.
  ******************************************************************************/
 class axLabel: public axPanel
 {
 public:
-    axLabel(axWindow* parent,
-            const axRect& rect,
-            const axLabelInfo& info,
-            const std::string& label);
-    
     /***************************************************************************
-     * axLabelBuilder.
+     * axLabel::Info.
      **************************************************************************/
-    class axLabelBuilder
+    class Info
     {
     public:
-        axLabelBuilder(axWindow* win);
+        Info();
+        
+        Info(const axColor& normal_color,
+             const axColor& contour_color,
+             const axColor& fontColor,
+             const int fontSize);
+        
+        /// Constructor with axObj xml file.
+        /// @param path Path of the xml file.
+        Info(const std::string& path);
+        
+        axColor normal;
+        axColor contour;
+        axColor font_color;
+        int font_size;
+        std::string font_name;
+    };
+    
+    /***************************************************************************
+     * axLabel::Builder.
+     **************************************************************************/
+    class Builder
+    {
+    public:
+        Builder(axWindow* win);
         
         axLabel* Create(axVectorPairString attributes);
         
     private:
         axWindow* _parent;
-        axLabelInfo _info;
+        axLabel::Info _info;
         std::string _label;
         axSize _size;
     };
     
+    /***************************************************************************
+     * axLabel::axLabel.
+     **************************************************************************/
+    axLabel(axWindow* parent,
+            const axRect& rect,
+            const axLabel::Info& info,
+            const std::string& label);
+
 private:
-    axLabelInfo _info;
+    axLabel::Info _info;
     std::string _label;
     
     // Events.

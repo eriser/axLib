@@ -44,107 +44,111 @@
 #include "axMsg.h"
 
 /*******************************************************************************
- * axButonFlags.
- ******************************************************************************/
-#define axBUTTON_SINGLE_IMG	axFLAG_1
-#define axBUTTON_IMG_RESIZE	axFLAG_2
-#define axBUTTON_CAN_SELECTED axFLAG_3 // Not implemented yet.
-
-class axButton;
-
-/*******************************************************************************
- * axButonMsg.
- ******************************************************************************/
-class axButtonMsg : public axMsg
-{
-public:
-    axButtonMsg();
-    
-    axButtonMsg(axButton* sender, const string& msg);
-    
-    axButton* GetSender() const;
-    
-    string GetMsg() const;
-    
-    axMsg* GetCopy();
-    
-private:
-    axButton* _sender;
-    string _msg;
-};
-
-/*******************************************************************************
- * axButonEvents.
- ******************************************************************************/
-struct axButtonEvents
-{
-    enum : axEventId { BUTTON_CLICK };
-    
-	axButtonEvents(){}
-    axButtonEvents(const axEventFunction& fct){ button_click = fct; }
-    
-    axEventFunction button_click;
-};
-
-/*******************************************************************************
- * axButonInfo.
- ******************************************************************************/
-struct axButtonInfo
-{
-	axColor normal;
-	axColor hover;
-	axColor clicking;
-	axColor selected;
-	axColor contour;
-	axColor font_color;
-
-    axButtonInfo();
-    axButtonInfo(const axColor& normal_color,
-                 const axColor& hover_color,
-                 const axColor& clicked_color,
-                 const axColor& selected_color,
-                 const axColor& contour_color,
-                 const axColor& font_color);
-    
-    axButtonInfo(const std::string& path);
-
-    void SerializeOutput(const std::string& path);
-    
-    void SerializeInput(const std::string& path);
-};
-
-/*******************************************************************************
  * axButon.
  ******************************************************************************/
 class axButton : public axPanel
 {
 public:
+    /***************************************************************************
+     * axButton::Flags.
+     **************************************************************************/
+    class Flags
+    {
+    public:
+        static const axFlag SINGLE_IMG;
+        static const axFlag IMG_RESIZE;
+        static const axFlag CAN_SELECTED;
+    };
+    
+    /***************************************************************************
+     * axButton::Msg.
+     **************************************************************************/
+    class Msg : public axMsg
+    {
+    public:
+        Msg();
+        
+        Msg(axButton* sender, const std::string& msg);
+        
+        axButton* GetSender() const;
+        
+        std::string GetMsg() const;
+        
+        axMsg* GetCopy();
+        
+    private:
+        axButton* _sender;
+        std::string _msg;
+    };
+    
+    /***************************************************************************
+     * axButton::Events.
+     **************************************************************************/
+    class Events
+    {
+    public:
+        enum : axEventId { BUTTON_CLICK };
+        
+        Events(){}
+        Events(const axEventFunction& fct){ button_click = fct; }
+        
+        axEventFunction button_click;
+    };
+    
+    /***************************************************************************
+     * axButton::Info.
+     **************************************************************************/
+    class Info
+    {
+    public:
+        Info();
+        
+        Info(const axColor& normal_color,
+             const axColor& hover_color,
+             const axColor& clicked_color,
+             const axColor& selected_color,
+             const axColor& contour_color,
+             const axColor& font_color);
+        
+        Info(const std::string& path);
+        
+        void SerializeOutput(const std::string& path);
+        
+        void SerializeInput(const std::string& path);
+        
+        axColor normal;
+        axColor hover;
+        axColor clicking;
+        axColor selected;
+        axColor contour;
+        axColor font_color;
+    };
+    
+    /***************************************************************************
+     * axButton::axButton.
+     **************************************************************************/
 	axButton(axWindow* parent,
              const axRect& rect,
-             const axButtonEvents& events,
-             const axButtonInfo& info,
-             string img_path = "",
-             string label = "",
+             const axButton::Events& events,
+             const axButton::Info& info,
+             std::string img_path = "",
+             std::string label = "",
              axFlag flags = 0,
-             string msg = "");
+             std::string msg = "");
 
-	axButton(axWindow* parent,
-			 const axButtonEvents& events,
-			 const string& path);
-
-	void SetMsg(const string& msg);
+	void SetMsg(const std::string& msg);
     
 	void SetSelected(const bool& selected);
     
     void SetLabel(const std::string& label);
-
+    
 protected:
-    axButtonEvents _events;
-    axButtonInfo _info;
-    string _label;
+    axButton::Events _events;
+    axButton::Info _info;
+    std::string _label;
     axImage* _btnImg;
     axFlag _flags;
-    string _msg;
+    std::string _msg;
     
     axColor* _currentColor;
     bool _selected;
@@ -168,7 +172,7 @@ protected:
 /*******************************************************************************
  * axButonInfo template.
  ******************************************************************************/
-#define axSTANDARD_BUTTON 	axButtonInfo( \
+#define axSTANDARD_BUTTON 	axButton::Info( \
 axColor(0.5, 0.5, 0.5),\
 axColor(0.6, 0.6, 0.6),\
 axColor(0.4, 0.4, 0.4),\
@@ -176,7 +180,7 @@ axColor(0.5, 0.5, 0.5),\
 axColor(0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0))
 
-#define axBUTTON_TRANSPARENT 	axButtonInfo( \
+#define axBUTTON_TRANSPARENT 	axButton::Info( \
 axColor(0.0, 0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0, 0.0),\

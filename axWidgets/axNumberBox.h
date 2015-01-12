@@ -36,7 +36,6 @@
 /// @defgroup NumberBox
 /// @{
 
-
 #include "axEvent.h"
 #include "axPanel.h"
 #include "axColor.h"
@@ -45,7 +44,7 @@
 #include "axMsg.h"
 #include "axObjectLoader.h"
 
- enum axControlType
+enum axControlType
 {
     axCTRL_NO_TYPE,
     axCTRL_FLOAT,
@@ -69,128 +68,104 @@ enum axControlInterpolation
     axCTRL_LOGARITHME
 };
 
- /*************************************************************************//**
- * axNumberBoxFlags.
-******************************************************************************/
-#define axNUMBER_BOX_SINGLE_IMG    axFLAG_1
-#define axNUMBER_BOX_FLAG_LABEL    axFLAG_2
-#define axNUMBER_BOX_FLAG_SLIDER   axFLAG_3
-#define axNUMBER_BOX_FLAG_NO_MOUSE axFLAG_4
-
-/**************************************************************************//**
- * axNumberBoxMsg
-******************************************************************************/
-class axNumberBoxMsg : public axMsg
-{
-public:
-    axNumberBoxMsg(const double& value):
-        _value(value)
-    {
-    }
-
-    double GetValue() const
-    {
-        return _value;
-    }
-    
-    axMsg* GetCopy()
-    {
-        return new axNumberBoxMsg(*this);
-    }
-
-private:
-    double _value;
-};
-
-/**************************************************************************//**
- * axNumberBoxEvents.
-******************************************************************************/
-struct axNumberBoxEvents
-{
-    enum : axEventId { VALUE_CHANGE };
-    
-    axNumberBoxEvents(){}
-    axNumberBoxEvents(axEventFunction& fct){ value_change = fct; }
-    
-    axEventFunction value_change;
-};
-
-/**************************************************************************//**
- * axNumberBoxInfo.
-******************************************************************************/
-struct axNumberBoxInfo
-{
-    axColor normal;
-    axColor hover;
-    axColor clicking;
-    axColor selected;
-    axColor contour;
-    axColor font_color;
-
-    axNumberBoxInfo(){}
-    axNumberBoxInfo(
-        const axColor& normal_color,
-        const axColor& hover_color,
-        const axColor& clicked_color,
-        const axColor& selected_color,
-        const axColor& contour_color,
-        const axColor& font_color_) :
-        normal(normal_color),
-        hover(hover_color),
-        clicking(clicked_color),
-        selected(selected_color),
-        contour(contour_color),
-        font_color(font_color_){}
-    
-    axNumberBoxInfo(const std::string& path)
-    {
-        axWidgetLoader loader;
-        axVectorPairString att = loader.GetAttributes(path);
-        
-        for(auto& n : att)
-        {
-            if(n.first == "normal")
-            {
-                normal.LoadFromString(n.second);
-            }
-            else if(n.first == "hover")
-            {
-                hover.LoadFromString(n.second);
-            }
-            else if(n.first == "clicking")
-            {
-                clicking.LoadFromString(n.second);
-            }
-            else if(n.first == "selected")
-            {
-                selected.LoadFromString(n.second);
-            }
-            else if(n.first == "contour")
-            {
-                contour.LoadFromString(n.second);
-            }
-            else if(n.first == "font_color")
-            {
-                font_color.LoadFromString(n.second);
-            }
-        }
-    }
-};
-
-
-
-/********************************************************************************//**
- * axNumberBox.
- * @todo Need to find a way to hide mouse when clicking.
- * @todo Figure out what to do with Label and axXXXControl class.
-************************************************************************************/
 class axNumberBox: public axPanel
 {
 public:
+    /***************************************************************************
+     * axNumberBox::Flags.
+     **************************************************************************/
+    class Flags
+    {
+    public:
+        static const axFlag SINGLE_IMG;
+        static const axFlag LABEL;
+        static const axFlag SLIDER;
+        static const axFlag NO_MOUSE;
+    };
+    
+    /***************************************************************************
+     * axNumberBox::Msg.
+     **************************************************************************/
+    class Msg : public axMsg
+    {
+    public:
+        Msg(const double& value);
+        
+        double GetValue() const;
+        
+        axMsg* GetCopy();
+        
+    private:
+        double _value;
+    };
+    
+    /***************************************************************************
+     * axNumberBox::Events.
+     **************************************************************************/
+    class Events
+    {
+    public:
+        enum : axEventId { VALUE_CHANGE };
+        
+        Events(){}
+        Events(axEventFunction& fct){ value_change = fct; }
+        
+        axEventFunction value_change;
+    };
+    
+    /***************************************************************************
+     * axNumberBox::Info.
+     **************************************************************************/
+    class Info
+    {
+    public:
+        Info();
+        
+        Info(const axColor& normal_color,
+             const axColor& hover_color,
+             const axColor& clicked_color,
+             const axColor& selected_color,
+             const axColor& contour_color,
+             const axColor& font_color_);
+  
+        Info(const std::string& path);
+        
+        axColor normal;
+        axColor hover;
+        axColor clicking;
+        axColor selected;
+        axColor contour;
+        axColor font_color;
+    };
+    
+    /***************************************************************************
+     * axNumberBox::Builder.
+     **************************************************************************/
+    class Builder
+    {
+    public:
+        Builder(axWindow* win);
+        
+        axNumberBox* Create(axVectorPairString attributes);
+        
+    private:
+        axWindow* _parent;
+        axNumberBox::Info _info;
+        std::string _img;
+        axFlag _flags;
+        axSize _size;
+        int _nextPositionDelta;
+        axNumberBox* _past;
+        axDirection _direction;
+    };
+    
+    /***************************************************************************
+     * axNumberBox::axNumberBox.
+     **************************************************************************/
     axNumberBox(axWindow* parent,
                 const axRect& rect,
-                const axNumberBoxEvents& events,
-                const axNumberBoxInfo& info,
+                const axNumberBox::Events& events,
+                const axNumberBox::Info& info,
                 std::string img_path = "",
                 axFlag flags = 0,
                 double value = 0.0,
@@ -202,78 +177,9 @@ public:
 
     double GetValue();
     
-    class axNumberBoxBuilder
-    {
-    public:
-        axNumberBoxBuilder(axWindow* win):
-        _parent(win),
-        _past(nullptr)
-        {
-            
-        }
-        
-        axNumberBox* Create(axVectorPairString attributes)
-        {
-            std::string name;
-            axPoint pos;
-            axNumberBoxEvents evts;
-            for(auto& s : attributes)
-            {
-                if(s.first == "name")
-                {
-                    name = s.second;
-                }
-                else if(s.first == "rect")
-                {
-                    axStringVector strVec;
-                    strVec = GetVectorFromStringDelimiter(s.second, ",");
-                    
-                    pos = axPoint(stoi(strVec[0]),
-                                  stoi(strVec[1]));
-                    
-                    _size = axSize(stoi(strVec[2]),
-                                   stoi(strVec[3]));
-                }
-                else if(s.first == "info")
-                {
-                    _info = axNumberBoxInfo(s.second);
-                }
-                else if(s.first == "flags")
-                {
-                    _flags = stoi(s.second);
-                }
-                else if(s.first == "img")
-                {
-                    _img = s.second;
-                }
-                else if(s.first == std::string("event"))
-                {
-                    evts.value_change = _parent->GetEventFunction(s.second);
-                }
-                
-            }
-            
-            axNumberBox* box = new axNumberBox(_parent, axRect(pos, _size),
-                                               evts, _info, _img);
-            
-            _parent->GetResourceManager()->Add(name, box);
-            return box;
-        }
-        
-    private:
-        axWindow* _parent;
-        axNumberBoxInfo _info;
-        std::string _img;
-        axFlag _flags;
-        axSize _size;
-        int _nextPositionDelta;
-        axNumberBox* _past;
-        axDirection _direction;
-    };
-
 private:
-    axNumberBoxEvents _events;
-    axNumberBoxInfo _info;
+    axNumberBox::Events _events;
+    axNumberBox::Info _info;
     axFlag _flags;
     axImage* _bgImg;
 
@@ -297,12 +203,13 @@ private:
         axNUM_BOX_DOWN
     };
 
-    void OnPaint();
-    void OnMouseEnter();
-    void OnMouseLeftDown(const axPoint& pos);
-    void OnMouseLeftUp(const axPoint& pos);
-    void OnMouseLeftDragging(const axPoint& pos);
-    void OnMouseLeave();
+    // Events.
+    virtual void OnPaint();
+    virtual void OnMouseEnter();
+    virtual void OnMouseLeftDown(const axPoint& pos);
+    virtual void OnMouseLeftUp(const axPoint& pos);
+    virtual void OnMouseLeftDragging(const axPoint& pos);
+    virtual void OnMouseLeave();
 
 };
 

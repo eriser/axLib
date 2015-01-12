@@ -21,10 +21,155 @@
  ******************************************************************************/
 #include "axNumberBox.h"
 
+/*******************************************************************************
+ * axNumberBox::Flags.
+ ******************************************************************************/
+const axFlag axNumberBox::Flags::SINGLE_IMG = axFLAG_1;
+const axFlag axNumberBox::Flags::LABEL = axFLAG_2;
+const axFlag axNumberBox::Flags::SLIDER = axFLAG_3;
+const axFlag axNumberBox::Flags::NO_MOUSE = axFLAG_4;
+
+/*******************************************************************************
+ * axNumberBox::Msg.
+ ******************************************************************************/
+axNumberBox::Msg::Msg(const double& value):
+_value(value)
+{
+}
+
+double axNumberBox::Msg::GetValue() const
+{
+    return _value;
+}
+
+axMsg* axNumberBox::Msg::GetCopy()
+{
+    return new Msg(*this);
+}
+
+/*******************************************************************************
+ * axNumberBox::Info.
+ ******************************************************************************/
+axNumberBox::Info::Info()
+{
+    
+}
+
+axNumberBox::Info::Info(const axColor& normal_color,
+                        const axColor& hover_color,
+                        const axColor& clicked_color,
+                        const axColor& selected_color,
+                        const axColor& contour_color,
+                        const axColor& font_color_) :
+normal(normal_color),
+hover(hover_color),
+clicking(clicked_color),
+selected(selected_color),
+contour(contour_color),
+font_color(font_color_)
+{
+    
+}
+
+axNumberBox::Info::Info(const std::string& path)
+{
+    axWidgetLoader loader;
+    axVectorPairString att = loader.GetAttributes(path);
+    
+    for(auto& n : att)
+    {
+        if(n.first == "normal")
+        {
+            normal.LoadFromString(n.second);
+        }
+        else if(n.first == "hover")
+        {
+            hover.LoadFromString(n.second);
+        }
+        else if(n.first == "clicking")
+        {
+            clicking.LoadFromString(n.second);
+        }
+        else if(n.first == "selected")
+        {
+            selected.LoadFromString(n.second);
+        }
+        else if(n.first == "contour")
+        {
+            contour.LoadFromString(n.second);
+        }
+        else if(n.first == "font_color")
+        {
+            font_color.LoadFromString(n.second);
+        }
+    }
+}
+
+/*******************************************************************************
+ * axNumberBox::Builder.
+ ******************************************************************************/
+axNumberBox::Builder::Builder(axWindow* win):
+_parent(win),
+_past(nullptr)
+{
+    
+}
+
+axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
+{
+    std::string name;
+    axPoint pos;
+    axNumberBox::Events evts;
+    for(auto& s : attributes)
+    {
+        if(s.first == "name")
+        {
+            name = s.second;
+        }
+        else if(s.first == "rect")
+        {
+            axStringVector strVec;
+            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            
+            pos = axPoint(stoi(strVec[0]),
+                          stoi(strVec[1]));
+            
+            _size = axSize(stoi(strVec[2]),
+                           stoi(strVec[3]));
+        }
+        else if(s.first == "info")
+        {
+            _info = axNumberBox::Info(s.second);
+        }
+        else if(s.first == "flags")
+        {
+            _flags = stoi(s.second);
+        }
+        else if(s.first == "img")
+        {
+            _img = s.second;
+        }
+        else if(s.first == std::string("event"))
+        {
+            evts.value_change = _parent->GetEventFunction(s.second);
+        }
+        
+    }
+    
+    axNumberBox* box = new axNumberBox(_parent, axRect(pos, _size),
+                                       evts, _info, _img);
+    
+    _parent->GetResourceManager()->Add(name, box);
+    return box;
+}
+
+/*******************************************************************************
+ * axNumberBox::axNumberBox.
+ ******************************************************************************/
 axNumberBox::axNumberBox(axWindow* parent,
 						 const axRect& rect,
-						 const axNumberBoxEvents& events,
-						 const axNumberBoxInfo& info,
+                         const axNumberBox::Events& events,
+                         const axNumberBox::Info& info,
                          std::string img_path,
 						 axFlag flags,
                          double value,
@@ -49,20 +194,19 @@ axNumberBox::axNumberBox(axWindow* parent,
     _bgImg = new axImage(img_path);
     
     double v = value;
-    std::cout << v << std::endl;
+//    std::cout << v << std::endl;
     _value = axClamp<double>(value, _range.left, _range.right);
     
     
-    std::cout << _value << std::endl;
+//    std::cout << _value << std::endl;
     
     _zeroToOneValue = _range.GetZeroToOneValue(_value);
     
-    std::cout << _zeroToOneValue << std::endl;
+//    std::cout << _zeroToOneValue << std::endl;
     
     if(_events.value_change)
     {
-        AddConnection(axNumberBoxEvents::VALUE_CHANGE,
-                      _events.value_change);
+        AddConnection(Events::VALUE_CHANGE, _events.value_change);
     }
 }
 
@@ -116,7 +260,7 @@ void axNumberBox::OnMouseLeftUp(const axPoint& pos)
             _nCurrentImg = axNUM_BOX_NORMAL;
         }
 
-        PushEvent(axNumberBoxEvents::VALUE_CHANGE, new axNumberBoxMsg(_value));
+        PushEvent(Events::VALUE_CHANGE, new Msg(_value));
         Update();
     }
 }
@@ -136,7 +280,7 @@ void axNumberBox::OnMouseLeftDragging(const axPoint& pos)
     _zeroToOneValue = axClamp<double>(_zeroToOneValue, 0.0, 1.0);
     _value = _range.GetValueFromZeroToOne(_zeroToOneValue);
 
-    PushEvent(axNumberBoxEvents::VALUE_CHANGE, new axNumberBoxMsg(_value));
+    PushEvent(Events::VALUE_CHANGE, new Msg(_value));
     
     Update();
 }
@@ -152,7 +296,7 @@ void axNumberBox::OnPaint()
 
     if(_bgImg->IsImageReady())
     {
-        if (IsFlag(axNUMBER_BOX_SINGLE_IMG, _flags))
+        if (IsFlag(Flags::SINGLE_IMG, _flags))
         {
             gc->DrawImageResize(_bgImg, axPoint(0, 0), rect0.size);
         }

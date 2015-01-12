@@ -22,17 +22,17 @@
 #include "axLabel.h"
 
 /*******************************************************************************
- * axLabelInfo.
+ * axLabel::Info.
  ******************************************************************************/
-axLabelInfo::axLabelInfo()
+axLabel::Info::Info()
 {
     
 }
 
-axLabelInfo::axLabelInfo(const axColor& normal_color,
-                         const axColor& contour_color,
-                         const axColor& fontColor,
-                         const int fontSize):
+axLabel::Info::Info(const axColor& normal_color,
+                    const axColor& contour_color,
+                    const axColor& fontColor,
+                    const int fontSize):
 normal(normal_color),
 contour(contour_color),
 font_color(fontColor),
@@ -41,7 +41,7 @@ font_size(fontSize)
     
 }
 
-axLabelInfo::axLabelInfo(const std::string& path)
+axLabel::Info::Info(const std::string& path)
 {
     axWidgetLoader loader;
     axVectorPairString att = loader.GetAttributes(path);
@@ -72,15 +72,15 @@ axLabelInfo::axLabelInfo(const std::string& path)
 }
 
 /*******************************************************************************
- * axLabelBuilder.
+ * axLabel::Builder.
  ******************************************************************************/
-axLabel::axLabelBuilder::axLabelBuilder(axWindow* win):
+axLabel::Builder::Builder(axWindow* win):
 _parent(win)
 {
     
 }
 
-axLabel* axLabel::axLabelBuilder::Create(axVectorPairString attributes)
+axLabel* axLabel::Builder::Create(axVectorPairString attributes)
 {
     std::string name;
     axPoint pos;
@@ -103,7 +103,7 @@ axLabel* axLabel::axLabelBuilder::Create(axVectorPairString attributes)
         }
         else if(s.first == "info")
         {
-            _info = axLabelInfo(s.second);
+            _info = axLabel::Info(s.second);
         }
         else if(s.first == "label")
         {
@@ -123,7 +123,7 @@ axLabel* axLabel::axLabelBuilder::Create(axVectorPairString attributes)
  ******************************************************************************/
 axLabel::axLabel(axWindow* parent,
                  const axRect& rect,
-                 const axLabelInfo& info,
+                 const axLabel::Info& info,
                  const std::string& label):
 axPanel(parent, rect),
 _info(info),

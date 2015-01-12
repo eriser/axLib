@@ -23,7 +23,7 @@
 
 axAnimatedButton::axAnimatedButton(axWindow* parent,
                                    const axRect& rect,
-                                   const axButtonEvents& events,
+                                   const axButton::Events& events,
                                    string img_path,
                                    string label):
 axButton(parent, rect, events, axBUTTON_TRANSPARENT, img_path, label)

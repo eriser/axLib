@@ -38,6 +38,7 @@
 
 #include "axButton.h"
 #include "axTimer.h"
+
 /*******************************************************************************
  * axAnimatedButton.
  ******************************************************************************/
@@ -46,7 +47,7 @@ class axAnimatedButton : public axButton
 public:
     axAnimatedButton(axWindow* parent,
                      const axRect& rect,
-                     const axButtonEvents& events,
+                     const axButton::Events& events,
                      string img_path = "",
                      string label = "");
     
