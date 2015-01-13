@@ -73,12 +73,6 @@
 // While alternative.
 #define while_not_null(ptr) while((ptr) != nullptr)
 
-//#define SPACE << " " <<
-
-///// @todo Make a template function Clamp.
-//#define axCLIP( v, min, max ) if( v < min ) v = min; \
-//							  else if (v > max) v = max;
-
 #define axOUTPUT_VARIABLE(v) std::cout << #v << " : " << v << std::endl;
 
 // Standard type.

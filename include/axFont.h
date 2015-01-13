@@ -63,12 +63,19 @@ public:
 	axFont(const string& font);
 
 	GLuint GetTexture();
+    
 	void SetFontSize(const int& size);
+    
 	void SetChar(const char& letter);
+    
 	axSize GetSize() const { return _size; }
+    
 	axPoint GetDelta() const { return _delta; }
+    
 	int GetNextPosition() const { return _next; }
+    
 	void SetFontType(const string& font_type);
+    
 	int GetFontSize() const
 	{
 		return _font_size;

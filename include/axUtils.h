@@ -55,35 +55,9 @@
 
 using namespace std;
 
-#define DEPRECATED_ATTRIBUTE __attribute__((deprecated))
-
-//[[deprecated]]
-#pragma message("Use std::to_string instead.")
-string axFloatToString( const double& value, int num_char = 4 );
-
-//[[deprecated]]
-#pragma message("Use std::to_string instead.")
-string axIntToString(const int &value );
-//
-//[[deprecated]]
-//#pragma message("Use the one from axApp instead.")
-//string OpenFileDialog(const string& app_name, string folder_path = "");
-
-string axGetExtension(const string& path);
-
-typedef std::vector<std::pair<std::string, std::string>> axVectorPairString;
-typedef std::vector<std::string> axStringVector;
-axStringVector GetVectorFromStringDelimiter(const std::string& str,
-                                            const std::string& delimiter);
-
-template <typename T>
-double axLineairInterpole(const T& y1,
-                          const T& y2,
-                          const T& mu)
-{
-    return y1 + mu * (y2 - y1);
-}
-
+/*******************************************************************************
+ * axDirection.
+ ******************************************************************************/
 enum axDirection
 {
     axDIRECTION_LEFT,
@@ -92,6 +66,9 @@ enum axDirection
     axDIRECTION_DOWN
 };
 
+/*******************************************************************************
+ * axAlignement.
+ ******************************************************************************/
 enum axAlignement
 {
     axALIGN_LEFT,
@@ -99,6 +76,64 @@ enum axAlignement
     axALIGN_RIGHT
 };
 
+/*******************************************************************************
+ * axControlType.
+ ******************************************************************************/
+enum axControlType
+{
+    axCTRL_NO_TYPE,
+    axCTRL_FLOAT,
+    axCTRL_INT,
+    axCTRL_PAN
+};
+
+/*******************************************************************************
+ * axControlUnit.
+ ******************************************************************************/
+enum axControlUnit
+{
+    axCTRL_NO_UNIT,
+    axCTRL_HERTZ,
+    axCTRL_DECIBEL,
+    axCTRL_TIME_MS,
+    axCTRL_TIME_SEC
+};
+
+/*******************************************************************************
+ * axControlInterpolation.
+ ******************************************************************************/
+enum axControlInterpolation
+{
+    axCTRL_LINEAR,
+    axCTRL_EXPONENTIAL,
+    axCTRL_LOGARITHME
+};
+
+/*******************************************************************************
+ * String utilities.
+ ******************************************************************************/
+std::string axGetExtension(const std::string& path);
+
+typedef std::vector<std::pair<std::string, std::string>> axVectorPairString;
+typedef std::vector<std::string> axStringVector;
+
+axStringVector GetVectorFromStringDelimiter(const std::string& str,
+                                            const std::string& delimiter);
+
+/*******************************************************************************
+ * axLineairInterpole.
+ ******************************************************************************/
+template <typename T>
+double axLineairInterpole(const T& y1,
+                          const T& y2,
+                          const T& mu)
+{
+    return y1 + mu * (y2 - y1);
+}
+
+/*******************************************************************************
+ * axClamp.
+ ******************************************************************************/
 template<typename T>
 T axClamp(T d, T min, T max)
 {
@@ -106,6 +141,9 @@ T axClamp(T d, T min, T max)
     return t > max ? max : t;
 }
 
+/*******************************************************************************
+ * axRange.
+ ******************************************************************************/
 template < typename T >
 struct axRange
 {
@@ -133,6 +171,9 @@ struct axRange
     T left, right;
 };
 
+/*******************************************************************************
+ * axTemplate2DPoint.
+ ******************************************************************************/
 template < typename T >
 class axTemplate2DPoint
 {
@@ -197,6 +238,9 @@ public:
 	}
 };
 
+/*******************************************************************************
+ * axRectPoints.
+ ******************************************************************************/
 template<typename T>
 struct axRectPoints
 {
@@ -216,6 +260,9 @@ struct axRectPoints
     T bottom_left, top_left, top_right, bottom_right;
 };
 
+/*******************************************************************************
+ * axTemplateRect.
+ ******************************************************************************/
 template < typename CPos, typename CSize, typename T >
 class axTemplateRect
 {
@@ -224,11 +271,6 @@ public:
                    size( size_ ), position( pt_ ){}
 
 	axTemplateRect(T x, T y, T w, T h): position(x, y), size(w, h){}
-
-	axTemplateRect(const string& path)
-	{
-		Load(path);
-	}
 
 	CSize size;
 	CPos position;							  
@@ -324,28 +366,6 @@ public:
     {
         return CPos(position.x + size.x * 0.5, position.y + size.y * 0.5);
     }
-    
-	bool Load(const string& path)
-	{
-//		ifstream file;
-//		file.open(path);
-//
-//		if (file.fail())
-//		{
-//			cerr << "Problem opening file " << path << endl;
-//			return false;
-//		}
-//		else
-//		{
-//			if (!file.fail())
-//			{
-//				file >> position.x;
-//				file >> position.y;
-//				file >> size.x;
-//				file >> size.y;
-//			}
-//		}
-	}
     
     axRectPoints<CPos> GetPoints() const
     {

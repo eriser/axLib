@@ -100,7 +100,7 @@ public:
     
     void DrawPoint(const axPoint& pt, const int& size);
     
-    /// @todo This function is not done. (Add some param)
+    /// @todo This function is not finish. (Add some param)
     void DrawLineCubic(const axPoint& pt1, const axPoint& pt2);
 
     void SetLineWidth(const double& width);
@@ -117,10 +117,6 @@ public:
     // Just blocking x axis for now.
     void BlockDrawing(const axRect& rect);
     void UnBlockDrawing();
-    
-//    void BeginDrawing();
-//    
-//    void EndDrawing();
 
 private:
 	axWindow* _win;

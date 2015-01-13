@@ -69,16 +69,12 @@ public:
     
     void ResizeGLScene(const int& width, const int& height, double y = 0);
     
-//    virtual void UpdateAll() = 0;
-    
     virtual void ResizeFrame(const axSize& size) = 0;
     
     virtual void HideMouse() = 0;
     
     virtual void ShowMouse() = 0;
-    
-//    virtual int DrawGLScene();
-    
+
     int GetCurrentManagerIndex() const;
     
     void SetCurrentManagerIndex(const int& index);

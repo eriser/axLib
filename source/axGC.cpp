@@ -29,26 +29,10 @@
 #include <cmath>
 
 axGC::axGC(axWindow* win):
-	_font("tt")
+_font("tt")
 {
-	_win = win;
-
+    _win = win;
 }
-
-//void axGC::BeginDrawing()
-//{
-//    axMatrix4 mview;
-//    mview.Identity().Translate(_win->GetAbsoluteRect().position).Process();
-//}
-//
-//void axGC::EndDrawing()
-//{
-//    axMatrix4 mview;
-//    axPoint revert_pos(_win->GetAbsoluteRect().position);
-//    revert_pos.x = -revert_pos.x;
-//    revert_pos.y = -revert_pos.y;
-//    mview.Identity().Translate(revert_pos).Process();
-//}
 
 axFloatRect axGC::RectToFloatRect(const axRect& rect)
 {

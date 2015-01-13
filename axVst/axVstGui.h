@@ -34,6 +34,8 @@ public:
     axVstGui(AudioEffect* effect);
     
     virtual bool open(void* ptr) = 0;
+    
+    // Vst will crash if this is not implemented.
     virtual bool getRect(ERect** rect);
     
 protected:

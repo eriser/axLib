@@ -55,7 +55,6 @@
 		7CDA58521A49C26B005012AD /* axMsg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA582A1A49C26B005012AD /* axMsg.cpp */; };
 		7CDA58531A49C26B005012AD /* axObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA582B1A49C26B005012AD /* axObject.cpp */; };
 		7CDA58541A49C26B005012AD /* axPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA582C1A49C26B005012AD /* axPanel.cpp */; };
-		7CDA58551A49C26B005012AD /* axSerialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA582D1A49C26B005012AD /* axSerialize.cpp */; };
 		7CDA58561A49C26B005012AD /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA582E1A49C26B005012AD /* axTimer.cpp */; };
 		7CDA58571A49C26B005012AD /* axUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA582F1A49C26B005012AD /* axUtils.cpp */; };
 		7CDA58581A49C26B005012AD /* axWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA58301A49C26B005012AD /* axWindow.cpp */; };
@@ -161,7 +160,6 @@
 		7CDA58131A49C26B005012AD /* axMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMsg.h; sourceTree = "<group>"; };
 		7CDA58141A49C26B005012AD /* axObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axObject.h; sourceTree = "<group>"; };
 		7CDA58151A49C26B005012AD /* axPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPanel.h; sourceTree = "<group>"; };
-		7CDA58161A49C26B005012AD /* axSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axSerialize.h; sourceTree = "<group>"; };
 		7CDA58171A49C26B005012AD /* axTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axTimer.h; sourceTree = "<group>"; };
 		7CDA58181A49C26B005012AD /* axUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axUtils.h; sourceTree = "<group>"; };
 		7CDA58191A49C26B005012AD /* axWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindow.h; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 		7CDA582A1A49C26B005012AD /* axMsg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMsg.cpp; sourceTree = "<group>"; };
 		7CDA582B1A49C26B005012AD /* axObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axObject.cpp; sourceTree = "<group>"; };
 		7CDA582C1A49C26B005012AD /* axPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPanel.cpp; sourceTree = "<group>"; };
-		7CDA582D1A49C26B005012AD /* axSerialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axSerialize.cpp; sourceTree = "<group>"; };
 		7CDA582E1A49C26B005012AD /* axTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTimer.cpp; sourceTree = "<group>"; };
 		7CDA582F1A49C26B005012AD /* axUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axUtils.cpp; sourceTree = "<group>"; };
 		7CDA58301A49C26B005012AD /* axWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindow.cpp; sourceTree = "<group>"; };
@@ -386,7 +383,6 @@
 				7C9A021B1A6485DD00A4D7B8 /* axObjectLoader.h */,
 				7CDA58151A49C26B005012AD /* axPanel.h */,
 				7CE2CC8C1A59E373004DDCD4 /* axResourceManager.h */,
-				7CDA58161A49C26B005012AD /* axSerialize.h */,
 				7CDA58171A49C26B005012AD /* axTimer.h */,
 				7CDA58181A49C26B005012AD /* axUtils.h */,
 				7CE2CC8D1A59E373004DDCD4 /* axVar.h */,
@@ -419,7 +415,6 @@
 				7C9A021C1A6485E800A4D7B8 /* axObjectLoader.cpp */,
 				7CDA582C1A49C26B005012AD /* axPanel.cpp */,
 				7CE2CC8E1A59E386004DDCD4 /* axResourceManager.cpp */,
-				7CDA582D1A49C26B005012AD /* axSerialize.cpp */,
 				7CDA582E1A49C26B005012AD /* axTimer.cpp */,
 				7CDA582F1A49C26B005012AD /* axUtils.cpp */,
 				7CE2CC8F1A59E386004DDCD4 /* axVar.cpp */,
@@ -606,7 +601,6 @@
 				7CE2CC841A574297004DDCD4 /* axAudioBuffer.cpp in Sources */,
 				7CDA58481A49C26B005012AD /* axEvent.cpp in Sources */,
 				7C3BF2E71A530B170037AE6E /* axAudioUtils.cpp in Sources */,
-				7CDA58551A49C26B005012AD /* axSerialize.cpp in Sources */,
 				7CDA584E1A49C26B005012AD /* axMain.cpp in Sources */,
 				7CDA57501A49A157005012AD /* audioeffect.cpp in Sources */,
 				7CDA58361A49C26B005012AD /* axAnimatedButton.cpp in Sources */,

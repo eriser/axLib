@@ -32,9 +32,7 @@ AEffEditor(effect)
     // Notify effect that "this is the editor".
     effect->setEditor(this);
     systemWindow = nullptr;
-    
-    //    856, 273
-    
+
     axSize size = axApp::GetInstance()->GetCore()->GetGlobalSize();
     _rect.left = 0;
     _rect.right = size.x;
@@ -42,10 +40,8 @@ AEffEditor(effect)
     _rect.bottom = size.y;
 }
 
-// Vst will crash if this is not implemented.
 bool axVstGui::getRect(ERect** rect)
 {
-    //    std::cout << "axVstGui getRect." << std::endl;
     *rect = &_rect;
     return true;
 }

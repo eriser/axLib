@@ -38,5 +38,5 @@ dependencies: /Users/alexarse/Project/axLib/axWidgets/axNumberBox.cpp \
   /usr/local/include/freetype2/freetype/ftsystem.h \
   /usr/local/include/freetype2/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axObjectLoader.h \
-  /Users/alexarse/Project/axLib/libs/rapidxml-1.13/rapidxml.hpp \
+  /Users/alexarse/Project/axLib/include/rapidxml.hpp \
   /Users/alexarse/Project/axLib/axWidgets/axToggle.h

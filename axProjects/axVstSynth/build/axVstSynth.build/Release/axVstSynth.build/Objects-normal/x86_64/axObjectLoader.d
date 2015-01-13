@@ -1,6 +1,6 @@
 dependencies: /Users/alexarse/Project/axLib/source/axObjectLoader.cpp \
   /Users/alexarse/Project/axLib/include/axObjectLoader.h \
-  /Users/alexarse/Project/axLib/libs/rapidxml-1.13/rapidxml.hpp \
+  /Users/alexarse/Project/axLib/include/rapidxml.hpp \
   /Users/alexarse/Project/axLib/include/axPanel.h \
   /Users/alexarse/Project/axLib/include/axApp.h \
   /Users/alexarse/Project/axLib/axVst/Mac/axVstCoreMac.h \
@@ -39,10 +39,10 @@ dependencies: /Users/alexarse/Project/axLib/source/axObjectLoader.cpp \
   /usr/local/include/freetype2/freetype/ftsystem.h \
   /usr/local/include/freetype2/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/axWidgets/axToggle.h \
+  /Users/alexarse/Project/axLib/axWidgets/axButton.h \
   /Users/alexarse/Project/axLib/axWidgets/axNumberBox.h \
   /Users/alexarse/Project/axLib/axWidgets/axKnob.h \
   /Users/alexarse/Project/axLib/axWidgets/axWidget.h \
-  /Users/alexarse/Project/axLib/axWidgets/axButton.h \
   /Users/alexarse/Project/axLib/axWidgets/axAnimatedButton.h \
   /Users/alexarse/Project/axLib/include/axTimer.h \
   /Users/alexarse/Project/axLib/include/axEventManager.h \

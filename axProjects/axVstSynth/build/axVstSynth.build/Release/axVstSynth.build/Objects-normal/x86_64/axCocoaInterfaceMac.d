@@ -56,4 +56,7 @@ dependencies: /Users/alexarse/Project/axLib/axMac/axCocoaInterfaceMac.mm \
   /Users/alexarse/Project/axLib/axWidgets/axTextBox.h \
   /Users/alexarse/Project/axLib/axWidgets/axTextControl.h \
   /Users/alexarse/Project/axLib/axWidgets/axPlot.h \
+  /Users/alexarse/Project/axLib/axWidgets/axLabel.h \
+  /Users/alexarse/Project/axLib/include/axObjectLoader.h \
+  /Users/alexarse/Project/axLib/include/rapidxml.hpp \
   /Users/alexarse/Project/axLib/include/axMain.h

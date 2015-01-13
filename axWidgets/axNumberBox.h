@@ -43,30 +43,6 @@
 #include "axImage.h"
 #include "axMsg.h"
 
-enum axControlType
-{
-    axCTRL_NO_TYPE,
-    axCTRL_FLOAT,
-    axCTRL_INT,
-    axCTRL_PAN
-};
-
-enum axControlUnit
-{
-    axCTRL_NO_UNIT,
-    axCTRL_HERTZ,
-    axCTRL_DECIBEL,
-    axCTRL_TIME_MS,
-    axCTRL_TIME_SEC
-};
-
-enum axControlInterpolation
-{
-    axCTRL_LINEAR,
-    axCTRL_EXPONENTIAL,
-    axCTRL_LOGARITHME
-};
-
 /***************************************************************************
  * axNumberBox.
  **************************************************************************/
