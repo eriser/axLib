@@ -235,15 +235,16 @@ void SliderPanel::OnPaint()
     gc->DrawRectangle(rect0);
     
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-    gc->SetFontSize(12);
+    axFont font("FreeSans.ttf");
+//    gc->SetFontSize(12);
     //    gc->DrawStringAlignedCenter("test", rect0);
-    gc->DrawString("regular", axPoint(350, 80));
-    gc->DrawString("with back slider", axPoint(350, 100));
-    gc->DrawString("no slider", axPoint(350, 120));
-    gc->DrawString("click anywhere", axPoint(350, 140));
-    gc->DrawString("right align", axPoint(350, 160));
-    gc->DrawString("no button", axPoint(350, 180));
-    gc->DrawString("center align", axPoint(350, 200));
+    gc->DrawString(font, "regular", axPoint(350, 80));
+    gc->DrawString(font, "with back slider", axPoint(350, 100));
+    gc->DrawString(font, "no slider", axPoint(350, 120));
+    gc->DrawString(font, "click anywhere", axPoint(350, 140));
+    gc->DrawString(font, "right align", axPoint(350, 160));
+    gc->DrawString(font, "no button", axPoint(350, 180));
+    gc->DrawString(font, "center align", axPoint(350, 200));
     
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawRectangleContour(rect0);

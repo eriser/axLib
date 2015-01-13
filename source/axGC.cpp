@@ -28,8 +28,8 @@
 
 #include <cmath>
 
-axGC::axGC(axWindow* win):
-_font("tt")
+axGC::axGC(axWindow* win)//:
+//_font("tt")
 {
     _win = win;
 }
@@ -377,50 +377,50 @@ void axGC::DrawPartOfImageResize(axImage* img,
 	glDisable(GL_TEXTURE_2D);
 }
 
-void axGC::SetFontSize(const int& size)
+void axGC::DrawString(axFont& font,
+                      const std::string& text,
+                      const axPoint& pos)
 {
-    _font.SetFontSize(size);
-}
-
-void axGC::DrawString(const string& text, const axPoint& pos)
-{
-	// axPoint pos = position + _win->GetAbsoluteRect().position;
-	// pos -= _win->GetScrollDecay();
-
-	int x = pos.x;
-
-	for (int i = 0; i < text.size(); i++)
-	{
-		_font.SetChar(text[i]);
-		axPoint delta = _font.GetDelta();
-
-		DrawTexture(_font.GetTexture(), 
-			axRect(axPoint(x + delta.x, pos.y - delta.y + _font.GetFontSize()),
-					_font.GetSize()));
-
-		x += _font.GetNextPosition();
-	}
-}
-
-axPoint axGC::DrawChar(const char& key, const axPoint& pos)
-{
-    // axPoint pos = position + _win->GetAbsoluteRect().position;
-    // pos -= _win->GetScrollDecay();
-    
-    int x = pos.x;
-    
-        _font.SetChar(key);
-        axPoint delta = _font.GetDelta();
-    
-    //std::cout << "Delta : " << delta.x << std::endl;
-    
-        DrawTexture(_font.GetTexture(),
-                    axRect(axPoint(x + delta.x, pos.y - delta.y + _font.GetFontSize()),
-                           _font.GetSize()));
+    if(font)
+    {
+        int x = pos.x;
         
-        x += _font.GetNextPosition();
-    
-    return axPoint(x, pos.y);
+        for (int i = 0; i < text.size(); i++)
+        {
+            font.SetChar(text[i]);
+            axPoint delta = font.GetDelta();
+            
+            DrawTexture(font.GetTexture(),
+                        axRect(axPoint(x + delta.x, pos.y - delta.y + font.GetFontSize()),
+                               font.GetSize()));
+            
+            x += font.GetNextPosition();
+        }
+    }
+
+}
+
+axPoint axGC::DrawChar(axFont& font,
+                       const char& key,
+                       const axPoint& pos)
+{
+    if(font)
+    {
+        int x = pos.x;
+        
+        font.SetChar(key);
+        axPoint delta = font.GetDelta();
+        
+        DrawTexture(font.GetTexture(),
+                    axRect(axPoint(x + delta.x, pos.y - delta.y + font.GetFontSize()),
+                           font.GetSize()));
+        
+        x += font.GetNextPosition();
+        
+        return axPoint(x, pos.y);
+    }
+
+    return axPoint(0, 0);
 }
 
 
@@ -450,36 +450,40 @@ void axGC::UnBlockDrawing()
     glDisable(GL_SCISSOR_TEST);
 }
 
-void axGC::DrawStringAlignedCenter(const string& text,
+void axGC::DrawStringAlignedCenter(axFont& font,
+                                   const string& text,
 								   //const axPoint& pos,
 								   const axRect& rect)
 {
-	int length = 0;
-	int height = 0;
-	for (int i = 0; i < text.size(); i++)
-	{
-		_font.SetChar(text[i]);
-		length += _font.GetNextPosition();
+    if(font)
+    {
+        int length = 0;
+        int height = 0;
+        for (int i = 0; i < text.size(); i++)
+        {
+            font.SetChar(text[i]);
+            length += font.GetNextPosition();
+            
+            if (font.GetSize().y > height)
+                height = font.GetSize().y;
+        }
         
-		if (_font.GetSize().y > height)
-			height = _font.GetSize().y;
-	}
-
-	axPoint pos(rect.position.x + (rect.size.x - length) * 0.5,
-		rect.position.y + ceil((rect.size.y - height) * 0.5));
-
-	int x = pos.x;
-	for (int i = 0; i < text.size(); i++)
-	{
-		_font.SetChar(text[i]);
-		axPoint delta = _font.GetDelta();
-
-		DrawTexture(_font.GetTexture(),
-			axRect(axPoint(x + delta.x, pos.y - delta.y + height),
-			_font.GetSize()));
-
-		x += _font.GetNextPosition();
-	}
+        axPoint pos(rect.position.x + (rect.size.x - length) * 0.5,
+                    rect.position.y + ceil((rect.size.y - height) * 0.5));
+        
+        int x = pos.x;
+        for (int i = 0; i < text.size(); i++)
+        {
+            font.SetChar(text[i]);
+            axPoint delta = font.GetDelta();
+            
+            DrawTexture(font.GetTexture(),
+                        axRect(axPoint(x + delta.x, pos.y - delta.y + height),
+                               font.GetSize()));
+            
+            x += font.GetNextPosition();
+        }
+    }
 }
 
 void axGC::DrawRectangleColorFade(const axRect& rectangle,

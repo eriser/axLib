@@ -20,153 +20,142 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axFont.h"
-#include "axApp.h"
 
-axFontGlobalManager axFont::_fontManager;
-
-axFontGlobalManager::axFontGlobalManager()
+axFont::axFont(const std::string& path):
+_isReady(false)
 {
-	if (FT_Init_FreeType(&_freeType))
-	{
+    if (FT_Init_FreeType(&_freeType))
+    {
         std::cerr << "Error : Could not init freetype library." << std::endl;
-	}
+        FT_Done_FreeType(_freeType);
+    }
+    else
+    {
+        bool err = LoadFont(path, _face);
+        
+        if(err)
+        {
+            std::cerr << "Init error : Could not open font." << std::endl;
+            FT_Done_FreeType(_freeType);
+        }
+        else
+        {
+            _isReady = true;
+            SetFontSize(12);
+            glGenTextures(1, &_texture);
+        }
+    }
 }
 
-bool axFontGlobalManager::LoadFont(const string& path, FT_Face& face)
+axFont::~axFont()
 {
-	std::map<std::string, axFontStruct>::iterator it = _fontMap.find(path);
-
-	if (it != _fontMap.end())
-	{
-        FT_New_Memory_Face(_freeType,
-                           (FT_Byte*)it->second._data, // First byte in memory.
-                           it->second._size, // Size in bytes.
-                           0, // Face_index.
-                           &face);
-		return true;
-	}
-	else
-	{
-		std::ifstream file(path, std::ios::binary);
-		file.seekg(0, std::ios::end);
-		std::streamsize size = file.tellg();
-		file.seekg(0, std::ios::beg);
-		
-		char* buffer = nullptr;
-		try
-		{
-			buffer = new char[size];
-		}
-		catch (std::bad_alloc)
-		{
-            std::cerr << "Error LoadFont new buffer." << std::endl;
-		}
-
-		if (file.read(buffer, size))
-		{
-			axFontStruct font_info(buffer, (unsigned int)size);
-			_fontMap.insert(pair<std::string, axFontStruct>(path, font_info));
-
-			FT_New_Memory_Face(_freeType,
-							   (FT_Byte*)buffer, // First byte in memory.
-							   size, // Size in bytes.
-							   0, // Face_index.        
-				               &face);
-
-			file.close();
-
-			return true;
-		}
-		else
-		{
-			delete buffer;
-		}
-	}
-
-	return false;
+    if(_isReady)
+    {
+        FT_Done_Face(_face);
+        FT_Done_FreeType(_freeType);
+        glDeleteTextures(1, &_texture);
+    }
 }
 
-
-axFont::axFont(const string& font)
+bool axFont::operator== (const bool& exist)
 {
-	if (_fontManager.LoadFont(axApp::GetInstance()->GetAppDirectory() + 
-		std::string("FreeSans.ttf"), _face))
-    //if (_fontManager.LoadFont(std::string("/Users/alexarse/Project/axLib/ressources/axFonts/") +
-    //                          std::string("FreeSans.ttf"), _face))
-	{
-		SetFontSize(12);
-	}
-	else
-	{
-        std::cerr << "Error loading font" << std::endl;
-	}
-	
+    return _isReady == exist;
+}
 
-	glGenTextures(1, &_texture);
+bool axFont::operator!= (const bool& exist)
+{
+    return _isReady != exist;
+}
+
+bool axFont::IsFontReady() const
+{
+    return _isReady;
+}
+
+axFont::operator bool() const
+{
+    return _isReady;
+}
+
+int axFont::GetFontSize() const
+{
+    return _font_size;
+}
+
+axSize axFont::GetSize() const
+{
+    return _size;
+}
+
+axPoint axFont::GetDelta() const
+{
+    return _delta;
+}
+
+int axFont::GetNextPosition() const
+{
+    return _next;
+}
+
+bool axFont::LoadFont(const string& path, FT_Face& face)
+{
+    // Zero mean succes.
+    if_error_in(FT_New_Face(_freeType, path.c_str(), 0, &_face))
+    {
+        return true;
+    }
+    
+    return false;
 }
 
 void axFont::SetFontSize(const int& size)
 {
-	_font_size = size;
-	FT_Set_Pixel_Sizes(_face, 0, size);
+    if(_isReady)
+    {
+        _font_size = size;
+        FT_Set_Pixel_Sizes(_face, 0, size);
+    }
 }
 
 void axFont::SetChar(const char& letter)
 {
-	if_error_in(FT_Load_Char(_face, letter, FT_LOAD_RENDER))
-	{
-        std::cerr << "Error : Could not load character " << letter << std::endl;
-	}
-	else
-	{
-		FT_GlyphSlot g = _face->glyph;
-		_size = axSize(g->bitmap.width, g->bitmap.rows);
-
-		_delta = axPoint(_face->glyph->bitmap_left, _face->glyph->bitmap_top);
-		_next = g->advance.x / 64.0;
-
-		glBindTexture(GL_TEXTURE_2D, _texture);
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-        glTexImage2D(GL_TEXTURE_2D,
-                     0,
-                     GL_ALPHA,
-                     g->bitmap.width,
-                     g->bitmap.rows,
-                     0,
-                     GL_ALPHA,
-                     GL_UNSIGNED_BYTE,
-                     g->bitmap.buffer);
-        
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	}
+    if(_isReady)
+    {
+        // Zero mean succes.
+        if_error_in(FT_Load_Char(_face, letter, FT_LOAD_RENDER))
+        {
+            std::cerr << "Error : Could not load character " << letter << std::endl;
+        }
+        else
+        {
+            FT_GlyphSlot g = _face->glyph;
+            _size = axSize(g->bitmap.width, g->bitmap.rows);
+            
+            _delta = axPoint(_face->glyph->bitmap_left, _face->glyph->bitmap_top);
+            _next = g->advance.x / 64.0;
+            
+            glBindTexture(GL_TEXTURE_2D, _texture);
+            glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+            
+            glTexImage2D(GL_TEXTURE_2D,
+                         0,
+                         GL_ALPHA,
+                         g->bitmap.width,
+                         g->bitmap.rows,
+                         0,
+                         GL_ALPHA,
+                         GL_UNSIGNED_BYTE,
+                         g->bitmap.buffer);
+            
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        }
+    }
 }
 
 void axFont::SetFontType(const string& font_type)
 {
-    if (_fontManager.LoadFont(font_type, _face))
-    {
-        SetFontSize(12);
-    }
-}
-
-bool axFont::InitFreeType()
-{
-	// Init FreeType library.
-	if (FT_Init_FreeType(&_freeType))
-	{
-        std::cerr << "Error : Could not init freetype library." << std::endl;
-		return false;
-	}
-
-	if (FT_New_Face(_freeType, "FreeSans.ttf", 0, &_face))
-	{
-        std::cerr << "Init error : Could not open font." << std::endl;
-		return false;
-	}
-
-	return true;
+    std::cout << "axFont::SetFontType not implemented yet." << std::endl;
 }
 
 GLuint axFont::GetTexture()

@@ -310,10 +310,12 @@ void axNumberBox::OnPaint()
     }
 
     gc->SetColor(_info.font_color);
-    gc->SetFontSize(10);
+//    gc->SetFontSize(10);
+    axFont font("FreeSans.ttf");
+    font.SetFontSize(10);
     std::string v = to_string(_value);
     v.resize(4);
-    gc->DrawStringAlignedCenter(v, rect0);
+    gc->DrawStringAlignedCenter(font, v, rect0);
     
     gc->SetColor(_info.contour);
     gc->DrawRectangleContour(rect0);
