@@ -42,7 +42,6 @@
 #include "axGC.h"
 #include "axImage.h"
 #include "axMsg.h"
-#include "axObjectLoader.h"
 
 enum axControlType
 {
@@ -68,6 +67,9 @@ enum axControlInterpolation
     axCTRL_LOGARITHME
 };
 
+/***************************************************************************
+ * axNumberBox.
+ **************************************************************************/
 class axNumberBox: public axPanel
 {
 public:
@@ -213,13 +215,13 @@ private:
 
 };
 
-#define axNUMBER_BOX_STANDARD axNumberBoxInfo( axColor("#AA1111"),          \
+#define axNUMBER_BOX_STANDARD axNumberBox::Info( axColor("#AA1111"),          \
                                                axColor("#CC1111"),          \
                                                axColor("#FF1111"),          \
                                                axColor("#FF0000"),          \
                                                axColor("#000000") )
 
-#define axNUMBER_BOX_WHITE axNumberBoxInfo( axColor("#FFFFFF"),          \
+#define axNUMBER_BOX_WHITE axNumberBox::Info( axColor("#FFFFFF"),          \
                                             axColor("#DDDDDD"),          \
                                             axColor("#AAAAAA"),          \
                                             axColor("#FF0000"),          \

@@ -15,6 +15,9 @@
 		7C88DAB31A55B82A0030C869 /* axVst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88DAAF1A55B82A0030C869 /* axVst.cpp */; };
 		7C88DAB41A55B82A0030C869 /* axVstGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88DAB11A55B82A0030C869 /* axVstGui.cpp */; };
 		7C88DAB71A55B9E70030C869 /* axVstGuiMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C88DAB51A55B9E70030C869 /* axVstGuiMac.cpp */; };
+		7C9A021D1A6485E800A4D7B8 /* axObjectLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9A021C1A6485E800A4D7B8 /* axObjectLoader.cpp */; };
+		7C9A02241A64870E00A4D7B8 /* axLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9A02231A64870E00A4D7B8 /* axLabel.cpp */; };
+		7C9A02271A64873F00A4D7B8 /* axStaticImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C9A02261A64873F00A4D7B8 /* axStaticImage.cpp */; };
 		7CDA57501A49A157005012AD /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA574B1A49A157005012AD /* audioeffect.cpp */; };
 		7CDA57511A49A157005012AD /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA574D1A49A157005012AD /* audioeffectx.cpp */; };
 		7CDA57521A49A157005012AD /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA574F1A49A157005012AD /* vstplugmain.cpp */; };
@@ -85,6 +88,16 @@
 		7C88DAB21A55B82A0030C869 /* axVstGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstGui.h; path = ../../axVst/axVstGui.h; sourceTree = "<group>"; };
 		7C88DAB51A55B9E70030C869 /* axVstGuiMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axVstGuiMac.cpp; path = ../../axVst/Mac/axVstGuiMac.cpp; sourceTree = "<group>"; };
 		7C88DAB61A55B9E70030C869 /* axVstGuiMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axVstGuiMac.h; path = ../../axVst/Mac/axVstGuiMac.h; sourceTree = "<group>"; };
+		7C9A021B1A6485DD00A4D7B8 /* axObjectLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axObjectLoader.h; sourceTree = "<group>"; };
+		7C9A021C1A6485E800A4D7B8 /* axObjectLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axObjectLoader.cpp; sourceTree = "<group>"; };
+		7C9A021E1A64865400A4D7B8 /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rapidxml_iterators.hpp; path = "../../libs/rapidxml-1.13/rapidxml_iterators.hpp"; sourceTree = "<group>"; };
+		7C9A021F1A64865400A4D7B8 /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rapidxml_print.hpp; path = "../../libs/rapidxml-1.13/rapidxml_print.hpp"; sourceTree = "<group>"; };
+		7C9A02201A64865400A4D7B8 /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rapidxml_utils.hpp; path = "../../libs/rapidxml-1.13/rapidxml_utils.hpp"; sourceTree = "<group>"; };
+		7C9A02211A64865400A4D7B8 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rapidxml.hpp; path = "../../libs/rapidxml-1.13/rapidxml.hpp"; sourceTree = "<group>"; };
+		7C9A02221A6486FA00A4D7B8 /* axLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axLabel.h; sourceTree = "<group>"; };
+		7C9A02231A64870E00A4D7B8 /* axLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axLabel.cpp; sourceTree = "<group>"; };
+		7C9A02251A64873400A4D7B8 /* axStaticImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axStaticImage.h; sourceTree = "<group>"; };
+		7C9A02261A64873F00A4D7B8 /* axStaticImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axStaticImage.cpp; sourceTree = "<group>"; };
 		7CDA573E1A499F08005012AD /* axVstSynth.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = axVstSynth.vst; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA57421A499F08005012AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CDA574A1A49A157005012AD /* aeffeditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aeffeditor.h; sourceTree = "<group>"; };
@@ -315,6 +328,10 @@
 		7CDA57DB1A49C250005012AD /* axLib */ = {
 			isa = PBXGroup;
 			children = (
+				7C9A021E1A64865400A4D7B8 /* rapidxml_iterators.hpp */,
+				7C9A021F1A64865400A4D7B8 /* rapidxml_print.hpp */,
+				7C9A02201A64865400A4D7B8 /* rapidxml_utils.hpp */,
+				7C9A02211A64865400A4D7B8 /* rapidxml.hpp */,
 				7C3BF2D31A530B170037AE6E /* axAudio */,
 				7CDA58631A4C8025005012AD /* axVst */,
 				7CDA57DC1A49C26B005012AD /* axMac */,
@@ -349,8 +366,6 @@
 		7CDA58031A49C26B005012AD /* include */ = {
 			isa = PBXGroup;
 			children = (
-				7CE2CC8C1A59E373004DDCD4 /* axResourceManager.h */,
-				7CE2CC8D1A59E373004DDCD4 /* axVar.h */,
 				7CDA58041A49C26B005012AD /* axApp.h */,
 				7CDA58051A49C26B005012AD /* axC++.h */,
 				7CDA58061A49C26B005012AD /* axColor.h */,
@@ -368,10 +383,13 @@
 				7CDA58121A49C26B005012AD /* axMouseManager.h */,
 				7CDA58131A49C26B005012AD /* axMsg.h */,
 				7CDA58141A49C26B005012AD /* axObject.h */,
+				7C9A021B1A6485DD00A4D7B8 /* axObjectLoader.h */,
 				7CDA58151A49C26B005012AD /* axPanel.h */,
+				7CE2CC8C1A59E373004DDCD4 /* axResourceManager.h */,
 				7CDA58161A49C26B005012AD /* axSerialize.h */,
 				7CDA58171A49C26B005012AD /* axTimer.h */,
 				7CDA58181A49C26B005012AD /* axUtils.h */,
+				7CE2CC8D1A59E373004DDCD4 /* axVar.h */,
 				7CDA58191A49C26B005012AD /* axWindow.h */,
 				7CDA581A1A49C26B005012AD /* axWindowTree.h */,
 			);
@@ -382,7 +400,6 @@
 		7CDA581B1A49C26B005012AD /* source */ = {
 			isa = PBXGroup;
 			children = (
-				7CE2CC8F1A59E386004DDCD4 /* axVar.cpp */,
 				7CDA581C1A49C26B005012AD /* axApp.cpp */,
 				7CDA581D1A49C26B005012AD /* axC++.cpp */,
 				7CDA581E1A49C26B005012AD /* axColor.cpp */,
@@ -399,11 +416,13 @@
 				7CDA58291A49C26B005012AD /* axMouseManager.cpp */,
 				7CDA582A1A49C26B005012AD /* axMsg.cpp */,
 				7CDA582B1A49C26B005012AD /* axObject.cpp */,
+				7C9A021C1A6485E800A4D7B8 /* axObjectLoader.cpp */,
 				7CDA582C1A49C26B005012AD /* axPanel.cpp */,
 				7CE2CC8E1A59E386004DDCD4 /* axResourceManager.cpp */,
 				7CDA582D1A49C26B005012AD /* axSerialize.cpp */,
 				7CDA582E1A49C26B005012AD /* axTimer.cpp */,
 				7CDA582F1A49C26B005012AD /* axUtils.cpp */,
+				7CE2CC8F1A59E386004DDCD4 /* axVar.cpp */,
 				7CDA58301A49C26B005012AD /* axWindow.cpp */,
 				7CDA58311A49C26B005012AD /* axWindowTree.cpp */,
 			);
@@ -419,12 +438,14 @@
 				7CDA57EA1A49C26B005012AD /* axDropMenu.h */,
 				7CDA57EC1A49C26B005012AD /* axGrid.h */,
 				7CDA57EE1A49C26B005012AD /* axKnob.h */,
+				7C9A02221A6486FA00A4D7B8 /* axLabel.h */,
 				7CDA57F01A49C26B005012AD /* axMenu.h */,
 				7CDA57F21A49C26B005012AD /* axNumberBox.h */,
 				7CDA57F41A49C26B005012AD /* axPlot.h */,
 				7CDA57F61A49C26B005012AD /* axPopupMenu.h */,
 				7CDA57F81A49C26B005012AD /* axScrollBar.h */,
 				7CDA57FA1A49C26B005012AD /* axSlider.h */,
+				7C9A02251A64873400A4D7B8 /* axStaticImage.h */,
 				7CDA57FC1A49C26B005012AD /* axTextBox.h */,
 				7CDA57FE1A49C26B005012AD /* axTextControl.h */,
 				7CDA58001A49C26B005012AD /* axToggle.h */,
@@ -440,12 +461,14 @@
 				7CDA57E91A49C26B005012AD /* axDropMenu.cpp */,
 				7CDA57EB1A49C26B005012AD /* axGrid.cpp */,
 				7CDA57ED1A49C26B005012AD /* axKnob.cpp */,
+				7C9A02231A64870E00A4D7B8 /* axLabel.cpp */,
 				7CDA57EF1A49C26B005012AD /* axMenu.cpp */,
 				7CDA57F11A49C26B005012AD /* axNumberBox.cpp */,
 				7CDA57F31A49C26B005012AD /* axPlot.cpp */,
 				7CDA57F51A49C26B005012AD /* axPopupMenu.cpp */,
 				7CDA57F71A49C26B005012AD /* axScrollBar.cpp */,
 				7CDA57F91A49C26B005012AD /* axSlider.cpp */,
+				7C9A02261A64873F00A4D7B8 /* axStaticImage.cpp */,
 				7CDA57FB1A49C26B005012AD /* axTextBox.cpp */,
 				7CDA57FD1A49C26B005012AD /* axTextControl.cpp */,
 				7CDA57FF1A49C26B005012AD /* axToggle.cpp */,
@@ -535,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C9A02241A64870E00A4D7B8 /* axLabel.cpp in Sources */,
 				7CDA584F1A49C26B005012AD /* axManager.cpp in Sources */,
 				7CDA58331A49C26B005012AD /* axCocoaInterfaceMac.mm in Sources */,
 				7CDA57521A49A157005012AD /* vstplugmain.cpp in Sources */,
@@ -558,6 +582,7 @@
 				7CDA58561A49C26B005012AD /* axTimer.cpp in Sources */,
 				7CDA583C1A49C26B005012AD /* axNumberBox.cpp in Sources */,
 				7CDA58591A49C26B005012AD /* axWindowTree.cpp in Sources */,
+				7C9A02271A64873F00A4D7B8 /* axStaticImage.cpp in Sources */,
 				7CDA58491A49C26B005012AD /* axEventManager.cpp in Sources */,
 				7CDA57511A49A157005012AD /* audioeffectx.cpp in Sources */,
 				7CDA58411A49C26B005012AD /* axTextBox.cpp in Sources */,
@@ -569,6 +594,7 @@
 				7CDA58521A49C26B005012AD /* axMsg.cpp in Sources */,
 				7CDA58531A49C26B005012AD /* axObject.cpp in Sources */,
 				7C88DAB41A55B82A0030C869 /* axVstGui.cpp in Sources */,
+				7C9A021D1A6485E800A4D7B8 /* axObjectLoader.cpp in Sources */,
 				7CDA58471A49C26B005012AD /* axCore.cpp in Sources */,
 				7CDA58381A49C26B005012AD /* axDropMenu.cpp in Sources */,
 				7CDA58661A4C8038005012AD /* axVstCoreMac.cpp in Sources */,
@@ -634,6 +660,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -670,6 +697,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
@@ -699,6 +727,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYMROOT = build;
+				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = vst;
 			};
 			name = Debug;
@@ -730,6 +759,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYMROOT = build;
+				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = vst;
 			};
 			name = Release;

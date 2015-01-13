@@ -22,6 +22,8 @@ dependencies: /Users/alexarse/Project/axLib/axWidgets/axKnob.cpp \
   /usr/local/include/freetype2/freetype/fttypes.h \
   /usr/local/include/freetype2/freetype/ftsystem.h \
   /usr/local/include/freetype2/freetype/ftimage.h \
+  /Users/alexarse/Project/axLib/include/axResourceManager.h \
+  /Users/alexarse/Project/axLib/include/axVar.h \
   /Users/alexarse/Project/axLib/axWidgets/axWidget.h \
   /Users/alexarse/Project/axLib/axWidgets/axButton.h \
   /Users/alexarse/Project/axLib/include/axPanel.h \
@@ -37,8 +39,6 @@ dependencies: /Users/alexarse/Project/axLib/axWidgets/axKnob.cpp \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/public.sdk/source/vst2.x/audioeffect.h \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffect.h \
   /Users/alexarse/Project/axLib/libs/VST3\ SDK/pluginterfaces/vst2.x/aeffectx.h \
-  /Users/alexarse/Project/axLib/include/axResourceManager.h \
-  /Users/alexarse/Project/axLib/include/axVar.h \
   /Users/alexarse/Project/axLib/axWidgets/axAnimatedButton.h \
   /Users/alexarse/Project/axLib/include/axTimer.h \
   /Users/alexarse/Project/axLib/include/axEventManager.h \
@@ -52,4 +52,6 @@ dependencies: /Users/alexarse/Project/axLib/axWidgets/axKnob.cpp \
   /Users/alexarse/Project/axLib/axWidgets/axScrollBar.h \
   /Users/alexarse/Project/axLib/axWidgets/axTextBox.h \
   /Users/alexarse/Project/axLib/axWidgets/axTextControl.h \
-  /Users/alexarse/Project/axLib/axWidgets/axPlot.h
+  /Users/alexarse/Project/axLib/axWidgets/axPlot.h \
+  /Users/alexarse/Project/axLib/include/axObjectLoader.h \
+  /Users/alexarse/Project/axLib/libs/rapidxml-1.13/rapidxml.hpp

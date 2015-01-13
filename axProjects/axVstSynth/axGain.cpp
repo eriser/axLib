@@ -34,17 +34,16 @@ public:
 //                                     axButtonEvents(GetOnButtonClick()),
 //                                     axSTANDARD_BUTTON);
         
-        axKnobInfo knob_info(axColor(0.3, 0.3, 0.3, 0.0),
-                             axColor(0.5, 0.5, 0.5, 0.0),
-                             axColor(0.8, 0.8, 0.8, 0.0),
-                             128,
-                             axSize(50, 50),
-                             std::string("/Users/alexarse/Project/axLib/ressources/plastic_knob_50x50.png"),
-                             std::string("/Users/alexarse/Project/axLib/ressources/plastic_knob_50x50.png"));
+        axKnob::Info knob_info(axColor(0.3, 0.3, 0.3, 0.0),
+                               axColor(0.5, 0.5, 0.5, 0.0),
+                               axColor(0.8, 0.8, 0.8, 0.0),
+                               128,
+                               axSize(50, 50),
+                               std::string("/Users/alexarse/Project/axLib/ressources/plastic_knob_50x50.png"),
+                               std::string("/Users/alexarse/Project/axLib/ressources/plastic_knob_50x50.png"));
         
-        axKnob::axKnobBuilder knobBuilder(this, axSize(50, 50), knob_info,
-                                          0, 10);
-        
+        axKnob::Builder knobBuilder(this, axSize(50, 50), knob_info, 0, 10);
+                                    
         _gainKnob = knobBuilder.Create(axPoint(40, 40), GetOnKnobGain());
         _gainKnob->SetValue(1.0);
         
@@ -69,16 +68,16 @@ public:
         }
     }
     
-    axEVENT_ACCESSOR(axButtonMsg, OnButtonClick);
-    axEVENT_ACCESSOR(axKnobMsg, OnKnobGain);
-    axEVENT_ACCESSOR(axKnobMsg, OnKnobFilterFreq);
+    axEVENT_ACCESSOR(axButton::Msg, OnButtonClick);
+    axEVENT_ACCESSOR(axKnob::Msg, OnKnobGain);
+    axEVENT_ACCESSOR(axKnob::Msg, OnKnobFilterFreq);
     
     axEVENT_ACCESSOR(axVstParameterMsg, OnVstParameterValueChange);
     
 private:
     axKnob *_gainKnob, *_filterKnob;
     
-    void OnButtonClick(const axButtonMsg& msg)
+    void OnButtonClick(const axButton::Msg& msg)
     {
         axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>
         (axApp::GetInstance()->GetCore());
@@ -105,7 +104,7 @@ private:
         }
     }
     
-    void OnKnobGain(const axKnobMsg& msg)
+    void OnKnobGain(const axKnob::Msg& msg)
     {
         axVstCore* vstCore = static_cast<axVstCore*>
                              (axApp::GetInstance()->GetCore());
@@ -119,7 +118,7 @@ private:
         }
     }
     
-    void OnKnobFilterFreq(const axKnobMsg& msg)
+    void OnKnobFilterFreq(const axKnob::Msg& msg)
     {
         axVstCore* vstCore = static_cast<axVstCore*>
         (axApp::GetInstance()->GetCore());

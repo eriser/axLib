@@ -39,7 +39,6 @@
 #include "axWindow.h"
 #include "axImage.h"
 #include "axWidget.h"
-#include "axObjectLoader.h"
 
 /*******************************************************************************
  * axKnob.

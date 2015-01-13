@@ -22,4 +22,6 @@ dependencies: /Users/alexarse/Project/axLib/source/axMouseManager.cpp \
   /usr/local/include/freetype2/freetype/fttypes.h \
   /usr/local/include/freetype2/freetype/ftsystem.h \
   /usr/local/include/freetype2/freetype/ftimage.h \
+  /Users/alexarse/Project/axLib/include/axResourceManager.h \
+  /Users/alexarse/Project/axLib/include/axVar.h \
   /Users/alexarse/Project/axLib/include/axWindowTree.h

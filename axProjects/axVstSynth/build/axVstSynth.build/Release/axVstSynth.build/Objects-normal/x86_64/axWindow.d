@@ -20,4 +20,6 @@ dependencies: /Users/alexarse/Project/axLib/source/axWindow.cpp \
   /usr/local/include/freetype2/freetype/fterrdef.h \
   /usr/local/include/freetype2/freetype/fttypes.h \
   /usr/local/include/freetype2/freetype/ftsystem.h \
-  /usr/local/include/freetype2/freetype/ftimage.h
+  /usr/local/include/freetype2/freetype/ftimage.h \
+  /Users/alexarse/Project/axLib/include/axResourceManager.h \
+  /Users/alexarse/Project/axLib/include/axVar.h

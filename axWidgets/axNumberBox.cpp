@@ -20,6 +20,7 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axNumberBox.h"
+#include "axObjectLoader.h"
 
 /*******************************************************************************
  * axNumberBox::Flags.

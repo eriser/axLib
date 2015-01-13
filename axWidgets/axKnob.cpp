@@ -20,6 +20,7 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axKnob.h"
+#include "axObjectLoader.h"
 
 /*******************************************************************************
  * axKnob::Msg.
