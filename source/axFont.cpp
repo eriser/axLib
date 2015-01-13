@@ -20,7 +20,6 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axFont.h"
-#include "axApp.h"
 
 axFont::axFont(const std::string& path):
 _isReady(false)
@@ -56,6 +55,46 @@ axFont::~axFont()
         FT_Done_FreeType(_freeType);
         glDeleteTextures(1, &_texture);
     }
+}
+
+bool axFont::operator== (const bool& exist)
+{
+    return _isReady == exist;
+}
+
+bool axFont::operator!= (const bool& exist)
+{
+    return _isReady != exist;
+}
+
+bool axFont::IsFontReady() const
+{
+    return _isReady;
+}
+
+axFont::operator bool() const
+{
+    return _isReady;
+}
+
+int axFont::GetFontSize() const
+{
+    return _font_size;
+}
+
+axSize axFont::GetSize() const
+{
+    return _size;
+}
+
+axPoint axFont::GetDelta() const
+{
+    return _delta;
+}
+
+int axFont::GetNextPosition() const
+{
+    return _next;
 }
 
 bool axFont::LoadFont(const string& path, FT_Face& face)

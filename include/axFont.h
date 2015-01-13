@@ -42,43 +42,28 @@ public:
 
 	GLuint GetTexture();
     
-    bool operator== (const bool& exist)
-    {
-        return _isReady == exist;
-    }
+    bool operator== (const bool& exist);
     
-    bool operator!= (const bool& exist)
-    {
-        return _isReady != exist;
-    }
+    bool operator!= (const bool& exist);
     
-    bool IsFontReady() const
-    {
-        return _isReady;
-    }
+    bool IsFontReady() const;
     
-    operator bool() const
-    {
-        return _isReady;
-    }
+    operator bool() const;
     
     // Char won't work if SetFontSize is not call.
 	void SetFontSize(const int& size);
     
 	void SetChar(const char& letter);
     
-	axSize GetSize() const { return _size; }
+    axSize GetSize() const;
     
-	axPoint GetDelta() const { return _delta; }
+    axPoint GetDelta() const;
     
-	int GetNextPosition() const { return _next; }
+    int GetNextPosition() const;
     
 	void SetFontType(const string& font_type);
     
-	int GetFontSize() const
-	{
-		return _font_size;
-	}
+    int GetFontSize() const;
 
 private:
 	FT_Library _freeType;
