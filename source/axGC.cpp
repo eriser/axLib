@@ -377,11 +377,6 @@ void axGC::DrawPartOfImageResize(axImage* img,
 	glDisable(GL_TEXTURE_2D);
 }
 
-//void axGC::SetFontSize(const int& size)
-//{
-//    _font.SetFontSize(size);
-//}
-
 void axGC::DrawString(axFont& font,
                       const std::string& text,
                       const axPoint& pos)

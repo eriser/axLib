@@ -85,10 +85,6 @@ public:
 	void DrawStringAlignedCenter(axFont& font,
                                  const string& text,
                                  const axRect& rect);
-    
-//	void SetFontType(const string& font_type){ _font.SetFontType(font_type); }
-
-//    void SetFontSize(const int& size);
 
 	void DrawRectangleColorFade(const axRect& rect,
                                 const axColor& c1,
