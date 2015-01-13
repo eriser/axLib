@@ -19,8 +19,16 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_FONT__
 #define __AX_FONT__
+
+/*******************************************************************************
+ * @file    axFont.h
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   axFont.
+ * @date    13/01/2015
+ ******************************************************************************/
 
 /// @defgroup Graphic
 /// @{
@@ -29,14 +37,23 @@
 #include FT_FREETYPE_H
 
 #include "axC++.h"
-#include "axImage.h"
-#include <map>
-#include <fstream>
+
+const axByte* GetDefaultFontData(const int& index);
+const long GetDefaultFontDataSize(const int& index);
 
 class axFont
 {
 public:
 	axFont(const string& font);
+    
+    axFont();
+    
+    axFont(const axFont&) = delete;
+    axFont& operator=(const axFont&) = delete;
+    
+//    axFont(axFont&& font);
+    
+    axFont(const int& data_index);
     
     ~axFont();
 
@@ -71,12 +88,10 @@ private:
 	GLuint _texture;
 	axSize _size;
 	axPoint _delta;
-	int _next;
-	int _font_size;
-
-    bool LoadFont(const string& path, FT_Face& face);
-    
+	int _next, _font_size;
     bool _isReady;
+    
+    bool LoadFont(const string& path, FT_Face& face);
 };
 
 /// @}

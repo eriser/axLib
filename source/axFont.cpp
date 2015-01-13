@@ -21,6 +21,57 @@
  ******************************************************************************/
 #include "axFont.h"
 
+axFont::axFont():
+_isReady(false)
+{
+    
+}
+//
+//axFont::axFont(axFont&& font)
+//{
+//    
+//}
+
+axFont::axFont(const int& data_index):
+_isReady(false)
+{
+    if (FT_Init_FreeType(&_freeType))
+    {
+        std::cerr << "Error : Could not init freetype library." << std::endl;
+        FT_Done_FreeType(_freeType);
+    }
+    else
+    {
+        
+        if(data_index > 1)
+        {
+            std::cerr << "Error : Only two default font buffer." << std::endl;
+
+            FT_Done_FreeType(_freeType);
+        }
+        else
+        {
+            bool err = FT_New_Memory_Face(_freeType,
+                                          GetDefaultFontData(data_index),
+                                          GetDefaultFontDataSize(data_index),
+                                          0,
+                                          &_face);
+            
+            if(err)
+            {
+                std::cerr << "Init error : Could not open font." << std::endl;
+                FT_Done_FreeType(_freeType);
+            }
+            else
+            {
+                _isReady = true;
+                SetFontSize(12);
+                glGenTextures(1, &_texture);
+            }
+        }
+    }
+}
+
 axFont::axFont(const std::string& path):
 _isReady(false)
 {

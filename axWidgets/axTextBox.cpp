@@ -41,7 +41,8 @@ _lastCharXPosition(5),
 _flashingCursor(nullptr),
 _cursorFlashActive(true),
 _isHightlight(false),
-_findClickCursorIndex(false)
+_findClickCursorIndex(false),
+_font(nullptr)
 {
 	_currentColor = &_info.normal;
 
@@ -64,6 +65,8 @@ _findClickCursorIndex(false)
     }
     
     _cursorIndex = _label.size();
+    
+    _font = new axFont(0);
     
     SetShownRect(axRect(-5,
                         -5,
@@ -325,10 +328,7 @@ void axTextBox::OnPaint()
             
             gc->SetColor(_info.font_color);
             
-            /// @todo Change this.
-            axFont font("FreeSans.ttf");
-            
-            next_pos = gc->DrawChar(font, _label[i], next_pos);
+            next_pos = gc->DrawChar(*_font, _label[i], next_pos);
             
             if(_isHightlight) // hightlight on.
             {

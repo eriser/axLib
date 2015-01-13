@@ -41,11 +41,11 @@ axPanel(parent, rect)
                                         app_path + std::string("NumberBoxFull.png"));
     
     axNumberBox::Info box_info3(axColor(0.7, 0.7, 0.7),
-                              axColor(0.3, 0.3, 0.3),
-                              axColor(0.2, 0.2, 0.2),
-                              axColor(0.2, 0.2, 0.2),
-                              axColor(0.0, 0.0, 0.0),
-                              axColor(0.0, 0.0, 0.0));
+                                axColor(0.8, 0.8, 0.8),
+                                axColor(0.6, 0.6, 0.6),
+                                axColor(0.2, 0.2, 0.2),
+                                axColor(0.0, 0.0, 0.0),
+                                axColor(0.0, 0.0, 0.0));
     
     axNumberBox* box3 = new axNumberBox(this,
                                         axRect(200, 40, 40, 20),

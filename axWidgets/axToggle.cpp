@@ -250,10 +250,13 @@ _flags(flags),
 _nCurrentImg(axTOG_NORMAL),
 _selected(false),
 test(1.0, 1.0, 0.0),
-_msg(msg)
+_msg(msg),
+_font(nullptr)
 {
 	_currentColor = &_info.normal;
     _btnImg = new axImage(img_path);
+    
+    _font = new axFont(0);
     
     if(_events.button_click)
     {
@@ -446,9 +449,7 @@ void axToggle::OnPaint()
 	if_not_empty(_label)
 	{
 		gc->SetColor(_info.font_color, 1.0);
-//		gc->SetFontSize(12);
-        axFont font("FreeSans.ttf");
-		gc->DrawStringAlignedCenter(font, _label, rect0);
+		gc->DrawStringAlignedCenter(*_font, _label, rect0);
 	}
 
 	gc->SetColor(_info.contour);

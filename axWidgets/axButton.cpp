@@ -231,10 +231,10 @@ axButton::axButton(axWindow* parent,
                    const axRect& rect,
                    const axButton::Events& events,
                    const axButton::Info& info,
-                   string img_path,
-                   string label,
+                   std::string img_path,
+                   std::string label,
                    axFlag flags,
-                   string msg) :
+                   std::string msg) :
 // Heritage.
 axPanel(parent, rect),
 // Members.
@@ -244,11 +244,15 @@ _label(label),
 _flags(flags),
 _nCurrentImg(axBTN_NORMAL),
 _selected(false),
-_msg(msg)
+_msg(msg),
+//_font(0)
+_font(nullptr)
 {
     _currentColor = &_info.normal;
     
     _btnImg = new axImage(img_path);
+    
+    _font = new axFont(0);
     
     if(_events.button_click)
     {
@@ -391,9 +395,7 @@ void axButton::OnPaint()
     if_not_empty(_label)
     {
         gc->SetColor(_info.font_color, 1.0);
-//        gc->SetFontSize(12);
-        axFont font("FreeSans.ttf");
-        gc->DrawStringAlignedCenter(font, _label, rect0);
+        gc->DrawStringAlignedCenter(*_font, _label, rect0);
     }
     
     gc->SetColor(_info.contour);

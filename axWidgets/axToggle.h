@@ -193,6 +193,7 @@ private:
 	axImage* _btnImg;
     std::string _label;
     std::string _msg;
+    axFont* _font;
 	
 	bool _selected;
 	axFlag _flags;

@@ -181,6 +181,7 @@ protected:
     axImage* _btnImg;
     axFlag _flags;
     std::string _msg;
+    axFont* _font;
     
     axColor* _currentColor;
     bool _selected;

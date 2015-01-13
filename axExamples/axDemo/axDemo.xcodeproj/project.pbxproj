@@ -59,6 +59,7 @@
 		7CBB29771A6565C800EC2BCD /* axLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB29701A6565C800EC2BCD /* axLabel.cpp */; };
 		7CBB29781A6565C800EC2BCD /* axPlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB29721A6565C800EC2BCD /* axPlot.cpp */; };
 		7CBB29791A6565C800EC2BCD /* axStaticImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB29741A6565C800EC2BCD /* axStaticImage.cpp */; };
+		7CBB297B1A65979700EC2BCD /* axDefaultFontBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB297A1A65979700EC2BCD /* axDefaultFontBuffer.cpp */; };
 		7CE730C51A3BC946005BAA27 /* axMouseManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE730C41A3BC946005BAA27 /* axMouseManager.cpp */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +170,7 @@
 		7CBB29731A6565C800EC2BCD /* axPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPlot.h; sourceTree = "<group>"; };
 		7CBB29741A6565C800EC2BCD /* axStaticImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axStaticImage.cpp; sourceTree = "<group>"; };
 		7CBB29751A6565C800EC2BCD /* axStaticImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axStaticImage.h; sourceTree = "<group>"; };
+		7CBB297A1A65979700EC2BCD /* axDefaultFontBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDefaultFontBuffer.cpp; sourceTree = "<group>"; };
 		7CE730C31A3BC93D005BAA27 /* axMouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMouseManager.h; sourceTree = "<group>"; };
 		7CE730C41A3BC946005BAA27 /* axMouseManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMouseManager.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,6 +335,7 @@
 				7C262FF81A36705F00544ACE /* axC++.cpp */,
 				7C262FF91A36705F00544ACE /* axColor.cpp */,
 				7C262FFA1A36705F00544ACE /* axCore.cpp */,
+				7CBB297A1A65979700EC2BCD /* axDefaultFontBuffer.cpp */,
 				7C262FFB1A36705F00544ACE /* axEvent.cpp */,
 				7C262FFC1A36705F00544ACE /* axEventManager.cpp */,
 				7C262FFD1A36705F00544ACE /* axFont.cpp */,
@@ -434,6 +437,7 @@
 				7CAFF3B01A3BDADF0096412D /* axKeyboardManager.cpp in Sources */,
 				7C0352BC1A3A051C0025338C /* axTextBox.cpp in Sources */,
 				7C26300F1A36705F00544ACE /* axButton.cpp in Sources */,
+				7CBB297B1A65979700EC2BCD /* axDefaultFontBuffer.cpp in Sources */,
 				7C26301B1A36705F00544ACE /* axColor.cpp in Sources */,
 				7C26301D1A36705F00544ACE /* axEvent.cpp in Sources */,
 				7C26302A1A36705F00544ACE /* axUtils.cpp in Sources */,

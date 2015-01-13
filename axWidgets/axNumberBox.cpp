@@ -26,9 +26,10 @@
  * axNumberBox::Flags.
  ******************************************************************************/
 const axFlag axNumberBox::Flags::SINGLE_IMG = axFLAG_1;
-const axFlag axNumberBox::Flags::LABEL = axFLAG_2;
-const axFlag axNumberBox::Flags::SLIDER = axFLAG_3;
-const axFlag axNumberBox::Flags::NO_MOUSE = axFLAG_4;
+const axFlag axNumberBox::Flags::NO_IMG_RESIZE = axFLAG_2;
+const axFlag axNumberBox::Flags::LABEL = axFLAG_3;
+const axFlag axNumberBox::Flags::SLIDER = axFLAG_4;
+const axFlag axNumberBox::Flags::NO_MOUSE = axFLAG_5;
 
 /*******************************************************************************
  * axNumberBox::Msg.
@@ -168,11 +169,11 @@ axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
  * axNumberBox::axNumberBox.
  ******************************************************************************/
 axNumberBox::axNumberBox(axWindow* parent,
-						 const axRect& rect,
+                         const axRect& rect,
                          const axNumberBox::Events& events,
                          const axNumberBox::Info& info,
                          std::string img_path,
-						 axFlag flags,
+                         axFlag flags,
                          double value,
                          axFloatRange range,
                          axControlType type,
@@ -180,30 +181,28 @@ axNumberBox::axNumberBox(axWindow* parent,
                          axControlInterpolation interpolation,
                          std::string label):
 
-                        axPanel(parent, rect),
-						// Members.
-						_events(events),
-						_info(info),
-						_flags(flags),
-                        _range(range),
-                        _type(type),
-                        _unit(unit),
-                        _interpolation(interpolation),
-                        _currentColor(_info.normal),
-                        _nCurrentImg(axNUM_BOX_NORMAL)
+axPanel(parent, rect),
+// Members.
+_events(events),
+_info(info),
+_flags(flags),
+_range(range),
+_type(type),
+_unit(unit),
+_interpolation(interpolation),
+_currentColor(_info.normal),
+_nCurrentImg(axNUM_BOX_NORMAL),
+_font(nullptr)
 {
     _bgImg = new axImage(img_path);
     
     double v = value;
-//    std::cout << v << std::endl;
     _value = axClamp<double>(value, _range.left, _range.right);
     
-    
-//    std::cout << _value << std::endl;
-    
+    _font = new axFont(0);
+    _font->SetFontSize(10);
+
     _zeroToOneValue = _range.GetZeroToOneValue(_value);
-    
-//    std::cout << _zeroToOneValue << std::endl;
     
     if(_events.value_change)
     {
@@ -239,6 +238,7 @@ void axNumberBox::OnMouseLeftDown(const axPoint& pos)
 
 	_clickPosY = (pos - GetAbsoluteRect().position).y;
     _nCurrentImg = axNUM_BOX_DOWN;
+    _currentColor = _info.clicking;
     GrabMouse();
     Update();
 
@@ -299,7 +299,14 @@ void axNumberBox::OnPaint()
     {
         if (IsFlag(Flags::SINGLE_IMG, _flags))
         {
-            gc->DrawImageResize(_bgImg, axPoint(0, 0), rect0.size);
+            if(IsFlag(Flags::NO_IMG_RESIZE, _flags))
+            {
+                gc->DrawImage(_bgImg, axPoint(0, 0));
+            }
+            else
+            {
+                gc->DrawImageResize(_bgImg, axPoint(0, 0), rect0.size);
+            }
         }
         else
         {
@@ -310,12 +317,10 @@ void axNumberBox::OnPaint()
     }
 
     gc->SetColor(_info.font_color);
-//    gc->SetFontSize(10);
-    axFont font("FreeSans.ttf");
-    font.SetFontSize(10);
+
     std::string v = to_string(_value);
     v.resize(4);
-    gc->DrawStringAlignedCenter(font, v, rect0);
+    gc->DrawStringAlignedCenter(*_font, v, rect0);
     
     gc->SetColor(_info.contour);
     gc->DrawRectangleContour(rect0);

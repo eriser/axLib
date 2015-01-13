@@ -56,6 +56,7 @@ public:
     {
     public:
         static const axFlag SINGLE_IMG;
+        static const axFlag NO_IMG_RESIZE;
         static const axFlag LABEL;
         static const axFlag SLIDER;
         static const axFlag NO_MOUSE;
@@ -160,6 +161,7 @@ private:
     axNumberBox::Info _info;
     axFlag _flags;
     axImage* _bgImg;
+    axFont* _font;
 
     axControlType _type;
     axControlUnit _unit;
