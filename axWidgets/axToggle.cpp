@@ -218,7 +218,6 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
         {
             evts.button_click = _parent->GetEventFunction(s.second);
         }
-        
     }
     
     axToggle* tog = new axToggle(_parent, axRect(pos, _size),

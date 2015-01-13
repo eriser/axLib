@@ -92,6 +92,13 @@ enum axDirection
     axDIRECTION_DOWN
 };
 
+enum axAlignement
+{
+    axALIGN_LEFT,
+    axALIGN_CENTER,
+    axALIGN_RIGHT
+};
+
 template<typename T>
 T axClamp(T d, T min, T max)
 {

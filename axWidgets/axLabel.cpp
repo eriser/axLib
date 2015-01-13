@@ -32,11 +32,15 @@ axLabel::Info::Info()
 axLabel::Info::Info(const axColor& normal_color,
                     const axColor& contour_color,
                     const axColor& fontColor,
-                    const int fontSize):
+                    const int fontSize,
+                    const std::string& fontName,
+                    const axAlignement& alignement):
 normal(normal_color),
 contour(contour_color),
 font_color(fontColor),
-font_size(fontSize)
+font_size(fontSize),
+_alignement(alignement),
+font_name(fontName)
 {
     
 }
@@ -67,6 +71,21 @@ axLabel::Info::Info(const std::string& path)
         else if(n.first == "font_name")
         {
             font_name = n.second;
+        }
+        else if(n.first == "align")
+        {
+            if(n.second == "left")
+            {
+                _alignement = axALIGN_LEFT;
+            }
+            else if(n.second == "center")
+            {
+                _alignement = axALIGN_CENTER;
+            }
+            else if(n.second == "right")
+            {
+                _alignement = axALIGN_RIGHT;
+            }
         }
     }
 }
@@ -132,6 +151,12 @@ _label(label)
     SetSelectable(false);
 }
 
+void axLabel::SetLabel(const std::string& label)
+{
+    _label = label;
+    Update();
+}
+
 void axLabel::OnPaint()
 {
     axGC* gc = GetGC();
@@ -141,8 +166,18 @@ void axLabel::OnPaint()
     gc->DrawRectangle(rect);
     
     gc->SetColor(_info.font_color);
+    gc->SetFontType(_info.font_name);
     gc->SetFontSize(_info.font_size);
-    gc->DrawStringAlignedCenter(_label, rect);
+    
+    if(_info._alignement == axALIGN_CENTER)
+    {
+        gc->DrawStringAlignedCenter(_label, rect);
+    }
+    else if(_info._alignement == axALIGN_LEFT)
+    {
+        gc->DrawString(_label, axPoint(5, 2));
+    }
+    
     
     gc->SetColor(_info.contour);
     gc->DrawRectangleContour(rect);

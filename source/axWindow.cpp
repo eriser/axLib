@@ -212,3 +212,12 @@ void axWindow::SetPosition(const axPoint& pos)
 
 	Update();
 }
+
+void axWindow::OnPaint()
+{
+    axGC* gc = GetGC();
+    axRect rect(GetRect());
+    
+    gc->SetColor(axColor(0.4, 0.4, 0.4));
+    gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
+}

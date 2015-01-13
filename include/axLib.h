@@ -38,4 +38,6 @@
 #include "axWidget.h"
 #include "axMain.h"
 
+#include "axObjectLoader.h"
+
 #endif //__AX_LIB__

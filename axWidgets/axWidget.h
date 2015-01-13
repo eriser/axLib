@@ -36,5 +36,6 @@
 #include "axTextBox.h"
 #include "axTextControl.h"
 #include "axPlot.h"
+#include "axLabel.h"
 
 #endif //__AX_WIDGET__

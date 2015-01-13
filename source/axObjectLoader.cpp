@@ -26,6 +26,7 @@
 #include <fstream>
 #include <streambuf>
 
+#include "axButton.h"
 #include "axNumberBox.h"
 #include "axKnob.h"
 #include "axLabel.h"
@@ -98,6 +99,11 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
         {
             axToggle::Builder toggleBuilder(win);
             toggleBuilder.Create(objData);
+        }
+        else if(objNode->name() == std::string("axButton"))
+        {
+            axButton::Builder builder(win);
+            builder.Create(objData);
         }
         else if(objNode->name() == std::string("axNumberBox"))
         {

@@ -50,7 +50,9 @@ public:
         Info(const axColor& normal_color,
              const axColor& contour_color,
              const axColor& fontColor,
-             const int fontSize);
+             const int fontSize,
+             const std::string& font_name,
+             const axAlignement& alignement);
         
         /// Constructor with axObj xml file.
         /// @param path Path of the xml file.
@@ -61,6 +63,8 @@ public:
         axColor font_color;
         int font_size;
         std::string font_name;
+        axAlignement _alignement;
+        
     };
     
     /***************************************************************************
@@ -87,6 +91,9 @@ public:
             const axRect& rect,
             const axLabel::Info& info,
             const std::string& label);
+    
+    
+    void SetLabel(const std::string& label);
 
 private:
     axLabel::Info _info;

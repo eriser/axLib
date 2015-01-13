@@ -125,6 +125,38 @@ public:
     };
     
     /***************************************************************************
+     * axButton::Builder.
+     **************************************************************************/
+    class Builder
+    {
+    public:
+//        Builder(axPanel* parent,
+//                const axSize& size,
+//                const axButton::Info& info,
+//                string img_path = "",
+//                string label = "",
+//                axFlag flags = 0,
+//                int nextPositionDelta = 5,
+//                axDirection direction = axDIRECTION_RIGHT);
+        
+        Builder(axWindow* win);
+        
+        axButton* Create(axVectorPairString attributes);
+        
+    private:
+        axWindow* _parent;
+        axButton::Info _info;
+        std::string _label;
+        std::string _img;
+        std::string _msg;
+        axFlag _flags;
+        axSize _size;
+        int _nextPositionDelta;
+        axButton* _past;
+        axDirection _direction;
+    };
+    
+    /***************************************************************************
      * axButton::axButton.
      **************************************************************************/
 	axButton(axWindow* parent,

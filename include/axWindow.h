@@ -66,7 +66,7 @@ public:
     void Hide();
 
     // Drawing events.
-	virtual void OnPaint(){}
+    virtual void OnPaint();
     virtual void OnPaintStatic(){}
     virtual void Update() = 0;
     virtual void OnResize(){}

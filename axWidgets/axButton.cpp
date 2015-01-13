@@ -20,6 +20,7 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axButton.h"
+#include "axObjectLoader.h"
 
 /*******************************************************************************
  * axButon::Flags.
@@ -83,7 +84,36 @@ font_color(font_color_)
 
 axButton::Info::Info(const std::string& path)
 {
-    SerializeInput(path);
+    axWidgetLoader loader;
+    axVectorPairString att = loader.GetAttributes(path);
+    
+    for(auto& n : att)
+    {
+        if(n.first == "normal")
+        {
+            normal.LoadFromString(n.second);
+        }
+        else if(n.first == "hover")
+        {
+            hover.LoadFromString(n.second);
+        }
+        else if(n.first == "clicking")
+        {
+            clicking.LoadFromString(n.second);
+        }
+        else if(n.first == "selected")
+        {
+            selected.LoadFromString(n.second);
+        }
+        else if(n.first == "contour")
+        {
+            contour.LoadFromString(n.second);
+        }
+        else if(n.first == "font_color")
+        {
+            font_color.LoadFromString(n.second);
+        }
+    }
 }
 
 void axButton::Info::SerializeOutput(const std::string& path)
@@ -125,6 +155,73 @@ void axButton::Info::SerializeInput(const std::string& path)
         contour.SerializeInput(file);
         font_color.SerializeInput(file);
     }
+}
+
+/*******************************************************************************
+ * axButton::Builder.
+ ******************************************************************************/
+axButton::Builder::Builder(axWindow* win):
+_parent(win),
+_past(nullptr),
+_flags(0)
+{
+    
+}
+
+axButton* axButton::Builder::Create(axVectorPairString attributes)
+{
+    std::string name;
+    axPoint pos;
+    axButton::Events evts;
+    
+    for(auto& s : attributes)
+    {
+        if(s.first == "name")
+        {
+            name = s.second;
+        }
+        else if(s.first == "rect")
+        {
+            axStringVector strVec;
+            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            
+            pos = axPoint(stoi(strVec[0]),
+                          stoi(strVec[1]));
+            
+            _size = axSize(stoi(strVec[2]),
+                           stoi(strVec[3]));
+        }
+        else if(s.first == "info")
+        {
+            _info = axButton::Info(s.second);
+        }
+        else if(s.first == "img")
+        {
+            _img = s.second;
+        }
+        else if(s.first == "label")
+        {
+            _label = s.second;
+        }
+        else if(s.first == "flags")
+        {
+            _flags = stoi(s.second);
+        }
+        else if(s.first == std::string("event"))
+        {
+            evts.button_click = _parent->GetEventFunction(s.second);
+        }
+        else if(s.first == "msg")
+        {
+            _msg = s.second;
+        }
+    }
+    
+    axButton* btn = new axButton(_parent, axRect(pos, _size), evts,
+                                 _info, _img, _label, _flags, _msg);
+    
+    _parent->GetResourceManager()->Add(name, btn);
+    return btn;
 }
 
 /*******************************************************************************
