@@ -166,16 +166,18 @@ void axLabel::OnPaint()
     gc->DrawRectangle(rect);
     
     gc->SetColor(_info.font_color);
-    gc->SetFontType(_info.font_name);
-    gc->SetFontSize(_info.font_size);
+    axFont font(_info.font_name);
+    font.SetFontSize(_info.font_size);
+//    gc->SetFontType(_info.font_name);
+//    gc->SetFontSize(_info.font_size);
     
     if(_info._alignement == axALIGN_CENTER)
     {
-        gc->DrawStringAlignedCenter(_label, rect);
+        gc->DrawStringAlignedCenter(font, _label, rect);
     }
     else if(_info._alignement == axALIGN_LEFT)
     {
-        gc->DrawString(_label, axPoint(5, 2));
+        gc->DrawString(font, _label, axPoint(5, 2));
     }
     
     

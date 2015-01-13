@@ -74,15 +74,21 @@ public:
                                const axRect& rect,
                                double alpha = 1.0);
 
-    axPoint DrawChar(const char& key, const axPoint& pos);
+    axPoint DrawChar(axFont& font,
+                     const char& key,
+                     const axPoint& pos);
     
-	void DrawString(const string& text, const axPoint& pos);
+	void DrawString(axFont& font,
+                    const string& text,
+                    const axPoint& pos);
 
-	void DrawStringAlignedCenter(const string& text, const axRect& rect);
+	void DrawStringAlignedCenter(axFont& font,
+                                 const string& text,
+                                 const axRect& rect);
     
-	void SetFontType(const string& font_type){ _font.SetFontType(font_type); }
+//	void SetFontType(const string& font_type){ _font.SetFontType(font_type); }
 
-    void SetFontSize(const int& size);
+//    void SetFontSize(const int& size);
 
 	void DrawRectangleColorFade(const axRect& rect,
                                 const axColor& c1,
@@ -120,7 +126,7 @@ public:
 
 private:
 	axWindow* _win;
-	axFont _font;
+//	axFont _font;
     
 	axFloatRect RectToFloatRect(const axRect& rect);
 };

@@ -33,37 +33,60 @@
 #include <map>
 #include <fstream>
 
-struct axFontStruct
-{
-	axFontStruct(void* data, unsigned int size) :
-	_data(data), _size(size)
-	{
-	}
-
-	void* _data;
-	unsigned int _size;
-};
-
-class axFontGlobalManager
-{
-public:
-	axFontGlobalManager();
-
-	bool LoadFont(const string& path, FT_Face& face);
-
-private:
-	std::map<std::string, axFontStruct> _fontMap;
-	FT_Library _freeType;
-};
+//struct axFontStruct
+//{
+//	axFontStruct(void* data, unsigned int size) :
+//	_data(data), _size(size)
+//	{
+//	}
+//
+//	void* _data;
+//	unsigned int _size;
+//};
+//
+//class axFontGlobalManager
+//{
+//public:
+//	axFontGlobalManager();
+//
+//	bool LoadFont(const string& path, FT_Face& face);
+//
+//private:
+//	std::map<std::string, axFontStruct> _fontMap;
+//	FT_Library _freeType;
+//};
 
 
 class axFont
 {
 public:
 	axFont(const string& font);
+    
+    ~axFont();
 
 	GLuint GetTexture();
     
+    bool operator== (const bool& exist)
+    {
+        return _isReady == exist;
+    }
+    
+    bool operator!= (const bool& exist)
+    {
+        return _isReady != exist;
+    }
+    
+    bool IsFontReady() const
+    {
+        return _isReady;
+    }
+    
+    operator bool() const
+    {
+        return _isReady;
+    }
+    
+    // Char won't work if SetFontSize is not call.
 	void SetFontSize(const int& size);
     
 	void SetChar(const char& letter);
@@ -90,9 +113,9 @@ private:
 	int _next;
 	int _font_size;
 
-	static axFontGlobalManager _fontManager;
-
-	bool InitFreeType();
+    bool LoadFont(const string& path, FT_Face& face);
+    
+    bool _isReady;
 };
 
 /// @}

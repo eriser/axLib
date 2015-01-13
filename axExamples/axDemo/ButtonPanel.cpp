@@ -31,39 +31,39 @@ axPanel(parent, rect)
                                   btn1_info,
                                   "", "Btn1");
     
-    axButton* btn2 = new axButton(this,
-                                  axRect(110, 40, 60, 25),
-                                  axButton::Events(),
-                                  axBUTTON_TRANSPARENT,
-                                  app_path + std::string("GrayButton.png"),
-                                  "Btn2",
-                                  axButton::Flags::SINGLE_IMG);
-    
-    axButton* btn3 = new axButton(this,
-                                  axRect(180, 40, 60, 25),
-                                  axButton::Events(),
-                                  axBUTTON_TRANSPARENT,
-                                  app_path + std::string("btn2.png"),
-                                  "Btn3");
-    
-    std::string img_path = app_path + std::string("button.png");
-    axButton* btn4 = new axButton(this,
-                                  axRect(250, 40, 60, 25),
-                                  axButton::Events(),
-                                  btn1_info,
-                                  img_path,
-                                  "Btn4",
-								  axButton::Flags::SINGLE_IMG |
-								  axButton::Flags::IMG_RESIZE);
-    
-    axButton* btn5 = new axButton(this,
-                                  axRect(320, 40, 60, 25),
-                                  axButton::Events(),
-								  axButton::Info(app_path + std::string("axButtonBlue.axobj")),
-                                  img_path,
-                                  "Btn5",
-								  axButton::Flags::SINGLE_IMG |
-								  axButton::Flags::IMG_RESIZE);
+//    axButton* btn2 = new axButton(this,
+//                                  axRect(110, 40, 60, 25),
+//                                  axButton::Events(),
+//                                  axBUTTON_TRANSPARENT,
+//                                  app_path + std::string("GrayButton.png"),
+//                                  "Btn2",
+//                                  axButton::Flags::SINGLE_IMG);
+//    
+//    axButton* btn3 = new axButton(this,
+//                                  axRect(180, 40, 60, 25),
+//                                  axButton::Events(),
+//                                  axBUTTON_TRANSPARENT,
+//                                  app_path + std::string("btn2.png"),
+//                                  "Btn3");
+//    
+//    std::string img_path = app_path + std::string("button.png");
+//    axButton* btn4 = new axButton(this,
+//                                  axRect(250, 40, 60, 25),
+//                                  axButton::Events(),
+//                                  btn1_info,
+//                                  img_path,
+//                                  "Btn4",
+//								  axButton::Flags::SINGLE_IMG |
+//								  axButton::Flags::IMG_RESIZE);
+//    
+//    axButton* btn5 = new axButton(this,
+//                                  axRect(320, 40, 60, 25),
+//                                  axButton::Events(),
+//								  axButton::Info(app_path + std::string("axButtonBlue.axobj")),
+//                                  img_path,
+//                                  "Btn5",
+//								  axButton::Flags::SINGLE_IMG |
+//								  axButton::Flags::IMG_RESIZE);
     
     axButton* btn6 = new axButton(this,
                                   axRect(390, 40, 25, 25),

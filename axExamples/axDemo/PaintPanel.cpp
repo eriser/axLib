@@ -19,8 +19,11 @@ axPanel(parent, rect)
     dog_cat_img = new axImage(app_path + std::string("whiskers-wags-dog-cat.png"));
 }
 
+static int count_sa = 0;
 void PaintPanel::OnPaint()
 {
+    
+    std::cout << "PaintPanel::OnPaint() " << count_sa++ << std::endl;
     axGC* gc = GetGC();
     axRect rect(GetRect());
     axRect rect0(axPoint(0, 0), rect.size);
@@ -28,12 +31,11 @@ void PaintPanel::OnPaint()
     gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
     gc->DrawRectangle(rect0);
     
-    
-    
     gc->SetColor(axColor(0.9, 0.4, 0.4, 0.5));
     gc->DrawRectangle(axRect(2, 2, 10, 10));
     
-    gc->BlockDrawing(axRect(40, 40, 50, 50));
+//    gc->BlockDrawing(axRect(40, 40, 50, 50));
+    
     gc->SetColor(axColor(0.9, 0.4, 0.4), 1.0);
     gc->DrawRectangle(axRect(40, 40, 50, 50));
     
@@ -97,16 +99,24 @@ void PaintPanel::OnPaint()
     }
     
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-    gc->SetFontSize(12);
-    gc->DrawString("Default 12", axPoint(350, 190));
+    axFont font("FreeSans.ttf");
+//    gc->SetFontSize(12);
+    gc->DrawString(font, "Default 12", axPoint(350, 190));
     
-    gc->SetFontSize(14);
-    gc->DrawString("Default 14", axPoint(350, 205));
+//    gc->SetFontSize(14);
+    font.SetFontSize(14);
+    gc->DrawString(font, "Default 14", axPoint(350, 205));
     
     gc->SetColor(axColor(0.0, 1.0, 0.0), 1.0);
-    gc->SetFontSize(20);
-    gc->DrawString("Default 20", axPoint(350, 220));
+//    gc->SetFontSize(20);
+    font.SetFontSize(20);
+    gc->DrawString(font, "Default 20", axPoint(350, 220));
 
+    
+    gc->SetColor(axColor(0.0, 0.0, 1.0), 1.0);
+    axFont font2("patate");
+    font2.SetFontSize(25);
+    gc->DrawString(font2, "Default 25", axPoint(350, 250));
     
     gc->SeDefaultLine();
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
@@ -115,7 +125,7 @@ void PaintPanel::OnPaint()
     gc->DrawRectangleContour(rect0);
     
     
-    gc->UnBlockDrawing();
+//    gc->UnBlockDrawing();
     
 
 }

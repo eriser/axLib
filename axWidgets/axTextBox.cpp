@@ -324,7 +324,11 @@ void axTextBox::OnPaint()
             int x_past_pos = next_pos.x;
             
             gc->SetColor(_info.font_color);
-            next_pos = gc->DrawChar(_label[i], next_pos);
+            
+            /// @todo Change this.
+            axFont font("FreeSans.ttf");
+            
+            next_pos = gc->DrawChar(font, _label[i], next_pos);
             
             if(_isHightlight) // hightlight on.
             {

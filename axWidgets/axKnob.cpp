@@ -410,12 +410,14 @@ void axKnobControl::OnPaint()
     gc->SetColor(axColor(0.6, 0.6, 0.6, 0.3));
     gc->DrawRectangle(labelRect);
     
-    gc->SetFontSize(12);
+    axFont font("FreeSans.ttf");
+//    gc->SetFontSize(12);
     gc->SetColor(axColor(0.0, 0.0, 0.0));
-    gc->DrawStringAlignedCenter(_label, labelRect);
+    gc->DrawStringAlignedCenter(font, _label, labelRect);
     
-    gc->SetFontSize(10);
-    gc->DrawStringAlignedCenter(_value, axRect(0, rect0.size.y - 20,
+//    gc->SetFontSize(10);
+    font.SetFontSize(10);
+    gc->DrawStringAlignedCenter(font, _value, axRect(0, rect0.size.y - 20,
                                                rect0.size.x, 20));
     
     gc->SetColor(axColor(0.0, 0.0, 0.0, 0.3));

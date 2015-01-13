@@ -180,10 +180,12 @@ void axMenuNode::OnPaint()
     gc->DrawRectangle(rect0);
 
     gc->SetColor( axColor("#AAAAAA") );
-    gc->SetFontSize(13);
+    axFont font("FreeSans.ttf");
+    font.SetFontSize(13);
+//    gc->SetFontSize(13);
 
     //cout << "Rect : " << rect.position.x << " " << rect.position.y << " " << rect.size.x << " " << rect.size.y << endl;
-    gc->DrawStringAlignedCenter(m_label, rect);
+    gc->DrawStringAlignedCenter(font, m_label, rect);
 
     if( m_img != nullptr && m_img->IsImageReady() )
     {

@@ -249,8 +249,9 @@ void axDropMenu::OnPaint()
     if_not_empty(_label)
     {
         gc->SetColor(_info.font_color, 1.0);
-        gc->SetFontSize(12);
-        gc->DrawStringAlignedCenter(_label, rect0);
+        axFont font("FreeSans.ttf");
+//        gc->SetFontSize(12);
+        gc->DrawStringAlignedCenter(font, _label, rect0);
     }
     
     gc->SetColor(_info.contour);
