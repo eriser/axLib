@@ -46,6 +46,8 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(AX_LIB)/include/;$(AX_LIB)/axWin32;$(AX_LIB)/axWidgets;$(AX_LIB)/libs/freetype-2.5.3/include;$(AX_LIB)/libs/lpng1610</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/bigobj
+ %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -68,15 +70,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\axWidgets\axAnimatedButton.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axButton.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axDropMenu.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axGrid.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axKnob.h" />
+    <ClInclude Include="..\..\..\..\axWidgets\axLabel.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axMenu.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axNumberBox.h" />
+    <ClInclude Include="..\..\..\..\axWidgets\axPlot.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axPopupMenu.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axScrollBar.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axSlider.h" />
+    <ClInclude Include="..\..\..\..\axWidgets\axStaticImage.h" />
+    <ClInclude Include="..\..\..\..\axWidgets\axTextBox.h" />
+    <ClInclude Include="..\..\..\..\axWidgets\axTextControl.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axToggle.h" />
     <ClInclude Include="..\..\..\..\axWidgets\axWidget.h" />
     <ClInclude Include="..\..\..\..\axWin32\axCoreWin32.h" />
@@ -91,18 +99,24 @@
     <ClInclude Include="..\..\..\..\include\axFont.h" />
     <ClInclude Include="..\..\..\..\include\axGC.h" />
     <ClInclude Include="..\..\..\..\include\axImage.h" />
+    <ClInclude Include="..\..\..\..\include\axKeyboardManager.h" />
     <ClInclude Include="..\..\..\..\include\axLib.h" />
     <ClInclude Include="..\..\..\..\include\axMain.h" />
     <ClInclude Include="..\..\..\..\include\axManager.h" />
     <ClInclude Include="..\..\..\..\include\axMath.h" />
+    <ClInclude Include="..\..\..\..\include\axMouseManager.h" />
     <ClInclude Include="..\..\..\..\include\axMsg.h" />
     <ClInclude Include="..\..\..\..\include\axObject.h" />
+    <ClInclude Include="..\..\..\..\include\axObjectLoader.h" />
     <ClInclude Include="..\..\..\..\include\axPanel.h" />
+    <ClInclude Include="..\..\..\..\include\axResourceManager.h" />
     <ClInclude Include="..\..\..\..\include\axSerialize.h" />
     <ClInclude Include="..\..\..\..\include\axTimer.h" />
     <ClInclude Include="..\..\..\..\include\axUtils.h" />
+    <ClInclude Include="..\..\..\..\include\axVar.h" />
     <ClInclude Include="..\..\..\..\include\axWindow.h" />
     <ClInclude Include="..\..\..\..\include\axWindowTree.h" />
+    <ClInclude Include="..\..\AnimationPanel.h" />
     <ClInclude Include="..\..\ButtonPanel.h" />
     <ClInclude Include="..\..\KnobPanel.h" />
     <ClInclude Include="..\..\main.h" />
@@ -112,15 +126,21 @@
     <ClInclude Include="..\..\SliderPanel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\axWidgets\axAnimatedButton.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axButton.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axDropMenu.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axGrid.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axKnob.cpp" />
+    <ClCompile Include="..\..\..\..\axWidgets\axLabel.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axMenu.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axNumberBox.cpp" />
+    <ClCompile Include="..\..\..\..\axWidgets\axPlot.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axPopupMenu.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axScrollBar.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axSlider.cpp" />
+    <ClCompile Include="..\..\..\..\axWidgets\axStaticImage.cpp" />
+    <ClCompile Include="..\..\..\..\axWidgets\axTextBox.cpp" />
+    <ClCompile Include="..\..\..\..\axWidgets\axTextControl.cpp" />
     <ClCompile Include="..\..\..\..\axWidgets\axToggle.cpp" />
     <ClCompile Include="..\..\..\..\axWin32\axCoreWin32.cpp" />
     <ClCompile Include="..\..\..\..\axWin32\axDebugWin32.cpp" />
@@ -134,17 +154,23 @@
     <ClCompile Include="..\..\..\..\source\axFont.cpp" />
     <ClCompile Include="..\..\..\..\source\axGC.cpp" />
     <ClCompile Include="..\..\..\..\source\axImage.cpp" />
+    <ClCompile Include="..\..\..\..\source\axKeyboardManager.cpp" />
     <ClCompile Include="..\..\..\..\source\axMain.cpp" />
     <ClCompile Include="..\..\..\..\source\axManager.cpp" />
     <ClCompile Include="..\..\..\..\source\axMath.cpp" />
+    <ClCompile Include="..\..\..\..\source\axMouseManager.cpp" />
     <ClCompile Include="..\..\..\..\source\axMsg.cpp" />
     <ClCompile Include="..\..\..\..\source\axObject.cpp" />
+    <ClCompile Include="..\..\..\..\source\axObjectLoader.cpp" />
     <ClCompile Include="..\..\..\..\source\axPanel.cpp" />
+    <ClCompile Include="..\..\..\..\source\axResourceManager.cpp" />
     <ClCompile Include="..\..\..\..\source\axSerialize.cpp" />
     <ClCompile Include="..\..\..\..\source\axTimer.cpp" />
     <ClCompile Include="..\..\..\..\source\axUtils.cpp" />
+    <ClCompile Include="..\..\..\..\source\axVar.cpp" />
     <ClCompile Include="..\..\..\..\source\axWindow.cpp" />
     <ClCompile Include="..\..\..\..\source\axWindowTree.cpp" />
+    <ClCompile Include="..\..\AnimationPanel.cpp" />
     <ClCompile Include="..\..\ButtonPanel.cpp" />
     <ClCompile Include="..\..\KnobPanel.cpp" />
     <ClCompile Include="..\..\main.cpp" />

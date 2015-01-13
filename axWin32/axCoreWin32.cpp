@@ -64,12 +64,11 @@ string axCoreWin32::GetAppDirectory()
 
 	size_t slash_pos = app_path.find_last_of('\\');
 	app_path = app_path.substr(0, slash_pos + 1);
-	//std::cout << "APPP DIRECTORY : " << app_path << std::endl;
 
 	return app_path;
 }
 
-bool axCoreWin32::CreatePopupWindow(char* title, int width, int height)
+bool axCoreWin32::CreatePopupWindow(const char* title, int width, int height)
 {
 
 	int bits = 16;
@@ -181,7 +180,7 @@ bool axCoreWin32::CreatePopupWindow(char* title, int width, int height)
 	return true;
 }
 
-bool axCoreWin32::CreateGLWindow(char* title, int width, int height, int bits)
+bool axCoreWin32::CreateGLWindow(const char* title, int width, int height, int bits)
 {
 	// Holds the results after searching for a match.
 	GLuint PixelFormat;		
@@ -420,7 +419,6 @@ void axCoreWin32::MainLoop()
 	//while(GetMessage(&msg, NULL, 0, 0) != 0)
 	while (!done)
 	{
-
 		axEventManager::GetInstance()->CallNext();
 
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) // Comment.

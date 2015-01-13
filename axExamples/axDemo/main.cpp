@@ -33,11 +33,11 @@ axPanel(parent, rect)
     axSize tabBtnSize(55, 25);
     
     // Tab button event.
-    axToggleEvents btn_evts;
+    axToggle::Events btn_evts;
     btn_evts.button_click = GetOnTabClick();
     
     // Tab buttons info.
-    axToggleInfo btn_info;
+    axToggle::Info btn_info;
     btn_info.normal = axColor(0.8, 0.8, 0.8);
     btn_info.hover = axColor(0.9, 0.9, 0.9);
     btn_info.clicking = axColor(0.7, 0.7, 0.7);
@@ -55,7 +55,7 @@ axPanel(parent, rect)
                                     btn_info,
                                     "",
                                     _tabBtnLabels[0],
-                                    axTOGGLE_CANT_UNSELECT_WITH_MOUSE,
+                                    axToggle::Flags::CANT_UNSELECT_WITH_MOUSE,
                                     "0"));
     
     for(unsigned int i = 1; i < _tabBtnLabels.size(); i++)
@@ -67,7 +67,7 @@ axPanel(parent, rect)
                                      btn_info,
                                      "",
                                      _tabBtnLabels[i],
-                                        axTOGGLE_CANT_UNSELECT_WITH_MOUSE,
+									 axToggle::Flags::CANT_UNSELECT_WITH_MOUSE,
                                         std::to_string(i)));
     }
 
@@ -92,7 +92,7 @@ axPanel(parent, rect)
     _panels[8]->Hide();
 }
 
-void MainPanel::OnTabClick(const axToggleMsg& msg)
+void MainPanel::OnTabClick(const axToggle::Msg& msg)
 {
     int panel_index = std::stoi(msg.GetMsg());
     

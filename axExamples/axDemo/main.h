@@ -16,12 +16,12 @@ class MainPanel : public axPanel
 public:
     MainPanel(axWindow* parent, const axRect& rect);
     
-    axEVENT_ACCESSOR(axToggleMsg, OnTabClick);
+    axEVENT_ACCESSOR(axToggle::Msg, OnTabClick);
     
 private:
     virtual void OnPaint();
     
-    void OnTabClick(const axToggleMsg& msg);
+    void OnTabClick(const axToggle::Msg& msg);
     
     std::vector<std::string> _tabBtnLabels;
     std::vector<axToggle*> _tabBtns;

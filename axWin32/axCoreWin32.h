@@ -18,7 +18,8 @@ public:
 	virtual axRect GetScreenRect();
 	virtual int DrawGLPopScene();
 	virtual int DrawGLScene();
-	virtual bool CreatePopupWindow(char* title, int width, int height);
+	//virtual bool CreatePopupWindow(char* title, int width, int height);
+	virtual bool CreatePopupWindow(const char* title, int width, int height);
 	virtual string GetAppDirectory();
 	HWND GetMainWindowHandle();
 	HWND GetPopupWindowHandle();
@@ -29,10 +30,15 @@ public:
 
 	axPoint GetScreenRelativePosition();
 
+	virtual void ResizeFrame(const axSize& size)
+	{
+
+	}
+
 protected:
 	virtual void KillGLWindow();
 	virtual void KillPopGLWindow();
-	virtual bool CreateGLWindow(char* title, int width, int height, int bits = 16);
+	virtual bool CreateGLWindow(const char* title, int width, int height, int bits = 16);
 	virtual void MainLoop();
 
 private:

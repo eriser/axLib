@@ -17,8 +17,8 @@ public:
     MenuPanel(axWindow* parent,
                 const axRect& rect);
     
-    axEVENT_ACCESSOR(axButtonMsg, OnPopupMenu);
-    axEVENT_ACCESSOR(axButtonMsg, OnTestBtnUnder);
+    axEVENT_ACCESSOR(axButton::Msg, OnPopupMenu);
+    axEVENT_ACCESSOR(axButton::Msg, OnTestBtnUnder);
     axEVENT_ACCESSOR(axPopupMenuMsg, OnPopupMenuChoice);
     axEVENT_ACCESSOR(axDropMenuMsg, OnDropMenuChoice);
     
@@ -27,14 +27,14 @@ public:
 private:
     virtual void OnPaint();
     
-    void OnPopupMenu(const axButtonMsg& msg);
+    void OnPopupMenu(const axButton::Msg& msg);
     void OnPopupMenuChoice(const axPopupMenuMsg& msg);
     
     void OnDropMenuChoice(const axDropMenuMsg& msg);
     
     void OnMouseLeftDown(const axPoint& pos);
     
-    void OnTestBtnUnder(const axButtonMsg& msg);
+    void OnTestBtnUnder(const axButton::Msg& msg);
     
     axButton* _btnPopMenu;
     axPopupMenu* _popMenu;

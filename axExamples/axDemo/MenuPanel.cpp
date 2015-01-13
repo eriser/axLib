@@ -16,14 +16,14 @@ axPanel(parent, rect)
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
 	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
     
-    axButtonInfo btn1_info;
+    axButton::Info btn1_info;
     btn1_info.normal = axColor(0.8, 0.8, 0.8);
     btn1_info.hover = axColor(0.9, 0.9, 0.9);
     btn1_info.clicking = axColor(0.7, 0.7, 0.7);
     btn1_info.contour = axColor(0.0, 0.0, 0.0);
     btn1_info.selected = btn1_info.normal;
     
-    axButtonEvents btn1_evts;
+    axButton::Events btn1_evts;
     btn1_evts.button_click = GetOnPopupMenu();
     
     _btnPopMenu = new axButton(this,
@@ -75,10 +75,12 @@ axPanel(parent, rect)
                                drop_info,
                                app_path + std::string("DropMenuArrow.png"),
                                app_path + std::string("button.png"),
+							   "",
+							   std::vector<std::string>{"Test1", "Test2"},
                                axDROP_MENU_SINGLE_IMG);
     
     
-    axButtonEvents btn2_evts;
+    axButton::Events btn2_evts;
     btn2_evts.button_click = GetOnTestBtnUnder();
     
     axButton* btn2 = new axButton(this,
@@ -117,7 +119,7 @@ void MenuPanel::OnMouseLeftDown(const axPoint& pos)
     _txtCtrl->UnGrabKey();
 }
 
-void MenuPanel::OnPopupMenu(const axButtonMsg& msg)
+void MenuPanel::OnPopupMenu(const axButton::Msg& msg)
 {
     if(_popMenu->IsShown())
     {
@@ -144,7 +146,7 @@ void MenuPanel::OnDropMenuChoice(const axDropMenuMsg& msg)
     std::cout << "Drop choice : " << msg.GetMsg() << std::endl;
 }
 
-void MenuPanel::OnTestBtnUnder(const axButtonMsg& msg)
+void MenuPanel::OnTestBtnUnder(const axButton::Msg& msg)
 {
     std::cout << "Btn under" << std::endl;
 }

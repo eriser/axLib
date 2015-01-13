@@ -16,7 +16,7 @@ axPanel(parent, rect)
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
 	//std::string app_path("C:/Users/Alexandre Arsenault/Desktop/axLib/axExamples/Demo/VisualStudio2013/axGL/");
 
-    axKnobInfo knob_info(axColor(0.3, 0.3, 0.3),
+    axKnob::Info knob_info(axColor(0.3, 0.3, 0.3),
                          axColor("#AAAAAA"),
                          axColor("#BBBBBB"),
                          128,
@@ -25,7 +25,7 @@ axPanel(parent, rect)
                          app_path + std::string("knob_dark.png"));
     
     axKnob* knob = new axKnob(this, axRect(40, 40, 46, 46),
-                              axKnobEvents(), knob_info);
+                              axKnob::Events(), knob_info);
     
     knob->SetBackgroundAlpha(0.0);
     knob->SetValue(1.0);

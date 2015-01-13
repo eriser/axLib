@@ -18,14 +18,14 @@ axPanel(parent, rect)
     SetShownRect(axRect(axPoint(0, 0), seenSize));
     
     
-    axButtonInfo btn1_info;
+    axButton::Info btn1_info;
     btn1_info.normal = axColor(0.8, 0.8, 0.8);
     btn1_info.hover = axColor(0.9, 0.9, 0.9);
     btn1_info.clicking = axColor(0.7, 0.7, 0.7);
     btn1_info.contour = axColor(0.0, 0.0, 0.0);
     btn1_info.selected = btn1_info.normal;
     
-    axButtonEvents btn1_evts;
+    axButton::Events btn1_evts;
     btn1_evts.button_click = GetOnBtn();
     
     axButton* btn1 = new axButton(this,
@@ -59,7 +59,7 @@ axPanel(parent, rect)
     _scrollBar->SetPanelSize(rect.size);
 }
 
-void MyScrollPanel::OnBtn(const axButtonMsg& msg)
+void MyScrollPanel::OnBtn(const axButton::Msg& msg)
 {
     std::cout << "Btn" << std::endl;
 }

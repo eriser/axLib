@@ -111,7 +111,7 @@ typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
 // Flag.
 typedef uint16_t axFlag;
 
-[[deprecated]]
+//[[deprecated]]
 bool axFlag_exist(const axFlag& FLAG, axFlag flags);
 
 

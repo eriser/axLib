@@ -57,11 +57,11 @@ using namespace std;
 
 #define DEPRECATED_ATTRIBUTE __attribute__((deprecated))
 
-[[deprecated]]
+//[[deprecated]]
 #pragma message("Use std::to_string instead.")
 string axFloatToString( const double& value, int num_char = 4 );
 
-[[deprecated]]
+//[[deprecated]]
 #pragma message("Use std::to_string instead.")
 string axIntToString(const int &value );
 //

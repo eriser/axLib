@@ -18,13 +18,13 @@ public:
                 const axRect& rect,
                   const axSize& seenSize);
     
-    axEVENT_ACCESSOR(axButtonMsg, OnBtn);
+    axEVENT_ACCESSOR(axButton::Msg, OnBtn);
     
 private:
     virtual void OnPaint();
     virtual void OnPaintStatic();
     
-    void OnBtn(const axButtonMsg& msg);
+    void OnBtn(const axButton::Msg& msg);
 };
 
 class SliderPanel : public axPanel

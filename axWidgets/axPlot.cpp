@@ -19,6 +19,7 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+#define NOMINMAX
 #include "axPlot.h"
 
 #include <algorithm>
@@ -39,6 +40,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <algorithm>
 
 
 namespace exprtk

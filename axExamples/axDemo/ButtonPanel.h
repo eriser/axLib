@@ -17,13 +17,13 @@ public:
     ButtonPanel(axWindow* parent,
                 const axRect& rect);
     
-    axEVENT_ACCESSOR(axButtonMsg, OnButtonWithEvtManager);
+    axEVENT_ACCESSOR(axButton::Msg, OnButtonWithEvtManager);
     axEVENT_ACCESSOR(axTimerMsg, OnTimerEvent);
     
 private:
     virtual void OnPaint();
     
-    void OnButtonWithEvtManager(const axButtonMsg& msg);
+    void OnButtonWithEvtManager(const axButton::Msg& msg);
     
     void OnTimerEvent(const axTimerMsg& msg);
     

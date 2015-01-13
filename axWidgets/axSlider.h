@@ -203,8 +203,8 @@ public:
 	void ResizeSlider(const axSize& size)
 	{
 		SetSize(size);
-		_sliderYPos = (GetSize().x - _info.slider_width) * 0.5;
-		_btnYPos = (GetSize().x - _info.btn_size.x) * 0.5;
+		_sliderYPos = int((GetSize().x - _info.slider_width) * 0.5);
+		_btnYPos = int((GetSize().x - _info.btn_size.x) * 0.5);
 	}
 
 	double GetValue() const

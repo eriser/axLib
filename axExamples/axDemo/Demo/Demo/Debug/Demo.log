@@ -1,15 +1,30 @@
-﻿Build started 12/9/2014 12:35:47 PM.
+﻿Build started 1/12/2015 8:49:25 PM.
      1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Demo\Demo.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Debug\Demo.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/objs/win32/vc2010" /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610/projects/vstudio/Debug" opengl32.lib glu32.lib libpng16.lib zlib.lib freetype253_D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Debug\Demo.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Debug\Demo.lib" /MACHINE:X86 Debug\axButton.obj
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alexandre Arsenault\Desktop\axLib/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWin32" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWidgets" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj
+          ..\..\..\..\axWin32\axCoreWin32.cpp
+         axCoreWin32.cpp
+         Use std::to_string instead.
+         Use std::to_string instead.
+     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
+     1>CL : warning : Should use GetInstance.
+     1>CL : warning : Deprecate.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Debug\Demo.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/objs/win32/vc2010" /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610/projects/vstudio/Debug" opengl32.lib glu32.lib libpng16.lib zlib.lib freetype253_D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Debug\Demo.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Debug\Demo.lib" /MACHINE:X86 Debug\axAnimatedButton.obj
+         Debug\axButton.obj
          Debug\axDropMenu.obj
          Debug\axGrid.obj
          Debug\axKnob.obj
+         Debug\axLabel.obj
          Debug\axMenu.obj
          Debug\axNumberBox.obj
+         Debug\axPlot.obj
          Debug\axPopupMenu.obj
          Debug\axScrollBar.obj
          Debug\axSlider.obj
+         Debug\axStaticImage.obj
+         Debug\axTextBox.obj
+         Debug\axTextControl.obj
          Debug\axToggle.obj
          Debug\axCoreWin32.obj
          Debug\axDebugWin32.obj
@@ -23,17 +38,23 @@
          Debug\axFont.obj
          Debug\axGC.obj
          Debug\axImage.obj
+         Debug\axKeyboardManager.obj
          Debug\axMain.obj
          Debug\axManager.obj
          Debug\axMath.obj
+         Debug\axMouseManager.obj
          Debug\axMsg.obj
          Debug\axObject.obj
+         Debug\axObjectLoader.obj
          Debug\axPanel.obj
+         Debug\axResourceManager.obj
          Debug\axSerialize.obj
          Debug\axTimer.obj
          Debug\axUtils.obj
+         Debug\axVar.obj
          Debug\axWindow.obj
          Debug\axWindowTree.obj
+         Debug\AnimationPanel.obj
          Debug\ButtonPanel.obj
          Debug\KnobPanel.obj
          Debug\main.obj
@@ -43,7 +64,7 @@
          Debug\SliderPanel.obj
          libpng16.lib(png.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
      1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
-     1>axButton.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     1>axAnimatedButton.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
          Generating code
          Finished generating code
          Demo.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\axLib\axExamples\axDemo\Demo\Debug\Demo.exe
@@ -51,4 +72,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.52
+Time Elapsed 00:00:04.71

@@ -18,28 +18,28 @@ public:
               axWindow* parent,
               const axRect& rect);
     
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxRed);
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxGreen);
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxBlue);
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxAlpha);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxRed);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxGreen);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxBlue);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxAlpha);
     
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxRedBottom);
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxGreenBottom);
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxBlueBottom);
-    axEVENT_ACCESSOR(axNumberBoxMsg, OnNumberBoxAlphaBottom);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxRedBottom);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxGreenBottom);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxBlueBottom);
+    axEVENT_ACCESSOR(axNumberBox::Msg, OnNumberBoxAlphaBottom);
     
 private:
     virtual void OnPaint();
     
-    void OnNumberBoxRed(const axNumberBoxMsg& msg);
-    void OnNumberBoxGreen(const axNumberBoxMsg& msg);
-    void OnNumberBoxBlue(const axNumberBoxMsg& msg);
-    void OnNumberBoxAlpha(const axNumberBoxMsg& msg);
+    void OnNumberBoxRed(const axNumberBox::Msg& msg);
+    void OnNumberBoxGreen(const axNumberBox::Msg& msg);
+    void OnNumberBoxBlue(const axNumberBox::Msg& msg);
+    void OnNumberBoxAlpha(const axNumberBox::Msg& msg);
     
-    void OnNumberBoxRedBottom(const axNumberBoxMsg& msg);
-    void OnNumberBoxGreenBottom(const axNumberBoxMsg& msg);
-    void OnNumberBoxBlueBottom(const axNumberBoxMsg& msg);
-    void OnNumberBoxAlphaBottom(const axNumberBoxMsg& msg);
+    void OnNumberBoxRedBottom(const axNumberBox::Msg& msg);
+    void OnNumberBoxGreenBottom(const axNumberBox::Msg& msg);
+    void OnNumberBoxBlueBottom(const axNumberBox::Msg& msg);
+    void OnNumberBoxAlphaBottom(const axNumberBox::Msg& msg);
     
     axColor _squareColor, _squareContourColor, _squareColorBottom;
     axRect _squareRect;

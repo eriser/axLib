@@ -20,7 +20,7 @@ axPanel(parent, rect)
     _squareColorBottom = axColor(1.0, 0.0, 0.0, 1.0);
     _squareContourColor = axColor(0.0, 0.0, 0.0);
     
-    axNumberBoxInfo box_info(axColor(0.7, 0.7, 0.7, 0.0),
+    axNumberBox::Info box_info(axColor(0.7, 0.7, 0.7, 0.0),
                              axColor(0.3, 0.3, 0.3, 0.0),
                              axColor(0.2, 0.2, 0.2, 0.0),
                              axColor(0.2, 0.2, 0.2, 0.0),
@@ -29,18 +29,18 @@ axPanel(parent, rect)
     
     axNumberBox* box1 = new axNumberBox(this,
                                         axRect(40, 40, 40, 20),
-                                        axNumberBoxEvents(),
+                                        axNumberBox::Events(),
                                         box_info,
                                         app_path + std::string("NumberBox.png"),
-                                        axNUMBER_BOX_SINGLE_IMG);
+										axNumberBox::Flags::SINGLE_IMG);
     
     axNumberBox* box2 = new axNumberBox(this,
                                         axRect(100, 40, 40, 20),
-                                        axNumberBoxEvents(),
+                                        axNumberBox::Events(),
                                         box_info,
                                         app_path + std::string("NumberBoxFull.png"));
     
-    axNumberBoxInfo box_info3(axColor(0.7, 0.7, 0.7),
+    axNumberBox::Info box_info3(axColor(0.7, 0.7, 0.7),
                               axColor(0.3, 0.3, 0.3),
                               axColor(0.2, 0.2, 0.2),
                               axColor(0.2, 0.2, 0.2),
@@ -49,10 +49,10 @@ axPanel(parent, rect)
     
     axNumberBox* box3 = new axNumberBox(this,
                                         axRect(200, 40, 40, 20),
-                                        axNumberBoxEvents(),
+                                        axNumberBox::Events(),
                                         box_info3);
     
-    axNumberBoxEvents box_evts;
+    axNumberBox::Events box_evts;
     box_evts.value_change = GetOnNumberBoxRed();
     
     axNumberBox* box_red = new axNumberBox(this,
@@ -130,49 +130,49 @@ axPanel(parent, rect)
     _squareRect = axRect(90, 140, 100, 100);
 }
 
-void NumberBoxPanel::OnNumberBoxRed(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxRed(const axNumberBox::Msg& msg)
 {
     _squareColor.SetRed(msg.GetValue());
     Update();
 }
 
-void NumberBoxPanel::OnNumberBoxGreen(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxGreen(const axNumberBox::Msg& msg)
 {
     _squareColor.SetGreen(msg.GetValue());
     Update();
 }
 
-void NumberBoxPanel::OnNumberBoxBlue(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxBlue(const axNumberBox::Msg& msg)
 {
     _squareColor.SetBlue(msg.GetValue());
     Update();
 }
 
-void NumberBoxPanel::OnNumberBoxAlpha(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxAlpha(const axNumberBox::Msg& msg)
 {
     _squareColor.SetAlpha(msg.GetValue());
     Update();
 }
 
-void NumberBoxPanel::OnNumberBoxRedBottom(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxRedBottom(const axNumberBox::Msg& msg)
 {
     _squareColorBottom.SetRed(msg.GetValue());
     Update();
 }
 
-void NumberBoxPanel::OnNumberBoxGreenBottom(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxGreenBottom(const axNumberBox::Msg& msg)
 {
     _squareColorBottom.SetGreen(msg.GetValue());
     Update();
 }
 
-void NumberBoxPanel::OnNumberBoxBlueBottom(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxBlueBottom(const axNumberBox::Msg& msg)
 {
     _squareColorBottom.SetBlue(msg.GetValue());
     Update();
 }
 
-void NumberBoxPanel::OnNumberBoxAlphaBottom(const axNumberBoxMsg& msg)
+void NumberBoxPanel::OnNumberBoxAlphaBottom(const axNumberBox::Msg& msg)
 {
     _squareColorBottom.SetAlpha(msg.GetValue());
     Update();
