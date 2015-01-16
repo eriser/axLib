@@ -141,6 +141,22 @@ void axColor::LoadFromString(const std::string& str)
     {
         _a = 1.0;
     }
-    
+}
 
+std::string axColor::ToString() const
+{
+    std::string red = std::to_string(_r);
+    red.resize(4);
+    
+    std::string green = std::to_string(_g);
+    green.resize(4);
+    
+    std::string blue = std::to_string(_b);
+    blue.resize(4);
+    
+    std::string alpha = std::to_string(_a);
+    alpha.resize(4);
+    
+    return red + ", " + green + ", " + blue + ", " + alpha;
+    
 }

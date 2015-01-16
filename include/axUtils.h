@@ -114,6 +114,7 @@ enum axControlInterpolation
  ******************************************************************************/
 std::string axGetExtension(const std::string& path);
 
+typedef std::pair<std::string, std::string> axStringPair;
 typedef std::vector<std::pair<std::string, std::string>> axVectorPairString;
 typedef std::vector<std::string> axStringVector;
 

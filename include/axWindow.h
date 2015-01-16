@@ -79,7 +79,7 @@ public:
     virtual void OnMouseLeftDown(const axPoint& pos){}
     virtual void OnMouseLeftDoubleClick(const axPoint& pos){}
     virtual void OnMouseLeftUp(const axPoint& pos){}
-	virtual void OnMouseRightDown(){}
+	virtual void OnMouseRightDown(const axPoint& pos){}
 	virtual void OnMouseRightUp(){}
 	virtual void OnMouseEnter(){}
 	virtual void OnMouseLeave(){}

@@ -37,7 +37,7 @@
 /// @{
 
 #include "axEvent.h"
-#include "axPanel.h"
+#include "axWidget.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
@@ -47,7 +47,7 @@
 /*******************************************************************************
  * axButon.
  ******************************************************************************/
-class axButton : public axPanel
+class axButton : public axWidget
 {
 public:
     /***************************************************************************
@@ -99,10 +99,12 @@ public:
     /***************************************************************************
      * axButton::Info.
      **************************************************************************/
-    class Info
+    class Info : public axInfo
     {
     public:
         Info();
+        
+        Info(const std::string& path);
         
         Info(const axColor& normal_color,
              const axColor& hover_color,
@@ -111,11 +113,10 @@ public:
              const axColor& contour_color,
              const axColor& font_color);
         
-        Info(const std::string& path);
-        
-        void SerializeOutput(const std::string& path);
-        
-        void SerializeInput(const std::string& path);
+        virtual axStringVector GetParamNameList() const;
+        virtual std::vector<axParameterType> GetParamTypeList() const;
+        virtual void SetAttribute(const axStringPair& attribute);
+        virtual std::string GetAttributeValue(const std::string& name);
         
         axColor normal;
         axColor hover;
@@ -131,15 +132,6 @@ public:
     class Builder
     {
     public:
-//        Builder(axPanel* parent,
-//                const axSize& size,
-//                const axButton::Info& info,
-//                string img_path = "",
-//                string label = "",
-//                axFlag flags = 0,
-//                int nextPositionDelta = 5,
-//                axDirection direction = axDIRECTION_RIGHT);
-        
         Builder(axWindow* win);
         
         axButton* Create(axVectorPairString attributes);
@@ -169,22 +161,17 @@ public:
              axFlag flags = 0,
              std::string msg = "");
     
-
-    
 	void SetMsg(const std::string& msg);
     
 	void SetSelected(const bool& selected);
     
     void SetLabel(const std::string& label);
     
-//#ifdef _axDebugEditor_
-//    static axButton* CreateDebugEditorButton(axWindow* win,
-//                                             const axRect& rect);
-//#endif // _axDebugEditor_
+    axButton::Info GetInfo() const;
     
 protected:
     axButton::Events _events;
-    axButton::Info _info;
+//    axButton::Info _info;
     std::string _label;
     axImage* _btnImg;
     axFlag _flags;

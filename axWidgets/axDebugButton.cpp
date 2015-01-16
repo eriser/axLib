@@ -21,6 +21,9 @@
  ******************************************************************************/
 #include "axDebugButton.h"
 
+#include "axLabel.h"
+#include "axTextBox.h"
+
 axDebugButton::axDebugButton(axWindow* parent) :
 // Heritage.
 axPanel(parent, axRect(axPoint(parent->GetSize().x - 7,
@@ -153,6 +156,67 @@ void axDebugButton::OnMouseLeftUp(const axPoint& pos)
         
         Update();
     }
+}
+
+void axDebugButton::OnMouseRightDown(const axPoint& pos)
+{
+    axWindow* win = GetParent()->GetParent();
+    
+    axTextBoxEvents txtEvents;
+    axTextBoxInfo txtInfo;
+    txtInfo.normal = axColor(1.0, 1.0, 1.0);
+    txtInfo.hover = axColor(1.0, 1.0, 1.0);
+    txtInfo.selected = axColor(1.0, 1.0, 1.0);
+    txtInfo.hightlight = axColor(0.4, 0.4, 0.6, 0.4);
+    txtInfo.contour = axColor(0.0, 0.0, 0.0);
+    txtInfo.cursor = axColor(1.0, 0.0, 0.0);
+    txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.3);
+    
+    axLabel::Info labelInfo;
+    labelInfo.normal = axColor(1.0, 1.0, 1.0);
+    labelInfo.contour = axColor(0.0, 0.0, 0.0);
+    labelInfo.font_color = axColor(0.0, 0.0, 0.0);
+    labelInfo.font_size = 12;
+    labelInfo._alignement = axAlignement::axALIGN_CENTER;
+    
+    axStringVector attributes = GetParent()->GetInfo().GetParamNameList();
+    int i = 0;
+    axLabel* label = nullptr;
+    axTextBox* txtBox = nullptr;
+    
+    for(auto& n : attributes)
+    {
+        
+        if(i == 0)
+        {
+            label = new axLabel(this, axRect(50, 225, 140, 25), labelInfo, n);
+            
+            
+            txtBox = new axTextBox(this,
+                                   axRect(label->GetNextPosRight(0), axSize(180, 25)),
+                                   txtEvents,
+                                   txtInfo,
+                                   "",
+                                   btn1->GetInfo().GetAttributeValue(n));
+        }
+        
+        else
+        {
+            std::cout << n << std::endl;
+            
+            label = new axLabel(this, axRect(label->GetNextPosDown(0),
+                                             axSize(140, 25)),
+                                labelInfo, n);
+            
+            txtBox = new axTextBox(this, axRect(label->GetNextPosRight(0),
+                                                axSize(180, 25)),
+                                   txtEvents, txtInfo, "",
+                                   btn1->GetInfo().GetAttributeValue(n));
+        }
+        
+        i++;
+    }
+    
 }
 
 void axDebugButton::OnMouseEnter()

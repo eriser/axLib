@@ -158,14 +158,10 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 // Working.
 -(void)mouseDown:(NSEvent *)event
 {
-//    std::cout << "-(void)mouseDown:(NSEvent *)event" << std::endl;
-
     NSPoint locationInView = [self convertPoint:[event locationInWindow]
                                        fromView:nil];
     
     axPoint pos(locationInView.x, locationInView.y);
-    
-//    std::cout << "Pos x = " << pos.x << " pos y = " << pos.y << std::endl;
     
     // Double click.
     if (event.clickCount == 2)
@@ -185,6 +181,35 @@ axAppDelegate* GlobalAppDelegate = nullptr;
         if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
         {
             axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
+        }
+    }
+}
+
+- (void) rightMouseDown: (NSEvent*) event
+{
+    NSPoint locationInView = [self convertPoint:[event locationInWindow]
+                                       fromView:nil];
+    
+    axPoint pos(locationInView.x, locationInView.y);
+    
+    // Double click.
+    if (event.clickCount == 2)
+    {
+//        axApp::MainInstance->GetPopupManager()->OnMouseRightDoubleClick(pos);
+//        if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+//        {
+//            axApp::MainInstance->GetWindowManager()->OnMouseRightDoubleClick(pos);
+//        }
+    }
+    
+    // Simple click.
+    else
+    {
+        axApp::MainInstance->GetPopupManager()->OnMouseRightDown(pos);
+        
+        if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        {
+            axApp::MainInstance->GetWindowManager()->OnMouseRightDown(pos);
         }
     }
 }

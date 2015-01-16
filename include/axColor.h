@@ -54,6 +54,8 @@ public:
     void SerializeInput(fstream& in);
     
     void LoadFromString(const std::string& str);
+    
+    std::string ToString() const;
 
 private:
 	axDouble _r, _g, _b, _a;

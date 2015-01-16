@@ -43,7 +43,7 @@ public:
 	void OnMouseLeftDown(const axPoint& pos);
     void OnMouseLeftDoubleClick(const axPoint& pos);
 	void OnMouseLeftUp(const axPoint& pos);
-	void OnMouseRightDown();
+	void OnMouseRightDown(const axPoint& pos);
 	void OnMouseRightUp();
 	void GrabMouse(axWindow* win);
 	void UnGrabMouse();

@@ -21,8 +21,9 @@
  ******************************************************************************/
 #include "axWidget.h"
 
-axWidget::axWidget(axWindow* parent, const axRect& rect):
-axPanel(parent, rect)
+axWidget::axWidget(axWindow* parent, const axRect& rect, axInfo* info):
+axPanel(parent, rect),
+_info(info)
 {
     
 }
@@ -31,4 +32,9 @@ axWidget::axWidget(int f, axWindow* parent, const axRect& rect):
 axPanel(f, parent, rect)
 {
     
+}
+
+axInfo* axWidget::GetInfo()
+{
+    return _info;
 }

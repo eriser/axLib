@@ -98,6 +98,7 @@ public:
 private:
     axLabel::Info _info;
     std::string _label;
+    axFont* _font;
     
     // Events.
     virtual void OnPaint();

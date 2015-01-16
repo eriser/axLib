@@ -68,6 +68,9 @@ protected:
     virtual void OnMouseLeftDown(const axPoint& pos);
     virtual void OnMouseLeftDragging(const axPoint &pos);
     virtual void OnMouseLeftUp(const axPoint& pos);
+    
+    virtual void OnMouseRightDown(const axPoint& pos);
+    
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();
 };

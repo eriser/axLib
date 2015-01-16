@@ -31,30 +31,79 @@ enum axParameterType
     axCOLOR, axRECT, axPOINT, axSIZE
 };
 
+class axInfo
+{
+public:
+    axInfo()
+    {
+        
+    }
+    
+    axInfo(const std::string& path):
+    _path(path)
+    {
+        if(_path.size())
+        {
+            _isEditable = true;
+        }
+    }
+    
+    std::string GetPath() const
+    {
+        return _path;
+    }
+    
+    bool IsEditable() const;
+    
+    virtual axStringVector GetParamNameList() const
+    {
+        return axStringVector{};
+    }
+    
+    virtual std::vector<axParameterType> GetParamTypeList() const
+    {
+        return std::vector<axParameterType>{};
+    }
+    
+
+    
+    virtual void SetAttribute(const axStringPair& attribute)
+    {
+        
+    }
+    
+    virtual std::string GetAttributeValue(const std::string& name)
+    {
+        return "";
+    }
+    
+private:
+    std::string _path;
+    bool _isEditable;
+    
+};
+
+
 class axWidget : public axPanel
 {
 public:
-    axWidget(axWindow* parent, const axRect& rect);
+    axWidget(axWindow* parent, const axRect& rect, axInfo* info);
     axWidget(int f, axWindow* parent, const axRect& rect);
     
     bool IsEditable() const;
     bool IsInfoEditable() const;
     bool AcceptChild() const;
     
-    void SetInfoParam(const std::string& name, axVar param);
-    void SetEditParam(const std::string& name, axVar param);
+    axInfo* GetInfo();
     
-    const axStringVector& GetListOfEditInfoName() const;
-    const axStringVector& GetListOfEditInfoParamType() const;
-//    const axStringVector& GetListOfEditInfoParamValue() const;
-    
-    const axStringVector& GetListOfEditName() const;
-    const axStringVector& GetListOfEditParamType() const;
-//    const axStringVector& GetListOfEditParamValue() const;
+    void SetInfoAttribute(const std::string& name, axVar param);
+    void SetEditAttribute(const std::string& name, axVar param);
     
 private:
     bool _isEditable, _isInfoEditable, _acceptChild;
     std::string _name;
+    
+    axInfo* _info;
 };
 
 #endif //__AX_WIDGET__

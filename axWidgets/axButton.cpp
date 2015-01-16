@@ -21,7 +21,6 @@
  ******************************************************************************/
 #include "axButton.h"
 #include "axObjectLoader.h"
-
 #include "axDebugButton.h"
 
 /*******************************************************************************
@@ -63,7 +62,8 @@ axMsg* axButton::Msg::GetCopy()
 /*******************************************************************************
  * axButon::Info.
  ******************************************************************************/
-axButton::Info::Info()
+axButton::Info::Info() :
+axInfo()
 {
     
 }
@@ -74,6 +74,9 @@ axButton::Info::Info(const axColor& normal_color,
                      const axColor& selected_color,
                      const axColor& contour_color,
                      const axColor& font_color_) :
+// Heritage.
+axInfo(),
+// Members.
 normal(normal_color),
 hover(hover_color),
 clicking(clicked_color),
@@ -84,79 +87,88 @@ font_color(font_color_)
     
 }
 
-axButton::Info::Info(const std::string& path)
+axButton::Info::Info(const std::string& path):
+// Heritage.
+axInfo(path)
 {
     axWidgetLoader loader;
     axVectorPairString att = loader.GetAttributes(path);
     
     for(auto& n : att)
     {
-        if(n.first == "normal")
-        {
-            normal.LoadFromString(n.second);
-        }
-        else if(n.first == "hover")
-        {
-            hover.LoadFromString(n.second);
-        }
-        else if(n.first == "clicking")
-        {
-            clicking.LoadFromString(n.second);
-        }
-        else if(n.first == "selected")
-        {
-            selected.LoadFromString(n.second);
-        }
-        else if(n.first == "contour")
-        {
-            contour.LoadFromString(n.second);
-        }
-        else if(n.first == "font_color")
-        {
-            font_color.LoadFromString(n.second);
-        }
+        SetAttribute(n);
     }
 }
 
-void axButton::Info::SerializeOutput(const std::string& path)
+
+std::string axButton::Info::GetAttributeValue(const std::string& name)
 {
-    fstream file;
-    file.open(path, std::fstream::out | std::fstream::binary);
-    
-    if (file.fail())
+    if(name == "normal")
     {
-        std::cerr << "Problem opening file " << path << std::endl;
+        return normal.ToString();
     }
-    else
+    else if(name == "hover")
     {
-        normal.SerializeOutput(file);
-        hover.SerializeOutput(file);
-        clicking.SerializeOutput(file);
-        selected.SerializeOutput(file);
-        contour.SerializeOutput(file);
-        font_color.SerializeOutput(file);
+        return hover.ToString();
+    }
+    else if(name == "clicking")
+    {
+        return clicking.ToString();
+    }
+    else if(name == "selected")
+    {
+        return selected.ToString();
+    }
+    else if(name == "contour")
+    {
+        return contour.ToString();
+    }
+    else if(name == "font_color")
+    {
+        return font_color.ToString();
     }
     
+    return "";
 }
 
-void axButton::Info::SerializeInput(const std::string& path)
+void axButton::Info::SetAttribute(const axStringPair& attribute)
 {
-    fstream file;
-    file.open(path, std::fstream::in | std::fstream::binary);
-    
-    if (file.fail())
+    if(attribute.first == "normal")
     {
-        std::cerr << "Problem opening file " << path << std::endl;
+        normal.LoadFromString(attribute.second);
     }
-    else
+    else if(attribute.first == "hover")
     {
-        normal.SerializeInput(file);
-        hover.SerializeInput(file);
-        clicking.SerializeInput(file);
-        selected.SerializeInput(file);
-        contour.SerializeInput(file);
-        font_color.SerializeInput(file);
+        hover.LoadFromString(attribute.second);
     }
+    else if(attribute.first == "clicking")
+    {
+        clicking.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "selected")
+    {
+        selected.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "contour")
+    {
+        contour.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "font_color")
+    {
+        font_color.LoadFromString(attribute.second);
+    }
+}
+
+axStringVector axButton::Info::GetParamNameList() const
+{
+    return axStringVector{"normal", "hover", "clicking",
+                          "selected", "contour", "font_color"};
+
+}
+
+std::vector<axParameterType> axButton::Info::GetParamTypeList() const
+{
+    return std::vector<axParameterType>(6, axParameterType::axCOLOR);
 }
 
 /*******************************************************************************
@@ -236,12 +248,12 @@ axButton::axButton(axWindow* parent,
                    std::string img_path,
                    std::string label,
                    axFlag flags,
-                   std::string msg) :
+                   std::string msg):
 // Heritage.
-axPanel(parent, rect),
+axWidget(parent, rect, new axButton::Info(info)),
 // Members.
 _events(events),
-_info(info),
+//_info(info),
 _label(label),
 _flags(flags),
 _nCurrentImg(axBTN_NORMAL),
@@ -262,6 +274,11 @@ _font(nullptr)
     }
     
     axDebugButton* dbgBtn = new axDebugButton(this);
+}
+
+axButton::Info axButton::GetInfo() const
+{
+    return _info;
 }
 
 void axButton::SetMsg(const string& msg)
@@ -370,6 +387,12 @@ void axButton::OnMouseLeave()
     
     Update();
 }
+
+//axStringVector axButton::GetListOfEditInfoName() const
+//{
+////    axStringVector strVector = ;
+//    return axStringVector{};
+//}
 
 void axButton::OnPaint()
 {

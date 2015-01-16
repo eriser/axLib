@@ -146,9 +146,22 @@ axLabel::axLabel(axWindow* parent,
                  const std::string& label):
 axPanel(parent, rect),
 _info(info),
-_label(label)
+_label(label),
+_font(nullptr)
 {
     SetSelectable(false);
+    
+    if(_info.font_name != "")
+    {
+        _font = new axFont(_info.font_name);
+        
+    }
+    else
+    {
+        _font = new axFont(0);
+    }
+    
+    _font->SetFontSize(_info.font_size);
 }
 
 void axLabel::SetLabel(const std::string& label)
@@ -166,18 +179,16 @@ void axLabel::OnPaint()
     gc->DrawRectangle(rect);
     
     gc->SetColor(_info.font_color);
-    axFont font(_info.font_name);
-    font.SetFontSize(_info.font_size);
-//    gc->SetFontType(_info.font_name);
-//    gc->SetFontSize(_info.font_size);
+//    axFont font(_info.font_name);
+//    font.SetFontSize(_info.font_size);
     
     if(_info._alignement == axALIGN_CENTER)
     {
-        gc->DrawStringAlignedCenter(font, _label, rect);
+        gc->DrawStringAlignedCenter(*_font, _label, rect);
     }
     else if(_info._alignement == axALIGN_LEFT)
     {
-        gc->DrawString(font, _label, axPoint(5, 2));
+        gc->DrawString(*_font, _label, axPoint(5, 2));
     }
     
     
