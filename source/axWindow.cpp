@@ -31,6 +31,10 @@ _isBlockDrawing(false),
 _shownRect(axPoint(0, 0), rect.size),
 _isSelectable(true)
 {
+#ifdef _axDebugEditor_
+    _isDebug = false;
+#endif // _axDebugEditor_
+    
 	if (parent == nullptr)
 	{
 		_absolutePosition = rect.position;

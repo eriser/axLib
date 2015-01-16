@@ -22,6 +22,8 @@
 #include "axButton.h"
 #include "axObjectLoader.h"
 
+#include "axDebugButton.h"
+
 /*******************************************************************************
  * axButon::Flags.
  ******************************************************************************/
@@ -259,6 +261,7 @@ _font(nullptr)
         AddConnection(Events::BUTTON_CLICK, _events.button_click);
     }
     
+    axDebugButton* dbgBtn = new axDebugButton(this);
 }
 
 void axButton::SetMsg(const string& msg)
@@ -272,7 +275,7 @@ void axButton::SetSelected(const bool& selected)
     {
         _selected = selected;
         
-        if (_selected == true)
+        if (_selected)
         {
             if (_currentColor == &_info.normal)
             {
@@ -327,7 +330,6 @@ void axButton::OnMouseLeftUp(const axPoint& pos)
             {
                 _currentColor = &_info.selected;
                 _nCurrentImg = axBTN_SELECTED;
-                std::cout << "Btn selected." << std::endl;
             }
             else
             {
@@ -389,7 +391,6 @@ void axButton::OnPaint()
             gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
                                 rect.size, axPoint(0, 0));
         }
-        
     }
     
     if_not_empty(_label)

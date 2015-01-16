@@ -24,20 +24,35 @@
 
 #include "axApp.h"
 #include "axPanel.h"
+#include "axWidget.h"
 
 #include "axImage.h"
 #include "axGC.h"
 #include "axC++.h"
 #include "axColor.h"
+#include "axFont.h"
 
 #include "axEventManager.h"
 #include "axTimer.h"
 #include "axMsg.h"
+#include "axObjectLoader.h"
 
-//#include "axWidgets/axWidget.h"
-#include "axWidget.h"
 #include "axMain.h"
 
-#include "axObjectLoader.h"
+// Widgets.
+#include "axButton.h"
+#include "axAnimatedButton.h"
+#include "axToggle.h"
+#include "axNumberBox.h"
+#include "axPopupMenu.h"
+#include "axDropMenu.h"
+#include "axSlider.h"
+#include "axGrid.h"
+#include "axMenu.h"
+#include "axKnob.h"
+#include "axScrollBar.h"
+#include "axTextBox.h"
+#include "axPlot.h"
+#include "axLabel.h"
 
 #endif //__AX_LIB__

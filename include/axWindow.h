@@ -29,6 +29,7 @@
 #include "axC++.h"
 #include "axGC.h"
 #include "axResourceManager.h"
+#include "axConfig.h"
 
 class axApp;
 
@@ -151,6 +152,11 @@ public:
 protected:
 	bool _isPopup;
     
+    
+#ifdef _axDebugEditor_
+    bool _isDebug;
+#endif // _axDebugEditor_
+    
 private:
 	axWindow* _parent;
 	axRect _rect;
@@ -160,7 +166,7 @@ private:
 	axPoint _scrollDecay;
     axRect _shownRect;
     bool _isSelectable;
-	
+    
 	GLuint _texture;
     
     std::map<std::string, axEventFunction> _evtMap;

@@ -269,7 +269,7 @@ _range(0.0, 1.0)
     }
 }
 
-void  axKnob::OnMouseLeftDown(const axPoint& pos)
+void axKnob::OnMouseLeftDown(const axPoint& pos)
 {
     _clickPosY = (pos - GetAbsoluteRect().position).y;
 

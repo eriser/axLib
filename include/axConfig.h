@@ -19,52 +19,21 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#include "axManager.h"
-#include "axWindow.h"
-#include "axMath.h"
-#include "axApp.h"
-#include "axCore.h"
-#include "axConfig.h"
 
-axManager::axManager() :
-// Heritage.
-axMouseManager(),
-axKeyboardManager()
-{
-    axMouseManager::SetWindowTree(&_windowTree);
-    axKeyboardManager::SetWindowTree(&_windowTree);
-}
+#ifndef __AX_CONFIG__
+#define __AX_CONFIG__
 
-axManager::~axManager()
-{
-}
+/*******************************************************************************
+ * @file    axConfig
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   axConfig.
+ * @date    13/01/2015
+ ******************************************************************************/
 
-void axManager::Add(axWindow* win)
-{
-	_windows.insert(axWindowPair(win->GetId(), win));
-	_windowTree.AddWindow(win);
-}
+/// @defgroup Core
+/// @{
 
-void axManager::OnPaint()
-{
-    _windowTree.DrawTree();
-}
+#define _axDebugEditor_ (1)
 
-void axManager::OnFocusIn()
-{
-
-}
-
-void axManager::OnUpdate()
-{
-
-}
-
-void axManager::OnSize()
-{
-    for (auto& x : _windows)
-    {
-        axWindow* win = x.second;
-        win->OnResize();
-    }
-}
+/// @}
+#endif //__AX_CONFIG__

@@ -145,7 +145,7 @@ void axCocoaShowMouse()
     NSRect e = [[NSScreen mainScreen] frame];
     
     CGPoint pt = CGPointMake(hide_mouse_position.x,
-                           e.size.height - hide_mouse_position.y);
+                             e.size.height - hide_mouse_position.y);
     CGDisplayErr err;
     if ((err = CGWarpMouseCursorPosition(pt)) != CGEventNoErr)
     {

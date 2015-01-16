@@ -24,6 +24,7 @@
 #include "axApp.h"
 #include "axCore.h"
 #include "axMath.h"
+#include "axConfig.h"
 
 axWindowNode::axWindowNode(axWindow* win)
 {
@@ -157,9 +158,9 @@ axWindowTree::axWindowTree()
 {
 }
 
-deque<axWindow*> axWindowTree::GetWindowParents(axWindow* win)
+std::deque<axWindow*> axWindowTree::GetWindowParents(axWindow* win)
 {
-	deque<axWindow*> windows;
+    std::deque<axWindow*> windows;
 
 	while_not_null(win->GetParent())
 	{

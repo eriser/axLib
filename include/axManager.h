@@ -57,8 +57,6 @@ public:
 private:
 	axWindowMap _windows; // Map for drawing windows.
 	axWindowTree _windowTree;
-    
-    bool FindIfWindowNeedsToDraw(axWindow* win);
 };
 
 /// @}

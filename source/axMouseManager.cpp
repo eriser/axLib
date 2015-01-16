@@ -149,6 +149,7 @@ void axMouseManager::OnMouseLeftDown(const axPoint& pos)
 
 		if_not_null(win)
 		{
+            
             win->OnMouseLeftDown(pos);
             _evtHasReachWindow = true;
 		}

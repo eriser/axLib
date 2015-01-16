@@ -19,52 +19,16 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
-#include "axManager.h"
-#include "axWindow.h"
-#include "axMath.h"
-#include "axApp.h"
-#include "axCore.h"
-#include "axConfig.h"
+#include "axWidget.h"
 
-axManager::axManager() :
-// Heritage.
-axMouseManager(),
-axKeyboardManager()
+axWidget::axWidget(axWindow* parent, const axRect& rect):
+axPanel(parent, rect)
 {
-    axMouseManager::SetWindowTree(&_windowTree);
-    axKeyboardManager::SetWindowTree(&_windowTree);
+    
 }
 
-axManager::~axManager()
+axWidget::axWidget(int f, axWindow* parent, const axRect& rect):
+axPanel(f, parent, rect)
 {
-}
-
-void axManager::Add(axWindow* win)
-{
-	_windows.insert(axWindowPair(win->GetId(), win));
-	_windowTree.AddWindow(win);
-}
-
-void axManager::OnPaint()
-{
-    _windowTree.DrawTree();
-}
-
-void axManager::OnFocusIn()
-{
-
-}
-
-void axManager::OnUpdate()
-{
-
-}
-
-void axManager::OnSize()
-{
-    for (auto& x : _windows)
-    {
-        axWindow* win = x.second;
-        win->OnResize();
-    }
+    
 }

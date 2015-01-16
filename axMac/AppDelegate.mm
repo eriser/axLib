@@ -181,6 +181,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     else
     {
         axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(pos);
+        
         if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
         {
             axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Alexandre Arsenault.
+ * Copyright (c) 2015 Alexandre Arsenault.
  *
  * This file is part of axLibrary.
  *
@@ -22,20 +22,39 @@
 #ifndef __AX_WIDGET__
 #define __AX_WIDGET__
 
-#include "axButton.h"
-#include "axAnimatedButton.h"
-#include "axToggle.h"
-#include "axNumberBox.h"
-#include "axPopupMenu.h"
-#include "axDropMenu.h"
-#include "axSlider.h"
-#include "axGrid.h"
-#include "axMenu.h"
-#include "axKnob.h"
-#include "axScrollBar.h"
-#include "axTextBox.h"
-#include "axTextControl.h"
-#include "axPlot.h"
-#include "axLabel.h"
+#include "axPanel.h"
+
+enum axParameterType
+{
+    axINT, axUINT, axLONG, axULONG,
+    axFLOAT, axDOUBLE, axBOOL, axSTRING,
+    axCOLOR, axRECT, axPOINT, axSIZE
+};
+
+class axWidget : public axPanel
+{
+public:
+    axWidget(axWindow* parent, const axRect& rect);
+    axWidget(int f, axWindow* parent, const axRect& rect);
+    
+    bool IsEditable() const;
+    bool IsInfoEditable() const;
+    bool AcceptChild() const;
+    
+    void SetInfoParam(const std::string& name, axVar param);
+    void SetEditParam(const std::string& name, axVar param);
+    
+    const axStringVector& GetListOfEditInfoName() const;
+    const axStringVector& GetListOfEditInfoParamType() const;
+//    const axStringVector& GetListOfEditInfoParamValue() const;
+    
+    const axStringVector& GetListOfEditName() const;
+    const axStringVector& GetListOfEditParamType() const;
+//    const axStringVector& GetListOfEditParamValue() const;
+    
+private:
+    bool _isEditable, _isInfoEditable, _acceptChild;
+    std::string _name;
+};
 
 #endif //__AX_WIDGET__

@@ -42,6 +42,7 @@
 #include "axGC.h"
 #include "axImage.h"
 #include "axMsg.h"
+#include "axConfig.h"
 
 /*******************************************************************************
  * axButon.
@@ -167,12 +168,19 @@ public:
              std::string label = "",
              axFlag flags = 0,
              std::string msg = "");
+    
 
+    
 	void SetMsg(const std::string& msg);
     
 	void SetSelected(const bool& selected);
     
     void SetLabel(const std::string& label);
+    
+//#ifdef _axDebugEditor_
+//    static axButton* CreateDebugEditorButton(axWindow* win,
+//                                             const axRect& rect);
+//#endif // _axDebugEditor_
     
 protected:
     axButton::Events _events;
@@ -221,6 +229,14 @@ axColor(0.0, 0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0, 1.0))
 
+#define btn_xml "<?xml version=\"1.0\" encoding=\"UTF-8\"?>         \
+                    <axButton normal=\"0.45, 0.45, 0.45, 1.0\"      \
+                              hover=\"0.5, 0.5, 0.5, 1.0\"          \
+                              clicking=\"0.4, 0.4, 0.4, 1.0\"       \
+                              selected=\"0.45, 0.45, 0.45, 1.0\"    \
+                              contour=\"0.0, 0.0, 0.0, 1.0\"        \
+                              font_color=\"0.0, 0.0, 0.0, 1.0\">    \
+                    </axButton>"
 /// @}
 /// @}
 #endif //__AX_BUTTON__
