@@ -29,7 +29,8 @@ _info(info)
 }
 
 axWidget::axWidget(int f, axWindow* parent, const axRect& rect):
-axPanel(f, parent, rect)
+axPanel(f, parent, rect),
+_info(nullptr)
 {
     
 }

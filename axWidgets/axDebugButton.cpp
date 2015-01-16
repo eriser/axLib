@@ -160,8 +160,6 @@ void axDebugButton::OnMouseLeftUp(const axPoint& pos)
 
 void axDebugButton::OnMouseRightDown(const axPoint& pos)
 {
-    axWindow* win = GetParent()->GetParent();
-    
     axTextBoxEvents txtEvents;
     axTextBoxInfo txtInfo;
     txtInfo.normal = axColor(1.0, 1.0, 1.0);
@@ -179,44 +177,50 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
     labelInfo.font_size = 12;
     labelInfo._alignement = axAlignement::axALIGN_CENTER;
     
-    axStringVector attributes = GetParent()->GetInfo().GetParamNameList();
+    axWindow* win = GetParent()->GetParent();
+    axWidget* widget = static_cast<axWidget*>(GetParent());
+    axStringVector attributes = widget->GetInfo()->GetParamNameList();
+    axInfo* info = widget->GetInfo();
+    
     int i = 0;
     axLabel* label = nullptr;
     axTextBox* txtBox = nullptr;
     
     for(auto& n : attributes)
     {
-        
         if(i == 0)
         {
-            label = new axLabel(this, axRect(50, 225, 140, 25), labelInfo, n);
+            label = new axLabel(win, axRect(widget->GetNextPosRight(2),
+                                             axSize(140, 25)), labelInfo, n);
             
             
-            txtBox = new axTextBox(this,
-                                   axRect(label->GetNextPosRight(0), axSize(180, 25)),
+            txtBox = new axTextBox(win,
+                                   axRect(label->GetNextPosRight(0),
+                                          axSize(180, 25)),
                                    txtEvents,
                                    txtInfo,
                                    "",
-                                   btn1->GetInfo().GetAttributeValue(n));
+                                   info->GetAttributeValue(n));
         }
         
         else
         {
             std::cout << n << std::endl;
             
-            label = new axLabel(this, axRect(label->GetNextPosDown(0),
+            label = new axLabel(win, axRect(label->GetNextPosDown(0),
                                              axSize(140, 25)),
                                 labelInfo, n);
             
-            txtBox = new axTextBox(this, axRect(label->GetNextPosRight(0),
+            txtBox = new axTextBox(win, axRect(label->GetNextPosRight(0),
                                                 axSize(180, 25)),
                                    txtEvents, txtInfo, "",
-                                   btn1->GetInfo().GetAttributeValue(n));
+                                   info->GetAttributeValue(n));
         }
         
         i++;
     }
     
+    Update();
 }
 
 void axDebugButton::OnMouseEnter()

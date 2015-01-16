@@ -119,13 +119,13 @@ void axAnimatedButton::OnPaint()
     // Draw Font.
     if_not_empty(_label)
     {
-        gc->SetColor(_info.font_color);
+        gc->SetColor(static_cast<axButton::Info*>(_info)->font_color);
 //        gc->SetFontSize(12);
         axFont font("FreeSans.ttf");
         gc->DrawStringAlignedCenter(font, _label, rect0);
     }
     
-    gc->SetColor(_info.contour);
+    gc->SetColor(static_cast<axButton::Info*>(_info)->contour);
     gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
 }
 

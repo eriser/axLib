@@ -99,11 +99,15 @@ public:
     void SetInfoAttribute(const std::string& name, axVar param);
     void SetEditAttribute(const std::string& name, axVar param);
     
+    
+protected:
+    axInfo* _info;
+    
 private:
     bool _isEditable, _isInfoEditable, _acceptChild;
     std::string _name;
     
-    axInfo* _info;
+    
 };
 
 #endif //__AX_WIDGET__

@@ -167,7 +167,7 @@ public:
     
     void SetLabel(const std::string& label);
     
-    axButton::Info GetInfo() const;
+//    axButton::Info GetInfo() const;
     
 protected:
     axButton::Events _events;
