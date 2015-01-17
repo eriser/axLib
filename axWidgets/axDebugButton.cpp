@@ -26,36 +26,26 @@
 
 axDebugButton::axDebugButton(axWindow* parent) :
 // Heritage.
-axPanel(parent, axRect(axPoint(parent->GetSize().x - 7,
-                               parent->GetSize().y - 7),
-                       axSize(7, 7))),
+axPanel(parent, axRect(axPoint(parent->GetSize().x - 8,
+                               parent->GetSize().y - 8),
+                       axSize(8, 8))),
 // Members.
 //_events(events),
-_info(axColor(0.9, 0.0, 0.0, 0.5),
-      axColor(1.0, 0.0, 0.0, 0.5),
-      axColor(0.85, 0.0, 0.0, 0.5),
-      axColor(0.9, 0.0, 0.0, 0.5),
-      axColor(0.0, 0.0, 0.0, 0.5),
-      axColor(0.0, 0.0, 0.0, 0.5)),
+_info(axColor(0.9, 0.0, 0.0, 0.6),
+      axColor(1.0, 0.0, 0.0, 0.6),
+      axColor(0.85, 0.0, 0.0, 0.6),
+      axColor(0.9, 0.0, 0.0, 0.6),
+      axColor(0.0, 0.0, 0.0, 0.6),
+      axColor(0.0, 0.0, 0.0, 0.6)),
 _label(""),
-_flags(0),
-_nCurrentImg(axBTN_NORMAL),
+_flags(axButton::Flags::SINGLE_IMG),
 _selected(false),
 _msg(""),
 _isEditing(false),
-//_font(0)
 _font(nullptr)
 {
     _currentColor = &_info.normal;
-    
-    _btnImg = new axImage("");
-    
     _font = new axFont(0);
-    
-    if(_events.button_click)
-    {
-//        AddConnection(axButton::Events::BUTTON_CLICK, _events.button_click);
-    }
 }
 
 void axDebugButton::SetMsg(const string& msg)
@@ -97,7 +87,6 @@ void axDebugButton::SetLabel(const std::string& label)
 void axDebugButton::OnMouseLeftDown(const axPoint& pos)
 {
     _currentColor = &_info.clicking;
-    _nCurrentImg = axBTN_DOWN;
 
     GrabMouse();
     
@@ -132,13 +121,11 @@ void axDebugButton::OnMouseLeftUp(const axPoint& pos)
 {
     if (IsGrabbed())
     {
-//        ShowMouse();
         UnGrabMouse();
         
         if (IsMouseHoverWindow())
         {
             _currentColor = &_info.hover;
-            _nCurrentImg = axBTN_HOVER;
             _selected = true;
         }
         else
@@ -146,12 +133,10 @@ void axDebugButton::OnMouseLeftUp(const axPoint& pos)
             if (_selected)
             {
                 _currentColor = &_info.selected;
-                _nCurrentImg = axBTN_SELECTED;
             }
             else
             {
                 _currentColor = &_info.normal;
-                _nCurrentImg = axBTN_NORMAL;
             }
         }
         
@@ -161,26 +146,24 @@ void axDebugButton::OnMouseLeftUp(const axPoint& pos)
 
 void axDebugButton::OnMouseRightDown(const axPoint& pos)
 {
-//    _isEditing = tr
-    
     if(_isEditing == false)
     {
         axTextBoxEvents txtEvents;
         txtEvents.enter_click = GetOnAttributeEdit();
         
         axTextBoxInfo txtInfo;
-        txtInfo.normal = axColor(1.0, 1.0, 1.0);
-        txtInfo.hover = axColor(1.0, 1.0, 1.0);
-        txtInfo.selected = axColor(1.0, 1.0, 1.0);
+        txtInfo.normal = axColor(1.0, 1.0, 1.0, 0.5);
+        txtInfo.hover = axColor(1.0, 1.0, 1.0, 0.5);
+        txtInfo.selected = axColor(1.0, 1.0, 1.0, 0.5);
         txtInfo.hightlight = axColor(0.4, 0.4, 0.6, 0.4);
-        txtInfo.contour = axColor(0.0, 0.0, 0.0);
-        txtInfo.cursor = axColor(1.0, 0.0, 0.0);
-        txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.3);
+        txtInfo.contour = axColor(0.0, 0.0, 0.0, 0.5);
+        txtInfo.cursor = axColor(1.0, 0.0, 0.0, 0.5);
+        txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.2);
         
         axLabel::Info labelInfo;
-        labelInfo.normal = axColor(1.0, 1.0, 1.0);
-        labelInfo.contour = axColor(0.0, 0.0, 0.0);
-        labelInfo.font_color = axColor(0.0, 0.0, 0.0);
+        labelInfo.normal = axColor(0.8, 0.8, 0.8, 0.5);
+        labelInfo.contour = axColor(0.0, 0.0, 0.0, 0.5);
+        labelInfo.font_color = axColor(0.0, 0.0, 0.0, 1.0);
         labelInfo.font_size = 12;
         labelInfo._alignement = axAlignement::axALIGN_CENTER;
         
@@ -264,8 +247,6 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
         
         _isEditing = true;
     }
-    
-    // _isEditing == true
     else
     {
         for(auto& n : _infoEditor)
@@ -276,7 +257,6 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
         
         _isEditing = false;
     }
-    
 }
 
 void axDebugButton::OnAttributeEdit(const axTextBoxMsg& msg)
@@ -300,7 +280,6 @@ void axDebugButton::OnMouseEnter()
     if (!IsGrabbed())
     {
         _currentColor = &_info.hover;
-        _nCurrentImg = axBTN_HOVER;
         Update();
     }
 }
@@ -312,12 +291,10 @@ void axDebugButton::OnMouseLeave()
         if (_selected)
         {
             _currentColor = &_info.selected;
-            _nCurrentImg = axBTN_SELECTED;
         }
         else
         {
             _currentColor = &_info.normal;
-            _nCurrentImg = axBTN_NORMAL;
         }
     }
     
@@ -332,25 +309,6 @@ void axDebugButton::OnPaint()
     
     gc->SetColor(*_currentColor);
     gc->DrawRectangle(rect0);
-    
-    if (_btnImg->IsImageReady())
-    {
-        if (IsFlag(axButton::Flags::SINGLE_IMG, _flags))
-        {
-            gc->DrawImageResize(_btnImg, axPoint(0, 0), rect.size, 1.0);
-        }
-        else
-        {
-            gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
-                                rect.size, axPoint(0, 0));
-        }
-    }
-    
-    if_not_empty(_label)
-    {
-        gc->SetColor(_info.font_color, 1.0);
-        gc->DrawStringAlignedCenter(*_font, _label, rect0);
-    }
     
     gc->SetColor(_info.contour);
     gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));

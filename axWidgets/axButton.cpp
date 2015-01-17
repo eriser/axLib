@@ -108,6 +108,12 @@ axButton::Info::Info(const axVectorPairString& attributes)
     }
 }
 
+axStringVector axButton::Info::GetParamNameList() const
+{
+    return axStringVector{"normal", "hover", "clicking",
+        "selected", "contour", "font_color"};
+}
+
 std::string axButton::Info::GetAttributeValue(const std::string& name)
 {
     if(name == "normal")
@@ -164,26 +170,6 @@ void axButton::Info::SetAttribute(const axStringPair& attribute)
     {
         font_color.LoadFromString(attribute.second);
     }
-}
-
-void axButton::Info::SetAttributes(const axVectorPairString& attributes)
-{
-    for(auto& n : attributes)
-    {
-        SetAttribute(n);
-    }
-}
-
-axStringVector axButton::Info::GetParamNameList() const
-{
-    return axStringVector{"normal", "hover", "clicking",
-                          "selected", "contour", "font_color"};
-
-}
-
-std::vector<axParameterType> axButton::Info::GetParamTypeList() const
-{
-    return std::vector<axParameterType>(6, axParameterType::axCOLOR);
 }
 
 /*******************************************************************************
@@ -288,8 +274,6 @@ _font(nullptr)
     {
         AddConnection(Events::BUTTON_CLICK, _events.button_click);
     }
-    
-    axDebugButton* dbgBtn = new axDebugButton(this);
 }
 
 void axButton::SetMsg(const string& msg)
@@ -325,12 +309,6 @@ void axButton::SetSelected(const bool& selected)
 void axButton::SetLabel(const std::string& label)
 {
     _label = label;
-    Update();
-}
-
-void axButton::SetInfo(const axVectorPairString& attributes)
-{
-    _info->SetAttributes(attributes);
     Update();
 }
 
@@ -404,12 +382,6 @@ void axButton::OnMouseLeave()
     
     Update();
 }
-
-//axStringVector axButton::GetListOfEditInfoName() const
-//{
-////    axStringVector strVector = ;
-//    return axStringVector{};
-//}
 
 void axButton::OnPaint()
 {

@@ -115,11 +115,10 @@ public:
              const axColor& contour_color,
              const axColor& font_color);
         
+        // Info needed for debug editor. Derived from axInfo.
         virtual axStringVector GetParamNameList() const;
-        virtual std::vector<axParameterType> GetParamTypeList() const;
-        virtual void SetAttributes(const axVectorPairString& attributes);
-        virtual void SetAttribute(const axStringPair& attribute);
         virtual std::string GetAttributeValue(const std::string& name);
+        virtual void SetAttribute(const axStringPair& attribute);
         
         axColor normal;
         axColor hover;
@@ -170,15 +169,13 @@ public:
     
     void SetLabel(const std::string& label);
     
-    virtual void SetInfo(const axVectorPairString& attributes);
+//    virtual void SetInfo(const axVectorPairString& attributes);
     
 protected:
     axButton::Events _events;
-//    axButton::Info _info;
-    std::string _label;
     axImage* _btnImg;
     axFlag _flags;
-    std::string _msg;
+    std::string _label, _msg;
     axFont* _font;
     
     axColor* _currentColor;

@@ -20,26 +20,35 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axWidget.h"
+#include "axDebugButton.h"
+#include "axConfig.h"
 
 axWidget::axWidget(axWindow* parent, const axRect& rect, axInfo* info):
 axPanel(parent, rect),
 _info(info)
 {
-    
+    #ifdef _axDebugEditor_
+    axDebugButton* dbgBtn = new axDebugButton(this);
+    #endif // _axDebugEditor_
 }
 
 axWidget::axWidget(int f, axWindow* parent, const axRect& rect):
 axPanel(f, parent, rect),
 _info(nullptr)
 {
-    
+    #ifdef _axDebugEditor_
+    axDebugButton* dbgBtn = new axDebugButton(this);
+    #endif // _axDebugEditor_
 }
 
 void axWidget::SetInfo(const axVectorPairString& attributes)
 {
+    _info->SetAttributes(attributes);
+    Update();
 }
 
 axInfo* axWidget::GetInfo()
 {
     return _info;
 }
+

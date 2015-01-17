@@ -52,26 +52,26 @@ protected:
     axButton::Events _events;
     axButton::Info _info;
     std::string _label, _msg;
-    axImage* _btnImg;
+//    axImage* _btnImg;
     axFlag _flags;
     axFont* _font;
     
     axColor* _currentColor;
     bool _selected;
-    int _nCurrentImg;
+//    int _nCurrentImg;
     
     axStringVector _infoVector;
     
     typedef std::tuple<std::string, axLabel*, axTextBox*> axEditorTuple;
     std::vector<axEditorTuple> _infoEditor;
     
-    enum axButtonState
-    {
-        axBTN_NORMAL,
-        axBTN_HOVER,
-        axBTN_DOWN,
-        axBTN_SELECTED
-    };
+//    enum axButtonState
+//    {
+//        axBTN_NORMAL,
+//        axBTN_HOVER,
+//        axBTN_DOWN,
+//        axBTN_SELECTED
+//    };
     
     virtual void OnPaint();
     virtual void OnMouseLeftDown(const axPoint& pos);

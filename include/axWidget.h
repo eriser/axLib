@@ -68,9 +68,14 @@ public:
     virtual void SetAttribute(const axStringPair& attribute)
     {
     }
+   
     
     virtual void SetAttributes(const axVectorPairString& attributes)
     {
+        for(auto& n : attributes)
+        {
+            SetAttribute(n);
+        }
     }
     
     virtual std::string GetAttributeValue(const std::string& name)
@@ -81,7 +86,6 @@ public:
 private:
     std::string _path;
     bool _isEditable;
-    
 };
 
 
