@@ -126,23 +126,23 @@ public:
         _isBlockDrawing = block;
     }
     
-    void AddEventFunction(const std::string& name, axEventFunction fct)
-    {
-        _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
-    }
-    
-    axEventFunction GetEventFunction(const std::string& name)
-    {
-        std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
-        
-        if(it != _evtMap.end())
-        {
-            return it->second;
-        }
-        
-        std::cerr << "Function : " << name << " doesn't exist." << std::endl;
-        return nullptr;
-    }
+//    void AddEventFunction(const std::string& name, axEventFunction fct)
+//    {
+//        _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
+//    }
+//    
+//    axEventFunction GetEventFunction(const std::string& name)
+//    {
+//        std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
+//        
+//        if(it != _evtMap.end())
+//        {
+//            return it->second;
+//        }
+//        
+//        std::cerr << "Function : " << name << " doesn't exist." << std::endl;
+//        return nullptr;
+//    }
 
     axResourceManager* GetResourceManager()
     {
@@ -169,7 +169,7 @@ private:
     
 	GLuint _texture;
     
-    std::map<std::string, axEventFunction> _evtMap;
+//    std::map<std::string, axEventFunction> _evtMap;
     axResourceManager _resourceManager;
 };
 

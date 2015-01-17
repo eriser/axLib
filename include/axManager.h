@@ -55,7 +55,7 @@ public:
     std::string _managerName;
 
 private:
-	axWindowMap _windows; // Map for drawing windows.
+//	axWindowMap _windows; // Map for drawing windows.
 	axWindowTree _windowTree;
 };
 

@@ -40,6 +40,8 @@ public:
 	axWindowNode(axWindow* win);
 
 	axWindowNode();
+    
+    ~axWindowNode();
 
 	axWindow* GetWindow();
 
@@ -77,7 +79,7 @@ public:
 	*		  frame window. So if the window is a direct child from
 	*		  frame window the size of the deque is null.
 	*/
-	deque<axWindow*> GetWindowParents(axWindow* win);
+    std::deque<axWindow*> GetWindowParents(axWindow* win);
 
 	axWindowNode* FindWinNode(axWindow* win);
 
@@ -95,12 +97,12 @@ public:
 	*/
 	axWindow* FindMousePosition(const axPoint& pos);
 
-	vector<axWindowNode*> GetMainNode();
+    std::vector<axWindowNode*> GetMainNode();
     
     void DrawTree();
 
 private:
-	vector<axWindowNode*> _nodes;
+    std::vector<axWindowNode*> _nodes;
 };
 
 /// @}

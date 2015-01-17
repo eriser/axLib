@@ -106,6 +106,8 @@ public:
         
         Info(const std::string& path);
         
+        Info(const axVectorPairString& attributes);
+        
         Info(const axColor& normal_color,
              const axColor& hover_color,
              const axColor& clicked_color,
@@ -115,6 +117,7 @@ public:
         
         virtual axStringVector GetParamNameList() const;
         virtual std::vector<axParameterType> GetParamTypeList() const;
+        virtual void SetAttributes(const axVectorPairString& attributes);
         virtual void SetAttribute(const axStringPair& attribute);
         virtual std::string GetAttributeValue(const std::string& name);
         
@@ -167,7 +170,7 @@ public:
     
     void SetLabel(const std::string& label);
     
-//    axButton::Info GetInfo() const;
+    virtual void SetInfo(const axVectorPairString& attributes);
     
 protected:
     axButton::Events _events;

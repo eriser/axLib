@@ -26,6 +26,9 @@
 /// @{
 
 #include "axEvent.h"
+#include <string>
+#include <map>
+#include <iostream>
 
 typedef unsigned int axID;
 
@@ -48,8 +51,27 @@ public:
         return _id;
     }
     
+    void AddEventFunction(const std::string& name, axEventFunction fct)
+    {
+        _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
+    }
+    
+    axEventFunction GetEventFunction(const std::string& name)
+    {
+        std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
+        
+        if(it != _evtMap.end())
+        {
+            return it->second;
+        }
+        
+        std::cerr << "Function : " << name << " doesn't exist." << std::endl;
+        return nullptr;
+    }
+    
 private:
     axID _id;
+    std::map<std::string, axEventFunction> _evtMap;
     
     static axID _global_id_count;
     

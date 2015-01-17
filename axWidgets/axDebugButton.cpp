@@ -42,6 +42,7 @@ _flags(0),
 _nCurrentImg(axBTN_NORMAL),
 _selected(false),
 _msg(""),
+_isEditing(false),
 //_font(0)
 _font(nullptr)
 {
@@ -160,67 +161,138 @@ void axDebugButton::OnMouseLeftUp(const axPoint& pos)
 
 void axDebugButton::OnMouseRightDown(const axPoint& pos)
 {
-    axTextBoxEvents txtEvents;
-    axTextBoxInfo txtInfo;
-    txtInfo.normal = axColor(1.0, 1.0, 1.0);
-    txtInfo.hover = axColor(1.0, 1.0, 1.0);
-    txtInfo.selected = axColor(1.0, 1.0, 1.0);
-    txtInfo.hightlight = axColor(0.4, 0.4, 0.6, 0.4);
-    txtInfo.contour = axColor(0.0, 0.0, 0.0);
-    txtInfo.cursor = axColor(1.0, 0.0, 0.0);
-    txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.3);
+//    _isEditing = tr
     
-    axLabel::Info labelInfo;
-    labelInfo.normal = axColor(1.0, 1.0, 1.0);
-    labelInfo.contour = axColor(0.0, 0.0, 0.0);
-    labelInfo.font_color = axColor(0.0, 0.0, 0.0);
-    labelInfo.font_size = 12;
-    labelInfo._alignement = axAlignement::axALIGN_CENTER;
-    
-    axWindow* win = GetParent()->GetParent();
-    axWidget* widget = static_cast<axWidget*>(GetParent());
-    axStringVector attributes = widget->GetInfo()->GetParamNameList();
-    axInfo* info = widget->GetInfo();
-    
-    int i = 0;
-    axLabel* label = nullptr;
-    axTextBox* txtBox = nullptr;
-    
-    for(auto& n : attributes)
+    if(_isEditing == false)
     {
-        if(i == 0)
-        {
-            label = new axLabel(win, axRect(widget->GetNextPosRight(2),
-                                             axSize(140, 25)), labelInfo, n);
-            
-            
-            txtBox = new axTextBox(win,
-                                   axRect(label->GetNextPosRight(0),
-                                          axSize(180, 25)),
-                                   txtEvents,
-                                   txtInfo,
-                                   "",
-                                   info->GetAttributeValue(n));
-        }
+        axTextBoxEvents txtEvents;
+        txtEvents.enter_click = GetOnAttributeEdit();
         
+        axTextBoxInfo txtInfo;
+        txtInfo.normal = axColor(1.0, 1.0, 1.0);
+        txtInfo.hover = axColor(1.0, 1.0, 1.0);
+        txtInfo.selected = axColor(1.0, 1.0, 1.0);
+        txtInfo.hightlight = axColor(0.4, 0.4, 0.6, 0.4);
+        txtInfo.contour = axColor(0.0, 0.0, 0.0);
+        txtInfo.cursor = axColor(1.0, 0.0, 0.0);
+        txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.3);
+        
+        axLabel::Info labelInfo;
+        labelInfo.normal = axColor(1.0, 1.0, 1.0);
+        labelInfo.contour = axColor(0.0, 0.0, 0.0);
+        labelInfo.font_color = axColor(0.0, 0.0, 0.0);
+        labelInfo.font_size = 12;
+        labelInfo._alignement = axAlignement::axALIGN_CENTER;
+        
+        axWindow* win = GetParent()->GetParent();
+        axWidget* widget = static_cast<axWidget*>(GetParent());
+        axStringVector attributes = widget->GetInfo()->GetParamNameList();
+        axInfo* info = widget->GetInfo();
+        
+        int i = 0;
+        axLabel* label = nullptr;
+        axTextBox* txtBox = nullptr;
+        
+        if(_infoEditor.size() == 0)
+        {
+            for(auto& n : attributes)
+            {
+                if(i == 0)
+                {
+                    label = new axLabel(win, axRect(widget->GetNextPosRight(2),
+                                                    axSize(140, 25)), labelInfo, n);
+                    txtBox = new axTextBox(win,
+                                           axRect(label->GetNextPosRight(0),
+                                                  axSize(180, 25)),
+                                           txtEvents,
+                                           txtInfo,
+                                           "",
+                                           info->GetAttributeValue(n));
+                    
+                    _infoEditor.push_back(axEditorTuple(n, label, txtBox));
+                }
+                else
+                {
+                    label = new axLabel(win, axRect(label->GetNextPosDown(0),
+                                                    axSize(140, 25)),
+                                        labelInfo, n);
+                    
+                    txtBox = new axTextBox(win, axRect(label->GetNextPosRight(0),
+                                                       axSize(180, 25)),
+                                           txtEvents, txtInfo, "",
+                                           info->GetAttributeValue(n));
+                    
+                    _infoEditor.push_back(axEditorTuple(n, label, txtBox));
+                }
+                i++;
+            }
+        }
         else
         {
-            std::cout << n << std::endl;
-            
-            label = new axLabel(win, axRect(label->GetNextPosDown(0),
-                                             axSize(140, 25)),
-                                labelInfo, n);
-            
-            txtBox = new axTextBox(win, axRect(label->GetNextPosRight(0),
-                                                axSize(180, 25)),
-                                   txtEvents, txtInfo, "",
-                                   info->GetAttributeValue(n));
+            for(auto& n : attributes)
+            {
+                if(i == 0)
+                {
+                    label = std::get<1>(_infoEditor[i]);
+                    label->SetLabel(n);
+                    label->SetPosition(widget->GetNextPosRight(2));
+                    label->Show();
+                    
+                    txtBox = std::get<2>(_infoEditor[i]);
+                    txtBox->SetLabel(info->GetAttributeValue(n));
+                    txtBox->SetPosition(label->GetNextPosRight(0));
+                    txtBox->Show();
+                }
+                else
+                {
+                    axPanel* past_label = label;
+                    label = std::get<1>(_infoEditor[i]);
+                    label->SetLabel(n);
+                    label->SetPosition(past_label->GetNextPosDown(0));
+                    label->Show();
+                    
+                    txtBox = std::get<2>(_infoEditor[i]);
+                    txtBox->SetLabel(info->GetAttributeValue(n));
+                    txtBox->SetPosition(label->GetNextPosRight(0));
+                    txtBox->Show();
+                }
+                i++;
+            }
         }
+
+        Update();
         
-        i++;
+        _isEditing = true;
     }
     
-    Update();
+    // _isEditing == true
+    else
+    {
+        for(auto& n : _infoEditor)
+        {
+            std::get<1>(n)->Hide();
+            std::get<2>(n)->Hide();
+        }
+        
+        _isEditing = false;
+    }
+    
+}
+
+void axDebugButton::OnAttributeEdit(const axTextBoxMsg& msg)
+{
+    axWidget* widget = static_cast<axWidget*>(GetParent());
+    
+    axVectorPairString attributes;
+    
+    for(auto& n : _infoEditor)
+    {
+        std::string name = std::get<0>(n);
+        std::string value = std::get<2>(n)->GetLabel();
+        attributes.push_back(axStringPair(name, value));
+    }
+    
+    widget->SetInfo(attributes);
 }
 
 void axDebugButton::OnMouseEnter()

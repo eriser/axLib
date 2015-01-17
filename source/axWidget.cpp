@@ -35,6 +35,10 @@ _info(nullptr)
     
 }
 
+void axWidget::SetInfo(const axVectorPairString& attributes)
+{
+}
+
 axInfo* axWidget::GetInfo()
 {
     return _info;

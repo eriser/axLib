@@ -65,11 +65,12 @@ public:
         return std::vector<axParameterType>{};
     }
     
-
-    
     virtual void SetAttribute(const axStringPair& attribute)
     {
-        
+    }
+    
+    virtual void SetAttributes(const axVectorPairString& attributes)
+    {
     }
     
     virtual std::string GetAttributeValue(const std::string& name)
@@ -94,12 +95,10 @@ public:
     bool IsInfoEditable() const;
     bool AcceptChild() const;
     
+    virtual void SetInfo(const axVectorPairString& attributes);
+    
     axInfo* GetInfo();
-    
-    void SetInfoAttribute(const std::string& name, axVar param);
-    void SetEditAttribute(const std::string& name, axVar param);
-    
-    
+
 protected:
     axInfo* _info;
     

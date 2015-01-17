@@ -100,6 +100,13 @@ axInfo(path)
     }
 }
 
+axButton::Info::Info(const axVectorPairString& attributes)
+{
+    for(auto& n : attributes)
+    {
+        SetAttribute(n);
+    }
+}
 
 std::string axButton::Info::GetAttributeValue(const std::string& name)
 {
@@ -156,6 +163,14 @@ void axButton::Info::SetAttribute(const axStringPair& attribute)
     else if(attribute.first == "font_color")
     {
         font_color.LoadFromString(attribute.second);
+    }
+}
+
+void axButton::Info::SetAttributes(const axVectorPairString& attributes)
+{
+    for(auto& n : attributes)
+    {
+        SetAttribute(n);
     }
 }
 
@@ -310,6 +325,12 @@ void axButton::SetSelected(const bool& selected)
 void axButton::SetLabel(const std::string& label)
 {
     _label = label;
+    Update();
+}
+
+void axButton::SetInfo(const axVectorPairString& attributes)
+{
+    _info->SetAttributes(attributes);
     Update();
 }
 

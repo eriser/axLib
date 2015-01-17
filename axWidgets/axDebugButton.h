@@ -32,6 +32,8 @@
 
 #include "axPanel.h"
 #include "axButton.h"
+#include "axLabel.h"
+#include "axTextBox.h"
 
 class axDebugButton : public axPanel
 {
@@ -44,6 +46,8 @@ public:
     
     void SetLabel(const std::string& label);
     
+    axEVENT_ACCESSOR(axTextBoxMsg, OnAttributeEdit);
+    
 protected:
     axButton::Events _events;
     axButton::Info _info;
@@ -55,6 +59,11 @@ protected:
     axColor* _currentColor;
     bool _selected;
     int _nCurrentImg;
+    
+    axStringVector _infoVector;
+    
+    typedef std::tuple<std::string, axLabel*, axTextBox*> axEditorTuple;
+    std::vector<axEditorTuple> _infoEditor;
     
     enum axButtonState
     {
@@ -73,6 +82,11 @@ protected:
     
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();
+    
+    void OnAttributeEdit(const axTextBoxMsg& msg);
+    
+    
+    bool _isEditing;
 };
 
 #endif //__AX_DEBUG_BUTTON__

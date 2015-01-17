@@ -41,7 +41,7 @@ axManager::~axManager()
 
 void axManager::Add(axWindow* win)
 {
-	_windows.insert(axWindowPair(win->GetId(), win));
+//	_windows.insert(axWindowPair(win->GetId(), win));
 	_windowTree.AddWindow(win);
 }
 
@@ -62,9 +62,9 @@ void axManager::OnUpdate()
 
 void axManager::OnSize()
 {
-    for (auto& x : _windows)
-    {
-        axWindow* win = x.second;
-        win->OnResize();
-    }
+//    for (auto& x : _windows)
+//    {
+//        axWindow* win = x.second;
+//        win->OnResize();
+//    }
 }

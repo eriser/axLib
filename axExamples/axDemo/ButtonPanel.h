@@ -30,6 +30,7 @@ private:
     axTimer* _timer;
     
     axColor _colorTimer;
+
 };
 
 #endif /* defined(__Demo__ButtonPanel__) */

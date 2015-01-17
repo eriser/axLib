@@ -35,6 +35,23 @@ axWindowNode::axWindowNode()
 {
 }
 
+axWindowNode::~axWindowNode()
+{
+    _childNodes.clear();
+    for(axWindowNode* node : _childNodes)
+    {
+        delete node;
+    }
+    
+    delete window;
+}
+
+
+void axWindowNode::DeleteWindow(axWindow* win)
+{
+    
+}
+
 axWindow* axWindowNode::GetWindow()
 {
 	return window;
@@ -62,7 +79,7 @@ axWindowNode* axWindowNode::Get(axWindow* win)
 	return nullptr;
 }
 
-vector<axWindowNode*>& axWindowNode::GetChild()
+std::vector<axWindowNode*>& axWindowNode::GetChild()
 {
 	return _childNodes;
 }
@@ -151,9 +168,9 @@ void axWindowNode::DrawNode()
     }
 }
 
-//-----------------------------------------------------------------------------
-// axWindowTree
-//-----------------------------------------------------------------------------
+/*******************************************************************************
+ * axWindowTree.
+ ******************************************************************************/
 axWindowTree::axWindowTree()
 {
 }
@@ -173,7 +190,7 @@ std::deque<axWindow*> axWindowTree::GetWindowParents(axWindow* win)
 
 axWindowNode* axWindowTree::FindWinNode(axWindow* win)
 {
-	deque<axWindow*> windows = GetWindowParents(win);
+    std::deque<axWindow*> windows = GetWindowParents(win);
 
 	if (windows.size() == 0)
 	{
@@ -197,7 +214,7 @@ axWindowNode* axWindowTree::FindWinNode(axWindow* win)
 				}
 			}
 
-			if (parent == nullptr)
+			if(parent == nullptr)
 			{
 				return nullptr;
 			}
@@ -224,7 +241,6 @@ void axWindowTree::AddWindow(axWindow* win)
 	else if (windows.size() == 0)
 	{
         // Second or more top level windows.
-//        std::cout << "Add second top layer node." << std::endl;
 		_nodes.push_back(new axWindowNode(win));
 	}
 	else
@@ -239,7 +255,30 @@ void axWindowTree::AddWindow(axWindow* win)
 
 void axWindowTree::DeleteWindow(axWindow* win)
 {
+    
+    axWindowNode* node = FindWinNode(win);
+    axWindowNode* parent = FindWinNode(node->window->GetParent());
+    
+    if(parent != nullptr)
+    {
+        std::vector<axWindowNode*> childs = parent->GetChild();
 
+        int child_index = -1;
+        for (int i = 0; i < childs.size(); i++)
+        {
+            if(childs[i]->window == node->window)
+            {
+                child_index = i;
+            }
+        }
+        
+        if(child_index != -1)
+        {
+            childs.erase(childs.begin() + child_index);
+        }
+    }
+    
+    delete node;
 }
 
 vector<axWindowNode*> axWindowTree::GetMainNode()
