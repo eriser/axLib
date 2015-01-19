@@ -23,7 +23,8 @@
 #include "axApp.h"
 
 axPanel::axPanel(axWindow* parent, const axRect& rect) : 
-		axWindow(parent, rect)
+axWindow(parent, rect)
+//_panelColor(0.0, 0.0, 0.0, 0.0)
 {
 	if (parent != nullptr)
 	{
@@ -56,6 +57,7 @@ axPanel::axPanel(axWindow* parent, const axRect& rect) :
 
 axPanel::axPanel(int f, axWindow* parent, const axRect& rect) :
 axWindow(parent, rect)
+//_panelColor(0.0, 0.0, 0.0, 0.0)
 {
     //std::cout << "axPanel : Add popup window" << std::endl;
     GetIsPopup() = true;
@@ -236,3 +238,8 @@ axRect axPanel::GetWindowPixelData(unsigned char*& data) const
     
     return rect;
 }
+
+//void axPanel::SetPanelColor(const axColor& color)
+//{
+//    _panelColor = color;
+//}

@@ -20,6 +20,9 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axWindow.h"
+#include "axApp.h"
+
+
 
 axWindow::axWindow(axWindow* parent, const axRect& rect):
 // Members.
@@ -29,11 +32,13 @@ _isHidden(false),
 _isPopup(false),
 _isBlockDrawing(false),
 _shownRect(axPoint(0, 0), rect.size),
-_isSelectable(true)
+_isSelectable(true),
+_windowColor(0.0, 0.0, 0.0, 0.0)
 {
-#ifdef _axDebugEditor_
-    _isDebug = false;
-#endif // _axDebugEditor_
+//#ifdef _axDebugEditor_
+    _isEditingWidget = false;
+    _isEditable = true;
+//#endif // _axDebugEditor_
     
 	if (parent == nullptr)
 	{
@@ -217,11 +222,47 @@ void axWindow::SetPosition(const axPoint& pos)
 	Update();
 }
 
+bool axWindow::IsSelectable() const
+{
+    if(IsEditingWidget() &&
+       axApp::GetInstance()->IsDebugEditorActive() == false)
+    {
+        return false;
+    }
+    
+    return _isSelectable;
+}
+
+bool axWindow::IsEditingWidget() const
+{
+    return _isEditingWidget;
+}
+
+void axWindow::SetEditingWidget(const bool& editing)
+{
+    _isEditingWidget = editing;
+}
+
+void axWindow::SetEditable(const bool& editable)
+{
+    _isEditable = editable;
+}
+
+bool axWindow::IsEditable() const
+{
+    return _isEditable;
+}
+
+void axWindow::SetWindowColor(const axColor& color)
+{
+    _windowColor = color;
+}
+
 void axWindow::OnPaint()
 {
     axGC* gc = GetGC();
     axRect rect(GetRect());
     
-    gc->SetColor(axColor(0.4, 0.4, 0.4));
+    gc->SetColor(_windowColor);
     gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
 }

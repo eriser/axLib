@@ -111,10 +111,7 @@ public:
         _isSelectable = selectable;
     }
     
-    bool IsSelectable() const
-    {
-        return _isSelectable;
-    }
+    bool IsSelectable() const;
     
     bool IsBlockDrawing() const
     {
@@ -125,38 +122,26 @@ public:
     {
         _isBlockDrawing = block;
     }
-    
-//    void AddEventFunction(const std::string& name, axEventFunction fct)
-//    {
-//        _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
-//    }
-//    
-//    axEventFunction GetEventFunction(const std::string& name)
-//    {
-//        std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
-//        
-//        if(it != _evtMap.end())
-//        {
-//            return it->second;
-//        }
-//        
-//        std::cerr << "Function : " << name << " doesn't exist." << std::endl;
-//        return nullptr;
-//    }
 
     axResourceManager* GetResourceManager()
     {
         return &_resourceManager;
     }
     
+    bool IsEditingWidget() const;
+    
+    void SetEditingWidget(const bool& editing);
+    
+    void SetEditable(const bool& editable);
+    
+    bool IsEditable() const;
+    
+    void SetWindowColor(const axColor& color);
+    
 protected:
 	bool _isPopup;
     
-    
-#ifdef _axDebugEditor_
-    bool _isDebug;
-#endif // _axDebugEditor_
-    
+
 private:
 	axWindow* _parent;
 	axRect _rect;
@@ -166,6 +151,10 @@ private:
 	axPoint _scrollDecay;
     axRect _shownRect;
     bool _isSelectable;
+    bool _isEditingWidget;
+    bool _isEditable;
+    
+    axColor _windowColor;
     
 	GLuint _texture;
     

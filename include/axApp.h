@@ -45,6 +45,7 @@
 
 #include "axC++.h"
 #include "axResourceManager.h"
+//#include "axToggle.h"
 
 // Is use as an adapter to global axCore class (axCORE).
 class axApp
@@ -99,12 +100,19 @@ public:
     
     axResourceManager* GetResourceManager() const;
     
+    void ActivateDebugEditor(const bool& active);
+    bool IsDebugEditorActive() const;
+    
 private:
 	axCore* _core;
     
     static axResourceManager* _resourceManager;
     
+    bool _debugEditorActive;
     
+    
+    axEVENT_ACCESSOR(axMsg, OnDebugEditor);
+    void OnDebugEditor(const axMsg& msg);
 };
 
 /// @}

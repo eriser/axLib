@@ -20,6 +20,7 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axToggle.h"
+#include "axObjectLoader.h"
 
 /*******************************************************************************
  * axToggle::Flags.
@@ -76,7 +77,8 @@ axMsg* axToggle::Msg::GetCopy()
 /*******************************************************************************
  * axToggle::Info.
  ******************************************************************************/
-axToggle::Info::Info()
+axToggle::Info::Info() :
+axInfo()
 {
     
 }
@@ -89,6 +91,9 @@ axToggle::Info::Info(const axColor& normal_color,
                      const axColor& selectedClicking_color,
                      const axColor& contour_color,
                      const axColor& font_color_) :
+// Heritage.
+axInfo(),
+// Members.
 normal(normal_color),
 hover(hover_color),
 clicking(clicked_color),
@@ -101,51 +106,100 @@ font_color(font_color_)
     
 }
 
-void axToggle::Info::SerializeOutput(const std::string& path)
+axToggle::Info::Info(const std::string& path):
+// Heritage.
+axInfo(path)
 {
-    fstream file;
-    file.open(path, std::fstream::out | std::fstream::binary);
+    axWidgetLoader loader;
+    axVectorPairString att = loader.GetAttributes(path);
     
-    if (file.fail())
-    {
-        std::cerr << "Problem opening file " << path << std::endl;
-    }
-    else
-    {
-        normal.SerializeOutput(file);
-        hover.SerializeOutput(file);
-        clicking.SerializeOutput(file);
-        
-        selected.SerializeOutput(file);
-        selected_hover.SerializeOutput(file);
-        selected_clicking.SerializeOutput(file);
-        
-        contour.SerializeOutput(file);
-        font_color.SerializeOutput(file);
-    }
+    SetAttributes(att);
 }
 
-void axToggle::Info::SerializeInput(const std::string& path)
+axToggle::Info::Info(const axVectorPairString& attributes):
+axInfo()
 {
-    fstream file;
-    file.open(path, std::fstream::in | std::fstream::binary);
-    
-    if (file.fail())
+    SetAttributes(attributes);
+}
+
+axStringVector axToggle::Info::GetParamNameList() const
+{
+    return axStringVector{"normal", "hover", "clicking",
+                          "selected", "selected_hover", "selected_clicking",
+                          "contour", "font_color"};
+}
+
+std::string axToggle::Info::GetAttributeValue(const std::string& name)
+{
+    if(name == "normal")
     {
-        std::cerr << "Problem opening file " << path << std::endl;
+        return normal.ToString();
     }
-    else
+    else if(name == "hover")
     {
-        normal.SerializeInput(file);
-        hover.SerializeInput(file);
-        clicking.SerializeInput(file);
-        
-        selected.SerializeInput(file);
-        selected_hover.SerializeInput(file);
-        selected_clicking.SerializeInput(file);
-        
-        contour.SerializeInput(file);
-        font_color.SerializeInput(file);
+        return hover.ToString();
+    }
+    else if(name == "clicking")
+    {
+        return clicking.ToString();
+    }
+    else if(name == "selected")
+    {
+        return selected.ToString();
+    }
+    else if(name == "selected_hover")
+    {
+        return selected_hover.ToString();
+    }
+    else if(name == "selected_clicking")
+    {
+        return selected_clicking.ToString();
+    }
+    else if(name == "contour")
+    {
+        return contour.ToString();
+    }
+    else if(name == "font_color")
+    {
+        return font_color.ToString();
+    }
+    
+    return "";
+}
+
+void axToggle::Info::SetAttribute(const axStringPair& attribute)
+{
+    if(attribute.first == "normal")
+    {
+        normal.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "hover")
+    {
+        hover.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "clicking")
+    {
+        clicking.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "selected")
+    {
+        selected.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "selected_hover")
+    {
+        selected_hover.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "selected_clicking")
+    {
+        selected_clicking.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "contour")
+    {
+        contour.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "font_color")
+    {
+        font_color.LoadFromString(attribute.second);
     }
 }
 
@@ -204,7 +258,7 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == "info")
         {
-            _info.SerializeInput(s.second);
+            _info = axToggle::Info(s.second);
         }
         else if(s.first == "label")
         {
@@ -241,10 +295,9 @@ axToggle::axToggle(axWindow* parent,
                    axFlag flags,
                    string msg) :
 // Heritage.
-axPanel(parent, rect),
+axWidget(parent, rect, new axToggle::Info(info)),
 // Members.
 _events(events),
-_info(info),
 _label(label),
 _flags(flags),
 _nCurrentImg(axTOG_NORMAL),
@@ -253,7 +306,7 @@ test(1.0, 1.0, 0.0),
 _msg(msg),
 _font(nullptr)
 {
-	_currentColor = &_info.normal;
+    _currentColor = &static_cast<Info*>(_info)->normal;
     _btnImg = new axImage(img_path);
     
     _font = new axFont(0);
@@ -278,18 +331,18 @@ void axToggle::SetSelected(const bool& selected)
 		if (_selected == true)
 		{
             _nCurrentImg = axTOG_SELECTED;
-			if (_currentColor == &_info.normal)
+			if (_currentColor == &static_cast<Info*>(_info)->normal)
 			{
-				_currentColor = &_info.selected;
+				_currentColor = &static_cast<Info*>(_info)->selected;
 				Update();
 			}
 		}
 		else
 		{
             _nCurrentImg = axTOG_NORMAL;
-			if (_currentColor == &_info.selected)
+			if (_currentColor == &static_cast<Info*>(_info)->selected)
 			{
-				_currentColor = &_info.normal;
+				_currentColor = &static_cast<Info*>(_info)->normal;
 				Update();
 			}
 		}
@@ -318,11 +371,11 @@ void axToggle::OnMouseLeftDown(const axPoint& pos)
         
         if(_selected)
         {
-            _currentColor = &_info.selected_clicking;
+            _currentColor = &static_cast<Info*>(_info)->selected_clicking;
         }
         else
         {
-            _currentColor = &_info.clicking;
+            _currentColor = &static_cast<Info*>(_info)->clicking;
         }
         
         GrabMouse();
@@ -352,11 +405,11 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
             
             if (_selected)
             {
-                _currentColor = &_info.selected_hover;
+                _currentColor = &static_cast<Info*>(_info)->selected_hover;
             }
             else
             {
-                _currentColor = &_info.hover;
+                _currentColor = &static_cast<Info*>(_info)->hover;
             }
 			
 			_nCurrentImg = axTOG_HOVER;
@@ -371,12 +424,12 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
 		{
 			if (_selected)
 			{
-				_currentColor = &_info.selected;
+				_currentColor = &static_cast<Info*>(_info)->selected;
 				_nCurrentImg = axTOG_SELECTED;
 			}
 			else
 			{
-				_currentColor = &_info.normal;
+				_currentColor = &static_cast<Info*>(_info)->normal;
 				_nCurrentImg = axTOG_NORMAL;
 			}
 		}
@@ -391,11 +444,11 @@ void axToggle::OnMouseEnter()
 	{
         if(_selected)
         {
-            _currentColor = &_info.selected_hover;
+            _currentColor = &static_cast<Info*>(_info)->selected_hover;
         }
         else
         {
-            _currentColor = &_info.hover;
+            _currentColor = &static_cast<Info*>(_info)->hover;
         }
 		
 		_nCurrentImg = axTOG_HOVER;
@@ -409,12 +462,12 @@ void axToggle::OnMouseLeave()
 	{
 		if (_selected)
 		{
-			_currentColor = &_info.selected;
+			_currentColor = &static_cast<Info*>(_info)->selected;
 			_nCurrentImg = axTOG_SELECTED;
 		}
 		else
 		{
-			_currentColor = &_info.normal;
+			_currentColor = &static_cast<Info*>(_info)->normal;
 			_nCurrentImg = axTOG_NORMAL;
 		}
 	}
@@ -448,11 +501,11 @@ void axToggle::OnPaint()
 
 	if_not_empty(_label)
 	{
-		gc->SetColor(_info.font_color, 1.0);
+		gc->SetColor(static_cast<Info*>(_info)->font_color, 1.0);
 		gc->DrawStringAlignedCenter(*_font, _label, rect0);
 	}
 
-	gc->SetColor(_info.contour);
+	gc->SetColor(static_cast<Info*>(_info)->contour);
 	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
 }
 

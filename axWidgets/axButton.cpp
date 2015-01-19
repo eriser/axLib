@@ -94,18 +94,12 @@ axInfo(path)
     axWidgetLoader loader;
     axVectorPairString att = loader.GetAttributes(path);
     
-    for(auto& n : att)
-    {
-        SetAttribute(n);
-    }
+    SetAttributes(att);
 }
 
 axButton::Info::Info(const axVectorPairString& attributes)
 {
-    for(auto& n : attributes)
-    {
-        SetAttribute(n);
-    }
+    SetAttributes(attributes);
 }
 
 axStringVector axButton::Info::GetParamNameList() const
@@ -254,16 +248,13 @@ axButton::axButton(axWindow* parent,
 axWidget(parent, rect, new axButton::Info(info)),
 // Members.
 _events(events),
-//_info(info),
 _label(label),
 _flags(flags),
 _nCurrentImg(axBTN_NORMAL),
 _selected(false),
 _msg(msg),
-//_font(0)
 _font(nullptr)
 {
-//    _currentColor = &_info.normal;
     _currentColor = &static_cast<axButton::Info*>(_info)->normal;
     
     _btnImg = new axImage(img_path);

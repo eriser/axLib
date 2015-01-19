@@ -22,11 +22,15 @@
 #include "axApp.h"
 #include "axResourceManager.h"
 
+#include "axPanel.h"
+#include "axToggle.h"
+
 axApp* axApp::MainInstance = nullptr;
 
 axResourceManager* axApp::_resourceManager = nullptr;
 
-axApp::axApp()
+axApp::axApp():
+_debugEditorActive(false)
 {
 #ifdef __linux__
 	_core = new axCoreX11(this);
@@ -48,14 +52,53 @@ axApp::axApp()
     _core->Init(axSize(800, 273));
 #else
     _core = new axCoreMac();
-    _core->Init(axSize(1000, 717));
+    _core->Init(axSize(500, 500));
 #endif // _AX_VST_APP_
     
 #endif // __APPLE__
     
+    
+//------------------------------------------------------------------------------
+
+    // @todo Fix this.
+    MainInstance = this;
+    
+    
+    
+    // Debug panel.
+//    std::cout << "Debug Panel" << std::endl;
+    
+    /// @todo Change debugPanel position.
+    axPanel* debugPanel = new axPanel(3, nullptr,
+                                      axRect(500 - 20, 500 - 20, 20, 20));
+    
+    axToggle::Info btn_info;
+    btn_info.normal = axColor(0.8, 0.8, 0.8, 0.0);
+    btn_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
+    btn_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
+    
+    btn_info.selected = axColor(0.8, 0.4, 0.4, 0.0);
+    btn_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.0);
+    btn_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.0);
+    
+    btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
+    btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
+    
+    axToggle* tog = new axToggle(debugPanel,
+                                 axRect(axPoint(0, 0), axSize(20, 20)),
+                                 axToggle::Events(GetOnDebugEditor()),
+                                 btn_info,
+                                 "settings.png",
+                                 "",
+                                 axToggle::Flags::SINGLE_IMG);
+    tog->SetEditable(false);
+    
+//    std::cout << "Size : " << _core->GetGlobalSize().x << " " << _core->GetGlobalSize().y << std::endl;
+//------------------------------------------------------------------------------
 }
 
-axApp::axApp(const axSize& frame_size)
+axApp::axApp(const axSize& frame_size):
+_debugEditorActive(false)
 {
 #ifdef __linux__
 	_core = new axCoreX11(this);
@@ -88,6 +131,24 @@ void axApp::CreatePopupWindow(const axSize& size)
 	c->Init(size);
 #endif //__linux__
 }
+
+//------------------------------------------------------------------------------
+void axApp::OnDebugEditor(const axMsg& msg)
+{
+//    std::cout << "Size : " << _core->GetGlobalSize().x << " " << _core->GetGlobalSize().y << std::endl;
+//
+//    editingToggle
+    
+    if(_debugEditorActive)
+    {
+        _debugEditorActive = false;
+    }
+    else
+    {
+        _debugEditorActive = true;
+    }
+}
+//------------------------------------------------------------------------------
 
 string axApp::OpenFileDialog()
 {
@@ -159,10 +220,19 @@ void axApp::AddWindow(axWindow* win)
 
 void axApp::AddPopWindow(axWindow* win)
 {
-    //std::cout << "axApp::AddPopWindow" << std::endl;
 	_core->GetPopupManager()->Add(win);
 }
 
+void axApp::ActivateDebugEditor(const bool& active)
+{
+    _debugEditorActive = active;
+    UpdateAll();
+}
+
+bool axApp::IsDebugEditorActive() const
+{
+    return _debugEditorActive;
+}
 
 axCore* axApp::GetCore()
 {

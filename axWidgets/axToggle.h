@@ -36,6 +36,7 @@
 /// @defgroup Toggle
 /// @{
 
+#include "axWidget.h"
 #include "axEvent.h"
 #include "axPanel.h"
 #include "axColor.h"
@@ -47,7 +48,7 @@
 /*******************************************************************************
  * axToggle.
  ******************************************************************************/
-class axToggle : public axPanel
+class axToggle : public axWidget
 {
 public:
     /***************************************************************************
@@ -105,10 +106,14 @@ public:
     /***************************************************************************
      * axToggle::Info.
      **************************************************************************/
-    class Info
+    class Info : public axInfo
     {
     public:
         Info();
+        
+        Info(const std::string& path);
+        
+        Info(const axVectorPairString& attributes);
         
         Info(const axColor& normal_color,
              const axColor& hover_color,
@@ -119,9 +124,10 @@ public:
              const axColor& contour_color,
              const axColor& font_color_);
         
-        void SerializeOutput(const std::string& path);
-        
-        void SerializeInput(const std::string& path);
+        // Info needed for debug editor. Derived from axInfo.
+        virtual axStringVector GetParamNameList() const;
+        virtual std::string GetAttributeValue(const std::string& name);
+        virtual void SetAttribute(const axStringPair& attribute);
         
         axColor normal;
         axColor hover;
@@ -188,7 +194,7 @@ public:
 
 private:
     axToggle::Events _events;
-    axToggle::Info _info;
+//    axToggle::Info _info;
 	axColor* _currentColor;
 	axImage* _btnImg;
     std::string _label;

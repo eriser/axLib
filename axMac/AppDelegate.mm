@@ -39,7 +39,6 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
     self = [super initWithFrame:frame];
     
-//    std::cout << "axAppDelegate initWithFrame." << std::endl;
     // Helps optimize Open GL context initialization for the best available
     // resolution, important for Retina screens for example.
     if (self)
@@ -62,7 +61,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 - (void)prepareOpenGL
 {
     
-    std::cout << "******************************* PREPARE OPENGL " << std::endl;
+//    std::cout << "******************************* PREPARE OPENGL " << std::endl;
     
     // Synchronize buffer swaps with vertical refresh rate
     GLint swapInt = 1;
@@ -384,6 +383,5 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     }
 
 }
-
 
 @end

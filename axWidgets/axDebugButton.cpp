@@ -41,11 +41,13 @@ _label(""),
 _flags(axButton::Flags::SINGLE_IMG),
 _selected(false),
 _msg(""),
-_isEditing(false),
+//_isEditing(false),
 _font(nullptr)
 {
     _currentColor = &_info.normal;
     _font = new axFont(0);
+    
+    SetEditingWidget(true);
 }
 
 void axDebugButton::SetMsg(const string& msg)
@@ -207,6 +209,9 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
                     
                     _infoEditor.push_back(axEditorTuple(n, label, txtBox));
                 }
+                
+                label->SetEditingWidget(true);
+                txtBox->SetEditingWidget(true);
                 i++;
             }
         }
