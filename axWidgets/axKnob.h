@@ -43,7 +43,7 @@
 /*******************************************************************************
  * axKnob.
  ******************************************************************************/
-class axKnob: public axPanel
+class axKnob: public axWidget
 {
 public:
     /***************************************************************************
@@ -77,10 +77,14 @@ public:
     /***************************************************************************
      * axKnob::Info.
      **************************************************************************/
-    class Info
+    class Info : public axInfo
     {
     public:
         Info();
+        
+        Info(const std::string& path);
+        
+        Info(const axVectorPairString& attributes);
         
         Info(const axColor& bg_normalColor,
              const axColor& bg_hoverColor,
@@ -90,7 +94,10 @@ public:
              const string& imgPath,
              const string& sImgPath);
         
-        Info(const std::string& path);
+        // Info needed for debug editor. Derived from axInfo.
+        virtual axStringVector GetParamNameList() const;
+        virtual std::string GetAttributeValue(const std::string& name);
+        virtual void SetAttribute(const axStringPair& attribute);
         
         std::string img_path, selected_img_path;
         axSize knob_size;
@@ -155,15 +162,17 @@ public:
 		_bgAlpha = alpha;
 		Update();
 	}
+    
+    virtual void SetInfo(const axVectorPairString& attributes);
 
 private:
     axKnob::Events _events;
-    axKnob::Info _info;
+//    axKnob::Info _info;
     axFlag _flags;
     axFloatRange _range;
 
     axImage* m_knobImg;
-    axColor m_currentBgColor;
+    axColor* m_currentBgColor;
     unsigned int m_nCurrentImg;
     double m_knobValue;
     int _clickPosY;

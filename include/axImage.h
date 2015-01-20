@@ -79,11 +79,16 @@ public:
 	int GetWidth();
     
     bool SaveImage(const std::string& path);
+    
+    std::string GetImagePath() const
+    {
+        return _path;
+    }
 
 private:
 	GLuint _texture;
 	axSize _size;
-	string _path;
+    std::string _path;
 
 	//bool InitImage(const string& path);
 

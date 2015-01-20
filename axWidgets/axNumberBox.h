@@ -37,7 +37,7 @@
 /// @{
 
 #include "axEvent.h"
-#include "axPanel.h"
+#include "axWidget.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
@@ -46,7 +46,7 @@
 /***************************************************************************
  * axNumberBox.
  **************************************************************************/
-class axNumberBox: public axPanel
+class axNumberBox: public axWidget
 {
 public:
     /***************************************************************************
@@ -95,26 +95,38 @@ public:
     /***************************************************************************
      * axNumberBox::Info.
      **************************************************************************/
-    class Info
+    class Info : public axInfo
     {
     public:
         Info();
+        
+        Info(const std::string& path);
+        
+        Info(const axVectorPairString& attributes);
         
         Info(const axColor& normal_color,
              const axColor& hover_color,
              const axColor& clicked_color,
              const axColor& selected_color,
              const axColor& contour_color,
-             const axColor& font_color_);
+             const axColor& fontColor,
+             const std::string& img = "",
+             const bool& singleImg = false);
   
-        Info(const std::string& path);
-        
+        // Info needed for debug editor. Derived from axInfo.
+        virtual axStringVector GetParamNameList() const;
+        virtual std::string GetAttributeValue(const std::string& name);
+        virtual void SetAttribute(const axStringPair& attribute);
+
         axColor normal;
         axColor hover;
         axColor clicking;
         axColor selected;
         axColor contour;
         axColor font_color;
+        
+        std::string img;
+        bool single_img;
     };
     
     /***************************************************************************
@@ -130,7 +142,6 @@ public:
     private:
         axWindow* _parent;
         axNumberBox::Info _info;
-        std::string _img;
         axFlag _flags;
         axSize _size;
         int _nextPositionDelta;
@@ -145,7 +156,6 @@ public:
                 const axRect& rect,
                 const axNumberBox::Events& events,
                 const axNumberBox::Info& info,
-                std::string img_path = "",
                 axFlag flags = 0,
                 double value = 0.0,
                 axFloatRange range = axFloatRange(0.0, 1.0),
@@ -156,9 +166,10 @@ public:
 
     double GetValue();
     
+    virtual void SetInfo(const axVectorPairString& attributes);
+    
 private:
     axNumberBox::Events _events;
-    axNumberBox::Info _info;
     axFlag _flags;
     axImage* _bgImg;
     axFont* _font;
@@ -168,7 +179,7 @@ private:
     axFloatRange _range;
     axControlInterpolation _interpolation;
 
-    axColor _currentColor;
+    axColor* _currentColor;
     int _nCurrentImg;
     double _value;
     double _zeroToOneValue;

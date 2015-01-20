@@ -39,18 +39,7 @@ void KnobPanel::OnPaint()
     
     gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
     gc->DrawRectangle(rect0);
-    
-    //    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-    //    gc->SetFontSize(12);
-    ////    gc->DrawStringAlignedCenter("test", rect0);
-    //    gc->DrawString("regular", axPoint(350, 80));
-    //    gc->DrawString("with back slider", axPoint(350, 100));
-    //    gc->DrawString("no slider", axPoint(350, 120));
-    //    gc->DrawString("click anywhere", axPoint(350, 140));
-    //    gc->DrawString("right align", axPoint(350, 160));
-    //    gc->DrawString("no button", axPoint(350, 180));
-    //    gc->DrawString("center align", axPoint(350, 200));
-    //
+ 
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawRectangleContour(rect0);
 }

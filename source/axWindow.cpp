@@ -22,8 +22,6 @@
 #include "axWindow.h"
 #include "axApp.h"
 
-
-
 axWindow::axWindow(axWindow* parent, const axRect& rect):
 // Members.
 _parent(parent),

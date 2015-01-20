@@ -67,43 +67,132 @@ axKnob::Info::Info()
     
 }
 
-axKnob::Info::Info(const std::string& path)
+//axKnob::Info::Info(const std::string& path)
+//{
+//    axWidgetLoader loader;
+//    axVectorPairString att = loader.GetAttributes(path);
+//    
+//    for(auto& n : att)
+//    {
+//        if(n.first == "normal")
+//        {
+//            bgColorNormal.LoadFromString(n.second);
+//        }
+//        else if(n.first == "hover")
+//        {
+//            bgColorHover.LoadFromString(n.second);
+//        }
+//        else if(n.first == "clicking")
+//        {
+//            bgColorClicked.LoadFromString(n.second);
+//        }
+//        else if(n.first == "nknob")
+//        {
+//            n_knob = stoi(n.second);
+//        }
+//        else if(n.first == "knob_size")
+//        {
+//            axStringVector strVec;
+//            strVec = GetVectorFromStringDelimiter(n.second, ",");
+//            knob_size = axSize(stoi(strVec[0]), stoi(strVec[1]));
+//        }
+//        else if(n.first == "img")
+//        {
+//            img_path = n.second;
+//        }
+//        else if(n.first == "selected_img")
+//        {
+//            selected_img_path = n.second;
+//        }
+//    }
+//}
+
+axKnob::Info::Info(const std::string& path):
+// Heritage.
+axInfo(path)
 {
     axWidgetLoader loader;
     axVectorPairString att = loader.GetAttributes(path);
     
-    for(auto& n : att)
+    SetAttributes(att);
+}
+
+axKnob::Info::Info(const axVectorPairString& attributes)
+{
+    SetAttributes(attributes);
+}
+
+axStringVector axKnob::Info::GetParamNameList() const
+{
+    return axStringVector{"normal", "hover", "clicking",
+        "knob_size", "nknob", "img", "selected_img"};
+}
+
+std::string axKnob::Info::GetAttributeValue(const std::string& name)
+{
+    if(name == "normal")
     {
-        if(n.first == "normal")
-        {
-            bgColorNormal.LoadFromString(n.second);
-        }
-        else if(n.first == "hover")
-        {
-            bgColorHover.LoadFromString(n.second);
-        }
-        else if(n.first == "clicking")
-        {
-            bgColorClicked.LoadFromString(n.second);
-        }
-        else if(n.first == "nknob")
-        {
-            n_knob = stoi(n.second);
-        }
-        else if(n.first == "knob_size")
-        {
-            axStringVector strVec;
-            strVec = GetVectorFromStringDelimiter(n.second, ",");
-            knob_size = axSize(stoi(strVec[0]), stoi(strVec[1]));
-        }
-        else if(n.first == "img")
-        {
-            img_path = n.second;
-        }
-        else if(n.first == "selected_img")
-        {
-            selected_img_path = n.second;
-        }
+        return bgColorNormal.ToString();
+    }
+    else if(name == "hover")
+    {
+        return bgColorHover.ToString();
+    }
+    else if(name == "clicking")
+    {
+        return bgColorClicked.ToString();
+    }
+    else if(name == "nknob")
+    {
+        return to_string(n_knob);
+    }
+    else if(name == "knob_size")
+    {
+        return to_string(knob_size.x) + "," + to_string(knob_size.y);
+    }
+    else if(name == "img")
+    {
+        return img_path;
+    }
+    else if(name == "selected_img")
+    {
+        return selected_img_path;
+    }
+    
+    return "";
+}
+
+void axKnob::Info::SetAttribute(const axStringPair& attribute)
+{
+    if(attribute.first == "normal")
+    {
+        bgColorNormal.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "hover")
+    {
+        bgColorHover.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "clicking")
+    {
+        bgColorClicked.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "nknob")
+    {
+        n_knob = stoi(attribute.second);
+    }
+    else if(attribute.first == "knob_size")
+    {
+        axStringVector strVec;
+        strVec = GetVectorFromStringDelimiter(attribute.second, ",");
+        knob_size = axSize(stoi(strVec[0]), stoi(strVec[1]));
+    }
+    else if(attribute.first == "img")
+    {
+        img_path = attribute.second;
+    }
+    else if(attribute.first == "selected_img")
+    {
+        selected_img_path = attribute.second;
     }
 }
 
@@ -248,25 +337,39 @@ axKnob::axKnob(axWindow* parent,
                axFlag flags,
                double value):
 // Heritage.
-axPanel(parent, rect),
+axWidget(parent, rect, new axKnob::Info(info)),
 // Members.
 _events(events),
-_info(info),
-m_currentBgColor(_info.bgColorNormal),
+//_info(info),
+m_currentBgColor(&static_cast<Info*>(_info)->bgColorNormal),
 //m_nCurrentImg(0),
 m_knobValue(0.0),
 _zeroToOneValue(0.0),
 _range(0.0, 1.0)
 {
-    m_knobImg = new axImage(_info.img_path);
+    m_knobImg = new axImage(static_cast<Info*>(_info)->img_path);
     _bgAlpha = 1.0;
     
-    m_nCurrentImg = m_knobValue * (_info.n_knob - 1);
+    m_nCurrentImg = m_knobValue * (static_cast<Info*>(_info)->n_knob - 1);
     
     if(_events.value_change)
     {
         AddConnection(0, _events.value_change);
     }
+}
+
+void axKnob::SetInfo(const axVectorPairString& attributes)
+{
+    _info->SetAttributes(attributes);
+
+    /// @todo Major leak.
+    std::string path = _info->GetAttributeValue("img");
+    if(m_knobImg->GetImagePath() != path)
+    {
+        m_knobImg = new axImage(path);
+    }
+
+    Update();
 }
 
 void axKnob::OnMouseLeftDown(const axPoint& pos)
@@ -309,7 +412,7 @@ void  axKnob::OnMouseLeftDragging(const axPoint& position)
     _zeroToOneValue = axClamp<double>(_zeroToOneValue, 0.0, 1.0);
     m_knobValue = _range.GetValueFromZeroToOne(_zeroToOneValue);
 
-    m_nCurrentImg = m_knobValue * ( _info.n_knob - 1 ) ;
+    m_nCurrentImg = m_knobValue * ( static_cast<Info*>(_info)->n_knob - 1 ) ;
     
     if( m_nCurrentImg != cur_img )
     {
@@ -324,7 +427,7 @@ void axKnob::SetValue(const axFloat& value, bool callValueChangeEvent)
 	int cur_img = m_nCurrentImg;
 	_zeroToOneValue = axClamp<double>(value, 0.0, 1.0);
     m_knobValue = _zeroToOneValue;
-	m_nCurrentImg = m_knobValue * (_info.n_knob - 1);
+	m_nCurrentImg = m_knobValue * (static_cast<Info*>(_info)->n_knob - 1);
 
 	if (m_nCurrentImg != cur_img)
 	{
@@ -343,13 +446,13 @@ void axKnob::OnPaint()
     axSize size = GetSize();
     axRect rect0(0, 0, size.x, size.y);
 	
-	gc->SetColor(m_currentBgColor);
+	gc->SetColor(*m_currentBgColor);
 
     gc->DrawRectangle(rect0);
 
     gc->DrawPartOfImage(m_knobImg,
-                        axPoint( m_nCurrentImg * _info.knob_size.x, 0),
-                        _info.knob_size,
+                        axPoint( m_nCurrentImg * static_cast<Info*>(_info)->knob_size.x, 0),
+                        static_cast<Info*>(_info)->knob_size,
                         axPoint(0, 0));
 }
 
