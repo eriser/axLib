@@ -169,19 +169,21 @@ void axButton::Info::SetAttribute(const axStringPair& attribute)
 /*******************************************************************************
  * axButton::Builder.
  ******************************************************************************/
-axButton::Builder::Builder(axWindow* win):
-_parent(win),
+axButton::Builder::Builder(axWindow* parent):
+axWidgetBuilder(parent),
+//_parent(win),
 _past(nullptr),
 _flags(0)
 {
     
 }
 
-axButton* axButton::Builder::Create(axVectorPairString attributes)
+axWidget* axButton::Builder::Create(const axVectorPairString& attributes)
 {
     std::string name;
     axPoint pos;
     axButton::Events evts;
+    axWindow* parent = GetParent();
     
     for(auto& s : attributes)
     {
@@ -218,7 +220,7 @@ axButton* axButton::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == std::string("event"))
         {
-            evts.button_click = _parent->GetEventFunction(s.second);
+            evts.button_click = parent->GetEventFunction(s.second);
         }
         else if(s.first == "msg")
         {
@@ -226,10 +228,10 @@ axButton* axButton::Builder::Create(axVectorPairString attributes)
         }
     }
     
-    axButton* btn = new axButton(_parent, axRect(pos, _size), evts,
+    axButton* btn = new axButton(parent, axRect(pos, _size), evts,
                                  _info, _img, _label, _flags, _msg);
     
-    _parent->GetResourceManager()->Add(name, btn);
+    parent->GetResourceManager()->Add(name, btn);
     return btn;
 }
 

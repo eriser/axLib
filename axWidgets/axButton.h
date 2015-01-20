@@ -43,6 +43,7 @@
 #include "axImage.h"
 #include "axMsg.h"
 #include "axConfig.h"
+#include "axWidgetBuilder.h"
 
 /*******************************************************************************
  * axButon.
@@ -131,15 +132,17 @@ public:
     /***************************************************************************
      * axButton::Builder.
      **************************************************************************/
-    class Builder
+    class Builder : public axWidgetBuilder
     {
     public:
-        Builder(axWindow* win);
+        Builder(axWindow* parent);
         
-        axButton* Create(axVectorPairString attributes);
+//        axButton* Create(axVectorPairString attributes);
+        
+        virtual axWidget* Create(const axVectorPairString& attributes);
         
     private:
-        axWindow* _parent;
+//        axWindow* _parent;
         axButton::Info _info;
         std::string _label;
         std::string _img;

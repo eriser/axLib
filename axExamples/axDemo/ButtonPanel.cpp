@@ -31,6 +31,8 @@ axPanel(parent, rect)
                                   btn1_info,
                                   "", "Btn1");
     
+    
+    
 //    axButton* btn2 = new axButton(this,
 //                                  axRect(110, 40, 60, 25),
 //                                  axButton::Events(),
@@ -78,6 +80,29 @@ axPanel(parent, rect)
     
     _colorTimer = axColor(1.0, 1.0, 1.0);
     
+    axButton* btn7 = new axButton(this,
+                                  axRect(200, 40, 12, 12),
+                                  axButton::Events(),
+                                  axBUTTON_TRANSPARENT,
+                                  app_path + std::string("up.png"));
+    
+    axButton* btn8 = new axButton(this,
+                                  axRect(btn7->GetNextPosDown(0), axSize(12, 12)),
+                                  axButton::Events(),
+                                  axBUTTON_TRANSPARENT,
+                                  app_path + std::string("down.png"));
+    
+    axButton* btn9 = new axButton(this,
+                                  axRect(240, 40, 12, 12),
+                                  axButton::Events(),
+                                  axBUTTON_TRANSPARENT,
+                                  app_path + std::string("upSquare.png"));
+    
+    axButton* btn10 = new axButton(this,
+                                   axRect(btn9->GetNextPosDown(0), axSize(12, 12)),
+                                   axButton::Events(),
+                                   axBUTTON_TRANSPARENT,
+                                   app_path + std::string("downSquare.png"));
     
     // Tab button event.
     axToggle::Events btn_evts;
@@ -121,65 +146,6 @@ axPanel(parent, rect)
     
     axLabel* label2 = new axLabel(this, axRect(100, 250, 70, 30),
                                  labelInfo, "Checkbox");
-    
-//    // Button Attributes.
-//    //--------------------------------------------------------------------------
-//    axTextBoxEvents txtEvents;
-//    axTextBoxInfo txtInfo;
-//    txtInfo.normal = axColor(1.0, 1.0, 1.0);
-//    txtInfo.hover = axColor(1.0, 1.0, 1.0);
-//    txtInfo.selected = axColor(1.0, 1.0, 1.0);
-//    txtInfo.hightlight = axColor(0.4, 0.4, 0.6, 0.4);
-//    txtInfo.contour = axColor(0.0, 0.0, 0.0);
-//    txtInfo.cursor = axColor(1.0, 0.0, 0.0);
-//    txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.3);
-//    
-//    axLabel::Info labelInfo;
-//    labelInfo.normal = axColor(1.0, 1.0, 1.0);
-//    labelInfo.contour = axColor(0.0, 0.0, 0.0);
-//    labelInfo.font_color = axColor(0.0, 0.0, 0.0);
-//    labelInfo.font_size = 12;
-//    labelInfo._alignement = axAlignement::axALIGN_CENTER;
-//    
-//    axStringVector attributes = btn1->GetInfo()->GetParamNameList();
-//    int i = 0;
-//    axLabel* label = nullptr;
-//    axTextBox* txtBox = nullptr;
-//    
-//    for(auto& n : attributes)
-//    {
-//        
-//        if(i == 0)
-//        {
-//            label = new axLabel(this, axRect(50, 225, 140, 25), labelInfo, n);
-//                                
-//            
-//            txtBox = new axTextBox(this,
-//                                   axRect(label->GetNextPosRight(0), axSize(180, 25)),
-//                                   txtEvents,
-//                                   txtInfo,
-//                                   "",
-//                                   btn1->GetInfo().GetAttributeValue(n));
-//        }
-//        
-//        else
-//        {
-//            std::cout << n << std::endl;
-//            
-//            label = new axLabel(this, axRect(label->GetNextPosDown(0),
-//                                             axSize(140, 25)),
-//                                labelInfo, n);
-//            
-//            txtBox = new axTextBox(this, axRect(label->GetNextPosRight(0),
-//                                                axSize(180, 25)),
-//                                   txtEvents, txtInfo, "",
-//                                   btn1->GetInfo().GetAttributeValue(n));
-//        }
-//        
-//        i++;
-//    }
-    //--------------------------------------------------------------------------
-
 }
 
 void ButtonPanel::OnButtonWithEvtManager(const axButton::Msg& msg)
