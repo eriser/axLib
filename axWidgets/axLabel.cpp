@@ -45,47 +45,148 @@ font_name(fontName)
     
 }
 
-axLabel::Info::Info(const std::string& path)
+//axLabel::Info::Info(const std::string& path)
+//{
+//    axWidgetLoader loader;
+//    axVectorPairString att = loader.GetAttributes(path);
+//    
+//    for(auto& n : att)
+//    {
+//        if(n.first == "normal")
+//        {
+//            normal.LoadFromString(n.second);
+//        }
+//        else if(n.first == "contour")
+//        {
+//            contour.LoadFromString(n.second);
+//        }
+//        else if(n.first == "font_color")
+//        {
+//            font_color.LoadFromString(n.second);
+//        }
+//        else if(n.first == "font_size")
+//        {
+//            font_size = stoi(n.second);
+//        }
+//        else if(n.first == "font_name")
+//        {
+//            font_name = n.second;
+//        }
+//        else if(n.first == "align")
+//        {
+//            if(n.second == "left")
+//            {
+//                _alignement = axALIGN_LEFT;
+//            }
+//            else if(n.second == "center")
+//            {
+//                _alignement = axALIGN_CENTER;
+//            }
+//            else if(n.second == "right")
+//            {
+//                _alignement = axALIGN_RIGHT;
+//            }
+//        }
+//    }
+//}
+
+axLabel::Info::Info(const std::string& path):
+// Heritage.
+axInfo(path)
 {
     axWidgetLoader loader;
     axVectorPairString att = loader.GetAttributes(path);
     
-    for(auto& n : att)
+    SetAttributes(att);
+}
+
+axLabel::Info::Info(const axVectorPairString& attributes)
+{
+    SetAttributes(attributes);
+}
+
+axStringVector axLabel::Info::GetParamNameList() const
+{
+    return axStringVector{"normal",
+        "contour", "font_color", "font_name", "font_size", "align"};
+}
+
+std::string axLabel::Info::GetAttributeValue(const std::string& name)
+{
+    if(name == "normal")
     {
-        if(n.first == "normal")
+        return normal.ToString();
+    }
+    else if(name == "contour")
+    {
+        return contour.ToString();
+    }
+    else if(name == "font_color")
+    {
+        return font_color.ToString();
+    }
+    else if(name == "font_name")
+    {
+        return font_name;
+    }
+    else if(name == "font_size")
+    {
+        return to_string(font_size);
+    }
+    else if(name == "align")
+    {
+        if(_alignement == axALIGN_LEFT)
         {
-            normal.LoadFromString(n.second);
+            return "left";
         }
-        else if(n.first == "contour")
+        else if(_alignement == axALIGN_CENTER)
         {
-            contour.LoadFromString(n.second);
+            return "center";
         }
-        else if(n.first == "font_color")
+        else if(_alignement == axALIGN_RIGHT)
         {
-            font_color.LoadFromString(n.second);
+            return "right";
         }
-        else if(n.first == "font_size")
+    }
+
+    return "";
+}
+
+void axLabel::Info::SetAttribute(const axStringPair& attribute)
+{
+    if(attribute.first == "normal")
+    {
+        normal.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "contour")
+    {
+        contour.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "font_color")
+    {
+        font_color.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "font_name")
+    {
+        font_name = attribute.second;
+    }
+    else if(attribute.first == "font_size")
+    {
+        font_size = stoi(attribute.second);
+    }
+    else if(attribute.first == "align")
+    {
+        if(attribute.second == "left")
         {
-            font_size = stoi(n.second);
+            _alignement = axALIGN_LEFT;
         }
-        else if(n.first == "font_name")
+        else if(attribute.second == "center")
         {
-            font_name = n.second;
+            _alignement = axALIGN_CENTER;
         }
-        else if(n.first == "align")
+        else if(attribute.second == "right")
         {
-            if(n.second == "left")
-            {
-                _alignement = axALIGN_LEFT;
-            }
-            else if(n.second == "center")
-            {
-                _alignement = axALIGN_CENTER;
-            }
-            else if(n.second == "right")
-            {
-                _alignement = axALIGN_RIGHT;
-            }
+            _alignement = axALIGN_RIGHT;
         }
     }
 }
@@ -144,16 +245,16 @@ axLabel::axLabel(axWindow* parent,
                  const axRect& rect,
                  const axLabel::Info& info,
                  const std::string& label):
-axPanel(parent, rect),
-_info(info),
+axWidget(parent, rect, new Info(info)),
+//_info(info),
 _label(label),
 _font(nullptr)
 {
     SetSelectable(false);
     
-    if(_info.font_name != "")
+    if(static_cast<Info*>(_info)->font_name != "")
     {
-        _font = new axFont(_info.font_name);
+        _font = new axFont(static_cast<Info*>(_info)->font_name);
         
     }
     else
@@ -161,7 +262,7 @@ _font(nullptr)
         _font = new axFont(0);
     }
     
-    _font->SetFontSize(_info.font_size);
+    _font->SetFontSize(static_cast<Info*>(_info)->font_size);
 }
 
 void axLabel::SetLabel(const std::string& label)
@@ -175,23 +276,23 @@ void axLabel::OnPaint()
     axGC* gc = GetGC();
     axRect rect(axPoint(0, 0), GetRect().size);
     
-    gc->SetColor(_info.normal);
+    gc->SetColor(static_cast<Info*>(_info)->normal);
     gc->DrawRectangle(rect);
     
-    gc->SetColor(_info.font_color);
+    gc->SetColor(static_cast<Info*>(_info)->font_color);
 //    axFont font(_info.font_name);
 //    font.SetFontSize(_info.font_size);
     
-    if(_info._alignement == axALIGN_CENTER)
+    if(static_cast<Info*>(_info)->_alignement == axALIGN_CENTER)
     {
         gc->DrawStringAlignedCenter(*_font, _label, rect);
     }
-    else if(_info._alignement == axALIGN_LEFT)
+    else if(static_cast<Info*>(_info)->_alignement == axALIGN_LEFT)
     {
         gc->DrawString(*_font, _label, axPoint(5, 2));
     }
     
     
-    gc->SetColor(_info.contour);
+    gc->SetColor(static_cast<Info*>(_info)->contour);
     gc->DrawRectangleContour(rect);
 }

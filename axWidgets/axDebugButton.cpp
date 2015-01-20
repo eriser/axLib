@@ -212,6 +212,8 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
                 
                 label->SetEditingWidget(true);
                 txtBox->SetEditingWidget(true);
+                label->SetEditable(false);
+                txtBox->SetEditable(false);
                 i++;
             }
         }

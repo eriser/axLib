@@ -36,16 +36,22 @@
 /*******************************************************************************
  * axLabel.
  ******************************************************************************/
-class axLabel: public axPanel
+class axLabel: public axWidget
 {
 public:
     /***************************************************************************
      * axLabel::Info.
      **************************************************************************/
-    class Info
+    class Info : public axInfo
     {
     public:
         Info();
+        
+        /// Constructor with axObj xml file.
+        /// @param path Path of the xml file.
+        Info(const std::string& path);
+        
+        Info(const axVectorPairString& attributes);
         
         Info(const axColor& normal_color,
              const axColor& contour_color,
@@ -54,9 +60,17 @@ public:
              const std::string& font_name,
              const axAlignement& alignement);
         
-        /// Constructor with axObj xml file.
-        /// @param path Path of the xml file.
-        Info(const std::string& path);
+        Info(const axColor& normal_color,
+             const axColor& hover_color,
+             const axColor& clicked_color,
+             const axColor& selected_color,
+             const axColor& contour_color,
+             const axColor& font_color);
+        
+        // Info needed for debug editor. Derived from axInfo.
+        virtual axStringVector GetParamNameList() const;
+        virtual std::string GetAttributeValue(const std::string& name);
+        virtual void SetAttribute(const axStringPair& attribute);
         
         axColor normal;
         axColor contour;
@@ -96,7 +110,7 @@ public:
     void SetLabel(const std::string& label);
 
 private:
-    axLabel::Info _info;
+//    axLabel::Info _info;
     std::string _label;
     axFont* _font;
     

@@ -335,6 +335,8 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 	}
 
 	axWindowNode* n = node;
+    
+    axWindowNode* tmpNode = nullptr;
 	if_not_null(n)
 	{
 		do
@@ -343,10 +345,29 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 			for (axWindowNode* it : n->GetChild())
 			{
 				if (it->window->GetAbsoluteRect().IsPointInside(pos) &&
-                    it->window->IsShown() &&  it->window->IsSelectable())
-				{
-					node = it;
-					break;
+                    it->window->IsShown())
+                {
+                    if(it->window->IsSelectable())
+                    {
+                        node = it;
+                        break;
+                    }
+                    else
+                    {
+                        // If not selectable, look for Editing widget.
+                        // For now, the debug edition button can only be on the
+                        // first layer of childs of an unselectable widget.
+                        for(axWindowNode* k : it->GetChild())
+                        {
+                            axWindow* win = k->window;
+                            if(win->GetAbsoluteRect().IsPointInside(pos) &&
+                               win->IsEditingWidget())
+                            {
+                                node = k;
+                                break;
+                            }
+                        }
+                    }
 				}
 			}
             
