@@ -330,7 +330,7 @@ void axToggle::SetSelected(const bool& selected)
 
 		if (_selected == true)
 		{
-            _nCurrentImg = axTOG_SELECTED;
+            _nCurrentImg = axTOG_SEL_NORMAL;
 			if (_currentColor == &static_cast<Info*>(_info)->normal)
 			{
 				_currentColor = &static_cast<Info*>(_info)->selected;
@@ -347,12 +347,6 @@ void axToggle::SetSelected(const bool& selected)
 			}
 		}
 	}
-}
-
-void axToggle::SetBackgroundAlpha(const float& alpha)
-{
-	_bgAlpha = alpha;
-	Update();
 }
 
 void axToggle::OnMouseLeftDown(const axPoint& pos)
@@ -372,10 +366,12 @@ void axToggle::OnMouseLeftDown(const axPoint& pos)
         if(_selected)
         {
             _currentColor = &static_cast<Info*>(_info)->selected_clicking;
+            _nCurrentImg = axTOG_SEL_CLICK;
         }
         else
         {
             _currentColor = &static_cast<Info*>(_info)->clicking;
+            _nCurrentImg = axTOG_CLICK;
         }
         
         GrabMouse();
@@ -406,13 +402,15 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
             if (_selected)
             {
                 _currentColor = &static_cast<Info*>(_info)->selected_hover;
+                _nCurrentImg = axTOG_SEL_HOVER;
             }
             else
             {
                 _currentColor = &static_cast<Info*>(_info)->hover;
+                _nCurrentImg = axTOG_HOVER;
             }
 			
-			_nCurrentImg = axTOG_HOVER;
+			
             
             // If toggle on left up.
             if (!IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
@@ -425,7 +423,7 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
 			if (_selected)
 			{
 				_currentColor = &static_cast<Info*>(_info)->selected;
-				_nCurrentImg = axTOG_SELECTED;
+				_nCurrentImg = axTOG_SEL_NORMAL;
 			}
 			else
 			{
@@ -445,13 +443,15 @@ void axToggle::OnMouseEnter()
         if(_selected)
         {
             _currentColor = &static_cast<Info*>(_info)->selected_hover;
+            _nCurrentImg = axTOG_SEL_HOVER;
         }
         else
         {
             _currentColor = &static_cast<Info*>(_info)->hover;
+            _nCurrentImg = axTOG_HOVER;
         }
 		
-		_nCurrentImg = axTOG_HOVER;
+		
 		Update();
 	}
 }
@@ -463,7 +463,7 @@ void axToggle::OnMouseLeave()
 		if (_selected)
 		{
 			_currentColor = &static_cast<Info*>(_info)->selected;
-			_nCurrentImg = axTOG_SELECTED;
+			_nCurrentImg = axTOG_SEL_NORMAL;
 		}
 		else
 		{
@@ -492,8 +492,8 @@ void axToggle::OnPaint()
 		}
 		else
 		{
-            axPoint pos(0, _nCurrentImg * _btnImg->GetSize().y / 4);
-            axSize size(_btnImg->GetSize().x, _btnImg->GetSize().y / 4);
+            axPoint pos(0, _nCurrentImg * _btnImg->GetSize().y / 6);
+            axSize size(_btnImg->GetSize().x, _btnImg->GetSize().y / 6);
             gc->DrawPartOfImageResize(_btnImg, pos, size,
                                       axRect(axPoint(0, 0), GetRect().size));
 		}

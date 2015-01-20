@@ -79,6 +79,36 @@ axPanel(parent, rect)
     _colorTimer = axColor(1.0, 1.0, 1.0);
     
     
+    // Tab button event.
+    axToggle::Events btn_evts;
+//    btn_evts.button_click = GetOnTabClick();
+    
+    // Tab buttons info.
+    axToggle::Info btn_info;
+    btn_info.normal = axColor(0.8, 0.8, 0.8, 0.0);
+    btn_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
+    btn_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
+    
+    btn_info.selected = axColor(0.8, 0.4, 0.4, 0.0);
+    btn_info.selected_hover = axColor(0.9, 0.4, 0.4, 0.0);
+    btn_info.selected_clicking = axColor(0.7, 0.4, 0.4, 0.0);
+    
+    btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
+    btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
+    
+//    btn_info.img =
+    
+    axToggle* togg = new axToggle(this,
+                                 axRect(axPoint(300, 300), axSize(15, 15)),
+                                 btn_evts,
+                                 btn_info,
+                                 "radio.png");
+    
+    axToggle* togg2 = new axToggle(this,
+                                   axRect(axPoint(350, 300), axSize(15, 15)),
+                                   btn_evts,
+                                   btn_info,
+                                   "checkbox.png");
     
 //    // Button Attributes.
 //    //--------------------------------------------------------------------------

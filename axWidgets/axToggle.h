@@ -186,15 +186,12 @@ public:
              string label = "",
              axFlag flags = 0,
              string msg = "");
-    
-    void SetBackgroundAlpha(const float& alpha);
-    
+        
     void SetMsg(const string& msg);
     void SetSelected(const bool& selected);
 
 private:
     axToggle::Events _events;
-//    axToggle::Info _info;
 	axColor* _currentColor;
 	axImage* _btnImg;
     std::string _label;
@@ -209,9 +206,11 @@ private:
 	enum axToggleState
 	{
 		axTOG_NORMAL,
-		axTOG_DOWN,
 		axTOG_HOVER,
-		axTOG_SELECTED
+		axTOG_CLICK,
+		axTOG_SEL_NORMAL,
+        axTOG_SEL_HOVER,
+        axTOG_SEL_CLICK
 	};
 
 	int _nCurrentImg;

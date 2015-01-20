@@ -41,8 +41,7 @@ axPanel(parent, rect)
     axNumberBox* box1 = new axNumberBox(this,
                                         axRect(40, 40, 40, 20),
                                         axNumberBox::Events(),
-                                        box_info,
-										axNumberBox::Flags::SINGLE_IMG);
+                                        box_info);
     
     axNumberBox* box2 = new axNumberBox(this,
                                         axRect(100, 40, 40, 20),
@@ -74,25 +73,25 @@ axPanel(parent, rect)
     box_evts.value_change = GetOnNumberBoxGreen();
     
     axNumberBox* box_green = new axNumberBox(this,
-                                           axRect(40, 165, 40, 20),
-                                           box_evts,
-                                           box_info2);
+                                             axRect(40, 165, 40, 20),
+                                             box_evts,
+                                             box_info2);
     
     box_evts.value_change = GetOnNumberBoxBlue();
     
     axNumberBox* box_blue = new axNumberBox(this,
-                                           axRect(40, 190, 40, 20),
-                                           box_evts,
-                                           box_info2);
+                                            axRect(40, 190, 40, 20),
+                                            box_evts,
+                                            box_info2);
     
     box_evts.value_change = GetOnNumberBoxAlpha();
     
     axNumberBox* box_alpha = new axNumberBox(this,
-                                            axRect(40, 215, 40, 20),
-                                            box_evts,
-                                            box_info2,
-                                            axFLAG_NONE,
-                                            1.0);
+                                             axRect(40, 215, 40, 20),
+                                             box_evts,
+                                             box_info2,
+                                             axFLAG_NONE,
+                                             1.0);
     
     ///---------------
     box_evts.value_change = GetOnNumberBoxRedBottom();
