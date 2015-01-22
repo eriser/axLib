@@ -138,6 +138,8 @@ public:
     
     void SetWindowColor(const axColor& color);
     
+    void SetContourColor(const axColor& color);
+    
 protected:
 	bool _isPopup;
     
@@ -154,7 +156,7 @@ private:
     bool _isEditingWidget;
     bool _isEditable;
     
-    axColor _windowColor;
+    axColor _windowColor, _contourColor;
     
 	GLuint _texture;
     

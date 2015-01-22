@@ -31,7 +31,8 @@ _isPopup(false),
 _isBlockDrawing(false),
 _shownRect(axPoint(0, 0), rect.size),
 _isSelectable(true),
-_windowColor(0.0, 0.0, 0.0, 0.0)
+_windowColor(0.0, 0.0, 0.0, 0.0),
+_contourColor(0.0, 0.0, 0.0, 0.0)
 {
 //#ifdef _axDebugEditor_
     _isEditingWidget = false;
@@ -256,11 +257,19 @@ void axWindow::SetWindowColor(const axColor& color)
     _windowColor = color;
 }
 
+void axWindow::SetContourColor(const axColor& color)
+{
+    _contourColor = color;
+}
+
 void axWindow::OnPaint()
 {
     axGC* gc = GetGC();
     axRect rect(GetRect());
     
     gc->SetColor(_windowColor);
+    gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
+    
+    gc->SetColor(_contourColor);
     gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
 }

@@ -137,16 +137,11 @@ public:
     public:
         Builder(axWindow* parent);
         
-//        axButton* Create(axVectorPairString attributes);
-        
         virtual axWidget* Create(const axVectorPairString& attributes);
         
     private:
-//        axWindow* _parent;
         axButton::Info _info;
-        std::string _label;
-        std::string _img;
-        std::string _msg;
+        std::string _label, _img, _msg;
         axFlag _flags;
         axSize _size;
         int _nextPositionDelta;
@@ -171,8 +166,6 @@ public:
 	void SetSelected(const bool& selected);
     
     void SetLabel(const std::string& label);
-    
-//    virtual void SetInfo(const axVectorPairString& attributes);
     
 protected:
     axButton::Events _events;

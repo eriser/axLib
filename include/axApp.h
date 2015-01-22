@@ -71,6 +71,11 @@ public:
 		return MainInstance == nullptr ?
                MainInstance = new axApp(frame_size) : MainInstance;
 	}
+    
+    inline static std::string GetAppPath()
+    {
+        return GetInstance()->GetCore()->GetAppDirectory();
+    }
 
 	axApp(const axSize& frame_size);
 

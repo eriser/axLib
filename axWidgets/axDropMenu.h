@@ -162,6 +162,7 @@ private:
     axImage* _bgImg;
     string _label;
     string _msg;
+    axFont* _font;
     
     bool _selected;
     axFlag _flags;

@@ -88,7 +88,7 @@ _debugEditorActive(false)
                                  axRect(axPoint(0, 0), axSize(20, 20)),
                                  axToggle::Events(GetOnDebugEditor()),
                                  btn_info,
-                                 "settings.png",
+                                 "ressources/images/settings.png",
                                  "",
                                  axToggle::Flags::SINGLE_IMG);
     tog->SetEditable(false);

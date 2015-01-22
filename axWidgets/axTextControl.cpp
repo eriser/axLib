@@ -60,6 +60,8 @@ _findClickCursorIndex(false)
     
     _cursorIndex = _label.size();
     
+    _font = new axFont(0);
+    
     SetShownRect(axRect(-5,
                         -5,
                         rect.size.x + 10,
@@ -308,7 +310,7 @@ void axTextControl::OnPaint()
             int x_past_pos = next_pos.x;
             
             gc->SetColor(_info.font_color);
-            next_pos = gc->DrawChar(_label[i], next_pos);
+            next_pos = gc->DrawChar(*_font, _label[i], next_pos);
             
             if(_isHightlight) // hightlight on.
             {

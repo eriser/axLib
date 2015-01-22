@@ -30,6 +30,7 @@ private:
     axTimer* _timer;
     
     axColor _colorTimer;
+    axFont* _font;
 
 };
 

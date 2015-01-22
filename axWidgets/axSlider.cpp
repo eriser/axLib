@@ -405,7 +405,7 @@ void axSlider::OnPaint()
 	axSize size = GetSize();
 	axRect rect0(0, 0, size.x, size.y);
 
-	gc->SetColor(_currentBgColor, _bg_alpha);
+	gc->SetColor(_currentBgColor);
 	gc->DrawRectangle(rect0);
 
 	// VERTICAL SLIDER.

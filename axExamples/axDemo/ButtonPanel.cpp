@@ -80,17 +80,17 @@ axPanel(parent, rect)
     
     _colorTimer = axColor(1.0, 1.0, 1.0);
     
-    axButton* btn7 = new axButton(this,
-                                  axRect(200, 40, 12, 12),
-                                  axButton::Events(),
-                                  axBUTTON_TRANSPARENT,
-                                  app_path + std::string("up.png"));
-    
-    axButton* btn8 = new axButton(this,
-                                  axRect(btn7->GetNextPosDown(0), axSize(12, 12)),
-                                  axButton::Events(),
-                                  axBUTTON_TRANSPARENT,
-                                  app_path + std::string("down.png"));
+//    axButton* btn7 = new axButton(this,
+//                                  axRect(200, 40, 12, 12),
+//                                  axButton::Events(),
+//                                  axBUTTON_TRANSPARENT,
+//                                  app_path + std::string("up.png"));
+//    
+//    axButton* btn8 = new axButton(this,
+//                                  axRect(btn7->GetNextPosDown(0), axSize(12, 12)),
+//                                  axButton::Events(),
+//                                  axBUTTON_TRANSPARENT,
+//                                  app_path + std::string("down.png"));
     
     axButton* btn9 = new axButton(this,
                                   axRect(240, 40, 12, 12),
@@ -99,7 +99,7 @@ axPanel(parent, rect)
                                   app_path + std::string("upSquare.png"));
     
     axButton* btn10 = new axButton(this,
-                                   axRect(btn9->GetNextPosDown(0), axSize(12, 12)),
+                                   axRect(btn9->GetNextPosDown(-2), axSize(12, 12)),
                                    axButton::Events(),
                                    axBUTTON_TRANSPARENT,
                                    app_path + std::string("downSquare.png"));
@@ -146,6 +146,9 @@ axPanel(parent, rect)
     
     axLabel* label2 = new axLabel(this, axRect(100, 250, 70, 30),
                                  labelInfo, "Checkbox");
+    
+    
+    _font = new axFont(0);
 }
 
 void ButtonPanel::OnButtonWithEvtManager(const axButton::Msg& msg)
@@ -170,7 +173,16 @@ void ButtonPanel::OnPaint()
     
     gc->SetColor(_colorTimer, 1.0);
     gc->DrawRectangle(rect0);
-
+    
+    gc->SetColor(axColor(0.9, 0.9, 0.9, 1.0));
+    gc->DrawRectangle(axRect(216, 41, 25, 21));
+    
+    gc->SetColor(axColor(0.488, 0.488, 0.488, 1.0));
+    gc->DrawRectangleContour(axRect(216, 41, 37, 22));
+    
+//    gc->SetColor(axColor(0.488, 0.488, 0.488, 1.0));
+//    gc->DrawStringAlignedCenter(*_font, "00", axRect(216, 41, 25, 21));
+    
    
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawRectangleContour(rect0);

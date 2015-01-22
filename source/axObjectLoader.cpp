@@ -51,7 +51,7 @@ axVectorPairString axWidgetLoader::GetAttributes(const std::string& path)
     xml_document<char> doc;    // character type defaults to char
     doc.parse<0>(&xml_copy[0]);    // 0 means default parse flags
     
-    std::cout << "Name of my first node is: " << doc.first_node()->name() << "\n";
+    std::cout << "Loading : " << doc.first_node()->name() << "\n";
     xml_node<>* objNode = doc.first_node(0);
     
 //    xml_node<>* objNode = node->first_node();
@@ -79,7 +79,7 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
     xml_document<char> doc;    // character type defaults to char
     doc.parse<0>(&xml_copy[0]);    // 0 means default parse flags
     
-    std::cout << "Name of my first node is: " << doc.first_node()->name() << "\n";
+    std::cout << "Loading : " << doc.first_node()->name() << std::endl;
     xml_node<>* node = doc.first_node(0);
     
     xml_node<>* objNode = node->first_node();

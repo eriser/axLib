@@ -9,6 +9,7 @@ axAudio::axAudio()
 int axAudio::InitAudio()
 {
     err = Pa_Initialize();
+    
     if( err != paNoError )
     {
         cerr << "Error." << endl;
@@ -32,10 +33,12 @@ int axAudio::InitAudio()
         std::cout << "OUTPUT : " << i << " " << deviceInfo->name << std::endl;
     }
     
-    
-    outputParameters.device = 1; //Pa_GetDefaultOutputDevice();
-    
-    // cout << "OUTPU : " << outputParameters.device.name << endl;
+    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
+    outputParameters.device = Pa_GetDefaultOutputDevice();
+    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
+
     if(outputParameters.device == paNoDevice)
     {
         std::cerr << "Error." << std::endl;
@@ -51,8 +54,7 @@ int axAudio::InitAudio()
     //	outputParameters.suggestedLatency = Pa_GetDeviceInfo( outputParameters.device )->defaultLowOutputLatency;
     outputParameters.hostApiSpecificStreamInfo = NULL;
     
-    err = Pa_OpenStream(
-                        &stream,
+    err = Pa_OpenStream(&stream,
                         NULL, // No input.
                         &outputParameters,
                         44100, // Sample rate.
@@ -66,10 +68,6 @@ int axAudio::InitAudio()
         std::cerr << "Error." << std::endl;
         exit(1);
     }
-    
-   	// sprintf( data.message, "No Message" );
-    // err = Pa_SetStreamFinishedCallback( stream, &StreamFinished );
-    // if( err != paNoError ) goto error;
     
     return 0;
 }

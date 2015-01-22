@@ -47,6 +47,8 @@ _msg(msg)
     _btnImg = new axImage(img_path);
     _bgImg = new axImage(bg_img_path);
     
+    _font = new axFont(0);
+    
     if(_events.selection_change)
     {
         AddConnection(axDropMenuEvents::SELECTION_CHANGE,
@@ -58,7 +60,7 @@ _msg(msg)
                               axColor(0.2, 0.8, 0.8, 0.0),
                               axColor(0.2, 0.8, 0.8, 0.0),
                               axColor(0.2, 0.8, 0.8, 0.0),
-                              axColor(0.0, 0.0, 0.0, 0.0));
+                              axColor(0.5, 0.5, 0.0, 0.0));
     
     axPopupMenuEvents menu_evts;
     menu_evts.selection_change = GetOnPopupMenuChoice();
@@ -249,9 +251,9 @@ void axDropMenu::OnPaint()
     if_not_empty(_label)
     {
         gc->SetColor(_info.font_color, 1.0);
-        axFont font("FreeSans.ttf");
+//        axFont font("FreeSans.ttf");
 //        gc->SetFontSize(12);
-        gc->DrawStringAlignedCenter(font, _label, rect0);
+        gc->DrawStringAlignedCenter(*_font, _label, rect0);
     }
     
     gc->SetColor(_info.contour);

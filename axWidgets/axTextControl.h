@@ -187,6 +187,7 @@ protected:
     string _label;
     axImage* _btnImg;
     axFlag _flags;
+    axFont* _font;
         
     axColor* _currentColor;
     int _nCurrentImg;

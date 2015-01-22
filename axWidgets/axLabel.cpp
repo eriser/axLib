@@ -45,51 +45,6 @@ font_name(fontName)
     
 }
 
-//axLabel::Info::Info(const std::string& path)
-//{
-//    axWidgetLoader loader;
-//    axVectorPairString att = loader.GetAttributes(path);
-//    
-//    for(auto& n : att)
-//    {
-//        if(n.first == "normal")
-//        {
-//            normal.LoadFromString(n.second);
-//        }
-//        else if(n.first == "contour")
-//        {
-//            contour.LoadFromString(n.second);
-//        }
-//        else if(n.first == "font_color")
-//        {
-//            font_color.LoadFromString(n.second);
-//        }
-//        else if(n.first == "font_size")
-//        {
-//            font_size = stoi(n.second);
-//        }
-//        else if(n.first == "font_name")
-//        {
-//            font_name = n.second;
-//        }
-//        else if(n.first == "align")
-//        {
-//            if(n.second == "left")
-//            {
-//                _alignement = axALIGN_LEFT;
-//            }
-//            else if(n.second == "center")
-//            {
-//                _alignement = axALIGN_CENTER;
-//            }
-//            else if(n.second == "right")
-//            {
-//                _alignement = axALIGN_RIGHT;
-//            }
-//        }
-//    }
-//}
-
 axLabel::Info::Info(const std::string& path):
 // Heritage.
 axInfo(path)
@@ -280,8 +235,6 @@ void axLabel::OnPaint()
     gc->DrawRectangle(rect);
     
     gc->SetColor(static_cast<Info*>(_info)->font_color);
-//    axFont font(_info.font_name);
-//    font.SetFontSize(_info.font_size);
     
     if(static_cast<Info*>(_info)->_alignement == axALIGN_CENTER)
     {
