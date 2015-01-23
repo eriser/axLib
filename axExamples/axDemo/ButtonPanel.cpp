@@ -120,18 +120,20 @@ axPanel(parent, rect)
     
     btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
     btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
+    btn_info.img = "radio.png";
     
     axToggle* togg = new axToggle(this,
                                  axRect(axPoint(150, 200), axSize(15, 15)),
                                  btn_evts,
                                  btn_info,
-                                 "radio.png");
+                                 "");
     
+    btn_info.img = "checkbox.png";
     axToggle* togg2 = new axToggle(this,
                                    axRect(axPoint(150, 250), axSize(15, 15)),
                                    btn_evts,
                                    btn_info,
-                                   "checkbox.png");
+                                   "");
     
     axLabel::Info labelInfo;
     labelInfo.normal = axColor(0.8, 0.8, 0.8, 0.0);

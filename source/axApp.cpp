@@ -62,18 +62,14 @@ _debugEditorActive(false)
 
     // @todo Fix this.
     MainInstance = this;
-    
-    
-    
-    // Debug panel.
-//    std::cout << "Debug Panel" << std::endl;
+
     
     /// @todo Change debugPanel position.
     axPanel* debugPanel = new axPanel(3, nullptr,
-                                      axRect(500 - 20, 500 - 100, 20, 20));
+                                      axRect(500 - 20, 500 - 20, 20, 20));
     
     axToggle::Info btn_info;
-    btn_info.normal = axColor(0.8, 0.8, 0.8, 1.0);
+    btn_info.normal = axColor(0.8, 0.8, 0.8, 0.0);
     btn_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
     btn_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
     
@@ -84,7 +80,8 @@ _debugEditorActive(false)
     btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
     btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
     
-    btn_info.img = "ressources/images/settings.png";
+    btn_info.img = "settings.png";
+    btn_info.single_img = true;
     
     axToggle* tog = new axToggle(debugPanel,
                                  axRect(axPoint(0, 0), axSize(20, 20)),
