@@ -104,8 +104,12 @@ axButton::Info::Info(const axVectorPairString& attributes)
 
 axStringVector axButton::Info::GetParamNameList() const
 {
-    return axStringVector{"normal", "hover", "clicking",
-        "selected", "contour", "font_color"};
+    return axStringVector{"normal",
+                          "hover",
+                          "clicking",
+                          "selected",
+                          "contour",
+                          "font_color"};
 }
 
 std::string axButton::Info::GetAttributeValue(const std::string& name)

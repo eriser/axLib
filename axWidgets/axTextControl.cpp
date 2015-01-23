@@ -240,7 +240,7 @@ void axTextControl::OnRightArrowDown()
     
     if(_cursorIndex > _label.size())
     {
-        _cursorIndex = _label.size();
+        _cursorIndex = (int)_label.size();
     }
     
     if(_isHightlight)

@@ -31,6 +31,7 @@
 #include "axKnob.h"
 #include "axLabel.h"
 #include "axStaticImage.h"
+//#include "axWaveform.h"
 
 using namespace rapidxml;
 
@@ -95,6 +96,8 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
                               (attr->name(), attr->value()));
         }
         
+        std::cout << "Loading : " << objNode->name() << std::endl;
+        
         if(objNode->name() == std::string("axToggle"))
         {
             axToggle::Builder toggleBuilder(win);
@@ -125,6 +128,11 @@ axObjectLoader::axObjectLoader(axPanel* win, const std::string& path)
             axStaticImage::axStaticImageBuilder builder(win);
             builder.Create(objData);
         }
+//        else if(objNode->name() == std::string("axWaveform"))
+//        {
+//            axWaveform::Builder builder(win);
+//            builder.Create(objData);
+//        }
         
         objNode = objNode->next_sibling();
     }

@@ -13,13 +13,66 @@
 
 class axAudioBuffer;
 
-
-/// @todo Format as a standard axWidget.
-class axWaveform : public axPanel
+/*******************************************************************************
+ * axWaveform.
+ ******************************************************************************/
+class axWaveform : public axWidget
 {
 public:
-    axWaveform(axWindow* parent,
-                const axRect& rect);
+    /***************************************************************************
+     * axWaveform::Info.
+     **************************************************************************/
+    class Info : public axInfo
+    {
+    public:
+        Info();
+        
+        Info(const std::string& path);
+        
+        Info(const axVectorPairString& attributes);
+        
+        Info(const axColor& bg_color,
+             const axColor& waveform_color,
+             const axColor& contour_color,
+             const axColor& grid_main_line_color,
+             const axColor& grid_second_line_color,
+             const axColor& middle_line_color,
+             const axColor& env_color);
+        
+        // Info needed for debug editor. Derived from axInfo.
+        virtual axStringVector GetParamNameList() const;
+        virtual std::string GetAttributeValue(const std::string& name);
+        virtual void SetAttribute(const axStringPair& attribute);
+        
+        axColor bg_color;
+        axColor waveform_color;
+        axColor contour_color;
+        axColor grid_main_line_color;
+        axColor grid_second_line_color;
+        axColor middle_line_color;
+        axColor env_color;
+    };
+    
+    /***************************************************************************
+     * axWaveform::Builder.
+     **************************************************************************/
+    class Builder : public axWidgetBuilder
+    {
+    public:
+        Builder(axWindow* parent);
+        
+        virtual axWidget* Create(const axVectorPairString& attributes);
+        
+    private:
+        axWaveform::Info _info;
+        axSize _size;
+    };
+    
+    /***************************************************************************
+     * axWaveform::axWaveform.
+     **************************************************************************/
+    axWaveform(axWindow* parent, const axRect& rect,
+               const axWaveform::Info& info);
     
     void SetAudioBuffer(axAudioBuffer* buffer);
     

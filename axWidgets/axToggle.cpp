@@ -90,7 +90,9 @@ axToggle::Info::Info(const axColor& normal_color,
                      const axColor& selectedHover_color,
                      const axColor& selectedClicking_color,
                      const axColor& contour_color,
-                     const axColor& font_color_) :
+                     const axColor& font_color_,
+                     const std::string& imgPath,
+                     const bool& singleImg) :
 // Heritage.
 axInfo(),
 // Members.
@@ -101,7 +103,9 @@ selected(selected_color),
 selected_hover(selectedHover_color),
 selected_clicking(selectedClicking_color),
 contour(contour_color),
-font_color(font_color_)
+font_color(font_color_),
+img(imgPath),
+single_img(singleImg)
 {
     
 }
@@ -126,7 +130,7 @@ axStringVector axToggle::Info::GetParamNameList() const
 {
     return axStringVector{"normal", "hover", "clicking",
                           "selected", "selected_hover", "selected_clicking",
-                          "contour", "font_color"};
+                          "contour", "font_color", "img", "single_img"};
 }
 
 std::string axToggle::Info::GetAttributeValue(const std::string& name)
@@ -162,6 +166,14 @@ std::string axToggle::Info::GetAttributeValue(const std::string& name)
     else if(name == "font_color")
     {
         return font_color.ToString();
+    }
+    else if(name == "img")
+    {
+        return img;
+    }
+    else if(name == "single_img")
+    {
+        return std::to_string(single_img);
     }
     
     return "";
@@ -200,6 +212,14 @@ void axToggle::Info::SetAttribute(const axStringPair& attribute)
     else if(attribute.first == "font_color")
     {
         font_color.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "img")
+    {
+        img = attribute.second;
+    }
+    else if(attribute.first == "single_img")
+    {
+        single_img = stoi(attribute.second);
     }
 }
 
@@ -290,10 +310,10 @@ axToggle::axToggle(axWindow* parent,
                    const axRect& rect,
                    const axToggle::Events& events,
                    const axToggle::Info& info,
-                   string img_path,
-                   string label,
+                   std::string img_path,
+                   std::string label,
                    axFlag flags,
-                   string msg) :
+                   std::string msg) :
 // Heritage.
 axWidget(parent, rect, new axToggle::Info(info)),
 // Members.
@@ -307,7 +327,8 @@ _msg(msg),
 _font(nullptr)
 {
     _currentColor = &static_cast<Info*>(_info)->normal;
-    _btnImg = new axImage(img_path);
+//    _bgImg = new axImage(img_path);
+    _bgImg = new axImage(static_cast<Info*>(_info)->img);
     
     _font = new axFont(0);
     
@@ -484,17 +505,17 @@ void axToggle::OnPaint()
 	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
 
-	if (_btnImg->IsImageReady())
+	if (_bgImg->IsImageReady())
 	{
-        if (IsFlag(Flags::SINGLE_IMG, _flags))
+        if (static_cast<Info*>(_info)->single_img)
 		{
-			gc->DrawImageResize(_btnImg, axPoint(0, 0), rect.size, 1.0);
+			gc->DrawImageResize(_bgImg, axPoint(0, 0), rect.size, 1.0);
 		}
 		else
 		{
-            axPoint pos(0, _nCurrentImg * _btnImg->GetSize().y / 6);
-            axSize size(_btnImg->GetSize().x, _btnImg->GetSize().y / 6);
-            gc->DrawPartOfImageResize(_btnImg, pos, size,
+            axPoint pos(0, _nCurrentImg * _bgImg->GetSize().y / 6);
+            axSize size(_bgImg->GetSize().x, _bgImg->GetSize().y / 6);
+            gc->DrawPartOfImageResize(_bgImg, pos, size,
                                       axRect(axPoint(0, 0), GetRect().size));
 		}
 	}

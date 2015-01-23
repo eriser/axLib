@@ -122,7 +122,9 @@ public:
              const axColor& selectedHover_color,
              const axColor& selectedClicking_color,
              const axColor& contour_color,
-             const axColor& font_color_);
+             const axColor& font_color_,
+             const std::string& img = "",
+             const bool& singleImg = false);
         
         // Info needed for debug editor. Derived from axInfo.
         virtual axStringVector GetParamNameList() const;
@@ -142,6 +144,9 @@ public:
         
         axColor contour;
         axColor font_color;
+        
+        std::string img;
+        bool single_img;
     };
     
     /***************************************************************************
@@ -193,7 +198,7 @@ public:
 private:
     axToggle::Events _events;
 	axColor* _currentColor;
-	axImage* _btnImg;
+	axImage* _bgImg;
     std::string _label;
     std::string _msg;
     axFont* _font;

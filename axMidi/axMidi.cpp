@@ -47,7 +47,7 @@ void axMidi::MidiCallBack(double deltatime,
                           std::vector<unsigned char>* message,
                           void* userData)
 {
-    unsigned int nBytes = message->size();
+    unsigned int nBytes = (unsigned int)message->size();
     
     if(nBytes >= 3)
     {

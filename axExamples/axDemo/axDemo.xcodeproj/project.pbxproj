@@ -65,6 +65,7 @@
 		7CBB29791A6565C800EC2BCD /* axStaticImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB29741A6565C800EC2BCD /* axStaticImage.cpp */; };
 		7CBB297B1A65979700EC2BCD /* axDefaultFontBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB297A1A65979700EC2BCD /* axDefaultFontBuffer.cpp */; };
 		7CE730C51A3BC946005BAA27 /* axMouseManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE730C41A3BC946005BAA27 /* axMouseManager.cpp */; };
+		7CF5A8701A72F1A000FE9A95 /* axTextControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CF5A86A1A72F1A000FE9A95 /* axTextControl.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +185,8 @@
 		7CBB297A1A65979700EC2BCD /* axDefaultFontBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDefaultFontBuffer.cpp; sourceTree = "<group>"; };
 		7CE730C31A3BC93D005BAA27 /* axMouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMouseManager.h; sourceTree = "<group>"; };
 		7CE730C41A3BC946005BAA27 /* axMouseManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMouseManager.cpp; sourceTree = "<group>"; };
+		7CF5A86A1A72F1A000FE9A95 /* axTextControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTextControl.cpp; sourceTree = "<group>"; };
+		7CF5A86B1A72F1A000FE9A95 /* axTextControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axTextControl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +335,8 @@
 		7C262FCA1A36705F00544ACE /* axWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				7CF5A86A1A72F1A000FE9A95 /* axTextControl.cpp */,
+				7CF5A86B1A72F1A000FE9A95 /* axTextControl.h */,
 				7CBB296E1A6565C800EC2BCD /* axAnimatedButton.cpp */,
 				7CBB296F1A6565C800EC2BCD /* axAnimatedButton.h */,
 				7C262FCB1A36705F00544ACE /* axButton.cpp */,
@@ -503,6 +508,7 @@
 				7C26302A1A36705F00544ACE /* axUtils.cpp in Sources */,
 				7C2630181A36705F00544ACE /* axToggle.cpp in Sources */,
 				7C0350DE1A3912040025338C /* AnimationPanel.cpp in Sources */,
+				7CF5A8701A72F1A000FE9A95 /* axTextControl.cpp in Sources */,
 				7CBB296B1A6565A200EC2BCD /* axObjectLoader.cpp in Sources */,
 				7C26301E1A36705F00544ACE /* axEventManager.cpp in Sources */,
 				7CBB296C1A6565A200EC2BCD /* axResourceManager.cpp in Sources */,

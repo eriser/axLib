@@ -70,10 +70,10 @@ _debugEditorActive(false)
     
     /// @todo Change debugPanel position.
     axPanel* debugPanel = new axPanel(3, nullptr,
-                                      axRect(500 - 20, 500 - 20, 20, 20));
+                                      axRect(500 - 20, 500 - 100, 20, 20));
     
     axToggle::Info btn_info;
-    btn_info.normal = axColor(0.8, 0.8, 0.8, 0.0);
+    btn_info.normal = axColor(0.8, 0.8, 0.8, 1.0);
     btn_info.hover = axColor(0.9, 0.9, 0.9, 0.0);
     btn_info.clicking = axColor(0.7, 0.7, 0.7, 0.0);
     
@@ -84,11 +84,13 @@ _debugEditorActive(false)
     btn_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
     btn_info.font_color = axColor(0.0, 0.0, 0.0, 0.0);
     
+    btn_info.img = "ressources/images/settings.png";
+    
     axToggle* tog = new axToggle(debugPanel,
                                  axRect(axPoint(0, 0), axSize(20, 20)),
                                  axToggle::Events(GetOnDebugEditor()),
                                  btn_info,
-                                 "ressources/images/settings.png",
+                                 "",
                                  "",
                                  axToggle::Flags::SINGLE_IMG);
     tog->SetEditable(false);
