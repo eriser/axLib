@@ -24,10 +24,12 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-.xcactivitylog
+*.xcactivitylog
 .xcuserstate
 .xcindexdb
 .xcindexdb-shm
+.db
+.idx
 
 # Files that might appear on external disk
 .Spotlight-V100
