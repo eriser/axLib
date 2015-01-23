@@ -29901,18 +29901,18 @@ void axPlot::OnPaint()
         past_v = v;
     }
     
-     gc->SetColor(axColor(0.0, 0.0, 1.0));
-    for(std::vector<axFloatPoint>& vec : _points)
-    {
-        for(auto& n : vec)
-        {
-            double xPos = _xRange.GetZeroToOneValue(n.x) * rect0.size.x;
-            double yPos = (1.0 - _yRange.GetZeroToOneValue(n.y)) * rect0.size.y;
-
-            axPoint pt(xPos, yPos);
-            gc->DrawPoint(pt, 5);
-        }
-    }
+//     gc->SetColor(axColor(0.0, 0.0, 1.0));
+//    for(std::vector<axFloatPoint>& vec : _points)
+//    {
+//        for(auto& n : vec)
+//        {
+//            double xPos = _xRange.GetZeroToOneValue(n.x) * rect0.size.x;
+//            double yPos = (1.0 - _yRange.GetZeroToOneValue(n.y)) * rect0.size.y;
+//
+//            axPoint pt(xPos, yPos);
+//            gc->DrawPoint(pt, 5);
+//        }
+//    }
     
 
     gc->SetColor(_info.contour_color);

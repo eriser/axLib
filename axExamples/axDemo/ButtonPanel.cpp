@@ -151,6 +151,12 @@ axPanel(parent, rect)
     
     
     _font = new axFont(0);
+    
+    axAnimatedButton* animBtn = new axAnimatedButton(this,
+                                                     axRect(50, 160, 60, 25),
+                                                     axButton::Events(),
+                                                     "axButtonImg.png",
+                                                     "Test");
 }
 
 void ButtonPanel::OnButtonWithEvtManager(const axButton::Msg& msg)

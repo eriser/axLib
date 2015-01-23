@@ -107,7 +107,8 @@ axPanel(parent, rect)
                              txtInfo,
                              "",
                              "Alexandre",
-                             axTEXT_BOX_CONTOUR_HIGHLIGHT);
+                             axTEXT_BOX_CONTOUR_HIGHLIGHT|
+                             axTEXT_BOX_FLASHING_CURSOR);
     
     //--------------------------------------------------------------------------
 
