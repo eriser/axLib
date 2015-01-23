@@ -19,3 +19,24 @@
 *.exe
 *.out
 *.app
+
+# Apple
+.DS_Store
+.AppleDouble
+.LSOverride
+.xcactivitylog
+.xcuserstate
+.xcindexdb
+.xcindexdb-shm
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+.xcindexdb-wal
