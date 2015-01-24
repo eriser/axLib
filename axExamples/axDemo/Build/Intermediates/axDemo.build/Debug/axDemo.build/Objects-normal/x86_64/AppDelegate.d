@@ -35,12 +35,12 @@ dependencies: /Users/alexarse/Project/axLib/axMac/AppDelegate.mm \
   /usr/local/include/freetype2/freetype/ftimage.h \
   /Users/alexarse/Project/axLib/include/axConfig.h \
   /Users/alexarse/Project/axLib/include/axWidget.h \
+  /Users/alexarse/Project/axLib/include/axMain.h \
   /Users/alexarse/Project/axLib/include/axEventManager.h \
   /Users/alexarse/Project/axLib/include/axTimer.h \
   /Users/alexarse/Project/axLib/include/axObjectLoader.h \
   /Users/alexarse/Project/axLib/include/rapidxml.hpp \
   /Users/alexarse/Project/axLib/axWidgets/axToggle.h \
-  /Users/alexarse/Project/axLib/include/axMain.h \
   /Users/alexarse/Project/axLib/axWidgets/axButton.h \
   /Users/alexarse/Project/axLib/include/axWidgetBuilder.h \
   /Users/alexarse/Project/axLib/axWidgets/axAnimatedButton.h \

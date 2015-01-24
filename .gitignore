@@ -19,3 +19,13 @@
 *.exe
 *.out
 *.app
+
+# Apple
+*.xcactivitylog
+*.db
+Cache.db
+*.pcm
+*.d
+*.dat
+*.hmap
+dgph
