@@ -42,6 +42,7 @@
 /*******************************************************************************
  * Event.
  ******************************************************************************/
+#include "axObject.h"
 #include "axEvent.h"
 #include "axKeyboardManager.h"
 #include "axMouseManager.h"
