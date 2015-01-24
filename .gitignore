@@ -21,6 +21,7 @@
 *.app
 
 # Apple
+.DS_Store
 *.xcactivitylog
 *.db
 Cache.db

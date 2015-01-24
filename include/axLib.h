@@ -43,6 +43,8 @@
  * Event.
  ******************************************************************************/
 #include "axEvent.h"
+#include "axKeyboardManager.h"
+#include "axMouseManager.h"
 #include "axEventManager.h"
 #include "axTimer.h"
 #include "axMsg.h"
