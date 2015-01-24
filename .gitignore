@@ -25,11 +25,11 @@
 .AppleDouble
 .LSOverride
 *.xcactivitylog
-.xcuserstate
-.xcindexdb
-.xcindexdb-shm
-.db
-.idx
+*.xcuserstate
+*.xcindexdb
+*.xcindexdb-shm
+*.db
+*.idx
 Cache.db
 text-filter.idx
 .dat
