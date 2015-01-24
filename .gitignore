@@ -30,6 +30,12 @@
 .xcindexdb-shm
 .db
 .idx
+Cache.db
+text-filter.idx
+.dat
+db.xcindexdb-wal
+UserInterfaceState.xcuserstate
+
 
 # Files that might appear on external disk
 .Spotlight-V100
