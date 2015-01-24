@@ -22,24 +22,35 @@
 #ifndef __AX_LIB__
 #define __AX_LIB__
 
+/*******************************************************************************
+ * Core.
+ ******************************************************************************/
 #include "axApp.h"
 #include "axPanel.h"
 #include "axWidget.h"
+#include "axMain.h"
 
+/*******************************************************************************
+ * Graphic.
+ ******************************************************************************/
 #include "axImage.h"
 #include "axGC.h"
 #include "axC++.h"
 #include "axColor.h"
 #include "axFont.h"
 
+/*******************************************************************************
+ * Event.
+ ******************************************************************************/
+#include "axEvent.h"
 #include "axEventManager.h"
 #include "axTimer.h"
 #include "axMsg.h"
 #include "axObjectLoader.h"
 
-#include "axMain.h"
-
-// Widgets.
+/*******************************************************************************
+ * Widgets.
+ ******************************************************************************/
 #include "axButton.h"
 #include "axAnimatedButton.h"
 #include "axToggle.h"
