@@ -32,7 +32,8 @@
 *.idx
 Cache.db
 text-filter.idx
-.dat
+*.dat
+dgph
 db.xcindexdb-wal
 UserInterfaceState.xcuserstate
 
