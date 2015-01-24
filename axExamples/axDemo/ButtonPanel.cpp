@@ -156,7 +156,7 @@ axPanel(parent, rect)
                                                      axRect(50, 160, 60, 25),
                                                      axButton::Events(),
                                                      "axButtonImg.png",
-                                                     "Animation");
+                                                     "Anim");
 }
 
 void ButtonPanel::OnButtonWithEvtManager(const axButton::Msg& msg)
