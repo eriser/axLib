@@ -335,8 +335,6 @@
 		7C262FCA1A36705F00544ACE /* axWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				7CF5A86A1A72F1A000FE9A95 /* axTextControl.cpp */,
-				7CF5A86B1A72F1A000FE9A95 /* axTextControl.h */,
 				7CBB296E1A6565C800EC2BCD /* axAnimatedButton.cpp */,
 				7CBB296F1A6565C800EC2BCD /* axAnimatedButton.h */,
 				7C262FCB1A36705F00544ACE /* axButton.cpp */,
@@ -367,6 +365,8 @@
 				7CBB29751A6565C800EC2BCD /* axStaticImage.h */,
 				7C0352BA1A3A051C0025338C /* axTextBox.cpp */,
 				7C0352BB1A3A051C0025338C /* axTextBox.h */,
+				7CF5A86A1A72F1A000FE9A95 /* axTextControl.cpp */,
+				7CF5A86B1A72F1A000FE9A95 /* axTextControl.h */,
 				7C262FDD1A36705F00544ACE /* axToggle.cpp */,
 				7C262FDE1A36705F00544ACE /* axToggle.h */,
 			);

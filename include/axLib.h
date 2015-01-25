@@ -56,12 +56,12 @@
 /*******************************************************************************
  * Widgets.
  ******************************************************************************/
-#include "axButton.h"
 #include "axAnimatedButton.h"
+#include "axButton.h"
+#include "axDropMenu.h"
 #include "axToggle.h"
 #include "axNumberBox.h"
 #include "axPopupMenu.h"
-#include "axDropMenu.h"
 #include "axSlider.h"
 #include "axGrid.h"
 #include "axMenu.h"
