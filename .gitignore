@@ -31,3 +31,5 @@ Cache.db
 *.hmap
 dgph
 UserInterfaceState.xcuserstate
+*.idx
+*.strings-sym
