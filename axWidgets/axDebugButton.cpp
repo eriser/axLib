@@ -150,14 +150,14 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
 {
     if(_isEditing == false)
     {
-        axTextBoxEvents txtEvents;
+        axTextBox::Events txtEvents;
         txtEvents.enter_click = GetOnAttributeEdit();
         
-        axTextBoxInfo txtInfo;
+        axTextBox::Info txtInfo;
         txtInfo.normal = axColor(1.0, 1.0, 1.0, 0.5);
         txtInfo.hover = axColor(1.0, 1.0, 1.0, 0.5);
         txtInfo.selected = axColor(1.0, 1.0, 1.0, 0.5);
-        txtInfo.hightlight = axColor(0.4, 0.4, 0.6, 0.4);
+        txtInfo.highlight = axColor(0.4, 0.4, 0.6, 0.4);
         txtInfo.contour = axColor(0.0, 0.0, 0.0, 0.5);
         txtInfo.cursor = axColor(1.0, 0.0, 0.0, 0.5);
         txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.2);
@@ -266,7 +266,7 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
     }
 }
 
-void axDebugButton::OnAttributeEdit(const axTextBoxMsg& msg)
+void axDebugButton::OnAttributeEdit(const axTextBox::Msg& msg)
 {
     axWidget* widget = static_cast<axWidget*>(GetParent());
     

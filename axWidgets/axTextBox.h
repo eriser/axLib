@@ -19,172 +19,206 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_TEXT_BOX__
 #define __AX_TEXT_BOX__
+
+/*******************************************************************************
+ * @file    axTextBox.h
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @brief   axButton.
+ * @date    24/01/2015
+ ******************************************************************************/
 
 /// @defgroup Widgets
 /// @{
 
 #include "axEvent.h"
-#include "axPanel.h"
+#include "axWidget.h"
 #include "axColor.h"
 #include "axGC.h"
 #include "axImage.h"
 #include "axMsg.h"
+#include "axConfig.h"
+#include "axWidgetBuilder.h"
 #include "axTimer.h"
 
 /**************************************************************************//**
  * axTextBoxFlags.
 ******************************************************************************/
-#define axTEXT_BOX_FLASHING_CURSOR      axFLAG_1
-#define axTEXT_BOX_CONTOUR_HIGHLIGHT    axFLAG_2
-#define axTEXT_BOX_CONOUR_NO_FADE       axFLAG_3
+//#define axTEXT_BOX_FLASHING_CURSOR      axFLAG_1
+//#define axTEXT_BOX_CONTOUR_HIGHLIGHT    axFLAG_2
+//#define axTEXT_BOX_CONOUR_NO_FADE       axFLAG_3
 
-class axTextBox;
+//class axTextBox;
+//
+//struct axTextBoxEvents
+//{
+//    enum : axEventId { BUTTON_CLICK, ENTER_CLICK };
+//    
+//	axTextBoxEvents(){}
+//    axTextBoxEvents(axEventFunction& fct){ button_click = fct; }
+//    
+//    axEventFunction button_click;
+//    axEventFunction enter_click;
+//};
+//
+//struct axTextBoxInfo
+//{
+//	axColor normal;
+//	axColor hover;
+//    axColor hightlight; // This needs to be transparent (alpha < 1.0).
+//	axColor selected;
+//    axColor selected_shadow;
+//	axColor cursor;
+//	axColor contour;
+//	axColor font_color;
+//
+//	axTextBoxInfo(){}
+//	axTextBoxInfo(const axColor& normal_color,
+//                  const axColor& hover_color,
+//                  const axColor& hightlight_color,
+//                  const axColor& selected_color,
+//                  const axColor& selected_shadow_color,
+//                  const axColor& cursor_color,
+//                  const axColor& contour_color,
+//                  const axColor& font_color_) :
+//    normal(normal_color),
+//    hover(hover_color),
+//    hightlight(hightlight_color),
+//    selected(selected_color),
+//    selected_shadow(selected_shadow_color),
+//    cursor(cursor_color),
+//    contour(contour_color),
+//    font_color(font_color_){}
+//};
 
-class axTextBoxMsg : public axMsg
+/*******************************************************************************
+ * axTextBox.
+ ******************************************************************************/
+class axTextBox : public axWidget
 {
 public:
-    axTextBoxMsg()
+    /***************************************************************************
+     * axTextBox::Flags.
+     **************************************************************************/
+    class Flags
     {
-        _sender = nullptr;
-    }
+    public:
+        static const axFlag FLASHING_CURSOR;
+        static const axFlag CONTOUR_HIGHLIGHT;
+        static const axFlag CONOUR_NO_FADE;
+    };
     
-    axTextBoxMsg(axTextBox* sender, const string& msg)
+    /***************************************************************************
+     * axTextBox::Msg.
+     **************************************************************************/
+    class Msg : public axMsg
     {
-        _sender = sender;
-        _msg = msg;
-    }
-    
-    axTextBox* GetSender() const
-    {
-        return _sender;
-    }
-    
-    string GetMsg() const
-    {
-        return _msg;
-    }
-    
-    axMsg* GetCopy()
-    {
-        return new axTextBoxMsg(*this);
-    }
-    
-private:
-    axTextBox* _sender;
-    string _msg;
-};
-
-struct axTextBoxEvents
-{
-    enum : axEventId { BUTTON_CLICK, ENTER_CLICK };
-    
-	axTextBoxEvents(){}
-    axTextBoxEvents(axEventFunction& fct){ button_click = fct; }
-    
-    axEventFunction button_click;
-    axEventFunction enter_click;
-};
-
-struct axTextBoxInfo
-{
-	axColor normal;
-	axColor hover;
-    axColor hightlight; // This needs to be transparent.
-	axColor selected;
-    axColor selected_shadow;
-	axColor cursor;
-	axColor contour;
-	axColor font_color;
-
-	axTextBoxInfo(){}
-	axTextBoxInfo(const axColor& normal_color,
-                  const axColor& hover_color,
-                  const axColor& hightlight_color,
-                  const axColor& selected_color,
-                  const axColor& selected_shadow_color,
-                  const axColor& cursor_color,
-                  const axColor& contour_color,
-                  const axColor& font_color_) :
-    normal(normal_color),
-    hover(hover_color),
-    hightlight(hightlight_color),
-    selected(selected_color),
-    selected_shadow(selected_shadow_color),
-    cursor(cursor_color),
-    contour(contour_color),
-    font_color(font_color_){}
-    
-    axTextBoxInfo(const std::string& path)
-    {
-        SerializeInput(path);
-    }
-
-    void SerializeOutput(const std::string& path)
-    {
-        fstream file;
-        file.open(path, std::fstream::out | std::fstream::binary);
-
-        if (file.fail())
-        {
-            std::cerr << "Problem opening file " << path << std::endl;
-        }
-        else
-        {
-            normal.SerializeOutput(file);
-            hover.SerializeOutput(file);
-            selected.SerializeOutput(file);
-            cursor.SerializeOutput(file);
-            contour.SerializeOutput(file);
-            font_color.SerializeOutput(file);
-        }
-
-    }
-    
-    void SerializeInput(const std::string& path)
-    {
-        fstream file;
-        file.open(path, std::fstream::in | std::fstream::binary);
+    public:
+        Msg();
         
-        if (file.fail())
-        {
-            std::cerr << "Problem opening file " << path << std::endl;
-        }
-        else
-        {
-            normal.SerializeInput(file);
-            hover.SerializeInput(file);
-            selected.SerializeInput(file);
-            cursor.SerializeInput(file);
-            contour.SerializeInput(file);
-            font_color.SerializeInput(file);
-        }
-    }
-};
-
-class axTextBox : public axPanel
-{
-public:
-	axTextBox(axWindow* parent,
-                  const axRect& rect,
-                  const axTextBoxEvents& events,
-                  const axTextBoxInfo& info,
-                  string img_path = "",
-                  string label = "",
-                  axFlag flags = 0);
+        Msg(axTextBox* sender, const std::string& msg);
+        
+        axTextBox* GetSender() const;
+        
+        std::string GetMsg() const;
+        
+        axMsg* GetCopy();
+        
+    private:
+        axTextBox* _sender;
+        std::string _msg;
+    };
+    
+    /***************************************************************************
+     * axTextBox::Events.
+     **************************************************************************/
+    class Events
+    {
+    public:
+        enum : axEventId { BUTTON_CLICK, ENTER_CLICK };
+        
+        Events(){}
+        Events(axEventFunction& fct){ button_click = fct; }
+        
+        axEventFunction button_click;
+        axEventFunction enter_click;
+    };
+    
+    /***************************************************************************
+     * axTextBox::Info.
+     **************************************************************************/
+    class Info : public axInfo
+    {
+    public:
+        Info();
+        
+        Info(const std::string& path);
+        
+        Info(const axVectorPairString& attributes);
+        
+        Info(const axColor& normal,
+             const axColor& hover,
+             const axColor& highlight,
+             const axColor& selected,
+             const axColor& selected_shadow,
+             const axColor& cursor,
+             const axColor& contour,
+             const axColor& font_color);
+        
+        // Info needed for debug editor. Derived from axInfo.
+        virtual axStringVector GetParamNameList() const;
+        virtual std::string GetAttributeValue(const std::string& name);
+        virtual void SetAttribute(const axStringPair& attribute);
+        
+        axColor normal;
+        axColor hover;
+        axColor highlight; // This needs to be transparent (alpha < 1.0).
+        axColor selected;
+        axColor selected_shadow;
+        axColor cursor;
+        axColor contour;
+        axColor font_color;
+    };
+    
+    /***************************************************************************
+     * axTextBox::Builder.
+     **************************************************************************/
+    class Builder : public axWidgetBuilder
+    {
+    public:
+        Builder(axWindow* parent);
+        
+        virtual axWidget* Create(const axVectorPairString& attributes);
+        
+    private:
+        axSize _size;
+        axFlag _flags;
+        axTextBox::Info _info;
+        std::string _imgPath;
+        std::string _label;
+    };
+    
+    
+    /***************************************************************************
+     * axTextBox::axTextBox.
+     **************************************************************************/
+    axTextBox(axWindow* parent,
+              const axRect& rect,
+              const axTextBox::Events& events,
+              const axTextBox::Info& info,
+              string img_path = "",
+              string label = "",
+              axFlag flags = 0);
 
     void SetLabel(const std::string& label);
     
     std::string GetLabel() const;
-
-    
-    axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);
     
 protected:
-    axTextBoxEvents _events;
-    axTextBoxInfo _info;
-    string _label;
+    axTextBox::Events _events;
+    std::string _label;
     axImage* _btnImg;
     axFlag _flags;
     axFont* _font;
@@ -228,6 +262,7 @@ protected:
     //
     virtual void DrawContourRectangle(axGC* gc);
     
+    axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);
     void OnFlashingCursorTimer(const axTimerMsg& msg);
     
     bool _cursorFlashActive;

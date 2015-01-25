@@ -46,7 +46,7 @@ public:
     
     void SetLabel(const std::string& label);
     
-    axEVENT_ACCESSOR(axTextBoxMsg, OnAttributeEdit);
+    axEVENT_ACCESSOR(axTextBox::Msg, OnAttributeEdit);
     
 protected:
     axButton::Events _events;
@@ -83,7 +83,7 @@ protected:
     virtual void OnMouseEnter();
     virtual void OnMouseLeave();
     
-    void OnAttributeEdit(const axTextBoxMsg& msg);
+    void OnAttributeEdit(const axTextBox::Msg& msg);
     
     
     bool _isEditing;

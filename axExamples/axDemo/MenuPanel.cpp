@@ -91,12 +91,12 @@ axPanel(parent, rect)
                                   "", "BTN");
     
     //--------------------------------------------------------------------------
-    axTextBoxEvents txtEvents;
-    axTextBoxInfo txtInfo;
+    axTextBox::Events txtEvents;
+    axTextBox::Info txtInfo;
     txtInfo.normal = axColor(0.9, 0.9, 0.9);
     txtInfo.hover = axColor(0.9, 0.9, 0.9);
     txtInfo.selected = axColor(1.0, 1.0, 1.0);
-    txtInfo.hightlight = axColor(0.4, 0.4, 0.6, 0.4);
+    txtInfo.highlight = axColor(0.4, 0.4, 0.6, 0.4);
     txtInfo.contour = axColor(0.0, 0.0, 0.0);
     txtInfo.cursor = axColor(1.0, 0.0, 0.0);
     txtInfo.selected_shadow = axColor(0.8, 0.8, 0.8, 0.3);
@@ -107,8 +107,8 @@ axPanel(parent, rect)
                              txtInfo,
                              "",
                              "Alexandre",
-                             axTEXT_BOX_CONTOUR_HIGHLIGHT|
-                             axTEXT_BOX_FLASHING_CURSOR);
+                             axTextBox::Flags::CONTOUR_HIGHLIGHT|
+                             axTextBox::Flags::FLASHING_CURSOR);
     
     //--------------------------------------------------------------------------
 

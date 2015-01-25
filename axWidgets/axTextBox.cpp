@@ -20,19 +20,259 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axTextBox.h"
+#include "axObjectLoader.h"
 
-axTextBox::axTextBox(axWindow* parent,
-                             const axRect& rect,
-                             const axTextBoxEvents& events,
-                             const axTextBoxInfo& info,
-                             string img_path,
-                             string label,
-                             axFlag flags) :
+/*******************************************************************************
+ * axTextBox::Flags.
+ ******************************************************************************/
+const axFlag axTextBox::Flags::FLASHING_CURSOR = axFLAG_1;
+const axFlag axTextBox::Flags::CONTOUR_HIGHLIGHT = axFLAG_2;
+const axFlag axTextBox::Flags::CONOUR_NO_FADE = axFLAG_3;
+
+/*******************************************************************************
+ * axTextBox::Msg.
+ ******************************************************************************/
+axTextBox::Msg::Msg()
+{
+    _sender = nullptr;
+}
+
+axTextBox::Msg::Msg(axTextBox* sender, const string& msg)
+{
+    _sender = sender;
+    _msg = msg;
+}
+
+axTextBox* axTextBox::Msg::GetSender() const
+{
+    return _sender;
+}
+
+std::string axTextBox::Msg::GetMsg() const
+{
+    return _msg;
+}
+
+axMsg* axTextBox::Msg::GetCopy()
+{
+    return new axTextBox::Msg(*this);
+}
+
+/*******************************************************************************
+ * axTextBox::Info.
+ ******************************************************************************/
+axTextBox::Info::Info() :
+axInfo()
+{
+    
+}
+
+axTextBox::Info::Info(const axColor& normalColor,
+                      const axColor& hoverColor,
+                      const axColor& highlightColor,
+                      const axColor& selectedColor,
+                      const axColor& selected_shadowColor,
+                      const axColor& cursorColor,
+                      const axColor& contourColor,
+                      const axColor& font_colorColor) :
 // Heritage.
-axPanel(parent, rect),
+axInfo(),
+// Members.
+normal(normalColor),
+hover(hoverColor),
+highlight(highlightColor),
+selected(selectedColor),
+selected_shadow(selected_shadowColor),
+cursor(cursorColor),
+contour(contourColor),
+font_color(font_colorColor)
+{
+    
+}
+
+axTextBox::Info::Info(const std::string& path):
+// Heritage.
+axInfo(path)
+{
+    axWidgetLoader loader;
+    axVectorPairString att = loader.GetAttributes(path);
+    
+    SetAttributes(att);
+}
+
+axTextBox::Info::Info(const axVectorPairString& attributes)
+{
+    SetAttributes(attributes);
+}
+
+axStringVector axTextBox::Info::GetParamNameList() const
+{
+    return axStringVector
+    {
+        "normal",
+        "hover",
+        "highlight",
+        "selected",
+        "selected_shadow",
+        "cursor",
+        "contour",
+        "font_color"
+    };
+}
+
+std::string axTextBox::Info::GetAttributeValue(const std::string& name)
+{
+    if(name == "normal")
+    {
+        return normal.ToString();
+    }
+    else if(name == "hover")
+    {
+        return hover.ToString();
+    }
+    else if(name == "highlight")
+    {
+        return highlight.ToString();
+    }
+    else if(name == "selected")
+    {
+        return selected.ToString();
+    }
+    else if(name == "selected_shadow")
+    {
+        return selected_shadow.ToString();
+    }
+    else if(name == "cursor")
+    {
+        return cursor.ToString();
+    }
+    else if(name == "contour")
+    {
+        return contour.ToString();
+    }
+    else if(name == "font_color")
+    {
+        return font_color.ToString();
+    }
+    
+    return "";
+}
+
+void axTextBox::Info::SetAttribute(const axStringPair& attribute)
+{
+    if(attribute.first == "normal")
+    {
+        normal.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "hover")
+    {
+        hover.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "highlight")
+    {
+        highlight.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "selected")
+    {
+        selected.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "selected_shadow")
+    {
+        selected_shadow.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "cursor")
+    {
+        cursor.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "contour")
+    {
+        contour.LoadFromString(attribute.second);
+    }
+    else if(attribute.first == "font_color")
+    {
+        font_color.LoadFromString(attribute.second);
+    }
+}
+
+/*******************************************************************************
+ * axTextBox::Builder.
+ ******************************************************************************/
+axTextBox::Builder::Builder(axWindow* parent):
+axWidgetBuilder(parent),
+_flags(0)
+{
+    
+}
+
+axWidget* axTextBox::Builder::Create(const axVectorPairString& attributes)
+{
+    std::string name;
+    axPoint pos;
+    axTextBox::Events evts;
+    axWindow* parent = GetParent();
+    
+    for(auto& s : attributes)
+    {
+        if(s.first == "name")
+        {
+            name = s.second;
+        }
+        else if(s.first == "rect")
+        {
+            axStringVector strVec;
+            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            
+            pos = axPoint(stoi(strVec[0]), stoi(strVec[1]));
+            _size = axSize(stoi(strVec[2]), stoi(strVec[3]));
+        }
+        else if(s.first == "info")
+        {
+            _info = axTextBox::Info(s.second);
+        }
+        else if(s.first == "img")
+        {
+            _imgPath = s.second;
+        }
+        else if(s.first == "label")
+        {
+            _label = s.second;
+        }
+        else if(s.first == "flags")
+        {
+            _flags = stoi(s.second);
+        }
+        else if(s.first == std::string("event_button_click"))
+        {
+            evts.button_click = parent->GetEventFunction(s.second);
+        }
+        else if(s.first == std::string("event_enter_click"))
+        {
+            evts.enter_click = parent->GetEventFunction(s.second);
+        }
+    }
+    
+    axTextBox* btn = new axTextBox(parent, axRect(pos, _size), evts,
+                                   _info, _imgPath, _label, _flags);
+    
+    parent->GetResourceManager()->Add(name, btn);
+    return btn;
+}
+
+/*******************************************************************************
+ * axTextBox::Info.
+ ******************************************************************************/
+axTextBox::axTextBox(axWindow* parent,
+                     const axRect& rect,
+                     const axTextBox::Events& events,
+                     const axTextBox::Info& info,
+                     std::string img_path,
+                     std::string label,
+                     axFlag flags) :
+// Heritage.
+axWidget(parent, rect, new Info(info)),
 // Members.
 _events(events),
-_info(info),
+//_info(info),
 _label(label),
 _flags(flags),
 _nCurrentImg(axBTN_NORMAL),
@@ -44,27 +284,27 @@ _isHightlight(false),
 _findClickCursorIndex(false),
 _font(nullptr)
 {
-	_currentColor = &_info.normal;
+	_currentColor = &static_cast<Info*>(_info)->normal;
 
     _btnImg = new axImage(img_path);
     
     if(_events.button_click)
     {
-        AddConnection(axTextBoxEvents::BUTTON_CLICK, _events.button_click);
+        AddConnection(Events::BUTTON_CLICK, _events.button_click);
     }
     
     if(_events.enter_click)
     {
-        AddConnection(axTextBoxEvents::ENTER_CLICK, _events.enter_click);
+        AddConnection(Events::ENTER_CLICK, _events.enter_click);
     }
     
-    if(IsFlag(axTEXT_BOX_FLASHING_CURSOR, _flags))
+    if(IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
         _flashingCursor = new axTimer();
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     
-    _cursorIndex = _label.size();
+    _cursorIndex = (int)_label.size();
     
     _font = new axFont(0);
     
@@ -139,21 +379,21 @@ void axTextBox::OnMouseLeftDoubleClick(const axPoint& pos)
 
 void axTextBox::OnWasKeyUnGrabbed()
 {
-    if(IsFlag(axTEXT_BOX_FLASHING_CURSOR, _flags))
+    if(IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StopTimer();
     }
     
-    _currentColor = &_info.normal;
+    _currentColor = &static_cast<Info*>(_info)->normal;
     
     Update();
 }
 
 void axTextBox::OnWasKeyGrabbed()
 {
-    _currentColor = &_info.selected;
+    _currentColor = &static_cast<Info*>(_info)->selected;
     
-    if(IsFlag(axTEXT_BOX_FLASHING_CURSOR, _flags))
+    if(IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
         _flashingCursor->StartTimer(500);
     }
@@ -265,27 +505,27 @@ void axTextBox::OnRightArrowDown()
 
 void axTextBox::OnEnterDown()
 {
-    PushEvent(axTextBoxEvents::ENTER_CLICK, new axTextBoxMsg(this, _label));
+    PushEvent(Events::ENTER_CLICK, new axTextBox::Msg(this, _label));
     UnGrabKey();
 }
 
 void axTextBox::DrawContourRectangle(axGC* gc)
 {
-    axRect rect(GetRect());
-    
-    if(IsFlag(axTEXT_BOX_CONTOUR_HIGHLIGHT, _flags))
+    if(IsFlag(Flags::CONTOUR_HIGHLIGHT, _flags))
     {
         if(IsKeyGrab())
         {
-            if(IsFlag(axTEXT_BOX_CONOUR_NO_FADE, _flags)) // Shadow fade.
+            axRect rect(GetRect());
+            
+            if(IsFlag(Flags::CONOUR_NO_FADE, _flags)) // Shadow fade.
             {
-                gc->SetColor(_info.selected_shadow);
+                gc->SetColor(static_cast<Info*>(_info)->selected_shadow);
                 gc->DrawRectangle(axRect(axPoint(-5, -5),
                                          axSize(rect.size + axSize(9, 9))));
             }
             else
             {
-                axColor col(_info.selected_shadow);
+                axColor col(static_cast<Info*>(_info)->selected_shadow);
                 gc->SetColor(col);
                 
                 int nRect = 5;
@@ -294,7 +534,7 @@ void axTextBox::DrawContourRectangle(axGC* gc)
                     gc->DrawRectangleContour(axRect(axPoint(-i, -i),
                                                     axSize(rect.size + axSize(2*i, 2*i))));
                     
-                    double alpha = _info.selected_shadow.GetAlpha();
+                    double alpha = static_cast<Info*>(_info)->selected_shadow.GetAlpha();
                     double mu = double(i) / double(nRect);
                     
                     col.SetAlpha(alpha - alpha * mu);
@@ -326,13 +566,13 @@ void axTextBox::OnPaint()
         {
             int x_past_pos = next_pos.x;
             
-            gc->SetColor(_info.font_color);
+            gc->SetColor(static_cast<Info*>(_info)->font_color);
             
             next_pos = gc->DrawChar(*_font, _label[i], next_pos);
             
             if(_isHightlight) // hightlight on.
             {
-                gc->SetColor(_info.hightlight);
+                gc->SetColor(static_cast<Info*>(_info)->highlight);
                 gc->DrawRectangle(axRect(x_past_pos, 5,
                                          next_pos.x - x_past_pos, rect0.size.y - 10));
             }
@@ -371,12 +611,12 @@ void axTextBox::OnPaint()
 
     if(IsKeyGrab() && _cursorFlashActive)
     {
-        gc->SetColor(_info.cursor);
+        gc->SetColor(static_cast<Info*>(_info)->cursor);
   
         gc->DrawLine(axPoint(_cursorBarXPosition, 5),
                      axPoint(_cursorBarXPosition, rect0.size.y - 5));
     }
 
-	gc->SetColor(_info.contour);
+	gc->SetColor(static_cast<Info*>(_info)->contour);
 	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
 }
