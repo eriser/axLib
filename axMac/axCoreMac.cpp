@@ -43,6 +43,11 @@ void axCoreMac::Init(const axPoint& frame_size)
     InitGL();
 }
 
+axSize axCoreMac::GetScreenSize()
+{
+    return axCocoaGetScreenSize();
+}
+
 string axCoreMac::GetAppDirectory()
 {
     
@@ -66,7 +71,8 @@ bool axCoreMac::CreatePopupWindow(const char* title, int width, int height)
 axRect axCoreMac::GetScreenRect()
 {
     // NEED TO CHANGE THIS !!!.
-    return axRect(0, GetYTestValue(), _size.x, _size.y);
+//    return axRect(0, GetYTestValue(), _size.x, _size.y);
+    return axCocoaGetScreenSize();
 }
 
 

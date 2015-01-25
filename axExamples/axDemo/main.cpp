@@ -148,7 +148,8 @@ int main(int argc, char* argv[])
 	axEventManager::GetInstance();
 	axApp* app = axApp::CreateApp(axSize(550, 499));
 	axMain* main = new axMain();
-	main->MainEntryPoint(app);
+    
+    main->MainEntryPoint(app);
 
 	app->MainLoop();
 	return 0;

@@ -57,7 +57,7 @@ public:
     public:
         static const axFlag FLASHING_CURSOR;
         static const axFlag CONTOUR_HIGHLIGHT;
-        static const axFlag CONOUR_NO_FADE;
+        static const axFlag CONTOUR_NO_FADE;
     };
     
     /***************************************************************************
@@ -166,6 +166,8 @@ public:
     
     std::string GetLabel() const;
     
+    void SetMaximumChar(const unsigned int& max_number_of_char);
+    
 protected:
     axTextBox::Events _events;
     std::string _label;
@@ -174,13 +176,10 @@ protected:
     axFont* _font;
         
     axColor* _currentColor;
-    int _nCurrentImg;
-    int _cursorIndex;
-    bool _isHightlight;
-    bool _findClickCursorIndex;
+    int _nCurrentImg, _cursorIndex, _cursorBarXPosition, _lastCharXPosition;
+    unsigned int _maxNumChar;
+    bool _isHightlight, _findClickCursorIndex, _cursorFlashActive;
     axPoint _clickPosition;
-    
-    int _cursorBarXPosition, _lastCharXPosition;
     
     enum axTextBoxState
     {
@@ -214,8 +213,6 @@ protected:
     
     axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);
     void OnFlashingCursorTimer(const axTimerMsg& msg);
-    
-    bool _cursorFlashActive;
 };
 
 /// @}

@@ -182,7 +182,9 @@ void axFont::SetChar(const char& letter)
             FT_GlyphSlot g = _face->glyph;
             _size = axSize(g->bitmap.width, g->bitmap.rows);
             
-            _delta = axPoint(_face->glyph->bitmap_left, _face->glyph->bitmap_top);
+            _delta = axPoint(_face->glyph->bitmap_left,
+                             _face->glyph->bitmap_top);
+            
             _next = g->advance.x / 64.0;
             
             glBindTexture(GL_TEXTURE_2D, _texture);
@@ -197,6 +199,9 @@ void axFont::SetChar(const char& letter)
                          GL_ALPHA,
                          GL_UNSIGNED_BYTE,
                          g->bitmap.buffer);
+            //-----------------------------
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
             
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

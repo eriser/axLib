@@ -49,6 +49,8 @@ public:
     void SetGlobalSize(const axSize& size);
 	virtual axRect GetScreenRect() = 0;
 	virtual void UpdateAll();
+    
+    virtual axSize GetScreenSize() = 0;
 
 	virtual string OpenFileDialog() = 0;
 

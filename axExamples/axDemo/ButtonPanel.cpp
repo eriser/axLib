@@ -31,7 +31,9 @@ axPanel(parent, rect)
                                   btn1_info,
                                   "", "Btn1");
     
-    
+    axSize size(axApp::GetInstance()->GetCore()->GetScreenSize());
+    std::cout << "SIZE : " << size.x << " " << size.y << std::endl;
+
     
 //    axButton* btn2 = new axButton(this,
 //                                  axRect(110, 40, 60, 25),

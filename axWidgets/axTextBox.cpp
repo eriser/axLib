@@ -27,7 +27,7 @@
  ******************************************************************************/
 const axFlag axTextBox::Flags::FLASHING_CURSOR = axFLAG_1;
 const axFlag axTextBox::Flags::CONTOUR_HIGHLIGHT = axFLAG_2;
-const axFlag axTextBox::Flags::CONOUR_NO_FADE = axFLAG_3;
+const axFlag axTextBox::Flags::CONTOUR_NO_FADE = axFLAG_3;
 
 /*******************************************************************************
  * axTextBox::Msg.
@@ -282,7 +282,8 @@ _flashingCursor(nullptr),
 _cursorFlashActive(true),
 _isHightlight(false),
 _findClickCursorIndex(false),
-_font(nullptr)
+_font(nullptr),
+_maxNumChar(10000000)
 {
 	_currentColor = &static_cast<Info*>(_info)->normal;
 
@@ -308,16 +309,23 @@ _font(nullptr)
     
     _font = new axFont(0);
     
-    SetShownRect(axRect(-5,
-                        -5,
-                        rect.size.x + 10,
-                        rect.size.y + 10));
+    SetShownRect(axRect(-5, -5, rect.size.x + 10, rect.size.y + 10));
 }
 
 void axTextBox::SetLabel(const std::string& label)
 {
     _label = label;
     Update();
+}
+
+void axTextBox::SetMaximumChar(const unsigned int& max_number_of_char)
+{
+    _maxNumChar = max_number_of_char;
+    if(_maxNumChar > 0 && _label.size() > _maxNumChar)
+    {
+        _label.resize(_maxNumChar);
+        Update();
+    }
 }
 
 std::string axTextBox::GetLabel() const
@@ -403,6 +411,7 @@ void axTextBox::OnWasKeyGrabbed()
 
 void axTextBox::OnKeyDown(const char& key)
 {
+    // If all text is highlighted.
     if(_isHightlight)
     {
         _label.resize(0);
@@ -411,13 +420,18 @@ void axTextBox::OnKeyDown(const char& key)
         _isHightlight = false;
         Update();
     }
+    // Insert char in _label.
     else
     {
-        if(_lastCharXPosition < GetRect().size.x - 10)
+        // Can't add another char label size if bigger than _maxNumChar.
+        if(_label.size() != _maxNumChar)
         {
-            _label.insert(_cursorIndex, &key);
-            ++_cursorIndex;
-            Update();
+            if(_lastCharXPosition < GetRect().size.x - 10)
+            {
+                _label.insert(_cursorIndex, &key);
+                ++_cursorIndex;
+                Update();
+            }
         }
     }
 }
@@ -517,7 +531,7 @@ void axTextBox::DrawContourRectangle(axGC* gc)
         {
             axRect rect(GetRect());
             
-            if(IsFlag(Flags::CONOUR_NO_FADE, _flags)) // Shadow fade.
+            if(IsFlag(Flags::CONTOUR_NO_FADE, _flags)) // Shadow fade.
             {
                 gc->SetColor(static_cast<Info*>(_info)->selected_shadow);
                 gc->DrawRectangle(axRect(axPoint(-5, -5),
@@ -562,12 +576,12 @@ void axTextBox::OnPaint()
     {
         _cursorBarXPosition = 5;
         
+        gc->SetColor(static_cast<Info*>(_info)->font_color);
+        
+        // Start drawing label.
         for(int i = 0; i < _label.size(); i++)
         {
             int x_past_pos = next_pos.x;
-            
-            gc->SetColor(static_cast<Info*>(_info)->font_color);
-            
             next_pos = gc->DrawChar(*_font, _label[i], next_pos);
             
             if(_isHightlight) // hightlight on.

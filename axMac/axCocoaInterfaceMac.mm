@@ -225,3 +225,19 @@ void axReInitApp(void* appDelegate)
     [app ReInit];
 #endif
 }
+
+
+axSize axCocoaGetScreenSize()
+{
+    NSRect screenRect;
+    NSArray *screenArray = [NSScreen screens];
+    unsigned long screenCount = [screenArray count];
+    
+    for (unsigned int index = 0; index < screenCount; index++)
+    {
+        NSScreen *screen = [screenArray objectAtIndex: index];
+        screenRect = [screen visibleFrame];
+    }
+    
+    return axSize(screenRect.size.width, screenRect.size.height);
+}

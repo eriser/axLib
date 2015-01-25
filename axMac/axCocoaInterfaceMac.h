@@ -45,4 +45,6 @@ void* CreateNSWindowFromApp(void* parent, void*& child, void*& appDelegate);
 
 void axReInitApp(void* appDelegate);
 
+axSize axCocoaGetScreenSize();
+
 #endif

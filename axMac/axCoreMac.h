@@ -43,6 +43,8 @@ public:
 
     virtual axRect GetScreenRect();
     
+    virtual axSize GetScreenSize();
+    
     virtual string OpenFileDialog();
     
     virtual void PushEventOnSystemQueue();
