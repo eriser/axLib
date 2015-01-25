@@ -43,56 +43,6 @@
 #include "axWidgetBuilder.h"
 #include "axTimer.h"
 
-/**************************************************************************//**
- * axTextBoxFlags.
-******************************************************************************/
-//#define axTEXT_BOX_FLASHING_CURSOR      axFLAG_1
-//#define axTEXT_BOX_CONTOUR_HIGHLIGHT    axFLAG_2
-//#define axTEXT_BOX_CONOUR_NO_FADE       axFLAG_3
-
-//class axTextBox;
-//
-//struct axTextBoxEvents
-//{
-//    enum : axEventId { BUTTON_CLICK, ENTER_CLICK };
-//    
-//	axTextBoxEvents(){}
-//    axTextBoxEvents(axEventFunction& fct){ button_click = fct; }
-//    
-//    axEventFunction button_click;
-//    axEventFunction enter_click;
-//};
-//
-//struct axTextBoxInfo
-//{
-//	axColor normal;
-//	axColor hover;
-//    axColor hightlight; // This needs to be transparent (alpha < 1.0).
-//	axColor selected;
-//    axColor selected_shadow;
-//	axColor cursor;
-//	axColor contour;
-//	axColor font_color;
-//
-//	axTextBoxInfo(){}
-//	axTextBoxInfo(const axColor& normal_color,
-//                  const axColor& hover_color,
-//                  const axColor& hightlight_color,
-//                  const axColor& selected_color,
-//                  const axColor& selected_shadow_color,
-//                  const axColor& cursor_color,
-//                  const axColor& contour_color,
-//                  const axColor& font_color_) :
-//    normal(normal_color),
-//    hover(hover_color),
-//    hightlight(hightlight_color),
-//    selected(selected_color),
-//    selected_shadow(selected_shadow_color),
-//    cursor(cursor_color),
-//    contour(contour_color),
-//    font_color(font_color_){}
-//};
-
 /*******************************************************************************
  * axTextBox.
  ******************************************************************************/
