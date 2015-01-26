@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8D036E1A76CCBC00488CD6 /* libpng16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8D036D1A76CCBC00488CD6 /* libpng16.dylib */; };
 		7C0350DE1A3912040025338C /* AnimationPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0350DC1A3912040025338C /* AnimationPanel.cpp */; };
 		7C0352BC1A3A051C0025338C /* axTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0352BA1A3A051C0025338C /* axTextBox.cpp */; };
 		7C09A6FB1A696AF200401A98 /* axWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C09A6FA1A696AF200401A98 /* axWidget.cpp */; };
@@ -68,7 +69,6 @@
 		7CA3C1981A75D8F400564F21 /* libportaudio.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA3C1921A75D8F400564F21 /* libportaudio.2.dylib */; };
 		7CA3C1991A75D8F400564F21 /* libportaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA3C1931A75D8F400564F21 /* libportaudio.dylib */; };
 		7CA3C19A1A75D8F400564F21 /* libsndfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA3C1941A75D8F400564F21 /* libsndfile.dylib */; };
-		7CA3C19B1A75D8F400564F21 /* libpng15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA3C1951A75D8F400564F21 /* libpng15.dylib */; };
 		7CA3C19C1A75D8F400564F21 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA3C1961A75D8F400564F21 /* libfreetype.6.dylib */; };
 		7CAFF3B01A3BDADF0096412D /* axKeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CAFF3AF1A3BDADF0096412D /* axKeyboardManager.cpp */; };
 		7CBB296B1A6565A200EC2BCD /* axObjectLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB29681A6565A200EC2BCD /* axObjectLoader.cpp */; };
@@ -84,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C8D036D1A76CCBC00488CD6 /* libpng16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.dylib; path = ../../../../../../../../opt/local/lib/libpng16.dylib; sourceTree = "<group>"; };
 		7C0350DC1A3912040025338C /* AnimationPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationPanel.cpp; sourceTree = "<group>"; };
 		7C0350DD1A3912040025338C /* AnimationPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationPanel.h; sourceTree = "<group>"; };
 		7C0352BA1A3A051C0025338C /* axTextBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTextBox.cpp; sourceTree = "<group>"; };
@@ -203,7 +204,6 @@
 		7CA3C1921A75D8F400564F21 /* libportaudio.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.2.dylib; path = ../../../../Desktop/axKrakenSynth/libportaudio.2.dylib; sourceTree = "<group>"; };
 		7CA3C1931A75D8F400564F21 /* libportaudio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.dylib; path = ../../../../Desktop/axKrakenSynth/libportaudio.dylib; sourceTree = "<group>"; };
 		7CA3C1941A75D8F400564F21 /* libsndfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsndfile.dylib; path = ../../../../Desktop/axKrakenSynth/libsndfile.dylib; sourceTree = "<group>"; };
-		7CA3C1951A75D8F400564F21 /* libpng15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng15.dylib; path = ../../../../Desktop/axKrakenSynth/libpng15.dylib; sourceTree = "<group>"; };
 		7CA3C1961A75D8F400564F21 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../Desktop/axKrakenSynth/libfreetype.6.dylib; sourceTree = "<group>"; };
 		7CAFF3AE1A3BDAD40096412D /* axKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axKeyboardManager.h; sourceTree = "<group>"; };
 		7CAFF3AF1A3BDADF0096412D /* axKeyboardManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axKeyboardManager.cpp; sourceTree = "<group>"; };
@@ -235,9 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA3C1991A75D8F400564F21 /* libportaudio.dylib in Frameworks */,
+				0C8D036E1A76CCBC00488CD6 /* libpng16.dylib in Frameworks */,
 				7CA3C19A1A75D8F400564F21 /* libsndfile.dylib in Frameworks */,
 				7CA3C19C1A75D8F400564F21 /* libfreetype.6.dylib in Frameworks */,
-				7CA3C19B1A75D8F400564F21 /* libpng15.dylib in Frameworks */,
 				7CA3C1981A75D8F400564F21 /* libportaudio.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +316,7 @@
 				7CA3C1921A75D8F400564F21 /* libportaudio.2.dylib */,
 				7CA3C1931A75D8F400564F21 /* libportaudio.dylib */,
 				7CA3C1941A75D8F400564F21 /* libsndfile.dylib */,
-				7CA3C1951A75D8F400564F21 /* libpng15.dylib */,
+				0C8D036D1A76CCBC00488CD6 /* libpng16.dylib */,
 				7CA3C1961A75D8F400564F21 /* libfreetype.6.dylib */,
 				7CA3C17A1A75D88500564F21 /* axAudio */,
 				7C262FC21A36705F00544ACE /* axMac */,
@@ -685,13 +685,18 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include/freetype2/,
 					/usr/local/include/,
+					/opt/local/include/freetype2/,
+					/opt/local/include/,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					/opt/local/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
-					"-lpng15",
+					"-lpng16",
 					"-lfreetype",
 				);
 				SDKROOT = macosx;
@@ -733,12 +738,17 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include/freetype2/,
 					/usr/local/include/,
+					/opt/local/include/freetype2/,
+					/opt/local/include/,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					/opt/local/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = (
-					"-lpng15",
+					"-lpng16",
 					"-lfreetype",
 				);
 				SDKROOT = macosx;
@@ -754,7 +764,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/alexarse/Desktop/axKrakenSynth,
+					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -769,7 +779,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/alexarse/Desktop/axKrakenSynth,
+					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
