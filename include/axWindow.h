@@ -140,9 +140,22 @@ public:
     
     void SetContourColor(const axColor& color);
     
+    GLuint GetWindowBufferTexture() const
+    {
+        return _frameBufferTexture;
+    }
+    
+    void RenderWindow();
+    
+    axRect GetDrawingRect() const
+    {
+        return axRect(0, 0, _rect.size.x - 1, _rect.size.y - 1);
+    }
+    
 protected:
 	bool _isPopup;
-    
+    bool _needUpdate;
+    GLuint _frameBuffer, _frameBufferTexture, _depthBuffer;
 
 private:
 	axWindow* _parent;
@@ -160,8 +173,13 @@ private:
     
 	GLuint _texture;
     
+    
+    
+    
 //    std::map<std::string, axEventFunction> _evtMap;
     axResourceManager _resourceManager;
+    
+    void InitGLWindowBackBufferDrawing();
 };
 
 /// @}

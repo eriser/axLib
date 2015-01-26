@@ -364,7 +364,9 @@ void axNumberBox::OnPaint()
 {
 	axGC* gc = GetGC();
 	axSize size = GetSize();
-	axRect rect0(0, 0, size.x, size.y);
+//	axRect rect0(0, 0, size.x, size.y);
+    axRect rect0(GetDrawingRect());
+    axRect rect(GetRect());
 
     gc->SetColor(*_currentColor);
     gc->DrawRectangle(rect0);
@@ -384,7 +386,7 @@ void axNumberBox::OnPaint()
         }
         else
         {
-            gc->DrawPartOfImage(_bgImg, axPoint(0, _nCurrentImg * rect0.size.y),
+            gc->DrawPartOfImage(_bgImg, axPoint(0, _nCurrentImg * rect.size.y),
                                 rect0.size, axPoint(0, 0));
         }
     }

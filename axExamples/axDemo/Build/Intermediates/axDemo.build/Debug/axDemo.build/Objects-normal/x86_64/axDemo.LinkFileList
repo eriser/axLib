@@ -13,8 +13,11 @@
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axUtils.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axToggle.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/AnimationPanel.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAudioWaveTable.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAudio.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axTextControl.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axObjectLoader.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAudioBufferPlayer.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axEventManager.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axResourceManager.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axPlot.o
@@ -27,6 +30,7 @@
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axGC.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/KnobPanel.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axManager.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAudioEnvelope.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/PaintPanel.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/MenuPanel.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/ButtonPanel.o
@@ -35,6 +39,7 @@
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/AppDelegate.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axMouseManager.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/SliderPanel.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axWaveform.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axVar.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axGrid.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axApp.o
@@ -45,13 +50,18 @@
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axDebugButton.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axMsg.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axPanel.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAudioFilter.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axMenu.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axWaveformNavigator.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axKnob.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axStaticImage.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAudioBuffer.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axTimer.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAudioUtils.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/main-5F722D18F99D1A85.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axWindowTree.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axLabel.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axAnimatedButton.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/axCore.o
+/Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/RtMidi.o
 /Users/alexarse/Project/axLib/axExamples/axDemo/Build/Intermediates/axDemo.build/Debug/axDemo.build/Objects-normal/x86_64/main-FA228A35A227BB4D.o

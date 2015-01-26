@@ -21,6 +21,7 @@
  ******************************************************************************/
 #include "axWindow.h"
 #include "axApp.h"
+#include "axMath.h"
 
 axWindow::axWindow(axWindow* parent, const axRect& rect):
 // Members.
@@ -32,7 +33,8 @@ _isBlockDrawing(false),
 _shownRect(axPoint(0, 0), rect.size),
 _isSelectable(true),
 _windowColor(0.0, 0.0, 0.0, 0.0),
-_contourColor(0.0, 0.0, 0.0, 0.0)
+_contourColor(0.0, 0.0, 0.0, 0.0),
+_needUpdate(true)
 {
 //#ifdef _axDebugEditor_
     _isEditingWidget = false;
@@ -49,6 +51,8 @@ _contourColor(0.0, 0.0, 0.0, 0.0)
 	}
     
 	_gc = new axGC(this);
+    
+    InitGLWindowBackBufferDrawing();
 }
 
 axWindow* axWindow::GetParent() const
@@ -272,4 +276,112 @@ void axWindow::OnPaint()
     
     gc->SetColor(_contourColor);
     gc->DrawRectangle(axRect(axPoint(0, 0), rect.size));
+}
+
+// https://www.opengl.org/wiki/Framebuffer_Object_Examples
+void axWindow::InitGLWindowBackBufferDrawing()
+{
+    // Create framebuffer object (FBO).
+    glGenFramebuffers(1, &_frameBuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+    
+    // Create texture.
+    glGenTextures(1, &_frameBufferTexture);
+    glBindTexture(GL_TEXTURE_2D, _frameBufferTexture);
+//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    
+    // NULL means reserve texture memory, but texels are undefined.
+    glTexImage2D(GL_TEXTURE_2D,
+                 0,
+                 GL_RGBA,
+                 _rect.size.x,
+                 _rect.size.y,
+                 0,
+                 GL_RGBA,
+                 GL_UNSIGNED_BYTE,
+                 NULL);
+    
+    // Attach 2D texture to this FBO.
+    glFramebufferTexture2D(GL_FRAMEBUFFER,
+                           GL_COLOR_ATTACHMENT0,
+                           GL_TEXTURE_2D,
+                           _frameBufferTexture,
+                           0);
+    
+    
+    glGenRenderbuffers(1, &_depthBuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
+    glRenderbufferStorage(GL_RENDERBUFFER,
+                          GL_DEPTH_COMPONENT32,
+                          _rect.size.x,
+                          _rect.size.y);
+
+    // Does the GPU support current FBO configuration.
+    GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER_EXT);
+
+    switch(status)
+    {
+        case GL_FRAMEBUFFER_COMPLETE_EXT:
+            cout<<"good";
+            break;
+        default:
+            std::cerr << "ERROR GEN FRAME BUFFER" << std::endl;
+    }
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+void axWindow::RenderWindow()
+{
+    if(_needUpdate)
+    {
+//        // Save modelView matrix.
+//        glMatrixMode(GL_MODELVIEW);
+//        axMatrix4 modelView(GL_MODELVIEW);
+//        
+//        glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+//        glClearColor(0.0, 0.0, 0.0, 0.0);
+//        glClearDepth(1.0f);
+//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//        
+//        glViewport(0, 0, GetRect().size.x, GetRect().size.y);
+//        
+//        glMatrixMode(GL_PROJECTION);
+//        axMatrix4 proj;
+////        axOrtho2D(proj.Identity().GetData(), GetRect().size);
+//        
+//        glLoadIdentity();
+//        glOrtho(0.0, GetRect().size.x,
+//                0.0, GetRect().size.y,
+//                0.0, 1.0);
+//        
+//        glMatrixMode(GL_MODELVIEW);
+//        axMatrix4 mv_matrix;
+//        mv_matrix.Identity().Load();
+//        
+        OnPaint();
+        
+//        _needUpdate = false;
+//
+//        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//        
+//        axSize gSize(axApp::GetInstance()->GetCore()->GetGlobalSize());
+//        glViewport(0, 0, gSize.x, gSize.y);
+//        axOrtho2D(proj.Identity().GetData(), gSize);
+//        
+//        glMatrixMode(GL_MODELVIEW);
+//        modelView.Load();
+//        
+//        axGC* gc = GetGC();
+//        gc->DrawWindowBuffer();
+    }
+    else
+    {
+        axGC* gc = GetGC();
+        gc->DrawWindowBuffer();
+    }
 }

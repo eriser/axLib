@@ -116,6 +116,8 @@ public:
                      const axRect& rect,
                      axColor color = axColor(0.0, 0.0, 0.0));
     
+    void DrawWindowBuffer();
+    
     // Just blocking x axis for now.
     void BlockDrawing(const axRect& rect);
     void UnBlockDrawing();

@@ -16,10 +16,10 @@ axPanel(parent, rect)
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
     
     axButton::Info btn1_info;
-    btn1_info.normal = axColor(0.8, 0.8, 0.8);
+    btn1_info.normal = axColor(1.0, 0.0, 0.0);
     btn1_info.hover = axColor(0.9, 0.9, 0.9);
     btn1_info.clicking = axColor(0.7, 0.7, 0.7);
-    btn1_info.contour = axColor(0.0, 0.0, 0.0);
+    btn1_info.contour = axColor(0.0, 0.0, 1.0);
     btn1_info.selected = btn1_info.normal;
     
     axButton::Events btn1_evts;

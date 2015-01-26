@@ -127,7 +127,7 @@ void DrawWindow(axWindow* win)
     mview.Translate(win->GetAbsoluteRect().position -
                     win->GetScrollDecay()).Process();
 
-    win->OnPaint();
+    win->RenderWindow();
 }
 
 void axWindowNode::DrawNode()

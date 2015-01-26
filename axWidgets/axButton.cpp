@@ -22,6 +22,7 @@
 #include "axButton.h"
 #include "axObjectLoader.h"
 #include "axDebugButton.h"
+#include "axMath.h"
 
 /*******************************************************************************
  * axButon::Flags.
@@ -382,34 +383,36 @@ void axButton::OnMouseLeave()
 
 void axButton::OnPaint()
 {
-    axGC* gc = GetGC();
-    axRect rect(GetRect());
-    axRect rect0(axPoint(0, 0), rect.size);
-    
-    gc->SetColor(*_currentColor);
-    gc->DrawRectangle(rect0);
-    
-    if (_btnImg->IsImageReady())
-    {
-        if (IsFlag(Flags::SINGLE_IMG, _flags))
+        axGC* gc = GetGC();
+        axRect rect(GetRect());
+        axRect rect0(axPoint(0, 0), rect.size);
+        rect0.size.x -= 1;
+        rect0.size.y -= 1;
+        
+        gc->SetColor(*_currentColor);
+        gc->DrawRectangle(rect0);
+        
+        if (_btnImg->IsImageReady())
         {
-            gc->DrawImageResize(_btnImg, axPoint(0, 0), rect.size, 1.0);
+            if (IsFlag(Flags::SINGLE_IMG, _flags))
+            {
+                gc->DrawImageResize(_btnImg, axPoint(0, 0), rect.size, 1.0);
+            }
+            else
+            {
+                gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
+                                    rect0.size, axPoint(0, 0));
+            }
         }
-        else
+        
+        if_not_empty(_label)
         {
-            gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
-                                rect.size, axPoint(0, 0));
+            gc->SetColor(static_cast<axButton::Info*>(_info)->font_color, 1.0);
+            gc->DrawStringAlignedCenter(*_font, _label, rect0);
         }
-    }
-    
-    if_not_empty(_label)
-    {
-        gc->SetColor(static_cast<axButton::Info*>(_info)->font_color, 1.0);
-        gc->DrawStringAlignedCenter(*_font, _label, rect0);
-    }
-    
-    gc->SetColor(static_cast<axButton::Info*>(_info)->contour);
-    gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
+        
+        gc->SetColor(static_cast<axButton::Info*>(_info)->contour);
+        gc->DrawRectangleContour(rect0);
 }
 
 

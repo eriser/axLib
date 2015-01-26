@@ -19,6 +19,7 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef __AX_MATH__
 #define __AX_MATH__
 

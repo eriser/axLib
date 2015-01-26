@@ -136,6 +136,7 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
+//    glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindTexture(GL_TEXTURE_2D, texture);
@@ -150,7 +151,7 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 //				gluErrorString(err) << endl;
 //		}
 //	)
-
+//    glColor4d(1.0, 1.0, 1.0, 1.0);
 	glDepthMask(GL_TRUE);
 	axSize img_size = rect.size;
 
@@ -176,6 +177,47 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 
 //	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
+}
+
+void axGC::DrawWindowBuffer()
+{
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    axFloatRect rect(RectToFloatRect(_win->GetRect()));
+    axFloatPoint pos(0.0, 0.0);
+    axFloatSize size = rect.size;
+//    size.x += 1.0;
+//    size.y += 1.0;
+    
+    glBindTexture(GL_TEXTURE_2D, _win->GetWindowBufferTexture());
+    
+    glDepthMask(GL_TRUE);
+    
+    glColor4d(1.0, 1.0, 1.0, 1.0);
+    glBegin(GL_QUADS);
+    
+    // Bottom left.
+    glTexCoord2d(0.0, 0.0);
+    glVertex2d(pos.x, pos.y);
+    
+    // Top left.
+    glTexCoord2d(0.0, 1.0);
+    glVertex2d(pos.x, pos.y + size.y);
+    
+    // Top right.
+    glTexCoord2d(1.0, 1.0);
+    glVertex2d(pos.x + size.x, pos.y + size.y);
+    
+    // Buttom right.
+    glTexCoord2d(1.0, 0.0);
+    glVertex2d(pos.x + size.x, pos.y);
+    
+    glEnd();
+    
+    //	glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
 }
 
 //glTexCoordPointer(2, GL_FLOAT, 0, texCoords);

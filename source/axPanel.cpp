@@ -182,6 +182,7 @@ void axPanel::UpdateAll()
 
 void axPanel::Update()
 {
+    _needUpdate = true;
 	UpdateAll();
 }
 
