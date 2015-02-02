@@ -1,0 +1,16 @@
+_RWDEFGetDeviceNameAndVersion
+_RWDEFGetDeviceInfo
+_RWDEFOpenDevice
+_RWDEFIsCloseOK
+_RWDEFCloseDevice
+_RWDEFDriveAudio
+_RWDEFIdle
+_RWDEFSetAudioInfo
+_RWDEFLaunchPanelApp
+_RWDEFIsPanelAppLaunched
+_RWDEFQuitPanelApp
+_RWDEFGetEventInfo
+_RWDEFGetEventBusInfo
+_RWDEFGetEventChannelInfo
+_RWDEFGetEventControllerInfo
+_RWDEFGetEventNoteInfo

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axKnobInfo normal="0.3, 0.3, 0.3, 0.0" 
+			hover="0.3, 0.3, 0.3, 0.0" 
+			clicking="0.3, 0.3, 0.3, 0.0" 
+			nknob="128" 
+			knob_size="36, 36" 
+			img="ressources/images/knob_blue_36x36.png"
+			img_selected="ressources/images/knob_blue_36x36.png"> 
+</axKnobInfo>

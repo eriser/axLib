@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+    <Import Project="PPHGeneral.props" />
+    <Import Project="PPHTestingDeployment.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <PPH_ConfigurationType>Testing</PPH_ConfigurationType>
+    <PPH_ConfigurationLibSuffix>Testing</PPH_ConfigurationLibSuffix>
+    <PPH_Debugging_EmptyOrd />
+    <PPH_Deployment_SpaceOrNothing> </PPH_Deployment_SpaceOrNothing>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>TARGET_TESTING=1;_DEBUG;DEBUG=1;TRACING_ENABLED=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>TARGET_TESTING=1;DEBUG=1;TRACING_ENABLED=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="PPH_ConfigurationType">
+      <Value>$(PPH_ConfigurationType)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PPH_ConfigurationLibSuffix">
+      <Value>$(PPH_ConfigurationLibSuffix)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PPH_Debugging_EmptyOrd">
+      <Value>$(PPH_Debugging_EmptyOrd)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PPH_Deployment_SpaceOrNothing">
+      <Value>$(PPH_Deployment_SpaceOrNothing)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

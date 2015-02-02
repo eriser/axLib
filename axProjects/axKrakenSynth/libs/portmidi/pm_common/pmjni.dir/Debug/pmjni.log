@@ -1,0 +1,2 @@
+﻿  pmjni.c
+c:\users\alexarse\desktop\axlib\libs\portmidi\pm_java\pmjni\jportmidi_JportMidiApi.h(2): fatal error C1083: Cannot open include file: 'jni.h': No such file or directory

@@ -328,10 +328,16 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 	// Find first level window.
 	for (axWindowNode* it : _nodes)
 	{
-		if (it->window->GetAbsoluteRect().IsPointInside(pos))
-		{
-			node = it;
-		}
+        axPoint position = it->window->GetAbsoluteRect().position;
+        axRect rect(position, it->window->GetShownRect().size);
+        if(rect.IsPointInside(pos))
+        {
+            node = it;
+        }
+//		if (it->window->GetAbsoluteRect().IsPointInside(pos))
+//		{
+//			node = it;
+//		}
 	}
 
 	axWindowNode* n = node;
@@ -344,8 +350,10 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
 			n = node;
 			for (axWindowNode* it : n->GetChild())
 			{
-				if (it->window->GetAbsoluteRect().IsPointInside(pos) &&
-                    it->window->IsShown())
+                axPoint position = it->window->GetAbsoluteRect().position;
+                axRect rect(position, it->window->GetShownRect().size);
+                
+				if (rect.IsPointInside(pos) && it->window->IsShown())
                 {
                     if(it->window->IsSelectable())
                     {
@@ -360,8 +368,10 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
                         for(axWindowNode* k : it->GetChild())
                         {
                             axWindow* win = k->window;
-                            if(win->GetAbsoluteRect().IsPointInside(pos) &&
-                               win->IsEditingWidget())
+                            axPoint p = win->GetAbsoluteRect().position;
+                            axRect r(position, win->GetShownRect().size);
+                            
+                            if(r.IsPointInside(pos) && win->IsEditingWidget())
                             {
                                 node = k;
                                 break;

@@ -1,0 +1,680 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		10ADFDA609AF38A1002C15A2 /* Build all */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 10ADFDB709AF38B3002C15A2 /* Build configuration list for PBXAggregateTarget "Build all" */;
+			buildPhases = (
+			);
+			dependencies = (
+				10ADFDAC09AF38AA002C15A2 /* PBXTargetDependency */,
+				554B31EA12684E4D00F40895 /* PBXTargetDependency */,
+				554B31EC12684E5000F40895 /* PBXTargetDependency */,
+			);
+			name = "Build all";
+			productName = "Build all";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		105A298509922AFF0045B6D8 /* ReWire.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D36097BD5E4006FF8F2 /* ReWire.c */; };
+		105A2C1A099239D30045B6D8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10874056097DABF9006FF8F2 /* IOKit.framework */; };
+		105A2C580992402A0045B6D8 /* ReWireDeviceAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D3B097BD5E4006FF8F2 /* ReWireDeviceAPI.c */; };
+		554B30811267550100F40895 /* ReWire.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D36097BD5E4006FF8F2 /* ReWire.c */; };
+		554B31CE12684D3A00F40895 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		554B31D312684D6600F40895 /* ReWireAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D39097BD5E4006FF8F2 /* ReWireAPI.c */; };
+		554B31D612684D8300F40895 /* ReWireAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D39097BD5E4006FF8F2 /* ReWireAPI.c */; };
+		554B31DA12684DD100F40895 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		554B32091268521900F40895 /* ReWirePanelAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D3F097BD5E4006FF8F2 /* ReWirePanelAPI.c */; };
+		554B320A1268522100F40895 /* ReWireAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D39097BD5E4006FF8F2 /* ReWireAPI.c */; };
+		554B320B1268522200F40895 /* ReWire.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D36097BD5E4006FF8F2 /* ReWire.c */; };
+		554B320C1268522300F40895 /* ReWireMixerAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 10872D3D097BD5E4006FF8F2 /* ReWireMixerAPI.c */; };
+		55D01ADE12709CEE00955765 /* MIDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D01AD112709CEE00955765 /* MIDI.cpp */; };
+		55D01ADF12709CEE00955765 /* MixerApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D01AD412709CEE00955765 /* MixerApp.cpp */; };
+		55D01AE012709CEE00955765 /* SampleMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D01AD712709CEE00955765 /* SampleMixer.cpp */; };
+		55D01AE112709CEE00955765 /* SimpleAudioAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D01ADA12709CEE00955765 /* SimpleAudioAPI.cpp */; };
+		55D01AE212709CEE00955765 /* SimpleMIDIAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D01ADC12709CEE00955765 /* SimpleMIDIAPI.cpp */; };
+		55D01AEE12709D1E00955765 /* SampleDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D01AE912709D1E00955765 /* SampleDevice.cpp */; };
+		55D01AF012709D6800955765 /* SampleUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85BE1204126F4B11001AC0AA /* SampleUtils.cpp */; };
+		55D01AF512709D7F00955765 /* SamplePanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D01AF312709D7F00955765 /* SamplePanel.cpp */; };
+		852135C6126D9E4B003750FD /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852135C5126D9E4B003750FD /* CoreAudio.framework */; };
+		852135CA126D9E57003750FD /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852135C9126D9E57003750FD /* CoreMIDI.framework */; };
+		852136A2126DA02D003750FD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		85BE1206126F4B11001AC0AA /* SampleUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85BE1204126F4B11001AC0AA /* SampleUtils.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10ADFDAB09AF38AA002C15A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20286C28FDCF999611CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 102794310992298100A7AB1D;
+			remoteInfo = "Test Device";
+		};
+		554B30AB126756A200F40895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20286C28FDCF999611CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 102794310992298100A7AB1D;
+			remoteInfo = SampleDevice;
+		};
+		554B31E712684E4700F40895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20286C28FDCF999611CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 102794310992298100A7AB1D;
+			remoteInfo = SampleDevice;
+		};
+		554B31E912684E4D00F40895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20286C28FDCF999611CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 554B2FD012673F0900F40895;
+			remoteInfo = SamplePanel;
+		};
+		554B31EB12684E5000F40895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20286C28FDCF999611CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 554B2FC612673E3F00F40895;
+			remoteInfo = SampleMixer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		102794320992298100A7AB1D /* SampleDevice.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleDevice.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		10872D36097BD5E4006FF8F2 /* ReWire.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ReWire.c; sourceTree = "<group>"; };
+		10872D37097BD5E4006FF8F2 /* ReWire.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ReWire.h; sourceTree = "<group>"; };
+		10872D38097BD5E4006FF8F2 /* ReWire2.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = ReWire2.doc; sourceTree = "<group>"; };
+		10872D39097BD5E4006FF8F2 /* ReWireAPI.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ReWireAPI.c; sourceTree = "<group>"; };
+		10872D3A097BD5E4006FF8F2 /* ReWireAPI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ReWireAPI.h; sourceTree = "<group>"; };
+		10872D3B097BD5E4006FF8F2 /* ReWireDeviceAPI.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ReWireDeviceAPI.c; sourceTree = "<group>"; };
+		10872D3C097BD5E4006FF8F2 /* ReWireDeviceAPI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ReWireDeviceAPI.h; sourceTree = "<group>"; };
+		10872D3D097BD5E4006FF8F2 /* ReWireMixerAPI.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ReWireMixerAPI.c; sourceTree = "<group>"; };
+		10872D3E097BD5E4006FF8F2 /* ReWireMixerAPI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ReWireMixerAPI.h; sourceTree = "<group>"; };
+		10872D3F097BD5E4006FF8F2 /* ReWirePanelAPI.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ReWirePanelAPI.c; sourceTree = "<group>"; };
+		10872D40097BD5E4006FF8F2 /* ReWirePanelAPI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ReWirePanelAPI.h; sourceTree = "<group>"; };
+		10874056097DABF9006FF8F2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		2B40E42212142DBB0053EF66 /* PPH Debugging.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "PPH Debugging.xcconfig"; path = "xcconfig/PPH Debugging.xcconfig"; sourceTree = "<group>"; };
+		2B40E42312142DBB0053EF66 /* PPH Deployment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "PPH Deployment.xcconfig"; path = "xcconfig/PPH Deployment.xcconfig"; sourceTree = "<group>"; };
+		2B40E42412142DBB0053EF66 /* PPH General.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "PPH General.xcconfig"; path = "xcconfig/PPH General.xcconfig"; sourceTree = "<group>"; };
+		2B40E42512142DBB0053EF66 /* PPH Testing.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "PPH Testing.xcconfig"; path = "xcconfig/PPH Testing.xcconfig"; sourceTree = "<group>"; };
+		550C79E6125DEFC900B6D14D /* RWDEFAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWDEFAPI.h; sourceTree = "<group>"; };
+		554B2FC712673E3F00F40895 /* SampleMixer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SampleMixer; sourceTree = BUILT_PRODUCTS_DIR; };
+		554B2FD112673F0900F40895 /* SamplePanel */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SamplePanel; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D01AD112709CEE00955765 /* MIDI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDI.cpp; sourceTree = "<group>"; };
+		55D01AD212709CEE00955765 /* MIDI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDI.h; sourceTree = "<group>"; };
+		55D01AD312709CEE00955765 /* Mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixer.h; sourceTree = "<group>"; };
+		55D01AD412709CEE00955765 /* MixerApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MixerApp.cpp; sourceTree = "<group>"; };
+		55D01AD512709CEE00955765 /* MixerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerApp.h; sourceTree = "<group>"; };
+		55D01AD712709CEE00955765 /* SampleMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleMixer.cpp; sourceTree = "<group>"; };
+		55D01ADA12709CEE00955765 /* SimpleAudioAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleAudioAPI.cpp; sourceTree = "<group>"; };
+		55D01ADB12709CEE00955765 /* SimpleAudioAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAudioAPI.h; sourceTree = "<group>"; };
+		55D01ADC12709CEE00955765 /* SimpleMIDIAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleMIDIAPI.cpp; sourceTree = "<group>"; };
+		55D01ADD12709CEE00955765 /* SimpleMIDIAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleMIDIAPI.h; sourceTree = "<group>"; };
+		55D01AE512709D1E00955765 /* SampleDevice-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleDevice-Info.plist"; sourceTree = "<group>"; };
+		55D01AE612709D1E00955765 /* SampleDevice.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = SampleDevice.exp; sourceTree = "<group>"; };
+		55D01AE912709D1E00955765 /* SampleDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleDevice.cpp; sourceTree = "<group>"; };
+		55D01AEB12709D1E00955765 /* SampleDeviceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleDeviceProtocol.h; sourceTree = "<group>"; };
+		55D01AF312709D7F00955765 /* SamplePanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SamplePanel.cpp; sourceTree = "<group>"; };
+		852135C5126D9E4B003750FD /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		852135C9126D9E57003750FD /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		85BE1204126F4B11001AC0AA /* SampleUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleUtils.cpp; sourceTree = "<group>"; };
+		85BE1205126F4B11001AC0AA /* SampleUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleUtils.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		102794300992298100A7AB1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				105A2C1A099239D30045B6D8 /* IOKit.framework in Frameworks */,
+				554B31DA12684DD100F40895 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554B2FC512673E3F00F40895 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				852135C6126D9E4B003750FD /* CoreAudio.framework in Frameworks */,
+				852135CA126D9E57003750FD /* CoreMIDI.framework in Frameworks */,
+				852136A2126DA02D003750FD /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554B2FCF12673F0900F40895 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554B31CE12684D3A00F40895 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10872D34097BD5E4006FF8F2 /* ReWireSDK */ = {
+			isa = PBXGroup;
+			children = (
+				10872D36097BD5E4006FF8F2 /* ReWire.c */,
+				10872D37097BD5E4006FF8F2 /* ReWire.h */,
+				10872D38097BD5E4006FF8F2 /* ReWire2.doc */,
+				10872D39097BD5E4006FF8F2 /* ReWireAPI.c */,
+				10872D3A097BD5E4006FF8F2 /* ReWireAPI.h */,
+				10872D3B097BD5E4006FF8F2 /* ReWireDeviceAPI.c */,
+				10872D3C097BD5E4006FF8F2 /* ReWireDeviceAPI.h */,
+				10872D3D097BD5E4006FF8F2 /* ReWireMixerAPI.c */,
+				10872D3E097BD5E4006FF8F2 /* ReWireMixerAPI.h */,
+				10872D3F097BD5E4006FF8F2 /* ReWirePanelAPI.c */,
+				10872D40097BD5E4006FF8F2 /* ReWirePanelAPI.h */,
+				550C79E6125DEFC900B6D14D /* RWDEFAPI.h */,
+			);
+			path = ReWireSDK;
+			sourceTree = "<group>";
+		};
+		195DF8CFFE9D517E11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				102794320992298100A7AB1D /* SampleDevice.bundle */,
+				554B2FC712673E3F00F40895 /* SampleMixer */,
+				554B2FD112673F0900F40895 /* SamplePanel */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20286C29FDCF999611CA2CEA /* ReWire Test Apps */ = {
+			isa = PBXGroup;
+			children = (
+				2B40E41F12142DA90053EF66 /* xcconfig */,
+				20286C2AFDCF999611CA2CEA /* Sources */,
+				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
+				195DF8CFFE9D517E11CA2CBB /* Products */,
+			);
+			name = "ReWire Test Apps";
+			sourceTree = "<group>";
+		};
+		20286C2AFDCF999611CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				10872D34097BD5E4006FF8F2 /* ReWireSDK */,
+				55D01AD012709CEE00955765 /* SampleMixer */,
+				55D01AE312709D1E00955765 /* SampleDevice */,
+				55D01AF112709D7F00955765 /* SamplePanel */,
+				85BE1203126F4B11001AC0AA /* SampleUtils */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				20286C33FDCF999611CA2CEA /* Carbon.framework */,
+				10874056097DABF9006FF8F2 /* IOKit.framework */,
+				852135C5126D9E4B003750FD /* CoreAudio.framework */,
+				852135C9126D9E57003750FD /* CoreMIDI.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		2B40E41F12142DA90053EF66 /* xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				2B40E42212142DBB0053EF66 /* PPH Debugging.xcconfig */,
+				2B40E42312142DBB0053EF66 /* PPH Deployment.xcconfig */,
+				2B40E42412142DBB0053EF66 /* PPH General.xcconfig */,
+				2B40E42512142DBB0053EF66 /* PPH Testing.xcconfig */,
+			);
+			name = xcconfig;
+			sourceTree = "<group>";
+		};
+		55D01AD012709CEE00955765 /* SampleMixer */ = {
+			isa = PBXGroup;
+			children = (
+				55D01AD112709CEE00955765 /* MIDI.cpp */,
+				55D01AD212709CEE00955765 /* MIDI.h */,
+				55D01AD312709CEE00955765 /* Mixer.h */,
+				55D01AD412709CEE00955765 /* MixerApp.cpp */,
+				55D01AD512709CEE00955765 /* MixerApp.h */,
+				55D01AD712709CEE00955765 /* SampleMixer.cpp */,
+				55D01AD912709CEE00955765 /* SimpleAudioMIDI */,
+			);
+			path = SampleMixer;
+			sourceTree = "<group>";
+		};
+		55D01AD912709CEE00955765 /* SimpleAudioMIDI */ = {
+			isa = PBXGroup;
+			children = (
+				55D01ADA12709CEE00955765 /* SimpleAudioAPI.cpp */,
+				55D01ADB12709CEE00955765 /* SimpleAudioAPI.h */,
+				55D01ADC12709CEE00955765 /* SimpleMIDIAPI.cpp */,
+				55D01ADD12709CEE00955765 /* SimpleMIDIAPI.h */,
+			);
+			path = SimpleAudioMIDI;
+			sourceTree = "<group>";
+		};
+		55D01AE312709D1E00955765 /* SampleDevice */ = {
+			isa = PBXGroup;
+			children = (
+				55D01AE412709D1E00955765 /* Mac */,
+				55D01AE912709D1E00955765 /* SampleDevice.cpp */,
+				55D01AEB12709D1E00955765 /* SampleDeviceProtocol.h */,
+			);
+			path = SampleDevice;
+			sourceTree = "<group>";
+		};
+		55D01AE412709D1E00955765 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				55D01AE512709D1E00955765 /* SampleDevice-Info.plist */,
+				55D01AE612709D1E00955765 /* SampleDevice.exp */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		55D01AF112709D7F00955765 /* SamplePanel */ = {
+			isa = PBXGroup;
+			children = (
+				55D01AF312709D7F00955765 /* SamplePanel.cpp */,
+			);
+			path = SamplePanel;
+			sourceTree = "<group>";
+		};
+		85BE1203126F4B11001AC0AA /* SampleUtils */ = {
+			isa = PBXGroup;
+			children = (
+				85BE1204126F4B11001AC0AA /* SampleUtils.cpp */,
+				85BE1205126F4B11001AC0AA /* SampleUtils.h */,
+			);
+			path = SampleUtils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		102794310992298100A7AB1D /* SampleDevice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1027945309922A3E00A7AB1D /* Build configuration list for PBXNativeTarget "SampleDevice" */;
+			buildPhases = (
+				1027942E0992298100A7AB1D /* Resources */,
+				1027942F0992298100A7AB1D /* Sources */,
+				102794300992298100A7AB1D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleDevice;
+			productName = "Test Device";
+			productReference = 102794320992298100A7AB1D /* SampleDevice.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		554B2FC612673E3F00F40895 /* SampleMixer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 554B2FCC12673E5E00F40895 /* Build configuration list for PBXNativeTarget "SampleMixer" */;
+			buildPhases = (
+				554B2FC412673E3F00F40895 /* Sources */,
+				554B2FC512673E3F00F40895 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				554B31E812684E4700F40895 /* PBXTargetDependency */,
+			);
+			name = SampleMixer;
+			productName = SampleMixer;
+			productReference = 554B2FC712673E3F00F40895 /* SampleMixer */;
+			productType = "com.apple.product-type.tool";
+		};
+		554B2FD012673F0900F40895 /* SamplePanel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 554B2FD612673F2700F40895 /* Build configuration list for PBXNativeTarget "SamplePanel" */;
+			buildPhases = (
+				554B2FCE12673F0900F40895 /* Sources */,
+				554B2FCF12673F0900F40895 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				554B30AC126756A200F40895 /* PBXTargetDependency */,
+			);
+			name = SamplePanel;
+			productName = SamplePanel;
+			productReference = 554B2FD112673F0900F40895 /* SamplePanel */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20286C28FDCF999611CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "Sample Apps" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 20286C29FDCF999611CA2CEA /* ReWire Test Apps */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				102794310992298100A7AB1D /* SampleDevice */,
+				554B2FC612673E3F00F40895 /* SampleMixer */,
+				554B2FD012673F0900F40895 /* SamplePanel */,
+				10ADFDA609AF38A1002C15A2 /* Build all */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1027942E0992298100A7AB1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1027942F0992298100A7AB1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				105A298509922AFF0045B6D8 /* ReWire.c in Sources */,
+				105A2C580992402A0045B6D8 /* ReWireDeviceAPI.c in Sources */,
+				554B31D612684D8300F40895 /* ReWireAPI.c in Sources */,
+				55D01AEE12709D1E00955765 /* SampleDevice.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554B2FC412673E3F00F40895 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554B320A1268522100F40895 /* ReWireAPI.c in Sources */,
+				554B320B1268522200F40895 /* ReWire.c in Sources */,
+				554B320C1268522300F40895 /* ReWireMixerAPI.c in Sources */,
+				85BE1206126F4B11001AC0AA /* SampleUtils.cpp in Sources */,
+				55D01ADE12709CEE00955765 /* MIDI.cpp in Sources */,
+				55D01ADF12709CEE00955765 /* MixerApp.cpp in Sources */,
+				55D01AE012709CEE00955765 /* SampleMixer.cpp in Sources */,
+				55D01AE112709CEE00955765 /* SimpleAudioAPI.cpp in Sources */,
+				55D01AE212709CEE00955765 /* SimpleMIDIAPI.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554B2FCE12673F0900F40895 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554B30811267550100F40895 /* ReWire.c in Sources */,
+				554B31D312684D6600F40895 /* ReWireAPI.c in Sources */,
+				554B32091268521900F40895 /* ReWirePanelAPI.c in Sources */,
+				55D01AF012709D6800955765 /* SampleUtils.cpp in Sources */,
+				55D01AF512709D7F00955765 /* SamplePanel.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		10ADFDAC09AF38AA002C15A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 102794310992298100A7AB1D /* SampleDevice */;
+			targetProxy = 10ADFDAB09AF38AA002C15A2 /* PBXContainerItemProxy */;
+		};
+		554B30AC126756A200F40895 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 102794310992298100A7AB1D /* SampleDevice */;
+			targetProxy = 554B30AB126756A200F40895 /* PBXContainerItemProxy */;
+		};
+		554B31E812684E4700F40895 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 102794310992298100A7AB1D /* SampleDevice */;
+			targetProxy = 554B31E712684E4700F40895 /* PBXContainerItemProxy */;
+		};
+		554B31EA12684E4D00F40895 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 554B2FD012673F0900F40895 /* SamplePanel */;
+			targetProxy = 554B31E912684E4D00F40895 /* PBXContainerItemProxy */;
+		};
+		554B31EC12684E5000F40895 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 554B2FC612673E3F00F40895 /* SampleMixer */;
+			targetProxy = 554B31EB12684E5000F40895 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1027945409922A3E00A7AB1D /* Debugging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)/SamplePanel/$(CONFIGURATION)";
+				EXPORTED_SYMBOLS_FILE = SampleDevice/Mac/SampleDevice.exp;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/SampleDevice",
+				);
+				INFOPLIST_FILE = "SampleDevice/Mac/SampleDevice-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = SampleDevice;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debugging;
+		};
+		1027945509922A3E00A7AB1D /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)/SamplePanel/$(CONFIGURATION)";
+				EXPORTED_SYMBOLS_FILE = SampleDevice/Mac/SampleDevice.exp;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/SampleDevice",
+				);
+				INFOPLIST_FILE = "SampleDevice/Mac/SampleDevice-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = SampleDevice;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Testing;
+		};
+		103B1FBA0998CC5E0049C2AD /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)/SamplePanel/$(CONFIGURATION)";
+				EXPORTED_SYMBOLS_FILE = SampleDevice/Mac/SampleDevice.exp;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/SampleDevice",
+				);
+				INFOPLIST_FILE = "SampleDevice/Mac/SampleDevice-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = SampleDevice;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Deployment;
+		};
+		103B1FBD0998CC5E0049C2AD /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B40E42312142DBB0053EF66 /* PPH Deployment.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				SEPARATE_STRIP = YES;
+			};
+			name = Deployment;
+		};
+		10ADFDB809AF38B3002C15A2 /* Debugging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "Build all";
+			};
+			name = Debugging;
+		};
+		10ADFDB909AF38B3002C15A2 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "Build all";
+			};
+			name = Testing;
+		};
+		10ADFDBA09AF38B3002C15A2 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "Build all";
+			};
+			name = Deployment;
+		};
+		554B2FC912673E4000F40895 /* Debugging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(SRCROOT)/SampleMixer",
+				);
+				PRODUCT_NAME = SampleMixer;
+			};
+			name = Debugging;
+		};
+		554B2FCA12673E4000F40895 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(SRCROOT)/SampleMixer",
+				);
+				PRODUCT_NAME = SampleMixer;
+			};
+			name = Testing;
+		};
+		554B2FCB12673E4000F40895 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(SRCROOT)/SampleMixer",
+				);
+				PRODUCT_NAME = SampleMixer;
+			};
+			name = Deployment;
+		};
+		554B2FD312673F0900F40895 /* Debugging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = SamplePanel;
+			};
+			name = Debugging;
+		};
+		554B2FD412673F0900F40895 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = SamplePanel;
+			};
+			name = Testing;
+		};
+		554B2FD512673F0900F40895 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = SamplePanel;
+			};
+			name = Deployment;
+		};
+		C0E91ACA08A95435008D54AB /* Debugging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B40E42212142DBB0053EF66 /* PPH Debugging.xcconfig */;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				SEPARATE_STRIP = YES;
+			};
+			name = Debugging;
+		};
+		C0E91ACB08A95435008D54AB /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B40E42512142DBB0053EF66 /* PPH Testing.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				SEPARATE_STRIP = YES;
+			};
+			name = Testing;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1027945309922A3E00A7AB1D /* Build configuration list for PBXNativeTarget "SampleDevice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1027945409922A3E00A7AB1D /* Debugging */,
+				1027945509922A3E00A7AB1D /* Testing */,
+				103B1FBA0998CC5E0049C2AD /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Testing;
+		};
+		10ADFDB709AF38B3002C15A2 /* Build configuration list for PBXAggregateTarget "Build all" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10ADFDB809AF38B3002C15A2 /* Debugging */,
+				10ADFDB909AF38B3002C15A2 /* Testing */,
+				10ADFDBA09AF38B3002C15A2 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Testing;
+		};
+		554B2FCC12673E5E00F40895 /* Build configuration list for PBXNativeTarget "SampleMixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554B2FC912673E4000F40895 /* Debugging */,
+				554B2FCA12673E4000F40895 /* Testing */,
+				554B2FCB12673E4000F40895 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Testing;
+		};
+		554B2FD612673F2700F40895 /* Build configuration list for PBXNativeTarget "SamplePanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554B2FD312673F0900F40895 /* Debugging */,
+				554B2FD412673F0900F40895 /* Testing */,
+				554B2FD512673F0900F40895 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Testing;
+		};
+		C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "Sample Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91ACA08A95435008D54AB /* Debugging */,
+				C0E91ACB08A95435008D54AB /* Testing */,
+				103B1FBD0998CC5E0049C2AD /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Testing;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20286C28FDCF999611CA2CEA /* Project object */;
+}

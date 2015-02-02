@@ -1,0 +1,8 @@
+// Propellerhead Software Xcode settings
+
+#include "PPH General.xcconfig"
+
+// Debugging additions
+OTHER_CPLUSPLUSFLAGS = $(OTHER_CFLAGS) -fno-use-cxa-atexit
+GCC_OPTIMIZATION_LEVEL = 0
+GCC_PREPROCESSOR_DEFINITIONS = MAC=1 TARGET_DEBUGGING=1

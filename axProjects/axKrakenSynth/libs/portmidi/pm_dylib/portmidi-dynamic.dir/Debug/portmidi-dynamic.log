@@ -1,0 +1,14 @@
+﻿  pmwin.c
+  pmwinmm.c
+..\pm_win\pmwinmm.c(263): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(195) : see declaration of 'strncpy'
+  ptwinmm.c
+  pmutil.c
+  portmidi.c
+..\pm_common\portmidi.c(299): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(195) : see declaration of 'strncpy'
+  Generating Code...
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_dylib\Debug\portmidi-dynamic.dll) does not match the Linker's OutputFile property value (C:\Users\alexarse\Desktop\axLib\libs\portmidi\Debug\portmidi.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1188,5): warning MSB8012: TargetName(portmidi-dynamic) does not match the Linker's OutputFile property value (portmidi). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     Creating library ..\Debug\portmidi.lib and object ..\Debug\portmidi.exp
+  portmidi-dynamic.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\portmidi\pm_dylib\Debug\portmidi-dynamic.dll

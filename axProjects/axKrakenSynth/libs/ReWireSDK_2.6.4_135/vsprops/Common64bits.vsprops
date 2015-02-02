@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="Common64bits"
+	>
+	<UserMacro
+		Name="PPH_32Or64"
+		Value="64"
+	/>
+	<UserMacro
+		Name="PPH_EmptyOr64"
+		Value="64"
+	/>
+</VisualStudioPropertySheet>

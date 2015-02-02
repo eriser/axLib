@@ -1,0 +1,60 @@
+﻿Build started 20/08/2014 4:41:56 PM.
+     1>Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\base_vc10.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Release.base_vc10\base_vc10.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       MakeDirsForCl:
+         Creating directory "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\x64\Release.base_vc10\objects".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\.. /Zi /nologo /W3 /WX- /Ox /Ob2 /Ot /D NDEBUG=1 /D RELEASE=1 /D FRAMEBASE=1 /D _VC80_UPGRADE=0x0710 /Gm- /EHsc /MT /GS- /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release.base_vc10\objects\\" /Fd"x64\Release.base_vc10\base_vc10.pdb" /Gd /TP /errorReport:prompt ..\source\baseiids.cpp ..\source\classfactory.cpp ..\source\fatomic.cpp ..\source\fbitset.cpp ..\source\fbuffer.cpp ..\source\fcpu.cpp ..\source\fcriticalperformance.cpp ..\source\fdynlib.cpp ..\source\finitializer.cpp ..\source\fmemory.cpp ..\source\fobject.cpp ..\source\fpoint.cpp ..\source\frect.cpp ..\source\fstreamer.cpp ..\source\fstring.cpp ..\source\fthread.cpp ..\source\istreamwrapper.cpp ..\source\timer.cpp ..\source\updatehandler.cpp ..\..\pluginterfaces\base\conststringtable.cpp ..\..\pluginterfaces\base\funknown.cpp /MP 
+         baseiids.cpp
+         classfactory.cpp
+         fatomic.cpp
+         fbitset.cpp
+         fbuffer.cpp
+         fcpu.cpp
+         fcriticalperformance.cpp
+         fdynlib.cpp
+         finitializer.cpp
+         fmemory.cpp
+         fobject.cpp
+         fpoint.cpp
+         frect.cpp
+         fstreamer.cpp
+         fstring.cpp
+         fthread.cpp
+         istreamwrapper.cpp
+         timer.cpp
+         updatehandler.cpp
+         conststringtable.cpp
+         funknown.cpp
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"x64\Release.base_vc10\base_vc10.lib" /NOLOGO x64\Release.base_vc10\objects\baseiids.obj
+         x64\Release.base_vc10\objects\classfactory.obj
+         x64\Release.base_vc10\objects\fatomic.obj
+         x64\Release.base_vc10\objects\fbitset.obj
+         x64\Release.base_vc10\objects\fbuffer.obj
+         x64\Release.base_vc10\objects\fcpu.obj
+         x64\Release.base_vc10\objects\fcriticalperformance.obj
+         x64\Release.base_vc10\objects\fdynlib.obj
+         x64\Release.base_vc10\objects\finitializer.obj
+         x64\Release.base_vc10\objects\fmemory.obj
+         x64\Release.base_vc10\objects\fobject.obj
+         x64\Release.base_vc10\objects\fpoint.obj
+         x64\Release.base_vc10\objects\frect.obj
+         x64\Release.base_vc10\objects\fstreamer.obj
+         x64\Release.base_vc10\objects\fstring.obj
+         x64\Release.base_vc10\objects\fthread.obj
+         x64\Release.base_vc10\objects\istreamwrapper.obj
+         x64\Release.base_vc10\objects\timer.obj
+         x64\Release.base_vc10\objects\updatehandler.obj
+         x64\Release.base_vc10\objects\conststringtable.obj
+         x64\Release.base_vc10\objects\funknown.obj
+         base_vc10.vcxproj -> C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\x64\Release.base_vc10\base_vc10.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Release.base_vc10\base_vc10.unsuccessfulbuild".
+         Touching "x64\Release.base_vc10\base_vc10.lastbuildstate".
+     1>Done Building Project "C:\Users\alexarse\Desktop\axLib\libs\VST3 SDK\base\win\base_vc10.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.05

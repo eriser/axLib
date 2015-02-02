@@ -1,0 +1,20 @@
+﻿Build started 12/9/2014 12:34:38 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngstest\pngstest.vcxproj" on node 4 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Od /Oi /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D PNG_USE_DLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\contrib\libtests\pngstest.c
+         pngstest.c
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngstest.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\\" libpng16.lib /MANIFEST /ManifestFile:"Debug\pngstest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngstest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngstest.lib" /MACHINE:X86 Debug\pngstest.obj
+     1>pngstest.obj : error LNK2019: unresolved external symbol __imp__png_image_free referenced in function _freeimage
+     1>pngstest.obj : error LNK2019: unresolved external symbol __imp__png_image_finish_read referenced in function _read_file
+     1>pngstest.obj : error LNK2019: unresolved external symbol __imp__png_image_begin_read_from_file referenced in function _read_file
+     1>pngstest.obj : error LNK2019: unresolved external symbol __imp__png_image_begin_read_from_stdio referenced in function _read_file
+     1>pngstest.obj : error LNK2019: unresolved external symbol __imp__png_image_begin_read_from_memory referenced in function _read_file
+     1>pngstest.obj : error LNK2019: unresolved external symbol __imp__png_image_write_to_file referenced in function _write_one_file
+     1>pngstest.obj : error LNK2019: unresolved external symbol __imp__png_image_write_to_stdio referenced in function _write_one_file
+     1>C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngstest.exe : fatal error LNK1120: 7 unresolved externals
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngstest\pngstest.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.46

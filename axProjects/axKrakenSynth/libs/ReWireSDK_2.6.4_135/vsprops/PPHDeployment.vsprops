@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="PPHDeployment"
+	InheritedPropertySheets=".\PPHGeneral.vsprops;.\PPHTestingDeployment.vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="TARGET_DEPLOYMENT=1;NDEBUG,DEBUG=0,TRACING_ENABLED=0"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		OutputFile="$(OutDir)\$(ProjectName).lib"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		OutputFile="$(OutDir)\$(ProjectName).exe"
+	/>
+	<Tool
+		Name="VCResourceCompilerTool"
+		PreprocessorDefinitions="TARGET_DEPLOYMENT=1,DEBUG=0,TRACING_ENABLED=0"
+	/>
+	<UserMacro
+		Name="PPH_ConfigurationType"
+		Value="Deployment"
+		PerformEnvironmentSet="true"
+	/>
+	<UserMacro
+		Name="PPH_ConfigurationLibSuffix"
+		Value=""
+		PerformEnvironmentSet="true"
+	/>
+	<UserMacro
+		Name="PPH_Debugging_EmptyOrd"
+		Value=""
+	/>
+	<UserMacro
+		Name="PPH_Deployment_SpaceOrNothing"
+		Value=""
+	/>
+</VisualStudioPropertySheet>

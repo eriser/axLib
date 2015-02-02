@@ -60,10 +60,10 @@ _debugEditorActive(false)
     
 //------------------------------------------------------------------------------
 
+#if _axDebugEditor_ == 1
     // @todo Fix this.
     MainInstance = this;
 
-    
     /// @todo Change debugPanel position.
     axPanel* debugPanel = new axPanel(3, nullptr,
                                       axRect(500 - 20, 500 - 20, 20, 20));
@@ -91,7 +91,7 @@ _debugEditorActive(false)
                                  "",
                                  axToggle::Flags::SINGLE_IMG);
     tog->SetEditable(false);
-    
+#endif // _axDebugEditor_
 //    std::cout << "Size : " << _core->GetGlobalSize().x << " " << _core->GetGlobalSize().y << std::endl;
 //------------------------------------------------------------------------------
 }

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ReWireSDK">
+      <UniqueIdentifier>{a9c0fe8b-b535-4d37-983d-b9c74d0c7768}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SimpleAudioMIDI">
+      <UniqueIdentifier>{03ba0d08-fd2a-47d7-8e1e-983478332949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SampleUtils">
+      <UniqueIdentifier>{2431f07c-a486-4f4d-b4fb-159684c4d32f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ReWireSDK\ReWire.c">
+      <Filter>ReWireSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ReWireSDK\rewireapi.c">
+      <Filter>ReWireSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ReWireSDK\rewiremixerapi.c">
+      <Filter>ReWireSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleAudioMIDI\SimpleAudioAPI.cpp">
+      <Filter>SimpleAudioMIDI</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleAudioMIDI\SimpleMIDIAPI.cpp">
+      <Filter>SimpleAudioMIDI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SampleUtils\SampleUtils.cpp">
+      <Filter>SampleUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="MIDI.cpp" />
+    <ClCompile Include="MixerApp.cpp" />
+    <ClCompile Include="SampleMixer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ReWireSDK\rewire.h">
+      <Filter>ReWireSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ReWireSDK\rewireapi.h">
+      <Filter>ReWireSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ReWireSDK\rewiremixerapi.h">
+      <Filter>ReWireSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioMIDI\SimpleAudioAPI.h">
+      <Filter>SimpleAudioMIDI</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioMIDI\SimpleMIDIAPI.h">
+      <Filter>SimpleAudioMIDI</Filter>
+    </ClInclude>
+    <ClInclude Include="MIDI.h" />
+    <ClInclude Include="Mixer.h" />
+    <ClInclude Include="MixerApp.h" />
+  </ItemGroup>
+</Project>

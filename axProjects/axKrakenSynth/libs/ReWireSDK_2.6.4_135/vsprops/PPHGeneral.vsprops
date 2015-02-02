@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="PPHGeneral"
+	OutputDirectory="$(SolutionDir)Output\$(ProjectName)\$(PlatformName)\$(ConfigurationName)"
+	IntermediateDirectory="$(SolutionDir)Intermediate\$(ProjectName)\$(PlatformName)\$(ConfigurationName)"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="&quot;$(SolutionDir)Parts&quot;"
+		PreprocessorDefinitions="WINDOWS=1;WIN32"
+		ExceptionHandling="2"
+		FloatingPointModel="2"
+		UsePrecompiledHeader="2"
+		PrecompiledHeaderThrough="StdInclude.h"
+		WarningLevel="3"
+		DebugInformationFormat="3"
+	/>
+	<Tool
+		Name="VCResourceCompilerTool"
+		PreprocessorDefinitions="WINDOWS=1,IS_MOTOROLA_TO_NATIVE_A_SWAP=1"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		OutputFile="$(OutDir)\$(ProjectName)$(ConfigurationName).lib"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		OutputFile="$(OutDir)\$(ProjectName)$(ConfigurationName).exe"
+		GenerateDebugInformation="true"
+	/>
+</VisualStudioPropertySheet>

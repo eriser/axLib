@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="PPHTesting"
+	InheritedPropertySheets=".\PPHGeneral.vsprops;.\PPHTestingDeployment.vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="TARGET_TESTING=1;_DEBUG,DEBUG=1,TRACING_ENABLED=1"
+		RuntimeLibrary="1"
+	/>
+	<Tool
+		Name="VCResourceCompilerTool"
+		PreprocessorDefinitions="TARGET_TESTING=1,DEBUG=1,TRACING_ENABLED=1"
+	/>
+	<UserMacro
+		Name="PPH_ConfigurationType"
+		Value="Testing"
+		PerformEnvironmentSet="true"
+	/>
+	<UserMacro
+		Name="PPH_ConfigurationLibSuffix"
+		Value="Testing"
+		PerformEnvironmentSet="true"
+	/>
+	<UserMacro
+		Name="PPH_Debugging_EmptyOrd"
+		Value=""
+	/>
+	<UserMacro
+		Name="PPH_Deployment_SpaceOrNothing"
+		Value=" "
+	/>
+</VisualStudioPropertySheet>

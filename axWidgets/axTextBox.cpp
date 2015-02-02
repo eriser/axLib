@@ -315,6 +315,8 @@ _maxNumChar(10000000)
 void axTextBox::SetLabel(const std::string& label)
 {
     _label = label;
+    _lastCharXPosition = 0;
+    _cursorIndex = 0;
     Update();
 }
 
@@ -520,7 +522,7 @@ void axTextBox::OnRightArrowDown()
 void axTextBox::OnEnterDown()
 {
     PushEvent(Events::ENTER_CLICK, new axTextBox::Msg(this, _label));
-    UnGrabKey();
+//    UnGrabKey();
 }
 
 void axTextBox::DrawContourRectangle(axGC* gc)

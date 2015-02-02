@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axObjects>
+  <axKnob name="pan" rect="55, 15, 46, 46" info= "ressources/objects/Knob.axObj"></axKnob>  
+  <axKnob name="gain" rect="106, 15, 46, 46" info= "ressources/objects/Knob.axObj"></axKnob> 
+  <axLabel name="labelPan" rect="55, 0, 46, 15" info="ressources/objects/Label.axObj" label="Pan"></axLabel>
+  <axLabel name="labelGain" rect="106, 0, 46, 15" info="ressources/objects/Label.axObj" label="Gain"></axLabel>
+
+  <axNumberBox name="kdb" rect="10, 83, 27, 18" info= "ressources/objects/NumberBox.axObj"></axNumberBox>  
+  <axNumberBox name="oct" rect="47, 83, 27, 18" info= "ressources/objects/NumberBox.axObj"></axNumberBox>  
+  <axNumberBox name="semi" rect="84, 83, 27, 18" info= "ressources/objects/NumberBox.axObj"></axNumberBox>  
+  <axNumberBox name="fine" rect="121, 83, 27, 18" info= "ressources/objects/NumberBox.axObj"></axNumberBox>  
+  <axLabel name="labelKdb" rect="10, 65, 27, 18" info="ressources/objects/Label.axObj" label="Kdb"></axLabel>
+  <axLabel name="labelOct" rect="47, 65, 27, 18" info="ressources/objects/Label.axObj" label="Oct"></axLabel>
+  <axLabel name="labelSemi" rect="84, 65, 27, 18" info="ressources/objects/Label.axObj" label="Semi"></axLabel>
+  <axLabel name="labelFine" rect="121, 65, 27, 18" info="ressources/objects/Label.axObj" label="Fine"></axLabel>
+
+  <axStaticImage name="img" pos="11, 15" path="ressources/images/oscWaveform.png"></axLabel>
+  <axToggle name="sineLed" rect="35, 15, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+  <axToggle name="sqrtLed" rect="35, 25, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+  <axToggle name="triLed" rect="35, 35, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+  <axToggle name="sawLed" rect="35, 45, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+
+  
+</axObjects>

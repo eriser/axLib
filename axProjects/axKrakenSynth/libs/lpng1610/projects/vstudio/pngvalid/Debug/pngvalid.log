@@ -1,0 +1,76 @@
+﻿Build started 12/9/2014 12:34:38 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngvalid\pngvalid.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Od /Oi /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D PNG_USE_DLL /D _UNICODE /D UNICODE /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /wd4127 /analyze- /errorReport:prompt ..\..\..\contrib\libtests\pngvalid.c
+         pngvalid.c
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngvalid.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\\" libpng16.lib zlib.lib /MANIFEST /ManifestFile:"Debug\pngvalid.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngvalid.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngvalid.lib" /MACHINE:X86 Debug\pngvalid.obj
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_sBIT referenced in function _sBIT0_error_fn
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_bit_depth referenced in function _sBIT_error_fn
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_color_type referenced in function _sBIT_error_fn
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_palette_to_rgb referenced in function _image_transform_png_set_palette_to_rgb_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_tRNS_to_alpha referenced in function _image_transform_png_set_tRNS_to_alpha_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_gray_to_rgb referenced in function _image_transform_png_set_gray_to_rgb_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_expand referenced in function _image_transform_png_set_expand_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_expand_gray_1_2_4_to_8 referenced in function _image_transform_png_set_expand_gray_1_2_4_to_8_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_expand_16 referenced in function _image_transform_png_set_expand_16_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_scale_16 referenced in function _image_transform_png_set_scale_16_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_strip_alpha referenced in function _image_transform_png_set_strip_alpha_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_error referenced in function _image_transform_png_set_rgb_to_gray_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_cHRM_XYZ referenced in function _image_transform_png_set_rgb_to_gray_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_rgb_to_gray referenced in function _image_transform_png_set_rgb_to_gray_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_background referenced in function _image_transform_png_set_background_set
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_destroy_write_struct referenced in function _store_write_reset
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_destroy_read_struct referenced in function _store_read_reset
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_write_end referenced in function _make_transform_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_write_row referenced in function _make_transform_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_interlace_handling referenced in function _make_transform_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_rowbytes referenced in function _make_transform_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_write_info referenced in function _make_transform_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_text referenced in function _make_transform_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_IHDR referenced in function _make_transform_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_create_info_struct referenced in function _set_store_for_write
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_option referenced in function _set_store_for_write
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_write_fn referenced in function _set_store_for_write
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_create_write_struct referenced in function _set_store_for_write
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_create_write_struct_2 referenced in function _set_store_for_write
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_error_ptr referenced in function _store_error
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_io_ptr referenced in function _store_write
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_mem_ptr referenced in function _store_malloc
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_tRNS referenced in function _init_standard_palette
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_PLTE referenced in function _init_standard_palette
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_filter referenced in function _make_size_image
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_convert_to_rfc1123_buffer referenced in function _perform_formatting_test
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_read_info referenced in function _standard_test
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_read_fn referenced in function _standard_test
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_progressive_read_fn referenced in function _standard_test
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_process_data referenced in function _store_progressive_read
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_create_read_struct referenced in function _set_store_for_read
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_create_read_struct_2 referenced in function _set_store_for_read
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_start_read_image referenced in function _standard_info_imp
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_read_update_info referenced in function _standard_info_imp
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_tRNS referenced in function _standard_info_part1
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_sBIT referenced in function _standard_info_part1
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_image_height referenced in function _standard_info_part1
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_image_width referenced in function _standard_info_part1
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_compression_type referenced in function _standard_info_part1
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_interlace_type referenced in function _standard_info_part1
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_filter_type referenced in function _standard_info_part1
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_PLTE referenced in function _read_palette
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_progressive_ptr referenced in function _standard_info
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_progressive_combine_row referenced in function _progressive_row
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_current_pass_number referenced in function _progressive_row
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_current_row_number referenced in function _progressive_row
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_read_end referenced in function _sequential_row
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_read_row referenced in function _sequential_row
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_get_text referenced in function _standard_text_validate
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_save_uint_32 referenced in function _modifier_read_imp
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_gamma referenced in function _gamma_info_imp
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_set_alpha_mode referenced in function _gamma_info_imp
+     1>pngvalid.obj : error LNK2019: unresolved external symbol __imp__png_warning referenced in function _gamma_component_validate
+     1>C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngvalid.exe : fatal error LNK1120: 63 unresolved externals
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngvalid\pngvalid.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.67

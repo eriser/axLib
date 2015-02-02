@@ -1,0 +1,24 @@
+﻿Build started 12/9/2014 12:34:38 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngtest\pngtest.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\..\..\zlib-1.2.5" /I..\..\..\scripts /Zi /nologo /W4 /WX /Od /Oi /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /fp:except- /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /wd4996 /analyze- /errorReport:prompt ..\..\..\pngtest.c
+         pngtest.c
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngtest.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\\" libpng16.lib /MANIFEST /ManifestFile:"Debug\pngtest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngtest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngtest.lib" /MACHINE:X86 Debug\pngtest.obj
+         libpng16.lib(png.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+     1>libpng16.lib(png.obj) : error LNK2001: unresolved external symbol _adler32
+     1>libpng16.lib(png.obj) : error LNK2001: unresolved external symbol _crc32
+     1>libpng16.lib(png.obj) : error LNK2001: unresolved external symbol _inflateReset
+     1>libpng16.lib(pngwrite.obj) : error LNK2001: unresolved external symbol _deflateEnd
+     1>libpng16.lib(pngread.obj) : error LNK2001: unresolved external symbol _inflateEnd
+     1>libpng16.lib(pngrutil.obj) : error LNK2001: unresolved external symbol _inflateInit_
+     1>libpng16.lib(pngrutil.obj) : error LNK2001: unresolved external symbol _inflate
+     1>libpng16.lib(pngwutil.obj) : error LNK2001: unresolved external symbol _deflateReset
+     1>libpng16.lib(pngwutil.obj) : error LNK2001: unresolved external symbol _deflateInit2_
+     1>libpng16.lib(pngwutil.obj) : error LNK2001: unresolved external symbol _deflate
+     1>C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\Debug\pngtest.exe : fatal error LNK1120: 10 unresolved externals
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\pngtest\pngtest.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.56
