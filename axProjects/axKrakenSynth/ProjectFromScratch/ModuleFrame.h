@@ -81,16 +81,17 @@ private:
     virtual void OnPaint()
     {
         axGC* gc = GetGC();
-        axRect rect(axPoint(0, 0), GetRect().size);
+//        axRect rect(axPoint(0, 0), GetRect().size);
+        axRect rect0(GetDrawingRect());
         
 //        gc->SetColor(axColor(0.15, 0.15, 0.15), 1.0);
 //        gc->DrawRectangle(rect);
 
         gc->SetColor(axColor(0.2, 0.2, 0.2), 1.0);
-        gc->DrawRectangle(axRect(0, 0, rect.size.x, 17));
+        gc->DrawRectangle(axRect(0, 0, rect0.size.x, 17));
 
         gc->SetColor(axColor(0.4, 0.4, 0.4), 1.0);
-        gc->DrawRectangleContour(rect);
+        gc->DrawRectangleContour(rect0);
         
     }
 };

@@ -47,4 +47,6 @@ void axReInitApp(void* appDelegate);
 
 axSize axCocoaGetScreenSize();
 
+void MainEntryPointCocoa(int argc, const char * argv[]);
+
 #endif

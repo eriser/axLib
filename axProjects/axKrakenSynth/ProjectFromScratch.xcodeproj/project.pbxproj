@@ -30,7 +30,6 @@
 		7C0913F01A7ACF7A002E4D3B /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0913991A7ACF7A002E4D3B /* axToggle.cpp */; };
 		7C0913F11A7ACF7A002E4D3B /* axWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C09139B1A7ACF7A002E4D3B /* axWaveform.cpp */; };
 		7C0913F21A7ACF7A002E4D3B /* axWaveformNavigator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C09139D1A7ACF7A002E4D3B /* axWaveformNavigator.cpp */; };
-		7C0913F31A7ACF7A002E4D3B /* __axDefaultFontBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0913BF1A7ACF7A002E4D3B /* __axDefaultFontBuffer.cpp */; };
 		7C0913F41A7ACF7A002E4D3B /* axApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0913C01A7ACF7A002E4D3B /* axApp.cpp */; };
 		7C0913F51A7ACF7A002E4D3B /* axC++.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0913C11A7ACF7A002E4D3B /* axC++.cpp */; };
 		7C0913F61A7ACF7A002E4D3B /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0913C21A7ACF7A002E4D3B /* axColor.cpp */; };
@@ -73,7 +72,6 @@
 		7C9AD4F31A439F7E008187EC /* libportaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9AD4F01A439F7E008187EC /* libportaudio.dylib */; };
 		7C9AD4F41A439F7E008187EC /* libsndfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9AD4F11A439F7E008187EC /* libsndfile.dylib */; };
 		7C9F34E01A3FC0F7000C858E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9F34DF1A3FC0F7000C858E /* MainMenu.xib */; };
-		7CA3C1B61A7733AC00564F21 /* libpng16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA3C1B51A7733AC00564F21 /* libpng16.dylib */; };
 		7CB7EBCC1A361E720071D2AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7EBCB1A361E720071D2AE /* main.m */; };
 		7CB7EBCE1A361E720071D2AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB7EBCD1A361E720071D2AE /* Images.xcassets */; };
 		7CB7EC541A362CF30071D2AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7EC521A362CF30071D2AE /* main.cpp */; };
@@ -90,6 +88,7 @@
 		7CC97BE31A5D9A6800E1999E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC97BE21A5D9A6800E1999E /* CoreAudio.framework */; };
 		7CC97BE61A5DA30800E1999E /* KrakenMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC97BE41A5DA30800E1999E /* KrakenMidi.cpp */; };
 		7CC97BEA1A5DFC6A00E1999E /* AudioOscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC97BE81A5DFC6A00E1999E /* AudioOscillator.cpp */; };
+		7CE57F691A7FF41D00E912F5 /* libpng16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE57F681A7FF41D00E912F5 /* libpng16.dylib */; };
 		7CF5A8691A71DA9D00FE9A95 /* ModuleDistorsion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CF5A8671A71DA9D00FE9A95 /* ModuleDistorsion.cpp */; };
 /* End PBXBuildFile section */
 
@@ -169,7 +168,6 @@
 		7C0913BB1A7ACF7A002E4D3B /* axWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindow.h; sourceTree = "<group>"; };
 		7C0913BC1A7ACF7A002E4D3B /* axWindowTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindowTree.h; sourceTree = "<group>"; };
 		7C0913BD1A7ACF7A002E4D3B /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
-		7C0913BF1A7ACF7A002E4D3B /* __axDefaultFontBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = __axDefaultFontBuffer.cpp; sourceTree = "<group>"; };
 		7C0913C01A7ACF7A002E4D3B /* axApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axApp.cpp; sourceTree = "<group>"; };
 		7C0913C11A7ACF7A002E4D3B /* axC++.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "axC++.cpp"; sourceTree = "<group>"; };
 		7C0913C21A7ACF7A002E4D3B /* axColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axColor.cpp; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 		7C9AD4F01A439F7E008187EC /* libportaudio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libportaudio.dylib; sourceTree = "<group>"; };
 		7C9AD4F11A439F7E008187EC /* libsndfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsndfile.dylib; sourceTree = "<group>"; };
 		7C9F34DF1A3FC0F7000C858E /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		7CA3C1B51A7733AC00564F21 /* libpng16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.dylib; path = ../../../../usr/local/lib/libpng16.dylib; sourceTree = "<group>"; };
 		7CB7EBC31A361E720071D2AE /* ProjectFromScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectFromScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB7EBC71A361E720071D2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CB7EBCB1A361E720071D2AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -252,6 +249,7 @@
 		7CC97BE51A5DA30800E1999E /* KrakenMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KrakenMidi.h; sourceTree = "<group>"; };
 		7CC97BE81A5DFC6A00E1999E /* AudioOscillator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioOscillator.cpp; sourceTree = "<group>"; };
 		7CC97BE91A5DFC6A00E1999E /* AudioOscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioOscillator.h; sourceTree = "<group>"; };
+		7CE57F681A7FF41D00E912F5 /* libpng16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.dylib; path = ../../../../../../usr/local/lib/libpng16.dylib; sourceTree = "<group>"; };
 		7CF5A8671A71DA9D00FE9A95 /* ModuleDistorsion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModuleDistorsion.cpp; sourceTree = "<group>"; };
 		7CF5A8681A71DA9D00FE9A95 /* ModuleDistorsion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleDistorsion.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -264,7 +262,7 @@
 				7CC97BE31A5D9A6800E1999E /* CoreAudio.framework in Frameworks */,
 				7CC97BE11A5D9A4200E1999E /* CoreMIDI.framework in Frameworks */,
 				7C9AD4F41A439F7E008187EC /* libsndfile.dylib in Frameworks */,
-				7CA3C1B61A7733AC00564F21 /* libpng16.dylib in Frameworks */,
+				7CE57F691A7FF41D00E912F5 /* libpng16.dylib in Frameworks */,
 				7C9AD4F21A439F7E008187EC /* libportaudio.2.dylib in Frameworks */,
 				7C9AD4F31A439F7E008187EC /* libportaudio.dylib in Frameworks */,
 				7C9AD4EC1A439F49008187EC /* libfreetype.6.dylib in Frameworks */,
@@ -376,7 +374,6 @@
 		7C0913BE1A7ACF7A002E4D3B /* source */ = {
 			isa = PBXGroup;
 			children = (
-				7C0913BF1A7ACF7A002E4D3B /* __axDefaultFontBuffer.cpp */,
 				7C0913C01A7ACF7A002E4D3B /* axApp.cpp */,
 				7C0913C11A7ACF7A002E4D3B /* axC++.cpp */,
 				7C0913C21A7ACF7A002E4D3B /* axColor.cpp */,
@@ -465,9 +462,9 @@
 				7CC97BE01A5D9A4200E1999E /* CoreMIDI.framework */,
 				7C9AD4EF1A439F7E008187EC /* libportaudio.2.dylib */,
 				7C9AD4F01A439F7E008187EC /* libportaudio.dylib */,
+				7CE57F681A7FF41D00E912F5 /* libpng16.dylib */,
 				7C9AD4F11A439F7E008187EC /* libsndfile.dylib */,
 				7C9AD4EB1A439F49008187EC /* libfreetype.6.dylib */,
-				7CA3C1B51A7733AC00564F21 /* libpng16.dylib */,
 				7C9F34DF1A3FC0F7000C858E /* MainMenu.xib */,
 				7CB7EBC51A361E720071D2AE /* KrakenSynth */,
 				7CB7EBC41A361E720071D2AE /* Products */,
@@ -652,7 +649,6 @@
 				7C0913F91A7ACF7A002E4D3B /* axDefaultFontBuffer.cpp in Sources */,
 				7C0914281A7ACFA2002E4D3B /* axAudioUtils.cpp in Sources */,
 				7C0913EA1A7ACF7A002E4D3B /* axPopupMenu.cpp in Sources */,
-				7C0913F31A7ACF7A002E4D3B /* __axDefaultFontBuffer.cpp in Sources */,
 				7C0913E81A7ACF7A002E4D3B /* axNumberBox.cpp in Sources */,
 				7CC97BEA1A5DFC6A00E1999E /* AudioOscillator.cpp in Sources */,
 				7CC97BB61A5C4C9F00E1999E /* KrakenAudio.cpp in Sources */,

@@ -21,9 +21,12 @@
  ******************************************************************************/
 #ifndef __AX_MAIN__
 #define __AX_MAIN__
+#include <functional>
 
 /// @defgroup Core
 /// @{
+
+//extern std::function<void(axApp* app)> _mainFct;
 
 class axApp;
 
@@ -33,6 +36,8 @@ public:
     axMain();
     
     static void MainEntryPoint(axApp* app);
+    
+    static std::function<void(axApp* app)> _mainFct;
 };
 
 /// @}

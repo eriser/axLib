@@ -183,19 +183,22 @@ void axGC::DrawWindowBuffer()
 {
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     axFloatRect rect(RectToFloatRect(_win->GetRect()));
     axFloatPoint pos(0.0, 0.0);
     axFloatSize size = rect.size;
 //    size.x += 1.0;
 //    size.y += 1.0;
-    
+
+//     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
     glBindTexture(GL_TEXTURE_2D, _win->GetWindowBufferTexture());
+//    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+//    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+//    glDepthMask(GL_TRUE);
     
-    glDepthMask(GL_TRUE);
-    
-    glColor4d(1.0, 1.0, 1.0, 1.0);
+//    glColor4d(1.0, 1.0, 1.0, 1.0);
     glBegin(GL_QUADS);
     
     // Bottom left.
@@ -218,6 +221,7 @@ void axGC::DrawWindowBuffer()
     
     //	glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
+     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 //glTexCoordPointer(2, GL_FLOAT, 0, texCoords);

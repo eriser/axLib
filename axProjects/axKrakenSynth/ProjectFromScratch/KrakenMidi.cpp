@@ -14,8 +14,8 @@ axMidi()
 
 void KrakenMidi::OnMidiNoteOn(const axMidiNoteMsg& msg)
 {
-//    std::cout << "Note on : " << msg.GetNote() << std::endl;
-//    
+    std::cout << "Note on : " << msg.GetNote() << std::endl;
+    
 //    int midiNote = (int)msg.GetNote();
 //    double freq = c0 * pow(ST_RATIO, midiNote);
     

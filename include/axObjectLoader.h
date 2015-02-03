@@ -24,7 +24,7 @@
 
 #include "rapidxml.hpp"
 #include "axPanel.h"
-#include "axToggle.h"
+//#include "axToggle.h"
 
 /// @defgroup Core
 /// @{

@@ -187,6 +187,8 @@ axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
     std::string name;
     axPoint pos;
     axNumberBox::Events evts;
+    axFloatRange range(0.0, 1.0);
+    axControlType ctrltype = axControlType::axCTRL_FLOAT;
     for(auto& s : attributes)
     {
         if(s.first == "name")
@@ -214,13 +216,38 @@ axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
         }
         else if(s.first == std::string("event"))
         {
+            
+            evts.value_change = _parent->GetEventFunction(s.second);
+        }
+        else if(s.first == "range")
+        {
+            axStringVector strVec;
+            strVec = GetVectorFromStringDelimiter(s.second, ",");
+            
+            range = axFloatRange(stod(strVec[0]),
+                                 stod(strVec[1]));
+        }
+        else if(s.first == std::string("ctrl_type"))
+        {
+            if(s.second == "float")
+            {
+                ctrltype = axControlType::axCTRL_FLOAT;
+            }
+            else if(s.second == "int")
+            {
+                ctrltype = axControlType::axCTRL_INT;
+            }
+        }
+        else if(s.first == std::string("event"))
+        {
             evts.value_change = _parent->GetEventFunction(s.second);
         }
         
     }
     
     axNumberBox* box = new axNumberBox(_parent, axRect(pos, _size),
-                                       evts, _info);
+                                       evts, _info, 0, 0.0, range,
+                                       ctrltype);
     
     _parent->GetResourceManager()->Add(name, box);
     return box;
@@ -393,9 +420,26 @@ void axNumberBox::OnPaint()
 
     gc->SetColor(static_cast<Info*>(_info)->font_color);
 
-    std::string v = to_string(_value);
-    v.resize(4);
-    gc->DrawStringAlignedCenter(*_font, v, rect0);
+    if(_type == axControlType::axCTRL_FLOAT)
+    {
+        std::string v = to_string(_value);
+        if(_value < 0)
+        {
+            v.resize(5);
+        }
+        else
+        {
+            v.resize(4);
+        }
+        
+        gc->DrawStringAlignedCenter(*_font, v, rect0);
+    }
+    else if(_type == axControlType::axCTRL_INT)
+    {
+        std::string v = to_string((int)_value);
+        gc->DrawStringAlignedCenter(*_font, v, rect0);
+    }
+
     
     gc->SetColor(static_cast<Info*>(_info)->contour);
     gc->DrawRectangleContour(rect0);

@@ -259,6 +259,8 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
     std::string name;
     axPoint pos;
     axToggle::Events evts;
+    std::string msg;
+    
     for(auto& s : attributes)
     {
         if(s.first == "name")
@@ -288,6 +290,10 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
         {
             _flags = stoi(s.second);
         }
+        else if(s.first == "msg")
+        {
+            msg = s.second;
+        }
         else if(s.first == std::string("event"))
         {
             evts.button_click = _parent->GetEventFunction(s.second);
@@ -296,7 +302,7 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
     
     axToggle* tog = new axToggle(_parent, axRect(pos, _size),
                                  evts,
-                                 _info, _img, _label);
+                                 _info, _img, _label, _flags, msg);
     
     _parent->GetResourceManager()->Add(name, tog);
     return tog;

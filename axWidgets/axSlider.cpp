@@ -403,7 +403,8 @@ void axSlider::OnPaint()
 {
 	axGC* gc = GetGC();
 	axSize size = GetSize();
-	axRect rect0(0, 0, size.x, size.y);
+//	axRect rect0(0, 0, size.x, size.y);
+    axRect rect0(GetDrawingRect());
 
 	gc->SetColor(_currentBgColor);
 	gc->DrawRectangle(rect0);
@@ -460,7 +461,7 @@ void axSlider::OnPaint()
 
 
 		gc->SetColor(_info.contourColor);
-		gc->DrawRectangleContour(axRect(0, 0, size.x, size.y));
+		gc->DrawRectangleContour(rect0);
 
 		if (_btnImg.IsImageReady())
 		{

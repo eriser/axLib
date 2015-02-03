@@ -1,0 +1,6 @@
+framework module axLib {
+  umbrella header "axLib.h"
+
+  export *
+  module * { export * }
+}

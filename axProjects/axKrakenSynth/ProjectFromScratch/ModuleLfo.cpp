@@ -21,7 +21,7 @@ axPanel(parent, rect)
  * Lfos.
  ******************************************************************************/
 Lfos::Lfos(axWindow* parent, const axPoint& pos):
-ModuleFrame<ModuleLfo>(parent, axRect(pos, axSize(158, 65 + 17)))
+ModuleFrame<ModuleLfo>(parent, axRect(pos, axSize(158, 55 + 17)))
 {
     std::string app_path = axApp::GetInstance()->GetAppDirectory();
     app_path += std::string("ressources/");
@@ -44,9 +44,9 @@ ModuleFrame<ModuleLfo>(parent, axRect(pos, axSize(158, 65 + 17)))
                                  menu_str,
                                  axDROP_MENU_SINGLE_IMG);
     
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 65)), "LFO 1");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 65)), "LFO 2");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 65)), "LFO 3");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 65)), "LFO 4");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 65)), "LFO 5");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 1");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 2");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 3");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 4");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 5");
 }

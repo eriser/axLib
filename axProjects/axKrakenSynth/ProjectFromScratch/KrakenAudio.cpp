@@ -26,17 +26,13 @@ KrakenPolyVoice::KrakenPolyVoice()
     }
 
     _oscs.resize(5);
-//    _waveTablesActive.resize(5);
     for(int i = 0; i < _oscs.size(); i++)
     {
         _oscs[i] = new AudioOscillator();
-        
-//        _oscs[i] = new axAudioWaveTable();
-//        _oscs[i]->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SAW);
-//        _waveTablesActive[i] = false;
+        _oscs[i]->SetActive(true);
     }
     
-    _oscs[0]->SetActive(true);
+//    _oscs[0]->SetActive(true);
 
     _env = new axAudioEnvelope();
     _env->SetAttack(0.001);
@@ -67,6 +63,49 @@ void KrakenPolyVoice::SetOscillatorOnOff(const int& index,
         _oscs[index]->SetActive(active);
     }
 }
+
+void KrakenPolyVoice::SetOscillatorGain(const int& index, const double& gain)
+{
+    if(index < _oscs.size())
+    {
+        _oscs[index]->SetGain(gain);
+    }
+}
+
+void KrakenPolyVoice::SetOscillatorPan(const int& index, const double& pan)
+{
+    if(index < _oscs.size())
+    {
+        _oscs[index]->SetPan(pan);
+    }
+}
+
+
+void KrakenPolyVoice::SetOscillatorOctave(const int& index, const int& oct)
+{
+    if(index < _oscs.size())
+    {
+        _oscs[index]->SetOctave(oct);
+    }
+}
+
+void KrakenPolyVoice::SetOscillatorWaveform(const int& index,
+                                        const axAudioWaveTable::axWaveformType& type)
+{
+    if(index < _oscs.size())
+    {
+        _oscs[index]->SetWaveform(type);
+    }
+}
+
+void KrakenPolyVoice::SetOscillatorSemiTone(const int& index, const int& semi)
+{
+    if(index < _oscs.size())
+    {
+        _oscs[index]->SetSemi(semi);
+    }
+}
+
 
 void KrakenPolyVoice::ProcessChannel(int sampleFrames)
 {
@@ -143,6 +182,47 @@ void KrakenAudio::SetOscillatorOnOff(const int& index, const bool& active)
     }
 }
 
+void KrakenAudio::SetOscillatorGain(const int& index, const double& gain)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetOscillatorGain(index, gain);
+    }
+}
+
+void KrakenAudio::SetOscillatorPan(const int& index, const double& pan)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetOscillatorPan(index, pan);
+    }
+}
+
+void KrakenAudio::SetOscillatorOctave(const int& index, const int& oct)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetOscillatorOctave(index, oct);
+    }
+}
+
+void KrakenAudio::SetOscillatorWaveform(const int& index,
+                           const axAudioWaveTable::axWaveformType& type)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetOscillatorWaveform(index, type);
+    }
+}
+
+void KrakenAudio::SetOscillatorSemiTone(const int& index, const int& semi)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetOscillatorSemiTone(index, semi);
+    }
+}
+
 int KrakenAudio::CallbackAudio(const float* input,
                                 float* output,
                                 unsigned long frameCount)
@@ -154,25 +234,29 @@ int KrakenAudio::CallbackAudio(const float* input,
     }
     
     // Get poly channel buffers.
-    double* voices[10];
+    double* left_voices[10];
+    double* right_voices[10];
     for(int i = 0; i < 10; i++)
     {
-        voices[i] = _polyVoices[i]->GetProcessedBuffers()[0];
+        left_voices[i] = _polyVoices[i]->GetProcessedBuffers()[0];
+        right_voices[i] = _polyVoices[i]->GetProcessedBuffers()[1];
     }
 
     // Output process loop..
     for(int i = 0; i < frameCount; i++)
     {
-        float v = 0.0;
+        float vl = 0.0, vr = 0.0;
         for(int n = 0; n < 10; n++)
         {
-            double channelValue = voices[n][i];
+            double channelValue = left_voices[n][i];
+            double channelValueRight = right_voices[n][i];
             
-            v = v + channelValue;
+            vl += channelValue;
+            vr += channelValueRight;
         }
 
-        *output++ = v;
-        *output++ = v;
+        *output++ = vl;
+        *output++ = vr;
     }
 
     return 0;

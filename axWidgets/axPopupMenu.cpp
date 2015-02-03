@@ -65,6 +65,7 @@ _lastSelected(nullptr)
 	}
 
 	SetSize(axSize(tog_size.x, (int)_btns.size() * LABEL_HEIGHT));
+    SetShownRect(GetRect());
     
     if(_events.selection_change)
     {

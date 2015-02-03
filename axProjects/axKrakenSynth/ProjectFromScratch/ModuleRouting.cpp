@@ -104,7 +104,7 @@ axPanel(parent, rect)
 void ModuleRouting::OnPaint()
 {
     axGC* gc = GetGC();
-    axRect rect0(axPoint(0, 0), GetRect().size);
+    axRect rect0(GetDrawingRect());
     
     gc->SetColor(axColor(0.15, 0.15, 0.15), 1.0);
     gc->DrawRectangle(axRect(0, 0, rect0.size.x, 17));

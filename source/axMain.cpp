@@ -21,12 +21,21 @@
  ******************************************************************************/
 #include "axMain.h"
 
+std::function<void(axApp* app)> axMain::_mainFct = nullptr;
+
+//std::function<void(axApp* app)> axMain::_mainFct;// = nullptr;
+
 axMain::axMain()
 {
+    
 }
 
 //void axMain::MainEntryPoint(axApp* app)
 //{
-//    MainPanel* mainPanel = new MainPanel(nullptr,
-//                                         axRect(1, 1, 550, 499));
+//    if(_mainFct)
+//    {
+//        _mainFct(app);
+//    }
+////    MainPanel* mainPanel = new MainPanel(nullptr,
+////                                         axRect(1, 1, 550, 499));
 //}

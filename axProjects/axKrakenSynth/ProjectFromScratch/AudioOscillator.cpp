@@ -3,10 +3,10 @@
 #include "axLib.h"
 
 AudioOscillator::AudioOscillator():
-_active(false), _oct(0), _semi(0), _fine(0.0), _kdb(1.0), _pan(0.5), _gain(1.0)
+_active(false), _oct(0), _semi(0), _fine(0.0), _kdb(1.0), _pan(0.5), _gain(0.0)
 {
     _waveTable = new axAudioWaveTable();
-    _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SAW);
+    _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SINE);
 }
 
 void AudioOscillator::SetActive(const bool& active)
@@ -51,13 +51,20 @@ void AudioOscillator::SetGain(const double& gain)
     _gain = axClamp<double>(gain, 0.0, 1.0);
 }
 
+void AudioOscillator::SetWaveform(const axAudioWaveTable::axWaveformType& type)
+{
+    _waveTable->SetWaveformType(type);
+}
+
 void AudioOscillator::SetMidiNote(const int& note, const int& velocity)
 {
+//    std::cout << "AudioOsc note : " << note << std::endl;
     int n = note + _oct + _semi;
     
     double freq = axAudioConstant::C0 * pow(axAudioConstant::SemiToneRatio, n);
-    freq *= _fine;
+    freq += _fine * pow(2.0, 12.0);
     
+    std::cout << "Freq : " << freq << std::endl;
     _waveTable->SetFreq(freq);
 }
 
@@ -73,7 +80,10 @@ void AudioOscillator::Process(float* output)
 //    {
         double freq = _waveTable->GetFreq();
         _waveTable->ProcessSample(&value, &freq);
-        
+    
+    
+//    *output++ = value;
+//    *output++ = value;
         *output++ = value * sqrt(1.0 - _pan) * _gain;
         *output++ = value * sqrt(_pan) * _gain;
 //    }

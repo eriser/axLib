@@ -34,7 +34,10 @@
 #include "axLib.h"
 
 
-
+void MainEntryPointCocoa(int argc, const char * argv[])
+{
+    NSApplicationMain(argc, argv);
+}
 
 std::string axOpenFileDialog()
 {

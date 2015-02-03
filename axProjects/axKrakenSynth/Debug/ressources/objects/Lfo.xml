@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <axObjects>
-  <axKnob name="freq" rect="55, 15, 46, 46" info= "ressources/objects/Knob.axObj"></axKnob>  
-  <axKnob name="gain" rect="106, 15, 46, 46" info= "ressources/objects/Knob.axObj"></axKnob> 
+  <axKnob name="freq" rect="55, 15, 36, 36" info="ressources/objects/SmallKnob.axObj"></axKnob>
+  <axKnob name="gain" rect="106, 15, 36, 36" info="ressources/objects/SmallKnob.axObj"></axKnob>
   <axLabel name="labelFreq" rect="55, 0, 46, 15" info="ressources/objects/Label.axObj" label="Freq"></axLabel>
   <axLabel name="labelGain" rect="106, 0, 46, 15" info="ressources/objects/Label.axObj" label="Gain"></axLabel>
 
-  <axStaticImage name="img" pos="11, 15" path="ressources/images/oscWaveform.png"></axLabel>
-  <axToggle name="sineLed" rect="35, 15, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
-  <axToggle name="sqrtLed" rect="35, 25, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
-  <axToggle name="triLed" rect="35, 35, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
-  <axToggle name="sawLed" rect="35, 45, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+  <axStaticImage name="img" pos="11, 5" path="ressources/images/oscWaveform.png"></axLabel>
+  <axToggle name="sineLed" rect="35, 5, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+  <axToggle name="sqrtLed" rect="35, 15, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+  <axToggle name="triLed" rect="35, 25, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
+  <axToggle name="sawLed" rect="35, 35, 10, 10" info="ressources/objects/LedToggle.axObj"></axToggle>
 </axObjects>

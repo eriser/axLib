@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C0F9C281A7FE1550014B970 /* libboost_filesystem.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0F9C251A7FE1550014B970 /* libboost_filesystem.dylib */; };
+		7C0F9C291A7FE1550014B970 /* libboost_program_options.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0F9C261A7FE1550014B970 /* libboost_program_options.dylib */; };
+		7C0F9C2A1A7FE1550014B970 /* libboost_system.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0F9C271A7FE1550014B970 /* libboost_system.dylib */; };
+		7C1352FF1A7FD0D700C97A99 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C1352FE1A7FD0D700C97A99 /* MainMenu.xib */; };
+		7CC9842F1A7C999600F070E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9842E1A7C999600F070E4 /* main.m */; };
+		7CC984311A7C999600F070E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC984301A7C999600F070E4 /* Images.xcassets */; };
+		7CC984EF1A7C99EF00F070E4 /* axChatMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC984EB1A7C99EF00F070E4 /* axChatMessage.cpp */; };
+		7CC984F21A7C9A7000F070E4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC984F11A7C9A7000F070E4 /* OpenGL.framework */; };
+		7CC984F41A7C9A8900F070E4 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC984F31A7C9A8900F070E4 /* GLKit.framework */; };
+		7CC984FA1A7CA48400F070E4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC984F81A7CA48400F070E4 /* main.cpp */; };
+		7CE57F641A7FE18E00E912F5 /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE57F631A7FE18E00E912F5 /* axLib.framework */; };
+		7CE57F651A7FE1A400E912F5 /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7CE57F631A7FE18E00E912F5 /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C13530B1A7FD4C800C97A99 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7CE57F651A7FE1A400E912F5 /* axLib.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7C0F9C251A7FE1550014B970 /* libboost_filesystem.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_filesystem.dylib; path = ../../../../../../usr/local/lib/libboost_filesystem.dylib; sourceTree = "<group>"; };
+		7C0F9C261A7FE1550014B970 /* libboost_program_options.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_program_options.dylib; path = ../../../../../../usr/local/lib/libboost_program_options.dylib; sourceTree = "<group>"; };
+		7C0F9C271A7FE1550014B970 /* libboost_system.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_system.dylib; path = ../../../../../../usr/local/lib/libboost_system.dylib; sourceTree = "<group>"; };
+		7C1352FE1A7FD0D700C97A99 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = ../../axMac/MainMenu.xib; sourceTree = "<group>"; };
+		7CC984261A7C999500F070E4 /* ChatClientGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatClientGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC9842A1A7C999600F070E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC9842E1A7C999600F070E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7CC984301A7C999600F070E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7CC984EB1A7C99EF00F070E4 /* axChatMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axChatMessage.cpp; path = /Users/alexarse/Project/axWeb/ChatClient/ChatClient/ChatClient/../../../axWeb/axChatMessage.cpp; sourceTree = "<absolute>"; };
+		7CC984EC1A7C99EF00F070E4 /* axChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axChatMessage.h; path = /Users/alexarse/Project/axWeb/ChatClient/ChatClient/ChatClient/../../../axWeb/axChatMessage.h; sourceTree = "<absolute>"; };
+		7CC984F11A7C9A7000F070E4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		7CC984F31A7C9A8900F070E4 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		7CC984F81A7CA48400F070E4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7CC984F91A7CA48400F070E4 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		7CE57F631A7FE18E00E912F5 /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CC984231A7C999500F070E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C0F9C291A7FE1550014B970 /* libboost_program_options.dylib in Frameworks */,
+				7C0F9C281A7FE1550014B970 /* libboost_filesystem.dylib in Frameworks */,
+				7C0F9C2A1A7FE1550014B970 /* libboost_system.dylib in Frameworks */,
+				7CC984F41A7C9A8900F070E4 /* GLKit.framework in Frameworks */,
+				7CC984F21A7C9A7000F070E4 /* OpenGL.framework in Frameworks */,
+				7CE57F641A7FE18E00E912F5 /* axLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C1352FD1A7FD0CC00C97A99 /* axLib */ = {
+			isa = PBXGroup;
+			children = (
+				7C1352FE1A7FD0D700C97A99 /* MainMenu.xib */,
+			);
+			name = axLib;
+			sourceTree = "<group>";
+		};
+		7CC9841D1A7C999500F070E4 = {
+			isa = PBXGroup;
+			children = (
+				7CE57F631A7FE18E00E912F5 /* axLib.framework */,
+				7C0F9C251A7FE1550014B970 /* libboost_filesystem.dylib */,
+				7C0F9C261A7FE1550014B970 /* libboost_program_options.dylib */,
+				7C0F9C271A7FE1550014B970 /* libboost_system.dylib */,
+				7C1352FD1A7FD0CC00C97A99 /* axLib */,
+				7CC984F31A7C9A8900F070E4 /* GLKit.framework */,
+				7CC984F11A7C9A7000F070E4 /* OpenGL.framework */,
+				7CC984281A7C999500F070E4 /* ChatClientGUI */,
+				7CC984271A7C999500F070E4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7CC984271A7C999500F070E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CC984261A7C999500F070E4 /* ChatClientGUI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CC984281A7C999500F070E4 /* ChatClientGUI */ = {
+			isa = PBXGroup;
+			children = (
+				7CC984F81A7CA48400F070E4 /* main.cpp */,
+				7CC984F91A7CA48400F070E4 /* main.h */,
+				7CC984EB1A7C99EF00F070E4 /* axChatMessage.cpp */,
+				7CC984EC1A7C99EF00F070E4 /* axChatMessage.h */,
+				7CC984301A7C999600F070E4 /* Images.xcassets */,
+				7CC984291A7C999500F070E4 /* Supporting Files */,
+			);
+			path = ChatClientGUI;
+			sourceTree = "<group>";
+		};
+		7CC984291A7C999500F070E4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CC9842A1A7C999600F070E4 /* Info.plist */,
+				7CC9842E1A7C999600F070E4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7CC984251A7C999500F070E4 /* ChatClientGUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC984431A7C999600F070E4 /* Build configuration list for PBXNativeTarget "ChatClientGUI" */;
+			buildPhases = (
+				7CC984221A7C999500F070E4 /* Sources */,
+				7CC984231A7C999500F070E4 /* Frameworks */,
+				7CC984241A7C999500F070E4 /* Resources */,
+				7C13530B1A7FD4C800C97A99 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChatClientGUI;
+			productName = ChatClientGUI;
+			productReference = 7CC984261A7C999500F070E4 /* ChatClientGUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CC9841E1A7C999500F070E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alexandre Arsenault";
+				TargetAttributes = {
+					7CC984251A7C999500F070E4 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 7CC984211A7C999500F070E4 /* Build configuration list for PBXProject "ChatClientGUI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7CC9841D1A7C999500F070E4;
+			productRefGroup = 7CC984271A7C999500F070E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CC984251A7C999500F070E4 /* ChatClientGUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CC984241A7C999500F070E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC984311A7C999600F070E4 /* Images.xcassets in Resources */,
+				7C1352FF1A7FD0D700C97A99 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CC984221A7C999500F070E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC984FA1A7CA48400F070E4 /* main.cpp in Sources */,
+				7CC984EF1A7C99EF00F070E4 /* axChatMessage.cpp in Sources */,
+				7CC9842F1A7C999600F070E4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7CC984411A7C999600F070E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+					/usr/local/include/freetype2,
+					/Users/alexarse/Project/axLib/axWidgets/,
+					/Users/alexarse/Project/axLib/axMac/,
+					/Users/alexarse/Project/axLib/include/,
+				);
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7CC984421A7C999600F070E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+					/usr/local/include/freetype2,
+					/Users/alexarse/Project/axLib/axWidgets/,
+					/Users/alexarse/Project/axLib/axMac/,
+					/Users/alexarse/Project/axLib/include/,
+				);
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7CC984441A7C999600F070E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axLib/builds/axLib/Build/Debug,
+				);
+				INFOPLIST_FILE = ChatClientGUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axWeb/../../../../usr/local/lib,
+					/Users/alexarse/Project/axWeb/ChatClient/ChatClient/../../../../../../usr/local/lib,
+					"$(PROJECT_DIR)",
+					/Users/alexarse/Project/axWeb/Build/Release/../../../../../../usr/local/lib,
+					/Users/alexarse/Project/axLib/builds/axLib,
+					/Users/alexarse/Project/axLib/builds/axLib/Build/Debug/axLib.framework/Frameworks,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7CC984451A7C999600F070E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axLib/builds/axLib/Build/Debug,
+				);
+				INFOPLIST_FILE = ChatClientGUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/alexarse/Project/axWeb/../../../../usr/local/lib,
+					/Users/alexarse/Project/axWeb/ChatClient/ChatClient/../../../../../../usr/local/lib,
+					"$(PROJECT_DIR)",
+					/Users/alexarse/Project/axWeb/Build/Release/../../../../../../usr/local/lib,
+					/Users/alexarse/Project/axLib/builds/axLib,
+					/Users/alexarse/Project/axLib/builds/axLib/Build/Debug/axLib.framework/Frameworks,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CC984211A7C999500F070E4 /* Build configuration list for PBXProject "ChatClientGUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC984411A7C999600F070E4 /* Debug */,
+				7CC984421A7C999600F070E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CC984431A7C999600F070E4 /* Build configuration list for PBXNativeTarget "ChatClientGUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC984441A7C999600F070E4 /* Debug */,
+				7CC984451A7C999600F070E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7CC9841E1A7C999500F070E4 /* Project object */;
+}

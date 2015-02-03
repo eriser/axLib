@@ -294,10 +294,12 @@ void axWindow::InitGLWindowBackBufferDrawing()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    
     // NULL means reserve texture memory, but texels are undefined.
     glTexImage2D(GL_TEXTURE_2D,
                  0,
-                 GL_RGBA,
+                 GL_RGBA8,
                  _rect.size.x,
                  _rect.size.y,
                  0,
@@ -313,12 +315,12 @@ void axWindow::InitGLWindowBackBufferDrawing()
                            0);
     
     
-    glGenRenderbuffers(1, &_depthBuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER,
-                          GL_DEPTH_COMPONENT32,
-                          _rect.size.x,
-                          _rect.size.y);
+//    glGenRenderbuffers(1, &_depthBuffer);
+//    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
+//    glRenderbufferStorage(GL_RENDERBUFFER,
+//                          GL_DEPTH_COMPONENT32,
+//                          _rect.size.x,
+//                          _rect.size.y);
 
     // Does the GPU support current FBO configuration.
     GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER_EXT);
@@ -344,6 +346,8 @@ void axWindow::RenderWindow()
             glMatrixMode(GL_MODELVIEW);
             axMatrix4 modelView(GL_MODELVIEW);
         
+//        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+        
             glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
             glPushAttrib(GL_DEPTH_BUFFER_BIT);
             glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -367,7 +371,12 @@ void axWindow::RenderWindow()
             glTranslated(1.0, 1.0, 0.0);
         #endif // _axBackBufferWindow_
         
+//        glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+//        glDisable(GL_BLEND);
+        
+//        glBlendFunc(<#GLenum sfactor#>, <#GLenum dfactor#>);
         OnPaint();
+//        glEnable(GL_BLEND);
         
         #if _axBackBufferWindow_ == 1
             _needUpdate = false;
@@ -385,6 +394,7 @@ void axWindow::RenderWindow()
             axGC* gc = GetGC();
             gc->DrawWindowBuffer();
         #endif // _axBackBufferWindow_
+        
     }
     else
     {

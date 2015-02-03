@@ -39,6 +39,7 @@ public:
     void SetKeyboard(const double& kdb);
     void SetPan(const double& pan);
     void SetGain(const double& gain);
+    void SetWaveform(const axAudioWaveTable::axWaveformType& type);
     
     void SetMidiNote(const int& note, const int& velocity);
 
