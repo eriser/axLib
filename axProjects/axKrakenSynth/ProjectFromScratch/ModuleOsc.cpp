@@ -13,6 +13,7 @@ _index(index)
     axObject::AddEventFunction("OnWaveformChange", GetOnWaveformChange());
     axObject::AddEventFunction("OnSemiToneChange", GetOnSemiToneChange());
     axObject::AddEventFunction("OnKnobPanChange", GetOnKnobPanChange());
+    axObject::AddEventFunction("OnFilterChange", GetOnFilterChange());
     
     std::string app_path = axApp::GetAppPath();
     axObjectLoader loader(this, app_path + "ressources/objects/Osc.xml");
@@ -29,6 +30,13 @@ _index(index)
     _knobPan = axWindow::GetResourceManager()->GetResource("pan");
     _knobPan->SetValue(0.5);
     _waveformLed[0]->SetSelected(true);
+}
+
+void ModuleOsc::OnFilterChange(const axToggle::Msg& msg)
+{
+    KrakenAudio::GetInstance()->SetOscillatorOutputFilter(_index,
+                                                          stoi(msg.GetMsg()),
+                                                          msg.GetSelected());
 }
 
 void ModuleOsc::OnKnobGainChange(const axKnob::Msg& msg)

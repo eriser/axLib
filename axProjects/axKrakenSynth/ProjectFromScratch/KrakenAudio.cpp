@@ -13,6 +13,7 @@
 
 
 
+
 KrakenPolyVoice::KrakenPolyVoice()
 {
     /// @todo Change this.
@@ -32,7 +33,12 @@ KrakenPolyVoice::KrakenPolyVoice()
         _oscs[i]->SetActive(true);
     }
     
-//    _oscs[0]->SetActive(true);
+    _filters.resize(3);
+    for(int i = 0; i < _filters.size(); i++)
+    {
+        // Default values : freq=20000Hz q=0.707 gain=1.0.
+        _filters[i] = new axAudioFilter();
+    }
 
     _env = new axAudioEnvelope();
     _env->SetAttack(0.001);
@@ -106,6 +112,39 @@ void KrakenPolyVoice::SetOscillatorSemiTone(const int& index, const int& semi)
     }
 }
 
+void KrakenPolyVoice::SetOscillatorOutputFilter(const int& index,
+                                                const int& filter_index,
+                                                const bool& active)
+{
+    if(index < _oscs.size())
+    {
+        _oscs[index]->SetFilter(filter_index, active);
+    }
+}
+
+void KrakenPolyVoice::SetFilterFreq(const int& index, const double& freq)
+{
+    if(index < _filters.size())
+    {
+        _filters[index]->SetFreq(freq);
+    }
+}
+
+void KrakenPolyVoice::SetFilterRes(const int& index, const double& res)
+{
+    if(index < _filters.size())
+    {
+        _filters[index]->SetQ(res);
+    }
+}
+
+void KrakenPolyVoice::SetFilterGain(const int& index, const double& gain)
+{
+    if(index < _filters.size())
+    {
+        _filters[index]->SetGain(gain);
+    }
+}
 
 void KrakenPolyVoice::ProcessChannel(int sampleFrames)
 {
@@ -114,23 +153,45 @@ void KrakenPolyVoice::ProcessChannel(int sampleFrames)
     
     while (--sampleFrames >= 0)
     {
-        float value[2] = {0.0, 0.0};
+        
+        float filter_values[3][2] = {{0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}};
         
         for(int i = 0; i < _oscs.size(); i++)
         {
             if(_oscs[i]->GetActive())
             {
-                float v[2] = {0.0, 0.0};
-                _oscs[i]->Process(v);
-                value[0] += v[0];
-                value[1] += v[1];
+                // Process oscillator.
+                float osc_value[2] = {0.0, 0.0};
+                _oscs[i]->Process(osc_value);
+                
+                // Add filter's intput.
+                //float f = float(_oscs[i]->IsFilterActive(0));
+                
+                bool filter_on[3] = {_oscs[i]->IsFilterActive(0),
+                                     _oscs[i]->IsFilterActive(1),
+                                     _oscs[i]->IsFilterActive(2)};
+                
+                filter_values[0][0] += filter_on[0] ? osc_value[0] : 0.0;
+                filter_values[0][1] += filter_on[0] ? osc_value[1] : 0.0;
+                
+                filter_values[1][0] += filter_on[1] ? osc_value[0] : 0.0;
+                filter_values[1][1] += filter_on[1] ? osc_value[1] : 0.0;
+                
+                filter_values[2][0] += filter_on[2] ? osc_value[0] : 0.0;
+                filter_values[2][1] += filter_on[2] ? osc_value[1] : 0.0;
             }
         }
 
+        float out_values[2] = {0.0, 0.0};
+        // Process filters.
+        _filters[0]->ProcessStereo(filter_values[0], out_values);
+        _filters[1]->ProcessStereo(filter_values[1], out_values);
+        _filters[2]->ProcessStereo(filter_values[2], out_values);
+        
         double env = _env->Process();
 
-        *out1++ = value[0] * env;
-        *out2++ = value[1] * env;
+        *out1++ = out_values[0] * env;
+        *out2++ = out_values[1] * env;
     }
 }
 
@@ -220,6 +281,40 @@ void KrakenAudio::SetOscillatorSemiTone(const int& index, const int& semi)
     for(auto& n : _polyVoices)
     {
         n->SetOscillatorSemiTone(index, semi);
+    }
+}
+
+void KrakenAudio::SetOscillatorOutputFilter(const int& index,
+                                            const int& filter_index,
+                                            const bool& active)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetOscillatorOutputFilter(index, filter_index, active);
+    }
+}
+
+void KrakenAudio::SetFilterFreq(const int& index, const double& freq)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetFilterFreq(index, freq);
+    }
+}
+
+void KrakenAudio::SetFilterRes(const int& index, const double& res)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetFilterRes(index, res);
+    }
+}
+
+void KrakenAudio::SetFilterGain(const int& index, const double& gain)
+{
+    for(auto& n : _polyVoices)
+    {
+        n->SetFilterGain(index, gain);
     }
 }
 

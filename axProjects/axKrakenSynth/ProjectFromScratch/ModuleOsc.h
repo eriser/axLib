@@ -36,6 +36,9 @@ private:
     axEVENT_ACCESSOR(axToggle::Msg, OnWaveformChange);
     void OnWaveformChange(const axToggle::Msg& msg);
     
+    axEVENT_ACCESSOR(axToggle::Msg, OnFilterChange);
+    void OnFilterChange(const axToggle::Msg& msg);
+    
     
 };
 

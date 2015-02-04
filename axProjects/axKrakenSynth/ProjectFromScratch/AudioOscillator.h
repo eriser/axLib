@@ -45,7 +45,12 @@ public:
 
     void Process(float* out);
     
+    void SetFilter(const int& index, const bool& active);
+    
+    bool IsFilterActive(const int& index);
+    
 private:
+    bool _filter[3];
     bool _active;
     int _oct, _semi;
     double _fine, _kdb, _pan, _gain;

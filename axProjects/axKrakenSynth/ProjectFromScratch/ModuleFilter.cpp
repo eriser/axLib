@@ -1,13 +1,43 @@
 #include "ModuleFilter.h"
+#include "KrakenAudio.h"
 
 /*******************************************************************************
  * ModuleFilter.
  ******************************************************************************/
-ModuleFilter::ModuleFilter(axWindow* parent, const axRect& rect):
-axPanel(parent, rect)
+ModuleFilter::ModuleFilter(axWindow* parent,
+                           const axRect& rect,
+                           const int& index):
+axPanel(parent, rect),
+_index(index)
 {
+    axObject::AddEventFunction("OnFreqChange", GetOnFreqChange());
+    axObject::AddEventFunction("OnResChange", GetOnResChange());
+    axObject::AddEventFunction("OnGainChange", GetOnGainChange());
+
     std::string app_path = axApp::GetAppPath();
     axObjectLoader loader(this, app_path + "ressources/objects/Filter.xml");
+    
+    
+    _freqKnob = axWindow::GetResourceManager()->GetResource("freq");
+    _resKnob = axWindow::GetResourceManager()->GetResource("res");
+    _gainKnob = axWindow::GetResourceManager()->GetResource("gain");
+}
+
+void ModuleFilter::OnFreqChange(const axKnob::Msg& msg)
+{
+    double freq = axLineairInterpole<double>(20.0, 20000.0, msg.GetValue());
+    KrakenAudio::GetInstance()->SetFilterFreq(_index, freq);
+}
+
+void ModuleFilter::OnResChange(const axKnob::Msg& msg)
+{
+    double res = axLineairInterpole<double>(0.1, 10.0, msg.GetValue());
+    KrakenAudio::GetInstance()->SetFilterRes(_index, res);
+}
+
+void ModuleFilter::OnGainChange(const axKnob::Msg& msg)
+{
+    KrakenAudio::GetInstance()->SetFilterGain(_index, msg.GetValue());
 }
 
 /*******************************************************************************
@@ -37,7 +67,7 @@ ModuleFrame<ModuleFilter>(parent, axRect(pos, axSize(158, 135 + 17)))
                                  menu_str,
                                  axDROP_MENU_SINGLE_IMG);
     
-    AddModule(new ModuleFilter(this, axRect(0, 17, 158, 130)), "FILTER 1");
-    AddModule(new ModuleFilter(this, axRect(0, 17, 158, 130)), "FILTER 2");
-    AddModule(new ModuleFilter(this, axRect(0, 17, 158, 130)), "FILTER 3");
+    AddModule(new ModuleFilter(this, axRect(0, 17, 158, 130), 0), "FILTER 1");
+    AddModule(new ModuleFilter(this, axRect(0, 17, 158, 130), 1), "FILTER 2");
+    AddModule(new ModuleFilter(this, axRect(0, 17, 158, 130), 2), "FILTER 3");
 }

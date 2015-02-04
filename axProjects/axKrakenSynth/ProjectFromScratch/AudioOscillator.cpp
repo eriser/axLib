@@ -7,6 +7,10 @@ _active(false), _oct(0), _semi(0), _fine(0.0), _kdb(1.0), _pan(0.5), _gain(0.0)
 {
     _waveTable = new axAudioWaveTable();
     _waveTable->SetWaveformType(axAudioWaveTable::axWAVE_TYPE_SINE);
+    
+    _filter[0] = false;
+    _filter[1] = false;
+    _filter[2] = false;
 }
 
 void AudioOscillator::SetActive(const bool& active)
@@ -51,6 +55,24 @@ void AudioOscillator::SetGain(const double& gain)
     _gain = axClamp<double>(gain, 0.0, 1.0);
 }
 
+void AudioOscillator::SetFilter(const int& index, const bool& active)
+{
+    if(index < 3)
+    {
+      _filter[index] = active;
+    }
+}
+
+bool AudioOscillator::IsFilterActive(const int& index)
+{
+    if(index < 3)
+    {
+        return _filter[index];
+    }
+    
+    return false;
+}
+
 void AudioOscillator::SetWaveform(const axAudioWaveTable::axWaveformType& type)
 {
     _waveTable->SetWaveformType(type);
@@ -64,7 +86,7 @@ void AudioOscillator::SetMidiNote(const int& note, const int& velocity)
     double freq = axAudioConstant::C0 * pow(axAudioConstant::SemiToneRatio, n);
     freq += _fine * pow(2.0, 12.0);
     
-    std::cout << "Freq : " << freq << std::endl;
+//    std::cout << "Freq : " << freq << std::endl;
     _waveTable->SetFreq(freq);
 }
 
