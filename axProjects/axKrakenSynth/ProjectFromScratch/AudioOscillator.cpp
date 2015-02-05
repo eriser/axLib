@@ -90,24 +90,13 @@ void AudioOscillator::SetMidiNote(const int& note, const int& velocity)
     _waveTable->SetFreq(freq);
 }
 
-void AudioOscillator::Process(float* output)
+void AudioOscillator::Process(float* out)
 {
-//    float* out1 = output[0];
-//    float* out2 = output[1];
-    
-//    int frames = nFrames;
     double value = 0.0;
     
-//    while(frames--)
-//    {
-        double freq = _waveTable->GetFreq();
-        _waveTable->ProcessSample(&value, &freq);
+    double freq = _waveTable->GetFreq();
+    _waveTable->ProcessSample(&value, &freq);
     
-    
-//    *output++ = value;
-//    *output++ = value;
-        *output++ = value * sqrt(1.0 - _pan) * _gain;
-        *output++ = value * sqrt(_pan) * _gain;
-//    }
-    
+    *out++ = value * sqrt(1.0 - _pan) * _gain;
+    *out++ = value * sqrt(_pan) * _gain;
 }

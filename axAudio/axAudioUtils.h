@@ -22,14 +22,16 @@ struct axOuputStereo
     float left, right;
 };
 
+//template<typename T>
+//typedef T axStereoSample[2];
+//
+//typedef axStereoSample<double> axDoubleStereoSample;
+//typedef axStereoSample<float> axFloatStereoSample;
 
 namespace axAudioUtils
 {
     int SecondeToSample(const double& seconde,
                         const int& samplingRate);
-    
-//    double c5 = 220.0 * pow(ST_RATIO, 3);
-//    c0 = c5 * pow(0.5, 5);
 }
 
 namespace axAudioConstant

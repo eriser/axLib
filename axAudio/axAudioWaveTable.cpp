@@ -27,14 +27,9 @@ axAudioWaveTable::axAudioWaveTable(axAudioBuffer* buffer)
     
     axFloat* bufferData = buffer->GetBuffer();
     
-    
-//    std::cout << std::endl << std::endl << "axAudioWaveTable : " << std::endl;
     for(int i = 0; i < _bufferSize; i++)
     {
         _data[i] = bufferData[i];
-        
-//        if(i < 20)
-//            std::cout << "Copy data : " << _data[i] << std::endl;
     }
     
     _data[_bufferSize] = bufferData[0];

@@ -111,18 +111,47 @@ void MyNumberPanel::OnPaint()
     
 }
 
+//void axMain::MainEntryPoint(axApp* app)
+//{
+//    
+//    
+//    KrakenAudio* audio = KrakenAudio::GetInstance();
+//    audio->InitAudio();
+//    
+//    KrakenMidi* midi = new KrakenMidi();
+//    KrakenGUI* gui = new KrakenGUI(nullptr, axRect(0, 0, 655, 600));
+//    
+//    
+//    audio->StartAudio();
+//}
+
 void axMain::MainEntryPoint(axApp* app)
 {
+
+}
+
+int main()
+{
+    axEventManager::GetInstance();
+    axApp* app = axApp::CreateApp();
+	
+    app->AddMainEntry([]()
+    {
+        KrakenGUI* gui = new KrakenGUI(nullptr, axRect(0, 0, 655, 600));
+    });
     
-    
+    // Init audio.
     KrakenAudio* audio = KrakenAudio::GetInstance();
     audio->InitAudio();
     
+    // Init Midi.
     KrakenMidi* midi = new KrakenMidi();
-    KrakenGUI* gui = new KrakenGUI(nullptr, axRect(0, 0, 655, 600));
-    
     
     audio->StartAudio();
+	app->MainLoop();
+
+	return 0;
 }
+
 
 

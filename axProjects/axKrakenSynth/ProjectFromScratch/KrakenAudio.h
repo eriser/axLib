@@ -2,11 +2,15 @@
 #define __KRAKEN_AUDIO__
 
 #include "axAudio.h"
-#include "axAudioEnvelope.h"
-#include "axAudioWaveTable.h"
+
 
 #include "AudioOscillator.h"
 #include "axAudioFilter.h"
+#include "AudioLfo.h"
+
+#include "axAudioEnvelope.h"
+#include "axAudioWaveTable.h"
+
 
 class KrakenPolyVoice
 {
@@ -19,6 +23,7 @@ public:
     
     void TriggerNote(const int& note, const int& velocity);
     
+    // Oscilltors.
     void SetOscillatorOnOff(const int& index, const bool& active);
     void SetOscillatorGain(const int& index, const double& gain);
     void SetOscillatorPan(const int& index, const double& pan);
@@ -30,20 +35,30 @@ public:
                                    const int& filter_index,
                                    const bool& active);
     
+    // Filters.
     void SetFilterFreq(const int& index, const double& freq);
     void SetFilterRes(const int& index, const double& res);
     void SetFilterGain(const int& index, const double& gain);
     
+    // Audio sample.
+    
+    // Lfos
+    void SetLfoFreq(const int& index, const double& freq);
+    void SetLfoGain(const int& index, const double& gain);
+    void SetLfoWaveform(const int& index,
+                        const axAudioWaveTable::axWaveformType& type);
+    
+    // Envelope.
+    
+    // Distorsion.
     
 private:
-//    axAudioWaveTable* _waveTable;
     std::vector<AudioOscillator*> _oscs;
     std::vector<axAudioFilter*> _filters;
-//    std::vector<bool> _waveTablesActive;
+    std::vector<AudioLfo*> _lfos;
     axAudioEnvelope* _env;
     
     double** _processBuffer;
-    
 };
 
 class KrakenAudio: public axAudio
@@ -69,6 +84,10 @@ public:
     void SetFilterRes(const int& index, const double& res);
     void SetFilterGain(const int& index, const double& gain);
     
+    void SetLfoFreq(const int& index, const double& freq);
+    void SetLfoGain(const int& index, const double& gain);
+    void SetLfoWaveform(const int& index,
+                        const axAudioWaveTable::axWaveformType& type);
     
 private:
     KrakenAudio();
@@ -80,6 +99,10 @@ private:
     
     std::vector<KrakenPolyVoice*> _polyVoices;
     int _polyChannelIndex;
+    
+//    
+//    std
+//    std::thread voices_thread;
 };
 
 #endif // __KRAKEN_AUDIO__

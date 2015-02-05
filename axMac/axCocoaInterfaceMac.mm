@@ -39,6 +39,14 @@ void MainEntryPointCocoa(int argc, const char * argv[])
     NSApplicationMain(argc, argv);
 }
 
+void axCallNSApplicationMain()
+{
+    int argc = 0;
+    const char* argv[] = {""};
+    
+    NSApplicationMain(argc, argv);
+}
+
 std::string axOpenFileDialog()
 {
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];

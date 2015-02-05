@@ -33,7 +33,7 @@ axCoreMac::axCoreMac()
 
 void axCoreMac::MainLoop()
 {
-    
+    axCallNSApplicationMain();
 }
 
 void axCoreMac::Init(const axPoint& frame_size)

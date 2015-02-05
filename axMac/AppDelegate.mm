@@ -87,7 +87,9 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 #else
     axEventManager::GetInstance();
     axApp* app = axApp::CreateApp();
-    axMain::MainEntryPoint(app);
+    app->GetCore()->Init(axSize(500, 500));
+    app->CallMainEntryFunction();
+//    axMain::MainEntryPoint(app);
 
     
     [GlobalAppDelegate setNeedsDisplay:YES];

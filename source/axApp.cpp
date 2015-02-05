@@ -52,7 +52,7 @@ _debugEditorActive(false)
     _core->Init(axSize(800, 273));
 #else
     _core = new axCoreMac();
-    _core->Init(axSize(500, 500));
+//    _core->Init(axSize(500, 500));
 #endif // _AX_VST_APP_
     
 #endif // __APPLE__
@@ -117,7 +117,7 @@ _debugEditorActive(false)
     _core->Init(frame_size);
 #else
     _core = new axCoreMac();
-    _core->Init(frame_size);
+    //_core->Init(frame_size);
 #endif // _AX_VST_APP_
     
 #endif // __APPLE__
@@ -129,6 +129,19 @@ void axApp::CreatePopupWindow(const axSize& size)
 	axCore* c = new axCoreX11(this);
 	c->Init(size);
 #endif //__linux__
+}
+
+void axApp::AddMainEntry(std::function<void()> fct)
+{
+    _mainEntryFunction = fct;
+}
+
+void axApp::CallMainEntryFunction()
+{
+    if(_mainEntryFunction)
+    {
+        _mainEntryFunction();
+    }
 }
 
 //------------------------------------------------------------------------------

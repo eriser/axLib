@@ -49,4 +49,6 @@ axSize axCocoaGetScreenSize();
 
 void MainEntryPointCocoa(int argc, const char * argv[]);
 
+void axCallNSApplicationMain();
+
 #endif

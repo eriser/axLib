@@ -1,11 +1,18 @@
 #include "ModuleLfo.h"
+#include "KrakenAudio.h"
 
 /*******************************************************************************
  * ModuleLfo.
  ******************************************************************************/
-ModuleLfo::ModuleLfo(axWindow* parent, const axRect& rect):
-axPanel(parent, rect)
+ModuleLfo::ModuleLfo(axWindow* parent, const axRect& rect, const int& index):
+axPanel(parent, rect),
+_index(index)
 {
+    axObject::AddEventFunction("OnFreqChange", GetOnFreqChange());
+    axObject::AddEventFunction("OnGainChange", GetOnGainChange());
+    axObject::AddEventFunction("OnWaveformChange", GetOnWaveformChange());
+
+    
     std::string app_path = axApp::GetAppPath();    
     axObjectLoader loader(this, app_path + "ressources/objects/Lfo.xml");
     
@@ -17,6 +24,49 @@ axPanel(parent, rect)
     _waveformLed[0]->SetSelected(true);
 }
 
+void ModuleLfo::OnGainChange(const axKnob::Msg& msg)
+{
+    KrakenAudio::GetInstance()->SetLfoGain(_index, msg.GetValue());
+}
+
+void ModuleLfo::OnFreqChange(const axKnob::Msg& msg)
+{
+    double freq = axLineairInterpole(0.1, 20.0, msg.GetValue());
+    KrakenAudio::GetInstance()->SetLfoGain(_index, freq);
+}
+
+void ModuleLfo::OnWaveformChange(const axToggle::Msg& msg)
+{
+    for(auto& n : _waveformLed)
+    {
+        n->SetSelected(false);
+    }
+    
+    msg.GetSender()->SetSelected(true);
+    std::cout << msg.GetMsg() << std::endl;
+    
+    axAudioWaveTable::axWaveformType type =
+    axAudioWaveTable::axWaveformType::axWAVE_TYPE_SINE;
+    
+    if(msg.GetMsg() == "sine")
+    {
+        type = axAudioWaveTable::axWaveformType::axWAVE_TYPE_SINE;
+    }
+    else if(msg.GetMsg() == "tri")
+    {
+        type = axAudioWaveTable::axWaveformType::axWAVE_TYPE_TRIANGLE;
+    }
+    else if(msg.GetMsg() == "sqrt")
+    {
+        type = axAudioWaveTable::axWaveformType::axWAVE_TYPE_SQUARE;
+    }
+    else if(msg.GetMsg() == "saw")
+    {
+        type = axAudioWaveTable::axWaveformType::axWAVE_TYPE_SAW;
+    }
+    
+    KrakenAudio::GetInstance()->SetLfoWaveform(_index, type);
+}
 /*******************************************************************************
  * Lfos.
  ******************************************************************************/
@@ -44,9 +94,9 @@ ModuleFrame<ModuleLfo>(parent, axRect(pos, axSize(158, 55 + 17)))
                                  menu_str,
                                  axDROP_MENU_SINGLE_IMG);
     
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 1");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 2");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 3");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 4");
-    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55)), "LFO 5");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55), 0), "LFO 1");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55), 1), "LFO 2");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55), 2), "LFO 3");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55), 3), "LFO 4");
+    AddModule(new ModuleLfo(this, axRect(0, 17, 158, 55), 4), "LFO 5");
 }
