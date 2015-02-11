@@ -7,156 +7,83 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C0351641A393AA60025338C /* axApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351501A393AA60025338C /* axApp.cpp */; };
-		7C0351651A393AA60025338C /* axC++.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351511A393AA60025338C /* axC++.cpp */; };
-		7C0351661A393AA60025338C /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351521A393AA60025338C /* axColor.cpp */; };
-		7C0351671A393AA60025338C /* axCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351531A393AA60025338C /* axCore.cpp */; };
-		7C0351681A393AA60025338C /* axEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351541A393AA60025338C /* axEvent.cpp */; };
-		7C0351691A393AA60025338C /* axEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351551A393AA60025338C /* axEventManager.cpp */; };
-		7C03516A1A393AA60025338C /* axFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351561A393AA60025338C /* axFont.cpp */; };
-		7C03516B1A393AA60025338C /* axGC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351571A393AA60025338C /* axGC.cpp */; };
-		7C03516C1A393AA60025338C /* axImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351581A393AA60025338C /* axImage.cpp */; };
-		7C03516D1A393AA60025338C /* axMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351591A393AA60025338C /* axMain.cpp */; };
-		7C03516E1A393AA60025338C /* axManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03515A1A393AA60025338C /* axManager.cpp */; };
-		7C03516F1A393AA60025338C /* axMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03515B1A393AA60025338C /* axMath.cpp */; };
-		7C0351701A393AA60025338C /* axMsg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03515C1A393AA60025338C /* axMsg.cpp */; };
-		7C0351711A393AA60025338C /* axObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03515D1A393AA60025338C /* axObject.cpp */; };
-		7C0351721A393AA60025338C /* axPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03515E1A393AA60025338C /* axPanel.cpp */; };
-		7C0351731A393AA60025338C /* axSerialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03515F1A393AA60025338C /* axSerialize.cpp */; };
-		7C0351741A393AA60025338C /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351601A393AA60025338C /* axTimer.cpp */; };
-		7C0351751A393AA60025338C /* axUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351611A393AA60025338C /* axUtils.cpp */; };
-		7C0351761A393AA60025338C /* axWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351621A393AA60025338C /* axWindow.cpp */; };
-		7C0351771A393AA60025338C /* axWindowTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351631A393AA60025338C /* axWindowTree.cpp */; };
-		7C0351801A393AC40025338C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C03517A1A393AC40025338C /* AppDelegate.mm */; };
-		7C0351811A393AC40025338C /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C03517C1A393AC40025338C /* axCocoaInterfaceMac.mm */; };
-		7C0351821A393AC40025338C /* axCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03517D1A393AC40025338C /* axCoreMac.cpp */; };
-		7C03519A1A3940E10025338C /* axButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351851A3940E10025338C /* axButton.cpp */; };
-		7C03519B1A3940E10025338C /* axDropMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351871A3940E10025338C /* axDropMenu.cpp */; };
-		7C03519C1A3940E10025338C /* axGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351891A3940E10025338C /* axGrid.cpp */; };
-		7C03519D1A3940E10025338C /* axKnob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03518B1A3940E10025338C /* axKnob.cpp */; };
-		7C03519E1A3940E10025338C /* axMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03518D1A3940E10025338C /* axMenu.cpp */; };
-		7C03519F1A3940E10025338C /* axNumberBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C03518F1A3940E10025338C /* axNumberBox.cpp */; };
-		7C0351A01A3940E10025338C /* axPopupMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351911A3940E10025338C /* axPopupMenu.cpp */; };
-		7C0351A11A3940E10025338C /* axScrollBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351931A3940E10025338C /* axScrollBar.cpp */; };
-		7C0351A21A3940E10025338C /* axSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351951A3940E10025338C /* axSlider.cpp */; };
-		7C0351A31A3940E10025338C /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0351971A3940E10025338C /* axToggle.cpp */; };
-		7C0351A71A3955A80025338C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C0351A61A3955A80025338C /* MainMenu.xib */; };
-		7C20B68C19EDBE6000D6ED6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B68B19EDBE6000D6ED6F /* main.m */; };
 		7C20B68E19EDBE6000D6ED6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C20B68D19EDBE6000D6ED6F /* Images.xcassets */; };
-		7C20B69D19EDBE6100D6ED6F /* MidiSequencerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B69C19EDBE6100D6ED6F /* MidiSequencerTests.m */; };
-		7C20B71519EDC09300D6ED6F /* AudioWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70119EDC09300D6ED6F /* AudioWaveform.cpp */; };
-		7C20B71619EDC09300D6ED6F /* axAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70319EDC09300D6ED6F /* axAudio.cpp */; };
-		7C20B71719EDC09300D6ED6F /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70519EDC09300D6ED6F /* axAudioBuffer.cpp */; };
-		7C20B71819EDC09300D6ED6F /* axAudioEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70719EDC09300D6ED6F /* axAudioEnvelope.cpp */; };
-		7C20B71919EDC09300D6ED6F /* axAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70919EDC09300D6ED6F /* axAudioFilter.cpp */; };
-		7C20B71A19EDC09300D6ED6F /* axMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70B19EDC09300D6ED6F /* axMidi.cpp */; };
 		7C20B71C19EDC09300D6ED6F /* DrumSampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B70F19EDC09300D6ED6F /* DrumSampler.cpp */; };
 		7C20B71D19EDC09300D6ED6F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B71119EDC09300D6ED6F /* main.cpp */; };
 		7C20B71E19EDC09300D6ED6F /* MidiTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B71319EDC09300D6ED6F /* MidiTrack.cpp */; };
 		7C20B72219EDC92B00D6ED6F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72119EDC92B00D6ED6F /* OpenGL.framework */; };
 		7C20B72419EDC93300D6ED6F /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72319EDC93300D6ED6F /* GLKit.framework */; };
-		7C20B72619EDC94B00D6ED6F /* libpng15.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72519EDC94B00D6ED6F /* libpng15.framework */; };
+		7CE580881A831D9A00E912F5 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5801E1A831D9A00E912F5 /* AppDelegate.mm */; };
+		7CE580891A831D9A00E912F5 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580201A831D9A00E912F5 /* axCocoaInterfaceMac.mm */; };
+		7CE5808A1A831D9A00E912F5 /* axCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580211A831D9A00E912F5 /* axCoreMac.cpp */; };
+		7CE5808B1A831D9A00E912F5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE580231A831D9A00E912F5 /* MainMenu.xib */; };
+		7CE5808C1A831D9A00E912F5 /* axAnimatedButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580251A831D9A00E912F5 /* axAnimatedButton.cpp */; };
+		7CE5808D1A831D9A00E912F5 /* axButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580271A831D9A00E912F5 /* axButton.cpp */; };
+		7CE5808E1A831D9A00E912F5 /* axDebugButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580291A831D9A00E912F5 /* axDebugButton.cpp */; };
+		7CE5808F1A831D9A00E912F5 /* axDropMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5802B1A831D9A00E912F5 /* axDropMenu.cpp */; };
+		7CE580901A831D9A00E912F5 /* axGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5802D1A831D9A00E912F5 /* axGrid.cpp */; };
+		7CE580911A831D9A00E912F5 /* axKnob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5802F1A831D9A00E912F5 /* axKnob.cpp */; };
+		7CE580921A831D9A00E912F5 /* axLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580311A831D9A00E912F5 /* axLabel.cpp */; };
+		7CE580931A831D9A00E912F5 /* axMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580331A831D9A00E912F5 /* axMenu.cpp */; };
+		7CE580941A831D9A00E912F5 /* axNumberBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580351A831D9A00E912F5 /* axNumberBox.cpp */; };
+		7CE580951A831D9A00E912F5 /* axPlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580371A831D9A00E912F5 /* axPlot.cpp */; };
+		7CE580961A831D9A00E912F5 /* axPopupMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580391A831D9A00E912F5 /* axPopupMenu.cpp */; };
+		7CE580971A831D9A00E912F5 /* axScrollBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5803B1A831D9A00E912F5 /* axScrollBar.cpp */; };
+		7CE580981A831D9A00E912F5 /* axSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5803D1A831D9A00E912F5 /* axSlider.cpp */; };
+		7CE580991A831D9A00E912F5 /* axStaticImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5803F1A831D9A00E912F5 /* axStaticImage.cpp */; };
+		7CE5809A1A831D9A00E912F5 /* axTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580411A831D9A00E912F5 /* axTextBox.cpp */; };
+		7CE5809B1A831D9A00E912F5 /* axTextControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580431A831D9A00E912F5 /* axTextControl.cpp */; };
+		7CE5809C1A831D9A00E912F5 /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580451A831D9A00E912F5 /* axToggle.cpp */; };
+		7CE5809D1A831D9A00E912F5 /* axWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580471A831D9A00E912F5 /* axWaveform.cpp */; };
+		7CE5809E1A831D9A00E912F5 /* axWaveformNavigator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580491A831D9A00E912F5 /* axWaveformNavigator.cpp */; };
+		7CE580A01A831D9A00E912F5 /* axApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5806C1A831D9A00E912F5 /* axApp.cpp */; };
+		7CE580A11A831D9A00E912F5 /* axC++.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5806D1A831D9A00E912F5 /* axC++.cpp */; };
+		7CE580A21A831D9A00E912F5 /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5806E1A831D9A00E912F5 /* axColor.cpp */; };
+		7CE580A31A831D9A00E912F5 /* axConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5806F1A831D9A00E912F5 /* axConfig.cpp */; };
+		7CE580A41A831D9A00E912F5 /* axCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580701A831D9A00E912F5 /* axCore.cpp */; };
+		7CE580A51A831D9A00E912F5 /* axDefaultFontBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580711A831D9A00E912F5 /* axDefaultFontBuffer.cpp */; };
+		7CE580A61A831D9A00E912F5 /* axEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580721A831D9A00E912F5 /* axEvent.cpp */; };
+		7CE580A71A831D9A00E912F5 /* axEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580731A831D9A00E912F5 /* axEventManager.cpp */; };
+		7CE580A81A831D9A00E912F5 /* axFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580741A831D9A00E912F5 /* axFont.cpp */; };
+		7CE580A91A831D9A00E912F5 /* axGC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580751A831D9A00E912F5 /* axGC.cpp */; };
+		7CE580AA1A831D9A00E912F5 /* axImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580761A831D9A00E912F5 /* axImage.cpp */; };
+		7CE580AB1A831D9A00E912F5 /* axKeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580771A831D9A00E912F5 /* axKeyboardManager.cpp */; };
+		7CE580AC1A831D9A00E912F5 /* axMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580781A831D9A00E912F5 /* axMain.cpp */; };
+		7CE580AD1A831D9A00E912F5 /* axManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580791A831D9A00E912F5 /* axManager.cpp */; };
+		7CE580AE1A831D9A00E912F5 /* axMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5807A1A831D9A00E912F5 /* axMath.cpp */; };
+		7CE580AF1A831D9A00E912F5 /* axMouseManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5807B1A831D9A00E912F5 /* axMouseManager.cpp */; };
+		7CE580B01A831D9A00E912F5 /* axMsg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5807C1A831D9A00E912F5 /* axMsg.cpp */; };
+		7CE580B11A831D9A00E912F5 /* axObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5807D1A831D9A00E912F5 /* axObject.cpp */; };
+		7CE580B21A831D9A00E912F5 /* axObjectLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5807E1A831D9A00E912F5 /* axObjectLoader.cpp */; };
+		7CE580B31A831D9A00E912F5 /* axPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5807F1A831D9A00E912F5 /* axPanel.cpp */; };
+		7CE580B41A831D9A00E912F5 /* axResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580801A831D9A00E912F5 /* axResourceManager.cpp */; };
+		7CE580B51A831D9A00E912F5 /* axTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580811A831D9A00E912F5 /* axTimer.cpp */; };
+		7CE580B61A831D9A00E912F5 /* axUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580821A831D9A00E912F5 /* axUtils.cpp */; };
+		7CE580B71A831D9A00E912F5 /* axVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580831A831D9A00E912F5 /* axVar.cpp */; };
+		7CE580B81A831D9A00E912F5 /* axWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580841A831D9A00E912F5 /* axWidget.cpp */; };
+		7CE580B91A831D9A00E912F5 /* axWidgetBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580851A831D9A00E912F5 /* axWidgetBuilder.cpp */; };
+		7CE580BA1A831D9A00E912F5 /* axWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580861A831D9A00E912F5 /* axWindow.cpp */; };
+		7CE580BB1A831D9A00E912F5 /* axWindowTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580871A831D9A00E912F5 /* axWindowTree.cpp */; };
+		7CE580C21A831DEF00E912F5 /* libportaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE580BD1A831DEF00E912F5 /* libportaudio.dylib */; };
+		7CE580C41A831DEF00E912F5 /* libsndfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE580BF1A831DEF00E912F5 /* libsndfile.dylib */; };
+		7CE580C51A831DEF00E912F5 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE580C01A831DEF00E912F5 /* libfreetype.6.dylib */; };
+		7CE580D51A8326B900E912F5 /* axAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580C71A8326B900E912F5 /* axAudio.cpp */; };
+		7CE580D61A8326B900E912F5 /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580C91A8326B900E912F5 /* axAudioBuffer.cpp */; };
+		7CE580D71A8326B900E912F5 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580CB1A8326B900E912F5 /* axAudioBufferPlayer.cpp */; };
+		7CE580D81A8326B900E912F5 /* axAudioEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580CD1A8326B900E912F5 /* axAudioEnvelope.cpp */; };
+		7CE580D91A8326B900E912F5 /* axAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580CF1A8326B900E912F5 /* axAudioFilter.cpp */; };
+		7CE580DA1A8326B900E912F5 /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580D11A8326B900E912F5 /* axAudioUtils.cpp */; };
+		7CE580DB1A8326B900E912F5 /* axAudioWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580D31A8326B900E912F5 /* axAudioWaveTable.cpp */; };
+		7CE585A41A8327C500E912F5 /* AudioDrumMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580DC1A8327BF00E912F5 /* AudioDrumMachine.cpp */; };
+		7CE589AD1A832B7400E912F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE589AC1A832B7400E912F5 /* Foundation.framework */; };
+		7CE589B11A832DA500E912F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE589B01A832DA500E912F5 /* Cocoa.framework */; };
+		7CE589B51A832EED00E912F5 /* libpng15.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE589B41A832EED00E912F5 /* libpng15.dylib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7C20B69719EDBE6100D6ED6F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7C20B67B19EDBE6000D6ED6F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7C20B68219EDBE6000D6ED6F;
-			remoteInfo = MidiSequencer;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		7C03514A1A393A880025338C /* axEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEventManager.h; path = ../../../../../include/axEventManager.h; sourceTree = "<group>"; };
-		7C03514B1A393A880025338C /* axMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMain.h; path = ../../../../../include/axMain.h; sourceTree = "<group>"; };
-		7C03514C1A393A880025338C /* axMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMath.h; path = ../../../../../include/axMath.h; sourceTree = "<group>"; };
-		7C03514D1A393A880025338C /* axMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMsg.h; path = ../../../../../include/axMsg.h; sourceTree = "<group>"; };
-		7C03514E1A393A880025338C /* axSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axSerialize.h; path = ../../../../../include/axSerialize.h; sourceTree = "<group>"; };
-		7C03514F1A393A880025338C /* axTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axTimer.h; path = ../../../../../include/axTimer.h; sourceTree = "<group>"; };
-		7C0351501A393AA60025338C /* axApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axApp.cpp; path = ../../../../../source/axApp.cpp; sourceTree = "<group>"; };
-		7C0351511A393AA60025338C /* axC++.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "axC++.cpp"; path = "../../../../../source/axC++.cpp"; sourceTree = "<group>"; };
-		7C0351521A393AA60025338C /* axColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axColor.cpp; path = ../../../../../source/axColor.cpp; sourceTree = "<group>"; };
-		7C0351531A393AA60025338C /* axCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axCore.cpp; path = ../../../../../source/axCore.cpp; sourceTree = "<group>"; };
-		7C0351541A393AA60025338C /* axEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEvent.cpp; path = ../../../../../source/axEvent.cpp; sourceTree = "<group>"; };
-		7C0351551A393AA60025338C /* axEventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axEventManager.cpp; path = ../../../../../source/axEventManager.cpp; sourceTree = "<group>"; };
-		7C0351561A393AA60025338C /* axFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axFont.cpp; path = ../../../../../source/axFont.cpp; sourceTree = "<group>"; };
-		7C0351571A393AA60025338C /* axGC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axGC.cpp; path = ../../../../../source/axGC.cpp; sourceTree = "<group>"; };
-		7C0351581A393AA60025338C /* axImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axImage.cpp; path = ../../../../../source/axImage.cpp; sourceTree = "<group>"; };
-		7C0351591A393AA60025338C /* axMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMain.cpp; path = ../../../../../source/axMain.cpp; sourceTree = "<group>"; };
-		7C03515A1A393AA60025338C /* axManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axManager.cpp; path = ../../../../../source/axManager.cpp; sourceTree = "<group>"; };
-		7C03515B1A393AA60025338C /* axMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMath.cpp; path = ../../../../../source/axMath.cpp; sourceTree = "<group>"; };
-		7C03515C1A393AA60025338C /* axMsg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMsg.cpp; path = ../../../../../source/axMsg.cpp; sourceTree = "<group>"; };
-		7C03515D1A393AA60025338C /* axObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axObject.cpp; path = ../../../../../source/axObject.cpp; sourceTree = "<group>"; };
-		7C03515E1A393AA60025338C /* axPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axPanel.cpp; path = ../../../../../source/axPanel.cpp; sourceTree = "<group>"; };
-		7C03515F1A393AA60025338C /* axSerialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axSerialize.cpp; path = ../../../../../source/axSerialize.cpp; sourceTree = "<group>"; };
-		7C0351601A393AA60025338C /* axTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axTimer.cpp; path = ../../../../../source/axTimer.cpp; sourceTree = "<group>"; };
-		7C0351611A393AA60025338C /* axUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axUtils.cpp; path = ../../../../../source/axUtils.cpp; sourceTree = "<group>"; };
-		7C0351621A393AA60025338C /* axWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axWindow.cpp; path = ../../../../../source/axWindow.cpp; sourceTree = "<group>"; };
-		7C0351631A393AA60025338C /* axWindowTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axWindowTree.cpp; path = ../../../../../source/axWindowTree.cpp; sourceTree = "<group>"; };
-		7C0351791A393AC40025338C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7C03517A1A393AC40025338C /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		7C03517B1A393AC40025338C /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCocoaInterfaceMac.h; sourceTree = "<group>"; };
-		7C03517C1A393AC40025338C /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
-		7C03517D1A393AC40025338C /* axCoreMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axCoreMac.cpp; sourceTree = "<group>"; };
-		7C03517E1A393AC40025338C /* axCoreMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCoreMac.h; sourceTree = "<group>"; };
-		7C0351851A3940E10025338C /* axButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axButton.cpp; sourceTree = "<group>"; };
-		7C0351861A3940E10025338C /* axButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axButton.h; sourceTree = "<group>"; };
-		7C0351871A3940E10025338C /* axDropMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDropMenu.cpp; sourceTree = "<group>"; };
-		7C0351881A3940E10025338C /* axDropMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDropMenu.h; sourceTree = "<group>"; };
-		7C0351891A3940E10025338C /* axGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGrid.cpp; sourceTree = "<group>"; };
-		7C03518A1A3940E10025338C /* axGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGrid.h; sourceTree = "<group>"; };
-		7C03518B1A3940E10025338C /* axKnob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axKnob.cpp; sourceTree = "<group>"; };
-		7C03518C1A3940E10025338C /* axKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axKnob.h; sourceTree = "<group>"; };
-		7C03518D1A3940E10025338C /* axMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMenu.cpp; sourceTree = "<group>"; };
-		7C03518E1A3940E10025338C /* axMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMenu.h; sourceTree = "<group>"; };
-		7C03518F1A3940E10025338C /* axNumberBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axNumberBox.cpp; sourceTree = "<group>"; };
-		7C0351901A3940E10025338C /* axNumberBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axNumberBox.h; sourceTree = "<group>"; };
-		7C0351911A3940E10025338C /* axPopupMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPopupMenu.cpp; sourceTree = "<group>"; };
-		7C0351921A3940E10025338C /* axPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPopupMenu.h; sourceTree = "<group>"; };
-		7C0351931A3940E10025338C /* axScrollBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axScrollBar.cpp; sourceTree = "<group>"; };
-		7C0351941A3940E10025338C /* axScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axScrollBar.h; sourceTree = "<group>"; };
-		7C0351951A3940E10025338C /* axSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axSlider.cpp; sourceTree = "<group>"; };
-		7C0351961A3940E10025338C /* axSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axSlider.h; sourceTree = "<group>"; };
-		7C0351971A3940E10025338C /* axToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axToggle.cpp; sourceTree = "<group>"; };
-		7C0351981A3940E10025338C /* axToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axToggle.h; sourceTree = "<group>"; };
-		7C0351991A3940E10025338C /* axWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWidget.h; sourceTree = "<group>"; };
-		7C0351A61A3955A80025338C /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		7C20B68319EDBE6000D6ED6F /* MidiSequencer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidiSequencer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C20B68719EDBE6000D6ED6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C20B68B19EDBE6000D6ED6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C20B68D19EDBE6000D6ED6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7C20B69619EDBE6100D6ED6F /* MidiSequencerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MidiSequencerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C20B69B19EDBE6100D6ED6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C20B69C19EDBE6100D6ED6F /* MidiSequencerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MidiSequencerTests.m; sourceTree = "<group>"; };
-		7C20B6D119EDC01B00D6ED6F /* axApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axApp.h; path = ../../../../../include/axApp.h; sourceTree = "<group>"; };
-		7C20B6D219EDC01B00D6ED6F /* axC++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "axC++.h"; path = "../../../../../include/axC++.h"; sourceTree = "<group>"; };
-		7C20B6D319EDC01B00D6ED6F /* axColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axColor.h; path = ../../../../../include/axColor.h; sourceTree = "<group>"; };
-		7C20B6D419EDC01B00D6ED6F /* axCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axCore.h; path = ../../../../../include/axCore.h; sourceTree = "<group>"; };
-		7C20B6D919EDC01B00D6ED6F /* axEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axEvent.h; path = ../../../../../include/axEvent.h; sourceTree = "<group>"; };
-		7C20B6DA19EDC01B00D6ED6F /* axFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axFont.h; path = ../../../../../include/axFont.h; sourceTree = "<group>"; };
-		7C20B6DB19EDC01B00D6ED6F /* axGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axGC.h; path = ../../../../../include/axGC.h; sourceTree = "<group>"; };
-		7C20B6DC19EDC01B00D6ED6F /* axImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axImage.h; path = ../../../../../include/axImage.h; sourceTree = "<group>"; };
-		7C20B6DD19EDC01B00D6ED6F /* axLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axLib.h; path = ../../../../../include/axLib.h; sourceTree = "<group>"; };
-		7C20B6DE19EDC01B00D6ED6F /* axManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axManager.h; path = ../../../../../include/axManager.h; sourceTree = "<group>"; };
-		7C20B6DF19EDC01B00D6ED6F /* axObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axObject.h; path = ../../../../../include/axObject.h; sourceTree = "<group>"; };
-		7C20B6E019EDC01B00D6ED6F /* axPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axPanel.h; path = ../../../../../include/axPanel.h; sourceTree = "<group>"; };
-		7C20B6E119EDC01B00D6ED6F /* axUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axUtils.h; path = ../../../../../include/axUtils.h; sourceTree = "<group>"; };
-		7C20B6E319EDC01B00D6ED6F /* axWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axWindow.h; path = ../../../../../include/axWindow.h; sourceTree = "<group>"; };
-		7C20B6E419EDC01B00D6ED6F /* axWindowTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axWindowTree.h; path = ../../../../../include/axWindowTree.h; sourceTree = "<group>"; };
-		7C20B70119EDC09300D6ED6F /* AudioWaveform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioWaveform.cpp; path = ../../../../AudioWaveform.cpp; sourceTree = "<group>"; };
-		7C20B70219EDC09300D6ED6F /* AudioWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioWaveform.h; path = ../../../../AudioWaveform.h; sourceTree = "<group>"; };
-		7C20B70319EDC09300D6ED6F /* axAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudio.cpp; path = ../../../../axAudio.cpp; sourceTree = "<group>"; };
-		7C20B70419EDC09300D6ED6F /* axAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudio.h; path = ../../../../axAudio.h; sourceTree = "<group>"; };
-		7C20B70519EDC09300D6ED6F /* axAudioBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioBuffer.cpp; path = ../../../../axAudioBuffer.cpp; sourceTree = "<group>"; };
-		7C20B70619EDC09300D6ED6F /* axAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioBuffer.h; path = ../../../../axAudioBuffer.h; sourceTree = "<group>"; };
-		7C20B70719EDC09300D6ED6F /* axAudioEnvelope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioEnvelope.cpp; path = ../../../../axAudioEnvelope.cpp; sourceTree = "<group>"; };
-		7C20B70819EDC09300D6ED6F /* axAudioEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioEnvelope.h; path = ../../../../axAudioEnvelope.h; sourceTree = "<group>"; };
-		7C20B70919EDC09300D6ED6F /* axAudioFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioFilter.cpp; path = ../../../../axAudioFilter.cpp; sourceTree = "<group>"; };
-		7C20B70A19EDC09300D6ED6F /* axAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioFilter.h; path = ../../../../axAudioFilter.h; sourceTree = "<group>"; };
-		7C20B70B19EDC09300D6ED6F /* axMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axMidi.cpp; path = ../../../../axMidi.cpp; sourceTree = "<group>"; };
-		7C20B70C19EDC09300D6ED6F /* axMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axMidi.h; path = ../../../../axMidi.h; sourceTree = "<group>"; };
 		7C20B70F19EDC09300D6ED6F /* DrumSampler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrumSampler.cpp; path = ../../../../DrumSampler.cpp; sourceTree = "<group>"; };
 		7C20B71019EDC09300D6ED6F /* DrumSampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrumSampler.h; path = ../../../../DrumSampler.h; sourceTree = "<group>"; };
 		7C20B71119EDC09300D6ED6F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../../main.cpp; sourceTree = "<group>"; };
@@ -165,7 +92,131 @@
 		7C20B71419EDC09300D6ED6F /* MidiTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidiTrack.h; path = ../../../../MidiTrack.h; sourceTree = "<group>"; };
 		7C20B72119EDC92B00D6ED6F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C20B72319EDC93300D6ED6F /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		7C20B72519EDC94B00D6ED6F /* libpng15.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libpng15.framework; path = ../../../../../../../../../Library/Frameworks/libpng15.framework; sourceTree = "<group>"; };
+		7CE5801D1A831D9A00E912F5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7CE5801E1A831D9A00E912F5 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		7CE5801F1A831D9A00E912F5 /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCocoaInterfaceMac.h; sourceTree = "<group>"; };
+		7CE580201A831D9A00E912F5 /* axCocoaInterfaceMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = axCocoaInterfaceMac.mm; sourceTree = "<group>"; };
+		7CE580211A831D9A00E912F5 /* axCoreMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axCoreMac.cpp; sourceTree = "<group>"; };
+		7CE580221A831D9A00E912F5 /* axCoreMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCoreMac.h; sourceTree = "<group>"; };
+		7CE580231A831D9A00E912F5 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		7CE580251A831D9A00E912F5 /* axAnimatedButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAnimatedButton.cpp; sourceTree = "<group>"; };
+		7CE580261A831D9A00E912F5 /* axAnimatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAnimatedButton.h; sourceTree = "<group>"; };
+		7CE580271A831D9A00E912F5 /* axButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axButton.cpp; sourceTree = "<group>"; };
+		7CE580281A831D9A00E912F5 /* axButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axButton.h; sourceTree = "<group>"; };
+		7CE580291A831D9A00E912F5 /* axDebugButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDebugButton.cpp; sourceTree = "<group>"; };
+		7CE5802A1A831D9A00E912F5 /* axDebugButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDebugButton.h; sourceTree = "<group>"; };
+		7CE5802B1A831D9A00E912F5 /* axDropMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDropMenu.cpp; sourceTree = "<group>"; };
+		7CE5802C1A831D9A00E912F5 /* axDropMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axDropMenu.h; sourceTree = "<group>"; };
+		7CE5802D1A831D9A00E912F5 /* axGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGrid.cpp; sourceTree = "<group>"; };
+		7CE5802E1A831D9A00E912F5 /* axGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGrid.h; sourceTree = "<group>"; };
+		7CE5802F1A831D9A00E912F5 /* axKnob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axKnob.cpp; sourceTree = "<group>"; };
+		7CE580301A831D9A00E912F5 /* axKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axKnob.h; sourceTree = "<group>"; };
+		7CE580311A831D9A00E912F5 /* axLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axLabel.cpp; sourceTree = "<group>"; };
+		7CE580321A831D9A00E912F5 /* axLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axLabel.h; sourceTree = "<group>"; };
+		7CE580331A831D9A00E912F5 /* axMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMenu.cpp; sourceTree = "<group>"; };
+		7CE580341A831D9A00E912F5 /* axMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMenu.h; sourceTree = "<group>"; };
+		7CE580351A831D9A00E912F5 /* axNumberBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axNumberBox.cpp; sourceTree = "<group>"; };
+		7CE580361A831D9A00E912F5 /* axNumberBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axNumberBox.h; sourceTree = "<group>"; };
+		7CE580371A831D9A00E912F5 /* axPlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPlot.cpp; sourceTree = "<group>"; };
+		7CE580381A831D9A00E912F5 /* axPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPlot.h; sourceTree = "<group>"; };
+		7CE580391A831D9A00E912F5 /* axPopupMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPopupMenu.cpp; sourceTree = "<group>"; };
+		7CE5803A1A831D9A00E912F5 /* axPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPopupMenu.h; sourceTree = "<group>"; };
+		7CE5803B1A831D9A00E912F5 /* axScrollBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axScrollBar.cpp; sourceTree = "<group>"; };
+		7CE5803C1A831D9A00E912F5 /* axScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axScrollBar.h; sourceTree = "<group>"; };
+		7CE5803D1A831D9A00E912F5 /* axSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axSlider.cpp; sourceTree = "<group>"; };
+		7CE5803E1A831D9A00E912F5 /* axSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axSlider.h; sourceTree = "<group>"; };
+		7CE5803F1A831D9A00E912F5 /* axStaticImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axStaticImage.cpp; sourceTree = "<group>"; };
+		7CE580401A831D9A00E912F5 /* axStaticImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axStaticImage.h; sourceTree = "<group>"; };
+		7CE580411A831D9A00E912F5 /* axTextBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTextBox.cpp; sourceTree = "<group>"; };
+		7CE580421A831D9A00E912F5 /* axTextBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axTextBox.h; sourceTree = "<group>"; };
+		7CE580431A831D9A00E912F5 /* axTextControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTextControl.cpp; sourceTree = "<group>"; };
+		7CE580441A831D9A00E912F5 /* axTextControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axTextControl.h; sourceTree = "<group>"; };
+		7CE580451A831D9A00E912F5 /* axToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axToggle.cpp; sourceTree = "<group>"; };
+		7CE580461A831D9A00E912F5 /* axToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axToggle.h; sourceTree = "<group>"; };
+		7CE580471A831D9A00E912F5 /* axWaveform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWaveform.cpp; sourceTree = "<group>"; };
+		7CE580481A831D9A00E912F5 /* axWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWaveform.h; sourceTree = "<group>"; };
+		7CE580491A831D9A00E912F5 /* axWaveformNavigator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWaveformNavigator.cpp; sourceTree = "<group>"; };
+		7CE5804A1A831D9A00E912F5 /* axWaveformNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWaveformNavigator.h; sourceTree = "<group>"; };
+		7CE5804B1A831D9A00E912F5 /* exprtk.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = exprtk.hpp; sourceTree = "<group>"; };
+		7CE5804D1A831D9A00E912F5 /* axApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axApp.h; sourceTree = "<group>"; };
+		7CE5804E1A831D9A00E912F5 /* axC++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "axC++.h"; sourceTree = "<group>"; };
+		7CE5804F1A831D9A00E912F5 /* axColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axColor.h; sourceTree = "<group>"; };
+		7CE580501A831D9A00E912F5 /* axConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axConfig.h; sourceTree = "<group>"; };
+		7CE580511A831D9A00E912F5 /* axCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCore.h; sourceTree = "<group>"; };
+		7CE580521A831D9A00E912F5 /* axEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axEvent.h; sourceTree = "<group>"; };
+		7CE580531A831D9A00E912F5 /* axEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axEventManager.h; sourceTree = "<group>"; };
+		7CE580541A831D9A00E912F5 /* axFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFont.h; sourceTree = "<group>"; };
+		7CE580551A831D9A00E912F5 /* axGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGC.h; sourceTree = "<group>"; };
+		7CE580561A831D9A00E912F5 /* axImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axImage.h; sourceTree = "<group>"; };
+		7CE580571A831D9A00E912F5 /* axKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axKeyboardManager.h; sourceTree = "<group>"; };
+		7CE580581A831D9A00E912F5 /* axLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axLib.h; sourceTree = "<group>"; };
+		7CE580591A831D9A00E912F5 /* axMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMain.h; sourceTree = "<group>"; };
+		7CE5805A1A831D9A00E912F5 /* axManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axManager.h; sourceTree = "<group>"; };
+		7CE5805B1A831D9A00E912F5 /* axMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMath.h; sourceTree = "<group>"; };
+		7CE5805C1A831D9A00E912F5 /* axMouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMouseManager.h; sourceTree = "<group>"; };
+		7CE5805D1A831D9A00E912F5 /* axMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axMsg.h; sourceTree = "<group>"; };
+		7CE5805E1A831D9A00E912F5 /* axObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axObject.h; sourceTree = "<group>"; };
+		7CE5805F1A831D9A00E912F5 /* axObjectLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axObjectLoader.h; sourceTree = "<group>"; };
+		7CE580601A831D9A00E912F5 /* axPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axPanel.h; sourceTree = "<group>"; };
+		7CE580611A831D9A00E912F5 /* axResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axResourceManager.h; sourceTree = "<group>"; };
+		7CE580621A831D9A00E912F5 /* axTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axTimer.h; sourceTree = "<group>"; };
+		7CE580631A831D9A00E912F5 /* axUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axUtils.h; sourceTree = "<group>"; };
+		7CE580641A831D9A00E912F5 /* axVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axVar.h; sourceTree = "<group>"; };
+		7CE580651A831D9A00E912F5 /* axWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWidget.h; sourceTree = "<group>"; };
+		7CE580661A831D9A00E912F5 /* axWidgetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWidgetBuilder.h; sourceTree = "<group>"; };
+		7CE580671A831D9A00E912F5 /* axWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindow.h; sourceTree = "<group>"; };
+		7CE580681A831D9A00E912F5 /* axWindowTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWindowTree.h; sourceTree = "<group>"; };
+		7CE580691A831D9A00E912F5 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
+		7CE5806C1A831D9A00E912F5 /* axApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axApp.cpp; sourceTree = "<group>"; };
+		7CE5806D1A831D9A00E912F5 /* axC++.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "axC++.cpp"; sourceTree = "<group>"; };
+		7CE5806E1A831D9A00E912F5 /* axColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axColor.cpp; sourceTree = "<group>"; };
+		7CE5806F1A831D9A00E912F5 /* axConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axConfig.cpp; sourceTree = "<group>"; };
+		7CE580701A831D9A00E912F5 /* axCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axCore.cpp; sourceTree = "<group>"; };
+		7CE580711A831D9A00E912F5 /* axDefaultFontBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axDefaultFontBuffer.cpp; sourceTree = "<group>"; };
+		7CE580721A831D9A00E912F5 /* axEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axEvent.cpp; sourceTree = "<group>"; };
+		7CE580731A831D9A00E912F5 /* axEventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axEventManager.cpp; sourceTree = "<group>"; };
+		7CE580741A831D9A00E912F5 /* axFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axFont.cpp; sourceTree = "<group>"; };
+		7CE580751A831D9A00E912F5 /* axGC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGC.cpp; sourceTree = "<group>"; };
+		7CE580761A831D9A00E912F5 /* axImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axImage.cpp; sourceTree = "<group>"; };
+		7CE580771A831D9A00E912F5 /* axKeyboardManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axKeyboardManager.cpp; sourceTree = "<group>"; };
+		7CE580781A831D9A00E912F5 /* axMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMain.cpp; sourceTree = "<group>"; };
+		7CE580791A831D9A00E912F5 /* axManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axManager.cpp; sourceTree = "<group>"; };
+		7CE5807A1A831D9A00E912F5 /* axMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMath.cpp; sourceTree = "<group>"; };
+		7CE5807B1A831D9A00E912F5 /* axMouseManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMouseManager.cpp; sourceTree = "<group>"; };
+		7CE5807C1A831D9A00E912F5 /* axMsg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMsg.cpp; sourceTree = "<group>"; };
+		7CE5807D1A831D9A00E912F5 /* axObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axObject.cpp; sourceTree = "<group>"; };
+		7CE5807E1A831D9A00E912F5 /* axObjectLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axObjectLoader.cpp; sourceTree = "<group>"; };
+		7CE5807F1A831D9A00E912F5 /* axPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axPanel.cpp; sourceTree = "<group>"; };
+		7CE580801A831D9A00E912F5 /* axResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axResourceManager.cpp; sourceTree = "<group>"; };
+		7CE580811A831D9A00E912F5 /* axTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axTimer.cpp; sourceTree = "<group>"; };
+		7CE580821A831D9A00E912F5 /* axUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axUtils.cpp; sourceTree = "<group>"; };
+		7CE580831A831D9A00E912F5 /* axVar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axVar.cpp; sourceTree = "<group>"; };
+		7CE580841A831D9A00E912F5 /* axWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWidget.cpp; sourceTree = "<group>"; };
+		7CE580851A831D9A00E912F5 /* axWidgetBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWidgetBuilder.cpp; sourceTree = "<group>"; };
+		7CE580861A831D9A00E912F5 /* axWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindow.cpp; sourceTree = "<group>"; };
+		7CE580871A831D9A00E912F5 /* axWindowTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWindowTree.cpp; sourceTree = "<group>"; };
+		7CE580BD1A831DEF00E912F5 /* libportaudio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.dylib; path = ../../../../axKrakenSynth/libportaudio.dylib; sourceTree = "<group>"; };
+		7CE580BF1A831DEF00E912F5 /* libsndfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsndfile.dylib; path = ../../../../axKrakenSynth/libsndfile.dylib; sourceTree = "<group>"; };
+		7CE580C01A831DEF00E912F5 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../axKrakenSynth/libfreetype.6.dylib; sourceTree = "<group>"; };
+		7CE580C71A8326B900E912F5 /* axAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudio.cpp; sourceTree = "<group>"; };
+		7CE580C81A8326B900E912F5 /* axAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudio.h; sourceTree = "<group>"; };
+		7CE580C91A8326B900E912F5 /* axAudioBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioBuffer.cpp; sourceTree = "<group>"; };
+		7CE580CA1A8326B900E912F5 /* axAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBuffer.h; sourceTree = "<group>"; };
+		7CE580CB1A8326B900E912F5 /* axAudioBufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioBufferPlayer.cpp; sourceTree = "<group>"; };
+		7CE580CC1A8326B900E912F5 /* axAudioBufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBufferPlayer.h; sourceTree = "<group>"; };
+		7CE580CD1A8326B900E912F5 /* axAudioEnvelope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioEnvelope.cpp; sourceTree = "<group>"; };
+		7CE580CE1A8326B900E912F5 /* axAudioEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioEnvelope.h; sourceTree = "<group>"; };
+		7CE580CF1A8326B900E912F5 /* axAudioFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioFilter.cpp; sourceTree = "<group>"; };
+		7CE580D01A8326B900E912F5 /* axAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioFilter.h; sourceTree = "<group>"; };
+		7CE580D11A8326B900E912F5 /* axAudioUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioUtils.cpp; sourceTree = "<group>"; };
+		7CE580D21A8326B900E912F5 /* axAudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioUtils.h; sourceTree = "<group>"; };
+		7CE580D31A8326B900E912F5 /* axAudioWaveTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioWaveTable.cpp; sourceTree = "<group>"; };
+		7CE580D41A8326B900E912F5 /* axAudioWaveTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioWaveTable.h; sourceTree = "<group>"; };
+		7CE580DC1A8327BF00E912F5 /* AudioDrumMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioDrumMachine.cpp; path = ../../../../AudioDrumMachine.cpp; sourceTree = "<group>"; };
+		7CE580DD1A8327BF00E912F5 /* AudioDrumMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioDrumMachine.h; path = ../../../../AudioDrumMachine.h; sourceTree = "<group>"; };
+		7CE589AC1A832B7400E912F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7CE589B01A832DA500E912F5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7CE589B41A832EED00E912F5 /* libpng15.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng15.dylib; path = ../../../../../../../../../usr/local/lib/libpng15.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,74 +224,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C20B72619EDC94B00D6ED6F /* libpng15.framework in Frameworks */,
+				7CE589B11A832DA500E912F5 /* Cocoa.framework in Frameworks */,
+				7CE589AD1A832B7400E912F5 /* Foundation.framework in Frameworks */,
+				7CE589B51A832EED00E912F5 /* libpng15.dylib in Frameworks */,
 				7C20B72419EDC93300D6ED6F /* GLKit.framework in Frameworks */,
+				7CE580C21A831DEF00E912F5 /* libportaudio.dylib in Frameworks */,
+				7CE580C51A831DEF00E912F5 /* libfreetype.6.dylib in Frameworks */,
+				7CE580C41A831DEF00E912F5 /* libsndfile.dylib in Frameworks */,
 				7C20B72219EDC92B00D6ED6F /* OpenGL.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C20B69319EDBE6100D6ED6F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C0351781A393AC40025338C /* axMac */ = {
-			isa = PBXGroup;
-			children = (
-				7C0351791A393AC40025338C /* AppDelegate.h */,
-				7C03517A1A393AC40025338C /* AppDelegate.mm */,
-				7C03517B1A393AC40025338C /* axCocoaInterfaceMac.h */,
-				7C03517C1A393AC40025338C /* axCocoaInterfaceMac.mm */,
-				7C03517D1A393AC40025338C /* axCoreMac.cpp */,
-				7C03517E1A393AC40025338C /* axCoreMac.h */,
-			);
-			name = axMac;
-			path = ../../../../../axMac;
-			sourceTree = "<group>";
-		};
-		7C0351841A3940E10025338C /* axWidgets */ = {
-			isa = PBXGroup;
-			children = (
-				7C0351851A3940E10025338C /* axButton.cpp */,
-				7C0351861A3940E10025338C /* axButton.h */,
-				7C0351871A3940E10025338C /* axDropMenu.cpp */,
-				7C0351881A3940E10025338C /* axDropMenu.h */,
-				7C0351891A3940E10025338C /* axGrid.cpp */,
-				7C03518A1A3940E10025338C /* axGrid.h */,
-				7C03518B1A3940E10025338C /* axKnob.cpp */,
-				7C03518C1A3940E10025338C /* axKnob.h */,
-				7C03518D1A3940E10025338C /* axMenu.cpp */,
-				7C03518E1A3940E10025338C /* axMenu.h */,
-				7C03518F1A3940E10025338C /* axNumberBox.cpp */,
-				7C0351901A3940E10025338C /* axNumberBox.h */,
-				7C0351911A3940E10025338C /* axPopupMenu.cpp */,
-				7C0351921A3940E10025338C /* axPopupMenu.h */,
-				7C0351931A3940E10025338C /* axScrollBar.cpp */,
-				7C0351941A3940E10025338C /* axScrollBar.h */,
-				7C0351951A3940E10025338C /* axSlider.cpp */,
-				7C0351961A3940E10025338C /* axSlider.h */,
-				7C0351971A3940E10025338C /* axToggle.cpp */,
-				7C0351981A3940E10025338C /* axToggle.h */,
-				7C0351991A3940E10025338C /* axWidget.h */,
-			);
-			name = axWidgets;
-			path = ../../../../../axWidgets;
-			sourceTree = "<group>";
-		};
 		7C20B67A19EDBE6000D6ED6F = {
 			isa = PBXGroup;
 			children = (
-				7C20B72519EDC94B00D6ED6F /* libpng15.framework */,
+				7CE589B01A832DA500E912F5 /* Cocoa.framework */,
+				7CE589AC1A832B7400E912F5 /* Foundation.framework */,
+				7CE580BD1A831DEF00E912F5 /* libportaudio.dylib */,
+				7CE580BF1A831DEF00E912F5 /* libsndfile.dylib */,
+				7CE580C01A831DEF00E912F5 /* libfreetype.6.dylib */,
+				7CE589B41A832EED00E912F5 /* libpng15.dylib */,
 				7C20B72319EDC93300D6ED6F /* GLKit.framework */,
 				7C20B72119EDC92B00D6ED6F /* OpenGL.framework */,
 				7C20B6A619EDBF9400D6ED6F /* axLib */,
 				7C20B68519EDBE6000D6ED6F /* MidiSequencer */,
-				7C20B69919EDBE6100D6ED6F /* MidiSequencerTests */,
 				7C20B68419EDBE6000D6ED6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -249,7 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				7C20B68319EDBE6000D6ED6F /* MidiSequencer.app */,
-				7C20B69619EDBE6100D6ED6F /* MidiSequencerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,26 +277,7 @@
 		7C20B68619EDBE6000D6ED6F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C0351A61A3955A80025338C /* MainMenu.xib */,
 				7C20B68719EDBE6000D6ED6F /* Info.plist */,
-				7C20B68B19EDBE6000D6ED6F /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7C20B69919EDBE6100D6ED6F /* MidiSequencerTests */ = {
-			isa = PBXGroup;
-			children = (
-				7C20B69C19EDBE6100D6ED6F /* MidiSequencerTests.m */,
-				7C20B69A19EDBE6100D6ED6F /* Supporting Files */,
-			);
-			path = MidiSequencerTests;
-			sourceTree = "<group>";
-		};
-		7C20B69A19EDBE6100D6ED6F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7C20B69B19EDBE6100D6ED6F /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -295,78 +285,20 @@
 		7C20B6A619EDBF9400D6ED6F /* axLib */ = {
 			isa = PBXGroup;
 			children = (
-				7C0351841A3940E10025338C /* axWidgets */,
-				7C0351781A393AC40025338C /* axMac */,
-				7C20B6CF19EDBFF000D6ED6F /* include */,
-				7C20B6CE19EDBFDE00D6ED6F /* source */,
+				7CE580C61A8326B900E912F5 /* axAudio */,
+				7CE5801C1A831D9A00E912F5 /* axMac */,
+				7CE580241A831D9A00E912F5 /* axWidgets */,
+				7CE5804C1A831D9A00E912F5 /* include */,
+				7CE5806A1A831D9A00E912F5 /* source */,
 			);
 			name = axLib;
-			sourceTree = "<group>";
-		};
-		7C20B6CE19EDBFDE00D6ED6F /* source */ = {
-			isa = PBXGroup;
-			children = (
-				7C0351501A393AA60025338C /* axApp.cpp */,
-				7C0351511A393AA60025338C /* axC++.cpp */,
-				7C0351521A393AA60025338C /* axColor.cpp */,
-				7C0351531A393AA60025338C /* axCore.cpp */,
-				7C0351541A393AA60025338C /* axEvent.cpp */,
-				7C0351551A393AA60025338C /* axEventManager.cpp */,
-				7C0351561A393AA60025338C /* axFont.cpp */,
-				7C0351571A393AA60025338C /* axGC.cpp */,
-				7C0351581A393AA60025338C /* axImage.cpp */,
-				7C0351591A393AA60025338C /* axMain.cpp */,
-				7C03515A1A393AA60025338C /* axManager.cpp */,
-				7C03515B1A393AA60025338C /* axMath.cpp */,
-				7C03515C1A393AA60025338C /* axMsg.cpp */,
-				7C03515D1A393AA60025338C /* axObject.cpp */,
-				7C03515E1A393AA60025338C /* axPanel.cpp */,
-				7C03515F1A393AA60025338C /* axSerialize.cpp */,
-				7C0351601A393AA60025338C /* axTimer.cpp */,
-				7C0351611A393AA60025338C /* axUtils.cpp */,
-				7C0351621A393AA60025338C /* axWindow.cpp */,
-				7C0351631A393AA60025338C /* axWindowTree.cpp */,
-			);
-			name = source;
-			sourceTree = "<group>";
-		};
-		7C20B6CF19EDBFF000D6ED6F /* include */ = {
-			isa = PBXGroup;
-			children = (
-				7C03514A1A393A880025338C /* axEventManager.h */,
-				7C03514B1A393A880025338C /* axMain.h */,
-				7C03514C1A393A880025338C /* axMath.h */,
-				7C03514D1A393A880025338C /* axMsg.h */,
-				7C03514E1A393A880025338C /* axSerialize.h */,
-				7C03514F1A393A880025338C /* axTimer.h */,
-				7C20B6D119EDC01B00D6ED6F /* axApp.h */,
-				7C20B6D219EDC01B00D6ED6F /* axC++.h */,
-				7C20B6D319EDC01B00D6ED6F /* axColor.h */,
-				7C20B6D419EDC01B00D6ED6F /* axCore.h */,
-				7C20B6D919EDC01B00D6ED6F /* axEvent.h */,
-				7C20B6DA19EDC01B00D6ED6F /* axFont.h */,
-				7C20B6DB19EDC01B00D6ED6F /* axGC.h */,
-				7C20B6DC19EDC01B00D6ED6F /* axImage.h */,
-				7C20B6DD19EDC01B00D6ED6F /* axLib.h */,
-				7C20B6DE19EDC01B00D6ED6F /* axManager.h */,
-				7C20B6DF19EDC01B00D6ED6F /* axObject.h */,
-				7C20B6E019EDC01B00D6ED6F /* axPanel.h */,
-				7C20B6E119EDC01B00D6ED6F /* axUtils.h */,
-				7C20B6E319EDC01B00D6ED6F /* axWindow.h */,
-				7C20B6E419EDC01B00D6ED6F /* axWindowTree.h */,
-			);
-			name = include;
 			sourceTree = "<group>";
 		};
 		7C20B71F19EDC09B00D6ED6F /* include */ = {
 			isa = PBXGroup;
 			children = (
-				7C20B70219EDC09300D6ED6F /* AudioWaveform.h */,
-				7C20B70419EDC09300D6ED6F /* axAudio.h */,
-				7C20B70619EDC09300D6ED6F /* axAudioBuffer.h */,
-				7C20B70819EDC09300D6ED6F /* axAudioEnvelope.h */,
-				7C20B70A19EDC09300D6ED6F /* axAudioFilter.h */,
-				7C20B70C19EDC09300D6ED6F /* axMidi.h */,
+				7CE580DC1A8327BF00E912F5 /* AudioDrumMachine.cpp */,
+				7CE580DD1A8327BF00E912F5 /* AudioDrumMachine.h */,
 				7C20B71019EDC09300D6ED6F /* DrumSampler.h */,
 				7C20B71219EDC09300D6ED6F /* main.h */,
 				7C20B71419EDC09300D6ED6F /* MidiTrack.h */,
@@ -377,17 +309,168 @@
 		7C20B72019EDC0AB00D6ED6F /* source */ = {
 			isa = PBXGroup;
 			children = (
-				7C20B70119EDC09300D6ED6F /* AudioWaveform.cpp */,
-				7C20B70319EDC09300D6ED6F /* axAudio.cpp */,
-				7C20B70519EDC09300D6ED6F /* axAudioBuffer.cpp */,
-				7C20B70719EDC09300D6ED6F /* axAudioEnvelope.cpp */,
-				7C20B70919EDC09300D6ED6F /* axAudioFilter.cpp */,
-				7C20B70B19EDC09300D6ED6F /* axMidi.cpp */,
 				7C20B70F19EDC09300D6ED6F /* DrumSampler.cpp */,
 				7C20B71119EDC09300D6ED6F /* main.cpp */,
 				7C20B71319EDC09300D6ED6F /* MidiTrack.cpp */,
 			);
 			name = source;
+			sourceTree = "<group>";
+		};
+		7CE5801C1A831D9A00E912F5 /* axMac */ = {
+			isa = PBXGroup;
+			children = (
+				7CE5801D1A831D9A00E912F5 /* AppDelegate.h */,
+				7CE5801E1A831D9A00E912F5 /* AppDelegate.mm */,
+				7CE5801F1A831D9A00E912F5 /* axCocoaInterfaceMac.h */,
+				7CE580201A831D9A00E912F5 /* axCocoaInterfaceMac.mm */,
+				7CE580211A831D9A00E912F5 /* axCoreMac.cpp */,
+				7CE580221A831D9A00E912F5 /* axCoreMac.h */,
+				7CE580231A831D9A00E912F5 /* MainMenu.xib */,
+			);
+			name = axMac;
+			path = ../../../../../axMac;
+			sourceTree = "<group>";
+		};
+		7CE580241A831D9A00E912F5 /* axWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				7CE580251A831D9A00E912F5 /* axAnimatedButton.cpp */,
+				7CE580261A831D9A00E912F5 /* axAnimatedButton.h */,
+				7CE580271A831D9A00E912F5 /* axButton.cpp */,
+				7CE580281A831D9A00E912F5 /* axButton.h */,
+				7CE580291A831D9A00E912F5 /* axDebugButton.cpp */,
+				7CE5802A1A831D9A00E912F5 /* axDebugButton.h */,
+				7CE5802B1A831D9A00E912F5 /* axDropMenu.cpp */,
+				7CE5802C1A831D9A00E912F5 /* axDropMenu.h */,
+				7CE5802D1A831D9A00E912F5 /* axGrid.cpp */,
+				7CE5802E1A831D9A00E912F5 /* axGrid.h */,
+				7CE5802F1A831D9A00E912F5 /* axKnob.cpp */,
+				7CE580301A831D9A00E912F5 /* axKnob.h */,
+				7CE580311A831D9A00E912F5 /* axLabel.cpp */,
+				7CE580321A831D9A00E912F5 /* axLabel.h */,
+				7CE580331A831D9A00E912F5 /* axMenu.cpp */,
+				7CE580341A831D9A00E912F5 /* axMenu.h */,
+				7CE580351A831D9A00E912F5 /* axNumberBox.cpp */,
+				7CE580361A831D9A00E912F5 /* axNumberBox.h */,
+				7CE580371A831D9A00E912F5 /* axPlot.cpp */,
+				7CE580381A831D9A00E912F5 /* axPlot.h */,
+				7CE580391A831D9A00E912F5 /* axPopupMenu.cpp */,
+				7CE5803A1A831D9A00E912F5 /* axPopupMenu.h */,
+				7CE5803B1A831D9A00E912F5 /* axScrollBar.cpp */,
+				7CE5803C1A831D9A00E912F5 /* axScrollBar.h */,
+				7CE5803D1A831D9A00E912F5 /* axSlider.cpp */,
+				7CE5803E1A831D9A00E912F5 /* axSlider.h */,
+				7CE5803F1A831D9A00E912F5 /* axStaticImage.cpp */,
+				7CE580401A831D9A00E912F5 /* axStaticImage.h */,
+				7CE580411A831D9A00E912F5 /* axTextBox.cpp */,
+				7CE580421A831D9A00E912F5 /* axTextBox.h */,
+				7CE580431A831D9A00E912F5 /* axTextControl.cpp */,
+				7CE580441A831D9A00E912F5 /* axTextControl.h */,
+				7CE580451A831D9A00E912F5 /* axToggle.cpp */,
+				7CE580461A831D9A00E912F5 /* axToggle.h */,
+				7CE580471A831D9A00E912F5 /* axWaveform.cpp */,
+				7CE580481A831D9A00E912F5 /* axWaveform.h */,
+				7CE580491A831D9A00E912F5 /* axWaveformNavigator.cpp */,
+				7CE5804A1A831D9A00E912F5 /* axWaveformNavigator.h */,
+				7CE5804B1A831D9A00E912F5 /* exprtk.hpp */,
+			);
+			name = axWidgets;
+			path = ../../../../../axWidgets;
+			sourceTree = "<group>";
+		};
+		7CE5804C1A831D9A00E912F5 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7CE5804D1A831D9A00E912F5 /* axApp.h */,
+				7CE5804E1A831D9A00E912F5 /* axC++.h */,
+				7CE5804F1A831D9A00E912F5 /* axColor.h */,
+				7CE580501A831D9A00E912F5 /* axConfig.h */,
+				7CE580511A831D9A00E912F5 /* axCore.h */,
+				7CE580521A831D9A00E912F5 /* axEvent.h */,
+				7CE580531A831D9A00E912F5 /* axEventManager.h */,
+				7CE580541A831D9A00E912F5 /* axFont.h */,
+				7CE580551A831D9A00E912F5 /* axGC.h */,
+				7CE580561A831D9A00E912F5 /* axImage.h */,
+				7CE580571A831D9A00E912F5 /* axKeyboardManager.h */,
+				7CE580581A831D9A00E912F5 /* axLib.h */,
+				7CE580591A831D9A00E912F5 /* axMain.h */,
+				7CE5805A1A831D9A00E912F5 /* axManager.h */,
+				7CE5805B1A831D9A00E912F5 /* axMath.h */,
+				7CE5805C1A831D9A00E912F5 /* axMouseManager.h */,
+				7CE5805D1A831D9A00E912F5 /* axMsg.h */,
+				7CE5805E1A831D9A00E912F5 /* axObject.h */,
+				7CE5805F1A831D9A00E912F5 /* axObjectLoader.h */,
+				7CE580601A831D9A00E912F5 /* axPanel.h */,
+				7CE580611A831D9A00E912F5 /* axResourceManager.h */,
+				7CE580621A831D9A00E912F5 /* axTimer.h */,
+				7CE580631A831D9A00E912F5 /* axUtils.h */,
+				7CE580641A831D9A00E912F5 /* axVar.h */,
+				7CE580651A831D9A00E912F5 /* axWidget.h */,
+				7CE580661A831D9A00E912F5 /* axWidgetBuilder.h */,
+				7CE580671A831D9A00E912F5 /* axWindow.h */,
+				7CE580681A831D9A00E912F5 /* axWindowTree.h */,
+				7CE580691A831D9A00E912F5 /* rapidxml.hpp */,
+			);
+			name = include;
+			path = ../../../../../include;
+			sourceTree = "<group>";
+		};
+		7CE5806A1A831D9A00E912F5 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				7CE5806C1A831D9A00E912F5 /* axApp.cpp */,
+				7CE5806D1A831D9A00E912F5 /* axC++.cpp */,
+				7CE5806E1A831D9A00E912F5 /* axColor.cpp */,
+				7CE5806F1A831D9A00E912F5 /* axConfig.cpp */,
+				7CE580701A831D9A00E912F5 /* axCore.cpp */,
+				7CE580711A831D9A00E912F5 /* axDefaultFontBuffer.cpp */,
+				7CE580721A831D9A00E912F5 /* axEvent.cpp */,
+				7CE580731A831D9A00E912F5 /* axEventManager.cpp */,
+				7CE580741A831D9A00E912F5 /* axFont.cpp */,
+				7CE580751A831D9A00E912F5 /* axGC.cpp */,
+				7CE580761A831D9A00E912F5 /* axImage.cpp */,
+				7CE580771A831D9A00E912F5 /* axKeyboardManager.cpp */,
+				7CE580781A831D9A00E912F5 /* axMain.cpp */,
+				7CE580791A831D9A00E912F5 /* axManager.cpp */,
+				7CE5807A1A831D9A00E912F5 /* axMath.cpp */,
+				7CE5807B1A831D9A00E912F5 /* axMouseManager.cpp */,
+				7CE5807C1A831D9A00E912F5 /* axMsg.cpp */,
+				7CE5807D1A831D9A00E912F5 /* axObject.cpp */,
+				7CE5807E1A831D9A00E912F5 /* axObjectLoader.cpp */,
+				7CE5807F1A831D9A00E912F5 /* axPanel.cpp */,
+				7CE580801A831D9A00E912F5 /* axResourceManager.cpp */,
+				7CE580811A831D9A00E912F5 /* axTimer.cpp */,
+				7CE580821A831D9A00E912F5 /* axUtils.cpp */,
+				7CE580831A831D9A00E912F5 /* axVar.cpp */,
+				7CE580841A831D9A00E912F5 /* axWidget.cpp */,
+				7CE580851A831D9A00E912F5 /* axWidgetBuilder.cpp */,
+				7CE580861A831D9A00E912F5 /* axWindow.cpp */,
+				7CE580871A831D9A00E912F5 /* axWindowTree.cpp */,
+			);
+			name = source;
+			path = ../../../../../source;
+			sourceTree = "<group>";
+		};
+		7CE580C61A8326B900E912F5 /* axAudio */ = {
+			isa = PBXGroup;
+			children = (
+				7CE580C71A8326B900E912F5 /* axAudio.cpp */,
+				7CE580C81A8326B900E912F5 /* axAudio.h */,
+				7CE580C91A8326B900E912F5 /* axAudioBuffer.cpp */,
+				7CE580CA1A8326B900E912F5 /* axAudioBuffer.h */,
+				7CE580CB1A8326B900E912F5 /* axAudioBufferPlayer.cpp */,
+				7CE580CC1A8326B900E912F5 /* axAudioBufferPlayer.h */,
+				7CE580CD1A8326B900E912F5 /* axAudioEnvelope.cpp */,
+				7CE580CE1A8326B900E912F5 /* axAudioEnvelope.h */,
+				7CE580CF1A8326B900E912F5 /* axAudioFilter.cpp */,
+				7CE580D01A8326B900E912F5 /* axAudioFilter.h */,
+				7CE580D11A8326B900E912F5 /* axAudioUtils.cpp */,
+				7CE580D21A8326B900E912F5 /* axAudioUtils.h */,
+				7CE580D31A8326B900E912F5 /* axAudioWaveTable.cpp */,
+				7CE580D41A8326B900E912F5 /* axAudioWaveTable.h */,
+			);
+			name = axAudio;
+			path = ../../../../../axAudio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,24 +493,6 @@
 			productReference = 7C20B68319EDBE6000D6ED6F /* MidiSequencer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7C20B69519EDBE6100D6ED6F /* MidiSequencerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7C20B6A319EDBE6100D6ED6F /* Build configuration list for PBXNativeTarget "MidiSequencerTests" */;
-			buildPhases = (
-				7C20B69219EDBE6100D6ED6F /* Sources */,
-				7C20B69319EDBE6100D6ED6F /* Frameworks */,
-				7C20B69419EDBE6100D6ED6F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7C20B69819EDBE6100D6ED6F /* PBXTargetDependency */,
-			);
-			name = MidiSequencerTests;
-			productName = MidiSequencerTests;
-			productReference = 7C20B69619EDBE6100D6ED6F /* MidiSequencerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -439,10 +504,6 @@
 				TargetAttributes = {
 					7C20B68219EDBE6000D6ED6F = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					7C20B69519EDBE6100D6ED6F = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 7C20B68219EDBE6000D6ED6F;
 					};
 				};
 			};
@@ -460,7 +521,6 @@
 			projectRoot = "";
 			targets = (
 				7C20B68219EDBE6000D6ED6F /* MidiSequencer */,
-				7C20B69519EDBE6100D6ED6F /* MidiSequencerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -471,14 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C20B68E19EDBE6000D6ED6F /* Images.xcassets in Resources */,
-				7C0351A71A3955A80025338C /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C20B69419EDBE6100D6ED6F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				7CE5808B1A831D9A00E912F5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,69 +542,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C0351731A393AA60025338C /* axSerialize.cpp in Sources */,
-				7C0351661A393AA60025338C /* axColor.cpp in Sources */,
-				7C0351641A393AA60025338C /* axApp.cpp in Sources */,
-				7C03519E1A3940E10025338C /* axMenu.cpp in Sources */,
-				7C03516F1A393AA60025338C /* axMath.cpp in Sources */,
-				7C03519B1A3940E10025338C /* axDropMenu.cpp in Sources */,
-				7C03516B1A393AA60025338C /* axGC.cpp in Sources */,
+				7CE580911A831D9A00E912F5 /* axKnob.cpp in Sources */,
+				7CE580DB1A8326B900E912F5 /* axAudioWaveTable.cpp in Sources */,
+				7CE580A81A831D9A00E912F5 /* axFont.cpp in Sources */,
+				7CE5808D1A831D9A00E912F5 /* axButton.cpp in Sources */,
 				7C20B71C19EDC09300D6ED6F /* DrumSampler.cpp in Sources */,
-				7C20B68C19EDBE6000D6ED6F /* main.m in Sources */,
-				7C20B71619EDC09300D6ED6F /* axAudio.cpp in Sources */,
-				7C0351671A393AA60025338C /* axCore.cpp in Sources */,
-				7C03516A1A393AA60025338C /* axFont.cpp in Sources */,
-				7C0351A31A3940E10025338C /* axToggle.cpp in Sources */,
-				7C0351681A393AA60025338C /* axEvent.cpp in Sources */,
-				7C03519F1A3940E10025338C /* axNumberBox.cpp in Sources */,
-				7C20B71A19EDC09300D6ED6F /* axMidi.cpp in Sources */,
-				7C03516E1A393AA60025338C /* axManager.cpp in Sources */,
-				7C0351651A393AA60025338C /* axC++.cpp in Sources */,
-				7C20B71719EDC09300D6ED6F /* axAudioBuffer.cpp in Sources */,
-				7C0351A01A3940E10025338C /* axPopupMenu.cpp in Sources */,
-				7C0351801A393AC40025338C /* AppDelegate.mm in Sources */,
-				7C0351761A393AA60025338C /* axWindow.cpp in Sources */,
-				7C0351811A393AC40025338C /* axCocoaInterfaceMac.mm in Sources */,
-				7C0351A11A3940E10025338C /* axScrollBar.cpp in Sources */,
-				7C03519A1A3940E10025338C /* axButton.cpp in Sources */,
-				7C0351821A393AC40025338C /* axCoreMac.cpp in Sources */,
-				7C0351721A393AA60025338C /* axPanel.cpp in Sources */,
-				7C0351741A393AA60025338C /* axTimer.cpp in Sources */,
+				7CE580AB1A831D9A00E912F5 /* axKeyboardManager.cpp in Sources */,
+				7CE5808A1A831D9A00E912F5 /* axCoreMac.cpp in Sources */,
+				7CE580951A831D9A00E912F5 /* axPlot.cpp in Sources */,
+				7CE580AC1A831D9A00E912F5 /* axMain.cpp in Sources */,
+				7CE580B81A831D9A00E912F5 /* axWidget.cpp in Sources */,
+				7CE580B01A831D9A00E912F5 /* axMsg.cpp in Sources */,
+				7CE580B21A831D9A00E912F5 /* axObjectLoader.cpp in Sources */,
+				7CE580B31A831D9A00E912F5 /* axPanel.cpp in Sources */,
+				7CE580DA1A8326B900E912F5 /* axAudioUtils.cpp in Sources */,
+				7CE580A51A831D9A00E912F5 /* axDefaultFontBuffer.cpp in Sources */,
+				7CE580B61A831D9A00E912F5 /* axUtils.cpp in Sources */,
+				7CE580B71A831D9A00E912F5 /* axVar.cpp in Sources */,
+				7CE580A31A831D9A00E912F5 /* axConfig.cpp in Sources */,
+				7CE580A01A831D9A00E912F5 /* axApp.cpp in Sources */,
+				7CE5809C1A831D9A00E912F5 /* axToggle.cpp in Sources */,
+				7CE580B91A831D9A00E912F5 /* axWidgetBuilder.cpp in Sources */,
+				7CE580A41A831D9A00E912F5 /* axCore.cpp in Sources */,
+				7CE580AD1A831D9A00E912F5 /* axManager.cpp in Sources */,
+				7CE580A61A831D9A00E912F5 /* axEvent.cpp in Sources */,
+				7CE5809A1A831D9A00E912F5 /* axTextBox.cpp in Sources */,
+				7CE580D71A8326B900E912F5 /* axAudioBufferPlayer.cpp in Sources */,
 				7C20B71D19EDC09300D6ED6F /* main.cpp in Sources */,
-				7C20B71919EDC09300D6ED6F /* axAudioFilter.cpp in Sources */,
-				7C0351691A393AA60025338C /* axEventManager.cpp in Sources */,
-				7C0351701A393AA60025338C /* axMsg.cpp in Sources */,
-				7C0351711A393AA60025338C /* axObject.cpp in Sources */,
-				7C03516C1A393AA60025338C /* axImage.cpp in Sources */,
-				7C03516D1A393AA60025338C /* axMain.cpp in Sources */,
-				7C03519C1A3940E10025338C /* axGrid.cpp in Sources */,
-				7C0351751A393AA60025338C /* axUtils.cpp in Sources */,
-				7C03519D1A3940E10025338C /* axKnob.cpp in Sources */,
-				7C20B71519EDC09300D6ED6F /* AudioWaveform.cpp in Sources */,
+				7CE5809D1A831D9A00E912F5 /* axWaveform.cpp in Sources */,
+				7CE580B11A831D9A00E912F5 /* axObject.cpp in Sources */,
+				7CE580931A831D9A00E912F5 /* axMenu.cpp in Sources */,
+				7CE580A21A831D9A00E912F5 /* axColor.cpp in Sources */,
+				7CE580A71A831D9A00E912F5 /* axEventManager.cpp in Sources */,
+				7CE5808C1A831D9A00E912F5 /* axAnimatedButton.cpp in Sources */,
+				7CE580891A831D9A00E912F5 /* axCocoaInterfaceMac.mm in Sources */,
+				7CE580981A831D9A00E912F5 /* axSlider.cpp in Sources */,
+				7CE580D91A8326B900E912F5 /* axAudioFilter.cpp in Sources */,
+				7CE580A91A831D9A00E912F5 /* axGC.cpp in Sources */,
+				7CE580AA1A831D9A00E912F5 /* axImage.cpp in Sources */,
+				7CE580941A831D9A00E912F5 /* axNumberBox.cpp in Sources */,
+				7CE5809E1A831D9A00E912F5 /* axWaveformNavigator.cpp in Sources */,
+				7CE580BA1A831D9A00E912F5 /* axWindow.cpp in Sources */,
+				7CE580881A831D9A00E912F5 /* AppDelegate.mm in Sources */,
+				7CE580D61A8326B900E912F5 /* axAudioBuffer.cpp in Sources */,
+				7CE580901A831D9A00E912F5 /* axGrid.cpp in Sources */,
+				7CE580D51A8326B900E912F5 /* axAudio.cpp in Sources */,
+				7CE580B41A831D9A00E912F5 /* axResourceManager.cpp in Sources */,
+				7CE5808F1A831D9A00E912F5 /* axDropMenu.cpp in Sources */,
+				7CE580961A831D9A00E912F5 /* axPopupMenu.cpp in Sources */,
+				7CE580971A831D9A00E912F5 /* axScrollBar.cpp in Sources */,
+				7CE580A11A831D9A00E912F5 /* axC++.cpp in Sources */,
+				7CE580991A831D9A00E912F5 /* axStaticImage.cpp in Sources */,
+				7CE5809B1A831D9A00E912F5 /* axTextControl.cpp in Sources */,
+				7CE585A41A8327C500E912F5 /* AudioDrumMachine.cpp in Sources */,
 				7C20B71E19EDC09300D6ED6F /* MidiTrack.cpp in Sources */,
-				7C0351A21A3940E10025338C /* axSlider.cpp in Sources */,
-				7C20B71819EDC09300D6ED6F /* axAudioEnvelope.cpp in Sources */,
-				7C0351771A393AA60025338C /* axWindowTree.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C20B69219EDBE6100D6ED6F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7C20B69D19EDBE6100D6ED6F /* MidiSequencerTests.m in Sources */,
+				7CE580921A831D9A00E912F5 /* axLabel.cpp in Sources */,
+				7CE5808E1A831D9A00E912F5 /* axDebugButton.cpp in Sources */,
+				7CE580D81A8326B900E912F5 /* axAudioEnvelope.cpp in Sources */,
+				7CE580BB1A831D9A00E912F5 /* axWindowTree.cpp in Sources */,
+				7CE580AE1A831D9A00E912F5 /* axMath.cpp in Sources */,
+				7CE580AF1A831D9A00E912F5 /* axMouseManager.cpp in Sources */,
+				7CE580B51A831D9A00E912F5 /* axTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7C20B69819EDBE6100D6ED6F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7C20B68219EDBE6000D6ED6F /* MidiSequencer */;
-			targetProxy = 7C20B69719EDBE6100D6ED6F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7C20B69E19EDBE6100D6ED6F /* Debug */ = {
@@ -654,12 +709,9 @@
 					"/Users/alexarse/Development/freetype-2.4.0/objs",
 					/Library/Frameworks/libpng15.framework,
 					/usr/local/lib,
+					/Users/alexarse/Project/axLib/axProjects/axKrakenSynth,
 				);
-				OTHER_LDFLAGS = (
-					"-lfreetype",
-					"-lportaudio",
-					"-lsndfile",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -687,49 +739,10 @@
 					"/Users/alexarse/Development/freetype-2.4.0/objs",
 					/Library/Frameworks/libpng15.framework,
 					/usr/local/lib,
+					/Users/alexarse/Project/axLib/axProjects/axKrakenSynth,
 				);
-				OTHER_LDFLAGS = (
-					"-lfreetype",
-					"-lportaudio",
-					"-lsndfile",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		7C20B6A419EDBE6100D6ED6F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MidiSequencerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MidiSequencer.app/Contents/MacOS/MidiSequencer";
-			};
-			name = Debug;
-		};
-		7C20B6A519EDBE6100D6ED6F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MidiSequencerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MidiSequencer.app/Contents/MacOS/MidiSequencer";
 			};
 			name = Release;
 		};
@@ -750,15 +763,6 @@
 			buildConfigurations = (
 				7C20B6A119EDBE6100D6ED6F /* Debug */,
 				7C20B6A219EDBE6100D6ED6F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7C20B6A319EDBE6100D6ED6F /* Build configuration list for PBXNativeTarget "MidiSequencerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7C20B6A419EDBE6100D6ED6F /* Debug */,
-				7C20B6A519EDBE6100D6ED6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

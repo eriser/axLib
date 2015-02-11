@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axObjects>
+  <axKnob
+      name="freq"
+      rect="55, 15, 36, 36"
+      info="resources/objects/SmallKnob.axObj"
+      event="OnFreqChange">
+  </axKnob>
+  
+  <axKnob
+      name="gain"
+      rect="106, 15, 36, 36"
+      info="resources/objects/SmallKnob.axObj"
+      event="OnGainChange">
+  </axKnob>
+  
+  <axLabel name="labelFreq" rect="55, 0, 46, 15" info="resources/objects/Label.axObj" label="Freq"></axLabel>
+  <axLabel name="labelGain" rect="106, 0, 46, 15" info="resources/objects/Label.axObj" label="Gain"></axLabel>
+
+  <axStaticImage name="img" pos="11, 5" path="resources/images/oscWaveform.png"></axLabel>
+  
+  
+  <axToggle
+      name="sineLed"
+      rect="35, 5, 10, 10"
+      info="resources/objects/LedToggle.axObj"
+      event="OnWaveformChange"
+      msg="sine">
+  </axToggle>
+  
+  <axToggle
+      name="triLed"
+      rect="35, 15, 10, 10"
+      info="resources/objects/LedToggle.axObj"
+      event="OnWaveformChange"
+      msg="tri">
+  </axToggle>
+  
+  <axToggle
+      name="sqrtLed"
+      rect="35, 25, 10, 10"
+      info="resources/objects/LedToggle.axObj"
+      event="OnWaveformChange"
+      msg="sqrt">
+  </axToggle>
+  
+  <axToggle
+      name="sawLed"
+      rect="35, 35, 10, 10"
+      info="resources/objects/LedToggle.axObj"
+      event="OnWaveformChange"
+      msg="saw">
+  </axToggle>
+  
+</axObjects>

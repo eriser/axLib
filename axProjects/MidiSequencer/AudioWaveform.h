@@ -37,49 +37,49 @@ struct axWaveformInfo
 };
 
 
-class axWaveform: public axPanel
-{
-public:
-    axWaveform(axWindow* parent,
-                const axRect& rect,
-                const axWaveformEvents& events,
-                const axWaveformInfo& waveInfo,
-				const string& snd_path);
-
-    void SetBufferPtr(axAudioBuffer* buffer)
-    {
-        m_buffer = buffer;
-        Update();
-    }
-
-	void SetBackgroundAlpha(const float& alpha)
-	{
-		_bgAlpha = alpha;
-	}
-
-    // void SetTimeLineParms( axTimeLineParams* lines )
-    // {
-    //     m_lineParams = lines;
-    //     Update();
-    // }
-
-private:
-    axWaveformInfo m_info;
-    axWaveformEvents m_eventID;
-    axAudioBuffer* m_buffer;
-
-	axImage* _envRoundImg;
-
-	vector<axFloatPoint> _pointsRealValue;
-	vector<axPoint> _envPoints;
-    // axTimeLineParams* m_lineParams;
-
-	float _bgAlpha;
-
-    void FormatLines(const axSize& size);
-
-    void OnPaint();
-};
+//class axWaveform: public axPanel
+//{
+//public:
+//    axWaveform(axWindow* parent,
+//                const axRect& rect,
+//                const axWaveformEvents& events,
+//                const axWaveformInfo& waveInfo,
+//				const string& snd_path);
+//
+//    void SetBufferPtr(axAudioBuffer* buffer)
+//    {
+//        m_buffer = buffer;
+//        Update();
+//    }
+//
+//	void SetBackgroundAlpha(const float& alpha)
+//	{
+//		_bgAlpha = alpha;
+//	}
+//
+//    // void SetTimeLineParms( axTimeLineParams* lines )
+//    // {
+//    //     m_lineParams = lines;
+//    //     Update();
+//    // }
+//
+//private:
+//    axWaveformInfo m_info;
+//    axWaveformEvents m_eventID;
+//    axAudioBuffer* m_buffer;
+//
+//	axImage* _envRoundImg;
+//
+//	vector<axFloatPoint> _pointsRealValue;
+//	vector<axPoint> _envPoints;
+//    // axTimeLineParams* m_lineParams;
+//
+//	float _bgAlpha;
+//
+//    void FormatLines(const axSize& size);
+//
+//    void OnPaint();
+//};
 
 //-----------------------------------------------------------------------------
 // MultipleSlider.

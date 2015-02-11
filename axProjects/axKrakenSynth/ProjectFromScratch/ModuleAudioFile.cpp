@@ -14,53 +14,52 @@ axPanel(parent, rect)
     axObjectLoader loader(this, app_path + "ressources/objects/Audiofile.xml");
     
     
-    _wave = axWindow::GetResourceManager()->GetResource("waveform");
-//    std::cout << "ModuleAudioFile : " << app_path + "ressources/objects/Audiofile.xml" << std::endl;
+//    _wave = axWindow::GetResourceManager()->GetResource("waveform");
     
-    axAudioBuffer* audioBuffer = new axAudioBuffer("ressources/sounds/snare.wav");
+//    axAudioBuffer* audioBuffer = new axAudioBuffer("ressources/sounds/snare.wav");
+//    
+//    axRect navRect(_wave->GetNextPosDown(0), axSize(rect.size.x - 30, 15));
+//    _navig = new axWaveformNavigator(this, navRect);
+//    
+//    _wave->SetAudioBuffer(audioBuffer);
+//    _navig->SetAudioBuffer(audioBuffer);
     
-    axRect navRect(_wave->GetNextPosDown(0), axSize(rect.size.x - 30, 15));
-    _navig = new axWaveformNavigator(this, navRect);
+//    axSliderInfo sld_info;
+//    sld_info.img_path = app_path + std::string("ressources/images/sliderPlain.png");
+//    sld_info.btn_size = axSize(12, 12);
+//    sld_info.slider_width = 4;
+//    
+//    // Doesn't seem to work for now.
+//    sld_info.bgColorNormal = axColor(0.7, 0.7, 0.7, 0.0);
+//    sld_info.bgColorHover = axColor(0.9, 0.9, 0.9, 0.0);
+//    sld_info.bgColorClicked = axColor(0.6, 0.6, 0.6, 0.0);
+//    sld_info.contourColor = axColor(0.5, 0.5, 0.5, 1.0);
+//    
+//    sld_info.sliderColorNormal = axColor(0.2, 0.2, 0.9, 0.1);
+//    sld_info.sliderColorHover = axColor(0.2, 0.2, 1.0, 0.1);
+//    sld_info.sliderColorClicked = axColor(0.2, 0.2, 0.6, 0.1);
+//    sld_info.sliderContourColor = axColor(0.2, 0.2, 0.2, 0.1);
+//    
+//    sld_info.backSliderColor = axColor(0.7, 0.7, 0.7, 0.1);
+//    sld_info.backSliderContourColor = axColor(0.2, 0.2, 0.2, 0.1);
+//    
+//    axSliderEvents sld_evts;
+//    sld_evts.slider_value_change = GetOnZoomValue();
     
-    _wave->SetAudioBuffer(audioBuffer);
-    _navig->SetAudioBuffer(audioBuffer);
-    
-    axSliderInfo sld_info;
-    sld_info.img_path = app_path + std::string("ressources/images/sliderPlain.png");
-    sld_info.btn_size = axSize(12, 12);
-    sld_info.slider_width = 4;
-    
-    // Doesn't seem to work for now.
-    sld_info.bgColorNormal = axColor(0.7, 0.7, 0.7, 0.0);
-    sld_info.bgColorHover = axColor(0.9, 0.9, 0.9, 0.0);
-    sld_info.bgColorClicked = axColor(0.6, 0.6, 0.6, 0.0);
-    sld_info.contourColor = axColor(0.5, 0.5, 0.5, 1.0);
-    
-    sld_info.sliderColorNormal = axColor(0.2, 0.2, 0.9, 0.1);
-    sld_info.sliderColorHover = axColor(0.2, 0.2, 1.0, 0.1);
-    sld_info.sliderColorClicked = axColor(0.2, 0.2, 0.6, 0.1);
-    sld_info.sliderContourColor = axColor(0.2, 0.2, 0.2, 0.1);
-    
-    sld_info.backSliderColor = axColor(0.7, 0.7, 0.7, 0.1);
-    sld_info.backSliderContourColor = axColor(0.2, 0.2, 0.2, 0.1);
-    
-    axSliderEvents sld_evts;
-    sld_evts.slider_value_change = GetOnZoomValue();
-    
-    axSlider* zoom = new axSlider(this, axRect(_wave->GetNextPosRight(0),
-                                               axSize(15, rect.size.y - 100)),
-                                  sld_evts, sld_info,
-                                  axSLIDER_FLAG_VERTICAL |
-                                  axSLIDER_FLAG_RIGHT_ALIGN |
-                                  axSLIDER_FLAG_NO_SLIDER_LINE);
-    zoom->SetValue(1.0);
+//    axSlider* zoom = new axSlider(this, axRect(_wave->GetNextPosRight(0),
+//                                               axSize(15, rect.size.y - 100)),
+//                                  sld_evts, sld_info,
+//                                  axSLIDER_FLAG_VERTICAL |
+//                                  axSLIDER_FLAG_RIGHT_ALIGN |
+//                                  axSLIDER_FLAG_NO_SLIDER_LINE);
+//    zoom->SetValue(1.0);
 
 }
 
 void ModuleAudioFile::OnZoomValue(const axSliderMsg& msg)
 {
-    _wave->SetZoom(msg.GetValue());
-    _navig->SetBorders(_wave->GetBorders());
+//    _wave->SetZoom(msg.GetValue());
+//    _navig->SetBorders(_wave->GetBorders());
     Update();
 }
 

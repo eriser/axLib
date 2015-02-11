@@ -7,8 +7,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "axUtils.h"
-#include "axC++.h"
+
+
+//#include "axUtils.h"
+//#include "axC++.h"
 
 //-----------------------------------------------------------------------------
 //  axAudioEnvelope.
@@ -17,17 +19,17 @@ class axAudioEnvelope
 {
 public:
 	axAudioEnvelope();
-	axFloat Process();
+	float Process();
 
 	void TriggerNote();
 	void ReleaseNote();
 
-	void SetAttack(const axFloat& value);
-	void SetDecay(const axFloat& value);
-    void SetRelease(const axFloat& value);
+	void SetAttack(const float& value);
+	void SetDecay(const float& value);
+    void SetRelease(const float& value);
 
 private:
-	axFloat _attack, _sustain, _decay, _release;
+	float _attack, _sustain, _decay, _release;
 	unsigned int _sr, _buffePos;
 	unsigned int _nAttackSample, _nDecaySample, _nReleaseSample;
 	bool _active;

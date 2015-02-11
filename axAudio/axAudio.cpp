@@ -12,7 +12,7 @@ int axAudio::InitAudio()
     
     if( err != paNoError )
     {
-        cerr << "Error." << endl;
+        std::cerr << "Error." << std::endl;
         exit(1);
     }
     

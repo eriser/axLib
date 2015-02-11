@@ -125,10 +125,10 @@ void MyNumberPanel::OnPaint()
 //    audio->StartAudio();
 //}
 
-void axMain::MainEntryPoint(axApp* app)
-{
-
-}
+//void axMain::MainEntryPoint(axApp* app)
+//{
+//
+//}
 
 int main()
 {
@@ -144,10 +144,14 @@ int main()
     KrakenAudio* audio = KrakenAudio::GetInstance();
     audio->InitAudio();
     
+    app->AddAfterGUILoadFunction([&]()
+    {
+        audio->StartAudio();
+    });
+    
     // Init Midi.
     KrakenMidi* midi = new KrakenMidi();
     
-    audio->StartAudio();
 	app->MainLoop();
 
 	return 0;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axObjects>
+  <axKnob name="pan" rect="250, 140, 46, 46" info="resources/objects/Knob.axObj"></axKnob>  
+  <axKnob name="gain" rect="310, 140, 46, 46" info="resources/objects/Knob.axObj"></axKnob> 
+  <axLabel name="labelPan" rect="250, 125, 46, 15" info="resources/objects/Label.axObj" label="Pan"></axLabel>
+  <axLabel name="labelGain" rect="310, 125, 46, 15" info="resources/objects/Label.axObj" label="Gain"></axLabel>
+
+  <axNumberBox name="base" rect="10, 143, 27, 18" info="resources/objects/NumberBox.axObj"></axNumberBox> 
+  <axNumberBox name="kdb" rect="47, 143, 27, 18" info="resources/objects/NumberBox.axObj"></axNumberBox>  
+  <axNumberBox name="oct" rect="84, 143, 27, 18" info="resources/objects/NumberBox.axObj"></axNumberBox>  
+  <axNumberBox name="semi" rect="121, 143, 27, 18" info="resources/objects/NumberBox.axObj"></axNumberBox>  
+  <axNumberBox name="fine" rect="158, 143, 27, 18" info="resources/objects/NumberBox.axObj"></axNumberBox>  
+
+  <axLabel name="labelBase" rect="10, 125, 27, 18" info="resources/objects/Label.axObj" label="Base"></axLabel>
+  <axLabel name="labelKdb" rect="46, 125, 27, 18" info="resources/objects/Label.axObj" label="Kdb"></axLabel>
+  <axLabel name="labelOct" rect="84, 125, 27, 18" info="resources/objects/Label.axObj" label="Oct"></axLabel>
+  <axLabel name="labelSemi" rect="121, 125, 27, 18" info="resources/objects/Label.axObj" label="Semi"></axLabel>
+  <axLabel name="labelFine" rect="158, 125, 27, 18" info="resources/objects/Label.axObj" label="Fine"></axLabel>
+
+<!--  <axWaveform name="waveform" rect="5, 5, 350, 100" info="resources/objects/Waveform.axObj"></axWaveform>-->
+</axObjects>

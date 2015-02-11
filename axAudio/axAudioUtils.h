@@ -32,6 +32,21 @@ namespace axAudioUtils
 {
     int SecondeToSample(const double& seconde,
                         const int& samplingRate);
+    
+    template <typename T>
+    T LineairInterpole(const T& y1,
+                       const T& y2,
+                       const T& mu)
+    {
+        return y1 + mu * (y2 - y1);
+    }
+    
+    template<typename T>
+    T Clamp(T d, T min, T max)
+    {
+        const T t = d < min ? min : d;
+        return t > max ? max : t;
+    }
 }
 
 namespace axAudioConstant

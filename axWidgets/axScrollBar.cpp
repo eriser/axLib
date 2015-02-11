@@ -184,8 +184,8 @@ void axScrollBar::OnPaint()
 	gc->DrawRectangle(rect0);
     
     gc->DrawRectangleColorFade(rect0,
-                               axColor(0.6, 0.6, 0.6),
-                               axColor(0.4, 0.4, 0.4));
+                               _info.bg_top,
+                               _info.bg_bottom);
 //
 //	// gc->DrawImageResize(_bgImg, rect0.position, rect0.size);
 //
@@ -197,7 +197,7 @@ void axScrollBar::OnPaint()
 	axRect bar_rect(0, _sliderPos, GetRect().size.x, _sliderHeight);
 	gc->DrawRectangle(bar_rect);
     
-    gc->SetColor(_info.contour);
+    gc->SetColor(_info.slider_contour);
     gc->DrawRectangleContour(bar_rect);
 //
 //	gc->SetColor(axColor(0.3, 0.3, 0.3), 1.0);

@@ -436,8 +436,8 @@ int KrakenAudio::CallbackAudio(const float* input,
             value_out[1] += right_voices_buffer[n][i];
         }
 
-        *output++ = value_out[0];
-        *output++ = value_out[1];
+        *output++ = value_out[0] * 0.5;
+        *output++ = value_out[1] * 0.5;
     }
 
     return 0;

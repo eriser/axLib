@@ -17,5 +17,5 @@
   <axLabel name="labelSemi" rect="121, 125, 27, 18" info="ressources/objects/Label.axObj" label="Semi"></axLabel>
   <axLabel name="labelFine" rect="158, 125, 27, 18" info="ressources/objects/Label.axObj" label="Fine"></axLabel>
 
-  <axWaveform name="waveform" rect="5, 5, 350, 100" info="ressources/objects/Waveform.axObj"></axWaveform>
+<!--  <axWaveform name="waveform" rect="5, 5, 350, 100" info="ressources/objects/Waveform.axObj"></axWaveform>-->
 </axObjects>

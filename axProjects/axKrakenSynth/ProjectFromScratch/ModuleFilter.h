@@ -1,7 +1,7 @@
 #ifndef __ModuleFilter__
 #define __ModuleFilter__
 
-#include "axLib.h"
+#include "axLib/axLib.h"
 #include "ModuleFrame.h"
 
 /*******************************************************************************

@@ -1,7 +1,7 @@
 #ifndef __ProjectFromScratch__ModuleDistorsion__
 #define __ProjectFromScratch__ModuleDistorsion__
 
-#include "axLib.h"
+#include "axLib/axLib.h"
 #include "ModuleFrame.h"
 
 /*******************************************************************************

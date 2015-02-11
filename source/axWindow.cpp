@@ -206,6 +206,10 @@ axGC* axWindow::GetGC()
 void axWindow::SetSize(const axSize& size)
 {
 	_rect.size = size;
+    _shownRect.size = size;
+
+    InitGLWindowBackBufferDrawing();
+    Update();
 
 	
 }
@@ -330,18 +334,64 @@ void axWindow::InitGLWindowBackBufferDrawing()
         case GL_FRAMEBUFFER_COMPLETE_EXT: break;
             
         default:
-            std::cerr << "ERROR GEN FRAME BUFFER" << std::endl;
+            std::cerr << "ERROR GEN FRAME BUFFER : " << status << std::endl;
     }
     
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
+
+//void WinEndDrawing(axWindow* win)
+//{
+//    if(win->IsBlockDrawing())
+//    {
+//        glDisable(GL_SCISSOR_TEST);
+//    }
+//}
+//
+//void WinBeforeDrawing(axWindow* win)
+//{
+//    if(win->IsBlockDrawing())
+//    {
+//        axMatrix4 mview;
+//        mview.Identity().Load();
+//        
+//        axRect abs_rect = win->GetAbsoluteRect();
+//        axRect shown_rect = win->GetShownRect();
+//        
+//        double delta_size_x = shown_rect.size.x - abs_rect.size.x;
+//        double delta_size_y = shown_rect.size.y - abs_rect.size.y;
+//        
+//        double globalY = axApp::GetInstance()->GetCore()->GetGlobalSize().y;
+//        double sumY = (abs_rect.position.y + shown_rect.position.y +
+//                       abs_rect.size.y + delta_size_y);
+//        
+//        glScissor(abs_rect.position.x + shown_rect.position.x - 1,
+//                  globalY - sumY,
+//                  shown_rect.size.x + 1,
+//                  shown_rect.size.y + 1);
+//        
+//        
+//        std::cout << "SHOUWN  " << shown_rect.size.x << std::endl;
+//        glEnable(GL_SCISSOR_TEST);
+//    }
+//}
+
 void axWindow::RenderWindow()
 {
     if(_needUpdate)
     {
         #if _axBackBufferWindow_ == 1
+     
+        bool need_to_reactive_clip_test = false;
+        if(glIsEnabled(GL_SCISSOR_TEST))
+        {
+            glDisable(GL_SCISSOR_TEST);
+            need_to_reactive_clip_test = true;
+        }
+        
+        
             // Save modelView matrix.
             glMatrixMode(GL_MODELVIEW);
             axMatrix4 modelView(GL_MODELVIEW);
@@ -391,14 +441,26 @@ void axWindow::RenderWindow()
             modelView.Load();
             glPopAttrib();
         
-            axGC* gc = GetGC();
-            gc->DrawWindowBuffer();
+        
+        
+            //axGC* gc = GetGC();
+        
+//        BeforeDrawing(this);
+            //gc->DrawWindowBuffer();
+//        EndDrawing(this);
+        if(need_to_reactive_clip_test)
+            glEnable(GL_SCISSOR_TEST);
+        
         #endif // _axBackBufferWindow_
         
     }
-    else
-    {
+    
+    
+    //else
+    //{
+//        BeforeDrawing(this);
         axGC* gc = GetGC();
         gc->DrawWindowBuffer();
-    }
+//        EndDrawing(this);
+    //}
 }

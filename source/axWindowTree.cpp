@@ -104,9 +104,13 @@ void BeforeDrawing(axWindow* win)
         
         glScissor(abs_rect.position.x + shown_rect.position.x - 1,
                   globalY - sumY,
-                  abs_rect.size.x + delta_size_x + 1,
-                  abs_rect.size.y + delta_size_y + 1);
+                  //abs_rect.size.x + delta_size_x + 1,
+                  shown_rect.size.x + 1,
+                  shown_rect.size.y + 1);
+//                  abs_rect.size.y + delta_size_y + 1);
         
+        
+//        std::cout << "SHOUWN  " << shown_rect.size.x << std::endl;
         glEnable(GL_SCISSOR_TEST);
     }
 }
@@ -369,7 +373,7 @@ axWindow* axWindowTree::FindMousePosition(const axPoint& pos)
                         {
                             axWindow* win = k->window;
                             axPoint p = win->GetAbsoluteRect().position;
-                            axRect r(position, win->GetShownRect().size);
+                            axRect r(p, win->GetShownRect().size);
                             
                             if(r.IsPointInside(pos) && win->IsEditingWidget())
                             {

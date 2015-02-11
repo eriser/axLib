@@ -81,7 +81,7 @@ public:
 
 	void MainLoop();
 
-    void CallMainEntryFunction();
+    
     
 	void CreatePopupWindow(const axSize& size);
 
@@ -110,12 +110,16 @@ public:
     void ActivateDebugEditor(const bool& active);
     bool IsDebugEditorActive() const;
     
+    void CallMainEntryFunction();
     void AddMainEntry(std::function<void()> fct);
+    
+    void AddAfterGUILoadFunction(std::function<void()> fct);
+    void CallAfterGUILoadFunction();
     
 private:
 	axCore* _core;
     
-    std::function<void()> _mainEntryFunction;
+    std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
     static axResourceManager* _resourceManager;
     
     bool _debugEditorActive;

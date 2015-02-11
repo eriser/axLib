@@ -98,9 +98,9 @@ private:
 class MidiSequencer: public axPanel
 {
 public:
-	MidiSequencer(axWindow* parent, const axRect& rect, Audio* audio);
+	MidiSequencer(axWindow* parent, const axRect& rect, axAudio* audio);
 
-	void AddNewTrack(const string& trackName, Audio* audio, int num);
+	void AddNewTrack(const string& trackName, axAudio* audio, int num);
 
 	void SetTrackResizeFct(axEvtFunction(int) fct)
 	{
@@ -110,7 +110,7 @@ public:
 	void SetPreset(DrumMachinePreset* preset);
 	
 
-	axEVENT_ACCESSOR(axButtonMsg, OnColorChange);
+    axEVENT_ACCESSOR(axButton::Msg, OnColorChange);
 	axEVENT(int, OnChangeTrackHeight);
 
 private:
@@ -128,7 +128,7 @@ private:
 
 	void OnChangeTrackHeight(const int& msg);
 
-	void OnColorChange(const axButtonMsg& msg);
+    void OnColorChange(const axButton::Msg& msg);
 	// vector<axButton*> _btns;
 	// axImage* _bgImg;
 
@@ -139,10 +139,10 @@ class DrumMachine: public axPanel
 {
 public:
 	DrumMachine(axWindow* parent,
-                const axRect& rect, Audio* audio);
+                const axRect& rect, axAudio* audio);
 
 	axEVENT(int, OnChangeTrackHeight);
-	axEVENT_ACCESSOR(axButtonMsg, OnChangeTemplate);
+    axEVENT_ACCESSOR(axButton::Msg, OnChangeTemplate);
 
 	void ExecApplication(const string& app_name);
 
@@ -155,12 +155,12 @@ private:
 	MidiSequencer* _midiSeq;
 	MidiPartition* _midiPartition;
 	DrumSampler* _drumSampler;
-	Audio* _audio;
+	axAudio* _audio;
 //	axMidi* _midi;
 	axImage* _topBg;
 
 	void OnChangeTrackHeight(const int& msg);
-	void OnChangeTemplate(const axButtonMsg& msg);
+    void OnChangeTemplate(const axButton::Msg& msg);
 
 
 	// axEvtFunction(int) _evt_track_size;
@@ -174,7 +174,7 @@ class ScrollDrumMachine: public axPanel
 {
 public:
 	ScrollDrumMachine(axWindow* parent, 
-				   const axRect& rect, Audio* audio);
+				   const axRect& rect, axAudio* audio);
 
 	axEVENT(axScrollBarMsg, OnScroll);
 private:

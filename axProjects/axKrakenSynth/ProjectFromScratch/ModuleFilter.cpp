@@ -21,6 +21,10 @@ _index(index)
     _freqKnob = axWindow::GetResourceManager()->GetResource("freq");
     _resKnob = axWindow::GetResourceManager()->GetResource("res");
     _gainKnob = axWindow::GetResourceManager()->GetResource("gain");
+    
+    axRange<double> qRange(0.01, 50.0);
+    _freqKnob->SetValue(1.0);
+    _resKnob->SetValue(qRange.GetZeroToOneValue(0.707));
 }
 
 void ModuleFilter::OnFreqChange(const axKnob::Msg& msg)

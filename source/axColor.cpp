@@ -25,6 +25,15 @@
 #include <iomanip>
 #include <string>
 
+const axColor axColor::axBlackColor = axColor(0.0, 0.0, 0.0);
+const axColor axColor::axWhiteColor = axColor(1.0, 1.0, 1.0);
+const axColor axColor::axTransparentColor = axColor(0.0, 0.0, 0.0, 0.0);
+const axColor axColor::axRedColor = axColor(1.0, 0.0, 0.0);
+const axColor axColor::axBlueColor = axColor(0.0, 0.0, 1.0);
+const axColor axColor::axGreenColor = axColor(0.0, 1.0, 0.0);
+const axColor axColor::axGreyColor = axColor(0.5, 0.5, 0.5);
+const axColor axColor::axDarkGreyColor = axColor(0.2, 0.2, 0.2);
+
 axColor::axColor(const axDouble& r, const axDouble& g, const axDouble& b):
 		_r(r), _g(g), _b(b), _a(1.0)
 {
@@ -50,6 +59,12 @@ axColor::axColor(const axColor& col)
     _g = col._g;
     _b = col._b;
     _a = col._a;
+}
+
+axColor::axColor(const axDouble& all, const axDouble& alpha):
+_r(all), _g(all), _b(all), _a(alpha)
+{
+    
 }
 
 axColor::axColor(const string& color)

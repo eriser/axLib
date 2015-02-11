@@ -170,23 +170,25 @@ void MidiPartition::OnPaint()
 //-----------------------------------------------------------------------------
 // MidiSequencer.
 //-----------------------------------------------------------------------------
-MidiSequencer::MidiSequencer(axWindow* parent, const axRect& rect, Audio* audio):
+MidiSequencer::MidiSequencer(axWindow* parent, const axRect& rect, axAudio* audio):
 			axPanel(parent, rect)
 {
-	string path = GetCurrentAppDirectory();
+//	string path = GetCurrentAppDirectory();//
+    std::string path(axApp::GetAppPath());
 
 	_choice = CHOICE_RED;
 
-	axFlag btnFlags = axBUTTON_IMG_RESIZE | axBUTTON_SINGLE_IMG;
+    axFlag btnFlags = axButton::Flags::IMG_RESIZE |
+                      axButton::Flags::SINGLE_IMG;
 
-	axButtonInfo btn_info(axColor(0.8, 0.0, 0.0),
+    axButton::Info btn_info(axColor(0.8, 0.0, 0.0),
 						  axColor(0.9, 0.0, 0.0),
 						  axColor(0.8, 0.0, 0.0),
 						  axColor(0.8, 0.0, 0.0),
 						  axColor(0.0, 0.0, 0.0),
 						  axColor(0.0, 0.0, 0.0));
 
-    axButtonEvents btnEvents;
+    axButton::Events btnEvents;
     btnEvents.button_click = GetOnColorChange();
 	int x = 0, y = 0, xDelta = 20;
 
@@ -250,7 +252,7 @@ MidiSequencer::MidiSequencer(axWindow* parent, const axRect& rect, Audio* audio)
 	//AddNewTrack("Clap4", audio, 7);
 }
 
-void MidiSequencer::OnColorChange(const axButtonMsg& msg)
+void MidiSequencer::OnColorChange(const axButton::Msg& msg)
 {
 	_choice = (ColorChoice)stoi(msg.GetMsg());
 
@@ -260,7 +262,7 @@ void MidiSequencer::OnColorChange(const axButtonMsg& msg)
 	}
 }
 
-void MidiSequencer::AddNewTrack(const string& trackName, Audio* audio, int num)
+void MidiSequencer::AddNewTrack(const string& trackName, axAudio* audio, int num)
 {
 	if(_midiTracks.size() == 0)
 	{
@@ -376,17 +378,18 @@ void DrumMachine::ExecApplication(const string& app_name)
 //-----------------------------------------------------------------------------
 DrumMachine::DrumMachine(axWindow* parent,
 				   		 const axRect& rect,
-                         Audio* audio):
+                         axAudio* audio):
 						 axPanel(parent, rect),
 						 _audio(audio)
 {
 //	function<void (axButtonMsg)> btnFct(GetOnChangeTemplate());
-    axButtonEvents btnEvents;
+    axButton::Events btnEvents;
     btnEvents.button_click = GetOnChangeTemplate();
 
 	// string dir(app->GetCurrentAppDirectory());
-
-	_topBg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/tool2.png");
+    
+//	_topBg = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/tool2.png");
+    
 	
 	// axButtonInfo btn_info(axColor(0.8, 0.0, 0.0),
 	// 					  axColor(0.9, 0.0, 0.0),
@@ -430,11 +433,12 @@ DrumMachine::DrumMachine(axWindow* parent,
 
 }
 
-void DrumMachine::OnChangeTemplate(const axButtonMsg& msg)
+void DrumMachine::OnChangeTemplate(const axButton::Msg& msg)
 {
-	//cout << "Change template." << endl;
-	string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main", 
-							  "/home/alexarse/Desktop/axLib/axProjects/MidiSequencer/axPresets");
+    std::string f = axApp::GetInstance()->GetCore()->OpenFileDialog();
+//	//cout << "Change template." << endl;
+//	string f = OpenFileDialog("/home/alexarse/Desktop/axLib/axProjects/FileDialog/main", 
+//							  "/home/alexarse/Desktop/axLib/axProjects/MidiSequencer/axPresets");
 
 	// cout << "FILE : " << f << endl;
 	// cout << "EXT : " << axGetExtension(f) << endl;
@@ -477,33 +481,60 @@ void DrumMachine::OnPaint()
 	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangle(rect0);
 
-	gc->DrawImage(_topBg, axPoint(5, 50));
+//	gc->DrawImage(_topBg, axPoint(5, 50));
 
+    gc->DrawRectangleColorFade(axRect(5, 50, rect0.size.x - 10, 20),
+                               axColor(0.15, 0.15, 0.15),
+                               axColor(0.1, 0.1, 0.1));
+    
+    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+    gc->DrawRectangleContour(axRect(5, 50, rect0.size.x - 10, 20));
+    
+    gc->SetColor(axColor(0.65, 0.65, 0.65));
+//    axFont* font = new axFont(0);
+    axFont font(0);
+    font.SetFontSize(10);
+    gc->DrawString(font, "MIDI DEQUENCE", axPoint(10, 52));
 	// gc->DrawImage(_side_img, axPoint(0, 0));
 	// gc->DrawImage(_side_img, axPoint(rect0.size.x - 45, 0));
 
 	gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
 	gc->DrawRectangleContour(rect0);
+    
+//    delete font;
 }
 
 
 ScrollDrumMachine::ScrollDrumMachine(axWindow* parent,
-									 const axRect& rect, Audio* audio):
+									 const axRect& rect, axAudio* audio):
 								     axPanel(parent, rect)
 {
-	function<void (axScrollBarMsg)> scroll(GetOnScroll());
-	scroll_bar = new axScrollBar(this,
-								 axRect(rect.size.x -14 - 45, 0, 14, rect.size.y), 
-								 axScrollBarEvents(scroll), 
-								 axScrollBarInfo());
 
 
-	scroll_bar->setInputInfo(rect.size.y, 605, 0);
+
+//	scroll_bar->setInputInfo(rect.size.y, 605, 0);
 	_drum = new DrumMachine(this, axRect(45, 0, rect.size.x - 90 - 14, 800), audio);
 
 	_side_img = new axImage("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/woodSide.png");
 
 	_last_delta = 0;
+    
+//    function<void (axScrollBarMsg)> scroll(GetOnScroll());
+    axScrollBarInfo scroll_info(axColor(0.4, 0.4, 0.4),
+                                axColor(0.45, 0.45, 0.45),
+                                axColor(0.42, 0.42, 0.42),
+                                axColor(0.0, 0.0, 0.0),
+                                axColor(0.0, 0.0, 0.0),
+                                axColor(0.25, 0.25, 0.25),
+                                axColor(0.15, 0.15, 0.15));
+//    scroll_info.selected = scroll_info.normal;
+    
+    scroll_bar = new axScrollBar(this, _drum,
+                                 axRect(rect.size.x -8 - 45, 0, 8, rect.size.y),
+                                 axScrollBarEvents(),
+                                 scroll_info);
+    
+    scroll_bar->SetPanelSize(_drum->GetSize());
 }
 
 void ScrollDrumMachine::OnScroll(const axScrollBarMsg& msg)
@@ -518,7 +549,9 @@ void ScrollDrumMachine::OnScroll(const axScrollBarMsg& msg)
 		// cout << delta << endl;
 		_last_delta = delta;
 	}
-	// scroll_win->SetScrollDecay(axPoint(0, stof(msg.GetMsg())));
+    
+    scroll_bar->SetPanelSize(_drum->GetSize());
+//	scroll_win->SetScrollDecay(axPoint(0, stof(msg.GetMsg())));
 	
 }
 
@@ -538,15 +571,15 @@ void ScrollDrumMachine::OnPaint()
 	gc->DrawRectangleContour(rect0);
 }
 
-void axMain::MainEntryPoint(axApp* app)
-{
+//void axMain::MainEntryPoint(axApp* app)
+//{
 //    axApp::GetInstance()->GetCore()->ResizeFrame(axSize(570, 600));
-    AudioMidiSeq* audio = new AudioMidiSeq();
-    ScrollDrumMachine* machine = new ScrollDrumMachine(nullptr,
-                                                       axRect(0, 0, 570, 600),
-                                                       audio);
-    audio->StartAudio();
-}
+//    AudioMidiSeq* audio = new AudioMidiSeq();
+//    ScrollDrumMachine* machine = new ScrollDrumMachine(nullptr,
+//                                                       axRect(0, 0, 570, 600),
+//                                                       audio);
+//    audio->StartAudio();
+//}
 
 
 //int main()
@@ -576,3 +609,28 @@ void axMain::MainEntryPoint(axApp* app)
 //
 //	return 0;
 //}
+
+int main()
+{
+    axEventManager::GetInstance();
+    axApp* app = axApp::CreateApp();
+    
+    // Init audio.
+    AudioMidiSeq* audio = new AudioMidiSeq();
+    audio->InitAudio();
+    
+    app->AddMainEntry([&]()
+    {
+        ScrollDrumMachine* machine =
+            new ScrollDrumMachine(nullptr, axRect(0, 0, 655, 600), audio);
+    });
+    
+    app->AddAfterGUILoadFunction([&]()
+    {
+        audio->StartAudio();
+    });
+    
+    app->MainLoop();
+    
+    return 0;
+}

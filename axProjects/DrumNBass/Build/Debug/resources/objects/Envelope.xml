@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axObjects>  
+  <axLabel name="labelA" rect="5, 53, 46, 15" info="resources/objects/Label.axObj" label="Attack"></axLabel>
+  <axLabel name="labelD" rect="56, 53, 46, 15" info="resources/objects/Label.axObj" label="Decay"></axLabel>
+  <axLabel name="labelS" rect="107, 53, 46, 15" info="resources/objects/Label.axObj" label="Sustain"></axLabel>
+  <axLabel name="labelR" rect="158, 53, 46, 15" info="resources/objects/Label.axObj" label="Release"></axLabel>
+
+  <axKnob name="knobA" rect="5, 68, 46, 46" info= "resources/objects/Knob.axObj"></axKnob>  
+  <axKnob name="knobD" rect="56, 68, 46, 46" info= "resources/objects/Knob.axObj"></axKnob> 
+  <axKnob name="knobS" rect="107, 68, 46, 46" info= "resources/objects/Knob.axObj"></axKnob> 
+  <axKnob name="knobR" rect="158, 68, 46, 46" info= "resources/objects/Knob.axObj"></axKnob> 
+</axObjects>

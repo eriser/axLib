@@ -6,7 +6,7 @@
 #include <string>
 #include <cmath>
 
-#include "axAudio.h"
+#include "AudioDrumMachine.h"
 
 //#include <sys/types.h>
 //#include <unistd.h>
@@ -76,6 +76,7 @@ public:
 
 private:
 	string _trackName;
+    axFont *_font;
 
 	virtual void OnPaint();
 };
@@ -118,7 +119,7 @@ public:
 	void SetPreset(TrackInfo* info);
 
 	axEVENT(MultipleSliderMsg, OnChangeVelocity);
-	axEVENT_ACCESSOR(axNumberBoxMsg, OnStandardDeviation);
+	axEVENT_ACCESSOR(axNumberBox::Msg, OnStandardDeviation);
 
 private:
 
@@ -129,7 +130,7 @@ private:
 
 	void OnChangeVelocity(const MultipleSliderMsg& vel);
 
-	void OnStandardDeviation(const axNumberBoxMsg& msg);
+    void OnStandardDeviation(const axNumberBox::Msg& msg);
 
 
 
@@ -143,7 +144,7 @@ private:
 class MidiTrackSequence: public axPanel
 {
 public:
-	MidiTrackSequence(axWindow* parent, const axRect& rect, Audio* audio, int num);
+	MidiTrackSequence(axWindow* parent, const axRect& rect, axAudio* audio, int num);
 
 	void SetNumberOfSubTrack(const int& n)
 	{
@@ -205,6 +206,8 @@ public:
 	LineSelection(axWindow* parent, const axRect& rect);
 
 private:
+    
+    axFont* _font;
 	// Events.
 	virtual void OnPaint();
 };
@@ -228,7 +231,7 @@ public:
 	MidiTrack(axWindow* parent, 
 			  const axRect& rect, 
 			  const string& trackName, 
-			  Audio* audio, int track_number);
+			  axAudio* audio, int track_number);
 
 	void SetEvent(MidiTrackEvents& evt)
 	{
@@ -245,11 +248,11 @@ public:
 
 	void SetColorSelection(const ColorChoice& choice);
 
-	axEVENT_ACCESSOR(axButtonMsg, OnAddSeparation);
-	axEVENT_ACCESSOR(axButtonMsg, OnRemoveSeparation);
-	axEVENT_ACCESSOR(axButtonMsg, OnMinimize);
+	axEVENT_ACCESSOR(axButton::Msg, OnAddSeparation);
+	axEVENT_ACCESSOR(axButton::Msg, OnRemoveSeparation);
+	axEVENT_ACCESSOR(axButton::Msg, OnMinimize);
 	axEVENT(MultipleSliderMsg, OnVelocity);
-	axEVENT_ACCESSOR(axNumberBoxMsg, OnStandardDeviation);
+	axEVENT_ACCESSOR(axNumberBox::Msg, OnStandardDeviation);
 	
 	
 private:
@@ -270,12 +273,12 @@ private:
 	// Events.
 	virtual void OnPaint();
 
-	void OnAddSeparation(const axButtonMsg& msg);
-	void OnRemoveSeparation(const axButtonMsg& msg);
-	void OnMinimize(const axButtonMsg& msg);
+	void OnAddSeparation(const axButton::Msg& msg);
+	void OnRemoveSeparation(const axButton::Msg& msg);
+	void OnMinimize(const axButton::Msg& msg);
 
 	void OnVelocity(const MultipleSliderMsg& msg);
-	void OnStandardDeviation(const axNumberBoxMsg& msg);
+	void OnStandardDeviation(const axNumberBox::Msg& msg);
 
 };
 

@@ -89,6 +89,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     axApp* app = axApp::CreateApp();
     app->GetCore()->Init(axSize(500, 500));
     app->CallMainEntryFunction();
+    app->CallAfterGUILoadFunction();
 //    axMain::MainEntryPoint(app);
 
     

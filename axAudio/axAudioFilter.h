@@ -9,8 +9,8 @@
 #include <string>
 //#include <random>
 //#include <fstream>
-#include "axUtils.h"
-#include "axC++.h"
+//#include "axUtils.h"
+//#include "axC++.h"
 
 //#include "portaudio.h" 
 
@@ -36,19 +36,19 @@ enum axAudioFilterType
 
 struct axAudioStereoOutput
 {
-	axFloat left, right;
+	float left, right;
 };
 
 struct t_out //STEREO
 {
     t_out(){}
     
-    t_out(const axFloat& left, const axFloat& right):
+    t_out(const float& left, const float& right):
     l(left), r(right)
     {
     }
     
-	axFloat l, r;
+	float l, r;
 };
 
 //-----------------------------------------------------------------------------
@@ -58,7 +58,7 @@ class axAudioFilter
 {
 public:
 	axAudioFilter();
-	axFloat Process(axFloat in);
+	float Process(float in);
     
     void ProcessMonoBlock(float* out, unsigned long frameCount);
     void ProcessStereoBlock(float* out, unsigned long frameCount);
@@ -66,31 +66,31 @@ public:
 	t_out ProcessStereo(t_out in);
     void ProcessStereo(float* in, float* out);
     
-	void SetFreq(axFloat f);
-	void SetQ(axFloat f);
-	void SetGain(axFloat f);
+	void SetFreq(float f);
+	void SetQ(float f);
+	void SetGain(float f);
     
-    axFloat GetFreq() const;
-    axFloat GetQ() const;
-    axFloat GetGain() const;
+    float GetFreq() const;
+    float GetQ() const;
+    float GetGain() const;
 
-	void SetFreqEnvelopePtr(axFloat* ptr);
-	void SetFreqEnvelopeAmountPtr(axFloat* ptr);
+	void SetFreqEnvelopePtr(float* ptr);
+	void SetFreqEnvelopeAmountPtr(float* ptr);
 
-	axFloat* lfo[2];
-	axFloat* lfoAmnt[2];
+	float* lfo[2];
+	float* lfoAmnt[2];
 	
-    axFloat* env[2]; // 0 : Frequency envelope, 1 : Q envelope.
-	axFloat* envAmnt[2]; // 0 : Freq env amount, 1 : Q env amount.
+    float* env[2]; // 0 : Frequency envelope, 1 : Q envelope.
+	float* envAmnt[2]; // 0 : Freq env amount, 1 : Q env amount.
 
 	//private:
-	axFloat freq, q, gain;
-	void Compute_Variables(axFloat freq, axFloat q);
+	float freq, q, gain;
+	void Compute_Variables(float freq, float q);
 	void Biquad_Coeff(int fType);
-	axFloat b0, b1, b2, a0, a1, a2;
-	axFloat x1, x2, y1, y2;
-	axFloat rx1, rx2, ry1, ry2;
-	axFloat c, w0, alpha;
+	float b0, b1, b2, a0, a1, a2;
+	float x1, x2, y1, y2;
+	float rx1, rx2, ry1, ry2;
+	float c, w0, alpha;
 	int filterType;
 	bool init;
 	long sr;

@@ -343,8 +343,8 @@ _events(events),
 //_info(info),
 m_currentBgColor(&static_cast<Info*>(_info)->bgColorNormal),
 //m_nCurrentImg(0),
-m_knobValue(0.0),
-_zeroToOneValue(0.0),
+m_knobValue(value),
+_zeroToOneValue(value),
 _range(0.0, 1.0)
 {
     m_knobImg = new axImage(static_cast<Info*>(_info)->img_path);
@@ -356,6 +356,8 @@ _range(0.0, 1.0)
     {
         AddConnection(0, _events.value_change);
     }
+    
+    SetValue(_range.GetValueFromZeroToOne(m_knobValue), false);
 }
 
 void axKnob::SetInfo(const axVectorPairString& attributes)

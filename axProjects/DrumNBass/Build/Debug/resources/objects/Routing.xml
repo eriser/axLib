@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axObjects>
+  <!-- Left panel -->
+  <axLabel name="lsource" rect="0, 1, 46, 15" info="resources/objects/Label.axObj" label="Source"></axLabel>
+  <axLabel name="ldest1" rect="55, 1, 46, 15" info="resources/objects/Label.axObj" label="Dest. 1"></axLabel>
+  <axLabel name="lamnt1" rect="117, 1, 35, 15" info="resources/objects/Label.axObj" label="Amount"></axLabel>
+  <axLabel name="ldest2" rect="165, 1, 46, 15" info="resources/objects/Label.axObj" label="Dest. 2"></axLabel>
+  <axLabel name="lamnt2" rect="230, 1, 35, 15" info="resources/objects/Label.axObj" label="Amount"></axLabel>
+
+  <!-- Left panel Amount 1 -->
+  <axNumberBox name="l01numbox_amnt1" rect="120, 23, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="l02numbox_amnt1" rect="120, 44, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="l03numbox_amnt1" rect="120, 65, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="l03numbox_amnt1" rect="120, 86, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+
+  <!-- Left panel Amount 1 -->
+  <axNumberBox name="l01numbox_amnt2" rect="233, 23, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="l02numbox_amnt2" rect="233, 44, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="l03numbox_amnt2" rect="233, 65, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="l03numbox_amnt2" rect="233, 86, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+
+
+  <!-- Right panel -->
+  <axLabel name="rsource" rect="275, 1, 46, 15" info="resources/objects/Label.axObj" label="Source"></axLabel>
+  <axLabel name="rdest1" rect="330, 1, 46, 15" info="resources/objects/Label.axObj" label="Dest. 1"></axLabel>
+  <axLabel name="ramnt1" rect="392, 1, 35, 15" info="resources/objects/Label.axObj" label="Amount"></axLabel>
+  <axLabel name="rdest2" rect="440, 1, 46, 15" info="resources/objects/Label.axObj" label="Dest. 2"></axLabel>
+  <axLabel name="ramnt2" rect="505, 1, 35, 15" info="resources/objects/Label.axObj" label="Amount"></axLabel>
+
+    <!-- Right panel Amount 1 -->
+  <axNumberBox name="r01numbox_amnt1" rect="395, 23, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="r02numbox_amnt1" rect="395, 44, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="r03numbox_amnt1" rect="395, 65, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="r03numbox_amnt1" rect="395, 86, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+
+  <!-- Right panel Amount 1 -->
+  <axNumberBox name="r01numbox_amnt2" rect="508, 23, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="r02numbox_amnt2" rect="508, 44, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="r03numbox_amnt2" rect="508, 65, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+  <axNumberBox name="r03numbox_amnt2" rect="508, 86, 27, 15" info="resources/objects/NumberBox.axObj"></axNumberBox>
+
+</axObjects>

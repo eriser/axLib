@@ -256,3 +256,16 @@ axResourceManager* axApp::GetResourceManager() const
     return _resourceManager == nullptr ?
            _resourceManager = new axResourceManager() : _resourceManager;
 }
+
+void axApp::AddAfterGUILoadFunction(std::function<void()> fct)
+{
+    _afterGuiLoadFunction = fct;
+}
+
+void axApp::CallAfterGUILoadFunction()
+{
+    if(_afterGuiLoadFunction)
+    {
+        _afterGuiLoadFunction();
+    }
+}

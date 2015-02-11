@@ -8,35 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7C1351211A7FC72800C97A99 /* axLib.h in Resources */ = {isa = PBXBuildFile; fileRef = 7C1351201A7FC72800C97A99 /* axLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C1351731A7FC77A00C97A99 /* axApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351381A7FC77900C97A99 /* axApp.h */; };
-		7C1351741A7FC77A00C97A99 /* axC++.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351391A7FC77900C97A99 /* axC++.h */; };
-		7C1351751A7FC77A00C97A99 /* axColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13513A1A7FC77900C97A99 /* axColor.h */; };
-		7C1351761A7FC77A00C97A99 /* axConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13513B1A7FC77900C97A99 /* axConfig.h */; };
-		7C1351771A7FC77A00C97A99 /* axCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13513C1A7FC77900C97A99 /* axCore.h */; };
-		7C1351781A7FC77A00C97A99 /* axEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13513D1A7FC77900C97A99 /* axEvent.h */; };
-		7C1351791A7FC77A00C97A99 /* axEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13513E1A7FC77900C97A99 /* axEventManager.h */; };
-		7C13517A1A7FC77A00C97A99 /* axFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13513F1A7FC77900C97A99 /* axFont.h */; };
-		7C13517B1A7FC77A00C97A99 /* axGC.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351401A7FC77900C97A99 /* axGC.h */; };
-		7C13517C1A7FC77A00C97A99 /* axImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351411A7FC77900C97A99 /* axImage.h */; };
-		7C13517D1A7FC77A00C97A99 /* axKeyboardManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351421A7FC77900C97A99 /* axKeyboardManager.h */; };
-		7C13517E1A7FC77A00C97A99 /* axLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351431A7FC77900C97A99 /* axLib.h */; };
-		7C13517F1A7FC77A00C97A99 /* axMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351441A7FC77900C97A99 /* axMain.h */; };
-		7C1351801A7FC77A00C97A99 /* axManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351451A7FC77900C97A99 /* axManager.h */; };
-		7C1351811A7FC77A00C97A99 /* axMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351461A7FC77900C97A99 /* axMath.h */; };
-		7C1351821A7FC77A00C97A99 /* axMouseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351471A7FC77900C97A99 /* axMouseManager.h */; };
-		7C1351831A7FC77A00C97A99 /* axMsg.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351481A7FC77900C97A99 /* axMsg.h */; };
-		7C1351841A7FC77A00C97A99 /* axObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351491A7FC77900C97A99 /* axObject.h */; };
-		7C1351851A7FC77A00C97A99 /* axObjectLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13514A1A7FC77900C97A99 /* axObjectLoader.h */; };
-		7C1351861A7FC77A00C97A99 /* axPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13514B1A7FC77A00C97A99 /* axPanel.h */; };
-		7C1351871A7FC77A00C97A99 /* axResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13514C1A7FC77A00C97A99 /* axResourceManager.h */; };
-		7C1351881A7FC77A00C97A99 /* axTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13514D1A7FC77A00C97A99 /* axTimer.h */; };
-		7C1351891A7FC77A00C97A99 /* axUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13514E1A7FC77A00C97A99 /* axUtils.h */; };
-		7C13518A1A7FC77A00C97A99 /* axVar.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C13514F1A7FC77A00C97A99 /* axVar.h */; };
-		7C13518B1A7FC77A00C97A99 /* axWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351501A7FC77A00C97A99 /* axWidget.h */; };
-		7C13518C1A7FC77A00C97A99 /* axWidgetBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351511A7FC77A00C97A99 /* axWidgetBuilder.h */; };
-		7C13518D1A7FC77A00C97A99 /* axWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351521A7FC77A00C97A99 /* axWindow.h */; };
-		7C13518E1A7FC77A00C97A99 /* axWindowTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351531A7FC77A00C97A99 /* axWindowTree.h */; };
-		7C13518F1A7FC77A00C97A99 /* rapidxml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351541A7FC77A00C97A99 /* rapidxml.hpp */; };
 		7C1351911A7FC77A00C97A99 /* axApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351571A7FC77A00C97A99 /* axApp.cpp */; };
 		7C1351921A7FC77A00C97A99 /* axC++.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351581A7FC77A00C97A99 /* axC++.cpp */; };
 		7C1351931A7FC77A00C97A99 /* axColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351591A7FC77A00C97A99 /* axColor.cpp */; };
@@ -65,46 +36,26 @@
 		7C1351AA1A7FC77A00C97A99 /* axWidgetBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351701A7FC77A00C97A99 /* axWidgetBuilder.cpp */; };
 		7C1351AB1A7FC77A00C97A99 /* axWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351711A7FC77A00C97A99 /* axWindow.cpp */; };
 		7C1351AC1A7FC77A00C97A99 /* axWindowTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351721A7FC77A00C97A99 /* axWindowTree.cpp */; };
-		7C1351B51A7FC7A800C97A99 /* AppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351AE1A7FC7A800C97A99 /* AppDelegate.h */; };
 		7C1351B61A7FC7A800C97A99 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351AF1A7FC7A800C97A99 /* AppDelegate.mm */; };
-		7C1351B71A7FC7A800C97A99 /* axCocoaInterfaceMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351B01A7FC7A800C97A99 /* axCocoaInterfaceMac.h */; };
 		7C1351B81A7FC7A800C97A99 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351B11A7FC7A800C97A99 /* axCocoaInterfaceMac.mm */; };
 		7C1351B91A7FC7A800C97A99 /* axCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351B21A7FC7A800C97A99 /* axCoreMac.cpp */; };
-		7C1351BA1A7FC7A800C97A99 /* axCoreMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351B31A7FC7A800C97A99 /* axCoreMac.h */; };
 		7C1351EE1A7FC82300C97A99 /* axAnimatedButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351C71A7FC82300C97A99 /* axAnimatedButton.cpp */; };
-		7C1351EF1A7FC82300C97A99 /* axAnimatedButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351C81A7FC82300C97A99 /* axAnimatedButton.h */; };
 		7C1351F01A7FC82300C97A99 /* axButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351C91A7FC82300C97A99 /* axButton.cpp */; };
-		7C1351F11A7FC82300C97A99 /* axButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351CA1A7FC82300C97A99 /* axButton.h */; };
 		7C1351F21A7FC82300C97A99 /* axDebugButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351CB1A7FC82300C97A99 /* axDebugButton.cpp */; };
-		7C1351F31A7FC82300C97A99 /* axDebugButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351CC1A7FC82300C97A99 /* axDebugButton.h */; };
 		7C1351F41A7FC82300C97A99 /* axDropMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351CD1A7FC82300C97A99 /* axDropMenu.cpp */; };
-		7C1351F51A7FC82300C97A99 /* axDropMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351CE1A7FC82300C97A99 /* axDropMenu.h */; };
 		7C1351F61A7FC82300C97A99 /* axGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351CF1A7FC82300C97A99 /* axGrid.cpp */; };
-		7C1351F71A7FC82300C97A99 /* axGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351D01A7FC82300C97A99 /* axGrid.h */; };
 		7C1351F81A7FC82300C97A99 /* axKnob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351D11A7FC82300C97A99 /* axKnob.cpp */; };
-		7C1351F91A7FC82300C97A99 /* axKnob.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351D21A7FC82300C97A99 /* axKnob.h */; };
 		7C1351FA1A7FC82300C97A99 /* axLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351D31A7FC82300C97A99 /* axLabel.cpp */; };
-		7C1351FB1A7FC82300C97A99 /* axLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351D41A7FC82300C97A99 /* axLabel.h */; };
 		7C1351FC1A7FC82300C97A99 /* axMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351D51A7FC82300C97A99 /* axMenu.cpp */; };
-		7C1351FD1A7FC82300C97A99 /* axMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351D61A7FC82300C97A99 /* axMenu.h */; };
 		7C1351FE1A7FC82300C97A99 /* axNumberBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351D71A7FC82300C97A99 /* axNumberBox.cpp */; };
-		7C1351FF1A7FC82300C97A99 /* axNumberBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351D81A7FC82300C97A99 /* axNumberBox.h */; };
 		7C1352001A7FC82300C97A99 /* axPlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351D91A7FC82300C97A99 /* axPlot.cpp */; };
-		7C1352011A7FC82300C97A99 /* axPlot.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351DA1A7FC82300C97A99 /* axPlot.h */; };
 		7C1352021A7FC82300C97A99 /* axPopupMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351DB1A7FC82300C97A99 /* axPopupMenu.cpp */; };
-		7C1352031A7FC82300C97A99 /* axPopupMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351DC1A7FC82300C97A99 /* axPopupMenu.h */; };
 		7C1352041A7FC82300C97A99 /* axScrollBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351DD1A7FC82300C97A99 /* axScrollBar.cpp */; };
-		7C1352051A7FC82300C97A99 /* axScrollBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351DE1A7FC82300C97A99 /* axScrollBar.h */; };
 		7C1352061A7FC82300C97A99 /* axSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351DF1A7FC82300C97A99 /* axSlider.cpp */; };
-		7C1352071A7FC82300C97A99 /* axSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351E01A7FC82300C97A99 /* axSlider.h */; };
 		7C1352081A7FC82300C97A99 /* axStaticImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351E11A7FC82300C97A99 /* axStaticImage.cpp */; };
-		7C1352091A7FC82300C97A99 /* axStaticImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351E21A7FC82300C97A99 /* axStaticImage.h */; };
 		7C13520A1A7FC82300C97A99 /* axTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351E31A7FC82300C97A99 /* axTextBox.cpp */; };
-		7C13520B1A7FC82300C97A99 /* axTextBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351E41A7FC82300C97A99 /* axTextBox.h */; };
 		7C13520C1A7FC82300C97A99 /* axTextControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351E51A7FC82300C97A99 /* axTextControl.cpp */; };
-		7C13520D1A7FC82300C97A99 /* axTextControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351E61A7FC82300C97A99 /* axTextControl.h */; };
 		7C13520E1A7FC82300C97A99 /* axToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1351E71A7FC82300C97A99 /* axToggle.cpp */; };
-		7C13520F1A7FC82300C97A99 /* axToggle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351E81A7FC82300C97A99 /* axToggle.h */; };
 		7C1352171A7FC8A600C97A99 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1352151A7FC8A600C97A99 /* GLKit.framework */; };
 		7C1352181A7FC8A600C97A99 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1352161A7FC8A600C97A99 /* OpenGL.framework */; };
 		7C13521A1A7FC8CB00C97A99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1352191A7FC8CB00C97A99 /* Cocoa.framework */; };
@@ -427,55 +378,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C1351F11A7FC82300C97A99 /* axButton.h in Headers */,
-				7C13517A1A7FC77A00C97A99 /* axFont.h in Headers */,
-				7C1351891A7FC77A00C97A99 /* axUtils.h in Headers */,
-				7C1351881A7FC77A00C97A99 /* axTimer.h in Headers */,
-				7C1351841A7FC77A00C97A99 /* axObject.h in Headers */,
-				7C1351811A7FC77A00C97A99 /* axMath.h in Headers */,
-				7C1351FF1A7FC82300C97A99 /* axNumberBox.h in Headers */,
-				7C1351761A7FC77A00C97A99 /* axConfig.h in Headers */,
-				7C1351F71A7FC82300C97A99 /* axGrid.h in Headers */,
-				7C1351831A7FC77A00C97A99 /* axMsg.h in Headers */,
-				7C1351741A7FC77A00C97A99 /* axC++.h in Headers */,
-				7C1351F51A7FC82300C97A99 /* axDropMenu.h in Headers */,
-				7C1351821A7FC77A00C97A99 /* axMouseManager.h in Headers */,
-				7C1351B51A7FC7A800C97A99 /* AppDelegate.h in Headers */,
-				7C1351871A7FC77A00C97A99 /* axResourceManager.h in Headers */,
-				7C1351B71A7FC7A800C97A99 /* axCocoaInterfaceMac.h in Headers */,
-				7C13520D1A7FC82300C97A99 /* axTextControl.h in Headers */,
-				7C1351FB1A7FC82300C97A99 /* axLabel.h in Headers */,
-				7C1351731A7FC77A00C97A99 /* axApp.h in Headers */,
-				7C13517B1A7FC77A00C97A99 /* axGC.h in Headers */,
-				7C1352071A7FC82300C97A99 /* axSlider.h in Headers */,
-				7C1352091A7FC82300C97A99 /* axStaticImage.h in Headers */,
-				7C13518D1A7FC77A00C97A99 /* axWindow.h in Headers */,
-				7C1351EF1A7FC82300C97A99 /* axAnimatedButton.h in Headers */,
-				7C1351FD1A7FC82300C97A99 /* axMenu.h in Headers */,
-				7C13517C1A7FC77A00C97A99 /* axImage.h in Headers */,
-				7C1352011A7FC82300C97A99 /* axPlot.h in Headers */,
-				7C1352031A7FC82300C97A99 /* axPopupMenu.h in Headers */,
-				7C1351791A7FC77A00C97A99 /* axEventManager.h in Headers */,
-				7C1351771A7FC77A00C97A99 /* axCore.h in Headers */,
-				7C13518F1A7FC77A00C97A99 /* rapidxml.hpp in Headers */,
-				7C1351801A7FC77A00C97A99 /* axManager.h in Headers */,
-				7C13517E1A7FC77A00C97A99 /* axLib.h in Headers */,
-				7C13518A1A7FC77A00C97A99 /* axVar.h in Headers */,
-				7C13517F1A7FC77A00C97A99 /* axMain.h in Headers */,
-				7C1351861A7FC77A00C97A99 /* axPanel.h in Headers */,
-				7C13518C1A7FC77A00C97A99 /* axWidgetBuilder.h in Headers */,
-				7C13518E1A7FC77A00C97A99 /* axWindowTree.h in Headers */,
-				7C13518B1A7FC77A00C97A99 /* axWidget.h in Headers */,
-				7C1351BA1A7FC7A800C97A99 /* axCoreMac.h in Headers */,
-				7C13520B1A7FC82300C97A99 /* axTextBox.h in Headers */,
-				7C1351751A7FC77A00C97A99 /* axColor.h in Headers */,
-				7C1351851A7FC77A00C97A99 /* axObjectLoader.h in Headers */,
-				7C1351F31A7FC82300C97A99 /* axDebugButton.h in Headers */,
-				7C1352051A7FC82300C97A99 /* axScrollBar.h in Headers */,
-				7C13517D1A7FC77A00C97A99 /* axKeyboardManager.h in Headers */,
-				7C1351F91A7FC82300C97A99 /* axKnob.h in Headers */,
-				7C1351781A7FC77A00C97A99 /* axEvent.h in Headers */,
-				7C13520F1A7FC82300C97A99 /* axToggle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +633,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Build/Debug",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = axLib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -752,6 +658,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Build/Debug",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = axLib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

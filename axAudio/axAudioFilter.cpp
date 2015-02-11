@@ -1,5 +1,5 @@
 #include "axAudioFilter.h"
-#include "axUtils.h"
+#include "axAudioUtils.h"
 
 axAudioFilter::axAudioFilter()
 {
@@ -21,40 +21,40 @@ axAudioFilter::axAudioFilter()
 
 	Compute_Variables(freq, q);
 }
-void axAudioFilter::SetFreq(axFloat f)
+void axAudioFilter::SetFreq(float f)
 {
-    freq = axClamp<axFloat>(f, 20.0, 20000.0);
+    freq = axAudioUtils::Clamp<float>(f, 20.0, 20000.0);
 	Compute_Variables(freq, q);
     
     std::cout << "filter freq : " << freq << std::endl;
 }
-void axAudioFilter::SetQ(axFloat f)
+void axAudioFilter::SetQ(float f)
 {
-	q = axClamp<axFloat>(f, 0.01, 50.0);
+	q = axAudioUtils::Clamp<float>(f, 0.01, 50.0);
 	Compute_Variables(freq, q);
 }
 
-void axAudioFilter::SetGain(axFloat f)
+void axAudioFilter::SetGain(float f)
 {
-	gain = axClamp<axFloat>(f, 0.0, 3.0);
+	gain = axAudioUtils::Clamp<float>(f, 0.0, 3.0);
     
     std::cout << "filter gain : " << gain << std::endl;
 }
 
-axFloat axAudioFilter::GetFreq() const
+float axAudioFilter::GetFreq() const
 {
     return freq;
 }
-axFloat axAudioFilter::GetQ() const
+float axAudioFilter::GetQ() const
 {
     return q;
 }
-axFloat axAudioFilter::GetGain() const
+float axAudioFilter::GetGain() const
 {
     return gain;
 }
 
-void axAudioFilter::SetFreqEnvelopePtr(axFloat* ptr)
+void axAudioFilter::SetFreqEnvelopePtr(float* ptr)
 {
 	env[0] = ptr;
 	// if(env[0] != nullptr)
@@ -63,7 +63,7 @@ void axAudioFilter::SetFreqEnvelopePtr(axFloat* ptr)
 	// }
 }
 
-void axAudioFilter::SetFreqEnvelopeAmountPtr(axFloat* ptr)
+void axAudioFilter::SetFreqEnvelopeAmountPtr(float* ptr)
 {
 	envAmnt[0] = ptr;
 
@@ -73,16 +73,16 @@ void axAudioFilter::SetFreqEnvelopeAmountPtr(axFloat* ptr)
 	// }
 }
 
-	// void SetFreqEnvelopePtr(axFloat* ptr);
-	// void SetFreqEnvelopeAmountPtr(axFloat* ptr);
+	// void SetFreqEnvelopePtr(float* ptr);
+	// void SetFreqEnvelopeAmountPtr(float* ptr);
 
-axFloat axAudioFilter::Process(axFloat in)
+float axAudioFilter::Process(float in)
 {
-	axFloat v;
-	axFloat f = freq;
-	axFloat res = q;
+	float v;
+	float f = freq;
+	float res = q;
 	bool compute_coeff = false;
-	//Compute_Variables(axFloat freq, axFloat q)
+	//Compute_Variables(float freq, float q)
 
 	if (init)
 	{
@@ -93,7 +93,7 @@ axFloat axAudioFilter::Process(axFloat in)
 	if (env[0] != nullptr && envAmnt[0] != nullptr)
 	{
 		// cout << "ENV FREQ" << endl;
-		axFloat modEnvFreq = *env[0];
+		float modEnvFreq = *env[0];
 		f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
 		CLIP(f, 20, 20000);
 		compute_coeff = true;
@@ -148,9 +148,9 @@ void axAudioFilter::ProcessStereoBlock(float* out,
     if (env[0] != nullptr && envAmnt[0] != nullptr)
     {
 //        cout << "ENV FREQ" << endl;
-        axFloat modEnvFreq = *env[0];
+        float modEnvFreq = *env[0];
         f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
-        f = axClamp<double>(f, 20.0, 20000.0);
+        f = axAudioUtils::Clamp<double>(f, 20.0, 20000.0);
         needComputeCoefficients = true;
     }
     
@@ -187,14 +187,14 @@ void axAudioFilter::ProcessStereoBlock(float* out,
 t_out axAudioFilter::ProcessStereo(t_out in) 
 {
 	t_out v;
-	axFloat f = freq;
-	axFloat r = q;
+	float f = freq;
+	float r = q;
 	bool comp = true;
 
 //	//LFO FREQ --------------------------------------------------------------------
 //	if (lfo[0] != NULL && lfoAmnt[0] != NULL)
 //	{
-//		axFloat modLfoFreq = *lfo[0];
+//		float modLfoFreq = *lfo[0];
 //		//288 = 12 demiton * 12 * 2
 //		f = f + (288 * *lfoAmnt[0] * modLfoFreq * (f * (ST_RATIO - 1.0) + 1.0));
 //		CLIP(f, 20, 20000);
@@ -204,8 +204,8 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 //	if (env[0] != nullptr && envAmnt[0] != nullptr)
 //	{
 ////		cout << "ENV FREQ" << endl;
-//		axFloat modEnvFreq = *env[0];
-//        axFloat freqModAdd = (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
+//		float modEnvFreq = *env[0];
+//        float freqModAdd = (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
 ////        cout << "ENV FREQ : " << freqModAdd << endl;
 //		f = f + freqModAdd;
 //		CLIP(f, 20, 20000);
@@ -215,7 +215,7 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 	//LFO RES ---------------------------------------------------------------------
 //	if (lfo[1] != NULL && lfoAmnt[1] != NULL)
 //	{
-//		axFloat modLfoRes = *lfo[1];
+//		float modLfoRes = *lfo[1];
 //		r = r + (*lfoAmnt[1] * modLfoRes * 10.0);
 //		CLIP(r, 0.01, 10);
 //		comp = 1;
@@ -223,7 +223,7 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 	//ENV RES
 //	if (env[1] != NULL && envAmnt[1] != NULL)
 //	{
-//		axFloat modEnvRes = *env[1];
+//		float modEnvRes = *env[1];
 //		r = r + (*envAmnt[1] * modEnvRes * 10.0);
 //		CLIP(r, 0.01, 10);
 //		comp = 1;
@@ -244,7 +244,7 @@ t_out axAudioFilter::ProcessStereo(t_out in)
         std::cout << "a0 is 0.0" << std::endl;
     }
     
-	//Compute_Variables(in, axFloat q)
+	//Compute_Variables(in, float q)
 	v.l = ((b0 * in.l) + (b1 * x1) + (b2 * x2) - (a1 * y1) - (a2 * y2)) / a0;
 	v.r = ((b0 * in.r) + (b1 * rx1) + (b2 * rx2) - (a1 * ry1) - (a2 * ry2)) / a0;
 
@@ -268,8 +268,8 @@ t_out axAudioFilter::ProcessStereo(t_out in)
 void axAudioFilter::ProcessStereo(float* in, float* out)
 {
 //    t_out v;
-    axFloat f = freq;
-    axFloat r = q;
+    float f = freq;
+    float r = q;
     bool comp = true;
     
     float out_value[2] = {0.0, 0.0};
@@ -277,7 +277,7 @@ void axAudioFilter::ProcessStereo(float* in, float* out)
     //	//LFO FREQ --------------------------------------------------------------------
     //	if (lfo[0] != NULL && lfoAmnt[0] != NULL)
     //	{
-    //		axFloat modLfoFreq = *lfo[0];
+    //		float modLfoFreq = *lfo[0];
     //		//288 = 12 demiton * 12 * 2
     //		f = f + (288 * *lfoAmnt[0] * modLfoFreq * (f * (ST_RATIO - 1.0) + 1.0));
     //		CLIP(f, 20, 20000);
@@ -287,8 +287,8 @@ void axAudioFilter::ProcessStereo(float* in, float* out)
     //	if (env[0] != nullptr && envAmnt[0] != nullptr)
     //	{
     ////		cout << "ENV FREQ" << endl;
-    //		axFloat modEnvFreq = *env[0];
-    //        axFloat freqModAdd = (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
+    //		float modEnvFreq = *env[0];
+    //        float freqModAdd = (288 * *envAmnt[0] * modEnvFreq * (f * (ST_RATIO - 1.0) + 1.0));
     ////        cout << "ENV FREQ : " << freqModAdd << endl;
     //		f = f + freqModAdd;
     //		CLIP(f, 20, 20000);
@@ -298,7 +298,7 @@ void axAudioFilter::ProcessStereo(float* in, float* out)
     //LFO RES ---------------------------------------------------------------------
     //	if (lfo[1] != NULL && lfoAmnt[1] != NULL)
     //	{
-    //		axFloat modLfoRes = *lfo[1];
+    //		float modLfoRes = *lfo[1];
     //		r = r + (*lfoAmnt[1] * modLfoRes * 10.0);
     //		CLIP(r, 0.01, 10);
     //		comp = 1;
@@ -306,7 +306,7 @@ void axAudioFilter::ProcessStereo(float* in, float* out)
     //ENV RES
     //	if (env[1] != NULL && envAmnt[1] != NULL)
     //	{
-    //		axFloat modEnvRes = *env[1];
+    //		float modEnvRes = *env[1];
     //		r = r + (*envAmnt[1] * modEnvRes * 10.0);
     //		CLIP(r, 0.01, 10);
     //		comp = 1;
@@ -327,7 +327,7 @@ void axAudioFilter::ProcessStereo(float* in, float* out)
         std::cout << "a0 is 0.0" << std::endl;
     }
     
-    //Compute_Variables(in, axFloat q)
+    //Compute_Variables(in, float q)
     out_value[0] = ((b0 * in[0]) + (b1 * x1) + (b2 * x2) - (a1 * y1) - (a2 * y2)) / a0;
     out_value[1] = ((b0 * in[1]) + (b1 * rx1) + (b2 * rx2) - (a1 * ry1) - (a2 * ry2)) / a0;
     
@@ -348,7 +348,7 @@ void axAudioFilter::ProcessStereo(float* in, float* out)
     out[1] += out_value[1];
 }
 
-void axAudioFilter::Compute_Variables(axFloat ff, axFloat qq)
+void axAudioFilter::Compute_Variables(float ff, float qq)
 {
 	MIN(ff, 1);
 	MAX(ff, 44100.0 * 0.5);

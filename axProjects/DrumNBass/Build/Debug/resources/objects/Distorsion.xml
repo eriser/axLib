@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axObjects>
+  <axKnob name="slope" rect="10, 17, 36, 36" info= "resources/objects/SmallKnob.axObj"></axKnob>  
+  <axKnob name="mix" rect="62, 17, 36, 36" info= "resources/objects/SmallKnob.axObj"></axKnob> 
+  <axKnob name="filter" rect="112, 17, 36, 36" info= "resources/objects/SmallKnob.axObj"></axKnob> 
+
+  <axLabel name="labelSlope" rect="10, 2, 36, 15" info="resources/objects/Label.axObj" label="Gain"></axLabel>
+  <axLabel name="labelMix" rect="62, 2, 36, 15" info="resources/objects/Label.axObj" label="Slope"></axLabel>
+  <axLabel name="labelFilter" rect="112, 2, 36, 15" info="resources/objects/Label.axObj" label="Filter"></axLabel>
+
+  <!-- <axStaticImage name="img" pos="8, 10" path="resources/images/oscWaveform.png"></axLabel> -->
+</axObjects>

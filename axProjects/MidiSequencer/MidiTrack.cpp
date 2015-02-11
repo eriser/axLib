@@ -2,37 +2,6 @@
 
 #include <cstdlib> 
 
-string GetCurrentAppDirectory()
-{
-  //char buf[1024];
-  //readlink("/proc/self/exe", buf, sizeof(buf)-1);
-  //string path(buf);
-  //path = path.substr(0, path.find_last_of("/"));
-  //path.push_back('/');
-
-  return "";
-}
-
-void ExecApplication(const string& app_name)
-{
-  //pid_t p_id = fork();
-
-  //// Child.
-  //if (p_id == 0)                
-  //{
-  //  execl(app_name.c_str(), 0);
-  //  exit(0);
-  //}
-
-  //// Failed to fork.
-  //else if (p_id < 0)            
-  //{
-  //    cerr << "Failed to open " << app_name << endl;
-  //    exit(1);
-  //    // Throw exception
-  //}
-}
-
 MultipleSlider::MultipleSlider(axWindow* parent,
                                const axRect& rect, 
                                const axColor& bgColor, 
@@ -46,16 +15,30 @@ MultipleSlider::MultipleSlider(axWindow* parent,
 {
     _bgColor = bgColor;
 
+//    axSliderInfo(const string& imgPath,
+//                 const axSize& size,
+//                 const axColor& bg_normal,
+//                 const axColor& bg_hover,
+//                 const axColor& bg_clicking,
+//                 const axColor& slider_normal,
+//                 const axColor& slider_hover,
+//                 const axColor& slider_clicking,
+//                 const axColor& slider_contour,
+//                 const axColor& contour,
+//                 const axColor& back_slider,
+//                 const axColor& back_slider_contour,
+//                 const unsigned int width) :
+    
     axSliderInfo sld_info("",//"sliderPlain.png",   
                           axSize(8, 8),
-                          axColor(0.9, 0.9, 0.9), // Bg
-                          axColor(1.0, 1.0, 1.0), // bg hover.
+                          axColor(0.9, 0.9, 0.9, 0.2), // Bg
+                          axColor(1.0, 1.0, 1.0, 0.1), // bg hover.
                           axColor(0.9, 0.9, 0.9), // Bg clicking.
                           axColor(0.3, 0.3, 0.3), // Slider normal
                           axColor(0.3, 0.3, 0.3), // Slider hover
                           axColor(0.4, 0.4, 0.4), // Slider clicking.
                           axColor(0.3, 0.3, 0.3), // Slider contour.
-                          axColor(0.0, 0.0, 0.0), // COntour
+                          axColor(0.0, 0.0, 0.0), // Contour
                           axColor(0.9, 0.9, 0.9), // Back Slider
                           axColor(0.9, 0.9, 0.9), // Back Slider contour.
                           3);
@@ -224,7 +207,7 @@ void MultipleSlider::OnPaint()
 // MidiTrackSequence.
 //------------------------------------------------------------------------------
 MidiTrackSequence::MidiTrackSequence(axWindow* parent,
-                  const axRect& rect, Audio* audio, int num):
+                  const axRect& rect, axAudio* audio, int num):
                   axPanel(parent, rect),
                   _track_number(num)
 {
@@ -474,7 +457,8 @@ MidiTrackName::MidiTrackName(axWindow* parent,
       axPanel(parent, rect),
       _trackName(name)
 {
-
+    _font = new axFont(0);
+    _font->SetFontSize(13);
 }
 
 
@@ -490,8 +474,8 @@ void MidiTrackName::OnPaint()
   gc->DrawRectangle(rect0);
 
   gc->SetColor(axColor(0.8, 0.8, 0.8), 1.0);
-  gc->SetFontSize(13);
-  gc->DrawStringAlignedCenter(_trackName, rect0);
+//  gc->SetFontSize(13);
+  gc->DrawStringAlignedCenter(*_font, _trackName, rect0);
   gc->DrawRectangleContour(rect0);
 }
 
@@ -500,7 +484,7 @@ void MidiTrackName::OnPaint()
 // MidiTrack.
 //-----------------------------------------------------------------------------
 MidiTrack::MidiTrack(axWindow* parent, const axRect& rect,
-           const string& trackName, Audio* audio, int track_number):
+           const string& trackName, axAudio* audio, int track_number):
       axPanel(parent, rect),
       _track_number(track_number),
       _nSubTrack(2)
@@ -508,7 +492,7 @@ MidiTrack::MidiTrack(axWindow* parent, const axRect& rect,
 {
   _audio = static_cast<AudioMidiSeq*>(audio);
 
-  axButtonInfo btn_info(axColor(0.2, 0.2, 0.2),
+    axButton::Info btn_info(axColor(0.2, 0.2, 0.2),
                         axColor(0.3, 0.3, 0.3),
                         axColor(0.2, 0.2, 0.2),
                         axColor(0.2, 0.2, 0.2),
@@ -521,21 +505,21 @@ MidiTrack::MidiTrack(axWindow* parent, const axRect& rect,
 
   int height = 30.0 / double(_nSubTrack);
 
-    axButtonEvents btnEvents;
+    axButton::Events btnEvents;
     btnEvents.button_click = GetOnAddSeparation();
     
   _addBtn = new axButton(this,
                axRect(rect.size.x - 14, 0, 14, height), 
                btnEvents, 
 			   btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btnhigh.png", "+",
-			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
+               axButton::Flags::SINGLE_IMG | axButton::Flags::IMG_RESIZE);
 
   btnEvents.button_click = GetOnRemoveSeparation();
   _removeBtn = new axButton(this,
                axRect(rect.size.x - 14, height, 14, height), 
                btnEvents,
                btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/btnhigh.png", "-",
-			   axBUTTON_SINGLE_IMG | axBUTTON_IMG_RESIZE);
+			   axButton::Flags::SINGLE_IMG | axButton::Flags::IMG_RESIZE);
 
 
   // _trackName = new MidiTrackName(app, this, 
@@ -546,7 +530,7 @@ MidiTrack::MidiTrack(axWindow* parent, const axRect& rect,
   axButton* name = new axButton(this,
                axRect(0, 0, 60, 30), 
                btnEvents,
-			   btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/miditrackname.png", trackName, axBUTTON_SINGLE_IMG);
+			   btn_info, "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/miditrackname.png", trackName, axButton::Flags::SINGLE_IMG);
 
   _trackSeq = new MidiTrackSequence(this,
                     axRect(60, 0, 
@@ -564,7 +548,7 @@ MidiTrack::MidiTrack(axWindow* parent, const axRect& rect,
   _velocity->SetNumberOfSlider(_nSubTrack);
   _audio->SetTrackNumberOfSection(_track_number, _nSubTrack);
 
-  OnMinimize(axButtonMsg(name, ""));
+    OnMinimize(axButton::Msg(name, ""));
 
 }
 
@@ -586,7 +570,7 @@ void MidiTrack::OnVelocity(const MultipleSliderMsg& msg)
 	_trackSeq->SetVelocity(msg.bar_index, msg.index, msg.value);
 }
 
-void MidiTrack::OnStandardDeviation(const axNumberBoxMsg& msg)
+void MidiTrack::OnStandardDeviation(const axNumberBox::Msg& msg)
 {
   // cout << "TEST : " << msg.GetValue() << endl;
 
@@ -598,14 +582,14 @@ void MidiTrack::OnStandardDeviation(const axNumberBoxMsg& msg)
     //                     msg.value);
 }
 
-void MidiTrack::OnAddSeparation(const axButtonMsg& msg)
+void MidiTrack::OnAddSeparation(const axButton::Msg& msg)
 {
   _trackSeq->SetNumberOfSubTrack(++_nSubTrack);
   _velocity->SetNumberOfSlider(_nSubTrack);
   _audio->SetTrackNumberOfSection(_track_number, _nSubTrack);
 }
 
-void MidiTrack::OnMinimize(const axButtonMsg& msg)
+void MidiTrack::OnMinimize(const axButton::Msg& msg)
 {
   if(_velocity->IsShown())
   {
@@ -631,7 +615,7 @@ void MidiTrack::OnMinimize(const axButtonMsg& msg)
 
 }
 
-void MidiTrack::OnRemoveSeparation(const axButtonMsg& msg)
+void MidiTrack::OnRemoveSeparation(const axButton::Msg& msg)
 {
   _nSubTrack--;
   if(_nSubTrack <= 0)
@@ -670,7 +654,8 @@ void MidiTrack::OnPaint()
 LineSelection::LineSelection(axWindow* parent, const axRect& rect):
       axPanel(parent, rect)
 {
-    
+    _font = new axFont(0);
+    _font->SetFontSize(10);
 }
 
 
@@ -683,8 +668,8 @@ void LineSelection::OnPaint()
   gc->SetColor(axColor(0.1, 0.1, 0.1), 1.0);
   gc->DrawRectangle(rect0);
 
-   gc->SetColor(axColor(0.6, 0.6, 0.6), 1.0);
-   gc->SetFontSize(10);
+   gc->SetColor(axColor(0.6, 0.6, 0.6));
+//   gc->SetFontSize(10);
    // gc->DrawLine(axPoint(1, rect0.size.y), axPoint(1, rect0.size.y - 10));
 
   for(int i = 0; i < 16; i++)
@@ -704,7 +689,7 @@ void LineSelection::OnPaint()
     int x_pos2 = ((i+1) / double(16)) * (rect0.size.x - 14.0);
     
   // gc->DrawString(_trackName, axPoint(0, 0));
-    gc->DrawStringAlignedCenter(to_string(i+1), axRect(x_pos, 5, x_pos2 - x_pos, rect0.size.y - 5));
+    gc->DrawStringAlignedCenter(*_font, to_string(i+1), axRect(x_pos, 5, x_pos2 - x_pos, rect0.size.y - 5));
     
   }
  
@@ -757,16 +742,15 @@ MidiVelocity::MidiVelocity(axWindow* parent,
     // axEvtFunction(axKnobMsg) evt(GetOnStandardDeviation());
     // axKnob* knob = new axKnob(app, this, axRect(25, 15, 32, 32),
     //                         axKnobEvents(evt), knob_info);
+    
+    axNumberBox::Info box_info(axColor(0.7, 0.7, 0.7), // Normal.
+                               axColor(0.75, 0.75, 0.75), // Hover.
+                               axColor(0.65, 0.65, 0.65), // Clicking.
+                               axColor(0.2, 0.2, 0.2), // Selected.
+                               axColor(0.0, 0.0, 0.0), // Contour.
+                               axColor(0.0, 0.0, 0.0)); // Font color.
 
-    axNumberBoxInfo box_info(axColor(0.7, 0.7, 0.7),
-                             axColor(0.3, 0.3, 0.3),
-                             axColor(0.2, 0.2, 0.2),
-                             axColor(0.2, 0.2, 0.2),
-                             axColor(0.0, 0.0, 0.0),
-                             axColor(0.0, 0.0, 0.0));
-
-//    axEvtFunction(axNumberBoxMsg) evt(GetOnStandardDeviation());
-    axNumberBoxEvents numEvents;
+    axNumberBox::Events numEvents;
     numEvents.value_change = GetOnStandardDeviation();
 
     axNumberBox* box1 = new axNumberBox(this,
@@ -799,7 +783,7 @@ void MidiVelocity::OnChangeVelocity(const MultipleSliderMsg& msg)
     // cout << msg.bar_index << " " << msg.index << " " << msg.value << endl;
 }
 
-void MidiVelocity::OnStandardDeviation(const axNumberBoxMsg& msg)
+void MidiVelocity::OnStandardDeviation(const axNumberBox::Msg& msg)
 {
     if(_standard_deviation_fct)
     {

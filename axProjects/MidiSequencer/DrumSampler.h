@@ -6,8 +6,9 @@
 #include <string>
 #include <cmath>
 
-#include "axAudio.h"
-#include "AudioWaveform.h"
+#include "AudioDrumMachine.h"
+//#include "AudioWaveform.h"
+#include "axWaveform.h"
 
 class SynthControl : public axPanel
 {
@@ -15,18 +16,10 @@ public:
 	SynthControl(axWindow* parent,
 				 const axRect& rect, 
 				 const string& snd_path,
-				 Audio* audio,
+				 axAudio* audio,
 				 const int& track_num);
 
-	axEVENT_ACCESSOR(axButtonMsg, OnOpenFile);
-	axEVENT(axKnobMsg, OnFilterFrequency);
-	axEVENT(axKnobMsg, OnFilterRes);
-	axEVENT(axKnobMsg, OnFilterEnvelope);
-	axEVENT(axKnobMsg, OnAttack);
-	axEVENT(axKnobMsg, OnDecay);
-	axEVENT(axKnobMsg, OnGain);
-	axEVENT(axKnobMsg, OnTuning);
-	axEVENT(axKnobMsg, OnTuningEnv);
+
 
 private:
 	// Events.
@@ -35,15 +28,24 @@ private:
 	int _trackNum;
 	axWaveform* _wave;
 
-	void OnOpenFile(const axButtonMsg& msg);
-	void OnFilterFrequency(const axKnobMsg& msg);
-	void OnFilterRes(const axKnobMsg& msg);
-	void OnFilterEnvelope(const axKnobMsg& msg);
-	void OnAttack(const axKnobMsg& msg);
-	void OnDecay(const axKnobMsg& msg);
-	void OnGain(const axKnobMsg& msg);
-	void OnTuning(const axKnobMsg& msg);
-	void OnTuningEnv(const axKnobMsg& msg);
+    axEVENT_ACCESSOR(axButton::Msg, OnOpenFile);
+    axEVENT_ACCESSOR(axKnob::Msg, OnFilterFrequency);
+    axEVENT_ACCESSOR(axKnob::Msg, OnFilterRes);
+    axEVENT_ACCESSOR(axKnob::Msg, OnFilterEnvelope);
+    axEVENT_ACCESSOR(axKnob::Msg, OnAttack);
+    axEVENT_ACCESSOR(axKnob::Msg, OnDecay);
+    axEVENT_ACCESSOR(axKnob::Msg, OnGain);
+    axEVENT_ACCESSOR(axKnob::Msg, OnTuning);
+    axEVENT_ACCESSOR(axKnob::Msg, OnTuningEnv);
+	void OnOpenFile(const axButton::Msg& msg);
+	void OnFilterFrequency(const axKnob::Msg& msg);
+	void OnFilterRes(const axKnob::Msg& msg);
+	void OnFilterEnvelope(const axKnob::Msg& msg);
+	void OnAttack(const axKnob::Msg& msg);
+	void OnDecay(const axKnob::Msg& msg);
+	void OnGain(const axKnob::Msg& msg);
+	void OnTuning(const axKnob::Msg& msg);
+	void OnTuningEnv(const axKnob::Msg& msg);
 	virtual void OnPaint();
 
 
@@ -99,6 +101,7 @@ private:
 	int _trackId;
 	string _trackName;
 	bool _highlight, _selected;
+    axFont* _font;
 
 	axEvtFunction(DrumPadMsg) _clickEvent;
 	// Events.
@@ -114,7 +117,7 @@ class DrumSampler : public axPanel
 {
 public:
 	DrumSampler(axWindow* parent,
-		const axRect& rect, Audio* audio);
+		const axRect& rect, axAudio* audio);
 
 	//axEVENT(axButtonMsg, OnOpenFile);
 
@@ -126,9 +129,6 @@ private:
 	vector<DrumPad*> _pads;
 
 	axImage* _topBar;
-
-	
-	//function<void(axButtonMsg)> button_click;
 
 	// Events.
 
