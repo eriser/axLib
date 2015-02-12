@@ -28,7 +28,9 @@ public:
     public:
         Msg();
         
-        Msg(axMultipleSlider* sender, const int& index, const double& value);
+        Msg(axMultipleSlider* sender,
+            const int& index,
+            const double& value);
         
         axMultipleSlider* GetSender() const;
         
@@ -63,8 +65,8 @@ public:
      **************************************************************************/
     axMultipleSlider(axWindow* parent,
                      const axRect& rect,
-                     const axColor& bgColor,
-                     const int& barIndex);
+                     const axMultipleSlider::Events& events,
+                     const axColor& bgColor);
     
     void SetNumberOfSlider(const int& nb);
     

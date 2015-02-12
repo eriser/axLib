@@ -1,16 +1,16 @@
 //
-//  DrumMidiVelocity.cpp
+//  MidiVelocity.cpp
 //  DrumNBass
 //
 //  Created by Alexandre Arsenault on 2015-02-06.
 //  Copyright (c) 2015 Alexandre Arsenault. All rights reserved.
 //
 
-#include "DrumMidiVelocity.h"
+#include "MidiVelocity.h"
 
-DrumMidiVelocity::DrumMidiVelocity(axWindow* parent,
+MidiVelocity::MidiVelocity(axWindow* parent,
                                    const axRect& rect,
-                                   const DrumMidiVelocity::Events& events):
+                                   const MidiVelocity::Events& events):
 axPanel(parent, rect)
 // Members.
 //_velocity_fct(fct),
@@ -35,8 +35,9 @@ axPanel(parent, rect)
             color = axColor(0.8, 0.8, 0.8);
         }
         
-        //axEvtFunction(MultipleSliderMsg) sldfct(GetOnChangeVelocity());
-        _sliders.push_back(new axMultipleSlider(this, r, color, i));
+        _sliders.push_back(new axMultipleSlider(this, r,
+                                                axMultipleSlider::Events(GetOnChangeVelocity()),
+                                                color));
     }
     
     
@@ -82,7 +83,7 @@ axPanel(parent, rect)
 //    }
 //}
 
-void DrumMidiVelocity::SetNumberOfSlider(const int& nb)
+void MidiVelocity::SetNumberOfSlider(const int& nb)
 {
     for(int i = 0; i < _sliders.size(); i++)
     {
@@ -90,7 +91,7 @@ void DrumMidiVelocity::SetNumberOfSlider(const int& nb)
     }
 }
 
-void DrumMidiVelocity::OnChangeVelocity(const axMultipleSlider::Msg& msg)
+void MidiVelocity::OnChangeVelocity(const axMultipleSlider::Msg& msg)
 {
     axMultipleSlider* sld = msg.GetSender();
     int bar_index = -1;
@@ -105,14 +106,14 @@ void DrumMidiVelocity::OnChangeVelocity(const axMultipleSlider::Msg& msg)
     
     if(bar_index != -1)
     {
-        axObject::PushEvent(DrumMidiVelocity::Events::VALUE_CHANGE,
-                            new DrumMidiVelocity::Msg(this, bar_index,
+        axObject::PushEvent(MidiVelocity::Events::VALUE_CHANGE,
+                            new MidiVelocity::Msg(this, bar_index,
                                                       msg.GetIndex(),
                                                       msg.GetValue()));
     }
     
 //    int bar_index
-//    DrumMidiVelocity::Msg* d_msg = new DrumMidiVelocit
+//    MidiVelocity::Msg* d_msg = new DrumMidiVelocit
     
 }
 
@@ -124,7 +125,7 @@ void DrumMidiVelocity::OnChangeVelocity(const axMultipleSlider::Msg& msg)
 ////    }
 //}
 
-void DrumMidiVelocity::OnStandardDeviation(const axNumberBox::Msg& msg)
+void MidiVelocity::OnStandardDeviation(const axNumberBox::Msg& msg)
 {
 //    if(_standard_deviation_fct)
 //    {
@@ -133,7 +134,7 @@ void DrumMidiVelocity::OnStandardDeviation(const axNumberBox::Msg& msg)
 //    }
 }
 
-void DrumMidiVelocity::OnPaint()
+void MidiVelocity::OnPaint()
 {
     axGC* gc = GetGC();
     axRect rect(GetRect());

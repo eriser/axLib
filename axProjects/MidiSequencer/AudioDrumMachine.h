@@ -317,16 +317,16 @@ public:
         
 		//_track = new AudioTrack("kickw.wav", _nSamplePerBeat);
         
-        std::string local_dir("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/");
+        std::string local_dir("/Users/alexarse/Project/axLib/axProjects/MidiSequencer/builds/XCode6/MidiSequencer/");
 
-		_tracks.push_back(new AudioTrack(local_dir + "kickw.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack(local_dir + "snare06.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack(local_dir + "hihat3.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack(local_dir + "ohat.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack(local_dir + "snare2.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack(local_dir + "ohat.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack(local_dir + "snare2.wav", _nSamplePerBeat));
-		_tracks.push_back(new AudioTrack(local_dir + "ohat.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "kick-808.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "snare-808.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "hihat-plain.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "openhat-acoustic01.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "clap-tape.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "tom-808.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "perc-tambo.wav", _nSamplePerBeat));
+		_tracks.push_back(new AudioTrack(local_dir + "crash-acoustic.wav", _nSamplePerBeat));
 
 		_tracks[0]->SetTrackName("Kick");
 		_tracks[1]->SetTrackName("Snare");
@@ -334,7 +334,7 @@ public:
 		_tracks[3]->SetTrackName("OHat");
 		_tracks[4]->SetTrackName("Clap");
 		_tracks[5]->SetTrackName("Tom");
-		_tracks[6]->SetTrackName("Bell");
+		_tracks[6]->SetTrackName("Perc");
 		_tracks[7]->SetTrackName("Crash");
 }
 

@@ -7,7 +7,7 @@
 //
 
 #include "DrumInstrumentGUI.h"
-#include "DrumMidiSequencer.h"
+//#include "DrumMidiSequencer.h"
 
 DrumInstrumentGUI::DrumInstrumentGUI(axWindow* parent,
                                      const axRect& rect):

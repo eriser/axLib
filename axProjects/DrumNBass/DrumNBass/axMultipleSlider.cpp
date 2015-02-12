@@ -47,16 +47,20 @@ axMsg* axMultipleSlider::Msg::GetCopy()
 
 
 axMultipleSlider::axMultipleSlider(axWindow* parent,
-                               const axRect& rect,
-                               const axColor& bgColor,
-                               const int& barIndex):
+                                   const axRect& rect,
+                                   const axMultipleSlider::Events& events,
+                                   const axColor& bgColor):
 axPanel(parent, rect),
 // Members.
-_barIndex(barIndex)
+_bgColor(bgColor),
+_nSlider(3)
 {
-    _bgColor = bgColor;
+    if(events.value_change)
+    {
+        axObject::AddConnection(events.VALUE_CHANGE, events.value_change);
+    }
     
-    axSliderInfo sld_info("",//"sliderPlain.png",
+    axSliderInfo sld_info("", // Image path.
                           axSize(8, 8),
                           axColor(0.9, 0.9, 0.9, 0.2), // Bg
                           axColor(1.0, 1.0, 1.0, 0.1), // bg hover.
@@ -70,47 +74,40 @@ _barIndex(barIndex)
                           axColor(0.9, 0.9, 0.9), // Back Slider contour.
                           3);
     
-    _nSlider = 3;
     double position_ratio = rect.size.x / double(_nSlider);
     int size_x = rect.size.x / double(_nSlider);
     
-    /*double t = position_ratio * 1.0;*/
-    
     axFlag slider_flags = axSLIDER_FLAG_VERTICAL |
-    axSLIDER_FLAG_CLICK_ANYWHERE |
-    axSLIDER_FLAG_RIGHT_ALIGN;
-    
-    
-    //    axEvtFunction(axSliderMsg) sld_fct(GetOnSlider1Move());
-    
-    axSliderEvents sldEvents;
-    sldEvents.slider_value_change = GetOnSlider1Move();
-    // function<void(const axSliderMsg&)> sld_fct(GetOnSliderMove());
+                          axSLIDER_FLAG_CLICK_ANYWHERE |
+                          axSLIDER_FLAG_RIGHT_ALIGN;
     
     double left = position_ratio * 0.0;
     double right = position_ratio * 1.0;
     sliders[0] = new axSlider(this,
                               axRect(left, 0, right - left, rect.size.y),
-                              sldEvents, sld_info, slider_flags);
+                              axSliderEvents(GetOnSlider1Move()),
+                              sld_info,
+                              slider_flags);
 
     left = position_ratio * 1.0;
     right = position_ratio * 2.0;
-    sldEvents.slider_value_change = GetOnSlider2Move();
     sliders[1] = new axSlider(this,
                               axRect(left, 0, right - left, rect.size.y),
-                              sldEvents, sld_info, slider_flags);
+                              axSliderEvents(GetOnSlider2Move()),
+                              sld_info,
+                              slider_flags);
     
     left = position_ratio * 2.0;
     right = position_ratio * 3.0;
-    sldEvents.slider_value_change = GetOnSlider3Move();
     sliders[2] = new axSlider(this,
                               axRect(left, 0, right - left, rect.size.y),
-                              sldEvents, sld_info, slider_flags);
+                              axSliderEvents(GetOnSlider3Move()),
+                              sld_info,
+                              slider_flags);
         
-    sliders[0]->SetValue(0.7);
-    sliders[1]->SetValue(0.7);
-    sliders[2]->SetValue(0.7);
-    // sliders[2]->Hide();
+    sliders[0]->SetValue(0.3);
+    sliders[1]->SetValue(0.3);
+    sliders[2]->SetValue(0.3);
     
     SetNumberOfSlider(1);
     
@@ -128,41 +125,20 @@ void axMultipleSlider::SetValue(const int& index,
 
 void axMultipleSlider::OnSlider1Move(const axSliderMsg& msg)
 {
-//    if (_slider_fct)
-//    {
-//        axMultipleSliderMsg m;
-//        m.index = 0;
-//        m.value = 1.0 - msg.GetValue();
-//        m.bar_index = _barIndex;
-//        
-//        _slider_fct(m);
-//    }
+    axObject::PushEvent(axMultipleSlider::Events::VALUE_CHANGE,
+                        new Msg(this, 0, 1.0 - msg.GetValue()));
 }
 
 void axMultipleSlider::OnSlider2Move(const axSliderMsg& msg)
 {
-//    if (_slider_fct)
-//    {
-//        axMultipleSliderMsg m;
-//        m.index = 1;
-//        m.value = 1.0 - msg.GetValue();
-//        m.bar_index = _barIndex;
-//        
-//        _slider_fct(m);
-//    }
+    axObject::PushEvent(axMultipleSlider::Events::VALUE_CHANGE,
+                        new Msg(this, 1, 1.0 - msg.GetValue()));
 }
 
 void axMultipleSlider::OnSlider3Move(const axSliderMsg& msg)
 {
-//    if (_slider_fct)
-//    {
-//        axMultipleSliderMsg m;
-//        m.index = 2;
-//        m.value = 1.0 - msg.GetValue();
-//        m.bar_index = _barIndex;
-//        
-//        _slider_fct(m);
-//    }
+    axObject::PushEvent(axMultipleSlider::Events::VALUE_CHANGE,
+                        new Msg(this, 2, 1.0 - msg.GetValue()));
 }
 
 void axMultipleSlider::SetNumberOfSlider(const int& nb)

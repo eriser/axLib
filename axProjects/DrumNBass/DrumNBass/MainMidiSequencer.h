@@ -20,9 +20,14 @@ public:
     
     virtual void OnResize();
     
-private:    
+private:
+    
+    std::vector<MidiInstrument*> _midiInstruments;
     // axEvents.
     void OnPaint();
+    
+    axEVENT_ACCESSOR(MidiInstrument::Msg, OnMidiInstrumentResize);
+    void OnMidiInstrumentResize(const MidiInstrument::Msg& msg);
     
 };
 

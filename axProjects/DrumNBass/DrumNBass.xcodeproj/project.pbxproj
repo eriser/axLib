@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CB4366B1A8C4C4100BAA5B8 /* MidiPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB436691A8C4C4100BAA5B8 /* MidiPanel.cpp */; };
 		7CE589CA1A842A6000E912F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE589C91A842A6000E912F5 /* Images.xcassets */; };
 		7CE58A351A842AA500E912F5 /* axAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE589E31A842AA500E912F5 /* axAudio.cpp */; };
 		7CE58A361A842AA500E912F5 /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE589E51A842AA500E912F5 /* axAudioBuffer.cpp */; };
@@ -69,7 +70,7 @@
 		7CE58AE41A845D6C00E912F5 /* LineSelection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AE21A845D6C00E912F5 /* LineSelection.cpp */; };
 		7CE58AE71A8461D400E912F5 /* DrumMidiTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AE51A8461D400E912F5 /* DrumMidiTrack.cpp */; };
 		7CE58AEA1A8506F200E912F5 /* DrumUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AE81A8506F200E912F5 /* DrumUtils.cpp */; };
-		7CE58AED1A852A2B00E912F5 /* DrumMidiVelocity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AEB1A852A2B00E912F5 /* DrumMidiVelocity.cpp */; };
+		7CE58AED1A852A2B00E912F5 /* MidiVelocity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AEB1A852A2B00E912F5 /* MidiVelocity.cpp */; };
 		7CE58AF01A853E2D00E912F5 /* DrumMidiTrackSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AEE1A853E2D00E912F5 /* DrumMidiTrackSequence.cpp */; };
 		7CE58AF31A854C3200E912F5 /* axMultipleSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AF11A854C3200E912F5 /* axMultipleSlider.cpp */; };
 		7CE58AF61A8552E800E912F5 /* DrumSampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE58AF41A8552E800E912F5 /* DrumSampler.cpp */; };
@@ -113,6 +114,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7CB436691A8C4C4100BAA5B8 /* MidiPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MidiPanel.cpp; sourceTree = "<group>"; };
+		7CB4366A1A8C4C4100BAA5B8 /* MidiPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiPanel.h; sourceTree = "<group>"; };
 		7CE589BF1A842A6000E912F5 /* DrumNBass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrumNBass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE589C31A842A6000E912F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CE589C91A842A6000E912F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -228,8 +231,8 @@
 		7CE58AE61A8461D400E912F5 /* DrumMidiTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrumMidiTrack.h; sourceTree = "<group>"; };
 		7CE58AE81A8506F200E912F5 /* DrumUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrumUtils.cpp; sourceTree = "<group>"; };
 		7CE58AE91A8506F200E912F5 /* DrumUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrumUtils.h; sourceTree = "<group>"; };
-		7CE58AEB1A852A2B00E912F5 /* DrumMidiVelocity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrumMidiVelocity.cpp; sourceTree = "<group>"; };
-		7CE58AEC1A852A2B00E912F5 /* DrumMidiVelocity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrumMidiVelocity.h; sourceTree = "<group>"; };
+		7CE58AEB1A852A2B00E912F5 /* MidiVelocity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MidiVelocity.cpp; sourceTree = "<group>"; };
+		7CE58AEC1A852A2B00E912F5 /* MidiVelocity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiVelocity.h; sourceTree = "<group>"; };
 		7CE58AEE1A853E2D00E912F5 /* DrumMidiTrackSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrumMidiTrackSequence.cpp; sourceTree = "<group>"; };
 		7CE58AEF1A853E2D00E912F5 /* DrumMidiTrackSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrumMidiTrackSequence.h; sourceTree = "<group>"; };
 		7CE58AF11A854C3200E912F5 /* axMultipleSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axMultipleSlider.cpp; sourceTree = "<group>"; };
@@ -695,10 +698,12 @@
 				7CE58B661A890DF900E912F5 /* MidiSingleNoteEditor.h */,
 				7CE58B691A8927DF00E912F5 /* PianoNote.cpp */,
 				7CE58B6A1A8927DF00E912F5 /* PianoNote.h */,
-				7CE58AEB1A852A2B00E912F5 /* DrumMidiVelocity.cpp */,
-				7CE58AEC1A852A2B00E912F5 /* DrumMidiVelocity.h */,
+				7CE58AEB1A852A2B00E912F5 /* MidiVelocity.cpp */,
+				7CE58AEC1A852A2B00E912F5 /* MidiVelocity.h */,
 				7CE58AF11A854C3200E912F5 /* axMultipleSlider.cpp */,
 				7CE58AF21A854C3200E912F5 /* axMultipleSlider.h */,
+				7CB436691A8C4C4100BAA5B8 /* MidiPanel.cpp */,
+				7CB4366A1A8C4C4100BAA5B8 /* MidiPanel.h */,
 			);
 			name = MidiPart;
 			sourceTree = "<group>";
@@ -785,6 +790,7 @@
 				7CE58ACC1A843F6C00E912F5 /* MasterModuleGUI.cpp in Sources */,
 				7CE58A581A842AA500E912F5 /* axVar.cpp in Sources */,
 				7CE58ADD1A844EA100E912F5 /* InstrumentGUI.cpp in Sources */,
+				7CB4366B1A8C4C4100BAA5B8 /* MidiPanel.cpp in Sources */,
 				7CE58B5E1A88107F00E912F5 /* MidiInstrument.cpp in Sources */,
 				7CE58B251A855A6800E912F5 /* axLabel.cpp in Sources */,
 				7CE58ACF1A8441C000E912F5 /* DrumNBaseConstant.cpp in Sources */,
@@ -862,7 +868,7 @@
 				7CE58B541A859D0B00E912F5 /* ModuleFilter.cpp in Sources */,
 				7CE58A3B1A842AA500E912F5 /* axAudioWaveTable.cpp in Sources */,
 				7CE58A5C1A842AA500E912F5 /* axWindowTree.cpp in Sources */,
-				7CE58AED1A852A2B00E912F5 /* DrumMidiVelocity.cpp in Sources */,
+				7CE58AED1A852A2B00E912F5 /* MidiVelocity.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,9 +23,8 @@ _colorChoice(MIDI_CHOICE_RED)
     _choiceColors[MIDI_CHOICE_BLUE] = axColor(0.0, 0.0, 0.8);
     
      _notes.resize(16);
-    _velocity = new DrumMidiVelocity(this, axRect(0, rect.size.y,
-                                                  rect.size.x, 40),
-                                     DrumMidiVelocity::Events());
+    _velocity = new MidiVelocity(this, axRect(0, rect.size.y, rect.size.x, 40),
+                                 MidiVelocity::Events(GetOnVelocityChange()));
     _velocity->Hide();
 }
 
@@ -90,6 +89,12 @@ void MidiSingleNoteEditor::RemoveTrack()
 void MidiSingleNoteEditor::SetColorSelection(const MidiColorChoice& choice)
 {
     _colorChoice = choice;
+}
+
+void MidiSingleNoteEditor::OnVelocityChange(const MidiVelocity::Msg& msg)
+{
+    _notes[msg.GetBarIndex()].velocities[msg.GetSliderIndex()] = msg.GetValue();
+    Update();
 }
 
 void MidiSingleNoteEditor::OnMouseMotion(const axPoint& mousePos)

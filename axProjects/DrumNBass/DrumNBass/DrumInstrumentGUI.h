@@ -48,7 +48,7 @@
 //    virtual void OnPaint();
 //};
 
-class DrumMidiSequencer;
+//class DrumMidiSequencer;
 
 class DrumInstrumentGUI : public axPanel, public InstrumentGUI
 {
@@ -56,7 +56,7 @@ public:
     DrumInstrumentGUI(axWindow* parent, const axRect& rect);
     
 private:
-    DrumMidiSequencer* _drumMidiSequencer;
+//    DrumMidiSequencer* _drumMidiSequencer;
     DrumSampler* _drumSampler;
     
     // axEvents.

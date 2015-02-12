@@ -81,7 +81,7 @@ struct axSliderEvents
     enum : axEventId { VALUE_CHANGE };
     
     axSliderEvents(){}
-    axSliderEvents(axEventFunction& fct){ slider_value_change = fct; }
+    axSliderEvents(const axEventFunction& fct){ slider_value_change = fct; }
     
     axEventFunction slider_value_change;
 };

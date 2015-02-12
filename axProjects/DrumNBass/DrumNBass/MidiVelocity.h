@@ -1,29 +1,29 @@
 //
-//  DrumMidiVelocity.h
+//  MidiVelocity.h
 //  DrumNBass
 //
 //  Created by Alexandre Arsenault on 2015-02-06.
 //  Copyright (c) 2015 Alexandre Arsenault. All rights reserved.
 //
 
-#ifndef __DrumNBass__DrumMidiVelocity__
-#define __DrumNBass__DrumMidiVelocity__
+#ifndef __DrumNBass__MidiVelocity__
+#define __DrumNBass__MidiVelocity__
 
 #include "axLib.h"
 #include "axMultipleSlider.h"
 
-class DrumMidiVelocity: public axPanel
+class MidiVelocity: public axPanel
 {
 public:
     /***************************************************************************
-     * DrumMidiVelocity::Msg.
+     * MidiVelocity::Msg.
      **************************************************************************/
     class Msg : public axMsg
     {
     public:
         Msg();
         
-        Msg(DrumMidiVelocity* sender,
+        Msg(MidiVelocity* sender,
             const int& bar_index,
             const int& slider_index,
             const double& value):
@@ -35,7 +35,7 @@ public:
             
         }
         
-        DrumMidiVelocity* GetSender() const
+        MidiVelocity* GetSender() const
         {
             return _sender;
         }
@@ -57,18 +57,18 @@ public:
         
         axMsg* GetCopy()
         {
-            return new DrumMidiVelocity::Msg(*this);
+            return new MidiVelocity::Msg(*this);
         }
         
     private:
-        DrumMidiVelocity* _sender;
+        MidiVelocity* _sender;
         double _value;
         int _sliderIndex;
         int _barIndex;
     };
     
     /***************************************************************************
-     * DrumMidiVelocity::Events.
+     * MidiVelocity::Events.
      **************************************************************************/
     class Events
     {
@@ -83,11 +83,11 @@ public:
     
 
     /***************************************************************************
-     * DrumMidiVelocity::DrumMidiVelocity.
+     * MidiVelocity::MidiVelocity.
      **************************************************************************/
-    DrumMidiVelocity(axWindow* parent,
+    MidiVelocity(axWindow* parent,
                      const axRect& rect,
-                     const DrumMidiVelocity::Events& events);
+                     const MidiVelocity::Events& events);
     
     void SetNumberOfSlider(const int& nb);
     
@@ -113,4 +113,4 @@ private:
     virtual void OnPaint();
 };
 
-#endif /* defined(__DrumNBass__DrumMidiVelocity__) */
+#endif /* defined(__DrumNBass__MidiVelocity__) */

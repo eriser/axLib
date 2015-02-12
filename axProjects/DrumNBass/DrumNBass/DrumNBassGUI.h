@@ -13,7 +13,8 @@
 
 // Main panel define in DrumNBassScrollPanel.h
 class DrumNBassScrollPanel;
-class MainMidiSequencer;
+//class MainMidiSequencer;
+class MidiPanel;
 
 class DrumNBassGUI : public axPanel
 {
@@ -24,7 +25,8 @@ private:
     axImage* _woodSideImg;
     axScrollBar* _scrollBar;
     DrumNBassScrollPanel* _mainScrollPanel;
-    MainMidiSequencer* _mainMidiSequencer;
+//    MainMidiSequencer* _mainMidiSequencer;
+    MidiPanel* _midiPanel;
     
     // axEvents.
     void OnPaint();

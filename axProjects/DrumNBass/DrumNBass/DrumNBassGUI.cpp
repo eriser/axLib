@@ -9,16 +9,9 @@
 #include "DrumNBassGUI.h"
 #include "DrumNBaseConstant.h"
 #include "DrumNBassScrollPanel.h"
-#include "MainMidiSequencer.h"
+//#include "MainMidiSequencer.h
+#include "MidiPanel.h"
 
-//const axSize DrumNBassGUI::drumNBassFixAppSize = axSize(655, 686);
-//const int DrumNBassGUI::scrollBarFixWidth = 8;
-//const axSize DrumNBassGUI::woodSideFixSize = axSize(45, 686);
-//const axRect DrumNBassGUI::scrollPanelFixRect = axRect(woodSideFixSize.x, 0,
-//                                                       drumNBassFixAppSize.x - 2
-//                                                       * woodSideFixSize.x -
-//                                                       (scrollBarFixWidth - 1),
-//                                                       drumNBassFixAppSize.y);
 
 DrumNBassGUI::DrumNBassGUI():
 axPanel(nullptr, axRect(axPoint(0, 0), DNBConstant::drumNBassFixAppSize))
@@ -59,13 +52,11 @@ axPanel(nullptr, axRect(axPoint(0, 0), DNBConstant::drumNBassFixAppSize))
     _mainScrollPanel =
         new DrumNBassScrollPanel(this, DNBConstant::scrollPanelFixRect);
     
-    axRect mainMidiRect(DNBConstant::scrollPanelFixRect);
-    mainMidiRect.size.y -= 50;
-    _mainMidiSequencer = new MainMidiSequencer(this,
-                                               mainMidiRect);
-    
-    _mainMidiSequencer->Hide();
-    
+    axRect midiRect(DNBConstant::scrollPanelFixRect);
+    midiRect.size.x += 8;
+    midiRect.size.y -= 50;
+    _midiPanel = new MidiPanel(this, midiRect);
+    _midiPanel->Hide();
     
     // Create Scroll bar.
     _scrollBar = new axScrollBar(this, _mainScrollPanel,
@@ -88,6 +79,33 @@ axPanel(nullptr, axRect(axPoint(0, 0), DNBConstant::drumNBassFixAppSize))
     _scrollBar->SetPanelSize(_mainScrollPanel->GetSize());
     
     _mainScrollPanel->OnResize();
+    
+    
+    
+    axButton::Info btn_info(axColor(0.9, 0.17, 0.17, 0.0),
+                            axColor(0.3, 0.3, 0.3, 0.4),
+                            axColor(0.2, 0.2, 0.2, 0.4),
+                            axColor(0.2, 0.2, 0.2, 0.0),
+                            axColor(0.0, 0.0, 0.0, 1.0),
+                            axColor(0.4, 0.4, 0.4));
+
+    axButton* play = new axButton(this,
+                                  axRect(GetRect().size.x * 0.5 - 50,
+                                         GetRect().size.y - 45,
+                                         40, 40),
+                                  axButton::Events(),
+                                  btn_info,
+                                  app_path + "resources/images/play.png",
+                                  "");
+    
+    axButton* stop = new axButton(this,
+                                  axRect(play->GetNextPosRight(5),
+                                         axSize(40, 40)),
+                                  axButton::Events(),
+                                  btn_info,
+                                  app_path + "resources/images/stop.png",
+                                  "");
+
 }
 
 void DrumNBassGUI::OnResize()
@@ -98,13 +116,15 @@ void DrumNBassGUI::OnResize()
 void DrumNBassGUI::OnMidiPartClick(const axButton::Msg& msg)
 {
     _mainScrollPanel->Hide();
-    _mainMidiSequencer->Show();
+    _scrollBar->Hide();
+    _midiPanel->Show();
 }
 
 void DrumNBassGUI::OnSynthPartClick(const axButton::Msg& msg)
 {
-    _mainMidiSequencer->Hide();
+    _midiPanel->Hide();
     _mainScrollPanel->Show();
+    _scrollBar->Show();
 }
 
 void DrumNBassGUI::OnPaint()
@@ -119,15 +139,19 @@ void DrumNBassGUI::OnPaint()
     gc->DrawImage(_woodSideImg, axPoint(rect.size.x -
                                         DNBConstant::woodSideFixSize.x, 0));
     
-    gc->SetColor(axColor(0.6));
-    gc->DrawRectangle(axRect(45, rect.size.y -
+//    gc->SetColor(axColor(0.2));
+    gc->DrawRectangleColorFade(axRect(45, rect.size.y -
                              DNBConstant::bottom_bar_height, rect.size.x - 90,
-                             DNBConstant::bottom_bar_height));
+                             DNBConstant::bottom_bar_height),
+                                axColor(0.5), axColor(0.6));
     
+//    gc->SetLineWidth(2);
     gc->SetColor(axColor::axBlackColor);
     gc->DrawRectangleContour(axRect(45, rect.size.y -
                                     DNBConstant::bottom_bar_height+1,
-                                    rect.size.x - 89,
-                                    DNBConstant::bottom_bar_height - 1));
-                                        
+                                    rect.size.x - 88,
+                                    DNBConstant::bottom_bar_height - 1), 2);
+    
+//    gc->SetLineWidth(1);
+    
 }

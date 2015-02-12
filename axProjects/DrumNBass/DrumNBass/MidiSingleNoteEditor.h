@@ -10,7 +10,7 @@
 #define __DrumNBass__MidiSingleNoteEditor__
 
 #include "axLib.h"
-#include "DrumMidiVelocity.h"
+#include "MidiVelocity.h"
 
 enum MidiColorChoice
 {
@@ -55,10 +55,13 @@ private:
     MidiColorChoice _colorChoice;
     axColor _choiceColors[MIDI_CHOICE_NUM];
     
-    DrumMidiVelocity* _velocity;
+    MidiVelocity* _velocity;
     
     std::vector<MidiNoteParameter> _notes;
 
+    axEVENT_ACCESSOR(MidiVelocity::Msg, OnVelocityChange);
+    void OnVelocityChange(const MidiVelocity::Msg& msg);
+    
     // axEvents.
     virtual void OnPaint();
     virtual void OnMouseMotion(const axPoint& mousePos);
