@@ -180,7 +180,7 @@ private:
 //    std::map<std::string, axEventFunction> _evtMap;
     axResourceManager _resourceManager;
     
-    void InitGLWindowBackBufferDrawing();
+//    void InitGLWindowBackBufferDrawing();
 };
 
 /// @}

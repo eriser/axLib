@@ -383,34 +383,35 @@ void axButton::OnMouseLeave()
 
 void axButton::OnPaint()
 {
-        axGC* gc = GetGC();
-        axRect rect(GetRect());
-        axRect rect0(GetDrawingRect());
+    axGC gc = axGC(this);
     
-        gc->SetColor(*_currentColor);
-        gc->DrawRectangle(rect0);
-        
-        if (_btnImg->IsImageReady())
+    axRect rect(GetRect());
+    axRect rect0(GetDrawingRect());
+    
+    gc.SetColor(*_currentColor);
+    gc.DrawRectangle(rect0);
+    
+    if (_btnImg->IsImageReady())
+    {
+        if (IsFlag(Flags::SINGLE_IMG, _flags))
         {
-            if (IsFlag(Flags::SINGLE_IMG, _flags))
-            {
-                gc->DrawImageResize(_btnImg, axPoint(0, 0), rect0.size, 1.0);
-            }
-            else
-            {
-                gc->DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
-                                    rect.size, axPoint(0, 0));
-            }
+            gc.DrawImageResize(_btnImg, axPoint(0, 0), rect0.size, 1.0);
         }
-        
-        if_not_empty(_label)
+        else
         {
-            gc->SetColor(static_cast<axButton::Info*>(_info)->font_color, 1.0);
-            gc->DrawStringAlignedCenter(*_font, _label, rect0);
+            gc.DrawPartOfImage(_btnImg, axPoint(0, _nCurrentImg * rect.size.y),
+                                rect.size, axPoint(0, 0));
         }
-        
-        gc->SetColor(static_cast<axButton::Info*>(_info)->contour);
-        gc->DrawRectangleContour(rect0);
+    }
+    
+    if_not_empty(_label)
+    {
+        gc.SetColor(static_cast<axButton::Info*>(_info)->font_color, 1.0);
+        gc.DrawStringAlignedCenter(*_font, _label, rect0);
+    }
+    
+    gc.SetColor(static_cast<axButton::Info*>(_info)->contour);
+    gc.DrawRectangleContour(rect0);
 }
 
 
