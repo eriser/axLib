@@ -37,6 +37,8 @@ public:
     
     void DrawFrameBuffer(const axSize& shownSize);
     
+//    void DrawFrameBufferOnParentFrameBuffer(const axSize& shownSize);
+    
 private:
     GLuint _frameBuffer, _frameBufferTexture, _depthBuffer;
 };

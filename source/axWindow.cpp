@@ -244,6 +244,11 @@ bool axWindow::IsEditable() const
     return _isEditable;
 }
 
+void axWindow::SetPopupWindow(const bool& popup)
+{
+    _isPopup = popup;
+}
+
 void axWindow::SetWindowColor(const axColor& color)
 {
     _windowColor = color;
@@ -253,6 +258,45 @@ void axWindow::SetContourColor(const axColor& color)
 {
     _contourColor = color;
 }
+
+axRect axWindow::GetDrawingRect() const
+{
+    return axRect(0, 0, _rect.size.x - 1, _rect.size.y - 1);
+}
+
+void axWindow::SetNeedUpdate()
+{
+    _needUpdate = true;
+}
+
+bool axWindow::GetIsPopup()
+{
+    return _isPopup;
+}
+
+void axWindow::SetSelectable(const bool& selectable)
+{
+    _isSelectable = selectable;
+}
+
+bool axWindow::IsBlockDrawing() const
+{
+    return _isBlockDrawing;
+}
+
+void axWindow::SetBlockDrawing(const bool& block)
+{
+    _isBlockDrawing = block;
+}
+
+axResourceManager* axWindow::GetResourceManager()
+{
+    return &_resourceManager;
+}
+
+
+
+
 
 void axWindow::OnPaint()
 {
@@ -273,12 +317,23 @@ void axWindow::RenderWindow()
     if(_needUpdate)
     {
         std::function<void()> draw([this](){ OnPaint(); });
+  
         _frameBufferObj.DrawOnFrameBuffer(draw, GetRect().size);
-        
         _needUpdate = false;
     }
     
     _frameBufferObj.DrawFrameBuffer(GetShownRect().size);
+    
+//    if(_parent == nullptr)
+//    {
+////        axPrint("RenderWindow parent = nullptr");
+//        _frameBufferObj.DrawFrameBuffer(GetShownRect().size);
+//    }
+//    else
+//    {
+//        _frameBufferObj.DrawFrameBufferOnParentFrameBuffer(GetShownRect().size);
+//    }
+    
 #else
     OnPaint();
 #endif //_axBackBufferWindow_

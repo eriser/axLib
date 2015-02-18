@@ -118,6 +118,8 @@ typedef std::pair<std::string, std::string> axStringPair;
 typedef std::vector<std::pair<std::string, std::string>> axVectorPairString;
 typedef std::vector<std::string> axStringVector;
 
+typedef std::vector<bool> axBoolVector;
+
 axStringVector GetVectorFromStringDelimiter(const std::string& str,
                                             const std::string& delimiter);
 

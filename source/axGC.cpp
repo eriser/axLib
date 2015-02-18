@@ -139,7 +139,7 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 //    glEnable(GL_DEPTH_TEST);
     
     
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 
 	glBindTexture(GL_TEXTURE_2D, texture);
@@ -180,6 +180,7 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 
 //	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
+//    glBlendFunc(GL_ONE, GL_ZERO);
 //    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
@@ -354,10 +355,10 @@ void axGC::DrawPartOfImage(axImage* img,
     glColor4f(1.0, 1.0, 1.0, alpha);
     
     glEnable(GL_TEXTURE_2D);
-//    glEnable(GL_BLEND);
-//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
+
     glBindTexture(GL_TEXTURE_2D, img->GetTexture());
+//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA);
 //    glDepthMask(GL_TRUE);
     
     // OpenGL stores texture upside down so glTexCoord2d must be flipped.
@@ -381,6 +382,7 @@ void axGC::DrawPartOfImage(axImage* img,
     glEnd();
     //	glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
+//    glBlendFunc(GL_ONE, GL_ZERO);
 }
 
 
