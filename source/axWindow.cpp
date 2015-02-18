@@ -375,9 +375,9 @@ void axWindow::RenderWindow()
     // (GL_MAX_TEXTURE_SIZE) or find out the maximum number of color buffers
     // you can attach to the framebuffer object(GL_MAX_COLOR_ATTACHMENTS_EXT).
     
-    int v = 0;
-    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &v);
-    std::cout << "Nb max :::::: " << v << std::endl;
+//    int v = 0;
+//    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &v);
+//    std::cout << "Nb max :::::: " << v << std::endl;
     
     
     if(_needUpdate)

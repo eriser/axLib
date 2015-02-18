@@ -42,10 +42,10 @@ public:
 
 	virtual void ResizeGLScene(const axSize& size);
     
-    virtual bool CreateGLWindow(const char* title, int width, int height, int bits) = 0;
-    
-    //virtual bool CreatePopupWindow(const char* title, int width, int height) = 0;
-    
+    virtual bool CreateGLWindow(const char* title,
+                                int width,
+                                int height, int bits) = 0;
+
     virtual std::string GetAppDirectory() = 0;
     
     virtual axRect GetScreenRect() = 0;

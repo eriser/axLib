@@ -108,19 +108,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     axApp* app = axApp::CreateApp();
     axVstCoreMac* vstCoreMac = static_cast<axVstCoreMac*>(app->GetCore());
     axAppDelegate* delegate = (__bridge axAppDelegate*)vstCoreMac->GetCurrentAppDelegate();
-////    axVstCoreData* coreData = vstCoreMac->GetVstCoreData();
-//    
-//    std::vector<axVstCoreData>* data = vstCoreMac->GetManagerVector();
-//    for(auto& n : *data)
-//    {
-//        if(n.appDelegate != nullptr)
-//        {
-//            axAppDelegate* d = (__bridge axAppDelegate*)n.appDelegate;
-//            [d setNeedsDisplay:YES];
-//        }
-//    }
-    
-//    axAppDelegate* d = (__bridge axAppDelegate*)coreData->appDelegate;
+
     [delegate setNeedsDisplay:YES];
     return delegate;
 #else
@@ -238,6 +226,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     
     axPoint pos(locationInView.x, locationInView.y);
     axApp::MainInstance->GetPopupManager()->OnMouseLeftDragging(pos);
+    
     if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
     {
         axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
@@ -273,9 +262,7 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 - (void)keyDown: (NSEvent *) event
 {
     unsigned short key = [event keyCode];
-    
-//    std::cout << "KEY : " << key << std::endl;
-    
+
     // BackSpace.
     if(key == 51)
     {
@@ -306,7 +293,6 @@ axAppDelegate* GlobalAppDelegate = nullptr;
         std::string str = [[event characters] UTF8String];
         axApp::MainInstance->GetWindowManager()->OnKeyDown(str[0]);
     }
-    
 }
 
 
@@ -320,8 +306,6 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
 
 -(void) installRunLoopObserver
 {
-//    std::cout << "Install run observer." << std::endl;
-    
     // Run loop observer.
     CFRunLoopObserverRef myObserver = NULL;
     int myActivities = kCFRunLoopAllActivities; //kCFRunLoopBeforeWaiting;
@@ -339,7 +323,6 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
                              myObserver,
                              kCFRunLoopCommonModes);
     }
-    
 }
 
 // Timer callback method
