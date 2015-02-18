@@ -25,6 +25,8 @@
 /// @defgroup Core
 /// @{
 
+//#include "axWindow.h"
+
 class axMsg
 {
 public:
@@ -35,6 +37,35 @@ public:
     virtual axMsg* GetCopy() = 0;
     
 };
+
+//template<typename T>
+//class axSenderMsg : public axMsg
+//{
+//public:
+//    axSenderMsg(T* sender)
+//    {
+//        _sender = sender;
+//    }
+//    
+//    virtual ~axSenderMsg()
+//    {
+//        
+//    }
+//    
+//    T* GetSender() const
+//    {
+//        return _sender;
+//    }
+//    
+//    virtual axMsg* GetCopy()
+//    {
+//         return new axSenderMsg(*this);
+//    };
+//    
+//private:
+//    T* _sender;
+//    
+//};
 
 /// @}
 #endif /* defined(__axManager__axMsg__) */

@@ -9,7 +9,7 @@
 #ifndef __Demo__KnobPanel__
 #define __Demo__KnobPanel__
 
-#include "axLib.h"
+#include <axLib/axLib.h>
 
 class KnobPanel : public axPanel
 {

@@ -135,23 +135,32 @@ void MainPanel::OnPaint()
     
 }
 
-void axMain::MainEntryPoint(axApp* app)
-{
-    MainPanel* mainPanel = new MainPanel(nullptr,
-                                            axRect(1, 1, 550, 499));
-}
+//void axMain::MainEntryPoint(axApp* app)
+//{
+//    MainPanel* mainPanel = new MainPanel(nullptr,
+//                                            axRect(1, 1, 550, 499));
+//}
+
 
 /// @todo Chnage with macro implement app.
-#ifdef _MSC_VER
+//#ifdef _MSC_VER
 int main(int argc, char* argv[])
 {
 	axEventManager::GetInstance();
 	axApp* app = axApp::CreateApp(axSize(550, 499));
-	axMain* main = new axMain();
     
-    main->MainEntryPoint(app);
+    app->AddMainEntry([]()
+    {
+        MainPanel* mainPanel = new MainPanel(nullptr, axRect(0, 0, 500, 500));
+    });
+    
+    
+    
+//	axMain* main = new axMain();
+    
+//    main->MainEntryPoint(app);
 
 	app->MainLoop();
 	return 0;
 }
-#endif
+//#endif

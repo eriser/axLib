@@ -208,7 +208,6 @@ protected:
     virtual void OnWasKeyGrabbed();
     virtual void OnKeyDeleteDown();
     
-    //
     virtual void DrawContourRectangle(axGC* gc);
     
     axEVENT_ACCESSOR(axTimerMsg, OnFlashingCursorTimer);

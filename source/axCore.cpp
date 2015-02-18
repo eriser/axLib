@@ -29,16 +29,7 @@ axCore::axCore():
 {
     _windowManager = nullptr;
     _popupManager = nullptr;
-    
-//    InitManagers();
-    
-//	_windowManager = new axManager();
-//    _windowManager->_managerName = std::string("WindowManager");
-//	 _popupManager = new axManager();
-//    _popupManager->_managerName = std::string("PopupManager");
 
-	 //_lastDrawingTime = clock();
-    
     _y_test = 0.0;
 }
 

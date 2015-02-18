@@ -95,24 +95,27 @@ struct axScrollBarInfo
 	axColor normal;
 	axColor hover;
 	axColor clicking;
-	axColor selected;
+	axColor slider_contour;
 	axColor contour;
-	axColor font_color;
+	axColor bg_top;
+    axColor bg_bottom;
 
 	axScrollBarInfo(){}
 	axScrollBarInfo(
 		const axColor& normal_color,
 		const axColor& hover_color,
 		const axColor& clicked_color,
-		const axColor& selected_color,
+		const axColor& sliderContour,
 		const axColor& contour_color,
-		const axColor& font_color_) :
+		const axColor& bgTop,
+        const axColor& bgBottom) :
 		normal(normal_color),
 		hover(hover_color),
 		clicking(clicked_color),
-		selected(selected_color),
+		slider_contour(sliderContour),
 		contour(contour_color),
-		font_color(font_color_){}
+		bg_top(bgTop),
+        bg_bottom(bgBottom){}
 };
 
 

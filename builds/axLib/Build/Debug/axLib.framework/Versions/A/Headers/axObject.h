@@ -35,50 +35,32 @@ typedef unsigned int axID;
 class axObject
 {
 public:
-    axObject() :_id(IncrementGlobalIdCount())
-    {
-    }
+    axObject();
     
+    // Add a function to the EventManager.
     void AddConnection(const axEventId& evtId, axEventFunction fct) const;
     
-    void PushEvent(const axEventId& evtId,
-                   axMsg* msg);
+    // Add the function to the EventManager queue.
+    void PushEvent(const axEventId& evtId, axMsg* msg);
     
-    void SetIdForReparenting(const axID& id);
+    void ChangeId(const axID& id);
     
-    inline axID GetId() const
-    {
-        return _id;
-    }
+    inline axID GetId() const { return _id; }
     
-    void AddEventFunction(const std::string& name, axEventFunction fct)
-    {
-        _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
-    }
+    void AddEventFunction(const std::string& name, axEventFunction fct);
     
-    axEventFunction GetEventFunction(const std::string& name)
-    {
-        std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
-        
-        if(it != _evtMap.end())
-        {
-            return it->second;
-        }
-        
-        std::cerr << "Function : " << name << " doesn't exist." << std::endl;
-        return nullptr;
-    }
+    axEventFunction GetEventFunction(const std::string& name);
     
 private:
+    
+    // Unique identifier.
     axID _id;
+    
+    // Map of lamda functions.
     std::map<std::string, axEventFunction> _evtMap;
     
     static axID _global_id_count;
-    
-    static axID IncrementGlobalIdCount()
-    {
-        return ++_global_id_count;
-    }
+    static axID IncrementGlobalIdCount();
 };
 
 /// @}

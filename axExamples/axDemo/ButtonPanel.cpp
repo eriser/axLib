@@ -148,7 +148,7 @@ axPanel(parent, rect)
     axLabel* label = new axLabel(this, axRect(100, 200, 70, 30),
                                  labelInfo, "Radio");
     
-    axLabel* label2 = new axLabel(this, axRect(100, 250, 70, 30),
+    axLabel* label2 = new axLabel(this, axRect(20, 250, 70, 30),
                                  labelInfo, "Checkbox");
     
     

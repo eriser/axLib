@@ -113,6 +113,7 @@ bool axFlag_exist(const axFlag& FLAG, axFlag flags);
 
 bool IsFlag(const axFlag& FLAG, axFlag flags);
 
+#define axNO_FLAG 0
 #define axFLAG_NONE 0
 #define axFLAG_0  0
 #define axFLAG_1  1

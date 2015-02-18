@@ -25,8 +25,6 @@
 /// @defgroup Core
 /// @{
 
-//#define _AX_VST_APP_ 1
-
 #ifdef __linux__
 #include "axCoreX11.h"
 #endif //__linux__
@@ -36,16 +34,16 @@
 #endif //_MSC_VER
 
 #ifdef __APPLE__
-#ifdef _AX_VST_APP_
-#include "axVstCoreMac.h"
-#else
-#include "axCoreMac.h"
-#endif // _AX_VST_APP_
+    #ifdef _AX_VST_APP_
+        #include "axVstCoreMac.h"
+    #else
+        #include "axCoreMac.h"
+    #endif // _AX_VST_APP_
 #endif // __APPLE__
+
 
 #include "axC++.h"
 #include "axResourceManager.h"
-//#include "axToggle.h"
 
 // Is use as an adapter to global axCore class (axCORE).
 class axApp
@@ -103,7 +101,7 @@ public:
     #pragma message("WARNING: Deprecate.")
 	string GetCurrentAppDirectory();
 
-	string GetAppDirectory();
+    std::string GetAppDirectory();
     
     axResourceManager* GetResourceManager() const;
     
