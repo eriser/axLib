@@ -135,18 +135,28 @@ void MainPanel::OnPaint()
     
 }
 
+<<<<<<< HEAD
 void axMain::MainEntryPoint(axApp* app)
 {
    /* MainPanel* mainPanel = new MainPanel(nullptr,
                                             axRect(1, 1, 550, 499));*/
 }
+=======
+//void axMain::MainEntryPoint(axApp* app)
+//{
+//    MainPanel* mainPanel = new MainPanel(nullptr,
+//                                            axRect(1, 1, 550, 499));
+//}
+
+>>>>>>> 55c53b8f576b623e42ac620ef37b342ae93f375d
 
 /// @todo Chnage with macro implement app.
-#ifdef _MSC_VER
+//#ifdef _MSC_VER
 int main(int argc, char* argv[])
 {
 	axEventManager::GetInstance();
 	axApp* app = axApp::CreateApp(axSize(550, 499));
+<<<<<<< HEAD
 	//axMain* main = new axMain();
     
 	app->AddMainEntry([]()
@@ -155,8 +165,21 @@ int main(int argc, char* argv[])
 			axRect(1, 1, 550, 499));
 	});
     //main->MainEntryPoint(app);
+=======
+    
+    app->AddMainEntry([]()
+    {
+        MainPanel* mainPanel = new MainPanel(nullptr, axRect(0, 0, 500, 500));
+    });
+    
+    
+    
+//	axMain* main = new axMain();
+    
+//    main->MainEntryPoint(app);
+>>>>>>> 55c53b8f576b623e42ac620ef37b342ae93f375d
 
 	app->MainLoop();
 	return 0;
 }
-#endif
+//#endif

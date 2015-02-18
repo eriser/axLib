@@ -368,9 +368,11 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     if(global_size.x != backingBounds.size.width ||
        global_size.y != backingBounds.size.height)
     {
-        core->ResizeGLScene(backingBounds.size.width,
-                            backingBounds.size.height,
-                            frame_height - backingBounds.size.height);
+        core->ResizeGLScene(axSize(backingBounds.size.width,
+                                   backingBounds.size.height));
+//        core->ResizeGLScene(backingBounds.size.width,
+//                            backingBounds.size.height,
+//                            frame_height - backingBounds.size.height);
     }
 
     if ([self inLiveResize])

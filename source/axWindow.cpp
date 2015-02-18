@@ -23,6 +23,7 @@
 #include "axApp.h"
 #include "axMath.h"
 #include "axConfig.h"
+#include "axGraphicInterface.h"
 
 axWindow::axWindow(axWindow* parent, const axRect& rect):
 // Members.
@@ -105,9 +106,6 @@ void axWindow::Hide()
         _isHidden = true;
         Update();
     }
-    
-//    _isHidden = true;
-//    Update();
 }
 
 void axWindow::Reparent(axWindow* parent, const axPoint& position)
@@ -116,8 +114,8 @@ void axWindow::Reparent(axWindow* parent, const axPoint& position)
 	SetPosition(position);
 
 	axID temp = _parent->GetId();
-	_parent->SetIdForReparenting(GetId());
-	SetIdForReparenting(temp);
+	_parent->ChangeId(GetId());
+	ChangeId(temp);
 
 	Update();
 }
@@ -131,11 +129,6 @@ void axWindow::SetShownRect(const axRect& rect)
 {
     _shownRect = rect;
 }
-
-// axID axWindow::GetId() const
-// {
-// 	return _id;
-// }
 
 axRect axWindow::GetRect() const
 {
@@ -188,9 +181,6 @@ axRect axWindow::GetAbsoluteRect() const
 	}
 
 	return axRect(pos, _rect.size);
-	
-	// Constant.
-	//return axRect(_absolutePosition, _rect.size);
 }
 
 axSize axWindow::GetSize() const
@@ -210,8 +200,6 @@ void axWindow::SetSize(const axSize& size)
 
     InitGLWindowBackBufferDrawing();
     Update();
-
-	
 }
 
 void axWindow::SetPosition(const axPoint& pos)
@@ -273,6 +261,7 @@ void axWindow::SetContourColor(const axColor& color)
 
 void axWindow::OnPaint()
 {
+    
     axGC* gc = GetGC();
     axRect rect(GetRect());
     
@@ -286,8 +275,12 @@ void axWindow::OnPaint()
 // https://www.opengl.org/wiki/Framebuffer_Object_Examples
 void axWindow::InitGLWindowBackBufferDrawing()
 {
+<<<<<<< HEAD
 #if _axBackBufferWindow_ == 1
 
+=======
+    
+>>>>>>> 55c53b8f576b623e42ac620ef37b342ae93f375d
     // Create framebuffer object (FBO).
     glGenFramebuffers(1, &_frameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
@@ -385,7 +378,20 @@ void axWindow::InitGLWindowBackBufferDrawing()
 
 void axWindow::RenderWindow()
 {
+<<<<<<< HEAD
 	
+=======
+    // Check the renderer limits. For example, you might want to call the OpenGL
+    // function glGetIntegerv to check the maximum texture size
+    // (GL_MAX_TEXTURE_SIZE) or find out the maximum number of color buffers
+    // you can attach to the framebuffer object(GL_MAX_COLOR_ATTACHMENTS_EXT).
+    
+    int v = 0;
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &v);
+    std::cout << "Nb max :::::: " << v << std::endl;
+    
+    
+>>>>>>> 55c53b8f576b623e42ac620ef37b342ae93f375d
     if(_needUpdate)
     {
         #if _axBackBufferWindow_ == 1
@@ -409,6 +415,10 @@ void axWindow::RenderWindow()
             glClearColor(0.0, 0.0, 1.0, 0.0);
             glClearDepth(1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+        glBlendFuncSeparate(GL_SRC_ALPHA,
+                                GL_ONE_MINUS_SRC_ALPHA,
+                                GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
         
             glViewport(0, 0, GetRect().size.x, GetRect().size.y);
         

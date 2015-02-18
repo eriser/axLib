@@ -24,6 +24,16 @@
 
 axID axObject::_global_id_count = 0;
 
+axID axObject::IncrementGlobalIdCount()
+{
+    return ++_global_id_count;
+}
+
+axObject::axObject() :
+_id(IncrementGlobalIdCount())
+{
+}
+
 void axObject::AddConnection(const axEventId& evtId, axEventFunction fct) const
 {
     axEventManager::GetInstance()->AddConnection(_id, evtId, fct);
@@ -34,7 +44,24 @@ void axObject::PushEvent(const axEventId& evtId, axMsg* msg)
     axEventManager::GetInstance()->PushEvent(_id, evtId, msg);
 }
 
-void axObject::SetIdForReparenting(const axID& id)
+void axObject::ChangeId(const axID& id)
 {
 	_id = id;
+}
+
+void axObject::AddEventFunction(const std::string& name, axEventFunction fct)
+{
+    _evtMap.insert(std::pair<std::string, axEventFunction>(name, fct));
+}
+
+axEventFunction axObject::GetEventFunction(const std::string& name)
+{
+    std::map<std::string, axEventFunction>::iterator it = _evtMap.find(name);
+    
+    if(it != _evtMap.end())
+    {
+        return it->second;
+    }
+    
+    return nullptr;
 }

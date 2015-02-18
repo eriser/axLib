@@ -9,7 +9,7 @@
 #ifndef __Demo__main__
 #define __Demo__main__
 
-#include "axLib.h"
+#include <axLib/axLib.h>
 
 class MainPanel : public axPanel
 {

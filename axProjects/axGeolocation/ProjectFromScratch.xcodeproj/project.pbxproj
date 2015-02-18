@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C15A7BC1A923A0800CDD7DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15A7BB1A923A0800CDD7DF /* Cocoa.framework */; };
+		7C15A7BE1A923A1100CDD7DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15A7BD1A923A1100CDD7DF /* Foundation.framework */; };
+		7C15A7C11A923A3B00CDD7DF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15A7BF1A923A3B00CDD7DF /* GLKit.framework */; };
+		7C15A7C21A923A3B00CDD7DF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15A7C01A923A3B00CDD7DF /* OpenGL.framework */; };
 		7C799A761A7847CF00D74E4B /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C799A0C1A7847CF00D74E4B /* AppDelegate.mm */; };
 		7C799A771A7847CF00D74E4B /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C799A0E1A7847CF00D74E4B /* axCocoaInterfaceMac.mm */; };
 		7C799A781A7847CF00D74E4B /* axCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C799A0F1A7847CF00D74E4B /* axCoreMac.cpp */; };
@@ -64,7 +68,6 @@
 		7C9AD4F21A439F7E008187EC /* libportaudio.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9AD4EF1A439F7E008187EC /* libportaudio.2.dylib */; };
 		7C9AD4F31A439F7E008187EC /* libportaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9AD4F01A439F7E008187EC /* libportaudio.dylib */; };
 		7C9AD4F41A439F7E008187EC /* libsndfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9AD4F11A439F7E008187EC /* libsndfile.dylib */; };
-		7CB7EBCC1A361E720071D2AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7EBCB1A361E720071D2AE /* main.m */; };
 		7CB7EBCE1A361E720071D2AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB7EBCD1A361E720071D2AE /* Images.xcassets */; };
 		7CB7EC541A362CF30071D2AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7EC521A362CF30071D2AE /* main.cpp */; };
 		7CC97BE11A5D9A4200E1999E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC97BE01A5D9A4200E1999E /* CoreMIDI.framework */; };
@@ -72,6 +75,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C15A7BB1A923A0800CDD7DF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7C15A7BD1A923A1100CDD7DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7C15A7BF1A923A3B00CDD7DF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		7C15A7C01A923A3B00CDD7DF /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C799A0B1A7847CF00D74E4B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C799A0C1A7847CF00D74E4B /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		7C799A0D1A7847CF00D74E4B /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCocoaInterfaceMac.h; sourceTree = "<group>"; };
@@ -182,7 +189,6 @@
 		7C9AD4F11A439F7E008187EC /* libsndfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsndfile.dylib; sourceTree = "<group>"; };
 		7CB7EBC31A361E720071D2AE /* ProjectFromScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectFromScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB7EBC71A361E720071D2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CB7EBCB1A361E720071D2AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7CB7EBCD1A361E720071D2AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7CB7EC521A362CF30071D2AE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7CB7EC531A362CF30071D2AE /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
@@ -195,6 +201,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C15A7C11A923A3B00CDD7DF /* GLKit.framework in Frameworks */,
+				7C15A7C21A923A3B00CDD7DF /* OpenGL.framework in Frameworks */,
+				7C15A7BE1A923A1100CDD7DF /* Foundation.framework in Frameworks */,
+				7C15A7BC1A923A0800CDD7DF /* Cocoa.framework in Frameworks */,
 				7CC97BE31A5D9A6800E1999E /* CoreAudio.framework in Frameworks */,
 				7CC97BE11A5D9A4200E1999E /* CoreMIDI.framework in Frameworks */,
 				7C9AD4F41A439F7E008187EC /* libsndfile.dylib in Frameworks */,
@@ -356,6 +366,10 @@
 		7CB7EBBA1A361E720071D2AE = {
 			isa = PBXGroup;
 			children = (
+				7C15A7BF1A923A3B00CDD7DF /* GLKit.framework */,
+				7C15A7C01A923A3B00CDD7DF /* OpenGL.framework */,
+				7C15A7BD1A923A1100CDD7DF /* Foundation.framework */,
+				7C15A7BB1A923A0800CDD7DF /* Cocoa.framework */,
 				7C799A091A7847AE00D74E4B /* axLib */,
 				7CC97BE21A5D9A6800E1999E /* CoreAudio.framework */,
 				7CC97BE01A5D9A4200E1999E /* CoreMIDI.framework */,
@@ -395,7 +409,6 @@
 			isa = PBXGroup;
 			children = (
 				7CB7EBC71A361E720071D2AE /* Info.plist */,
-				7CB7EBCB1A361E720071D2AE /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -497,7 +510,6 @@
 				7C799AB81A792CF000D74E4B /* axDatabase.cpp in Sources */,
 				7C799A821A7847CF00D74E4B /* axNumberBox.cpp in Sources */,
 				7C799A811A7847CF00D74E4B /* axMenu.cpp in Sources */,
-				7CB7EBCC1A361E720071D2AE /* main.m in Sources */,
 				7C799AAF1A78498E00D74E4B /* axUrlApi.cpp in Sources */,
 				7C799AA01A7847CF00D74E4B /* axObjectLoader.cpp in Sources */,
 				7C799A7F1A7847CF00D74E4B /* axKnob.cpp in Sources */,

@@ -196,3 +196,57 @@ void WorldMap::OnPaint()
     }
 }
 
+
+/// traceroute -n -w 4 -q 1 www.google.com
+int main()
+{
+    axEventManager::GetInstance();
+    axApp* app = axApp::CreateApp();
+    
+    app->AddMainEntry([&]()
+                      {
+                          axStringVector web_history = GetLastWebHistory(10);
+                          
+                          for(auto& n : web_history)
+                          {
+                              std::cout << n << std::endl;
+                          }
+                          
+                          //    axStringVector listOfIP;
+                          //
+                          //    if (fork() == 0)
+                          //    {
+                          //        execl("traceroute -n -w 4 -q 1 www.yahoo.com", NULL);
+                          //
+                          //        close(1);
+                          //    }
+                          //    else
+                          //    {
+                          //
+                          //    }
+                          
+                          // -------------------------------------------------------------------------
+                          std::ifstream input( "ip.txt" );
+                          axStringVector ip;
+                          
+                          for(std::string line; getline(input, line);)
+                          {
+                              axStringVector vec(GetVectorFromStringDelimiter(line, " "));
+                              if(vec.size() == 7)
+                              {
+                                  std::cout << vec[3] << std::endl;
+                                  ip.push_back(vec[3]);
+                              }
+                          }
+                          
+                          std::vector<axFloatPoint> points = GetVectorOfCoord(ip);
+                          WorldMap* worldMap = new WorldMap();
+                          worldMap->SetCoordinates(points);
+                      });
+
+    
+    app->MainLoop();
+    
+    return 0;
+}
+

@@ -102,6 +102,30 @@ typedef axRange<axInt> axIntRange;
 
 typedef axRectPoints<axTemplate2DPoint<axDouble>> axRectFloatPoints;
 
+// Since variadic templates are recursive, must have a base case.
+void axPrint();
+
+template <typename T, typename ...P>
+void axPrint(T t, P ...p)
+{
+    std::cout << t << ' ';
+    {
+        axPrint(p...);
+    }
+}
+
+// Since variadic templates are recursive, must have a base case.
+void axError();
+
+template <typename T, typename ...P>
+void axError(T t, P ...p)
+{
+    std::cerr << t << ' ';
+    {
+        axError(p...);
+    }
+}
+
 // Flag.
 typedef uint16_t axFlag;
 
@@ -113,6 +137,7 @@ bool axFlag_exist(const axFlag& FLAG, axFlag flags);
 
 bool IsFlag(const axFlag& FLAG, axFlag flags);
 
+#define axNO_FLAG 0
 #define axFLAG_NONE 0
 #define axFLAG_0  0
 #define axFLAG_1  1

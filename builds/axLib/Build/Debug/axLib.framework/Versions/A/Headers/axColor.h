@@ -36,6 +36,9 @@ public:
     axColor(const axDouble& r, const axDouble& g,
             const axDouble& b, const axDouble& a);
     
+    /// Save value for red, green and blue.
+    axColor(const axDouble& all, const axDouble& alpha = 1.0);
+    
 	axColor();
 	axColor(const axColor& col);
     axColor(const string& color);
@@ -56,6 +59,15 @@ public:
     void LoadFromString(const std::string& str);
     
     std::string ToString() const;
+    
+    static const axColor axBlackColor;
+    static const axColor axWhiteColor;
+    static const axColor axTransparentColor;
+    static const axColor axRedColor;
+    static const axColor axBlueColor;
+    static const axColor axGreenColor;
+    static const axColor axGreyColor;
+    static const axColor axDarkGreyColor;
 
 private:
 	axDouble _r, _g, _b, _a;

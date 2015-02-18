@@ -9,7 +9,7 @@
 #ifndef __Demo__NumberBoxPanel__
 #define __Demo__NumberBoxPanel__
 
-#include "axLib.h"
+#include <axLib/axLib.h>
 
 class NumberBoxPanel : public axPanel
 {
