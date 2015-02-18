@@ -10,6 +10,7 @@
 #define __Demo__KnobPanel__
 
 #include <axLib/axLib.h>
+//#include "axLib.h"
 
 class KnobPanel : public axPanel
 {

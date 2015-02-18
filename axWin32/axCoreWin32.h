@@ -34,6 +34,16 @@ public:
 	{
 
 	}
+	
+	//virtual void UpdateAll();
+
+	virtual axSize GetScreenSize()
+	{
+		return axSize(1000, 1000);
+	}
+
+
+	void DeletePopWindow();
 
 protected:
 	virtual void KillGLWindow();

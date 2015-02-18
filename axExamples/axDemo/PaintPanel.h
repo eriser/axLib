@@ -10,6 +10,7 @@
 #define __Demo__PaintPanel__
 
 #include <axLib/axLib.h>
+//#include "axLib.h"
 
 class PaintPanel : public axPanel
 {

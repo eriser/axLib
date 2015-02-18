@@ -1,0 +1,96 @@
+﻿Build started 2/18/2015 12:08:17 PM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alexandre Arsenault\Desktop\axLib/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWin32" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWidgets" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/glew-1.12.0/include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\source\axGC.cpp ..\..\..\source\axWindow.cpp
+         axWindow.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
+     1>CL : warning : Should use GetInstance.
+     1>CL : warning : Deprecate.
+         axGC.cpp
+     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
+     1>CL : warning : Should use GetInstance.
+     1>CL : warning : Deprecate.
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(262): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(300): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(352): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(400): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(440): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(514): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(524): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(527): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(552): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(556): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(560): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(564): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(577): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(580): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(584): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(587): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(618): warning C4244: 'argument' : conversion from 'const axInt' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(619): warning C4244: 'argument' : conversion from 'const axInt' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(647): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(648): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(657): warning C4244: 'argument' : conversion from 'const int' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(659): warning C4244: 'argument' : conversion from 'const axInt' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(695): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(696): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(718): warning C4244: 'argument' : conversion from 'const double' to 'GLfloat', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(746): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(747): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib" /NOLOGO Debug\axAnimatedButton.obj
+         Debug\axButton.obj
+         Debug\axDebugButton.obj
+         Debug\axDropMenu.obj
+         Debug\axGrid.obj
+         Debug\axKnob.obj
+         Debug\axLabel.obj
+         Debug\axMenu.obj
+         Debug\axNumberBox.obj
+         Debug\axPlot.obj
+         Debug\axPopupMenu.obj
+         Debug\axScrollBar.obj
+         Debug\axSlider.obj
+         Debug\axStaticImage.obj
+         Debug\axTextBox.obj
+         Debug\axTextControl.obj
+         Debug\axToggle.obj
+         Debug\axCoreWin32.obj
+         Debug\axDebugWin32.obj
+         Debug\axWin32Utils.obj
+         Debug\axApp.obj
+         Debug\axC++.obj
+         Debug\axColor.obj
+         Debug\axConfig.obj
+         Debug\axCore.obj
+         Debug\axDefaultFontBuffer.obj
+         Debug\axEvent.obj
+         Debug\axEventManager.obj
+         Debug\axFont.obj
+         Debug\axGC.obj
+         Debug\axGraphicInterface.obj
+         Debug\axImage.obj
+         Debug\axKeyboardManager.obj
+         Debug\axMain.obj
+         Debug\axManager.obj
+         Debug\axMath.obj
+         Debug\axMouseManager.obj
+         Debug\axMsg.obj
+         Debug\axObject.obj
+         Debug\axObjectLoader.obj
+         Debug\axPanel.obj
+         Debug\axResourceManager.obj
+         Debug\axTimer.obj
+         Debug\axUtils.obj
+         Debug\axVar.obj
+         Debug\axWidget.obj
+         Debug\axWidgetBuilder.obj
+         Debug\axWindow.obj
+         Debug\axWindowTree.obj
+         Windows.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Windows\Windows.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.51

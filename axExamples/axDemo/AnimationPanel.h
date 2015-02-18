@@ -10,6 +10,7 @@
 #define __axDemo__AnimationPanel__
 
 #include <axLib/axLib.h>
+//#include "axLib.h"
 
 class AnimationPanel : public axPanel
 {

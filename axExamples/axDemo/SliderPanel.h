@@ -10,6 +10,7 @@
 #define __Demo__SliderPanel__
 
 #include <axLib/axLib.h>
+//#include "axLib.h"
 
 class MyScrollPanel : public axPanel
 {

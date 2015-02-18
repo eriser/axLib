@@ -35,7 +35,8 @@
 
 #ifdef _MSC_VER
 #include <windows.h>
-#include <gl\gl.h>
+#include "GL/glew.h"
+//#include <gl\gl.h>
 #include <gl\glu.h>
 #endif //_MSC_VER
 

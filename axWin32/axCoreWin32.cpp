@@ -11,6 +11,7 @@ axCore* axCORE = nullptr;
 axCoreWin32::axCoreWin32() : axCore()
 {
 	_popHwnd = nullptr;
+
 }
 
 void axCoreWin32::Init(const axSize& frame_size)
@@ -18,12 +19,17 @@ void axCoreWin32::Init(const axSize& frame_size)
     InitManagers();
     
 	_popHwnd = nullptr;
+	
+
 
 	char* test = "axCore";
 	if (!CreateGLWindow(test, frame_size.x, frame_size.y))
 	{
+		glewInit();
 		return;
 	}
+
+	glewInit();
 }
 
 string axCoreWin32::OpenFileDialog()
@@ -71,111 +77,111 @@ string axCoreWin32::GetAppDirectory()
 bool axCoreWin32::CreatePopupWindow(const char* title, int width, int height)
 {
 
-	int bits = 16;
-	// Holds the results after searching for a match.
-	GLuint PixelFormat;
+	//int bits = 16;
+	//// Holds the results after searching for a match.
+	//GLuint PixelFormat;
 
-	// Grab an instance for our window.
-	_popInstance = GetModuleHandle(NULL);
+	//// Grab an instance for our window.
+	//_popInstance = GetModuleHandle(NULL);
 
-	WNDCLASS wc = axWin32::CreateDefaultWindowClassStructure(
-		"PopOpenGL",
-		_popInstance,
-		WindowPopupCallback);
+	//WNDCLASS wc = axWin32::CreateDefaultWindowClassStructure(
+	//	"PopOpenGL",
+	//	_popInstance,
+	//	WindowPopupCallback);
 
-	// Attempt to register the window class.
-	if (!RegisterClass(&wc))
-	{
-		axWin32::ErrorMessageDialog("Failed to register the window class.");
-		return false;
-	}
+	//// Attempt to register the window class.
+	//if (!RegisterClass(&wc))
+	//{
+	//	axWin32::ErrorMessageDialog("Failed to register the window class.");
+	//	return false;
+	//}
 
-	// Window extended style.
-	DWORD dwExStyle = 0;//WS_EX_WINDOWEDGE;
+	//// Window extended style.
+	//DWORD dwExStyle = 0;//WS_EX_WINDOWEDGE;
 
-	// Windows style.
-	DWORD dwStyle = WS_POPUP;// WS_OVERLAPPEDWINDOW;
+	//// Windows style.
+	//DWORD dwStyle = WS_POPUP;// WS_OVERLAPPEDWINDOW;
 
-	// Window size.
-	RECT window_rect = axWin32::axRectToWin32Rect(axRect(0, 0, width, height));
+	//// Window size.
+	//RECT window_rect = axWin32::axRectToWin32Rect(axRect(0, 0, width, height));
 
-	// Adjust window to true requested size.
-	AdjustWindowRectEx(&window_rect, dwStyle, false, dwExStyle);
+	//// Adjust window to true requested size.
+	//AdjustWindowRectEx(&window_rect, dwStyle, false, dwExStyle);
 
-	// Create The Window
+	//// Create The Window
 
-	const char* tt = "Popup window";
-	if (!axWin32::CreateHWNDWindow(_popHwnd, _popInstance,
-		dwStyle, dwExStyle, window_rect, tt, "PopOpenGL"))
-	{
-		KillPopGLWindow();
-		//int err = GetLastError();
+	//const char* tt = "Popup window";
+	//if (!axWin32::CreateHWNDWindow(_popHwnd, _popInstance,
+	//	dwStyle, dwExStyle, window_rect, tt, "PopOpenGL"))
+	//{
+	//	KillPopGLWindow();
+	//	//int err = GetLastError();
 
-		axWin32::ErrorMessageDialog("Window Creation Error.");
-		return false;
-	}
+	//	axWin32::ErrorMessageDialog("Window Creation Error.");
+	//	return false;
+	//}
 
-	// Get device context.
-	if (!(_popHdc = GetDC(_popHwnd)))
-	{
-		KillPopGLWindow();
-		axWin32::ErrorMessageDialog("Can't Create A GL Device Context.");
-		return false;
-	}
+	//// Get device context.
+	//if (!(_popHdc = GetDC(_popHwnd)))
+	//{
+	//	KillPopGLWindow();
+	//	axWin32::ErrorMessageDialog("Can't Create A GL Device Context.");
+	//	return false;
+	//}
 
-	PIXELFORMATDESCRIPTOR pfd = axWin32::GetPixelFormatDescriptor(bits);
+	//PIXELFORMATDESCRIPTOR pfd = axWin32::GetPixelFormatDescriptor(bits);
 
-	// Find a matching pixel format.
-	if (!(PixelFormat = ChoosePixelFormat(_popHdc, &pfd)))
-	{
-		KillPopGLWindow();
-		axWin32::ErrorMessageDialog("Can't Find A Suitable PixelFormat.");
-		return false;
-	}
+	//// Find a matching pixel format.
+	//if (!(PixelFormat = ChoosePixelFormat(_popHdc, &pfd)))
+	//{
+	//	KillPopGLWindow();
+	//	axWin32::ErrorMessageDialog("Can't Find A Suitable PixelFormat.");
+	//	return false;
+	//}
 
-	// Set pixel format.
-	if (!SetPixelFormat(_popHdc, PixelFormat, &pfd))
-	{
-		KillPopGLWindow();
-		axWin32::ErrorMessageDialog("Can't Set The PixelFormat.");
-		return false;
-	}
+	//// Set pixel format.
+	//if (!SetPixelFormat(_popHdc, PixelFormat, &pfd))
+	//{
+	//	KillPopGLWindow();
+	//	axWin32::ErrorMessageDialog("Can't Set The PixelFormat.");
+	//	return false;
+	//}
 
-	// Get a rendering context.
-	if (!(_popHrc = wglCreateContext(_popHdc)))
-	{
-		KillPopGLWindow();
-		axWin32::ErrorMessageDialog("Can't Create A GL Rendering Context.");
-		return false;
-	}
+	//// Get a rendering context.
+	//if (!(_popHrc = wglCreateContext(_popHdc)))
+	//{
+	//	KillPopGLWindow();
+	//	axWin32::ErrorMessageDialog("Can't Create A GL Rendering Context.");
+	//	return false;
+	//}
 
-	// Activate the rendering context.
-	if (!wglMakeCurrent(_popHdc, _popHrc))
-	{
-		KillPopGLWindow();
-		axWin32::ErrorMessageDialog("Can't Activate The GL Rendering Context.");
-		return false;
-	}
+	//// Activate the rendering context.
+	//if (!wglMakeCurrent(_popHdc, _popHrc))
+	//{
+	//	KillPopGLWindow();
+	//	axWin32::ErrorMessageDialog("Can't Activate The GL Rendering Context.");
+	//	return false;
+	//}
 
-	// Show window.
-	ShowWindow(_popHwnd, SW_SHOW);
+	//// Show window.
+	//ShowWindow(_popHwnd, SW_SHOW);
 
-	// Slightly higher priority.
-	SetForegroundWindow(_popHwnd);
+	//// Slightly higher priority.
+	//SetForegroundWindow(_popHwnd);
 
-	// Set keyboard focus.
-	SetFocus(_popHwnd);
+	//// Set keyboard focus.
+	//SetFocus(_popHwnd);
 
-	// Set perspective GLScreen.
-	ResizePopGLScene(width, height);
+	//// Set perspective GLScreen.
+	//ResizePopGLScene(width, height);
 
-	// Init Gl Window.
-	if (!InitGL())
-	{
-		KillPopGLWindow();
-		axWin32::ErrorMessageDialog("Initialization Failed.");
-		return false;
-	}
+	//// Init Gl Window.
+	//if (!InitGL())
+	//{
+	//	KillPopGLWindow();
+	//	axWin32::ErrorMessageDialog("Initialization Failed.");
+	//	return false;
+	//}
 
 	return true;
 }
@@ -281,7 +287,7 @@ bool axCoreWin32::CreateGLWindow(const char* title, int width, int height, int b
 	SetFocus(_hwnd);
 
 	// Set perspective GLScreen.
-	ResizeGLScene(width, height);
+	ResizeGLScene(axSize(width, height));
 
 	// Init Gl Window.
 	if (!InitGL())
@@ -410,19 +416,21 @@ void axCoreWin32::KillPopGLWindow()
 
 }
 
+
 void axCoreWin32::MainLoop()
 {
 	MSG	msg;
 	BOOL done = false;
 
 	//while (!done)
-	//while(GetMessage(&msg, NULL, 0, 0) != 0)
-	while (!done)
+	while(GetMessage(&msg, NULL, 0, 0) != 0)
+	//while (!done)
 	{
-		axEventManager::GetInstance()->CallNext();
+		/*axEventManager::GetInstance()->CallNext();*/
 
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) // Comment.
-		{
+		//if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		//if (GetMessage(&msg, NULL, 0, 0) != 0)
+		//{
 			if (msg.message == WM_QUIT)
 			{
 				done = true;
@@ -432,9 +440,9 @@ void axCoreWin32::MainLoop()
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
-		}
-		else // Comment.
-		{
+		//}
+		//else
+		//{
 			if (DrawGLScene())
 			{
 				SwapBuffers(_hdc);
@@ -444,13 +452,12 @@ void axCoreWin32::MainLoop()
 			{
 				SwapBuffers(_popHdc);
 			}
-		}
+		//}
 	}
 
 	// Shutdown
 	KillPopGLWindow();
 	KillGLWindow();
-	
 }
 
 axRect axCoreWin32::GetScreenRect()
@@ -482,12 +489,6 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 		windowManager = axCORE->GetWindowManager();
 	}
 
-	//else if (hWnd == static_cast<axCoreWin32*>(axCORE)->GetPopupWindowHandle())
-	//{
-	//	windowManager = axCORE->GetPopupManager();
-	//	//SetFocus(hWnd);
-	//}
-
 	if (windowManager != nullptr)
 	{
 		axPoint mouse_position;
@@ -511,6 +512,9 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 		case WM_SYSCOMMAND:
 		{
+			for (int i = 0; i < 5; i++)
+				axEventManager::GetInstance()->CallNext();
+
 			switch (wParam)
 			{
 			case SC_SCREENSAVE:
@@ -522,8 +526,8 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 		case WM_SETFOCUS:
 		{
-							cout << "Main got focus" << endl;
-							return 0;
+			cout << "Main got focus" << endl;
+			return 0;
 		}
 
 		case WM_CLOSE:
@@ -544,14 +548,13 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			return 0;
 		}
 
-			// Resize The OpenGL Window
+		// Resize The OpenGL Window
 		case WM_SIZE:
 		{
 			// LoWord=Width, HiWord=Height
-			axCORE->ResizeGLScene(LOWORD(lParam),
-				HIWORD(lParam));
-
+			axCORE->ResizeGLScene(axSize(LOWORD(lParam), HIWORD(lParam)));
 			windowManager->OnSize();
+
 			return 0;
 		}
 
@@ -564,19 +567,11 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			{
 				axApp::MainInstance->GetWindowManager()->OnMouseMotion(mouse_position);
 			}
-
-			//windowManager->OnMouseMotion(
-			//	axPoint(GET_X_LPARAM(lParam),
-			//	GET_Y_LPARAM(lParam)));
 			return 0;
 
 		case WM_LBUTTONDOWN:
 			mouse_position = axPoint(GET_X_LPARAM(lParam),
 				GET_Y_LPARAM(lParam));
-
-			//windowManager->OnMouseLeftDown(
-			//	axPoint(GET_X_LPARAM(lParam),
-			//	GET_Y_LPARAM(lParam)));
 
 			axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(mouse_position);
 
@@ -591,23 +586,14 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 				GET_Y_LPARAM(lParam));
 
 			axApp::MainInstance->GetPopupManager()->OnMouseLeftUp(mouse_position);
-
-			/// @todo NEED TO CHANGE THIS.
-			//if (axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
-			{
-				axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(mouse_position);
-			}
-
-			//windowManager->OnMouseLeftUp(
-			//	axPoint(GET_X_LPARAM(lParam),
-			//	GET_Y_LPARAM(lParam)));
+			axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(mouse_position);
 			return 0;
 
 		case WM_RBUTTONDOWN:
 			mouse_position = axPoint(GET_X_LPARAM(lParam),
 				GET_Y_LPARAM(lParam));
 
-			windowManager->OnMouseRightDown();
+			windowManager->OnMouseRightDown(mouse_position);
 			return 0;
 
 		case WM_RBUTTONUP:
@@ -678,7 +664,7 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 			case WM_QUIT:
 			{
-							axCORE->KillPopGLWindow();
+							//axCORE->KillPopGLWindow();
 							return 0;
 			}
 
@@ -698,8 +684,8 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			case WM_SIZE:
 			{
 							// LoWord=Width, HiWord=Height
-							axCORE->ResizeGLScene(LOWORD(lParam),
-								HIWORD(lParam));
+							axCORE->ResizeGLScene(axSize(LOWORD(lParam),
+								HIWORD(lParam)));
 
 							windowManager->OnSize();
 							return 0;
@@ -724,7 +710,7 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 				return 0;
 
 			case WM_RBUTTONDOWN:
-				windowManager->OnMouseRightDown();
+				//windowManager->OnMouseRightDown(mouse_position);
 				return 0;
 
 			case WM_RBUTTONUP:
@@ -741,7 +727,8 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 int axCoreWin32::DrawGLPopScene()
 {
 	wglMakeCurrent(_popHdc,	_popHrc);
-	return axCore::DrawGLPopScene();
+	return 0;
+	//return axCore::DrawGLPopScene();
 }
 
 int axCoreWin32::DrawGLScene()
@@ -753,5 +740,5 @@ int axCoreWin32::DrawGLScene()
 
 void axCoreWin32::PushEventOnSystemQueue()
 {
-
+	BOOL err = PostMessage(_hwnd, WM_SYSCOMMAND, 1, 1);
 }

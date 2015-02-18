@@ -1,4 +1,4 @@
-﻿Build started 12/9/2014 12:34:33 PM.
+﻿Build started 1/15/2015 1:46:08 PM.
      1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\libs\lpng1610\projects\vstudio\zlib\zlib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D Z_SOLO /Gm- /EHsc /MDd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /FR"Debug\\" /Gd /TC /analyze- /errorReport:prompt "..\..\..\..\zlib-1.2.5\adler32.c" "..\..\..\..\zlib-1.2.5\compress.c" "..\..\..\..\zlib-1.2.5\crc32.c" "..\..\..\..\zlib-1.2.5\deflate.c" "..\..\..\..\zlib-1.2.5\infback.c" "..\..\..\..\zlib-1.2.5\inffast.c" "..\..\..\..\zlib-1.2.5\inflate.c" "..\..\..\..\zlib-1.2.5\inftrees.c" "..\..\..\..\zlib-1.2.5\trees.c" "..\..\..\..\zlib-1.2.5\uncompr.c" "..\..\..\..\zlib-1.2.5\zutil.c"
@@ -33,4 +33,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.95
+Time Elapsed 00:00:08.08

@@ -60,9 +60,6 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 
 - (void)prepareOpenGL
 {
-    
-//    std::cout << "******************************* PREPARE OPENGL " << std::endl;
-    
     // Synchronize buffer swaps with vertical refresh rate
     GLint swapInt = 1;
     [[self window] setAcceptsMouseMovedEvents:YES];
@@ -85,9 +82,10 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     [d setNeedsDisplay:YES];
     
 #else
-    axEventManager::GetInstance();
-    axApp* app = axApp::CreateApp();
+    //axEventManager::GetInstance();
+    axApp* app = axApp::GetInstance();
     app->GetCore()->Init(axSize(500, 500));
+    
     app->CallMainEntryFunction();
     app->CallAfterGUILoadFunction();
 //    axMain::MainEntryPoint(app);

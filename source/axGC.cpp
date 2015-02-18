@@ -135,9 +135,12 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 	//glColor4f(c.r, c.g, c.b, 1.0);
 
 	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
+//	glEnable(GL_BLEND);
 //    glEnable(GL_DEPTH_TEST);
+    
+    
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 
 	glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -177,53 +180,57 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 
 //	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
-}
-
-void axGC::DrawWindowBuffer()
-{
-    glEnable(GL_TEXTURE_2D);
-//    glEnable(GL_BLEND);
-    
-    // Destionation funciton.
-//    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    
-    axFloatRect rect(RectToFloatRect(_win->GetShownRect()));
-    axFloatPoint pos(0.0, 0.0);
-    axFloatSize size = rect.size;
-
-    glBindTexture(GL_TEXTURE_2D, _win->GetWindowBufferTexture());
-
-    glBegin(GL_QUADS);
-    
-    // Bottom left.
-    glTexCoord2d(0.0, 0.0);
-    glVertex2d(pos.x, pos.y);
-    
-    // Top left.
-    glTexCoord2d(0.0, 1.0);
-    glVertex2d(pos.x, pos.y + size.y);
-    
-    // Top right.
-    glTexCoord2d(1.0, 1.0);
-    glVertex2d(pos.x + size.x, pos.y + size.y);
-    
-    // Buttom right.
-    glTexCoord2d(1.0, 0.0);
-    glVertex2d(pos.x + size.x, pos.y);
-    
-    glEnd();
-    
-    //	glDisable(GL_BLEND);
-    glDisable(GL_TEXTURE_2D);
-    
-    
-    glBlendFuncSeparate(GL_SRC_ALPHA,
-                        GL_ONE_MINUS_SRC_ALPHA,
-                        GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
 //    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
+
+//void axGC::DrawWindowBuffer()
+//{
+//    glEnable(GL_TEXTURE_2D);
+////    glEnable(GL_BLEND);
+//    
+//    // Destionation funciton.
+//
+//    //glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//
+//    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//    
+//    axFloatRect rect(RectToFloatRect(_win->GetShownRect()));
+//    axFloatPoint pos(0.0, 0.0);
+//    axFloatSize size = rect.size;
+//
+//    glBindTexture(GL_TEXTURE_2D, _win->GetWindowBufferTexture());
+//
+//    glBegin(GL_QUADS);
+//    
+//    // Bottom left.
+//    glTexCoord2d(0.0, 0.0);
+//    glVertex2d(pos.x, pos.y);
+//    
+//    // Top left.
+//    glTexCoord2d(0.0, 1.0);
+//    glVertex2d(pos.x, pos.y + size.y);
+//    
+//    // Top right.
+//    glTexCoord2d(1.0, 1.0);
+//    glVertex2d(pos.x + size.x, pos.y + size.y);
+//    
+//    // Buttom right.
+//    glTexCoord2d(1.0, 0.0);
+//    glVertex2d(pos.x + size.x, pos.y);
+//    
+//    glEnd();
+//    
+//    //	glDisable(GL_BLEND);
+//    glDisable(GL_TEXTURE_2D);
+//    
+//    
+//    glBlendFuncSeparate(GL_SRC_ALPHA,
+//                        GL_ONE_MINUS_SRC_ALPHA,
+//                        GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//}
 
 //glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
 
@@ -257,11 +264,11 @@ void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 	glColor4f(1.0, 1.0, 1.0, alpha);
 
 	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glEnable(GL_BLEND);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindTexture(GL_TEXTURE_2D, img->GetTexture());
-	glDepthMask(GL_TRUE);
+//	glDepthMask(GL_TRUE);
 	axSize img_size = img->GetSize();
 
 	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
@@ -295,11 +302,11 @@ void axGC::DrawImageResize(axImage* img, const axPoint& position, const axSize& 
 	glColor4f(1.0, 1.0, 1.0, alpha);
 
 	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glEnable(GL_BLEND);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindTexture(GL_TEXTURE_2D, img->GetTexture());
-	glDepthMask(GL_TRUE);
+//	glDepthMask(GL_TRUE);
 	axSize img_size = size;
 
 	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
@@ -347,11 +354,11 @@ void axGC::DrawPartOfImage(axImage* img,
     glColor4f(1.0, 1.0, 1.0, alpha);
     
     glEnable(GL_TEXTURE_2D);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//    glEnable(GL_BLEND);
+//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     glBindTexture(GL_TEXTURE_2D, img->GetTexture());
-    glDepthMask(GL_TRUE);
+//    glDepthMask(GL_TRUE);
     
     // OpenGL stores texture upside down so glTexCoord2d must be flipped.
     glBegin(GL_QUADS);
@@ -395,11 +402,11 @@ void axGC::DrawPartOfImageResize(axImage* img,
 	glColor4f(1.0, 1.0, 1.0, alpha);
 
 	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glEnable(GL_BLEND);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindTexture(GL_TEXTURE_2D, img->GetTexture());
-	glDepthMask(GL_TRUE);
+//	glDepthMask(GL_TRUE);
 	
 	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
 	glBegin(GL_QUADS);
@@ -703,12 +710,12 @@ void axGC::DrawLineCubic(const axPoint& pt1, const axPoint& pt2)
 
 void axGC::SetLineWidth(const double& width)
 {
-    glEnable(GL_LINE_SMOOTH);
-    glEnable(GL_POLYGON_SMOOTH);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+//    glEnable(GL_LINE_SMOOTH);
+//    glEnable(GL_POLYGON_SMOOTH);
+//    glEnable(GL_BLEND);
+//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+//    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
     
     glLineWidth(width);
 

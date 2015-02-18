@@ -30,8 +30,10 @@
 #include "axGC.h"
 #include "axResourceManager.h"
 #include "axConfig.h"
+#include "axGraphicInterface.h"
 
 class axApp;
+
 
 
 class axWindow : public axObject
@@ -173,8 +175,7 @@ private:
     
 	GLuint _texture;
     
-    
-    
+    axFrameBuffer _frameBufferObj;
     
 //    std::map<std::string, axEventFunction> _evtMap;
     axResourceManager _resourceManager;
