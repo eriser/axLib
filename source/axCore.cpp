@@ -246,6 +246,8 @@ int axCore::DrawGLScene()
 //        _popupManager->OnPaint();
         GetWindowManager()->OnPaint();
         GetPopupManager()->OnPaint();
+
+		
         
 		return true;
 	}

@@ -151,8 +151,8 @@ void axWindowNode::DrawNode()
             DrawWindow(window);
             
             for(axWindowNode* it : _childNodes)
-            {
-                if(it->window != nullptr)
+{
+                if(it->window != nullptr)            
                 {
                     if(it->window->IsShown())
                     {

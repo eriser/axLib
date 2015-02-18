@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0B33AE43-7F7E-4C33-83B8-F7EAEC2CF46D}</ProjectGuid>
+    <RootNamespace>Windows</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>axLib</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(AX_LIB)/include/;$(AX_LIB)/axWin32;$(AX_LIB)/axWidgets;$(AX_LIB)/libs/freetype-2.5.3/include;$(AX_LIB)/libs/lpng1610;$(AX_LIB)/libs/glew-1.12.0/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(AX_LIB)/libs/freetype-2.5.3/objs/win32/vc2010;$(AX_LIB)/libs/lpng1610/projects/vstudio/Debug;$(AX_LIB)/libs/glew-1.12.0/lib/Debug/Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32d.lib;glew32sd.lib;opengl32.lib;glu32.lib;libpng16.lib;zlib.lib;freetype253_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\axWidgets\axAnimatedButton.h" />
+    <ClInclude Include="..\..\..\axWidgets\axButton.h" />
+    <ClInclude Include="..\..\..\axWidgets\axDebugButton.h" />
+    <ClInclude Include="..\..\..\axWidgets\axDropMenu.h" />
+    <ClInclude Include="..\..\..\axWidgets\axGrid.h" />
+    <ClInclude Include="..\..\..\axWidgets\axKnob.h" />
+    <ClInclude Include="..\..\..\axWidgets\axLabel.h" />
+    <ClInclude Include="..\..\..\axWidgets\axMenu.h" />
+    <ClInclude Include="..\..\..\axWidgets\axNumberBox.h" />
+    <ClInclude Include="..\..\..\axWidgets\axPlot.h" />
+    <ClInclude Include="..\..\..\axWidgets\axPopupMenu.h" />
+    <ClInclude Include="..\..\..\axWidgets\axScrollBar.h" />
+    <ClInclude Include="..\..\..\axWidgets\axSlider.h" />
+    <ClInclude Include="..\..\..\axWidgets\axStaticImage.h" />
+    <ClInclude Include="..\..\..\axWidgets\axTextBox.h" />
+    <ClInclude Include="..\..\..\axWidgets\axTextControl.h" />
+    <ClInclude Include="..\..\..\axWidgets\axToggle.h" />
+    <ClInclude Include="..\..\..\axWin32\axCoreWin32.h" />
+    <ClInclude Include="..\..\..\axWin32\axDebugWin32.h" />
+    <ClInclude Include="..\..\..\axWin32\axWin32Utils.h" />
+    <ClInclude Include="..\..\..\include\axLib\axApp.h" />
+    <ClInclude Include="..\..\..\include\axLib\axC++.h" />
+    <ClInclude Include="..\..\..\include\axLib\axColor.h" />
+    <ClInclude Include="..\..\..\include\axLib\axConfig.h" />
+    <ClInclude Include="..\..\..\include\axLib\axCore.h" />
+    <ClInclude Include="..\..\..\include\axLib\axEvent.h" />
+    <ClInclude Include="..\..\..\include\axLib\axEventManager.h" />
+    <ClInclude Include="..\..\..\include\axLib\axFont.h" />
+    <ClInclude Include="..\..\..\include\axLib\axGC.h" />
+    <ClInclude Include="..\..\..\include\axLib\axImage.h" />
+    <ClInclude Include="..\..\..\include\axLib\axKeyboardManager.h" />
+    <ClInclude Include="..\..\..\include\axLib\axLib.h" />
+    <ClInclude Include="..\..\..\include\axLib\axMain.h" />
+    <ClInclude Include="..\..\..\include\axLib\axManager.h" />
+    <ClInclude Include="..\..\..\include\axLib\axMath.h" />
+    <ClInclude Include="..\..\..\include\axLib\axMouseManager.h" />
+    <ClInclude Include="..\..\..\include\axLib\axMsg.h" />
+    <ClInclude Include="..\..\..\include\axLib\axObject.h" />
+    <ClInclude Include="..\..\..\include\axLib\axObjectLoader.h" />
+    <ClInclude Include="..\..\..\include\axLib\axPanel.h" />
+    <ClInclude Include="..\..\..\include\axLib\axResourceManager.h" />
+    <ClInclude Include="..\..\..\include\axLib\axTimer.h" />
+    <ClInclude Include="..\..\..\include\axLib\axUtils.h" />
+    <ClInclude Include="..\..\..\include\axLib\axVar.h" />
+    <ClInclude Include="..\..\..\include\axLib\axWidget.h" />
+    <ClInclude Include="..\..\..\include\axLib\axWidgetBuilder.h" />
+    <ClInclude Include="..\..\..\include\axLib\axWindow.h" />
+    <ClInclude Include="..\..\..\include\axLib\axWindowTree.h" />
+    <ClInclude Include="..\..\..\include\axLib\rapidxml.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\axWidgets\axAnimatedButton.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axButton.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axDebugButton.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axDropMenu.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axGrid.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axKnob.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axLabel.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axMenu.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axNumberBox.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axPlot.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axPopupMenu.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axScrollBar.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axSlider.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axStaticImage.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axTextBox.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axTextControl.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axToggle.cpp" />
+    <ClCompile Include="..\..\..\axWin32\axCoreWin32.cpp" />
+    <ClCompile Include="..\..\..\axWin32\axDebugWin32.cpp" />
+    <ClCompile Include="..\..\..\axWin32\axWin32Utils.cpp" />
+    <ClCompile Include="..\..\..\source\axApp.cpp" />
+    <ClCompile Include="..\..\..\source\axC++.cpp" />
+    <ClCompile Include="..\..\..\source\axColor.cpp" />
+    <ClCompile Include="..\..\..\source\axConfig.cpp" />
+    <ClCompile Include="..\..\..\source\axCore.cpp" />
+    <ClCompile Include="..\..\..\source\axDefaultFontBuffer.cpp" />
+    <ClCompile Include="..\..\..\source\axEvent.cpp" />
+    <ClCompile Include="..\..\..\source\axEventManager.cpp" />
+    <ClCompile Include="..\..\..\source\axFont.cpp" />
+    <ClCompile Include="..\..\..\source\axGC.cpp" />
+    <ClCompile Include="..\..\..\source\axImage.cpp" />
+    <ClCompile Include="..\..\..\source\axKeyboardManager.cpp" />
+    <ClCompile Include="..\..\..\source\axMain.cpp" />
+    <ClCompile Include="..\..\..\source\axManager.cpp" />
+    <ClCompile Include="..\..\..\source\axMath.cpp" />
+    <ClCompile Include="..\..\..\source\axMouseManager.cpp" />
+    <ClCompile Include="..\..\..\source\axMsg.cpp" />
+    <ClCompile Include="..\..\..\source\axObject.cpp" />
+    <ClCompile Include="..\..\..\source\axObjectLoader.cpp" />
+    <ClCompile Include="..\..\..\source\axPanel.cpp" />
+    <ClCompile Include="..\..\..\source\axResourceManager.cpp" />
+    <ClCompile Include="..\..\..\source\axTimer.cpp" />
+    <ClCompile Include="..\..\..\source\axUtils.cpp" />
+    <ClCompile Include="..\..\..\source\axVar.cpp" />
+    <ClCompile Include="..\..\..\source\axWidget.cpp" />
+    <ClCompile Include="..\..\..\source\axWidgetBuilder.cpp" />
+    <ClCompile Include="..\..\..\source\axWindow.cpp" />
+    <ClCompile Include="..\..\..\source\axWindowTree.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -46,7 +46,7 @@ axPanel(parent, rect)
     scroll_info.hover = axColor(0.9, 0.9, 0.9);
     scroll_info.clicking = axColor(0.7, 0.7, 0.7);
     scroll_info.contour = axColor(0.0, 0.0, 0.0);
-    scroll_info.selected = scroll_info.normal;
+//    scroll_info.selected = scroll_info.normal;
 
     axPoint pos(rect.position.x + rect.size.x, rect.position.y);
     axScrollBar* _scrollBar = new axScrollBar(parent,

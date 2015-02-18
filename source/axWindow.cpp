@@ -286,6 +286,8 @@ void axWindow::OnPaint()
 // https://www.opengl.org/wiki/Framebuffer_Object_Examples
 void axWindow::InitGLWindowBackBufferDrawing()
 {
+#if _axBackBufferWindow_ == 1
+
     // Create framebuffer object (FBO).
     glGenFramebuffers(1, &_frameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
@@ -329,16 +331,19 @@ void axWindow::InitGLWindowBackBufferDrawing()
     // Does the GPU support current FBO configuration.
     GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER_EXT);
 
+	//std::cout << "Status : " << status << std::endl;
+
     switch(status)
     {
-        case GL_FRAMEBUFFER_COMPLETE_EXT: break;
-            
+        case GL_FRAMEBUFFER_COMPLETE_EXT: 
+			break;
         default:
             std::cerr << "ERROR GEN FRAME BUFFER : " << status << std::endl;
     }
     
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+#endif // _axBackBufferWindow_
 }
 
 
@@ -380,10 +385,11 @@ void axWindow::InitGLWindowBackBufferDrawing()
 
 void axWindow::RenderWindow()
 {
+	
     if(_needUpdate)
     {
         #if _axBackBufferWindow_ == 1
-     
+	
         bool need_to_reactive_clip_test = false;
         if(glIsEnabled(GL_SCISSOR_TEST))
         {
@@ -400,7 +406,7 @@ void axWindow::RenderWindow()
         
             glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
             glPushAttrib(GL_DEPTH_BUFFER_BIT);
-            glClearColor(0.0, 0.0, 0.0, 0.0);
+            glClearColor(0.0, 0.0, 1.0, 0.0);
             glClearDepth(1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
@@ -451,16 +457,14 @@ void axWindow::RenderWindow()
         if(need_to_reactive_clip_test)
             glEnable(GL_SCISSOR_TEST);
         
+		axGC* gc = GetGC();
+		gc->DrawWindowBuffer();
+
         #endif // _axBackBufferWindow_
         
     }
     
     
-    //else
-    //{
-//        BeforeDrawing(this);
-        axGC* gc = GetGC();
-        gc->DrawWindowBuffer();
-//        EndDrawing(this);
-    //}
+
+
 }

@@ -11,6 +11,7 @@ axCore* axCORE = nullptr;
 axCoreWin32::axCoreWin32() : axCore()
 {
 	_popHwnd = nullptr;
+
 }
 
 void axCoreWin32::Init(const axSize& frame_size)
@@ -18,12 +19,17 @@ void axCoreWin32::Init(const axSize& frame_size)
     InitManagers();
     
 	_popHwnd = nullptr;
+	
+
 
 	char* test = "axCore";
 	if (!CreateGLWindow(test, frame_size.x, frame_size.y))
 	{
+		glewInit();
 		return;
 	}
+
+	glewInit();
 }
 
 string axCoreWin32::OpenFileDialog()
@@ -410,19 +416,21 @@ void axCoreWin32::KillPopGLWindow()
 
 }
 
+
 void axCoreWin32::MainLoop()
 {
 	MSG	msg;
 	BOOL done = false;
 
 	//while (!done)
-	//while(GetMessage(&msg, NULL, 0, 0) != 0)
-	while (!done)
+	while(GetMessage(&msg, NULL, 0, 0) != 0)
+	//while (!done)
 	{
-		axEventManager::GetInstance()->CallNext();
+		/*axEventManager::GetInstance()->CallNext();*/
 
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) // Comment.
-		{
+		//if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		//if (GetMessage(&msg, NULL, 0, 0) != 0)
+		//{
 			if (msg.message == WM_QUIT)
 			{
 				done = true;
@@ -432,9 +440,9 @@ void axCoreWin32::MainLoop()
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
-		}
-		else // Comment.
-		{
+		//}
+		//else
+		//{
 			if (DrawGLScene())
 			{
 				SwapBuffers(_hdc);
@@ -444,13 +452,12 @@ void axCoreWin32::MainLoop()
 			{
 				SwapBuffers(_popHdc);
 			}
-		}
+		//}
 	}
 
 	// Shutdown
 	KillPopGLWindow();
 	KillGLWindow();
-	
 }
 
 axRect axCoreWin32::GetScreenRect()
@@ -482,12 +489,6 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 		windowManager = axCORE->GetWindowManager();
 	}
 
-	//else if (hWnd == static_cast<axCoreWin32*>(axCORE)->GetPopupWindowHandle())
-	//{
-	//	windowManager = axCORE->GetPopupManager();
-	//	//SetFocus(hWnd);
-	//}
-
 	if (windowManager != nullptr)
 	{
 		axPoint mouse_position;
@@ -511,6 +512,9 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 		case WM_SYSCOMMAND:
 		{
+			for (int i = 0; i < 5; i++)
+				axEventManager::GetInstance()->CallNext();
+
 			switch (wParam)
 			{
 			case SC_SCREENSAVE:
@@ -522,8 +526,8 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 		case WM_SETFOCUS:
 		{
-							cout << "Main got focus" << endl;
-							return 0;
+			cout << "Main got focus" << endl;
+			return 0;
 		}
 
 		case WM_CLOSE:
@@ -544,14 +548,13 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			return 0;
 		}
 
-			// Resize The OpenGL Window
+		// Resize The OpenGL Window
 		case WM_SIZE:
 		{
 			// LoWord=Width, HiWord=Height
-			axCORE->ResizeGLScene(LOWORD(lParam),
-				HIWORD(lParam));
-
+			axCORE->ResizeGLScene(LOWORD(lParam), HIWORD(lParam));
 			windowManager->OnSize();
+
 			return 0;
 		}
 
@@ -564,19 +567,11 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			{
 				axApp::MainInstance->GetWindowManager()->OnMouseMotion(mouse_position);
 			}
-
-			//windowManager->OnMouseMotion(
-			//	axPoint(GET_X_LPARAM(lParam),
-			//	GET_Y_LPARAM(lParam)));
 			return 0;
 
 		case WM_LBUTTONDOWN:
 			mouse_position = axPoint(GET_X_LPARAM(lParam),
 				GET_Y_LPARAM(lParam));
-
-			//windowManager->OnMouseLeftDown(
-			//	axPoint(GET_X_LPARAM(lParam),
-			//	GET_Y_LPARAM(lParam)));
 
 			axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(mouse_position);
 
@@ -591,23 +586,14 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 				GET_Y_LPARAM(lParam));
 
 			axApp::MainInstance->GetPopupManager()->OnMouseLeftUp(mouse_position);
-
-			/// @todo NEED TO CHANGE THIS.
-			//if (axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
-			{
-				axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(mouse_position);
-			}
-
-			//windowManager->OnMouseLeftUp(
-			//	axPoint(GET_X_LPARAM(lParam),
-			//	GET_Y_LPARAM(lParam)));
+			axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(mouse_position);
 			return 0;
 
 		case WM_RBUTTONDOWN:
 			mouse_position = axPoint(GET_X_LPARAM(lParam),
 				GET_Y_LPARAM(lParam));
 
-			windowManager->OnMouseRightDown();
+			windowManager->OnMouseRightDown(mouse_position);
 			return 0;
 
 		case WM_RBUTTONUP:
@@ -724,7 +710,7 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 				return 0;
 
 			case WM_RBUTTONDOWN:
-				windowManager->OnMouseRightDown();
+				//windowManager->OnMouseRightDown(mouse_position);
 				return 0;
 
 			case WM_RBUTTONUP:
@@ -753,5 +739,5 @@ int axCoreWin32::DrawGLScene()
 
 void axCoreWin32::PushEventOnSystemQueue()
 {
-
+	BOOL err = PostMessage(_hwnd, WM_SYSCOMMAND, 1, 1);
 }

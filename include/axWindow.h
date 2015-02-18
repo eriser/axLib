@@ -173,9 +173,6 @@ private:
     
 	GLuint _texture;
     
-    
-    
-    
 //    std::map<std::string, axEventFunction> _evtMap;
     axResourceManager _resourceManager;
     

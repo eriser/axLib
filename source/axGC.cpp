@@ -240,7 +240,7 @@ void axGC::DrawWindowBuffer()
     
     // Destionation funciton.
     glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     axFloatRect rect(RectToFloatRect(_win->GetShownRect()));
