@@ -123,13 +123,13 @@ _debugEditorActive(false)
 #endif // __APPLE__
 }
 
-void axApp::CreatePopupWindow(const axSize& size)
-{
-#ifdef __linux__
-	axCore* c = new axCoreX11(this);
-	c->Init(size);
-#endif //__linux__
-}
+//void axApp::CreatePopupWindow(const axSize& size)
+//{
+//#ifdef __linux__
+//	axCore* c = new axCoreX11(this);
+//	c->Init(size);
+//#endif //__linux__
+//}
 
 void axApp::AddMainEntry(std::function<void()> fct)
 {
@@ -167,10 +167,10 @@ string axApp::OpenFileDialog()
 	return _core->OpenFileDialog();
 }
 
-bool axApp::CreatePopupWindow(const char* title, int x, int y)
-{
-	return _core->CreatePopupWindow("Popup", x, y);
-}
+//bool axApp::CreatePopupWindow(const char* title, int x, int y)
+//{
+//	return _core->CreatePopupWindow("Popup", x, y);
+//}
 
 string axApp::GetAppDirectory()
 {

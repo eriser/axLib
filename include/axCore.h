@@ -33,48 +33,50 @@ class axCore
 {
 public:
 	axCore();
+    
+    // Pure virtual functions.
+
 	virtual void MainLoop() = 0;
+    
 	virtual void Init(const axPoint& frame_size) = 0;
 
-	virtual void ResizeGLScene(const int& width, const int& height, double y = 0);
-	virtual axManager* GetWindowManager();
-	virtual axManager* GetPopupManager();
-	virtual string GetAppDirectory() = 0;
+	virtual void ResizeGLScene(const axSize& size);
+    
+    virtual bool CreateGLWindow(const char* title, int width, int height, int bits) = 0;
+
+    virtual std::string GetAppDirectory() = 0;
+    
+    virtual axRect GetScreenRect() = 0;
+    
+    virtual axSize GetScreenSize() = 0;
+    
+    virtual string OpenFileDialog() = 0;
+    
+    virtual void PushEventOnSystemQueue() = 0;
+    
+    virtual void ResizeFrame(const axSize& size) = 0;
+    
+    virtual void KillGLWindow() = 0;
+    
 
     
-	virtual bool CreatePopupWindow(const char* title, int width, int height) = 0;
-
+    int InitGL();
+    
+	virtual axManager* GetWindowManager();
+    
+	virtual axManager* GetPopupManager();
+    
 	axSize GetGlobalSize() const;
     
     void SetGlobalSize(const axSize& size);
-	virtual axRect GetScreenRect() = 0;
+    
 	virtual void UpdateAll();
     
-    virtual axSize GetScreenSize() = 0;
-
-	virtual string OpenFileDialog() = 0;
-
-	void DeletePopWindow();
-    
-    virtual void PushEventOnSystemQueue() = 0;
-
-    virtual void ResizeFrame(const axSize& size) = 0;
-    
     virtual void HideMouse(){}
+    
     virtual void ShowMouse(){}
 
-	int InitGL();
-	void ResizePopGLScene(const int& width, const int& height);
 	virtual int DrawGLScene();
-	virtual int DrawGLPopScene();
-	virtual void KillGLWindow() = 0;
-	virtual void KillPopGLWindow() = 0;
-	virtual bool CreateGLWindow(const char* title, int width, int height, int bits) = 0;
-    
-    double GetYTestValue()
-    {
-        return _y_test;
-    }
 
 protected:
 	axManager* _windowManager;
@@ -82,8 +84,7 @@ protected:
 
 	bool _needToDraw, _popupNeedToDraw;
 	axSize _size, _popSize;
-    double _y_test;
-    
+
     virtual void InitManagers();
 };
 

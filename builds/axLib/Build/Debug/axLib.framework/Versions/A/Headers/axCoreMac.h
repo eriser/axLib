@@ -39,7 +39,7 @@ public:
 
     virtual string GetAppDirectory();
     
-    virtual bool CreatePopupWindow(const char* title, int width, int height);
+//    virtual bool CreatePopupWindow(const char* title, int width, int height);
 
     virtual axRect GetScreenRect();
     
@@ -51,8 +51,6 @@ public:
 
     virtual void KillGLWindow();
     
-    virtual void KillPopGLWindow();
-    
     virtual bool CreateGLWindow(const char* title, int width, int height, int bits);
     
     virtual void UpdateAll();
@@ -60,6 +58,7 @@ public:
     virtual void ResizeFrame(const axSize& size);
     
     virtual void HideMouse();
+    
     virtual void ShowMouse();
 };
 

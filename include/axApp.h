@@ -81,7 +81,7 @@ public:
 
     
     
-	void CreatePopupWindow(const axSize& size);
+//	void CreatePopupWindow(const axSize& size);
 
 	axManager* GetWindowManager();
     axManager* GetPopupManager();

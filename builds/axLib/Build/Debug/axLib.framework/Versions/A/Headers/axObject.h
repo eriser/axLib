@@ -19,8 +19,15 @@
  * To release a closed-source product which uses axLibrary, commercial
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
+
 #ifndef _AX_OBJECT_
 #define _AX_OBJECT_
+
+/*******************************************************************************
+ * @file    axObject.h
+ * @author  Alexandre Arsenault <alx.arsenault@gmail.com>
+ * @date    17/02/2015
+ ******************************************************************************/
 
 /// @defgroup Core
 /// @{
@@ -32,31 +39,34 @@
 
 typedef unsigned int axID;
 
+/// Id from axObject are used has unique identifier in axEventManager.
 class axObject
 {
 public:
     axObject();
     
-    // Add a function to the EventManager.
+    /// Add a function to the EventManager.
     void AddConnection(const axEventId& evtId, axEventFunction fct) const;
     
-    // Add the function to the EventManager queue.
+    /// Add the function to the EventManager queue.
     void PushEvent(const axEventId& evtId, axMsg* msg);
     
+    /// Indefine behavior if two axObject has the same id.
     void ChangeId(const axID& id);
     
     inline axID GetId() const { return _id; }
     
+    /// Add a function to the object map without adding it to the event manager.
     void AddEventFunction(const std::string& name, axEventFunction fct);
     
+    /// Get a function from the object map.
     axEventFunction GetEventFunction(const std::string& name);
     
 private:
-    
-    // Unique identifier.
+    /// Unique identifier.
     axID _id;
     
-    // Map of lamda functions.
+    /// Map of lamda functions.
     std::map<std::string, axEventFunction> _evtMap;
     
     static axID _global_id_count;

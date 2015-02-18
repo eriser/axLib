@@ -63,24 +63,18 @@ string axCoreMac::GetAppDirectory()
     return std::string(CocoaGetAppDirectory() + std::string("/"));
 }
 
-bool axCoreMac::CreatePopupWindow(const char* title, int width, int height)
-{
-    return false;
-}
+//bool axCoreMac::CreatePopupWindow(const char* title, int width, int height)
+//{
+//    return false;
+//}
 
 axRect axCoreMac::GetScreenRect()
 {
-    // NEED TO CHANGE THIS !!!.
-//    return axRect(0, GetYTestValue(), _size.x, _size.y);
     return axCocoaGetScreenSize();
 }
 
 
 void axCoreMac::KillGLWindow()
-{
-    
-}
-void axCoreMac::KillPopGLWindow()
 {
     
 }
@@ -98,10 +92,8 @@ void axCoreMac::UpdateAll()
 
 void axCoreMac::ResizeFrame(const axSize& size)
 {
-//    ResizeGLScene(size.x, size.y);
     axCocoaResizeFrame(size);
-    ResizeGLScene(size.x, size.y);
-    
+    ResizeGLScene(size);
 }
 
 std::string axCoreMac::OpenFileDialog()
