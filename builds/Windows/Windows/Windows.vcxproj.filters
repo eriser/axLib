@@ -168,6 +168,9 @@
     <ClInclude Include="..\..\..\axWin32\axWin32Utils.h">
       <Filter>axWin32</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\axGraphicInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\axApp.cpp">
@@ -313,6 +316,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\axWin32\axWin32Utils.cpp">
       <Filter>axWin32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\axGraphicInterface.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

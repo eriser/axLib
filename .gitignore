@@ -28,6 +28,7 @@ Intermediates/
 Release/
 
 # Useful?
+*.opensdf
 *.xcactivitylog
 *.db
 Cache.db

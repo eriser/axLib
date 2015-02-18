@@ -91,6 +91,7 @@
     <ClInclude Include="..\..\..\axWin32\axCoreWin32.h" />
     <ClInclude Include="..\..\..\axWin32\axDebugWin32.h" />
     <ClInclude Include="..\..\..\axWin32\axWin32Utils.h" />
+    <ClInclude Include="..\..\..\include\axGraphicInterface.h" />
     <ClInclude Include="..\..\..\include\axLib\axApp.h" />
     <ClInclude Include="..\..\..\include\axLib\axC++.h" />
     <ClInclude Include="..\..\..\include\axLib\axColor.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="..\..\..\source\axEventManager.cpp" />
     <ClCompile Include="..\..\..\source\axFont.cpp" />
     <ClCompile Include="..\..\..\source\axGC.cpp" />
+    <ClCompile Include="..\..\..\source\axGraphicInterface.cpp" />
     <ClCompile Include="..\..\..\source\axImage.cpp" />
     <ClCompile Include="..\..\..\source\axKeyboardManager.cpp" />
     <ClCompile Include="..\..\..\source\axMain.cpp" />

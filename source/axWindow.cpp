@@ -275,12 +275,8 @@ void axWindow::OnPaint()
 // https://www.opengl.org/wiki/Framebuffer_Object_Examples
 void axWindow::InitGLWindowBackBufferDrawing()
 {
-<<<<<<< HEAD
 #if _axBackBufferWindow_ == 1
 
-=======
-    
->>>>>>> 55c53b8f576b623e42ac620ef37b342ae93f375d
     // Create framebuffer object (FBO).
     glGenFramebuffers(1, &_frameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
@@ -378,20 +374,13 @@ void axWindow::InitGLWindowBackBufferDrawing()
 
 void axWindow::RenderWindow()
 {
-<<<<<<< HEAD
-	
-=======
+
     // Check the renderer limits. For example, you might want to call the OpenGL
     // function glGetIntegerv to check the maximum texture size
     // (GL_MAX_TEXTURE_SIZE) or find out the maximum number of color buffers
     // you can attach to the framebuffer object(GL_MAX_COLOR_ATTACHMENTS_EXT).
     
-    int v = 0;
-    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &v);
-    std::cout << "Nb max :::::: " << v << std::endl;
-    
-    
->>>>>>> 55c53b8f576b623e42ac620ef37b342ae93f375d
+
     if(_needUpdate)
     {
         #if _axBackBufferWindow_ == 1
