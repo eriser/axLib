@@ -30,7 +30,7 @@
 #include "axGC.h"
 #include "axResourceManager.h"
 #include "axConfig.h"
-#include "axGraphicInterface.h"
+#include "axFrameBuffer.h"
 
 class axApp;
 

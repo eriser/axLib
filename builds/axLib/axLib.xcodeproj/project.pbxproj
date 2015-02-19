@@ -109,6 +109,8 @@
 		7C88F2281A94303A00374108 /* axCoreMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1351B31A7FC7A800C97A99 /* axCoreMac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CBB3AD11A95121700FFCBBB /* axGraphicInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB3AD01A95121700FFCBBB /* axGraphicInterface.cpp */; };
 		7CBB3AD31A95122000FFCBBB /* axGraphicInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CBB3AD21A95122000FFCBBB /* axGraphicInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CBB3AD51A9566F400FFCBBB /* axFrameBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CBB3AD41A9566F400FFCBBB /* axFrameBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CBB3AD71A95670000FFCBBB /* axFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB3AD61A95670000FFCBBB /* axFrameBuffer.cpp */; };
 		7CE57F671A7FF40F00E912F5 /* libpng16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE57F661A7FF40F00E912F5 /* libpng16.dylib */; };
 /* End PBXBuildFile section */
 
@@ -231,6 +233,8 @@
 		7C88F1CC1A942EAC00374108 /* axToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axToggle.h; sourceTree = "<group>"; };
 		7CBB3AD01A95121700FFCBBB /* axGraphicInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGraphicInterface.cpp; sourceTree = "<group>"; };
 		7CBB3AD21A95122000FFCBBB /* axGraphicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGraphicInterface.h; sourceTree = "<group>"; };
+		7CBB3AD41A9566F400FFCBBB /* axFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFrameBuffer.h; sourceTree = "<group>"; };
+		7CBB3AD61A95670000FFCBBB /* axFrameBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axFrameBuffer.cpp; sourceTree = "<group>"; };
 		7CE57F661A7FF40F00E912F5 /* libpng16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.dylib; path = /usr/local/lib/libpng16.dylib; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -295,6 +299,7 @@
 		7C1351371A7FC77900C97A99 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7CBB3AD41A9566F400FFCBBB /* axFrameBuffer.h */,
 				7C1351381A7FC77900C97A99 /* axApp.h */,
 				7C1351391A7FC77900C97A99 /* axC++.h */,
 				7C13513A1A7FC77900C97A99 /* axColor.h */,
@@ -333,6 +338,7 @@
 		7C1351551A7FC77A00C97A99 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7CBB3AD61A95670000FFCBBB /* axFrameBuffer.cpp */,
 				7C1351571A7FC77A00C97A99 /* axApp.cpp */,
 				7C1351581A7FC77A00C97A99 /* axC++.cpp */,
 				7C1351591A7FC77A00C97A99 /* axColor.cpp */,
@@ -475,6 +481,7 @@
 				7C88F2061A942F7600374108 /* axStaticImage.h in Headers */,
 				7C88F2071A942F7600374108 /* axTextBox.h in Headers */,
 				7C88F2081A942F7600374108 /* axTextControl.h in Headers */,
+				7CBB3AD51A9566F400FFCBBB /* axFrameBuffer.h in Headers */,
 				7C88F2091A942F7600374108 /* axToggle.h in Headers */,
 				7C88F2271A94303A00374108 /* axCocoaInterfaceMac.h in Headers */,
 				7CBB3AD31A95122000FFCBBB /* axGraphicInterface.h in Headers */,
@@ -567,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CBB3AD71A95670000FFCBBB /* axFrameBuffer.cpp in Sources */,
 				7C88F1E61A942EAC00374108 /* axPopupMenu.cpp in Sources */,
 				7C1351961A7FC77A00C97A99 /* axDefaultFontBuffer.cpp in Sources */,
 				7C1351A81A7FC77A00C97A99 /* axVar.cpp in Sources */,

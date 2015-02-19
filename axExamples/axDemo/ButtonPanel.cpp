@@ -198,17 +198,7 @@ void ButtonPanel::OnPaint()
     
     gc->SetColor(_colorTimer, 1.0);
     gc->DrawRectangle(rect0);
-    
-//    gc->SetColor(axColor(0.9, 0.9, 0.9, 0.2));
-//    gc->DrawRectangle(axRect(216, 41, 25, 21));
-    
-//    gc->SetColor(axColor(0.488, 0.488, 0.488, 1.0));
-//    gc->DrawRectangleContour(axRect(216, 41, 37, 22));
-    
-//    gc->SetColor(axColor(0.488, 0.488, 0.488, 1.0));
-//    gc->DrawStringAlignedCenter(*_font, "00", axRect(216, 41, 25, 21));
-    
-   
+
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     gc->DrawRectangleContour(rect0);
 }

@@ -309,7 +309,9 @@ _maxNumChar(10000000)
     
     _font = new axFont(0);
     
-    SetShownRect(axRect(-5, -5, rect.size.x + 10, rect.size.y + 10));
+    
+    // 
+    //SetShownRect(axRect(-5, -5, rect.size.x + 10, rect.size.y + 10));
 }
 
 void axTextBox::SetLabel(const std::string& label)

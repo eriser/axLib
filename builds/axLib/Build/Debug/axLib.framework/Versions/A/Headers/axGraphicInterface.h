@@ -22,25 +22,4 @@ namespace axGraphicInterface
     void Draw(const axSize& size);
 }
 
-
-class axFrameBuffer
-{
-public:
-    axFrameBuffer(const axSize& size);
-    
-    void Init(const axSize& size);
-    
-    void Resize(const axSize& size);
-    
-    void DrawOnFrameBuffer(const std::function<void()>& fct,
-                           const axSize& size);
-    
-    void DrawFrameBuffer(const axSize& shownSize);
-    
-//    void DrawFrameBufferOnParentFrameBuffer(const axSize& shownSize);
-    
-private:
-    GLuint _frameBuffer, _frameBufferTexture, _depthBuffer;
-};
-
 #endif /* defined(__axLib__axGraphicInterface__) */
