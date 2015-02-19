@@ -140,10 +140,6 @@ void axFrameBuffer::Resize(const axSize& size)
 #endif //_axBackBufferWindow_ == 1
 }
 
-//So far the best results I've obtained have been rendering to the FBO using:
-//GL.BlendFunc(BlendingFactorSrc.One, BlendingFactorDest.Zero);
-//..and then rendering the FBO using GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha).
-
 void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
                                       const axSize& size)
 {
@@ -166,11 +162,8 @@ void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
     glClearDepth(1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-//    glBlendFunc(GL_ONE, GL_ZERO);
-    
-//    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
+    // All other blend function doesn't work except this one when drawing
+    // multiple transparent frame buffer.
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
                         GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     
@@ -187,7 +180,6 @@ void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
     glMatrixMode(GL_MODELVIEW);
     axMatrix4 mv_matrix;
     mv_matrix.Identity().Load();
-//    glTranslated(1.0, 1.0, 0.0);
 
     if(fct)
     {
@@ -211,78 +203,12 @@ void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
 #endif //_axBackBufferWindow_
 }
 
-//void axFrameBuffer::DrawFrameBuffer(const axSize& shownSize)
-//{
-//#if _axBackBufferWindow_ == 1
-////    glEnable(GL_TEXTURE_2D);
-////    
-////    //one, one-minus-src-alph
-//////    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-//////    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA);
-////    
-////    // This work well when the destination is not transparent but doesn't work
-////    // when it is.
-//////    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA);
-////    
-////    // Not perfect.
-//////    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-////    
-////    // Standard blend function doesn't work with multiple frame buffer.
-////    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-////    
-////    
-////    axFloatPoint pos(0.0, 0.0);
-////    axFloatSize size(shownSize.x, shownSize.y);
-////    
-////    glBindTexture(GL_TEXTURE_2D, _frameBufferTexture);
-////    
-////    glBegin(GL_QUADS);
-////    
-////    // Bottom left.
-////    glTexCoord2d(0.0, 0.0);
-////    glVertex2d(pos.x, pos.y);
-////    
-////    // Top left.
-////    glTexCoord2d(0.0, 1.0);
-////    glVertex2d(pos.x, pos.y + size.y);
-////    
-////    // Top right.
-////    glTexCoord2d(1.0, 1.0);
-////    glVertex2d(pos.x + size.x, pos.y + size.y);
-////    
-////    // Buttom right.
-////    glTexCoord2d(1.0, 0.0);
-////    glVertex2d(pos.x + size.x, pos.y);
-////    
-////    glEnd();
-////    
-////    //	glDisable(GL_BLEND);
-////    glDisable(GL_TEXTURE_2D);
-//////    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-////    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
-////                        GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-//
-//#endif //_axBackBufferWindow_
-//}
-
 void axFrameBuffer::DrawFrameBuffer(const axSize& shownSize)
 {
 #if _axBackBufferWindow_ == 1
     glEnable(GL_TEXTURE_2D);
     
-    //one, one-minus-src-alph
-    //    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    //    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA);
-    
-    // This work well when the destination is not transparent but doesn't work
-    // when it is.
-    //    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA);
-    
-    // Not perfect.
-    //    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
-    // Standard blend function doesn't work with multiple frame buffer.
-//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    // This seem to be the only way to make the alpha and color blend properly.
     glBlendFuncSeparate(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
                         GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     
@@ -314,8 +240,6 @@ void axFrameBuffer::DrawFrameBuffer(const axSize& shownSize)
     
     //	glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
-    //    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     
 #endif //_axBackBufferWindow_
 }

@@ -261,7 +261,7 @@ void axWindow::SetContourColor(const axColor& color)
 
 axRect axWindow::GetDrawingRect() const
 {
-    return axRect(0, 0, _rect.size.x - 1, _rect.size.y - 1);
+    return axRect(1, 1, _rect.size.x - 1, _rect.size.y - 1);
 }
 
 void axWindow::SetNeedUpdate()
@@ -294,10 +294,6 @@ axResourceManager* axWindow::GetResourceManager()
     return &_resourceManager;
 }
 
-
-
-
-
 void axWindow::OnPaint()
 {
     
@@ -323,17 +319,7 @@ void axWindow::RenderWindow()
     }
     
     _frameBufferObj.DrawFrameBuffer(GetShownRect().size);
-    
-//    if(_parent == nullptr)
-//    {
-////        axPrint("RenderWindow parent = nullptr");
-//        _frameBufferObj.DrawFrameBuffer(GetShownRect().size);
-//    }
-//    else
-//    {
-//        _frameBufferObj.DrawFrameBufferOnParentFrameBuffer(GetShownRect().size);
-//    }
-    
+
 #else
     OnPaint();
 #endif //_axBackBufferWindow_
