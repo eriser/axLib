@@ -74,7 +74,8 @@ axButton::Info::Info(const axColor& normal_color,
                      const axColor& clicked_color,
                      const axColor& selected_color,
                      const axColor& contour_color,
-                     const axColor& font_color_) :
+                     const axColor& font_color_,
+                     const int& roundCornerRadius) :
 // Heritage.
 axInfo(),
 // Members.
@@ -83,7 +84,8 @@ hover(hover_color),
 clicking(clicked_color),
 selected(selected_color),
 contour(contour_color),
-font_color(font_color_)
+font_color(font_color_),
+round_corner_radius(roundCornerRadius)
 {
     
 }
@@ -389,7 +391,17 @@ void axButton::OnPaint()
     axRect rect0(GetDrawingRect());
     
     gc.SetColor(*_currentColor);
-    gc.DrawRectangle(rect0);
+    
+    int radius = static_cast<axButton::Info*>(_info)->round_corner_radius;
+    if(radius > 1)
+    {
+        gc.DrawRoundedRectangle(rect0, radius);
+    }
+    else
+    {
+        gc.DrawRectangle(rect0);
+    }
+    
     
     if (_btnImg->IsImageReady())
     {
@@ -411,7 +423,16 @@ void axButton::OnPaint()
     }
     
     gc.SetColor(static_cast<axButton::Info*>(_info)->contour);
-    gc.DrawRectangleContour(rect0);
+    
+    
+    if(radius > 1)
+    {
+        gc.DrawRoundedRectangleContour(rect0, radius);
+    }
+    else
+    {
+        gc.DrawRectangleContour(rect0);
+    }
 }
 
 

@@ -88,9 +88,185 @@ void axGC::DrawRectangle(const axRect& rect)
 //    mview_before.Load();
 }
 
-void axGC::DrawRoundedRectangle(const axRect& rect)
+void DrawQuarterCircleContour(const axFloatPoint& pos,
+                              const int& radius,
+                              const double& angle,
+                              const int& nSegments)
 {
-    /// @todo.
+    glBegin(GL_LINES);
+    for(int i = 1; i < nSegments; i++)
+    {
+        // Get the current angle.
+        double theta = (2.0f * M_PI) * 0.25 * (double(i - 1)) / double(nSegments);
+        
+        double x = radius * cosf(theta + angle);
+        double y = radius * sinf(theta + angle);
+        
+        glVertex2d(x + pos.x, y + pos.y);
+        
+        theta = (2.0f * M_PI) * 0.25 * (double(i)) / double(nSegments);
+        
+        x = radius * cosf(theta + angle);
+        y = radius * sinf(theta + angle);
+        glVertex2d(x + pos.x, y + pos.y);
+    }
+    glEnd();
+}
+
+void axGC::DrawRoundedRectangleContour(const axRect& rect, const int& radius)
+{
+
+    int r = radius;
+    
+    if(r > rect.size.y * 0.5)
+    {
+        r = rect.size.y * 0.5;
+    }
+    
+    int nSegments = 20;
+    axFloatRect frect = RectToFloatRect(rect);
+
+    
+    glBegin(GL_LINES);
+    
+    // Top line.
+    glVertex2d(frect.position.x + r - 2,
+               frect.position.y);
+    
+    glVertex2d(frect.position.x + frect.size.x - r + 2,
+               frect.position.y);
+    
+    // Bottom line.
+    glVertex2d(frect.position.x + r - 2,
+               frect.position.y + frect.size.y);
+    
+    glVertex2d(frect.position.x + frect.size.x - r + 2,
+               frect.position.y + frect.size.y);
+    
+    // Left line.
+    glVertex2d(frect.position.x,
+               frect.position.y + r - 2);
+    
+    glVertex2d(frect.position.x,
+               frect.position.y + frect.size.y - r + 2);
+    
+    // Right line.
+    glVertex2d(frect.position.x + + frect.size.x,
+               frect.position.y + r - 2);
+    
+    glVertex2d(frect.position.x + + frect.size.x,
+               frect.position.y + frect.size.y - r + 2);
+    glEnd();
+    
+
+
+    
+    // Bottom right.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+                                          frect.position.y + frect.size.y - r),
+                             r, 0, nSegments);
+    
+    // Top left.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r - 1 ,
+                                          frect.position.y + r - 1),
+                             r, M_PI, nSegments);
+    
+    // Top right.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+                                          frect.position.y + r - 1),
+                             r, 3.0 * M_PI * 0.5, nSegments);
+    
+    // Bottom left.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r - 1,
+                                          frect.position.y + frect.size.y - r),
+                             r, M_PI * 0.5, nSegments);
+
+}
+
+void DrawQuarterCircle(const axFloatPoint& pos,
+                       const int& radius,
+                       const double& angle,
+                       const int& nSegments)
+{
+    glBegin(GL_TRIANGLE_FAN);
+    
+    glVertex2d(pos.x, pos.y);
+    
+    for(int i = 0; i < nSegments; i++)
+    {
+        // Get the current angle.
+        double theta = (2.0f * M_PI) * 0.25 * (double(i)) / double(nSegments);
+        
+        double x = radius * cosf(theta + angle);
+        double y = radius * sinf(theta + angle);
+        
+        glVertex2d(x + pos.x, y + pos.y);
+        
+//        theta = (2.0f * M_PI) * 0.25 * (double(i)) / double(nSegments);
+//        
+//        x = radius * cosf(theta + angle);
+//        y = radius * sinf(theta + angle);
+//        glVertex2d(x + pos.x, y + pos.y);
+    }
+    glEnd();
+}
+
+void axGC::DrawRoundedRectangle(const axRect& rect, const int& radius)
+{
+    int r = radius;
+    
+    if(r > rect.size.y * 0.5)
+    {
+        r = rect.size.y * 0.5;
+    }
+    
+    int nSegments = 40;
+    axFloatRect frect = RectToFloatRect(rect);
+    
+    // Middle.
+    DrawRectangle(axRect(frect.position.x + r - 1,
+                         frect.position.y - 1,
+                         frect.size.x - 2.0 * r + 1,
+                         frect.size.y + 1));
+
+    int size_rect_height = frect.size.y - 2.0 * r + 1;
+    
+    if(size_rect_height > 0)
+    {
+        // Left.
+        DrawRectangle(axRect(frect.position.x - 1,
+                             frect.position.y + r - 1,
+                             r,
+                             size_rect_height));
+        
+        // Right.
+        DrawRectangle(axRect(frect.position.x +frect.size.x - r,
+                             frect.position.y + r - 1,
+                             r + 1,
+                             size_rect_height));
+    }
+
+    // Bottom right.
+    DrawQuarterCircle(axFloatPoint(frect.position.x + frect.size.x - r,
+                                   frect.position.y + frect.size.y - r),
+                      r, 0, nSegments);
+
+    
+    // Top left.
+    DrawQuarterCircle(axFloatPoint(frect.position.x + r - 1 ,
+                                   frect.position.y + r - 1),
+                      r, M_PI, nSegments);
+    
+    // Top right.
+    DrawQuarterCircle(axFloatPoint(frect.position.x + frect.size.x - r,
+                                   frect.position.y + r - 1),
+                      r, 3.0 * M_PI * 0.5, nSegments);
+    
+    // Bottom left.
+    DrawQuarterCircle(axFloatPoint(frect.position.x + r - 1,
+                                   frect.position.y + frect.size.y - r),
+                      r, M_PI * 0.5, nSegments);
+    
 }
 
 void axGC::DrawRectangleContour(const axRect& rect, float linewidth)
@@ -733,13 +909,8 @@ void axGC::SeDefaultLine()
 void axGC::DrawCircle(const axPoint& pos,
                       const double& radius,
                       const int& nSegments)
-{ 
-//	axPoint real_pos = _win->GetAbsoluteRect().position;
-    axPoint real_pos = pos;//_win->GetRect().position;
-
-	//real_pos -= _win->GetScrollDecay();
-
-//	real_pos += pos;
+{
+    axPoint real_pos = pos;
 
 	glBegin(GL_LINE_LOOP); 
 	for(int i = 0; i < nSegments; i++)

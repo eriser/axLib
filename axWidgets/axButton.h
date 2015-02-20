@@ -114,7 +114,8 @@ public:
              const axColor& clicked_color,
              const axColor& selected_color,
              const axColor& contour_color,
-             const axColor& font_color);
+             const axColor& font_color,
+             const int& roundCornerRadius = 0);
         
         // Info needed for debug editor. Derived from axInfo.
         virtual axStringVector GetParamNameList() const;
@@ -127,6 +128,7 @@ public:
         axColor selected;
         axColor contour;
         axColor font_color;
+        int round_corner_radius;
     };
     
     /***************************************************************************

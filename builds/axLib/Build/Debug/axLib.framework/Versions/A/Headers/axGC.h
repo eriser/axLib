@@ -53,7 +53,8 @@ public:
 
 	void DrawRectangleContour(const axRect& rect, float linewidth = 1.0);
 
-    void DrawRoundedRectangle(const axRect& rect);
+    void DrawRoundedRectangle(const axRect& rect, const int& radius);
+    void DrawRoundedRectangleContour(const axRect& rect, const int& radius);
     
 	void DrawImage(axImage* img, const axPoint& pos, double alpha = 1.0);
     

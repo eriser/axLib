@@ -299,7 +299,6 @@
 		7C1351371A7FC77900C97A99 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				7CBB3AD41A9566F400FFCBBB /* axFrameBuffer.h */,
 				7C1351381A7FC77900C97A99 /* axApp.h */,
 				7C1351391A7FC77900C97A99 /* axC++.h */,
 				7C13513A1A7FC77900C97A99 /* axColor.h */,
@@ -308,6 +307,7 @@
 				7C13513D1A7FC77900C97A99 /* axEvent.h */,
 				7C13513E1A7FC77900C97A99 /* axEventManager.h */,
 				7C13513F1A7FC77900C97A99 /* axFont.h */,
+				7CBB3AD41A9566F400FFCBBB /* axFrameBuffer.h */,
 				7C1351401A7FC77900C97A99 /* axGC.h */,
 				7CBB3AD21A95122000FFCBBB /* axGraphicInterface.h */,
 				7C1351411A7FC77900C97A99 /* axImage.h */,
@@ -338,7 +338,6 @@
 		7C1351551A7FC77A00C97A99 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				7CBB3AD61A95670000FFCBBB /* axFrameBuffer.cpp */,
 				7C1351571A7FC77A00C97A99 /* axApp.cpp */,
 				7C1351581A7FC77A00C97A99 /* axC++.cpp */,
 				7C1351591A7FC77A00C97A99 /* axColor.cpp */,
@@ -348,6 +347,7 @@
 				7C13515D1A7FC77A00C97A99 /* axEvent.cpp */,
 				7C13515E1A7FC77A00C97A99 /* axEventManager.cpp */,
 				7C13515F1A7FC77A00C97A99 /* axFont.cpp */,
+				7CBB3AD61A95670000FFCBBB /* axFrameBuffer.cpp */,
 				7C1351601A7FC77A00C97A99 /* axGC.cpp */,
 				7CBB3AD01A95121700FFCBBB /* axGraphicInterface.cpp */,
 				7C1351611A7FC77A00C97A99 /* axImage.cpp */,
