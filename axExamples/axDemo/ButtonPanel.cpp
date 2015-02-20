@@ -21,7 +21,7 @@ axPanel(parent, rect)
     btn1_info.clicking = axColor(0.7, 0.7, 0.7, 0.3);
     btn1_info.contour = axColor(0.0, 0.0, 1.0, 0.5);
     btn1_info.selected = btn1_info.normal;
-    btn1_info.round_corner_radius = 18;
+    btn1_info.round_corner_radius = 3;
     
     axButton::Events btn1_evts;
     btn1_evts.button_click = GetOnButtonWithEvtManager();
@@ -202,30 +202,30 @@ void ButtonPanel::OnPaint()
     gc->DrawRectangle(rect0);
     
     
-//    gc->SetColor(axColor::axRedColor);
-//    gc->DrawRoundedRectangle(axRect(40, 200, 50, 25), 12);
-//
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContour(axRect(40, 200, 50, 25), 12);
-//    
+    gc->SetColor(axColor::axRedColor);
+    gc->DrawRoundedRectangle(axRect(40, 200, 50, 25), 12);
+
+    gc->SetColor(axColor::axBlackColor);
+    gc->DrawRoundedRectangleContourSmooth(axRect(40, 200, 50, 25), 12);
+    
 //    gc->SetColor(axColor::axRedColor);
 //    gc->DrawRoundedRectangle(axRect(200, 200, 50, 50), 5);
-//    
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContour(axRect(200, 200, 50, 50), 5);
-//    
+    
+    gc->SetColor(axColor::axBlackColor);
+    gc->DrawRoundedRectangleContourSmooth(axRect(200, 200, 50, 50), 5);
+    
 //    gc->SetColor(axColor::axRedColor);
 //    gc->DrawRoundedRectangle(axRect(290, 200, 50, 50), 10);
-//    
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContour(axRect(290, 200, 50, 50), 10);
-//    
-//    
+    
+    gc->SetColor(axColor::axBlackColor);
+    gc->DrawRoundedRectangleContourSmooth(axRect(290, 200, 50, 50), 10);
+    
+    
 //    gc->SetColor(axColor::axRedColor);
 //    gc->DrawRoundedRectangle(axRect(370, 200, 50, 50), 4);
-//    
-//    gc->SetColor(axColor::axBlackColor);
-//    gc->DrawRoundedRectangleContour(axRect(370, 200, 50, 50), 4);
+    
+    gc->SetColor(axColor::axBlackColor);
+    gc->DrawRoundedRectangleContour(axRect(370, 200, 50, 50), 4);
     
 
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);

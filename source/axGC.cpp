@@ -123,10 +123,9 @@ void axGC::DrawRoundedRectangleContour(const axRect& rect, const int& radius)
         r = rect.size.y * 0.5;
     }
     
-    int nSegments = 20;
+    int nSegments = 10;
     axFloatRect frect = RectToFloatRect(rect);
 
-    
     glBegin(GL_LINES);
     
     // Top line.
@@ -180,7 +179,83 @@ void axGC::DrawRoundedRectangleContour(const axRect& rect, const int& radius)
     DrawQuarterCircleContour(axFloatPoint(frect.position.x + r - 1,
                                           frect.position.y + frect.size.y - r),
                              r, M_PI * 0.5, nSegments);
+}
 
+void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
+                                             const int& radius)
+{
+    
+    int r = radius;
+    
+    if(r > rect.size.y * 0.5)
+    {
+        r = rect.size.y * 0.5;
+    }
+    
+    int nSegments = 5;
+    axFloatRect frect = RectToFloatRect(rect);
+    
+    glLineWidth(2.0f);
+    glEnable(GL_LINE_SMOOTH);
+//    glEnable(GL_POLYGON_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_FASTEST);
+//    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+    
+    glBegin(GL_LINES);
+    
+    // Top line.
+    glVertex2d(frect.position.x + r - 2,
+               frect.position.y);
+    
+    glVertex2d(frect.position.x + frect.size.x - r + 2,
+               frect.position.y);
+    
+    // Bottom line.
+    glVertex2d(frect.position.x + r - 2,
+               frect.position.y + frect.size.y);
+    
+    glVertex2d(frect.position.x + frect.size.x - r + 2,
+               frect.position.y + frect.size.y);
+    
+    // Left line.
+    glVertex2d(frect.position.x,
+               frect.position.y + r - 2);
+    
+    glVertex2d(frect.position.x,
+               frect.position.y + frect.size.y - r + 2);
+    
+    // Right line.
+    glVertex2d(frect.position.x + + frect.size.x,
+               frect.position.y + r - 2);
+    
+    glVertex2d(frect.position.x + + frect.size.x,
+               frect.position.y + frect.size.y - r + 2);
+    glEnd();
+    
+    // Bottom right.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+                                          frect.position.y + frect.size.y - r),
+                             r, 0, nSegments);
+    
+    // Top left.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r,
+                                          frect.position.y + r),
+                             r, M_PI, nSegments);
+    
+    // Top right.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+                                          frect.position.y + r),
+                             r, 3.0 * M_PI * 0.5, nSegments);
+    
+    // Bottom left.
+    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r,
+                                          frect.position.y + frect.size.y - r),
+                             r, M_PI * 0.5, nSegments);
+    
+    glDisable(GL_LINE_SMOOTH);
+    glLineWidth(1.0f);
+//    glDisable(GL_POLYGON_SMOOTH);
+    
 }
 
 void DrawQuarterCircle(const axFloatPoint& pos,
@@ -201,12 +276,6 @@ void DrawQuarterCircle(const axFloatPoint& pos,
         double y = radius * sinf(theta + angle);
         
         glVertex2d(x + pos.x, y + pos.y);
-        
-//        theta = (2.0f * M_PI) * 0.25 * (double(i)) / double(nSegments);
-//        
-//        x = radius * cosf(theta + angle);
-//        y = radius * sinf(theta + angle);
-//        glVertex2d(x + pos.x, y + pos.y);
     }
     glEnd();
 }
@@ -360,57 +429,6 @@ void axGC::DrawTexture(GLuint texture, const axRect& rect, axColor color)
 //    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-//void axGC::DrawWindowBuffer()
-//{
-//    glEnable(GL_TEXTURE_2D);
-////    glEnable(GL_BLEND);
-//    
-//    // Destionation funciton.
-//
-//    //glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//
-//    glBlendFunc(GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//    
-//    axFloatRect rect(RectToFloatRect(_win->GetShownRect()));
-//    axFloatPoint pos(0.0, 0.0);
-//    axFloatSize size = rect.size;
-//
-//    glBindTexture(GL_TEXTURE_2D, _win->GetWindowBufferTexture());
-//
-//    glBegin(GL_QUADS);
-//    
-//    // Bottom left.
-//    glTexCoord2d(0.0, 0.0);
-//    glVertex2d(pos.x, pos.y);
-//    
-//    // Top left.
-//    glTexCoord2d(0.0, 1.0);
-//    glVertex2d(pos.x, pos.y + size.y);
-//    
-//    // Top right.
-//    glTexCoord2d(1.0, 1.0);
-//    glVertex2d(pos.x + size.x, pos.y + size.y);
-//    
-//    // Buttom right.
-//    glTexCoord2d(1.0, 0.0);
-//    glVertex2d(pos.x + size.x, pos.y);
-//    
-//    glEnd();
-//    
-//    //	glDisable(GL_BLEND);
-//    glDisable(GL_TEXTURE_2D);
-//    
-//    
-//    glBlendFuncSeparate(GL_SRC_ALPHA,
-//                        GL_ONE_MINUS_SRC_ALPHA,
-//                        GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
-//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//}
-
-//glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
-
 struct axRectPointsOrder
 {
     axRectPointsOrder(){}
@@ -432,6 +450,7 @@ struct axRectPointsOrder
     
     axFloatPoint top_left, top_right, bottom_left, bottom_right;
 };
+
 void axGC::DrawImage(axImage* img, const axPoint& position, double alpha)
 {
 //	axPoint pos = position + _win->GetAbsoluteRect().position;

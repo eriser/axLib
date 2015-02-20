@@ -128,7 +128,7 @@ public:
         axColor selected;
         axColor contour;
         axColor font_color;
-        int round_corner_radius;
+        int round_corner_radius = 0;
     };
     
     /***************************************************************************
