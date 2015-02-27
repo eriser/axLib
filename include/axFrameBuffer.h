@@ -33,6 +33,7 @@
 /// @{
 
 #include "axC++.h"
+#include "cairo/cairo.h"
 
 class axFrameBuffer
 {
@@ -51,8 +52,19 @@ public:
 private:
     GLuint _frameBuffer, _frameBufferTexture, _depthBuffer;
     
+//    cairo_surface_t *surface;
+//    cairo_t *context;
+//    unsigned char* surf_data;
+    
     void DrawingOnFrameBufferBlendFunction();
     void DrawingFrameBufferBlendFunction();
+//    
+//    cairo_t*  create_cairo_context(int width,
+//                                   int height,
+//                                   int channels,
+//                                   cairo_surface_t** surf,
+//                                   unsigned char** buffer);
+   
 };
 
 /// @}

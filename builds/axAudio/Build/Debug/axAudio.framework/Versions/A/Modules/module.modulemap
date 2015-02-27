@@ -1,0 +1,6 @@
+framework module axAudio {
+  umbrella header "axAudio.h"
+
+  export *
+  module * { export * }
+}

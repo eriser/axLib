@@ -71,5 +71,6 @@
 #include "axPlot.h"
 #include "axLabel.h"
 #include "axStaticImage.h"
+#include "axWidgetSelector.h"
 
 #endif //__AX_LIB__

@@ -46,6 +46,7 @@
 #endif // __APPLE__
 
 #include <stdint.h>
+#include <memory>
 #include "axUtils.h"
 
 #define axDEBUG_LEVEL0 0

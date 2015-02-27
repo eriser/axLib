@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: cairo
+Description: Multi-platform 2D graphics library
+Version: 1.0.0
+
+Requires.private: freetype2 >= 8.0.2 fontconfig xrender  
+Libs:  -L${libdir} -lcairo 
+Cflags:  -I${includedir}/cairo

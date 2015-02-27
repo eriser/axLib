@@ -75,6 +75,7 @@ void axFrameBuffer::Init(const axSize& size)
         axError("Generating frame buffer : ", status);
     }
     
+    
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }

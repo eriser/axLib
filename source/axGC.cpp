@@ -181,6 +181,36 @@ void axGC::DrawRoundedRectangleContour(const axRect& rect, const int& radius)
                              r, M_PI * 0.5, nSegments);
 }
 
+void DrawQuarterCircleContourSmooth(axGC* gc, const axFloatPoint& pos,
+                              const int& radius,
+                              const double& angle,
+                              const int& nSegments)
+{
+//    glBegin(GL_LINES);
+    for(int i = 1; i < nSegments; i++)
+    {
+        // Get the current angle.
+        double theta = (2.0f * M_PI) * 0.25 * (double(i - 1)) / double(nSegments);
+        
+        double x = radius * cosf(theta + angle);
+        double y = radius * sinf(theta + angle);
+        
+//        glVertex2d(x + pos.x, y + pos.y);
+        
+        axPoint pt1(x + pos.x, y + pos.y);
+        theta = (2.0f * M_PI) * 0.25 * (double(i)) / double(nSegments);
+        
+        x = radius * cosf(theta + angle);
+        y = radius * sinf(theta + angle);
+        
+        axPoint pt2(x + pos.x, y + pos.y);
+//        glVertex2d(x + pos.x, y + pos.y);
+        
+        gc->DrawSmouthLine(pt1, pt2, 3);
+    }
+//    glEnd();
+}
+
 void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
                                              const int& radius)
 {
@@ -204,51 +234,65 @@ void axGC::DrawRoundedRectangleContourSmooth(const axRect& rect,
     glBegin(GL_LINES);
     
     // Top line.
-    glVertex2d(frect.position.x + r - 2,
-               frect.position.y);
-    
-    glVertex2d(frect.position.x + frect.size.x - r + 2,
-               frect.position.y);
+    DrawSmouthLine(axPoint(frect.position.x + r - 2,
+                           frect.position.y),
+                   axPoint(frect.position.x + frect.size.x - r + 2,
+                           frect.position.y));
     
     // Bottom line.
-    glVertex2d(frect.position.x + r - 2,
-               frect.position.y + frect.size.y);
+    DrawSmouthLine(axPoint(frect.position.x + r - 2,
+                           frect.position.y + frect.size.y),
+                   axPoint(frect.position.x + frect.size.x - r + 2,
+                           frect.position.y + frect.size.y));
     
-    glVertex2d(frect.position.x + frect.size.x - r + 2,
-               frect.position.y + frect.size.y);
-    
-    // Left line.
-    glVertex2d(frect.position.x,
-               frect.position.y + r - 2);
-    
-    glVertex2d(frect.position.x,
-               frect.position.y + frect.size.y - r + 2);
-    
-    // Right line.
-    glVertex2d(frect.position.x + + frect.size.x,
-               frect.position.y + r - 2);
-    
-    glVertex2d(frect.position.x + + frect.size.x,
-               frect.position.y + frect.size.y - r + 2);
-    glEnd();
+//    DrawSmouthLine();
+//    DrawSmouthLine();
+    // Top line.
+//    glVertex2d(frect.position.x + r - 2,
+//               frect.position.y);
+//    
+//    glVertex2d(frect.position.x + frect.size.x - r + 2,
+//               frect.position.y);
+//    
+//    // Bottom line.
+//    glVertex2d(frect.position.x + r - 2,
+//               frect.position.y + frect.size.y);
+//    
+//    glVertex2d(frect.position.x + frect.size.x - r + 2,
+//               frect.position.y + frect.size.y);
+//    
+//    // Left line.
+//    glVertex2d(frect.position.x,
+//               frect.position.y + r - 2);
+//    
+//    glVertex2d(frect.position.x,
+//               frect.position.y + frect.size.y - r + 2);
+//    
+//    // Right line.
+//    glVertex2d(frect.position.x + + frect.size.x,
+//               frect.position.y + r - 2);
+//    
+//    glVertex2d(frect.position.x + + frect.size.x,
+//               frect.position.y + frect.size.y - r + 2);
+//    glEnd();
     
     // Bottom right.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + frect.size.x - r,
                                           frect.position.y + frect.size.y - r),
                              r, 0, nSegments);
     
     // Top left.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r,
+    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + r,
                                           frect.position.y + r),
                              r, M_PI, nSegments);
     
     // Top right.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + frect.size.x - r,
+    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + frect.size.x - r,
                                           frect.position.y + r),
                              r, 3.0 * M_PI * 0.5, nSegments);
     
     // Bottom left.
-    DrawQuarterCircleContour(axFloatPoint(frect.position.x + r,
+    DrawQuarterCircleContourSmooth(this, axFloatPoint(frect.position.x + r,
                                           frect.position.y + frect.size.y - r),
                              r, M_PI * 0.5, nSegments);
     
@@ -808,17 +852,68 @@ void axGC::DrawLines(const vector<axPoint>& pts, float width)
 }
 
 
-void axGC::DrawSmouthLine(const axPoint& pt1, const axPoint& pt2)
+void axGC::DrawSmouthLine(const axPoint& pt1, const axPoint& pt2, float width)
 {
-    glEnable(GL_LINE_SMOOTH);
-    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+//    glEnable(GL_LINE_SMOOTH);
+//    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+//    
+//    glBegin(GL_LINES);
+//    glVertex2f(pt1.x, pt1.y);
+//    glVertex2f(pt2.x, pt2.y);
+//    glEnd();
+//    
+//    glDisable(GL_LINE_SMOOTH);
+//    float width = 3;
     
-    glBegin(GL_LINES);
-    glVertex2f(pt1.x, pt1.y);
-    glVertex2f(pt2.x, pt2.y);
+    double dx = pt2.x - pt1.x;
+    double dy = pt2.y - pt1.y;
+    double m = dx == 0.0 ? 999999.9 : dy / dx;
+    
+    m = abs(m);
+    
+    if(m > 1.0)
+    {
+        m = abs(dy/dx);
+    }
+    
+    double wx = 0.0;
+    double wy = 0.0;//0.5 - m;
+    
+    if(m <= 0.5)
+    {
+        wx = axClamp<double>(0.5 + m, 0.0, 1.0);
+    }
+    else
+    {
+        wy = axClamp<double>(0.5 + m, 0.0, 1.0);
+
+    }
+    
+    
+    axPrint("M : ", m);
+//    std::cout << "M : " << m <<
+    
+    	glEnable(GL_POLYGON_SMOOTH);
+    //	glEnable(GL_BLEND);
+    //	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+    
+    glBegin(GL_TRIANGLE_STRIP);
+    glColor3f(1, 1, 1);
+    glVertex3f(pt1.x, pt1.y, 0);
+    glVertex3f(pt2.x, pt2.y, 0);
+    
+    glColor3f(1, 0, 0);
+    glVertex3f(pt1.x + wx, pt1.y + wy, 0);
+    glVertex3f(pt2.x + wx, pt2.y + wy, 0);
+    
+    glColor3f(1, 1, 1);
+    glVertex3f(pt1.x + 2.0 * wx, pt1.y + wy * 2.0, 0);
+    glVertex3f(pt2.x + 2.0 * wx, pt2.y + wy * 2.0, 0);
     glEnd();
     
-    glDisable(GL_LINE_SMOOTH);
+    glDisable(GL_POLYGON_SMOOTH);
 }
 
 void axGC::DrawLine(const axPoint& pt1, const axPoint& pt2, float width)
@@ -943,4 +1038,62 @@ void axGC::DrawCircle(const axPoint& pos,
 		glVertex2d(x + real_pos.x, y + real_pos.y);
 	} 
 	glEnd(); 
+}
+
+
+void axGC::DrawBuffer(axDrawingBuffer* buffer)
+{
+    unsigned char* surf_data = buffer->GetData();
+    GLuint texture_id = buffer->GetTexture();
+    axSize size(buffer->GetSize());
+    
+    if (!surf_data)
+    {
+        printf ("draw_func() - No valid pointer to surface-data passed\n");
+        return;
+    }
+    
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity ();
+//    glClear(GL_COLOR_BUFFER_BIT);
+    
+    
+    //glPushMatrix();
+    axPrint("Cairo draw.");
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_TEXTURE_RECTANGLE_ARB);
+    glBindTexture(GL_TEXTURE_RECTANGLE_ARB, texture_id);
+    glTexImage2D (GL_TEXTURE_RECTANGLE_ARB,
+                  0,
+                  GL_RGBA,
+                  size.x,
+                  size.y,
+                  0,
+                  GL_BGRA,
+                  GL_UNSIGNED_BYTE,
+                  surf_data);
+    
+    glColor3f (1.0f, 0.0f, 1.0f);
+    glBegin (GL_QUADS);
+    
+    glTexCoord2f (0.0f, 0.0f);
+    glVertex2f (0.0f, 0.0f);
+    
+    glTexCoord2f ((GLfloat) size.x, 0.0f);
+    glVertex2f (1.0f, 0.0f);
+    
+    glTexCoord2f ((GLfloat) size.x, (GLfloat) size.y);
+    glVertex2f (1.0f, 1.0f);
+    
+    glTexCoord2f (0.0f, (GLfloat) size.y);
+    glVertex2f (0.0f, 1.0f);
+    
+    glEnd ();
+    
+    glDisable(GL_TEXTURE_RECTANGLE_ARB);
+    glDisable(GL_TEXTURE_2D);
+
+    
+//    glPopMatrix();
+  
 }

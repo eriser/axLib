@@ -28,6 +28,7 @@
 #include "axImage.h"
 #include "axColor.h"
 #include "axFont.h"
+#include "axDrawingBuffer.h"
 
 class axWindow;
 
@@ -103,8 +104,9 @@ public:
                                 const axColor& c1,
                                 const axColor& c2);
 
+    
 	void DrawLine(const axPoint& pt1, const axPoint& pt2, float width = 1.0);
-    void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2);
+    void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2, float width = 2.0);
 	void DrawLines(const vector<axPoint>& pts, float width = 1.0);
     
     void DrawPoint(const axPoint& pt, const int& size);
@@ -128,6 +130,8 @@ public:
     // Just blocking x axis for now.
     void BlockDrawing(const axRect& rect);
     void UnBlockDrawing();
+    
+    void DrawBuffer(axDrawingBuffer* buffer);
 
 private:
 	axWindow* _win;

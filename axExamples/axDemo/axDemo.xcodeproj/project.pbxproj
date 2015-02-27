@@ -17,6 +17,7 @@
 		7C26303F1A3670BB00544ACE /* NumberBoxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C2630351A3670BB00544ACE /* NumberBoxPanel.cpp */; };
 		7C2630401A3670BB00544ACE /* PaintPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C2630371A3670BB00544ACE /* PaintPanel.cpp */; };
 		7C2630411A3670BB00544ACE /* SliderPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C2630391A3670BB00544ACE /* SliderPanel.cpp */; };
+		7C460E971A982EA100E51D13 /* libcairo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C460E961A982EA100E51D13 /* libcairo.dylib */; };
 		7C88F1A91A942D6200374108 /* axLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C88F1A81A942D6200374108 /* axLib.framework */; };
 		7C88F22C1A94345900374108 /* axLib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C88F1A81A942D6200374108 /* axLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CA3C1971A75D8F400564F21 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3C1901A75D8F400564F21 /* RtMidi.cpp */; };
@@ -56,6 +57,7 @@
 		7C2630381A3670BB00544ACE /* PaintPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintPanel.h; sourceTree = SOURCE_ROOT; };
 		7C2630391A3670BB00544ACE /* SliderPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SliderPanel.cpp; sourceTree = SOURCE_ROOT; };
 		7C26303A1A3670BB00544ACE /* SliderPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderPanel.h; sourceTree = SOURCE_ROOT; };
+		7C460E961A982EA100E51D13 /* libcairo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcairo.dylib; path = ../../../../../../usr/local/lib/libcairo.dylib; sourceTree = "<group>"; };
 		7C88F1A81A942D6200374108 /* axLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = axLib.framework; path = ../../builds/axLib/Build/Debug/axLib.framework; sourceTree = "<group>"; };
 		7CA3C1901A75D8F400564F21 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = "../../libs/rtmidi-2.1.0/RtMidi.cpp"; sourceTree = "<group>"; };
 		7CA3C1911A75D8F400564F21 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = "../../libs/rtmidi-2.1.0/RtMidi.h"; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C88F1A91A942D6200374108 /* axLib.framework in Frameworks */,
+				7C460E971A982EA100E51D13 /* libcairo.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,7 @@
 		7C262F961A366F9D00544ACE = {
 			isa = PBXGroup;
 			children = (
+				7C460E961A982EA100E51D13 /* libcairo.dylib */,
 				7C88F1A81A942D6200374108 /* axLib.framework */,
 				7CA3C1901A75D8F400564F21 /* RtMidi.cpp */,
 				7CA3C1911A75D8F400564F21 /* RtMidi.h */,
