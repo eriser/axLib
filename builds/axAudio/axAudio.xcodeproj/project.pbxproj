@@ -8,19 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		7C1252201AA09CD300BD3E96 /* axAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252121AA09CD300BD3E96 /* axAudio.cpp */; };
-		7C1252211AA09CD300BD3E96 /* axAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252131AA09CD300BD3E96 /* axAudio.h */; };
+		7C1252211AA09CD300BD3E96 /* axAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252131AA09CD300BD3E96 /* axAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C1252221AA09CD300BD3E96 /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252141AA09CD300BD3E96 /* axAudioBuffer.cpp */; };
-		7C1252231AA09CD300BD3E96 /* axAudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252151AA09CD300BD3E96 /* axAudioBuffer.h */; };
+		7C1252231AA09CD300BD3E96 /* axAudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252151AA09CD300BD3E96 /* axAudioBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C1252241AA09CD300BD3E96 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252161AA09CD300BD3E96 /* axAudioBufferPlayer.cpp */; };
-		7C1252251AA09CD300BD3E96 /* axAudioBufferPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252171AA09CD300BD3E96 /* axAudioBufferPlayer.h */; };
+		7C1252251AA09CD300BD3E96 /* axAudioBufferPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252171AA09CD300BD3E96 /* axAudioBufferPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C1252261AA09CD300BD3E96 /* axAudioEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252181AA09CD300BD3E96 /* axAudioEnvelope.cpp */; };
-		7C1252271AA09CD300BD3E96 /* axAudioEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252191AA09CD300BD3E96 /* axAudioEnvelope.h */; };
+		7C1252271AA09CD300BD3E96 /* axAudioEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252191AA09CD300BD3E96 /* axAudioEnvelope.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C1252281AA09CD300BD3E96 /* axAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C12521A1AA09CD300BD3E96 /* axAudioFilter.cpp */; };
-		7C1252291AA09CD300BD3E96 /* axAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521B1AA09CD300BD3E96 /* axAudioFilter.h */; };
+		7C1252291AA09CD300BD3E96 /* axAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521B1AA09CD300BD3E96 /* axAudioFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C12522A1AA09CD300BD3E96 /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C12521C1AA09CD300BD3E96 /* axAudioUtils.cpp */; };
-		7C12522B1AA09CD300BD3E96 /* axAudioUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521D1AA09CD300BD3E96 /* axAudioUtils.h */; };
+		7C12522B1AA09CD300BD3E96 /* axAudioUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521D1AA09CD300BD3E96 /* axAudioUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C12522C1AA09CD300BD3E96 /* axAudioWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C12521E1AA09CD300BD3E96 /* axAudioWaveTable.cpp */; };
-		7C12522D1AA09CD300BD3E96 /* axAudioWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521F1AA09CD300BD3E96 /* axAudioWaveTable.h */; };
+		7C12522D1AA09CD300BD3E96 /* axAudioWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521F1AA09CD300BD3E96 /* axAudioWaveTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C1252341AA0AAAD00BD3E96 /* libportaudio.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1252321AA0AAAD00BD3E96 /* libportaudio.2.dylib */; };
+		7C1252351AA0AAAD00BD3E96 /* libsndfile.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1252331AA0AAAD00BD3E96 /* libsndfile.1.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		7C12521D1AA09CD300BD3E96 /* axAudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioUtils.h; sourceTree = "<group>"; };
 		7C12521E1AA09CD300BD3E96 /* axAudioWaveTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioWaveTable.cpp; sourceTree = "<group>"; };
 		7C12521F1AA09CD300BD3E96 /* axAudioWaveTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioWaveTable.h; sourceTree = "<group>"; };
+		7C1252321AA0AAAD00BD3E96 /* libportaudio.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.2.dylib; path = /Users/alexarse/Project/axLib/builds/axAudio/libportaudio.2.dylib; sourceTree = "<absolute>"; };
+		7C1252331AA0AAAD00BD3E96 /* libsndfile.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsndfile.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C1252341AA0AAAD00BD3E96 /* libportaudio.2.dylib in Frameworks */,
+				7C1252351AA0AAAD00BD3E96 /* libsndfile.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +62,8 @@
 		7C1251DC1AA09BEC00BD3E96 = {
 			isa = PBXGroup;
 			children = (
+				7C1252321AA0AAAD00BD3E96 /* libportaudio.2.dylib */,
+				7C1252331AA0AAAD00BD3E96 /* libsndfile.1.dylib */,
 				7C1251E81AA09BEC00BD3E96 /* axAudio */,
 				7C1251E71AA09BEC00BD3E96 /* Products */,
 			);
@@ -246,6 +254,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -284,6 +297,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -302,8 +320,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = axAudio/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -319,8 +341,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = axAudio/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

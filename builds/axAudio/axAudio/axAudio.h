@@ -10,54 +10,58 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-#include "portaudio.h" 
+#include "portaudio.h"
 
 //-----------------------------------------------------------------------------
 // Audio.
 //-----------------------------------------------------------------------------
-class axAudio
-{
-public: 
-	axAudio();
-	~axAudio()
-	{
-		Pa_Terminate();
-	}
 
-    int InitAudio();
-	void StartAudio();
-    void StopAudio();
-    
-    virtual int CallbackAudio(const float *input,
-                              float *output,
-                              unsigned long frameCount)
+namespace axAudio
+{
+    class Core
     {
-        float *out = output;
+    public:
+        Core();
         
-        for(int i = 0; i < frameCount; i++)
+        ~Core();
+        
+        int InitAudio();
+        void StartAudio();
+        void StopAudio();
+        
+        virtual int CallbackAudio(const float *input,
+                                  float *output,
+                                  unsigned long frameCount)
         {
-            *out++ = 0.0;
-            *out++ = 0.0;
+            float *out = output;
+            
+            for(int i = 0; i < frameCount; i++)
+            {
+                *out++ = 0.0;
+                *out++ = 0.0;
+            }
+            
+            return 0;
         }
         
-        return 0;
-    }
-
-	static int myPaCallback(const void *in,
-							void *out, 
-							unsigned long frameCount, 
-							const PaStreamCallbackTimeInfo* timeInfo, 
-							PaStreamCallbackFlags statusFlags,
-							void* userData)		
-	{
-		axAudio* audio = static_cast<axAudio*>(userData);
-        return audio->CallbackAudio((const float*)in, (float*)out, frameCount);
-	}
-
-// private:
-	PaStreamParameters outputParameters;
-    PaStream *stream;
-    PaError err;
-};
+        static int myPaCallback(const void *in,
+                                void *out,
+                                unsigned long frameCount,
+                                const PaStreamCallbackTimeInfo* timeInfo,
+                                PaStreamCallbackFlags statusFlags,
+                                void* userData)
+        {
+            Core* audio = static_cast<Core*>(userData);
+            return audio->CallbackAudio((const float*)in,
+                                        (float*)out,
+                                        frameCount);
+        }
+        
+        // private:
+        PaStreamParameters outputParameters;
+        PaStream *stream;
+        PaError err;
+    };
+}
 
 #endif // __AX_AUDIO__

@@ -6,7 +6,7 @@ struct axOuputStereo
     float left, right;
 };
 
-namespace axAudioUtils
+namespace axAudio
 {
     int SecondeToSample(const double& seconde, const int& samplingRate);
                         
@@ -16,6 +16,17 @@ namespace axAudioUtils
                        const T& mu)
     {
         return y1 + mu * (y2 - y1);
+        
+        // = y1 + m * y2 - m * y1
+        // = y1 * (1.0 - m) + m * y2
+    }
+    
+    template <typename T>
+    T LogarithmicInterpole(const T& y1,
+                           const T& y2,
+                           const T& mu)
+    {
+        return pow(y2, mu) * pow(y1, 1.0 - mu);
     }
     
     template<typename T>
@@ -23,6 +34,12 @@ namespace axAudioUtils
     {
         const T t = d < min ? min : d;
         return t > max ? max : t;
+    }
+    
+    template<typename T>
+    T Pow2(T v)
+    {
+        return v * v;
     }
 }
 
@@ -32,6 +49,7 @@ namespace axAudioConstant
     const double SemiToneRatio = 1.0594630943592952;
     const double InvTwoPi = 0.159154943091895;
     const double TwoPi = 6.2831853071795864;
+    const double Pi = 3.141592653589793;
 }
 
 

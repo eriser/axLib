@@ -115,7 +115,9 @@ public:
     void DrawLineCubic(const axPoint& pt1, const axPoint& pt2);
 
     void SetLineWidth(const double& width);
-    void SeDefaultLine();
+    
+    void SetSmoothLine(const int& width);
+    void SetDefaultLine();
     
 	void DrawCircle(const axPoint& pos,
                     const double& radius,

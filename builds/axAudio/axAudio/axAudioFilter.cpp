@@ -9,6 +9,7 @@ axAudioFilter::axAudioFilter()
 	freq = 20000;
 	q = 0.707;
 	gain = 1.0;
+    _active = true;
 	
 	lfoAmnt[0] = nullptr;
 	lfoAmnt[1] = nullptr;
@@ -17,24 +18,36 @@ axAudioFilter::axAudioFilter()
 
 	Compute_Variables(freq, q);
 }
+
+void axAudioFilter::SetFilterType(const axAudioFilterType& type)
+{
+    filterType = type;
+    Compute_Variables(freq, q);
+}
+
 void axAudioFilter::SetFreq(float f)
 {
-    freq = axAudioUtils::Clamp<float>(f, 20.0, 20000.0);
+    freq = axAudio::Clamp<float>(f, 20.0, 20000.0);
 	Compute_Variables(freq, q);
     
     std::cout << "filter freq : " << freq << std::endl;
 }
 void axAudioFilter::SetQ(float f)
 {
-	q = axAudioUtils::Clamp<float>(f, 0.01, 50.0);
+	q = axAudio::Clamp<float>(f, 0.01, 50.0);
 	Compute_Variables(freq, q);
 }
 
 void axAudioFilter::SetGain(float f)
 {
-	gain = axAudioUtils::Clamp<float>(f, 0.0, 3.0);
-    
-    std::cout << "filter gain : " << gain << std::endl;
+	gain = axAudio::Clamp<float>(f, 0.0, 3.0);
+    Compute_Variables(freq, q);
+//    std::cout << "filter gain : " << gain << std::endl;
+}
+
+void axAudioFilter::SetActive(const bool& active)
+{
+    _active = active;
 }
 
 float axAudioFilter::GetFreq() const
@@ -92,7 +105,7 @@ float axAudioFilter::Process(float in)
 		float modEnvFreq = *env[0];
 		f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (axAudioConstant::SemiToneRatio - 1.0) + 1.0));
 //		CLIP(f, 20, 20000);
-        f = axAudioUtils::Clamp<float>(f, 20.0, 20000.0);
+        f = axAudio::Clamp<float>(f, 20.0, 20000.0);
 		compute_coeff = true;
 	}
 
@@ -138,44 +151,56 @@ void axAudioFilter::ProcessMonoBlock(float* out,
 void axAudioFilter::ProcessStereoBlock(float* out,
                                        unsigned long frameCount)
 {
-    double before_value = 0.0;
-    double f = freq;
-    bool needComputeCoefficients = false;
-    
-    if (env[0] != nullptr && envAmnt[0] != nullptr)
+    if(_active)
     {
-//        cout << "ENV FREQ" << endl;
-        float modEnvFreq = *env[0];
-        f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (axAudioConstant::SemiToneRatio - 1.0) + 1.0));
-        f = axAudioUtils::Clamp<double>(f, 20.0, 20000.0);
-        needComputeCoefficients = true;
-    }
-    
-    if (needComputeCoefficients)
-    {
-        Compute_Variables(f, q);
-    }
-    
-    if (init)
-    {
-        x1 = x2 = y1 = y2 = *out;
-        init = false;
-    }
-    
-    for(int i = 0; i < frameCount; i++)
-    {
-        before_value = *out;
-        double after_process = ((b0 * before_value) + (b1 * x1) + (b2 * x2) -
-                                (a1 * y1) - (a2 * y2)) / a0;
+        double before_value_left = 0.0;
+        double before_value_right = 0.0;
+        double f = freq;
+        bool needComputeCoefficients = false;
         
-        double v = after_process * gain;
-        *out++ = v;
-        *out++ = v;
+        if (env[0] != nullptr && envAmnt[0] != nullptr)
+        {
+            float modEnvFreq = *env[0];
+            f = f + (288 * *envAmnt[0] * modEnvFreq * (f * (axAudioConstant::SemiToneRatio - 1.0) + 1.0));
+            f = axAudio::Clamp<double>(f, 20.0, 20000.0);
+            needComputeCoefficients = true;
+        }
         
-        y2 = y1;
-        y1 = after_process;
-        x2 = x1;
-        x1 = before_value;
+        if (needComputeCoefficients)
+        {
+            Compute_Variables(f, q);
+        }
+        
+        if (init)
+        {
+            x1 = x2 = y1 = y2 = *out;
+            rx1 = rx2 = ry1 = ry2 = *(out+1);
+            init = false;
+        }
+        
+        for(int i = 0; i < frameCount; i++)
+        {
+            before_value_left = *out;
+            before_value_right = *(out+1);
+            double after_process_left = ((b0 * before_value_left) + (b1 * x1) + (b2 * x2) -
+                                    (a1 * y1) - (a2 * y2)) / a0;
+            
+            double after_process_right = ((b0 * before_value_right) + (b1 * rx1) + (b2 * rx2) -
+                                         (a1 * ry1) - (a2 * ry2)) / a0;
+            
+            *out++ = after_process_left;
+            *out++ = after_process_right;
+            
+            y2 = y1;
+            y1 = after_process_left;
+            x2 = x1;
+            x1 = before_value_left;
+            
+            ry2 = ry1;
+            ry1 = after_process_right;
+            rx2 = rx1;
+            rx1 = before_value_right;
+        }
     }
 }
 
@@ -347,13 +372,8 @@ void axAudioFilter::ProcessStereo(float* in, float* out)
 
 void axAudioFilter::Compute_Variables(float ff, float qq)
 {
-    ff = axAudioUtils::Clamp<float>(ff, 1.0, 44100.0 * 0.5);
-    qq = axAudioUtils::Clamp<float>(qq, 0.1, 100.0);
-//	MIN(ff, 1);
-//	MAX(ff, 44100.0 * 0.5);
-//
-//	MIN(qq, 0.1);
-//	MAX(qq, 100);
+    ff = axAudio::Clamp<float>(ff, 1.0, 44100.0 * 0.5);
+    qq = axAudio::Clamp<float>(qq, 0.1, 100.0);
 
 	w0 = axAudioConstant::TwoPi * ff / double(sr);
 	c = cosf(w0);
@@ -363,32 +383,70 @@ void axAudioFilter::Compute_Variables(float ff, float qq)
 }
 void axAudioFilter::Biquad_Coeff(int fType)
 {
+    double A = gain;
+    
 	switch (fType)
 	{
-	case axAUDIO_FILTER_LPF:
-		b0 = b2 = (1 - c) / 2;
-		b1 = 1 - c;
-		a0 = 1 + alpha;
-		a1 = -2 * c;
-		a2 = 1 - alpha;
-		break;
-
-	case axAUDIO_FILTER_HPF:
-		b0 = (1 + c) / 2;
-		b1 = -(1 + c);
-		b2 = b0;
-		a0 = 1 + alpha;
-		a1 = -2 * c;
-		a2 = 1 - alpha;
-		break;
-
-	case axAUDIO_FILTER_BPF:
-		b0 = alpha;
-		b1 = 0;
-		b2 = -alpha;
-		a0 = 1 + alpha;
-		a1 = -2 * c;
-		a2 = 1 - alpha;
-		break;
+        case axAUDIO_FILTER_LPF:
+            b0 = b2 = (1 - c) / 2;
+            b1 = 1 - c;
+            a0 = 1 + alpha;
+            a1 = -2 * c;
+            a2 = 1 - alpha;
+            break;
+            
+        case axAUDIO_FILTER_HPF:
+            b0 = (1 + c) / 2;
+            b1 = -(1 + c);
+            b2 = b0;
+            a0 = 1 + alpha;
+            a1 = -2 * c;
+            a2 = 1 - alpha;
+            break;
+            
+        case axAUDIO_FILTER_BPF:
+            b0 = alpha;
+            b1 = 0;
+            b2 = -alpha;
+            a0 = 1 + alpha;
+            a1 = -2 * c;
+            a2 = 1 - alpha;
+            break;
+            
+        case axAUDIO_FILTER_NOTCH:
+            b0 = 1.0;
+            b1 = -2.0 * cos(w0);
+            b2 = 1.0;
+            a0 = 1.0 + alpha;
+            a1 = -2.0 * cos(w0);
+            a2 = 1.0 - alpha;
+            break;
+            
+        case axAUDIO_FILTER_PEAK:
+            b0 = 1.0 + alpha * A;
+            b1 = -2.0 * cos(w0);
+            b2 = 1.0 - alpha * A;
+            a0 = 1.0 + alpha / A;
+            a1 = -2.0 * cos(w0);
+            a2 = 1.0 - alpha / A;
+            break;
+            
+        case axAUDIO_FILTER_LOW_SHELF:
+            b0 = A * ((A + 1.0) - (A - 1.0) * cos(w0) + 2.0 * sqrt(A) * alpha);
+            b1 = 2.0 * A *((A - 1.0) - (A + 1.0) * cos(w0));
+            b2 = A * ((A + 1.0) - (A - 1.0) * cos(w0) - 2.0 * sqrt(A) * alpha);
+            a0 = (A + 1.0) + (A - 1.0) * cos(w0) + 2.0 * sqrt(A) * alpha;
+            a1 = -2.0 * ((A - 1.0) + (A + 1.0) * cos(w0));
+            a2 = (A + 1.0) + (A - 1.0) * cos(w0) - 2.0 * sqrt(A) * alpha;
+            break;
+            
+        case axAUDIO_FILTER_HIGH_SHELF:
+            b0 = A * ((A + 1.0) + (A - 1.0) * cos(w0) + 2.0 * sqrt(A) * alpha);
+            b1 = -2.0 * A * ((A - 1.0) + (A + 1.0) * cos(w0));
+            b2 = A * ((A + 1.0) + (A - 1.0) * cos(w0) - 2.0 * sqrt(A) * alpha);
+            a0 = (A + 1.0) - (A - 1.0) * cos(w0) + 2.0 * sqrt(A) * alpha;
+            a1 = 2.0 * ((A - 1.0) - (A + 1.0) * cos(w0));
+            a2 = (A + 1.0) - (A - 1.0) * cos(w0) - 2.0 * sqrt(A) * alpha;
+            break;
 	}
 }

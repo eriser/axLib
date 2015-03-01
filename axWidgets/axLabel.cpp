@@ -215,6 +215,7 @@ _font(nullptr)
     else
     {
         _font = new axFont(0);
+        axPrint("axLabel :: Default font.");
     }
     
     _font->SetFontSize(static_cast<Info*>(_info)->font_size);

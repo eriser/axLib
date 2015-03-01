@@ -337,6 +337,7 @@ _font(nullptr)
     _bgImg = new axImage(static_cast<Info*>(_info)->img);
     
     _font = new axFont(0);
+    _font->SetFontSize(static_cast<Info*>(_info)->font_size);
     
     if(_events.button_click)
     {
@@ -506,7 +507,7 @@ void axToggle::OnPaint()
 {
 	axGC* gc = GetGC();
 	axRect rect(GetRect());
-	axRect rect0(axPoint(0, 0), rect.size);
+	axRect rect0(GetDrawingRect());
 
 	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
@@ -528,12 +529,20 @@ void axToggle::OnPaint()
 
 	if_not_empty(_label)
 	{
-		gc->SetColor(static_cast<Info*>(_info)->font_color, 1.0);
+        if(_selected)
+        {
+            gc->SetColor(static_cast<Info*>(_info)->selected_font_color);
+        }
+        else
+        {
+            gc->SetColor(static_cast<Info*>(_info)->font_color);
+        }
+		
 		gc->DrawStringAlignedCenter(*_font, _label, rect0);
 	}
 
 	gc->SetColor(static_cast<Info*>(_info)->contour);
-	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
+	gc->DrawRectangleContour(rect0);
 }
 
 

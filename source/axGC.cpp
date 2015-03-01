@@ -1013,7 +1013,18 @@ void axGC::SetLineWidth(const double& width)
 
 }
 
-void axGC::SeDefaultLine()
+void axGC::SetSmoothLine(const int& width)
+{
+    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_POLYGON_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+    
+    glLineWidth(width);
+    
+}
+
+void axGC::SetDefaultLine()
 {
     glDisable(GL_LINE_SMOOTH);
     glDisable(GL_POLYGON_SMOOTH);

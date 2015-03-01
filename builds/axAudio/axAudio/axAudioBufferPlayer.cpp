@@ -203,6 +203,7 @@ void axAudioBufferPlayer::ProcessStereoBlock(float* out,
         {
             float v = _playing ? buf[stereo_index++] : 0.0f;
             _rms += v * v;
+            
             *out++ = v;
             *out++ = _playing ? buf[stereo_index++] : 0.0f;
             

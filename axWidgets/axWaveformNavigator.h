@@ -9,7 +9,8 @@
 #ifndef __MidiSequencer__axWaveformNavigator__
 #define __MidiSequencer__axWaveformNavigator__
 
-#include "axLib.h"
+#include "axLib/axLib.h"
+
 
 class axAudioBuffer;
 
@@ -18,7 +19,8 @@ class axWaveformNavigator : public axPanel
 {
 public:
     axWaveformNavigator(axWindow* parent,
-                        const axRect& rect);
+                        const axRect& rect,
+                        const axSliderEvents& events);
     
     void SetAudioBuffer(axAudioBuffer* buffer);
     
@@ -29,6 +31,7 @@ public:
     void SetLeftBorder(const double& pos);
     void SetRightBorder(const double& pos);
     void SetPlayingPos(const double& playing_pos);
+    
     void SetValueChangeEvt(axEvtFunction(double) fct);
     
     axEVENT(double, OnPlayingPositionChange);

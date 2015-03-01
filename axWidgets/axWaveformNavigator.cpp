@@ -7,10 +7,11 @@
 //
 
 #include "axWaveformNavigator.h"
-#include "axAudioBuffer.h"
+#include "axAudio/axAudioBuffer.h"
 
 axWaveformNavigator::axWaveformNavigator(axWindow* parent,
-                                         const axRect& rect):
+                                         const axRect& rect,
+                                         const axSliderEvents& events):
 axPanel(parent, rect),
 _audioBuffer(nullptr)
 {
@@ -19,12 +20,19 @@ _audioBuffer(nullptr)
     _fillAlpha = 0.0;
     
     _playingPos = 0.0;
+    
+    if(events.slider_value_change)
+    {
+        axObject::AddConnection(events.VALUE_CHANGE,
+                                events.slider_value_change);
+    }
 }
 
 void axWaveformNavigator::SetAudioBuffer(axAudioBuffer* buffer)
 {
     _audioBuffer = buffer;
     FillWaveformDrawingData();
+    Update();
 }
 
 void axWaveformNavigator::SetPlayingPos(const double& playing_pos)
@@ -267,10 +275,13 @@ void axWaveformNavigator::OnMouseLeftDragging(const axPoint& mousePos)
     borderRect.position.x = x;
     SetBorders(GetBorderRangeFromRect(borderRect));
     
-    if(_value_change_evt)
-    {
-        _value_change_evt(_leftBorder);
-    }
+//    if(_value_change_evt)
+//    {
+//        _value_change_evt(_leftBorder);
+//    }
+    
+    axObject::PushEvent(axSliderEvents::VALUE_CHANGE,
+                        new axSliderMsg(_leftBorder));
     
     Update();
 }
@@ -319,11 +330,11 @@ void axWaveformNavigator::OnPaint()
     
     // Draw navigator borders.
     axRect borderRect(GetBorderRect());
-    gc->SetColor(axColor(0.5, 0.5, 0.5, _fillAlpha));
+    gc->SetColor(axColor(0.9, 0.4, 0.0, _fillAlpha));
     gc->DrawRectangle(borderRect);
     
     // Draw navigator borders contour.
-    gc->SetColor(axColor(0.3, 0.3, 0.3, 0.3));
+    gc->SetColor(axColor(0.9, 0.4, 0.0, 0.8));
     gc->DrawRectangleContour(borderRect);
     
     // Draw playing cursor.

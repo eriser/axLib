@@ -9,7 +9,7 @@
 #ifndef __MidiSequencer__axWaveform__
 #define __MidiSequencer__axWaveform__
 
-#include "axLib.h"
+#include <axLib/axLib.h>
 
 class axAudioBuffer;
 

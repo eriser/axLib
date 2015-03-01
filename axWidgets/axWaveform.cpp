@@ -7,7 +7,7 @@
 //
 #include <limits>
 #include "axWaveform.h"
-#include "axAudioBuffer.h"
+#include <axAudio/axAudioBuffer.h>
 
 /*******************************************************************************
  * axWaveform::Info.
@@ -194,6 +194,7 @@ void axWaveform::SetAudioBuffer(axAudioBuffer* buffer)
     _audioBuffer = buffer;
     _zoom = 1.0;
     _leftPos = 0.0;
+    Update();
 }
 
 void axWaveform::ShowEnv(const bool& show)
@@ -204,24 +205,27 @@ void axWaveform::ShowEnv(const bool& show)
 
 void axWaveform::SetZoom(const double& zoom)
 {
-    axBufferInfo b_info = _audioBuffer->GetBufferInfo();
-    double nSamplesToProcess = b_info.frames * zoom;
-    
-    if(nSamplesToProcess < 5.0)
+    if(_audioBuffer != nullptr)
     {
-        _zoom = 5.0 / double(b_info.frames);
+        axBufferInfo b_info = _audioBuffer->GetBufferInfo();
+        double nSamplesToProcess = b_info.frames * zoom;
+        
+        if(nSamplesToProcess < 5.0)
+        {
+            _zoom = 5.0 / double(b_info.frames);
+        }
+        else
+        {
+            _zoom = zoom;
+        }
+        
+        if(_leftPos * b_info.frames + nSamplesToProcess > b_info.frames)
+        {
+            _leftPos = double(b_info.frames - nSamplesToProcess) / double(b_info.frames);
+        }
+        
+        axPanel::Update();
     }
-    else
-    {
-        _zoom = zoom;
-    }
-    
-    if(_leftPos * b_info.frames + nSamplesToProcess > b_info.frames)
-    {
-        _leftPos = double(b_info.frames - nSamplesToProcess) / double(b_info.frames);
-    }
-    
-    axPanel::Update();
 }
 
 void axWaveform::SetLeftPosition(const double& pos)
@@ -254,12 +258,16 @@ void axWaveform::SetLeftPosition(const double& pos)
 
 axFloatRange axWaveform::GetBorders() const
 {
-    axBufferInfo b_info = _audioBuffer->GetBufferInfo();
-    double nSamplesToProcess = double(b_info.frames) * _zoom;
-    double left_pos = b_info.frames * _leftPos;
-    double right_pos = left_pos + nSamplesToProcess;
-    double r = 1.0 / double(b_info.frames);
-    return axFloatRange(left_pos * r, right_pos * r);
+    if(_audioBuffer != nullptr)
+    {
+        axBufferInfo b_info = _audioBuffer->GetBufferInfo();
+        double nSamplesToProcess = double(b_info.frames) * _zoom;
+        double left_pos = b_info.frames * _leftPos;
+        double right_pos = left_pos + nSamplesToProcess;
+        double r = 1.0 / double(b_info.frames);
+        return axFloatRange(left_pos * r, right_pos * r);
+    }
+    return axFloatRange(0.0, 1.0);
 }
 
 //static int nDraw = 0;
@@ -270,7 +278,7 @@ void axWaveform::OnPaint()
 
     axGC* gc = GetGC();
     axRect rect(GetRect());
-    axRect rect0(axPoint(0, 0), rect.size);
+    axRect rect0(GetDrawingRect());
     axWaveform::Info* info = static_cast<Info*>(_info);
     
     // Draw background.
