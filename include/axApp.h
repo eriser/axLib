@@ -33,6 +33,7 @@
 #include "axCoreWin32.h"
 #endif //_MSC_VER
 
+
 #ifdef __APPLE__
     #ifdef _AX_VST_APP_
         #include "axVstCoreMac.h"

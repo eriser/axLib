@@ -1,4 +1,4 @@
-#include "axAudioBuffer.h"
+#include <axAudio/axAudioBuffer.h>
 #include <limits>
 //std::mutex axAudioBuffer::audio_buffer_mutex;
 

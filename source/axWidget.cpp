@@ -20,8 +20,11 @@
  * licenses are available, email alx.arsenault@gmail.com for more information.
  ******************************************************************************/
 #include "axWidget.h"
-#include "axDebugButton.h"
 #include "axConfig.h"
+
+#include "axDebugButton.h"
+
+
 
 axWidget::axWidget(axWindow* parent, const axRect& rect, axInfo* info):
 axPanel(parent, rect),

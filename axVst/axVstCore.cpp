@@ -120,12 +120,12 @@ std::vector<axVstCoreData>* axVstCore::GetManagerVector()
 axRect axVstCore::GetScreenRect()
 {
     // NEED TO CHANGE THIS !!!.
-    return axRect(0, GetYTestValue(), _size.x, _size.y);
+    return axRect(0, 0, _size.x, _size.y);
 }
 
-void axVstCore::ResizeGLScene(const int& width, const int& height, double y)
+void axVstCore::ResizeGLScene(const axSize& size)
 {
-    int h = height;
+    int h = size.y;
     
     // Prevent a divide by zero by.
     if (h == 0)
@@ -133,16 +133,16 @@ void axVstCore::ResizeGLScene(const int& width, const int& height, double y)
         h = 1;
     }
     
-    _y_test = y;
-    _size = axSize(width, h);
+//    _y_test = y;
+    _size = axSize(size.x, h);
     
     // Reset the current viewport.
     //--------------------------------------------------
     //--------------------------------------------------
 #ifdef __APPLE__
-    glViewport(0, _y_test, width, h);
+    glViewport(0, 0, size.x, h);
 #else
-    glViewport(0, 0, width, h);
+    glViewport(0, 0, size.x, h);
 #endif // __APPLE__
     //--------------------------------------------------
     //--------------------------------------------------

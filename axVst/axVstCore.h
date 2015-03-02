@@ -44,21 +44,30 @@ public:
     
     virtual void ReInitApp() = 0;
     
+    virtual string OpenFileDialog() = 0;
+    
+    virtual void PushEventOnSystemQueue() = 0;
+    
+    virtual void ResizeFrame(const axSize& size) = 0;
+    
+    virtual void HideMouse() = 0;
+    
+    virtual void ShowMouse() = 0;
+    
+    virtual void SetAppDelegateHandle(const int& index, void* handle) = 0;
+    
     virtual axManager* GetWindowManager();
     
     virtual axManager* GetPopupManager();
     
     virtual void Init(const axPoint& frame_size);
-
+    
     virtual string GetAppDirectory();
     
     virtual bool CreatePopupWindow(const char* title, int width, int height);
-
+    
     virtual axRect GetScreenRect();
     
-    virtual string OpenFileDialog() = 0;
-    
-    virtual void PushEventOnSystemQueue() = 0;
 
     virtual void KillGLWindow();
     
@@ -67,19 +76,15 @@ public:
     virtual bool CreateGLWindow(const char* title,
                                 int width, int height, int bits) = 0;
     
-    void ResizeGLScene(const int& width, const int& height, double y = 0);
+    void ResizeGLScene(const axSize& size);
     
-    virtual void ResizeFrame(const axSize& size) = 0;
-    
-    virtual void HideMouse() = 0;
-    
-    virtual void ShowMouse() = 0;
+
 
     int GetCurrentManagerIndex() const;
     
     void SetCurrentManagerIndex(const int& index);
     
-    virtual void SetAppDelegateHandle(const int& index, void* handle) = 0;
+    
     
     axVstCoreData* GetVstCoreData();
     

@@ -62,7 +62,7 @@ bool axVstCoreMac::CreatePopupWindow(const char* title, int width, int height)
 axRect axVstCoreMac::GetScreenRect()
 {
     // NEED TO CHANGE THIS !!!.
-    return axRect(0, GetYTestValue(), _size.x, _size.y);
+    return axRect(0, 0, _size.x, _size.y);
 }
 
 void axVstCoreMac::KillGLWindow()
@@ -89,7 +89,7 @@ void axVstCoreMac::UpdateAll()
 void axVstCoreMac::ResizeFrame(const axSize& size)
 {
     axCocoaResizeFrame(size);
-    ResizeGLScene(size.x, size.y);
+    ResizeGLScene(size);
 }
 
 std::string axVstCoreMac::OpenFileDialog()

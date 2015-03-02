@@ -42,7 +42,7 @@ AudioEffectX(audioMaster, 1, numberParameters)	// 1 program, 1 parameter only
     axVst::axVstPrivateMutex.lock();
     setNumInputs (2);		// stereo in
     setNumOutputs (2);		// stereo out
-    setUniqueID ('Gain');	// identify
+    setUniqueID ('axEq');	// identify
     canProcessReplacing();	// supports replacing output
     canDoubleReplacing();	// supports double precision processing
     
@@ -54,7 +54,7 @@ AudioEffectX(audioMaster, 1, numberParameters)	// 1 program, 1 parameter only
     
     _pluginId = pluginIdCounter++;
     
-    isSynth(true);
+    isSynth(false);
     
     _canDoList.insert(std::string("receiveVstEvents"));
     _canDoList.insert(std::string("receiveVstMidiEvent"));
@@ -217,7 +217,7 @@ void axVst::getParameterLabel (VstInt32 index, char* label)
 //------------------------------------------------------------------------
 bool axVst::getEffectName (char* name)
 {
-    vst_strncpy(name, "Gain", kVstMaxEffectNameLen);
+    vst_strncpy(name, "axTB303", kVstMaxEffectNameLen);
     
     return true;
 }
@@ -225,7 +225,7 @@ bool axVst::getEffectName (char* name)
 //------------------------------------------------------------------------
 bool axVst::getProductString (char* text)
 {
-    vst_strncpy(text, "Gain", kVstMaxProductStrLen);
+    vst_strncpy(text, "axTB303", kVstMaxProductStrLen);
     return true;
 }
 
@@ -239,7 +239,7 @@ bool axVst::getVendorString (char* text)
 //-----------------------------------------------------------------------------------------
 VstInt32 axVst::getVendorVersion ()
 {
-    return 1000;
+    return 1002;
 }
 
 VstPlugCategory axVst::getPlugCategory()

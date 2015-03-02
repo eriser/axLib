@@ -120,8 +120,8 @@ static bool runLoopIsActive = false;
 //    }
     //coreData->appDelegate = (__bridge void*)self;
     
-    
-    axMain::MainEntryPoint(app);
+    app->CallMainEntryFunction();
+
 
     //axVstAppDelegate* d = (__bridge axVstAppDelegate*)coreData->appDelegate;
     [self setNeedsDisplay:YES];
@@ -408,9 +408,16 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
     {
         
         std::cout << backingBounds.size.width << " " << backingBounds.size.height << std::endl;
-        core->ResizeGLScene(backingBounds.size.width,
-                            backingBounds.size.height,
-                            frame_height - backingBounds.size.height);
+        
+        axSize size(backingBounds.size.width,
+                   backingBounds.size.height);
+        
+        core->ResizeGLScene(size);
+
+        
+//        core->ResizeGLScene(backingBounds.size.width,
+//                            backingBounds.size.height,
+//                            frame_height - backingBounds.size.height);
     }
 
     if ([self inLiveResize])

@@ -28,6 +28,20 @@
 
 #include "axVstCore.h"
 
+
+
+
+//virtual axRect GetScreenRect() = 0;
+//
+//virtual axSize GetScreenSize() = 0;
+//
+//virtual string OpenFileDialog() = 0;
+//
+//virtual void PushEventOnSystemQueue() = 0;
+//
+//virtual void ResizeFrame(const axSize& size) = 0;
+//
+//virtual void KillGLWindow() = 0;
 class axVstCoreMac : public axVstCore
 {
 public:
@@ -42,6 +56,11 @@ public:
     virtual bool CreatePopupWindow(const char* title, int width, int height);
 
     virtual axRect GetScreenRect();
+    
+    virtual axSize GetScreenSize()
+    {
+        return axSize(100, 100);
+    }
     
     virtual string OpenFileDialog();
     
