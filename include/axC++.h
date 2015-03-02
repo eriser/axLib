@@ -46,6 +46,7 @@
 #endif // __APPLE__
 
 #include <stdint.h>
+#include <memory>
 #include "axUtils.h"
 
 #define axDEBUG_LEVEL0 0
@@ -121,7 +122,7 @@ void axError();
 template <typename T, typename ...P>
 void axError(T t, P ...p)
 {
-    std::cerr << t << ' ';
+    std::cerr << "Error : " << t << ' ';
     {
         axError(p...);
     }

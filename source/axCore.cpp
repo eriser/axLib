@@ -94,8 +94,6 @@ int axCore::DrawGLScene()
         GetWindowManager()->OnPaint();
         GetPopupManager()->OnPaint();
 
-		
-        
         _needToDraw = false;
         
 		return true;

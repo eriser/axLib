@@ -28,6 +28,7 @@
 #include "axImage.h"
 #include "axColor.h"
 #include "axFont.h"
+#include "axDrawingBuffer.h"
 
 class axWindow;
 
@@ -53,7 +54,14 @@ public:
 
 	void DrawRectangleContour(const axRect& rect, float linewidth = 1.0);
 
-    void DrawRoundedRectangle(const axRect& rect);
+    void DrawRoundedRectangle(const axRect& rect,
+                              const int& radius);
+    
+    void DrawRoundedRectangleContour(const axRect& rect,
+                                     const int& radius);
+    
+    void DrawRoundedRectangleContourSmooth(const axRect& rect,
+                                           const int& radius);
     
 	void DrawImage(axImage* img, const axPoint& pos, double alpha = 1.0);
     
@@ -96,8 +104,9 @@ public:
                                 const axColor& c1,
                                 const axColor& c2);
 
+    
 	void DrawLine(const axPoint& pt1, const axPoint& pt2, float width = 1.0);
-    void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2);
+    void DrawSmouthLine(const axPoint& pt1, const axPoint& pt2, float width = 2.0);
 	void DrawLines(const vector<axPoint>& pts, float width = 1.0);
     
     void DrawPoint(const axPoint& pt, const int& size);
@@ -106,7 +115,9 @@ public:
     void DrawLineCubic(const axPoint& pt1, const axPoint& pt2);
 
     void SetLineWidth(const double& width);
-    void SeDefaultLine();
+    
+    void SetSmoothLine(const int& width);
+    void SetDefaultLine();
     
 	void DrawCircle(const axPoint& pos,
                     const double& radius,
@@ -116,11 +127,13 @@ public:
                      const axRect& rect,
                      axColor color = axColor(0.0, 0.0, 0.0));
     
-    void DrawWindowBuffer();
+//    void DrawWindowBuffer();
     
     // Just blocking x axis for now.
     void BlockDrawing(const axRect& rect);
     void UnBlockDrawing();
+    
+    void DrawBuffer(axDrawingBuffer* buffer);
 
 private:
 	axWindow* _win;

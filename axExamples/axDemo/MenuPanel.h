@@ -9,8 +9,8 @@
 #ifndef __Demo__MenuPanel__
 #define __Demo__MenuPanel__
 
-//#include <axLib/axLib.h>
-#include "axLib.h"
+#include <axLib/axLib.h>
+//#include "axLib.h"
 
 class MenuPanel : public axPanel
 {

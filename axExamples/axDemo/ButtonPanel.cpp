@@ -13,14 +13,20 @@ ButtonPanel::ButtonPanel(axWindow* parent,
 // Parent.
 axPanel(parent, rect)
 {
+    _selector = new axWidgetSelector(this);
+    
+    _drawingBuffer = new axDrawingBuffer(rect.size);
+    _drawingBuffer->DrawRectangle();
+    
     std::string app_path(axApp::GetInstance()->GetAppDirectory());
     
     axButton::Info btn1_info;
-    btn1_info.normal = axColor(1.0, 0.0, 0.0);
-    btn1_info.hover = axColor(0.9, 0.9, 0.9);
-    btn1_info.clicking = axColor(0.7, 0.7, 0.7);
-    btn1_info.contour = axColor(0.0, 0.0, 1.0);
+    btn1_info.normal = axColor(1.0, 0.0, 0.0, 0.3);
+    btn1_info.hover = axColor(0.9, 0.9, 0.9, 0.3);
+    btn1_info.clicking = axColor(0.7, 0.7, 0.7, 0.3);
+    btn1_info.contour = axColor(0.0, 0.0, 1.0, 0.5);
     btn1_info.selected = btn1_info.normal;
+    btn1_info.round_corner_radius = 3;
     
     axButton::Events btn1_evts;
     btn1_evts.button_click = GetOnButtonWithEvtManager();
@@ -69,13 +75,29 @@ axPanel(parent, rect)
 //								  axButton::Flags::SINGLE_IMG |
 //								  axButton::Flags::IMG_RESIZE);
     
+    axButton::Info btn2_info;
+    btn2_info.normal = axColor(1.0, 0.0, 0.0, 1.0);
+    btn2_info.hover = axColor(0.0, 1.0, 0.0, 1.0);
+    btn2_info.clicking = axColor(0.0, 0.0, 1.0, 1.0);
+    btn2_info.contour = axColor(0.0, 0.0, 0.0, 0.0);
+    btn2_info.selected = btn2_info.normal;
+    btn2_info.round_corner_radius = 0;
+    
     axButton* btn6 = new axButton(this,
                                   axRect(390, 40, 25, 25),
+                                  axButton::Events(),
+                                  btn2_info,
+                                  app_path + std::string("playTest.png"),
+                                  "",
+								  axButton::Flags::IMG_RESIZE);
+    
+    axButton* btn7 = new axButton(this,
+                                  axRect(390, 90, 25, 25),
                                   axButton::Events(),
                                   axBUTTON_TRANSPARENT,
                                   app_path + std::string("playTest.png"),
                                   "",
-								  axButton::Flags::IMG_RESIZE);
+                                  axButton::Flags::IMG_RESIZE);
     
     _timer = new axTimer();
     _timer->AddConnection(0, GetOnTimerEvent());
@@ -154,17 +176,19 @@ axPanel(parent, rect)
     
     _font = new axFont(0);
     
-    axAnimatedButton* animBtn = new axAnimatedButton(this,
-                                                     axRect(50, 160, 60, 25),
-                                                     axButton::Events(),
-                                                     "axButtonImg.png",
-                                                     "Test");
+//    axAnimatedButton* animBtn = new axAnimatedButton(this,
+//                                                     axRect(50, 160, 60, 25),
+//                                                     axButton::Events(),
+//                                                     "axButtonImg.png",
+//                                                     "Test");
 }
 
 void ButtonPanel::OnButtonWithEvtManager(const axButton::Msg& msg)
 {
-    std::cout << "Button event." << std::endl;
-    _timer->StartTimer(20, 800);
+    //_selector->SetSelectedWidget(msg.GetSender());
+//    std::cout << "Button event." << std::endl;
+//    _timer->StartTimer(20, 800);
+    Update();
 }
 
 void ButtonPanel::OnTimerEvent(const axTimerMsg& msg)
@@ -181,19 +205,43 @@ void ButtonPanel::OnPaint()
     axRect rect(GetRect());
     axRect rect0(axPoint(0, 0), rect.size);
     
-    gc->SetColor(_colorTimer, 1.0);
+//    gc->SetColor(_colorTimer, 1.0);
+    gc->SetColor(axColor::axWhiteColor);
     gc->DrawRectangle(rect0);
     
-    gc->SetColor(axColor(0.9, 0.9, 0.9, 1.0));
-    gc->DrawRectangle(axRect(216, 41, 25, 21));
+//    _drawingBuffer->DrawRectangle();
+    gc->DrawBuffer(_drawingBuffer);
     
-    gc->SetColor(axColor(0.488, 0.488, 0.488, 1.0));
-    gc->DrawRectangleContour(axRect(216, 41, 37, 22));
-    
-//    gc->SetColor(axColor(0.488, 0.488, 0.488, 1.0));
-//    gc->DrawStringAlignedCenter(*_font, "00", axRect(216, 41, 25, 21));
-    
-   
-    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
-    gc->DrawRectangleContour(rect0);
+//    gc->SetColor(axColor::axRedColor);
+//    gc->DrawRoundedRectangle(axRect(40, 200, 50, 25), 12);
+//
+//    gc->SetColor(axColor::axBlackColor);
+//    gc->DrawRoundedRectangleContour(axRect(40, 200, 50, 25), 12);
+//    
+////    gc->SetColor(axColor::axRedColor);
+////    gc->DrawRoundedRectangle(axRect(200, 200, 50, 50), 5);
+//    
+//    gc->SetColor(axColor::axBlackColor);
+//    gc->DrawRoundedRectangleContour(axRect(200, 200, 50, 50), 5);
+//    
+////    gc->SetColor(axColor::axRedColor);
+////    gc->DrawRoundedRectangle(axRect(290, 200, 50, 50), 10);
+//    
+//    gc->SetColor(axColor::axBlackColor);
+//    gc->DrawRoundedRectangleContourSmooth(axRect(290, 200, 50, 50), 10);
+//    
+//    
+////    gc->SetColor(axColor::axRedColor);
+////    gc->DrawRoundedRectangle(axRect(370, 200, 50, 50), 4);
+//    
+//    gc->SetColor(axColor::axBlackColor);
+//    gc->DrawRoundedRectangleContour(axRect(370, 200, 50, 50), 4);
+//    
+//    gc->SetColor(axColor::axRedColor);
+//    gc->DrawLine(axPoint(150.0, 120.0), axPoint(200, 150.0));
+//    
+//    gc->DrawSmouthLine(axPoint(170.0, 120.0), axPoint(220, 150.0), 3);
+//
+//    gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
+//    gc->DrawRectangleContour(rect0);
 }

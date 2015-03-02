@@ -207,7 +207,7 @@ string axApp::GetCurrentAppDirectory()
 
 void axApp::MainLoop()
 {
-	CallMainEntryFunction();
+	//CallMainEntryFunction();
 	_core->MainLoop();
 }
 

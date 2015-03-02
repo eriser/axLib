@@ -9,8 +9,9 @@
 #ifndef __Demo__ButtonPanel__
 #define __Demo__ButtonPanel__
 
-//#include <axLib/axLib.h>
-#include "axLib.h"
+#include <axLib/axLib.h>
+#include <axLib/axDrawingBuffer.h>
+//#include "axLib.h"
 
 class ButtonPanel : public axPanel
 {
@@ -32,6 +33,9 @@ private:
     
     axColor _colorTimer;
     axFont* _font;
+    
+    axDrawingBuffer* _drawingBuffer;
+    axWidgetSelector* _selector;
 
 };
 

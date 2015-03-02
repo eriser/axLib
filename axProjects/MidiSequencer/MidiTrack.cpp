@@ -41,7 +41,7 @@ MultipleSlider::MultipleSlider(axWindow* parent,
                           axColor(0.0, 0.0, 0.0), // Contour
                           axColor(0.9, 0.9, 0.9), // Back Slider
                           axColor(0.9, 0.9, 0.9), // Back Slider contour.
-                          3);
+                          3, 5);
 
     _nSlider = 3;
 	double position_ratio = rect.size.x / double(_nSlider);

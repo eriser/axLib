@@ -309,7 +309,9 @@ _maxNumChar(10000000)
     
     _font = new axFont(0);
     
-    SetShownRect(axRect(-5, -5, rect.size.x + 10, rect.size.y + 10));
+    
+    // 
+    //SetShownRect(axRect(-5, -5, rect.size.x + 10, rect.size.y + 10));
 }
 
 void axTextBox::SetLabel(const std::string& label)
@@ -565,9 +567,9 @@ void axTextBox::OnPaint()
 {
 	axGC* gc = GetGC();
 	axRect rect(GetRect());
-	axRect rect0(axPoint(0, 0), rect.size);
+	axRect rect0(GetDrawingRect());
     
-    DrawContourRectangle(gc);
+//    DrawContourRectangle(gc);
 
 	gc->SetColor(*_currentColor);
 	gc->DrawRectangle(rect0);
@@ -634,5 +636,5 @@ void axTextBox::OnPaint()
     }
 
 	gc->SetColor(static_cast<Info*>(_info)->contour);
-	gc->DrawRectangleContour(axRect(axPoint(0, 0), rect.size));
+	gc->DrawRectangleContour(rect0);
 }

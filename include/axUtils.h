@@ -118,6 +118,8 @@ typedef std::pair<std::string, std::string> axStringPair;
 typedef std::vector<std::pair<std::string, std::string>> axVectorPairString;
 typedef std::vector<std::string> axStringVector;
 
+typedef std::vector<bool> axBoolVector;
+
 axStringVector GetVectorFromStringDelimiter(const std::string& str,
                                             const std::string& delimiter);
 
@@ -338,7 +340,7 @@ public:
     
     axTemplateRect GetInteriorRect(const CPos& point) const
     {
-        return axTemplateRect(point.x, point.y,
+        return axTemplateRect(position.x + point.x, position.y + point.y,
                       size.x - (T)(2.0 * point.x),
                       size.y - (T)(2.0 * point.y));
     }

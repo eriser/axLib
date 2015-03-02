@@ -144,6 +144,7 @@ public:
         
         axColor contour;
         axColor font_color;
+        int font_size = 12;
         
         std::string img;
         bool single_img;

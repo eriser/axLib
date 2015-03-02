@@ -121,7 +121,7 @@ void PaintPanel::OnPaint()
     gc->SeDefaultLine();
     gc->SetColor(axColor(0.0, 0.0, 0.0), 1.0);
     
-    gc->DrawRoundedRectangle(axRect(350, 350, 50, 20));
+    gc->DrawRoundedRectangle(axRect(350, 350, 50, 20), 5);
     gc->DrawRectangleContour(rect0);
     
     

@@ -30,7 +30,8 @@ axWindow(parent, rect)
 	{
 		if (parent->GetIsPopup())
 		{
-            GetIsPopup() = true;
+//            GetIsPopup() = true;
+            SetPopupWindow(true);
 			axApp::GetInstance()->AddPopWindow(this);
 		}
 		else
@@ -60,7 +61,8 @@ axWindow(parent, rect)
 //_panelColor(0.0, 0.0, 0.0, 0.0)
 {
     //std::cout << "axPanel : Add popup window" << std::endl;
-    GetIsPopup() = true;
+//    GetIsPopup() = true;
+    SetPopupWindow(true);
 	axApp::GetInstance()->AddPopWindow(this);
 }
 
@@ -182,7 +184,7 @@ void axPanel::UpdateAll()
 
 void axPanel::Update()
 {
-    _needUpdate = true;
+    SetNeedUpdate();
 	UpdateAll();
 }
 
@@ -239,8 +241,3 @@ axRect axPanel::GetWindowPixelData(unsigned char*& data) const
     
     return rect;
 }
-
-//void axPanel::SetPanelColor(const axColor& color)
-//{
-//    _panelColor = color;
-//}

@@ -44,30 +44,34 @@ const long GetDefaultFontDataSize(const int& index);
 class axFont
 {
 public:
-	axFont(const string& font);
-    
     axFont();
     
-    axFont(const axFont&) = delete;
-    axFont& operator=(const axFont&) = delete;
+    // Create font from font path.
+	axFont(const string& font);
     
-//    axFont(axFont&& font);
-    
+    // Create default font. Only 0 and 1 supported for now.
     axFont(const int& data_index);
+    
+    // No copy constructor.
+    axFont(const axFont&) = delete;
+    
+    // No copy possible.
+    axFont& operator=(const axFont&) = delete;
     
     ~axFont();
 
 	GLuint GetTexture();
     
-    bool operator== (const bool& exist);
+    bool operator == (const bool& exist);
     
-    bool operator!= (const bool& exist);
+    bool operator != (const bool& exist);
     
     bool IsFontReady() const;
     
+    // Equivalent to IsFontReady.
     operator bool() const;
     
-    // Char won't work if SetFontSize is not call.
+    // Char won't work if SetFontSize is not call first.
 	void SetFontSize(const int& size);
     
 	void SetChar(const char& letter);

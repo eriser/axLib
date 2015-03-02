@@ -52,14 +52,17 @@ public:
     class Msg : public axMsg
     {
     public:
-        Msg(const double& value);
+        Msg(const double& value, const std::string& msg);
         
         double GetValue() const;
+        
+        std::string GetMsg() const;
         
         axMsg* GetCopy();
         
     private:
         double _value;
+        std::string _msg;
     };
     
     /***************************************************************************
@@ -151,7 +154,8 @@ public:
            const axKnob::Events& events,
            const axKnob::Info& info,
            axFlag flags = 0,
-           double value = 0.0);
+           double value = 0.0,
+           const std::string& msg = "");
 
     double GetValue() { return m_knobValue; }
 
@@ -167,6 +171,7 @@ public:
 
 private:
     axKnob::Events _events;
+    std::string _msg;
 //    axKnob::Info _info;
     axFlag _flags;
     axFloatRange _range;

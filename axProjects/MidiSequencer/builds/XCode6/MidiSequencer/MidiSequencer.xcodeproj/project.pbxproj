@@ -13,6 +13,8 @@
 		7C20B71E19EDC09300D6ED6F /* MidiTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B71319EDC09300D6ED6F /* MidiTrack.cpp */; };
 		7C20B72219EDC92B00D6ED6F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72119EDC92B00D6ED6F /* OpenGL.framework */; };
 		7C20B72419EDC93300D6ED6F /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20B72319EDC93300D6ED6F /* GLKit.framework */; };
+		7C460E8C1A97EA4B00E51D13 /* axFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C460E8A1A97EA4B00E51D13 /* axFrameBuffer.cpp */; };
+		7C460E8D1A97EA4B00E51D13 /* axGraphicInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C460E8B1A97EA4B00E51D13 /* axGraphicInterface.cpp */; };
 		7CE580881A831D9A00E912F5 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5801E1A831D9A00E912F5 /* AppDelegate.mm */; };
 		7CE580891A831D9A00E912F5 /* axCocoaInterfaceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580201A831D9A00E912F5 /* axCocoaInterfaceMac.mm */; };
 		7CE5808A1A831D9A00E912F5 /* axCoreMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CE580211A831D9A00E912F5 /* axCoreMac.cpp */; };
@@ -92,6 +94,10 @@
 		7C20B71419EDC09300D6ED6F /* MidiTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidiTrack.h; path = ../../../../MidiTrack.h; sourceTree = "<group>"; };
 		7C20B72119EDC92B00D6ED6F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		7C20B72319EDC93300D6ED6F /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		7C460E8A1A97EA4B00E51D13 /* axFrameBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axFrameBuffer.cpp; sourceTree = "<group>"; };
+		7C460E8B1A97EA4B00E51D13 /* axGraphicInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axGraphicInterface.cpp; sourceTree = "<group>"; };
+		7C460E8E1A97EA5D00E51D13 /* axFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axFrameBuffer.h; sourceTree = "<group>"; };
+		7C460E8F1A97EA5D00E51D13 /* axGraphicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axGraphicInterface.h; sourceTree = "<group>"; };
 		7CE5801D1A831D9A00E912F5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7CE5801E1A831D9A00E912F5 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		7CE5801F1A831D9A00E912F5 /* axCocoaInterfaceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axCocoaInterfaceMac.h; sourceTree = "<group>"; };
@@ -137,7 +143,6 @@
 		7CE580481A831D9A00E912F5 /* axWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWaveform.h; sourceTree = "<group>"; };
 		7CE580491A831D9A00E912F5 /* axWaveformNavigator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axWaveformNavigator.cpp; sourceTree = "<group>"; };
 		7CE5804A1A831D9A00E912F5 /* axWaveformNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axWaveformNavigator.h; sourceTree = "<group>"; };
-		7CE5804B1A831D9A00E912F5 /* exprtk.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = exprtk.hpp; sourceTree = "<group>"; };
 		7CE5804D1A831D9A00E912F5 /* axApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axApp.h; sourceTree = "<group>"; };
 		7CE5804E1A831D9A00E912F5 /* axC++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "axC++.h"; sourceTree = "<group>"; };
 		7CE5804F1A831D9A00E912F5 /* axColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axColor.h; sourceTree = "<group>"; };
@@ -372,7 +377,6 @@
 				7CE580481A831D9A00E912F5 /* axWaveform.h */,
 				7CE580491A831D9A00E912F5 /* axWaveformNavigator.cpp */,
 				7CE5804A1A831D9A00E912F5 /* axWaveformNavigator.h */,
-				7CE5804B1A831D9A00E912F5 /* exprtk.hpp */,
 			);
 			name = axWidgets;
 			path = ../../../../../axWidgets;
@@ -381,6 +385,8 @@
 		7CE5804C1A831D9A00E912F5 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7C460E8E1A97EA5D00E51D13 /* axFrameBuffer.h */,
+				7C460E8F1A97EA5D00E51D13 /* axGraphicInterface.h */,
 				7CE5804D1A831D9A00E912F5 /* axApp.h */,
 				7CE5804E1A831D9A00E912F5 /* axC++.h */,
 				7CE5804F1A831D9A00E912F5 /* axColor.h */,
@@ -418,6 +424,8 @@
 		7CE5806A1A831D9A00E912F5 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				7C460E8A1A97EA4B00E51D13 /* axFrameBuffer.cpp */,
+				7C460E8B1A97EA4B00E51D13 /* axGraphicInterface.cpp */,
 				7CE5806C1A831D9A00E912F5 /* axApp.cpp */,
 				7CE5806D1A831D9A00E912F5 /* axC++.cpp */,
 				7CE5806E1A831D9A00E912F5 /* axColor.cpp */,
@@ -566,6 +574,7 @@
 				7CE580A41A831D9A00E912F5 /* axCore.cpp in Sources */,
 				7CE580AD1A831D9A00E912F5 /* axManager.cpp in Sources */,
 				7CE580A61A831D9A00E912F5 /* axEvent.cpp in Sources */,
+				7C460E8C1A97EA4B00E51D13 /* axFrameBuffer.cpp in Sources */,
 				7CE5809A1A831D9A00E912F5 /* axTextBox.cpp in Sources */,
 				7CE580D71A8326B900E912F5 /* axAudioBufferPlayer.cpp in Sources */,
 				7C20B71D19EDC09300D6ED6F /* main.cpp in Sources */,
@@ -593,6 +602,7 @@
 				7CE580971A831D9A00E912F5 /* axScrollBar.cpp in Sources */,
 				7CE580A11A831D9A00E912F5 /* axC++.cpp in Sources */,
 				7CE580991A831D9A00E912F5 /* axStaticImage.cpp in Sources */,
+				7C460E8D1A97EA4B00E51D13 /* axGraphicInterface.cpp in Sources */,
 				7CE5809B1A831D9A00E912F5 /* axTextControl.cpp in Sources */,
 				7CE585A41A8327C500E912F5 /* AudioDrumMachine.cpp in Sources */,
 				7C20B71E19EDC09300D6ED6F /* MidiTrack.cpp in Sources */,

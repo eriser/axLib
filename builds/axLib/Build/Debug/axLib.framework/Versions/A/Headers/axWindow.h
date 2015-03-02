@@ -30,8 +30,10 @@
 #include "axGC.h"
 #include "axResourceManager.h"
 #include "axConfig.h"
+#include "axFrameBuffer.h"
 
 class axApp;
+
 
 
 class axWindow : public axObject
@@ -65,68 +67,24 @@ public:
     bool IsShown() const;
     void Show();
     void Hide();
-
-    // Drawing events.
-    virtual void OnPaint();
-    virtual void OnPaintStatic(){}
-    virtual void Update() = 0;
-    virtual void OnResize(){}
-    
-    // Mouse events.
-	virtual void OnLeftDragging(){}
-	virtual void OnRightDragging(){}
-	virtual void OnMouseMotion(const axPoint& pos){}
-    virtual void OnMouseLeftDown(const axPoint& pos){}
-    virtual void OnMouseLeftDoubleClick(const axPoint& pos){}
-    virtual void OnMouseLeftUp(const axPoint& pos){}
-	virtual void OnMouseRightDown(const axPoint& pos){}
-	virtual void OnMouseRightUp(){}
-	virtual void OnMouseEnter(){}
-	virtual void OnMouseLeave(){}
-	virtual void OnFocusIn(){}
-	virtual void OnMouseLeftDragging(const axPoint& pos){}
-
-    // Keyboard events.
-    virtual void OnKeyDown(const char& key){}
-    virtual void OnBackSpaceDown(){}
-    virtual void OnEnterDown(){}
-    virtual void OnKeyDeleteDown(){}
-    virtual void OnLeftArrowDown(){}
-    virtual void OnRightArrowDown(){}
-    virtual void OnWasKeyUnGrabbed(){}
-    virtual void OnWasKeyGrabbed(){}
     
 	axGC* GetGC();
 
 	void Reparent(axWindow* parent, const axPoint& position);
 
-    /// @todo change this.
-	bool& GetIsPopup()
-	{
-		return _isPopup;
-	}
+    bool GetIsPopup();
     
-    void SetSelectable(const bool& selectable)
-    {
-        _isSelectable = selectable;
-    }
+    void SetPopupWindow(const bool& popup);
+    
+    void SetSelectable(const bool& selectable);
     
     bool IsSelectable() const;
     
-    bool IsBlockDrawing() const
-    {
-        return _isBlockDrawing;
-    }
+    bool IsBlockDrawing() const;
     
-    void SetBlockDrawing(const bool& block)
-    {
-        _isBlockDrawing = block;
-    }
+    void SetBlockDrawing(const bool& block);
 
-    axResourceManager* GetResourceManager()
-    {
-        return &_resourceManager;
-    }
+    axResourceManager* GetResourceManager();
     
     bool IsEditingWidget() const;
     
@@ -140,46 +98,60 @@ public:
     
     void SetContourColor(const axColor& color);
     
-    GLuint GetWindowBufferTexture() const
-    {
-        return _frameBufferTexture;
-    }
-    
     void RenderWindow();
     
-    axRect GetDrawingRect() const
-    {
-        return axRect(0, 0, _rect.size.x - 1, _rect.size.y - 1);
-    }
+    axRect GetDrawingRect() const;
     
-protected:
-	bool _isPopup;
-    bool _needUpdate;
-    GLuint _frameBuffer, _frameBufferTexture, _depthBuffer;
+    void SetNeedUpdate();
+    
+    // Drawing events.
+    virtual void OnPaint();
+    virtual void OnPaintStatic(){}
+    virtual void Update() = 0;
+    virtual void OnResize(){}
+    
+    // Mouse events.
+    virtual void OnLeftDragging(){}
+    virtual void OnRightDragging(){}
+    virtual void OnMouseMotion(const axPoint& pos){}
+    virtual void OnMouseLeftDown(const axPoint& pos){}
+    virtual void OnMouseLeftDoubleClick(const axPoint& pos){}
+    virtual void OnMouseLeftUp(const axPoint& pos){}
+    virtual void OnMouseRightDown(const axPoint& pos){}
+    virtual void OnMouseRightUp(){}
+    virtual void OnMouseEnter(){}
+    virtual void OnMouseLeave(){}
+    virtual void OnFocusIn(){}
+    virtual void OnMouseLeftDragging(const axPoint& pos){}
+    
+    // Keyboard events.
+    virtual void OnKeyDown(const char& key){}
+    virtual void OnBackSpaceDown(){}
+    virtual void OnEnterDown(){}
+    virtual void OnKeyDeleteDown(){}
+    virtual void OnLeftArrowDown(){}
+    virtual void OnRightArrowDown(){}
+    virtual void OnWasKeyUnGrabbed(){}
+    virtual void OnWasKeyGrabbed(){}
 
 private:
 	axWindow* _parent;
-	axRect _rect;
-	axPoint _absolutePosition;
+	axRect _rect, _shownRect;
+	axPoint _absolutePosition, _scrollDecay;
+    axColor _windowColor, _contourColor;
+    axFrameBuffer _frameBufferObj;
+    axResourceManager _resourceManager;
+    
+    /// @todo Remove this.
 	axGC* _gc;
-	bool _isHidden, _isBlockDrawing;
-	axPoint _scrollDecay;
-    axRect _shownRect;
+
+    bool _isPopup;
+    bool _needUpdate;
+    bool _isHidden;
+    bool _isBlockDrawing;
     bool _isSelectable;
     bool _isEditingWidget;
     bool _isEditable;
-    
-    axColor _windowColor, _contourColor;
-    
-	GLuint _texture;
-    
-    
-    
-    
-//    std::map<std::string, axEventFunction> _evtMap;
-    axResourceManager _resourceManager;
-    
-    void InitGLWindowBackBufferDrawing();
 };
 
 /// @}

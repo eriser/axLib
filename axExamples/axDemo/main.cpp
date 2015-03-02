@@ -19,6 +19,7 @@ MainPanel::MainPanel(axWindow* parent, const axRect& rect):
 // Parent.
 axPanel(parent, rect)
 {
+     axPrint("MainPanel");
     _tabBtnLabels.push_back("Button");
     _tabBtnLabels.push_back("Slider");
     _tabBtnLabels.push_back("Knob");
@@ -135,51 +136,18 @@ void MainPanel::OnPaint()
     
 }
 
-
-void axMain::MainEntryPoint(axApp* app)
-{
-   /* MainPanel* mainPanel = new MainPanel(nullptr,
-                                            axRect(1, 1, 550, 499));*/
-}
-
-//void axMain::MainEntryPoint(axApp* app)
-//{
-//    MainPanel* mainPanel = new MainPanel(nullptr,
-//                                            axRect(1, 1, 550, 499));
-//}
-
-
-
-/// @todo Chnage with macro implement app.
-//#ifdef _MSC_VER
 int main(int argc, char* argv[])
 {
+    
+    axPrint("Main");
 	axEventManager::GetInstance();
-	axApp* app = axApp::CreateApp(axSize(550, 499));
+	axApp* app = axApp::CreateApp(axSize(500, 500));
 
-	//axMain* main = new axMain();
-    
-	//app->AddMainEntry([]()
-	//{
-	//	MainPanel* mainPanel = new MainPanel(nullptr,
-	//		axRect(1, 1, 550, 499));
-	//});
-    //main->MainEntryPoint(app);
-
-    
     app->AddMainEntry([]()
     {
         MainPanel* mainPanel = new MainPanel(nullptr, axRect(0, 0, 500, 500));
     });
-    
-    
-    
-//	axMain* main = new axMain();
-    
-//    main->MainEntryPoint(app);
-
 
 	app->MainLoop();
 	return 0;
 }
-//#endif

@@ -94,6 +94,7 @@ struct axSliderInfo
 	string img_path;
 	axSize btn_size;
 	unsigned int slider_width;
+    int contour_round_radius = 0;
 
 	axColor bgColorNormal,
 			bgColorHover,
@@ -119,7 +120,8 @@ struct axSliderInfo
 				 const axColor& contour,
 				 const axColor& back_slider,
 				 const axColor& back_slider_contour,
-				 const unsigned int width) :
+				 const unsigned int width,
+                 const int& contourRadius) :
 				 // Members.
 				 img_path(imgPath),
 				 btn_size(size),
@@ -133,7 +135,8 @@ struct axSliderInfo
 				 contourColor(contour),
 				 backSliderColor(back_slider),
 				 backSliderContourColor(back_slider_contour),
-				 slider_width(width){}
+				 slider_width(width),
+                 contour_round_radius(contourRadius){}
 
 	axSliderInfo(const string& info_path)
 	{

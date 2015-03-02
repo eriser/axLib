@@ -114,7 +114,8 @@ public:
              const axColor& clicked_color,
              const axColor& selected_color,
              const axColor& contour_color,
-             const axColor& font_color);
+             const axColor& font_color,
+             const int& roundCornerRadius = 0);
         
         // Info needed for debug editor. Derived from axInfo.
         virtual axStringVector GetParamNameList() const;
@@ -127,6 +128,7 @@ public:
         axColor selected;
         axColor contour;
         axColor font_color;
+        int round_corner_radius = 0;
     };
     
     /***************************************************************************
@@ -172,7 +174,7 @@ protected:
     axImage* _btnImg;
     axFlag _flags;
     std::string _label, _msg;
-    axFont* _font;
+    std::unique_ptr<axFont> _font;
     
     axColor* _currentColor;
     bool _selected;
@@ -202,7 +204,7 @@ axColor(0.6, 0.6, 0.6),\
 axColor(0.4, 0.4, 0.4),\
 axColor(0.5, 0.5, 0.5),\
 axColor(0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0))
+axColor(0.0, 0.0, 0.0), 3)
 
 #define axBUTTON_TRANSPARENT 	axButton::Info( \
 axColor(0.0, 0.0, 0.0, 0.0),\
@@ -210,7 +212,7 @@ axColor(0.0, 0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0, 0.0),\
 axColor(0.0, 0.0, 0.0, 0.0),\
-axColor(0.0, 0.0, 0.0, 1.0))
+axColor(0.0, 0.0, 0.0, 1.0), 3)
 
 #define btn_xml "<?xml version=\"1.0\" encoding=\"UTF-8\"?>         \
                     <axButton normal=\"0.45, 0.45, 0.45, 1.0\"      \

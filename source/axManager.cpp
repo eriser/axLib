@@ -41,7 +41,6 @@ axManager::~axManager()
 
 void axManager::Add(axWindow* win)
 {
-//	_windows.insert(axWindowPair(win->GetId(), win));
 	_windowTree.AddWindow(win);
 }
 
