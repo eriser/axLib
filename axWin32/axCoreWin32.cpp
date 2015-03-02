@@ -372,9 +372,7 @@ void axCoreWin32::KillPopGLWindow()
 		// Release DC and RC.
 		if (!wglMakeCurrent(NULL, NULL))
 		{
-			//axWin32::ErrorMessageDialog("Popup Window : Release Of DC And RC Failed.");
-			//axWin32::ErrorMessageDialog(GetLastErrorAsString());
-			cerr << GetLastErrorAsString() << endl;
+			axError(GetLastErrorAsString());
 		}
 
 		// Delete RC.
@@ -512,8 +510,8 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 		case WM_SYSCOMMAND:
 		{
-			for (int i = 0; i < 5; i++)
-				axEventManager::GetInstance()->CallNext();
+			axEventManager::GetInstance()->CallNext();
+			
 
 			switch (wParam)
 			{
@@ -647,8 +645,13 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 
 			case WM_SYSCOMMAND:
 			{
+				axPrint("Out");
 								  switch (wParam)
 								  {
+									  std::cout << "MSG SYSCOMMAND TEST" << std::endl;
+								  case 314:
+									  std::cout << "MSG UNBLOCK TEST" << std::endl;
+									  break;
 								  case SC_SCREENSAVE:
 								  case SC_MONITORPOWER:
 									  return 0;
@@ -733,12 +736,11 @@ int axCoreWin32::DrawGLPopScene()
 
 int axCoreWin32::DrawGLScene()
 {
-	//cout << "GL" << endl;
 	wglMakeCurrent(_hdc, _hrc);
 	return axCore::DrawGLScene();
 }
 
 void axCoreWin32::PushEventOnSystemQueue()
 {
-	BOOL err = PostMessage(_hwnd, WM_SYSCOMMAND, 1, 1);
+	BOOL err = PostMessage(_hwnd, WM_SYSCOMMAND, 314, 1);
 }
