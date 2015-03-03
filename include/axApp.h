@@ -30,7 +30,11 @@
 #endif //__linux__
 
 #ifdef _MSC_VER
-#include "axCoreWin32.h"
+	#ifdef _axWxWidgetsCore_
+		#include "axCoreWin32.h"
+	#else
+		#include "axCoreWxWidgets.h"
+	#endif // _axWxWidgetsCore_.
 #endif //_MSC_VER
 
 #ifdef __APPLE__

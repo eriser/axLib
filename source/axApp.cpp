@@ -39,9 +39,15 @@ _debugEditorActive(false)
 
 
 #ifdef _MSC_VER
-	_core = new axCoreWin32();
-	axCORE = _core;
+	#if _axWxWidgetsCore_ == 1
+	_core = new axCoreWxWidgets();
 	_core->Init(axSize(0, 0));
+	#else
+		_core = new axCoreWin32();
+		axCORE = _core;
+		_core->Init(axSize(0, 0));
+	#endif //_axWxWidgetsCore_
+
 #endif //_MSC_VER
     
     
@@ -105,9 +111,15 @@ _debugEditorActive(false)
 #endif //__linux__
 
 #ifdef _MSC_VER
-	_core = new axCoreWin32();
-	axCORE = _core;
-	_core->Init(frame_size);
+	#if _axWxWidgetsCore_ == 1
+		_core = new axCoreWxWidgets();
+		_core->Init(frame_size);
+	#else
+		_core = new axCoreWin32();
+		axCORE = _core;
+		_core->Init(frame_size);
+	#endif //_axWxWidgetsCore_
+
 #endif // _MSC_VER
     
 #ifdef __APPLE__

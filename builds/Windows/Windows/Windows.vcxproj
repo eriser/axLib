@@ -46,7 +46,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(AX_LIB)/include/;$(AX_LIB)/axWin32;$(AX_LIB)/axWidgets;$(AX_LIB)/libs/freetype-2.5.3/include;$(AX_LIB)/libs/lpng1610;$(AX_LIB)/libs/glew-1.12.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(AX_LIB)/include/;$(AX_LIB)/axWin32;$(AX_LIB)/axWidgets;$(AX_LIB)/libs/freetype-2.5.3/include;$(AX_LIB)/libs/lpng1610;$(AX_LIB)/libs/glew-1.12.0/include;$(AX_LIB)/libs/wxWidgets-3.0.2/include/;$(AX_LIB)/libs/wxWidgets-3.0.2/lib/vc_lib/mswud/;$(AX_LIB)/libs/wxWidgets-3.0.2/include/msvc/;$(AX_LIB)/axCore/wxWidgets/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/bigobj</AdditionalOptions>
     </ClCompile>
@@ -55,6 +55,9 @@
       <AdditionalLibraryDirectories>$(AX_LIB)/libs/freetype-2.5.3/objs/win32/vc2010;$(AX_LIB)/libs/lpng1610/projects/vstudio/Debug;$(AX_LIB)/libs/glew-1.12.0/lib/Debug/Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32d.lib;glew32sd.lib;opengl32.lib;glu32.lib;libpng16.lib;zlib.lib;freetype253_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(AX_LIB)/libs/wxWidgets-3.0.2/lib/vc_lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -71,6 +74,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\axCore\Win32\axCoreWin32.h" />
+    <ClInclude Include="..\..\..\axCore\Win32\axDebugWin32.h" />
+    <ClInclude Include="..\..\..\axCore\Win32\axWin32Utils.h" />
+    <ClInclude Include="..\..\..\axCore\wxWidgets\axCoreWxWidgets.h" />
+    <ClInclude Include="..\..\..\axCore\wxWidgets\axWxPanel.h" />
     <ClInclude Include="..\..\..\axWidgets\axAnimatedButton.h" />
     <ClInclude Include="..\..\..\axWidgets\axButton.h" />
     <ClInclude Include="..\..\..\axWidgets\axDebugButton.h" />
@@ -88,41 +96,45 @@
     <ClInclude Include="..\..\..\axWidgets\axTextBox.h" />
     <ClInclude Include="..\..\..\axWidgets\axTextControl.h" />
     <ClInclude Include="..\..\..\axWidgets\axToggle.h" />
-    <ClInclude Include="..\..\..\axWin32\axCoreWin32.h" />
-    <ClInclude Include="..\..\..\axWin32\axDebugWin32.h" />
-    <ClInclude Include="..\..\..\axWin32\axWin32Utils.h" />
+    <ClInclude Include="..\..\..\axWidgets\axWidgetSelector.h" />
+    <ClInclude Include="..\..\..\include\axApp.h" />
+    <ClInclude Include="..\..\..\include\axC++.h" />
+    <ClInclude Include="..\..\..\include\axColor.h" />
+    <ClInclude Include="..\..\..\include\axConfig.h" />
+    <ClInclude Include="..\..\..\include\axCore.h" />
+    <ClInclude Include="..\..\..\include\axEvent.h" />
+    <ClInclude Include="..\..\..\include\axEventManager.h" />
+    <ClInclude Include="..\..\..\include\axFont.h" />
+    <ClInclude Include="..\..\..\include\axFrameBuffer.h" />
+    <ClInclude Include="..\..\..\include\axGC.h" />
     <ClInclude Include="..\..\..\include\axGraphicInterface.h" />
-    <ClInclude Include="..\..\..\include\axLib\axApp.h" />
-    <ClInclude Include="..\..\..\include\axLib\axC++.h" />
-    <ClInclude Include="..\..\..\include\axLib\axColor.h" />
-    <ClInclude Include="..\..\..\include\axLib\axConfig.h" />
-    <ClInclude Include="..\..\..\include\axLib\axCore.h" />
-    <ClInclude Include="..\..\..\include\axLib\axEvent.h" />
-    <ClInclude Include="..\..\..\include\axLib\axEventManager.h" />
-    <ClInclude Include="..\..\..\include\axLib\axFont.h" />
-    <ClInclude Include="..\..\..\include\axLib\axGC.h" />
-    <ClInclude Include="..\..\..\include\axLib\axImage.h" />
-    <ClInclude Include="..\..\..\include\axLib\axKeyboardManager.h" />
-    <ClInclude Include="..\..\..\include\axLib\axLib.h" />
-    <ClInclude Include="..\..\..\include\axLib\axMain.h" />
-    <ClInclude Include="..\..\..\include\axLib\axManager.h" />
-    <ClInclude Include="..\..\..\include\axLib\axMath.h" />
-    <ClInclude Include="..\..\..\include\axLib\axMouseManager.h" />
-    <ClInclude Include="..\..\..\include\axLib\axMsg.h" />
-    <ClInclude Include="..\..\..\include\axLib\axObject.h" />
-    <ClInclude Include="..\..\..\include\axLib\axObjectLoader.h" />
-    <ClInclude Include="..\..\..\include\axLib\axPanel.h" />
-    <ClInclude Include="..\..\..\include\axLib\axResourceManager.h" />
-    <ClInclude Include="..\..\..\include\axLib\axTimer.h" />
-    <ClInclude Include="..\..\..\include\axLib\axUtils.h" />
-    <ClInclude Include="..\..\..\include\axLib\axVar.h" />
-    <ClInclude Include="..\..\..\include\axLib\axWidget.h" />
-    <ClInclude Include="..\..\..\include\axLib\axWidgetBuilder.h" />
-    <ClInclude Include="..\..\..\include\axLib\axWindow.h" />
-    <ClInclude Include="..\..\..\include\axLib\axWindowTree.h" />
-    <ClInclude Include="..\..\..\include\axLib\rapidxml.hpp" />
+    <ClInclude Include="..\..\..\include\axImage.h" />
+    <ClInclude Include="..\..\..\include\axKeyboardManager.h" />
+    <ClInclude Include="..\..\..\include\axLib.h" />
+    <ClInclude Include="..\..\..\include\axMain.h" />
+    <ClInclude Include="..\..\..\include\axManager.h" />
+    <ClInclude Include="..\..\..\include\axMath.h" />
+    <ClInclude Include="..\..\..\include\axMouseManager.h" />
+    <ClInclude Include="..\..\..\include\axMsg.h" />
+    <ClInclude Include="..\..\..\include\axObject.h" />
+    <ClInclude Include="..\..\..\include\axObjectLoader.h" />
+    <ClInclude Include="..\..\..\include\axPanel.h" />
+    <ClInclude Include="..\..\..\include\axResourceManager.h" />
+    <ClInclude Include="..\..\..\include\axTimer.h" />
+    <ClInclude Include="..\..\..\include\axUtils.h" />
+    <ClInclude Include="..\..\..\include\axVar.h" />
+    <ClInclude Include="..\..\..\include\axWidget.h" />
+    <ClInclude Include="..\..\..\include\axWidgetBuilder.h" />
+    <ClInclude Include="..\..\..\include\axWindow.h" />
+    <ClInclude Include="..\..\..\include\axWindowTree.h" />
+    <ClInclude Include="..\..\..\include\rapidxml.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\axCore\Win32\axCoreWin32.cpp" />
+    <ClCompile Include="..\..\..\axCore\Win32\axDebugWin32.cpp" />
+    <ClCompile Include="..\..\..\axCore\Win32\axWin32Utils.cpp" />
+    <ClCompile Include="..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp" />
+    <ClCompile Include="..\..\..\axCore\wxWidgets\axWxPanel.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axAnimatedButton.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axButton.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axDebugButton.cpp" />
@@ -140,9 +152,7 @@
     <ClCompile Include="..\..\..\axWidgets\axTextBox.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axTextControl.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axToggle.cpp" />
-    <ClCompile Include="..\..\..\axWin32\axCoreWin32.cpp" />
-    <ClCompile Include="..\..\..\axWin32\axDebugWin32.cpp" />
-    <ClCompile Include="..\..\..\axWin32\axWin32Utils.cpp" />
+    <ClCompile Include="..\..\..\axWidgets\axWidgetSelector.cpp" />
     <ClCompile Include="..\..\..\source\axApp.cpp" />
     <ClCompile Include="..\..\..\source\axC++.cpp" />
     <ClCompile Include="..\..\..\source\axColor.cpp" />
@@ -152,6 +162,7 @@
     <ClCompile Include="..\..\..\source\axEvent.cpp" />
     <ClCompile Include="..\..\..\source\axEventManager.cpp" />
     <ClCompile Include="..\..\..\source\axFont.cpp" />
+    <ClCompile Include="..\..\..\source\axFrameBuffer.cpp" />
     <ClCompile Include="..\..\..\source\axGC.cpp" />
     <ClCompile Include="..\..\..\source\axGraphicInterface.cpp" />
     <ClCompile Include="..\..\..\source\axImage.cpp" />

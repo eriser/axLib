@@ -1052,59 +1052,59 @@ void axGC::DrawCircle(const axPoint& pos,
 }
 
 
-void axGC::DrawBuffer(axDrawingBuffer* buffer)
-{
-    unsigned char* surf_data = buffer->GetData();
-    GLuint texture_id = buffer->GetTexture();
-    axSize size(buffer->GetSize());
-    
-    if (!surf_data)
-    {
-        printf ("draw_func() - No valid pointer to surface-data passed\n");
-        return;
-    }
-    
-//    glMatrixMode(GL_MODELVIEW);
-//    glLoadIdentity ();
-//    glClear(GL_COLOR_BUFFER_BIT);
-    
-    
-    //glPushMatrix();
-    axPrint("Cairo draw.");
-    glEnable(GL_TEXTURE_2D);
-    glEnable(GL_TEXTURE_RECTANGLE_ARB);
-    glBindTexture(GL_TEXTURE_RECTANGLE_ARB, texture_id);
-    glTexImage2D (GL_TEXTURE_RECTANGLE_ARB,
-                  0,
-                  GL_RGBA,
-                  size.x,
-                  size.y,
-                  0,
-                  GL_BGRA,
-                  GL_UNSIGNED_BYTE,
-                  surf_data);
-    
-    glColor3f (1.0f, 0.0f, 1.0f);
-    glBegin (GL_QUADS);
-    
-    glTexCoord2f (0.0f, 0.0f);
-    glVertex2f (0.0f, 0.0f);
-    
-    glTexCoord2f ((GLfloat) size.x, 0.0f);
-    glVertex2f (1.0f, 0.0f);
-    
-    glTexCoord2f ((GLfloat) size.x, (GLfloat) size.y);
-    glVertex2f (1.0f, 1.0f);
-    
-    glTexCoord2f (0.0f, (GLfloat) size.y);
-    glVertex2f (0.0f, 1.0f);
-    
-    glEnd ();
-    
-    glDisable(GL_TEXTURE_RECTANGLE_ARB);
-    glDisable(GL_TEXTURE_2D);
-
-    
-//    glPopMatrix();
-  
-}
+//void axGC::DrawBuffer(axDrawingBuffer* buffer)
+//{
+//    unsigned char* surf_data = buffer->GetData();
+//    GLuint texture_id = buffer->GetTexture();
+//    axSize size(buffer->GetSize());
+//    
+//    if (!surf_data)
+//    {
+//        printf ("draw_func() - No valid pointer to surface-data passed\n");
+//        return;
+//    }
+//    
+////    glMatrixMode(GL_MODELVIEW);
+////    glLoadIdentity ();
+////    glClear(GL_COLOR_BUFFER_BIT);
+//    
+//    
+//    //glPushMatrix();
+//    axPrint("Cairo draw.");
+//    glEnable(GL_TEXTURE_2D);
+//    glEnable(GL_TEXTURE_RECTANGLE_ARB);
+//    glBindTexture(GL_TEXTURE_RECTANGLE_ARB, texture_id);
+//    glTexImage2D (GL_TEXTURE_RECTANGLE_ARB,
+//                  0,
+//                  GL_RGBA,
+//                  size.x,
+//                  size.y,
+//                  0,
+//                  GL_BGRA,
+//                  GL_UNSIGNED_BYTE,
+//                  surf_data);
+//    
+//    glColor3f (1.0f, 0.0f, 1.0f);
+//    glBegin (GL_QUADS);
+//    
+//    glTexCoord2f (0.0f, 0.0f);
+//    glVertex2f (0.0f, 0.0f);
+//    
+//    glTexCoord2f ((GLfloat) size.x, 0.0f);
+//    glVertex2f (1.0f, 0.0f);
+//    
+//    glTexCoord2f ((GLfloat) size.x, (GLfloat) size.y);
+//    glVertex2f (1.0f, 1.0f);
+//    
+//    glTexCoord2f (0.0f, (GLfloat) size.y);
+//    glVertex2f (0.0f, 1.0f);
+//    
+//    glEnd ();
+//    
+//    glDisable(GL_TEXTURE_RECTANGLE_ARB);
+//    glDisable(GL_TEXTURE_2D);
+//
+//    
+////    glPopMatrix();
+//  
+//}

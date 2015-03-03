@@ -1,13 +1,15 @@
-﻿Build started 2/18/2015 12:48:55 PM.
+﻿Build started 3/3/2015 9:17:12 AM.
      1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alexandre Arsenault\Desktop\axLib/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWin32" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWidgets" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/glew-1.12.0/include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axWin32\axCoreWin32.cpp
-         axCoreWin32.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alexandre Arsenault\Desktop\axLib/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWin32" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWidgets" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/glew-1.12.0/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/lib/vc_lib/mswud/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/include/msvc/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axCore/wxWidgets/" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp
+         axCoreWxWidgets.cpp
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib" /NOLOGO Debug\axAnimatedButton.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib" /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/lib/vc_lib/" /NOLOGO Debug\axCoreWin32.obj
+         Debug\axDebugWin32.obj
+         Debug\axWin32Utils.obj
+         Debug\axCoreWxWidgets.obj
+         Debug\axWxPanel.obj
+         Debug\axAnimatedButton.obj
          Debug\axButton.obj
          Debug\axDebugButton.obj
          Debug\axDropMenu.obj
@@ -24,9 +26,7 @@
          Debug\axTextBox.obj
          Debug\axTextControl.obj
          Debug\axToggle.obj
-         Debug\axCoreWin32.obj
-         Debug\axDebugWin32.obj
-         Debug\axWin32Utils.obj
+         Debug\axWidgetSelector.obj
          Debug\axApp.obj
          Debug\axC++.obj
          Debug\axColor.obj
@@ -36,6 +36,7 @@
          Debug\axEvent.obj
          Debug\axEventManager.obj
          Debug\axFont.obj
+         Debug\axFrameBuffer.obj
          Debug\axGC.obj
          Debug\axGraphicInterface.obj
          Debug\axImage.obj
@@ -61,4 +62,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.46
+Time Elapsed 00:00:15.45
