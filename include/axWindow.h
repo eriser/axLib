@@ -45,6 +45,8 @@ public:
 
 	axRect GetRect() const;
 	axRect GetAbsoluteRect() const;
+
+	void SetRect(const axRect& rect);
     
 	axSize GetSize() const;
 	void SetSize(const axSize& size);
