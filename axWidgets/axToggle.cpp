@@ -219,7 +219,7 @@ void axToggle::Info::SetAttribute(const axStringPair& attribute)
     }
     else if(attribute.first == "single_img")
     {
-        single_img = stoi(attribute.second);
+        single_img = stoi(attribute.second) == 1 ? true : false;
     }
 }
 

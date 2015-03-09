@@ -22,6 +22,8 @@
 #ifndef __AX_APP__
 #define __AX_APP__
 
+#include "axConfig.h"
+
 /// @defgroup Core
 /// @{
 
@@ -30,10 +32,11 @@
 #endif //__linux__
 
 #ifdef _MSC_VER
-	#ifdef _axWxWidgetsCore_
-		#include "axCoreWin32.h"
-	#else
+	#if _axWxWidgetsCore_ == 1
 		#include "axCoreWxWidgets.h"
+		
+	#else
+		#include "axCoreWin32.h"
 	#endif // _axWxWidgetsCore_.
 #endif //_MSC_VER
 
@@ -53,8 +56,6 @@
 class axApp
 {
 public:
-    #pragma message("WARNING: Should use GetInstance.")
-	static axApp* MainInstance;
 	axApp();
 
 	inline static axApp* GetInstance()
@@ -101,9 +102,6 @@ public:
 	string OpenFileDialog();
 
 	bool CreatePopupWindow(const char*, int, int);
-    
-    #pragma message("WARNING: Deprecate.")
-	string GetCurrentAppDirectory();
 
     std::string GetAppDirectory();
     
@@ -120,12 +118,12 @@ public:
     
 private:
 	axCore* _core;
+	static axApp* MainInstance;
     
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
     static axResourceManager* _resourceManager;
     
     bool _debugEditorActive;
-    
     
     axEVENT_ACCESSOR(axMsg, OnDebugEditor);
     void OnDebugEditor(const axMsg& msg);

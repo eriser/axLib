@@ -38,6 +38,11 @@
 #include "GL/glew.h"
 //#include <gl\gl.h>
 #include <gl\glu.h>
+
+#pragma warning( disable : 4018 )
+#pragma warning( disable : 4244 )
+#pragma warning( disable : 4305 )
+
 #endif //_MSC_VER
 
 #ifdef __APPLE__
@@ -49,6 +54,8 @@
 #include <memory>
 #include <functional>
 #include "axUtils.h"
+
+#define new_ new
 
 #define axDEBUG_LEVEL0 0
 #define axDEBUG_MINIMAL_LEVEL 1

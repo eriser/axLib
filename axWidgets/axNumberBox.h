@@ -167,6 +167,12 @@ public:
     double GetValue();
     
     virtual void SetInfo(const axVectorPairString& attributes);
+
+	void SetValue(const double& value)
+	{
+		_value = value;
+		Update();
+	}
     
 private:
     axNumberBox::Events _events;

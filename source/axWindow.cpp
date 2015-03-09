@@ -197,6 +197,17 @@ void axWindow::SetSize(const axSize& size)
     Update();
 }
 
+void axWindow::SetRect(const axRect& rect)
+{
+	_rect.position = rect.position;
+	_rect.size = rect.size;
+	_shownRect.size = rect.size;
+
+	//    InitGLWindowBackBufferDrawing();
+	_frameBufferObj.Resize(rect.size);
+	Update();
+}
+
 void axWindow::SetPosition(const axPoint& pos)
 {
 	if (_parent == nullptr)

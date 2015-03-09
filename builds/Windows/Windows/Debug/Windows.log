@@ -1,129 +1,32 @@
-﻿Build started 3/9/2015 7:47:38 AM.
-     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
+﻿Build started 3/9/2015 11:05:32 AM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alexandre Arsenault\Desktop\axLib/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWin32" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWidgets" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/glew-1.12.0/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/lib/vc_lib/mswud/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/include/msvc/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axCore/wxWidgets/" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axCore\Win32\axCoreWin32.cpp ..\..\..\axCore\Win32\axDebugWin32.cpp ..\..\..\axCore\Win32\axWin32Utils.cpp ..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp ..\..\..\axCore\wxWidgets\axWxPanel.cpp ..\..\..\axWidgets\axAnimatedButton.cpp ..\..\..\axWidgets\axButton.cpp ..\..\..\axWidgets\axDebugButton.cpp ..\..\..\axWidgets\axDropMenu.cpp ..\..\..\axWidgets\axGrid.cpp ..\..\..\axWidgets\axKnob.cpp ..\..\..\axWidgets\axLabel.cpp ..\..\..\axWidgets\axMenu.cpp ..\..\..\axWidgets\axNumberBox.cpp ..\..\..\axWidgets\axPlot.cpp ..\..\..\axWidgets\axPopupMenu.cpp ..\..\..\axWidgets\axScrollBar.cpp ..\..\..\axWidgets\axSlider.cpp ..\..\..\axWidgets\axStaticImage.cpp ..\..\..\axWidgets\axTextBox.cpp ..\..\..\axWidgets\axTextControl.cpp ..\..\..\axWidgets\axToggle.cpp ..\..\..\axWidgets\axWidgetSelector.cpp ..\..\..\source\axApp.cpp ..\..\..\source\axC++.cpp ..\..\..\source\axColor.cpp ..\..\..\source\axConfig.cpp ..\..\..\source\axCore.cpp ..\..\..\source\axDefaultFontBuffer.cpp ..\..\..\source\axEvent.cpp ..\..\..\source\axEventManager.cpp ..\..\..\source\axFont.cpp ..\..\..\source\axFrameBuffer.cpp ..\..\..\source\axGC.cpp ..\..\..\source\axGraphicInterface.cpp ..\..\..\source\axImage.cpp ..\..\..\source\axKeyboardManager.cpp ..\..\..\source\axMain.cpp ..\..\..\source\axManager.cpp ..\..\..\source\axMath.cpp ..\..\..\source\axMouseManager.cpp ..\..\..\source\axMsg.cpp ..\..\..\source\axObject.cpp ..\..\..\source\axObjectLoader.cpp ..\..\..\source\axPanel.cpp ..\..\..\source\axResourceManager.cpp ..\..\..\source\axTimer.cpp ..\..\..\source\axUtils.cpp ..\..\..\source\axVar.cpp ..\..\..\source\axWidget.cpp ..\..\..\source\axWidgetBuilder.cpp ..\..\..\source\axWindow.cpp ..\..\..\source\axWindowTree.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../include/ /I../../../axWin32 /I../../../axWidgets /I"../../../libs/freetype-2.5.3/include" /I../../../libs/lpng1610 /I"../../../libs/glew-1.12.0/include" /I"../../../libs/wxWidgets-3.0.2/include/" /I"../../../libs/wxWidgets-3.0.2/lib/vc_lib/mswud/" /I"../../../libs/wxWidgets-3.0.2/include/msvc/" /I../../../axCore/wxWidgets/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axCore\Win32\axCoreWin32.cpp ..\..\..\axCore\Win32\axDebugWin32.cpp ..\..\..\axCore\Win32\axWin32Utils.cpp ..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp ..\..\..\axCore\wxWidgets\axWxPanel.cpp ..\..\..\axWidgets\axAnimatedButton.cpp ..\..\..\axWidgets\axButton.cpp ..\..\..\axWidgets\axDebugButton.cpp ..\..\..\axWidgets\axDropMenu.cpp ..\..\..\axWidgets\axGrid.cpp ..\..\..\axWidgets\axKnob.cpp ..\..\..\axWidgets\axLabel.cpp ..\..\..\axWidgets\axMenu.cpp ..\..\..\axWidgets\axNumberBox.cpp ..\..\..\axWidgets\axPlot.cpp ..\..\..\axWidgets\axPopupMenu.cpp ..\..\..\axWidgets\axScrollBar.cpp ..\..\..\axWidgets\axSlider.cpp ..\..\..\axWidgets\axStaticImage.cpp ..\..\..\axWidgets\axTextBox.cpp ..\..\..\axWidgets\axTextControl.cpp ..\..\..\axWidgets\axToggle.cpp ..\..\..\axWidgets\axWidgetSelector.cpp ..\..\..\include\axDrawingBuffer.cpp ..\..\..\source\axApp.cpp ..\..\..\source\axC++.cpp ..\..\..\source\axColor.cpp ..\..\..\source\axConfig.cpp ..\..\..\source\axCore.cpp ..\..\..\source\axDefaultFontBuffer.cpp ..\..\..\source\axEvent.cpp ..\..\..\source\axEventManager.cpp ..\..\..\source\axFont.cpp ..\..\..\source\axFrameBuffer.cpp ..\..\..\source\axGC.cpp ..\..\..\source\axGraphicInterface.cpp ..\..\..\source\axImage.cpp ..\..\..\source\axKeyboardManager.cpp ..\..\..\source\axMain.cpp ..\..\..\source\axManager.cpp ..\..\..\source\axMath.cpp ..\..\..\source\axMouseManager.cpp ..\..\..\source\axMsg.cpp ..\..\..\source\axObject.cpp ..\..\..\source\axObjectLoader.cpp ..\..\..\source\axPanel.cpp ..\..\..\source\axResourceManager.cpp ..\..\..\source\axTimer.cpp ..\..\..\source\axUtils.cpp ..\..\..\source\axVar.cpp ..\..\..\source\axWidget.cpp ..\..\..\source\axWidgetBuilder.cpp ..\..\..\source\axWindow.cpp ..\..\..\source\axWindowTree.cpp
          axWindowTree.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axwindowtree.cpp(109): warning C4244: 'argument' : conversion from 'double' to 'GLint', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axwindowtree.cpp(297): warning C4018: '<' : signed/unsigned mismatch
          axWindow.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axWidgetBuilder.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axWidget.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axVar.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axvar.cpp(31): warning C4800: 'axVar::Base *const ' : forcing value to bool 'true' or 'false' (performance warning)
          axUtils.cpp
          axTimer.cpp
          axResourceManager.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
          axPanel.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axObjectLoader.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axObject.cpp
          axMsg.cpp
          axMouseManager.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
          axMath.cpp
          axManager.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axMain.cpp
          axKeyboardManager.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
          axImage.cpp
          axGraphicInterface.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axGC.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(102): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(103): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(109): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(110): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(123): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(195): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(200): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(203): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(204): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(206): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(222): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(238): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(240): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(244): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(246): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(319): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(320): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(333): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(343): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(345): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(353): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(359): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(504): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(542): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(594): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(643): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(683): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(757): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(767): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(770): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(795): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(799): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(803): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(807): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(820): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(823): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(827): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(830): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(904): warning C4244: 'argument' : conversion from 'const axInt' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(905): warning C4244: 'argument' : conversion from 'const axInt' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(908): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(909): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(912): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(913): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(941): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(942): warning C4244: 'argument' : conversion from 'axInt' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(951): warning C4244: 'argument' : conversion from 'const int' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(953): warning C4244: 'argument' : conversion from 'const axInt' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(989): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(990): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(1012): warning C4244: 'argument' : conversion from 'const double' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(1023): warning C4244: 'argument' : conversion from 'const int' to 'GLfloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(1046): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axgc.cpp(1047): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
          Generating Code...
          Compiling...
          axFrameBuffer.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axFont.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axfont.cpp(53): warning C4800: 'FT_Error' : forcing value to bool 'true' or 'false' (performance warning)
-     1>c:\users\alexandre arsenault\desktop\axlib\source\axfont.cpp(183): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
          axEventManager.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axEvent.cpp
          axDefaultFontBuffer.cpp
          axCore.cpp
@@ -131,146 +34,35 @@
          axColor.cpp
          axC++.cpp
          axApp.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
+         axDrawingBuffer.cpp
          axWidgetSelector.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axwidgetselector.cpp(69): warning C4305: 'argument' : truncation from 'double' to 'const float'
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axwidgetselector.cpp(72): warning C4305: 'argument' : truncation from 'double' to 'const float'
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axwidgetselector.cpp(75): warning C4305: 'argument' : truncation from 'double' to 'const float'
          axToggle.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axtoggle.cpp(222): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
          axTextControl.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axtextcontrol.cpp(206): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axtextcontrol.cpp(241): warning C4018: '>' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axtextcontrol.cpp(308): warning C4018: '<' : signed/unsigned mismatch
          axTextBox.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axtextbox.cpp(475): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axtextbox.cpp(510): warning C4018: '>' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axtextbox.cpp(586): warning C4018: '<' : signed/unsigned mismatch
          axStaticImage.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axSlider.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(55): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(56): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(65): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(66): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(85): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(89): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(95): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(126): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(130): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(224): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(234): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(339): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(369): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axslider.cpp(446): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
          axScrollBar.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(64): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(68): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(84): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(88): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axscrollbar.cpp(159): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
          axPopupMenu.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axpopupmenu.cpp(58): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axpopupmenu.cpp(79): warning C4018: '<' : signed/unsigned mismatch
          axPlot.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axplot.cpp(29844): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axplot.cpp(29850): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axplot.cpp(29858): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axplot.cpp(29864): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axplot.cpp(29898): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axplot.cpp(29899): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-         axNumberBox.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axnumberbox.cpp(171): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
          Generating Code...
          Compiling...
+         axNumberBox.cpp
          axMenu.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axmenu.cpp(106): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axmenu.cpp(177): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
          axLabel.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axKnob.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(360): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(367): warning C4244: 'argument' : conversion from 'double' to 'const axFloat', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(424): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(439): warning C4244: '=' : conversion from 'double' to 'unsigned int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(489): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axknob.cpp(502): warning C4244: 'argument' : conversion from 'const double' to 'const axFloat', possible loss of data
          axGrid.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(106): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(112): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(120): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(174): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(181): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(186): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axgrid.cpp(197): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
          axDropMenu.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axdropmenu.cpp(235): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
-     1>c:\users\alexandre arsenault\desktop\axlib\axwidgets\axdropmenu.cpp(246): warning C4244: 'argument' : conversion from 'double' to 'axInt', possible loss of data
          axDebugButton.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axButton.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          axAnimatedButton.cpp
          axWxPanel.cpp
          axCoreWxWidgets.cpp
          axWin32Utils.cpp
          axDebugWin32.cpp
          axCoreWin32.cpp
-     1>c:\users\alexandre arsenault\desktop\axlib\include\axvar.h(194): warning C4521: 'axVar' : multiple copy constructors specified
-     1>CL : warning : Should use GetInstance.
-     1>CL : warning : Deprecate.
          Generating Code...
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib" /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/lib/vc_lib/" /NOLOGO Debug\axCoreWin32.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Debug\axLib.lib" /LIBPATH:"../../../libs/wxWidgets-3.0.2/lib/vc_lib/" /NOLOGO Debug\axCoreWin32.obj
          Debug\axDebugWin32.obj
          Debug\axWin32Utils.obj
          Debug\axCoreWxWidgets.obj
@@ -293,6 +85,7 @@
          Debug\axTextControl.obj
          Debug\axToggle.obj
          Debug\axWidgetSelector.obj
+         Debug\axDrawingBuffer.obj
          Debug\axApp.obj
          Debug\axC++.obj
          Debug\axColor.obj
@@ -323,9 +116,9 @@
          Debug\axWidgetBuilder.obj
          Debug\axWindow.obj
          Debug\axWindowTree.obj
-         Windows.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib
-     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Windows\Windows.vcxproj" (Build target(s)).
+         Windows.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Debug\axLib.lib
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Windows\Windows.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:01:17.10
+Time Elapsed 00:01:15.21

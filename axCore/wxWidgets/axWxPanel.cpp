@@ -1,5 +1,7 @@
-#if _axWxWidgetsCore_ == 1
 #include "axWxPanel.h"
+
+#if _axWxWidgetsCore_ == 1
+#include "axCoreWxWidgets.h"
 
 BEGIN_EVENT_TABLE(BasicGLPane, wxGLCanvas)
 EVT_MOTION(BasicGLPane::mouseMoved)
@@ -143,7 +145,7 @@ void BasicGLPane::render(wxPaintEvent& evt)
 	axCore* core = axApp::GetInstance()->GetCore();
 
 	wxSize size(GetSize());
-	core->ResizeGLScene(size.x, size.y, 0);
+	core->ResizeGLScene(axSize(size.x, size.y));
 	
 	core->DrawGLScene();
 
