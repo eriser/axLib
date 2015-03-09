@@ -336,7 +336,7 @@ _font(nullptr)
 //    _bgImg = new axImage(img_path);
     _bgImg = new axImage(static_cast<Info*>(_info)->img);
     
-    _font = new axFont(0);
+	_font = std::unique_ptr<axFont>(new axFont(0));
     _font->SetFontSize(static_cast<Info*>(_info)->font_size);
     
     if(_events.button_click)

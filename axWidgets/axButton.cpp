@@ -268,7 +268,6 @@ _font(nullptr)
     
     _btnImg = new axImage(img_path);
     
-//    _font = new axFont(0);
     _font = std::unique_ptr<axFont>(new axFont(0));
     
     if(_events.button_click)

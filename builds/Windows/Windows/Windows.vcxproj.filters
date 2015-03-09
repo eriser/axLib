@@ -39,9 +39,6 @@
     <ClInclude Include="..\..\..\axWidgets\axDropMenu.h">
       <Filter>axWidgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axGrid.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\axWidgets\axKnob.h">
       <Filter>axWidgets</Filter>
     </ClInclude>
@@ -52,9 +49,6 @@
       <Filter>axWidgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\axWidgets\axNumberBox.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axPlot.h">
       <Filter>axWidgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\axWidgets\axPopupMenu.h">
@@ -296,9 +290,6 @@
     <ClCompile Include="..\..\..\axWidgets\axDropMenu.cpp">
       <Filter>axWidgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\axWidgets\axGrid.cpp">
-      <Filter>axWidgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\axWidgets\axKnob.cpp">
       <Filter>axWidgets</Filter>
     </ClCompile>
@@ -309,9 +300,6 @@
       <Filter>axWidgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\axWidgets\axNumberBox.cpp">
-      <Filter>axWidgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\axWidgets\axPlot.cpp">
       <Filter>axWidgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\axWidgets\axPopupMenu.cpp">

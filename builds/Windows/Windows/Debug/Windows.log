@@ -1,7 +1,7 @@
-﻿Build started 3/9/2015 11:05:32 AM.
+﻿Build started 3/9/2015 1:55:20 PM.
      1>Project "C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../include/ /I../../../axWin32 /I../../../axWidgets /I"../../../libs/freetype-2.5.3/include" /I../../../libs/lpng1610 /I"../../../libs/glew-1.12.0/include" /I"../../../libs/wxWidgets-3.0.2/include/" /I"../../../libs/wxWidgets-3.0.2/lib/vc_lib/mswud/" /I"../../../libs/wxWidgets-3.0.2/include/msvc/" /I../../../axCore/wxWidgets/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axCore\Win32\axCoreWin32.cpp ..\..\..\axCore\Win32\axDebugWin32.cpp ..\..\..\axCore\Win32\axWin32Utils.cpp ..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp ..\..\..\axCore\wxWidgets\axWxPanel.cpp ..\..\..\axWidgets\axAnimatedButton.cpp ..\..\..\axWidgets\axButton.cpp ..\..\..\axWidgets\axDebugButton.cpp ..\..\..\axWidgets\axDropMenu.cpp ..\..\..\axWidgets\axGrid.cpp ..\..\..\axWidgets\axKnob.cpp ..\..\..\axWidgets\axLabel.cpp ..\..\..\axWidgets\axMenu.cpp ..\..\..\axWidgets\axNumberBox.cpp ..\..\..\axWidgets\axPlot.cpp ..\..\..\axWidgets\axPopupMenu.cpp ..\..\..\axWidgets\axScrollBar.cpp ..\..\..\axWidgets\axSlider.cpp ..\..\..\axWidgets\axStaticImage.cpp ..\..\..\axWidgets\axTextBox.cpp ..\..\..\axWidgets\axTextControl.cpp ..\..\..\axWidgets\axToggle.cpp ..\..\..\axWidgets\axWidgetSelector.cpp ..\..\..\include\axDrawingBuffer.cpp ..\..\..\source\axApp.cpp ..\..\..\source\axC++.cpp ..\..\..\source\axColor.cpp ..\..\..\source\axConfig.cpp ..\..\..\source\axCore.cpp ..\..\..\source\axDefaultFontBuffer.cpp ..\..\..\source\axEvent.cpp ..\..\..\source\axEventManager.cpp ..\..\..\source\axFont.cpp ..\..\..\source\axFrameBuffer.cpp ..\..\..\source\axGC.cpp ..\..\..\source\axGraphicInterface.cpp ..\..\..\source\axImage.cpp ..\..\..\source\axKeyboardManager.cpp ..\..\..\source\axMain.cpp ..\..\..\source\axManager.cpp ..\..\..\source\axMath.cpp ..\..\..\source\axMouseManager.cpp ..\..\..\source\axMsg.cpp ..\..\..\source\axObject.cpp ..\..\..\source\axObjectLoader.cpp ..\..\..\source\axPanel.cpp ..\..\..\source\axResourceManager.cpp ..\..\..\source\axTimer.cpp ..\..\..\source\axUtils.cpp ..\..\..\source\axVar.cpp ..\..\..\source\axWidget.cpp ..\..\..\source\axWidgetBuilder.cpp ..\..\..\source\axWindow.cpp ..\..\..\source\axWindowTree.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../include/ /I../../../axWin32 /I../../../axWidgets /I"../../../libs/freetype-2.5.3/include" /I../../../libs/lpng1610 /I"../../../libs/glew-1.12.0/include" /I"../../../libs/wxWidgets-3.0.2/include/" /I"../../../libs/wxWidgets-3.0.2/lib/vc_lib/mswud/" /I"../../../libs/wxWidgets-3.0.2/include/msvc/" /I../../../axCore/wxWidgets/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axCore\Win32\axCoreWin32.cpp ..\..\..\axCore\Win32\axDebugWin32.cpp ..\..\..\axCore\Win32\axWin32Utils.cpp ..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp ..\..\..\axCore\wxWidgets\axWxPanel.cpp ..\..\..\axWidgets\axAnimatedButton.cpp ..\..\..\axWidgets\axButton.cpp ..\..\..\axWidgets\axDebugButton.cpp ..\..\..\axWidgets\axDropMenu.cpp ..\..\..\axWidgets\axKnob.cpp ..\..\..\axWidgets\axLabel.cpp ..\..\..\axWidgets\axMenu.cpp ..\..\..\axWidgets\axNumberBox.cpp ..\..\..\axWidgets\axPopupMenu.cpp ..\..\..\axWidgets\axScrollBar.cpp ..\..\..\axWidgets\axSlider.cpp ..\..\..\axWidgets\axStaticImage.cpp ..\..\..\axWidgets\axTextBox.cpp ..\..\..\axWidgets\axTextControl.cpp ..\..\..\axWidgets\axToggle.cpp ..\..\..\axWidgets\axWidgetSelector.cpp ..\..\..\include\axDrawingBuffer.cpp ..\..\..\source\axApp.cpp ..\..\..\source\axC++.cpp ..\..\..\source\axColor.cpp ..\..\..\source\axConfig.cpp ..\..\..\source\axCore.cpp ..\..\..\source\axDefaultFontBuffer.cpp ..\..\..\source\axEvent.cpp ..\..\..\source\axEventManager.cpp ..\..\..\source\axFont.cpp ..\..\..\source\axFrameBuffer.cpp ..\..\..\source\axGC.cpp ..\..\..\source\axGraphicInterface.cpp ..\..\..\source\axImage.cpp ..\..\..\source\axKeyboardManager.cpp ..\..\..\source\axMain.cpp ..\..\..\source\axManager.cpp ..\..\..\source\axMath.cpp ..\..\..\source\axMouseManager.cpp ..\..\..\source\axMsg.cpp ..\..\..\source\axObject.cpp ..\..\..\source\axObjectLoader.cpp ..\..\..\source\axPanel.cpp ..\..\..\source\axResourceManager.cpp ..\..\..\source\axTimer.cpp ..\..\..\source\axUtils.cpp ..\..\..\source\axVar.cpp ..\..\..\source\axWidget.cpp ..\..\..\source\axWidgetBuilder.cpp ..\..\..\source\axWindow.cpp ..\..\..\source\axWindowTree.cpp
          axWindowTree.cpp
          axWindow.cpp
          axWidgetBuilder.cpp
@@ -43,14 +43,12 @@
          axSlider.cpp
          axScrollBar.cpp
          axPopupMenu.cpp
-         axPlot.cpp
+         axNumberBox.cpp
          Generating Code...
          Compiling...
-         axNumberBox.cpp
          axMenu.cpp
          axLabel.cpp
          axKnob.cpp
-         axGrid.cpp
          axDropMenu.cpp
          axDebugButton.cpp
          axButton.cpp
@@ -71,12 +69,10 @@
          Debug\axButton.obj
          Debug\axDebugButton.obj
          Debug\axDropMenu.obj
-         Debug\axGrid.obj
          Debug\axKnob.obj
          Debug\axLabel.obj
          Debug\axMenu.obj
          Debug\axNumberBox.obj
-         Debug\axPlot.obj
          Debug\axPopupMenu.obj
          Debug\axScrollBar.obj
          Debug\axSlider.obj
@@ -121,4 +117,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:01:15.21
+Time Elapsed 00:01:10.14

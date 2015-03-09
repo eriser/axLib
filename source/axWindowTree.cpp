@@ -198,6 +198,14 @@ axWindowTree::axWindowTree()
 {
 }
 
+axWindowTree::~axWindowTree()
+{
+	for (auto& node : _nodes)
+	{
+		delete node;
+	}
+}
+
 std::deque<axWindow*> axWindowTree::GetWindowParents(axWindow* win)
 {
     std::deque<axWindow*> windows;

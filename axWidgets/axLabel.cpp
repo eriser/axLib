@@ -209,12 +209,12 @@ _font(nullptr)
     
     if(static_cast<Info*>(_info)->font_name != "")
     {
-        _font = new axFont(static_cast<Info*>(_info)->font_name);
+        _font = std::unique_ptr<axFont>(new axFont(static_cast<Info*>(_info)->font_name));
         
     }
     else
     {
-        _font = new axFont(0);
+		_font = std::unique_ptr<axFont>(new axFont(0));
         axPrint("axLabel :: Default font.");
     }
     
