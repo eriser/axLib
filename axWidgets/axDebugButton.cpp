@@ -45,7 +45,7 @@ _msg(""),
 _font(nullptr)
 {
     _currentColor = &_info.normal;
-    _font = new axFont(0);
+    _font = std::unique_ptr<axFont>(new_ axFont(0));
     
     SetEditingWidget(true);
 }
@@ -93,7 +93,7 @@ void axDebugButton::OnMouseLeftDown(const axPoint& pos)
     GrabMouse();
     
     PushEvent(axButton::Events::BUTTON_CLICK,
-              new axButton::Msg(nullptr, _msg));
+              new_ axButton::Msg(nullptr, _msg));
     
     Update();
 }
@@ -184,9 +184,9 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
             {
                 if(i == 0)
                 {
-                    label = new axLabel(win, axRect(widget->GetNextPosRight(2),
+                    label = new_ axLabel(win, axRect(widget->GetNextPosRight(2),
                                                     axSize(140, 25)), labelInfo, n);
-                    txtBox = new axTextBox(win,
+                    txtBox = new_ axTextBox(win,
                                            axRect(label->GetNextPosRight(0),
                                                   axSize(180, 25)),
                                            txtEvents,
@@ -198,11 +198,11 @@ void axDebugButton::OnMouseRightDown(const axPoint& pos)
                 }
                 else
                 {
-                    label = new axLabel(win, axRect(label->GetNextPosDown(0),
+                    label = new_ axLabel(win, axRect(label->GetNextPosDown(0),
                                                     axSize(140, 25)),
                                         labelInfo, n);
                     
-                    txtBox = new axTextBox(win, axRect(label->GetNextPosRight(0),
+                    txtBox = new_ axTextBox(win, axRect(label->GetNextPosRight(0),
                                                        axSize(180, 25)),
                                            txtEvents, txtInfo, "",
                                            info->GetAttributeValue(n));

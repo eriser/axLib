@@ -1108,3 +1108,73 @@ void axGC::DrawCircle(const axPoint& pos,
 ////    glPopMatrix();
 //  
 //}
+
+
+void axGC::DrawBigImageResize(axBigImage* img,
+	const axPoint& position,
+	const axSize& size,
+	double alpha)
+{
+	GLuint texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	axBigImage::ColorType color_type = img->GetColorType();
+	//axBigImage::PixelDepth depth = img->GetPixelDepth();
+	axSize real_img_size(img->GetImageSize());
+	void* data = img->GetImageData();
+
+	if (color_type == axBigImage::RGB)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, real_img_size.x, real_img_size.y,
+			0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	}
+	else
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, real_img_size.x, real_img_size.y,
+			0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	}
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	GLenum err = glGetError();
+	
+	if (err != GL_NO_ERROR)
+	{
+		axError("Can't draw axBigImage in axGC : ", err);
+	}
+
+	axPoint pos = position;
+
+	glColor4f(1.0, 1.0, 1.0, alpha);
+
+	glEnable(GL_TEXTURE_2D);
+	//	glEnable(GL_BLEND);
+	//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	//glBindTexture(GL_TEXTURE_2D, texture);
+	//	glDepthMask(GL_TRUE);
+	axSize img_size = size;
+
+	// OpenGL stores texture upside down so glTexCoord2d must be flipped.
+	glBegin(GL_QUADS);
+	// Buttom left.
+	glTexCoord2d(0.0, 1.0);
+	glVertex2d(pos.x, pos.y);
+
+	// Top left.
+	glTexCoord2d(0.0, 0.0);
+	glVertex2d(pos.x, pos.y + img_size.y);
+
+	// Top right.
+	glTexCoord2d(1.0, 0.0);
+	glVertex2d(pos.x + img_size.x, pos.y + img_size.y);
+
+	// Buttom right.
+	glTexCoord2d(1.0, 1.0);
+	glVertex2d(pos.x + img_size.x, pos.y);
+	glEnd();
+
+	//	glDisable(GL_BLEND);
+	glDisable(GL_TEXTURE_2D);
+	glDeleteTextures(1, &texture);
+}

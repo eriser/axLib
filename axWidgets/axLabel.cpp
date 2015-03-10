@@ -186,7 +186,7 @@ axLabel* axLabel::Builder::Create(axVectorPairString attributes)
         }
     }
     
-    axLabel* label = new axLabel(_parent, axRect(pos, _size),
+    axLabel* label = new_ axLabel(_parent, axRect(pos, _size),
                                  _info, _label);
     
     _parent->GetResourceManager()->Add(name, label);
@@ -200,7 +200,7 @@ axLabel::axLabel(axWindow* parent,
                  const axRect& rect,
                  const axLabel::Info& info,
                  const std::string& label):
-axWidget(parent, rect, new Info(info)),
+axWidget(parent, rect, new_ Info(info)),
 //_info(info),
 _label(label),
 _font(nullptr)
@@ -209,12 +209,12 @@ _font(nullptr)
     
     if(static_cast<Info*>(_info)->font_name != "")
     {
-        _font = std::unique_ptr<axFont>(new axFont(static_cast<Info*>(_info)->font_name));
+        _font = std::unique_ptr<axFont>(new_ axFont(static_cast<Info*>(_info)->font_name));
         
     }
     else
     {
-		_font = std::unique_ptr<axFont>(new axFont(0));
+		_font = std::unique_ptr<axFont>(new_ axFont(0));
         axPrint("axLabel :: Default font.");
     }
     

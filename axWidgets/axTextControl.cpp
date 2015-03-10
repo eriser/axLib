@@ -45,7 +45,7 @@ _findClickCursorIndex(false)
 {
 	_currentColor = &_info.normal;
 
-    _btnImg = new axImage(img_path);
+    _btnImg = new_ axImage(img_path);
     
     if(_events.button_click)
     {
@@ -54,13 +54,13 @@ _findClickCursorIndex(false)
     
     if(IsFlag(axTEXT_CTRL_FLASHING_CURSOR, _flags))
     {
-        _flashingCursor = new axTimer();
+        _flashingCursor = new_ axTimer();
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     
     _cursorIndex = _label.size();
     
-    _font = new axFont(0);
+    _font = new_ axFont(0);
     
     SetShownRect(axRect(-5,
                         -5,

@@ -81,8 +81,8 @@ public:
 	virtual int DrawGLScene();
 
 protected:
-	axManager* _windowManager;
-	axManager* _popupManager;
+	std::unique_ptr<axManager> _windowManager;
+	std::unique_ptr<axManager> _popupManager;
 
 	bool _needToDraw, _popupNeedToDraw;
 	axSize _size, _popSize;

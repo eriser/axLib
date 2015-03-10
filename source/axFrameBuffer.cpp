@@ -101,7 +101,7 @@ void axFrameBuffer::DrawOnFrameBuffer(const std::function<void()>& fct,
     
     // Save modelView matrix.
     glMatrixMode(GL_MODELVIEW);
-    axMatrix4 modelView(GL_MODELVIEW);
+    axMatrix4 modelView(GL_MODELVIEW_MATRIX);
     
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
     glPushAttrib(GL_DEPTH_BUFFER_BIT);

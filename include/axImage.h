@@ -55,6 +55,7 @@ class axImageGlobalMapLoader
 {
 public:
 	axImageGlobalMapLoader();
+
 	bool LoadImage(const string& path, GLuint& _texture, axSize& _size);
 
 private:
@@ -95,6 +96,62 @@ private:
 	static axImageGlobalMapLoader _globalMap;
 
 	friend axImageGlobalMapLoader;
+};
+
+class axBigImage
+{
+public:
+	axBigImage(const string& path);
+
+	~axBigImage()
+	{
+		delete[] _imgData;
+	}
+
+	bool InitImage(const string& path);
+
+	enum ColorType
+	{
+		RGB,
+		RGBA
+	};
+
+	enum PixelDepth
+	{
+		UNSIGNED_BYTE
+	};
+
+	void* GetImageData()
+	{
+		return _imgData;
+	}
+
+	ColorType GetColorType() const
+	{
+		return _colorType;
+	}
+
+	PixelDepth GetPixelDepth() const
+	{
+		return _pixelDepth;
+	}
+
+	axSize GetImageSize() const
+	{
+		return _size;
+	}
+
+	bool IsImageReady() const
+	{
+		return _imgData != nullptr;
+	}
+
+private:
+	std::string _path;
+	axSize _size;
+	void* _imgData;
+	ColorType _colorType;
+	PixelDepth _pixelDepth;
 };
 
 /// @}

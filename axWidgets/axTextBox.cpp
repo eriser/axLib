@@ -55,7 +55,7 @@ std::string axTextBox::Msg::GetMsg() const
 
 axMsg* axTextBox::Msg::GetCopy()
 {
-    return new axTextBox::Msg(*this);
+    return new_ axTextBox::Msg(*this);
 }
 
 /*******************************************************************************
@@ -251,7 +251,7 @@ axWidget* axTextBox::Builder::Create(const axVectorPairString& attributes)
         }
     }
     
-    axTextBox* btn = new axTextBox(parent, axRect(pos, _size), evts,
+    axTextBox* btn = new_ axTextBox(parent, axRect(pos, _size), evts,
                                    _info, _imgPath, _label, _flags);
     
     parent->GetResourceManager()->Add(name, btn);
@@ -269,7 +269,7 @@ axTextBox::axTextBox(axWindow* parent,
                      std::string label,
                      axFlag flags) :
 // Heritage.
-axWidget(parent, rect, new Info(info)),
+axWidget(parent, rect, new_ Info(info)),
 // Members.
 _events(events),
 //_info(info),
@@ -287,7 +287,7 @@ _maxNumChar(10000000)
 {
 	_currentColor = &static_cast<Info*>(_info)->normal;
 
-    _btnImg = new axImage(img_path);
+    _btnImg = new_ axImage(img_path);
     
     if(_events.button_click)
     {
@@ -301,13 +301,13 @@ _maxNumChar(10000000)
     
     if(IsFlag(Flags::FLASHING_CURSOR, _flags))
     {
-        _flashingCursor = new axTimer();
+        _flashingCursor = new_ axTimer();
         _flashingCursor->AddConnection(0, GetOnFlashingCursorTimer());
     }
     
     _cursorIndex = (int)_label.size();
     
-    _font = new axFont(0);
+    _font = new_ axFont(0);
     
     
     // 
@@ -523,7 +523,7 @@ void axTextBox::OnRightArrowDown()
 
 void axTextBox::OnEnterDown()
 {
-    PushEvent(Events::ENTER_CLICK, new axTextBox::Msg(this, _label));
+    PushEvent(Events::ENTER_CLICK, new_ axTextBox::Msg(this, _label));
 //    UnGrabKey();
 }
 

@@ -127,6 +127,11 @@ public:
                      const axRect& rect,
                      axColor color = axColor(0.0, 0.0, 0.0));
     
+	void DrawBigImageResize(axBigImage* img,
+		const axPoint& position,
+		const axSize& size,
+		double alpha = 1.0);
+
 //    void DrawWindowBuffer();
     
     // Just blocking x axis for now.

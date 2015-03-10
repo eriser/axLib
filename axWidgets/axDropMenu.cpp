@@ -44,10 +44,10 @@ _msg(msg)
 {
     _currentColor = &_info.normal;
     
-    _btnImg = new axImage(img_path);
-    _bgImg = new axImage(bg_img_path);
+    _btnImg = new_ axImage(img_path);
+    _bgImg = new_ axImage(bg_img_path);
     
-    _font = new axFont(0);
+    _font = new_ axFont(0);
     
     if(_events.selection_change)
     {
@@ -69,7 +69,7 @@ _msg(msg)
     axPoint menu_pos = GetAbsoluteRect().position;
     menu_pos.y += rect.size.y;
     
-    _popMenu = new axPopupMenu(this,
+    _popMenu = new_ axPopupMenu(this,
                                axRect(menu_pos, axSize(rect.size.x, 30)),
                                menu_evts,
                                menu_info,
@@ -118,7 +118,7 @@ void axDropMenu::OnPopupMenuChoice(const axPopupMenuMsg& msg)
     _label = msg.GetMsg();
     
     PushEvent(axDropMenuEvents::SELECTION_CHANGE,
-              new axDropMenuMsg(this, _label));
+              new_ axDropMenuMsg(this, _label));
     Update();
 }
 

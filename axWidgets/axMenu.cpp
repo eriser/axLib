@@ -38,7 +38,7 @@ axMenuNode::axMenuNode( axWindow* parent,
 
     m_nSubNode = 0;
     m_nSubNodeMax = axMENU_NODE_INIT_ARRAY_SIZE;
-    //m_nodes = new axMenuNode* [ m_nSubNodeMax ];
+    //m_nodes = new_ axMenuNode* [ m_nSubNodeMax ];
 
     m_delta = -8;
 
@@ -59,10 +59,10 @@ m_nCurrentImg(axMENU_NODE_IMAGE_NORMAL),
 m_nSubNode(0),
 m_nSubNodeMax(axMENU_NODE_INIT_ARRAY_SIZE)
 {
-    //m_nodes = new axMenuNode* [ m_nSubNodeMax ];
+    //m_nodes = new_ axMenuNode* [ m_nSubNodeMax ];
     m_delta = parent->GetDelta() + 8;
 
-	m_img = new axImage(img_path);
+	m_img = new_ axImage(img_path);
 }
 
 void axMenuNode::AddSubNode(axMenuNode* node)
@@ -216,12 +216,12 @@ bool axMenu::AddRootNode(axMenuNode* node)
         // If scroll bar exist
         //if(scrollBar != NULL)
         //{
-            // Resize new node added with scrollbar.
+            // Resize new_ node added with scrollbar.
         //    node->SetSize(node->GetSize() + wxSize(GetSize().x - INIT_WIDTH - scrollBar->GetSize().x, 0));
         //}
         //else
         //{
-            // Resize new node added.
+            // Resize new_ node added.
             //node->SetSize(node->GetSize() + wxSize(GetSize().x - INIT_WIDTH, 0));
         //}
 
