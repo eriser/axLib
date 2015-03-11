@@ -120,6 +120,7 @@ public:
 private:
     static axApp* MainInstance;
 	axCore* _core;
+	static axApp* MainInstance;
     
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;
     static axResourceManager* _resourceManager;
