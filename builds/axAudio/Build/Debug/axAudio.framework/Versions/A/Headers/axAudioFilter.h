@@ -29,13 +29,9 @@
 
 enum axAudioFilterType
 {
-    axAUDIO_FILTER_LPF,
-    axAUDIO_FILTER_HPF,
-    axAUDIO_FILTER_BPF,
-    axAUDIO_FILTER_NOTCH,
-    axAUDIO_FILTER_PEAK,
-    axAUDIO_FILTER_LOW_SHELF,
-    axAUDIO_FILTER_HIGH_SHELF
+	axAUDIO_FILTER_LPF,
+	axAUDIO_FILTER_HPF,
+	axAUDIO_FILTER_BPF
 };
 
 struct axAudioStereoOutput
@@ -70,13 +66,9 @@ public:
 	t_out ProcessStereo(t_out in);
     void ProcessStereo(float* in, float* out);
     
-    
-    void SetFilterType(const axAudioFilterType& type);
-    
 	void SetFreq(float f);
 	void SetQ(float f);
 	void SetGain(float f);
-    void SetActive(const bool& active);
     
     float GetFreq() const;
     float GetQ() const;
@@ -99,11 +91,9 @@ public:
 	float x1, x2, y1, y2;
 	float rx1, rx2, ry1, ry2;
 	float c, w0, alpha;
-	axAudioFilterType filterType;
+	int filterType;
 	bool init;
 	long sr;
-    bool _active;
-    
 };
 
 

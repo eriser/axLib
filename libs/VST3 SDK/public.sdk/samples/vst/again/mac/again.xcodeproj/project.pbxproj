@@ -108,6 +108,27 @@
 			remoteGlobalIDString = D2AAC045055464E500DB518D;
 			remoteInfo = base;
 		};
+		7CF586661AA63D1500BE0F3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58CBD82D12C89C0700994989 /* base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4306DEB17DDC8800075E8C4;
+			remoteInfo = "base_libc++";
+		};
+		7CF586681AA63D1500BE0F3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58CBD82D12C89C0700994989 /* base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4128A5417EB4B0B00114E59;
+			remoteInfo = base_ios;
+		};
+		7CF5866A1AA63D1500BE0F3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58CBD82D12C89C0700994989 /* base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F412026A14C41F68008F9C84;
+			remoteInfo = base_codecoverage;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -297,6 +318,9 @@
 			isa = PBXGroup;
 			children = (
 				58CBD83212C89C0700994989 /* libbase.a */,
+				7CF586671AA63D1500BE0F3E /* libbase_libc++.a */,
+				7CF586691AA63D1500BE0F3E /* libbase_ios.a */,
+				7CF5866B1AA63D1500BE0F3E /* libbase_codecoverage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -548,6 +572,8 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "again" */;
 			compatibilityVersion = "Xcode 3.0";
 			developmentRegion = English;
@@ -580,6 +606,27 @@
 			fileType = archive.ar;
 			path = libbase.a;
 			remoteRef = 58CBD83112C89C0700994989 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7CF586671AA63D1500BE0F3E /* libbase_libc++.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libbase_libc++.a";
+			remoteRef = 7CF586661AA63D1500BE0F3E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7CF586691AA63D1500BE0F3E /* libbase_ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libbase_ios.a;
+			remoteRef = 7CF586681AA63D1500BE0F3E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7CF5866B1AA63D1500BE0F3E /* libbase_codecoverage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libbase_codecoverage.a;
+			remoteRef = 7CF5866A1AA63D1500BE0F3E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -738,6 +785,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58CBD86712C8A03B00994989 /* again_debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -745,18 +795,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58CBD86612C8A03B00994989 /* again_release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		4FADC23808B4156C00ABE55E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		4FADC23908B4156C00ABE55E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

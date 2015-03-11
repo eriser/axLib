@@ -104,7 +104,7 @@ void axVstInterface::LoadVstPlugin(const std::string& vst_path)
 int axVstInterface::configurePluginCallbacks() 
 {
 	// Check plugin's magic number
-	// If incorrect, then the file either was not loaded properly, is not a
+	// If incorrect, then the file either was not loaded properly, is not a
 	// real VST plugin, or is otherwise corrupt.
 	if (_plugin->magic != kEffectMagic) 
 	{

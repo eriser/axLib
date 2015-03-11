@@ -917,8 +917,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FC562BA0E373E6E00886555 /* debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_LINK_OBJC_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = base;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -926,14 +929,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FC562BE0E373E6E00886555 /* release.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					x86_64,
-					i386,
-					ppc,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_LINK_OBJC_RUNTIME = YES;
 				DEPLOYMENT_POSTPROCESSING = NO;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = base;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

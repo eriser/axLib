@@ -39,13 +39,13 @@ unsigned int axAudioEnvelope::SecToSample(double seconde)
 void axAudioEnvelope::SetAttack(const float& value)
 {
 	_attack = value;
-    _nAttackSample = axAudioUtils::SecondeToSample(_attack, _sr);//SecToSample(_attack);
+    _nAttackSample = ax::Audio::SecondeToSample(_attack, _sr);//SecToSample(_attack);
 }
 
 void axAudioEnvelope::SetDecay(const float& value)
 {
 	_decay= value;
-    _nDecaySample = axAudioUtils::SecondeToSample(_decay, _sr);//SecToSample(_decay);
+    _nDecaySample = ax::Audio::SecondeToSample(_decay, _sr);//SecToSample(_decay);
 }
 
 void axAudioEnvelope::SetRelease(const float& value)
@@ -62,7 +62,7 @@ float axAudioEnvelope::Process()
         {
             _buffePos++;
             double mu = _buffePos / double(_nAttackSample);
-            return axAudioUtils::LineairInterpole<float>(0.0, _sustain, mu);
+            return ax::Audio::LineairInterpole<float>(0.0, _sustain, mu);
             //return axLineairInterpole<float>(0.0, _sustain, mu);
         }
         
@@ -72,7 +72,7 @@ float axAudioEnvelope::Process()
             _buffePos++;
             
             double mu = (_buffePos - _nAttackSample) / double(_nDecaySample);
-            return axAudioUtils::LineairInterpole<float>(1.0, 0.0, mu);
+            return ax::Audio::LineairInterpole<float>(1.0, 0.0, mu);
         }
     }
 

@@ -7,43 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C1252201AA09CD300BD3E96 /* axAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252121AA09CD300BD3E96 /* axAudio.cpp */; };
-		7C1252211AA09CD300BD3E96 /* axAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252131AA09CD300BD3E96 /* axAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C1252221AA09CD300BD3E96 /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252141AA09CD300BD3E96 /* axAudioBuffer.cpp */; };
-		7C1252231AA09CD300BD3E96 /* axAudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252151AA09CD300BD3E96 /* axAudioBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C1252241AA09CD300BD3E96 /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252161AA09CD300BD3E96 /* axAudioBufferPlayer.cpp */; };
-		7C1252251AA09CD300BD3E96 /* axAudioBufferPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252171AA09CD300BD3E96 /* axAudioBufferPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C1252261AA09CD300BD3E96 /* axAudioEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1252181AA09CD300BD3E96 /* axAudioEnvelope.cpp */; };
-		7C1252271AA09CD300BD3E96 /* axAudioEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1252191AA09CD300BD3E96 /* axAudioEnvelope.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C1252281AA09CD300BD3E96 /* axAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C12521A1AA09CD300BD3E96 /* axAudioFilter.cpp */; };
-		7C1252291AA09CD300BD3E96 /* axAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521B1AA09CD300BD3E96 /* axAudioFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C12522A1AA09CD300BD3E96 /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C12521C1AA09CD300BD3E96 /* axAudioUtils.cpp */; };
-		7C12522B1AA09CD300BD3E96 /* axAudioUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521D1AA09CD300BD3E96 /* axAudioUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C12522C1AA09CD300BD3E96 /* axAudioWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C12521E1AA09CD300BD3E96 /* axAudioWaveTable.cpp */; };
-		7C12522D1AA09CD300BD3E96 /* axAudioWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C12521F1AA09CD300BD3E96 /* axAudioWaveTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C1252341AA0AAAD00BD3E96 /* libportaudio.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1252321AA0AAAD00BD3E96 /* libportaudio.2.dylib */; };
 		7C1252351AA0AAAD00BD3E96 /* libsndfile.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1252331AA0AAAD00BD3E96 /* libsndfile.1.dylib */; };
+		7CFAFCB21AA73AC300A09A7F /* axAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCA21AA73AC300A09A7F /* axAudio.cpp */; };
+		7CFAFCB31AA73AC300A09A7F /* axAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCA31AA73AC300A09A7F /* axAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCB41AA73AC300A09A7F /* axAudioBiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCA41AA73AC300A09A7F /* axAudioBiquadFilter.cpp */; };
+		7CFAFCB51AA73AC300A09A7F /* axAudioBiquadFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCA51AA73AC300A09A7F /* axAudioBiquadFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCB61AA73AC300A09A7F /* axAudioBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCA61AA73AC300A09A7F /* axAudioBuffer.cpp */; };
+		7CFAFCB71AA73AC300A09A7F /* axAudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCA71AA73AC300A09A7F /* axAudioBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCB81AA73AC300A09A7F /* axAudioBufferPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCA81AA73AC300A09A7F /* axAudioBufferPlayer.cpp */; };
+		7CFAFCB91AA73AC300A09A7F /* axAudioBufferPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCA91AA73AC300A09A7F /* axAudioBufferPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCBA1AA73AC300A09A7F /* axAudioEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCAA1AA73AC300A09A7F /* axAudioEnvelope.cpp */; };
+		7CFAFCBB1AA73AC300A09A7F /* axAudioEnvelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCAB1AA73AC300A09A7F /* axAudioEnvelope.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCBC1AA73AC300A09A7F /* axAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCAC1AA73AC300A09A7F /* axAudioFilter.cpp */; };
+		7CFAFCBD1AA73AC300A09A7F /* axAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCAD1AA73AC300A09A7F /* axAudioFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCBE1AA73AC300A09A7F /* axAudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCAE1AA73AC300A09A7F /* axAudioUtils.cpp */; };
+		7CFAFCBF1AA73AC300A09A7F /* axAudioUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCAF1AA73AC300A09A7F /* axAudioUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCC01AA73AC300A09A7F /* axAudioWaveTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCB01AA73AC300A09A7F /* axAudioWaveTable.cpp */; };
+		7CFAFCC11AA73AC300A09A7F /* axAudioWaveTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCB11AA73AC300A09A7F /* axAudioWaveTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCC41AA7664500A09A7F /* axAudioFirstOrderFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCC21AA7664500A09A7F /* axAudioFirstOrderFilter.cpp */; };
+		7CFAFCC51AA7664500A09A7F /* axAudioFirstOrderFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCC31AA7664500A09A7F /* axAudioFirstOrderFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCC81AA780CB00A09A7F /* axAudioSignalBalance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCC61AA780CB00A09A7F /* axAudioSignalBalance.cpp */; };
+		7CFAFCC91AA780CB00A09A7F /* axAudioSignalBalance.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCC71AA780CB00A09A7F /* axAudioSignalBalance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CFAFCCB1AA7FED300A09A7F /* axAudioFrames.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCCA1AA7FED300A09A7F /* axAudioFrames.h */; };
+		7CFAFCCD1AA7FEE600A09A7F /* axAudioFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCCC1AA7FEE600A09A7F /* axAudioFrames.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7C1251E61AA09BEC00BD3E96 /* axAudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = axAudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1251EA1AA09BEC00BD3E96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C1252121AA09CD300BD3E96 /* axAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudio.cpp; sourceTree = "<group>"; };
-		7C1252131AA09CD300BD3E96 /* axAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudio.h; sourceTree = "<group>"; };
-		7C1252141AA09CD300BD3E96 /* axAudioBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioBuffer.cpp; sourceTree = "<group>"; };
-		7C1252151AA09CD300BD3E96 /* axAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBuffer.h; sourceTree = "<group>"; };
-		7C1252161AA09CD300BD3E96 /* axAudioBufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioBufferPlayer.cpp; sourceTree = "<group>"; };
-		7C1252171AA09CD300BD3E96 /* axAudioBufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioBufferPlayer.h; sourceTree = "<group>"; };
-		7C1252181AA09CD300BD3E96 /* axAudioEnvelope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioEnvelope.cpp; sourceTree = "<group>"; };
-		7C1252191AA09CD300BD3E96 /* axAudioEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioEnvelope.h; sourceTree = "<group>"; };
-		7C12521A1AA09CD300BD3E96 /* axAudioFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioFilter.cpp; sourceTree = "<group>"; };
-		7C12521B1AA09CD300BD3E96 /* axAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioFilter.h; sourceTree = "<group>"; };
-		7C12521C1AA09CD300BD3E96 /* axAudioUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioUtils.cpp; sourceTree = "<group>"; };
-		7C12521D1AA09CD300BD3E96 /* axAudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioUtils.h; sourceTree = "<group>"; };
-		7C12521E1AA09CD300BD3E96 /* axAudioWaveTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axAudioWaveTable.cpp; sourceTree = "<group>"; };
-		7C12521F1AA09CD300BD3E96 /* axAudioWaveTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = axAudioWaveTable.h; sourceTree = "<group>"; };
 		7C1252321AA0AAAD00BD3E96 /* libportaudio.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.2.dylib; path = /Users/alexarse/Project/axLib/builds/axAudio/libportaudio.2.dylib; sourceTree = "<absolute>"; };
 		7C1252331AA0AAAD00BD3E96 /* libsndfile.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsndfile.1.dylib; sourceTree = "<group>"; };
+		7CFAFCA21AA73AC300A09A7F /* axAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudio.cpp; path = ../../../axAudio/axAudio.cpp; sourceTree = "<group>"; };
+		7CFAFCA31AA73AC300A09A7F /* axAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudio.h; path = ../../../axAudio/axAudio.h; sourceTree = "<group>"; };
+		7CFAFCA41AA73AC300A09A7F /* axAudioBiquadFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioBiquadFilter.cpp; path = ../../../axAudio/axAudioBiquadFilter.cpp; sourceTree = "<group>"; };
+		7CFAFCA51AA73AC300A09A7F /* axAudioBiquadFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioBiquadFilter.h; path = ../../../axAudio/axAudioBiquadFilter.h; sourceTree = "<group>"; };
+		7CFAFCA61AA73AC300A09A7F /* axAudioBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioBuffer.cpp; path = ../../../axAudio/axAudioBuffer.cpp; sourceTree = "<group>"; };
+		7CFAFCA71AA73AC300A09A7F /* axAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioBuffer.h; path = ../../../axAudio/axAudioBuffer.h; sourceTree = "<group>"; };
+		7CFAFCA81AA73AC300A09A7F /* axAudioBufferPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioBufferPlayer.cpp; path = ../../../axAudio/axAudioBufferPlayer.cpp; sourceTree = "<group>"; };
+		7CFAFCA91AA73AC300A09A7F /* axAudioBufferPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioBufferPlayer.h; path = ../../../axAudio/axAudioBufferPlayer.h; sourceTree = "<group>"; };
+		7CFAFCAA1AA73AC300A09A7F /* axAudioEnvelope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioEnvelope.cpp; path = ../../../axAudio/axAudioEnvelope.cpp; sourceTree = "<group>"; };
+		7CFAFCAB1AA73AC300A09A7F /* axAudioEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioEnvelope.h; path = ../../../axAudio/axAudioEnvelope.h; sourceTree = "<group>"; };
+		7CFAFCAC1AA73AC300A09A7F /* axAudioFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioFilter.cpp; path = ../../../axAudio/axAudioFilter.cpp; sourceTree = "<group>"; };
+		7CFAFCAD1AA73AC300A09A7F /* axAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioFilter.h; path = ../../../axAudio/axAudioFilter.h; sourceTree = "<group>"; };
+		7CFAFCAE1AA73AC300A09A7F /* axAudioUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioUtils.cpp; path = ../../../axAudio/axAudioUtils.cpp; sourceTree = "<group>"; };
+		7CFAFCAF1AA73AC300A09A7F /* axAudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioUtils.h; path = ../../../axAudio/axAudioUtils.h; sourceTree = "<group>"; };
+		7CFAFCB01AA73AC300A09A7F /* axAudioWaveTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioWaveTable.cpp; path = ../../../axAudio/axAudioWaveTable.cpp; sourceTree = "<group>"; };
+		7CFAFCB11AA73AC300A09A7F /* axAudioWaveTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioWaveTable.h; path = ../../../axAudio/axAudioWaveTable.h; sourceTree = "<group>"; };
+		7CFAFCC21AA7664500A09A7F /* axAudioFirstOrderFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioFirstOrderFilter.cpp; path = ../../../axAudio/axAudioFirstOrderFilter.cpp; sourceTree = "<group>"; };
+		7CFAFCC31AA7664500A09A7F /* axAudioFirstOrderFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioFirstOrderFilter.h; path = ../../../axAudio/axAudioFirstOrderFilter.h; sourceTree = "<group>"; };
+		7CFAFCC61AA780CB00A09A7F /* axAudioSignalBalance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioSignalBalance.cpp; path = ../../../axAudio/axAudioSignalBalance.cpp; sourceTree = "<group>"; };
+		7CFAFCC71AA780CB00A09A7F /* axAudioSignalBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioSignalBalance.h; path = ../../../axAudio/axAudioSignalBalance.h; sourceTree = "<group>"; };
+		7CFAFCCA1AA7FED300A09A7F /* axAudioFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = axAudioFrames.h; path = ../../../axAudio/axAudioFrames.h; sourceTree = "<group>"; };
+		7CFAFCCC1AA7FEE600A09A7F /* axAudioFrames.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = axAudioFrames.cpp; path = ../../../axAudio/axAudioFrames.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +96,8 @@
 		7C1251E81AA09BEC00BD3E96 /* axAudio */ = {
 			isa = PBXGroup;
 			children = (
+				7CFAFCCC1AA7FEE600A09A7F /* axAudioFrames.cpp */,
+				7CFAFCCA1AA7FED300A09A7F /* axAudioFrames.h */,
 				7C1252021AA09C7B00BD3E96 /* include */,
 				7C1252111AA09CA600BD3E96 /* source */,
 				7C1251E91AA09BEC00BD3E96 /* Supporting Files */,
@@ -98,13 +116,16 @@
 		7C1252021AA09C7B00BD3E96 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				7C1252131AA09CD300BD3E96 /* axAudio.h */,
-				7C1252151AA09CD300BD3E96 /* axAudioBuffer.h */,
-				7C1252171AA09CD300BD3E96 /* axAudioBufferPlayer.h */,
-				7C1252191AA09CD300BD3E96 /* axAudioEnvelope.h */,
-				7C12521B1AA09CD300BD3E96 /* axAudioFilter.h */,
-				7C12521D1AA09CD300BD3E96 /* axAudioUtils.h */,
-				7C12521F1AA09CD300BD3E96 /* axAudioWaveTable.h */,
+				7CFAFCC71AA780CB00A09A7F /* axAudioSignalBalance.h */,
+				7CFAFCA31AA73AC300A09A7F /* axAudio.h */,
+				7CFAFCA51AA73AC300A09A7F /* axAudioBiquadFilter.h */,
+				7CFAFCA71AA73AC300A09A7F /* axAudioBuffer.h */,
+				7CFAFCA91AA73AC300A09A7F /* axAudioBufferPlayer.h */,
+				7CFAFCAB1AA73AC300A09A7F /* axAudioEnvelope.h */,
+				7CFAFCAD1AA73AC300A09A7F /* axAudioFilter.h */,
+				7CFAFCC31AA7664500A09A7F /* axAudioFirstOrderFilter.h */,
+				7CFAFCAF1AA73AC300A09A7F /* axAudioUtils.h */,
+				7CFAFCB11AA73AC300A09A7F /* axAudioWaveTable.h */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -112,13 +133,16 @@
 		7C1252111AA09CA600BD3E96 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				7C1252121AA09CD300BD3E96 /* axAudio.cpp */,
-				7C1252141AA09CD300BD3E96 /* axAudioBuffer.cpp */,
-				7C1252161AA09CD300BD3E96 /* axAudioBufferPlayer.cpp */,
-				7C1252181AA09CD300BD3E96 /* axAudioEnvelope.cpp */,
-				7C12521A1AA09CD300BD3E96 /* axAudioFilter.cpp */,
-				7C12521C1AA09CD300BD3E96 /* axAudioUtils.cpp */,
-				7C12521E1AA09CD300BD3E96 /* axAudioWaveTable.cpp */,
+				7CFAFCC61AA780CB00A09A7F /* axAudioSignalBalance.cpp */,
+				7CFAFCA21AA73AC300A09A7F /* axAudio.cpp */,
+				7CFAFCA41AA73AC300A09A7F /* axAudioBiquadFilter.cpp */,
+				7CFAFCA61AA73AC300A09A7F /* axAudioBuffer.cpp */,
+				7CFAFCA81AA73AC300A09A7F /* axAudioBufferPlayer.cpp */,
+				7CFAFCAA1AA73AC300A09A7F /* axAudioEnvelope.cpp */,
+				7CFAFCAC1AA73AC300A09A7F /* axAudioFilter.cpp */,
+				7CFAFCC21AA7664500A09A7F /* axAudioFirstOrderFilter.cpp */,
+				7CFAFCAE1AA73AC300A09A7F /* axAudioUtils.cpp */,
+				7CFAFCB01AA73AC300A09A7F /* axAudioWaveTable.cpp */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -130,13 +154,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C1252291AA09CD300BD3E96 /* axAudioFilter.h in Headers */,
-				7C1252271AA09CD300BD3E96 /* axAudioEnvelope.h in Headers */,
-				7C1252231AA09CD300BD3E96 /* axAudioBuffer.h in Headers */,
-				7C1252211AA09CD300BD3E96 /* axAudio.h in Headers */,
-				7C12522D1AA09CD300BD3E96 /* axAudioWaveTable.h in Headers */,
-				7C12522B1AA09CD300BD3E96 /* axAudioUtils.h in Headers */,
-				7C1252251AA09CD300BD3E96 /* axAudioBufferPlayer.h in Headers */,
+				7CFAFCB51AA73AC300A09A7F /* axAudioBiquadFilter.h in Headers */,
+				7CFAFCC91AA780CB00A09A7F /* axAudioSignalBalance.h in Headers */,
+				7CFAFCB91AA73AC300A09A7F /* axAudioBufferPlayer.h in Headers */,
+				7CFAFCBD1AA73AC300A09A7F /* axAudioFilter.h in Headers */,
+				7CFAFCB71AA73AC300A09A7F /* axAudioBuffer.h in Headers */,
+				7CFAFCBF1AA73AC300A09A7F /* axAudioUtils.h in Headers */,
+				7CFAFCCB1AA7FED300A09A7F /* axAudioFrames.h in Headers */,
+				7CFAFCB31AA73AC300A09A7F /* axAudio.h in Headers */,
+				7CFAFCC51AA7664500A09A7F /* axAudioFirstOrderFilter.h in Headers */,
+				7CFAFCC11AA73AC300A09A7F /* axAudioWaveTable.h in Headers */,
+				7CFAFCBB1AA73AC300A09A7F /* axAudioEnvelope.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,13 +235,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C1252241AA09CD300BD3E96 /* axAudioBufferPlayer.cpp in Sources */,
-				7C12522A1AA09CD300BD3E96 /* axAudioUtils.cpp in Sources */,
-				7C1252261AA09CD300BD3E96 /* axAudioEnvelope.cpp in Sources */,
-				7C1252281AA09CD300BD3E96 /* axAudioFilter.cpp in Sources */,
-				7C1252201AA09CD300BD3E96 /* axAudio.cpp in Sources */,
-				7C1252221AA09CD300BD3E96 /* axAudioBuffer.cpp in Sources */,
-				7C12522C1AA09CD300BD3E96 /* axAudioWaveTable.cpp in Sources */,
+				7CFAFCB61AA73AC300A09A7F /* axAudioBuffer.cpp in Sources */,
+				7CFAFCB21AA73AC300A09A7F /* axAudio.cpp in Sources */,
+				7CFAFCC81AA780CB00A09A7F /* axAudioSignalBalance.cpp in Sources */,
+				7CFAFCB81AA73AC300A09A7F /* axAudioBufferPlayer.cpp in Sources */,
+				7CFAFCC01AA73AC300A09A7F /* axAudioWaveTable.cpp in Sources */,
+				7CFAFCBA1AA73AC300A09A7F /* axAudioEnvelope.cpp in Sources */,
+				7CFAFCBE1AA73AC300A09A7F /* axAudioUtils.cpp in Sources */,
+				7CFAFCC41AA7664500A09A7F /* axAudioFirstOrderFilter.cpp in Sources */,
+				7CFAFCCD1AA7FEE600A09A7F /* axAudioFrames.cpp in Sources */,
+				7CFAFCB41AA73AC300A09A7F /* axAudioBiquadFilter.cpp in Sources */,
+				7CFAFCBC1AA73AC300A09A7F /* axAudioFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +403,7 @@
 				7C1251FE1AA09BED00BD3E96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

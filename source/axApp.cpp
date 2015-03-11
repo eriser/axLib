@@ -39,9 +39,15 @@ _debugEditorActive(false)
 
 
 #ifdef _MSC_VER
-	_core = new axCoreWin32();
-	axCORE = _core;
+	#if _axWxWidgetsCore_ == 1
+	_core = new axCoreWxWidgets();
 	_core->Init(axSize(0, 0));
+	#else
+		_core = new axCoreWin32();
+		axCORE = _core;
+		_core->Init(axSize(0, 0));
+	#endif //_axWxWidgetsCore_
+
 #endif //_MSC_VER
     
     
@@ -105,9 +111,15 @@ _debugEditorActive(false)
 #endif //__linux__
 
 #ifdef _MSC_VER
-	_core = new axCoreWin32();
-	axCORE = _core;
-	_core->Init(frame_size);
+	#if _axWxWidgetsCore_ == 1
+		_core = new axCoreWxWidgets();
+		_core->Init(frame_size);
+	#else
+		_core = new axCoreWin32();
+		axCORE = _core;
+		_core->Init(frame_size);
+	#endif //_axWxWidgetsCore_
+
 #endif // _MSC_VER
     
 #ifdef __APPLE__
@@ -175,34 +187,6 @@ string axApp::OpenFileDialog()
 string axApp::GetAppDirectory()
 {
 	return _core->GetAppDirectory();
-}
-
-string axApp::GetCurrentAppDirectory()
-{
-#ifdef __linux__
-	char buf[1024];
-	readlink("/proc/self/exe", buf, sizeof(buf)-1);
-	string path(buf);
-	path = path.substr(0, path.find_last_of("/"));
-	path.push_back('/');
-	return path;
-#endif //__linux__
-
-#ifdef _MSC_VER
-	HMODULE hModule = GetModuleHandleW(NULL);
-	WCHAR path[MAX_PATH];
-	GetModuleFileNameW(hModule, path, MAX_PATH);
-
-	char str[MAX_PATH];
-	wcstombs(str, path, MAX_PATH);
-
-	return string(str);
-
-#endif //_MSC_VER
-    
-#ifdef __APPLE__
-    return "";
-#endif // __APPLE__
 }
 
 void axApp::MainLoop()

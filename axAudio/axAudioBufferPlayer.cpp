@@ -121,6 +121,55 @@ void axAudioBufferPlayer::ProcessBlock(float* out, unsigned long frameCount)
     }
 }
 
+void axAudioBufferPlayer::ProcessStereoBlock(double** out, const unsigned long& frameCount)
+{
+    if(_buffer != nullptr && _playing)
+    {
+        float* buf = _bufferData;
+        unsigned long buffer_total_frame = _buffer->GetBufferInfo().frames * 2;
+        unsigned long stereo_index = _bufferCurrentIndex;
+        
+        double* left = out[0];
+        double* right = out[1];
+        _rms = 0.0;
+        
+        if(stereo_index + frameCount * 2 < buffer_total_frame * 2)
+        {
+            for(int i = 0; i < frameCount; i++)
+            {
+                float v = buf[stereo_index++];
+                _rms += v * v;
+                *left++ = v;
+                *right++ = buf[stereo_index++];
+            }
+        }
+        else
+        {
+            for(int i = 0; i < frameCount; i++)
+            {
+                float v = _playing ? buf[stereo_index++] : 0.0f;
+                _rms += v * v;
+                *left++ = v;
+                *right++ = _playing ? buf[stereo_index++] : 0.0f;
+                
+                if(stereo_index >= buffer_total_frame * 2)
+                {
+                    if(_playingType == AUDIO_PLAYING_TYPE_PLAY_ONCE)
+                    {
+                        _playing = false;
+                    }
+                    
+                    stereo_index = 0;
+                }
+            }
+        }
+        
+        _rms = sqrt(1.0 / double(frameCount) * _rms);
+        _bufferCurrentIndex = stereo_index;
+    }
+
+}
+
 void axAudioBufferPlayer::ProcessMonoSample(float* out)
 {
     
@@ -181,6 +230,7 @@ void axAudioBufferPlayer::ProcessStereoSample(float* out)
 void axAudioBufferPlayer::ProcessStereoBlock(float* out,
                                              unsigned long frameCount)
 {
+
     float* buf = _bufferData;
     unsigned long buffer_total_frame = _buffer->GetBufferInfo().frames * 2;
     unsigned long stereo_index = _bufferCurrentIndex;

@@ -1,4 +1,4 @@
-#include <axAudio/axAudioBuffer.h>
+#include "axAudioBuffer.h"
 #include <limits>
 //std::mutex axAudioBuffer::audio_buffer_mutex;
 
@@ -129,6 +129,7 @@ axSOUND_ERROR axAudioBuffer::OpenSoundFile( const string& snd_path )
 
 axBufferInfo axAudioBuffer::GetBufferInfo()
 {
+    
     return _info;
 //    axBufferInfo info;
 //    info.frames = m_info->frames;

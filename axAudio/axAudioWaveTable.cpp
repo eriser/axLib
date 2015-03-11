@@ -10,7 +10,7 @@
 #include "axAudioBuffer.h"
 #include "axAudioUtils.h"
 #include <cmath>
-#include "axUtils.h"
+//#include "axUtils.h"
 
 axAudioWaveTable::axAudioWaveTable():
 _cPhase(0.0),
@@ -113,7 +113,7 @@ double axAudioWaveTable::WaveInterpole(const double& freq,
     double two_pi = 2.0 * M_PI;
     
     //PHASOR --> A CHANGER ( ENLEVER FMOD )
-    double v = 1.0 - _cPhase * axINVTWOPI;
+    double v = 1.0 - _cPhase * ax::Audio::InvTwoPi;
     _cPhase += ((two_pi / 44100.0) * (freq + phase));
     
     if(_cPhase > two_pi)
@@ -129,7 +129,7 @@ double axAudioWaveTable::WaveInterpole(const double& freq,
     long pos = v * ((double)len - 1.0);
     double frac = v * (double)len - pos;
     
-    return axLineairInterpole<double>(_data[pos], _data[pos + 1], frac);
+    return ax::Audio::LineairInterpole<double>(_data[pos], _data[pos + 1], frac);
 }
 
 void axAudioWaveTable::ProcessSample(float* out)

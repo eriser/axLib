@@ -154,21 +154,21 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     // Double click.
     if (event.clickCount == 2)
     {
-        axApp::MainInstance->GetPopupManager()->OnMouseLeftDoubleClick(pos);
-        if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        axApp::GetInstance()->GetPopupManager()->OnMouseLeftDoubleClick(pos);
+        if(axApp::GetInstance()->GetPopupManager()->IsEventReachWindow() == false)
         {
-            axApp::MainInstance->GetWindowManager()->OnMouseLeftDoubleClick(pos);
+            axApp::GetInstance()->GetWindowManager()->OnMouseLeftDoubleClick(pos);
         }
     }
     
     // Simple click.
     else
     {
-        axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(pos);
+        axApp::GetInstance()->GetPopupManager()->OnMouseLeftDown(pos);
         
-        if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        if(axApp::GetInstance()->GetPopupManager()->IsEventReachWindow() == false)
         {
-            axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(pos);
+            axApp::GetInstance()->GetWindowManager()->OnMouseLeftDown(pos);
         }
     }
 }
@@ -193,11 +193,11 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     // Simple click.
     else
     {
-        axApp::MainInstance->GetPopupManager()->OnMouseRightDown(pos);
+        axApp::GetInstance()->GetPopupManager()->OnMouseRightDown(pos);
         
-        if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+        if(axApp::GetInstance()->GetPopupManager()->IsEventReachWindow() == false)
         {
-            axApp::MainInstance->GetWindowManager()->OnMouseRightDown(pos);
+            axApp::GetInstance()->GetWindowManager()->OnMouseRightDown(pos);
         }
     }
 }
@@ -209,10 +209,10 @@ axAppDelegate* GlobalAppDelegate = nullptr;
                                        fromView:nil];
 
     axPoint pos(locationInView.x, locationInView.y);
-    axApp::MainInstance->GetPopupManager()->OnMouseLeftUp(pos);
+    axApp::GetInstance()->GetPopupManager()->OnMouseLeftUp(pos);
 
     // TODO :: Fix this.
-    axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(pos);
+    axApp::GetInstance()->GetWindowManager()->OnMouseLeftUp(pos);
 
 }
 
@@ -223,11 +223,11 @@ axAppDelegate* GlobalAppDelegate = nullptr;
                                        fromView:nil];
     
     axPoint pos(locationInView.x, locationInView.y);
-    axApp::MainInstance->GetPopupManager()->OnMouseLeftDragging(pos);
+    axApp::GetInstance()->GetPopupManager()->OnMouseLeftDragging(pos);
     
-    if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+    if(axApp::GetInstance()->GetPopupManager()->IsEventReachWindow() == false)
     {
-        axApp::MainInstance->GetWindowManager()->OnMouseLeftDragging(pos);
+        axApp::GetInstance()->GetWindowManager()->OnMouseLeftDragging(pos);
     }
 }
 
@@ -239,10 +239,10 @@ axAppDelegate* GlobalAppDelegate = nullptr;
 
     axPoint pos(locationInView.x, locationInView.y);
     
-    axApp::MainInstance->GetPopupManager()->OnMouseMotion(pos);
-    if(axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+    axApp::GetInstance()->GetPopupManager()->OnMouseMotion(pos);
+    if(axApp::GetInstance()->GetPopupManager()->IsEventReachWindow() == false)
     {
-        axApp::MainInstance->GetWindowManager()->OnMouseMotion(pos);
+        axApp::GetInstance()->GetWindowManager()->OnMouseMotion(pos);
     }
 }
 
@@ -264,32 +264,32 @@ axAppDelegate* GlobalAppDelegate = nullptr;
     // BackSpace.
     if(key == 51)
     {
-        axApp::MainInstance->GetWindowManager()->OnBackSpaceDown();
+        axApp::GetInstance()->GetWindowManager()->OnBackSpaceDown();
     }
     // Delete
     else if(key == 117)
     {
-        axApp::MainInstance->GetWindowManager()->OnKeyDeleteDown();
+        axApp::GetInstance()->GetWindowManager()->OnKeyDeleteDown();
     }
     // Enter.
     else if(key == 36)
     {
-        axApp::MainInstance->GetWindowManager()->OnEnterDown();
+        axApp::GetInstance()->GetWindowManager()->OnEnterDown();
     }
     // Left arrow.
     else if(key == 123)
     {
-        axApp::MainInstance->GetWindowManager()->OnLeftArrowDown();
+        axApp::GetInstance()->GetWindowManager()->OnLeftArrowDown();
     }
     // Right arrow.
     else if(key == 124)
     {
-        axApp::MainInstance->GetWindowManager()->OnRightArrowDown();
+        axApp::GetInstance()->GetWindowManager()->OnRightArrowDown();
     }
     else
     {
         std::string str = [[event characters] UTF8String];
-        axApp::MainInstance->GetWindowManager()->OnKeyDown(str[0]);
+        axApp::GetInstance()->GetWindowManager()->OnKeyDown(str[0]);
     }
 }
 
@@ -343,7 +343,7 @@ void MyRunLoopObserver(CFRunLoopObserverRef observer,
 
     NSRect backingBounds = [self convertRectToBacking:[self bounds]];
     
-    axCore* core = axApp::MainInstance->GetCore();
+    axCore* core = axApp::GetInstance()->GetCore();
     
     axSize global_size = core->GetGlobalSize();
     if(global_size.x != backingBounds.size.width ||

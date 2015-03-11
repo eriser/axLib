@@ -33,7 +33,7 @@
 /// @{
 
 #include "axC++.h"
-#include "cairo/cairo.h"
+//#include "cairo/cairo.h"
 
 class axFrameBuffer
 {

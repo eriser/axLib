@@ -30,8 +30,13 @@
 #endif //__linux__
 
 #ifdef _MSC_VER
-#include "axCoreWin32.h"
+	#ifdef _axWxWidgetsCore_
+		#include "axCoreWin32.h"
+	#else
+		#include "axCoreWxWidgets.h"
+	#endif // _axWxWidgetsCore_.
 #endif //_MSC_VER
+
 
 #ifdef __APPLE__
     #ifdef _AX_VST_APP_
@@ -49,8 +54,6 @@
 class axApp
 {
 public:
-    #pragma message("WARNING: Should use GetInstance.")
-	static axApp* MainInstance;
 	axApp();
 
 	inline static axApp* GetInstance()
@@ -97,9 +100,6 @@ public:
 	string OpenFileDialog();
 
 	bool CreatePopupWindow(const char*, int, int);
-    
-    #pragma message("WARNING: Deprecate.")
-	string GetCurrentAppDirectory();
 
     std::string GetAppDirectory();
     
@@ -115,6 +115,7 @@ public:
     void CallAfterGUILoadFunction();
     
 private:
+    static axApp* MainInstance;
 	axCore* _core;
     
     std::function<void()> _mainEntryFunction, _afterGuiLoadFunction;

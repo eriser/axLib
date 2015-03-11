@@ -47,6 +47,7 @@
 
 #include <stdint.h>
 #include <memory>
+#include <functional>
 #include "axUtils.h"
 
 #define axDEBUG_LEVEL0 0

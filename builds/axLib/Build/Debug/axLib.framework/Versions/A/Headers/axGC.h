@@ -28,7 +28,7 @@
 #include "axImage.h"
 #include "axColor.h"
 #include "axFont.h"
-#include "axDrawingBuffer.h"
+//#include "axDrawingBuffer.h"
 
 class axWindow;
 
@@ -133,7 +133,7 @@ public:
     void BlockDrawing(const axRect& rect);
     void UnBlockDrawing();
     
-    void DrawBuffer(axDrawingBuffer* buffer);
+    //void DrawBuffer(axDrawingBuffer* buffer);
 
 private:
 	axWindow* _win;

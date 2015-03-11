@@ -181,7 +181,6 @@ protected:
         name(_name),
         label(_label),
         value(_value)
-        
         {
             
         }
@@ -197,9 +196,6 @@ protected:
     
     std::vector<axParameterInfo> _parameters;
     std::set<std::string> _canDoList;
-    
-
-
     
     void AddParameter(const axParameterInfo& param);
     void AddCapability(const std::string& capability);

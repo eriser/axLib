@@ -37,6 +37,8 @@ public:
     void ProcessSample(double* out, double* freq);
     void ProcessBlock(float* out, unsigned long frameCount);
     
+
+    
     void SetFreq(const double& freq);
     
     double GetFreq() const;

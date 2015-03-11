@@ -36,6 +36,8 @@ public:
     void ProcessSample(float* out);
     void ProcessBlock(float* out, unsigned long frameCount);
     
+    void ProcessStereoBlock(double** out, const unsigned long& frameCount);
+    
     double GetCursorPercentPosition() const;
     
     double GetCurrentVolume() const;

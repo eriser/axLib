@@ -283,7 +283,6 @@ _font(nullptr)
 {
     _bgImg = new axImage(static_cast<Info*>(_info)->img);
     
-    double v = value;
     _value = axClamp<double>(value, _range.left, _range.right);
     
     _font = new axFont(0);
