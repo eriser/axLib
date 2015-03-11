@@ -29,7 +29,7 @@
 		7CFAFCC51AA7664500A09A7F /* axAudioFirstOrderFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCC31AA7664500A09A7F /* axAudioFirstOrderFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CFAFCC81AA780CB00A09A7F /* axAudioSignalBalance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCC61AA780CB00A09A7F /* axAudioSignalBalance.cpp */; };
 		7CFAFCC91AA780CB00A09A7F /* axAudioSignalBalance.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCC71AA780CB00A09A7F /* axAudioSignalBalance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7CFAFCCB1AA7FED300A09A7F /* axAudioFrames.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCCA1AA7FED300A09A7F /* axAudioFrames.h */; };
+		7CFAFCCB1AA7FED300A09A7F /* axAudioFrames.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CFAFCCA1AA7FED300A09A7F /* axAudioFrames.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CFAFCCD1AA7FEE600A09A7F /* axAudioFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CFAFCCC1AA7FEE600A09A7F /* axAudioFrames.cpp */; };
 /* End PBXBuildFile section */
 
@@ -160,9 +160,9 @@
 				7CFAFCBD1AA73AC300A09A7F /* axAudioFilter.h in Headers */,
 				7CFAFCB71AA73AC300A09A7F /* axAudioBuffer.h in Headers */,
 				7CFAFCBF1AA73AC300A09A7F /* axAudioUtils.h in Headers */,
-				7CFAFCCB1AA7FED300A09A7F /* axAudioFrames.h in Headers */,
 				7CFAFCB31AA73AC300A09A7F /* axAudio.h in Headers */,
 				7CFAFCC51AA7664500A09A7F /* axAudioFirstOrderFilter.h in Headers */,
+				7CFAFCCB1AA7FED300A09A7F /* axAudioFrames.h in Headers */,
 				7CFAFCC11AA73AC300A09A7F /* axAudioWaveTable.h in Headers */,
 				7CFAFCBB1AA73AC300A09A7F /* axAudioEnvelope.h in Headers */,
 			);

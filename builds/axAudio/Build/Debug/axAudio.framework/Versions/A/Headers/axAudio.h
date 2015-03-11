@@ -68,10 +68,10 @@ namespace ax
 //                    *right++ = 0.0;
 //                }
                 
-                ax::Audio::Frames<const float, 1> inArray[] = {{input}, {input + 1}};
-                ax::Audio::Frames<float, 1> outArray[] = {{output}, {output + 1}};
-                
-                CallbackAudio(inArray, outArray, frameCount);
+//                ax::Audio::Frames<const float, 1> inArray[] = {{input}, {input + 1}};
+//                ax::Audio::Frames<float, 1> outArray[] = {{output}, {output + 1}};
+//                
+//                CallbackAudio(inArray, outArray, frameCount);
                 
 //                CallbackAudio((const double**)_input_buffer,
 //                              _output_buffer, frameCount);
