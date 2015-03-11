@@ -138,7 +138,7 @@ void axSlider::OnMouseLeftDown(const axPoint& mousePos)
 //			_events.slider_value_change(axSliderMsg(_sliderValue));
 //		}
         PushEvent(axSliderEvents::VALUE_CHANGE,
-                  new axSliderMsg(_sliderValue));
+                  new_ axSliderMsg(_sliderValue));
 		Update();
 	}
 	// Click on boutton to move.
@@ -172,7 +172,7 @@ void axSlider::OnMouseLeftDown(const axPoint& mousePos)
 //				_events.slider_value_change(axSliderMsg(_sliderValue));
 //			}
             PushEvent(axSliderEvents::VALUE_CHANGE,
-                      new axSliderMsg(_sliderValue));
+                      new_ axSliderMsg(_sliderValue));
 			Update();
 		}
 	}
@@ -208,7 +208,7 @@ void axSlider::OnMouseLeftDragging(const axPoint& p)
 //	}
     
     PushEvent(axSliderEvents::VALUE_CHANGE,
-              new axSliderMsg(_sliderValue));
+              new_ axSliderMsg(_sliderValue));
 	
 	Update();
 }

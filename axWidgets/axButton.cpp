@@ -57,7 +57,7 @@ string axButton::Msg::GetMsg() const
 
 axMsg* axButton::Msg::GetCopy()
 {
-    return new axButton::Msg(*this);
+    return new_ axButton::Msg(*this);
 }
 
 /*******************************************************************************
@@ -235,7 +235,7 @@ axWidget* axButton::Builder::Create(const axVectorPairString& attributes)
         }
     }
     
-    axButton* btn = new axButton(parent, axRect(pos, _size), evts,
+    axButton* btn = new_ axButton(parent, axRect(pos, _size), evts,
                                  _info, _img, _label, _flags, _msg);
     
     parent->GetResourceManager()->Add(name, btn);
@@ -254,7 +254,7 @@ axButton::axButton(axWindow* parent,
                    axFlag flags,
                    std::string msg):
 // Heritage.
-axWidget(parent, rect, new axButton::Info(info)),
+axWidget(parent, rect, new_ axButton::Info(info)),
 // Members.
 _events(events),
 _label(label),
@@ -266,10 +266,9 @@ _font(nullptr)
 {
     _currentColor = &static_cast<axButton::Info*>(_info)->normal;
     
-    _btnImg = new axImage(img_path);
+    _btnImg = new_ axImage(img_path);
     
-//    _font = new axFont(0);
-    _font = std::unique_ptr<axFont>(new axFont(0));
+    _font = std::unique_ptr<axFont>(new_ axFont(0));
     
     if(_events.button_click)
     {
@@ -320,7 +319,7 @@ void axButton::OnMouseLeftDown(const axPoint& pos)
     
     GrabMouse();
     
-    PushEvent(Events::BUTTON_CLICK, new Msg(this, _msg));
+    PushEvent(Events::BUTTON_CLICK, new_ Msg(this, _msg));
     
     Update();
 }

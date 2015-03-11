@@ -47,13 +47,13 @@ _value(0.0)
 
 	//function<void (axButtonMsg)> btnFct();
 
-//	_btn[0] = new axButton(this, 
+//	_btn[0] = new_ axButton(this, 
 //						   axRect(0, 0, 14, 14), 
 //						   axButtonEvents(), 
 //						   btn_info, 
 //						   "/Users/alexarse/Project/axLib/axProjects/MidiSequencer/scrollBar_up.png");
 //
-//	_btn[1] = new axButton(this, 
+//	_btn[1] = new_ axButton(this, 
 //						   axRect(0, rect.size.y - 14, 14, 14), 
 //						   axButtonEvents(), 
 //						   btn_info, 
@@ -154,7 +154,7 @@ void axScrollBar::OnMouseLeftDragging(const axPoint& position)
 
         
         PushEvent(axScrollBarEvents::VALUE_CHANGE,
-                  new axScrollBarMsg(this, std::string("")));
+                  new_ axScrollBarMsg(this, std::string("")));
         
         _handle->SetScrollDecay(axPoint(0, _value * (_panelSize.y - GetRect().size.y)));
 

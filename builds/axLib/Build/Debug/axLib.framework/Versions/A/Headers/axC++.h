@@ -38,6 +38,11 @@
 #include "GL/glew.h"
 //#include <gl\gl.h>
 #include <gl\glu.h>
+
+#pragma warning( disable : 4018 )
+#pragma warning( disable : 4244 )
+#pragma warning( disable : 4305 )
+
 #endif //_MSC_VER
 
 #ifdef __APPLE__
@@ -50,6 +55,8 @@
 #include <functional>
 #include "axUtils.h"
 
+
+
 #define axDEBUG_LEVEL0 0
 #define axDEBUG_MINIMAL_LEVEL 1
 #define axDEBUG_MEDIUM_LEVEL 2
@@ -61,6 +68,18 @@
 #define axREMOVE_ON_RELEASE(x) x
 #else
 #define axREMOVE_ON_RELEASE(x) 
+#endif
+
+#if axDEBUG_LEVEL > 0 && !defined(new) && defined(_MSC_VER)
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+
+inline void * __CRTDECL operator new(size_t size, int blockType, const char* fileName, int lineNumber, void* placement){ (size); (blockType); (fileName); (lineNumber);  return placement; } // Placement new does not allocate, so we simply return the pointer without using the crtdbg version.
+#define newp(...) new(_NORMAL_BLOCK, __FILE__, __LINE__, __VA_ARGS__)
+#define new_ new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#else
+#define newp new
+#define new_ new
 #endif
 
 //#define DSTREAM cout

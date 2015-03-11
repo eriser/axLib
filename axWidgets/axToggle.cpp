@@ -71,7 +71,7 @@ string axToggle::Msg::GetMsg() const
 
 axMsg* axToggle::Msg::GetCopy()
 {
-    return new Msg(*this);
+    return new_ Msg(*this);
 }
 
 /*******************************************************************************
@@ -219,7 +219,7 @@ void axToggle::Info::SetAttribute(const axStringPair& attribute)
     }
     else if(attribute.first == "single_img")
     {
-        single_img = stoi(attribute.second);
+        single_img = stoi(attribute.second) == 1 ? true : false;
     }
 }
 
@@ -300,7 +300,7 @@ axToggle* axToggle::Builder::Create(axVectorPairString attributes)
         }
     }
     
-    axToggle* tog = new axToggle(_parent, axRect(pos, _size),
+    axToggle* tog = new_ axToggle(_parent, axRect(pos, _size),
                                  evts,
                                  _info, _img, _label, _flags, msg);
     
@@ -321,7 +321,7 @@ axToggle::axToggle(axWindow* parent,
                    axFlag flags,
                    std::string msg) :
 // Heritage.
-axWidget(parent, rect, new axToggle::Info(info)),
+axWidget(parent, rect, new_ axToggle::Info(info)),
 // Members.
 _events(events),
 _label(label),
@@ -333,10 +333,10 @@ _msg(msg),
 _font(nullptr)
 {
     _currentColor = &static_cast<Info*>(_info)->normal;
-//    _bgImg = new axImage(img_path);
-    _bgImg = new axImage(static_cast<Info*>(_info)->img);
+//    _bgImg = new_ axImage(img_path);
+    _bgImg = new_ axImage(static_cast<Info*>(_info)->img);
     
-    _font = new axFont(0);
+	_font = std::unique_ptr<axFont>(new_ axFont(0));
     _font->SetFontSize(static_cast<Info*>(_info)->font_size);
     
     if(_events.button_click)
@@ -406,7 +406,7 @@ void axToggle::OnMouseLeftDown(const axPoint& pos)
         
         if (IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
         {
-            PushEvent(Events::BUTTON_CLICK, new Msg(this, _selected, _msg));
+            PushEvent(Events::BUTTON_CLICK, new_ Msg(this, _selected, _msg));
         }
         Update();
     }
@@ -443,7 +443,7 @@ void axToggle::OnMouseLeftUp(const axPoint& pos)
             // If toggle on left up.
             if (!IsFlag(Flags::CLICK_ON_LEFT_DOWN, _flags))
             {
-                PushEvent(Events::BUTTON_CLICK, new Msg(this, _selected, _msg));
+                PushEvent(Events::BUTTON_CLICK, new_ Msg(this, _selected, _msg));
             }
 		}
 		else

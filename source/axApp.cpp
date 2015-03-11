@@ -135,14 +135,6 @@ _debugEditorActive(false)
 #endif // __APPLE__
 }
 
-//void axApp::CreatePopupWindow(const axSize& size)
-//{
-//#ifdef __linux__
-//	axCore* c = new axCoreX11(this);
-//	c->Init(size);
-//#endif //__linux__
-//}
-
 void axApp::AddMainEntry(std::function<void()> fct)
 {
     _mainEntryFunction = fct;

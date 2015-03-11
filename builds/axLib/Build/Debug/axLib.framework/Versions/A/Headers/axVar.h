@@ -88,11 +88,11 @@ public:
         
     }
     
-    axVar(axVar& that) :
-    ptr(that.clone())
-    {
-        
-    }
+    //axVar(axVar& that) :
+    //ptr(that.clone())
+    //{
+    //    
+    //}
     
     axVar(axVar&& that) :
     ptr(that.ptr)

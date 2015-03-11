@@ -1,10 +1,66 @@
-﻿Build started 3/3/2015 9:17:12 AM.
-     1>Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
+﻿Build started 3/10/2015 11:31:57 AM.
+     1>Project "C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alexandre Arsenault\Desktop\axLib/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWin32" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axWidgets" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/freetype-2.5.3/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/lpng1610" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/glew-1.12.0/include" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/include/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/lib/vc_lib/mswud/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/include/msvc/" /I"C:\Users\Alexandre Arsenault\Desktop\axLib/axCore/wxWidgets/" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../../include/ /I../../../axWin32 /I../../../axWidgets /I"../../../libs/freetype-2.5.3/include" /I../../../libs/lpng1610 /I"../../../libs/glew-1.12.0/include" /I"../../../libs/wxWidgets-3.0.2/include/" /I"../../../libs/wxWidgets-3.0.2/lib/vc_lib/mswud/" /I"../../../libs/wxWidgets-3.0.2/include/msvc/" /I../../../axCore/wxWidgets/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /bigobj ..\..\..\axCore\Win32\axCoreWin32.cpp ..\..\..\axCore\Win32\axDebugWin32.cpp ..\..\..\axCore\Win32\axWin32Utils.cpp ..\..\..\axCore\wxWidgets\axCoreWxWidgets.cpp ..\..\..\axCore\wxWidgets\axWxPanel.cpp ..\..\..\axWidgets\axAnimatedButton.cpp ..\..\..\axWidgets\axButton.cpp ..\..\..\axWidgets\axDebugButton.cpp ..\..\..\axWidgets\axDropMenu.cpp ..\..\..\axWidgets\axKnob.cpp ..\..\..\axWidgets\axLabel.cpp ..\..\..\axWidgets\axMenu.cpp ..\..\..\axWidgets\axNumberBox.cpp ..\..\..\axWidgets\axPopupMenu.cpp ..\..\..\axWidgets\axScrollBar.cpp ..\..\..\axWidgets\axSlider.cpp ..\..\..\axWidgets\axStaticImage.cpp ..\..\..\axWidgets\axTextBox.cpp ..\..\..\axWidgets\axTextControl.cpp ..\..\..\axWidgets\axToggle.cpp ..\..\..\axWidgets\axWidgetSelector.cpp ..\..\..\include\axDrawingBuffer.cpp ..\..\..\source\axApp.cpp ..\..\..\source\axC++.cpp ..\..\..\source\axColor.cpp ..\..\..\source\axConfig.cpp ..\..\..\source\axCore.cpp ..\..\..\source\axDefaultFontBuffer.cpp ..\..\..\source\axEvent.cpp ..\..\..\source\axEventManager.cpp ..\..\..\source\axFont.cpp ..\..\..\source\axFrameBuffer.cpp ..\..\..\source\axGC.cpp ..\..\..\source\axGraphicInterface.cpp ..\..\..\source\axImage.cpp ..\..\..\source\axKeyboardManager.cpp ..\..\..\source\axMain.cpp ..\..\..\source\axManager.cpp ..\..\..\source\axMath.cpp ..\..\..\source\axMouseManager.cpp ..\..\..\source\axMsg.cpp ..\..\..\source\axObject.cpp ..\..\..\source\axObjectLoader.cpp ..\..\..\source\axPanel.cpp ..\..\..\source\axResourceManager.cpp ..\..\..\source\axTimer.cpp ..\..\..\source\axUtils.cpp ..\..\..\source\axVar.cpp ..\..\..\source\axWidget.cpp ..\..\..\source\axWidgetBuilder.cpp ..\..\..\source\axWindow.cpp ..\..\..\source\axWindowTree.cpp
+         axWindowTree.cpp
+         axWindow.cpp
+         axWidgetBuilder.cpp
+         axWidget.cpp
+         axVar.cpp
+         axUtils.cpp
+         axTimer.cpp
+         axResourceManager.cpp
+         axPanel.cpp
+         axObjectLoader.cpp
+         axObject.cpp
+         axMsg.cpp
+         axMouseManager.cpp
+         axMath.cpp
+         axManager.cpp
+         axMain.cpp
+         axKeyboardManager.cpp
+         axImage.cpp
+         axGraphicInterface.cpp
+         axGC.cpp
+         Generating Code...
+         Compiling...
+         axFrameBuffer.cpp
+         axFont.cpp
+         axEventManager.cpp
+         axEvent.cpp
+         axDefaultFontBuffer.cpp
+         axCore.cpp
+         axConfig.cpp
+         axColor.cpp
+         axC++.cpp
+         axApp.cpp
+         axDrawingBuffer.cpp
+         axWidgetSelector.cpp
+         axToggle.cpp
+         axTextControl.cpp
+         axTextBox.cpp
+         axStaticImage.cpp
+         axSlider.cpp
+         axScrollBar.cpp
+         axPopupMenu.cpp
+         axNumberBox.cpp
+         Generating Code...
+         Compiling...
+         axMenu.cpp
+         axLabel.cpp
+         axKnob.cpp
+         axDropMenu.cpp
+         axDebugButton.cpp
+         axButton.cpp
+         axAnimatedButton.cpp
+         axWxPanel.cpp
          axCoreWxWidgets.cpp
+         axWin32Utils.cpp
+         axDebugWin32.cpp
+         axCoreWin32.cpp
+         Generating Code...
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib" /LIBPATH:"C:\Users\Alexandre Arsenault\Desktop\axLib/libs/wxWidgets-3.0.2/lib/vc_lib/" /NOLOGO Debug\axCoreWin32.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Debug\axLib.lib" /LIBPATH:"../../../libs/wxWidgets-3.0.2/lib/vc_lib/" /NOLOGO Debug\axCoreWin32.obj
          Debug\axDebugWin32.obj
          Debug\axWin32Utils.obj
          Debug\axCoreWxWidgets.obj
@@ -13,12 +69,10 @@
          Debug\axButton.obj
          Debug\axDebugButton.obj
          Debug\axDropMenu.obj
-         Debug\axGrid.obj
          Debug\axKnob.obj
          Debug\axLabel.obj
          Debug\axMenu.obj
          Debug\axNumberBox.obj
-         Debug\axPlot.obj
          Debug\axPopupMenu.obj
          Debug\axScrollBar.obj
          Debug\axSlider.obj
@@ -27,6 +81,7 @@
          Debug\axTextControl.obj
          Debug\axToggle.obj
          Debug\axWidgetSelector.obj
+         Debug\axDrawingBuffer.obj
          Debug\axApp.obj
          Debug\axC++.obj
          Debug\axColor.obj
@@ -57,9 +112,9 @@
          Debug\axWidgetBuilder.obj
          Debug\axWindow.obj
          Debug\axWindowTree.obj
-         Windows.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Debug\axLib.lib
-     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\axLib\builds\Windows\Windows\Windows.vcxproj" (Build target(s)).
+         Windows.vcxproj -> C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Debug\axLib.lib
+     1>Done Building Project "C:\Users\Alexandre Arsenault\Desktop\NewOrchestra\Orchestra\axLib\builds\Windows\Windows\Windows.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:15.45
+Time Elapsed 00:01:10.34

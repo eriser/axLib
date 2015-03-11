@@ -1,23 +1,25 @@
-#if _axWxWidgetsCore_ == 1
 #include "axWxPanel.h"
 
-BEGIN_EVENT_TABLE(BasicGLPane, wxGLCanvas)
-EVT_MOTION(BasicGLPane::mouseMoved)
-EVT_LEFT_DOWN(BasicGLPane::mouseDown)
-EVT_LEFT_UP(BasicGLPane::mouseReleased)
-EVT_RIGHT_DOWN(BasicGLPane::rightClick)
-EVT_LEAVE_WINDOW(BasicGLPane::mouseLeftWindow)
-EVT_SIZE(BasicGLPane::resized)
-EVT_KEY_DOWN(BasicGLPane::keyPressed)
-EVT_KEY_UP(BasicGLPane::keyReleased)
-EVT_MOUSEWHEEL(BasicGLPane::mouseWheelMoved)
-EVT_PAINT(BasicGLPane::render)
-EVT_BUTTON(1000, BasicGLPane::OnEvent)
+#if _axWxWidgetsCore_ == 1
+#include "axCoreWxWidgets.h"
+
+BEGIN_EVENT_TABLE(axWxPanel, wxGLCanvas)
+EVT_MOTION(axWxPanel::mouseMoved)
+EVT_LEFT_DOWN(axWxPanel::mouseDown)
+EVT_LEFT_UP(axWxPanel::mouseReleased)
+EVT_RIGHT_DOWN(axWxPanel::rightClick)
+EVT_LEAVE_WINDOW(axWxPanel::mouseLeftWindow)
+EVT_SIZE(axWxPanel::resized)
+EVT_KEY_DOWN(axWxPanel::keyPressed)
+EVT_KEY_UP(axWxPanel::keyReleased)
+EVT_MOUSEWHEEL(axWxPanel::mouseWheelMoved)
+EVT_PAINT(axWxPanel::render)
+EVT_BUTTON(1000, axWxPanel::OnEvent)
 END_EVENT_TABLE()
 
 
 // some useful events to use
-void BasicGLPane::mouseMoved(wxMouseEvent& event)
+void axWxPanel::mouseMoved(wxMouseEvent& event)
 {
 	axPoint pos(event.GetPosition().x, event.GetPosition().y);
 
@@ -25,7 +27,7 @@ void BasicGLPane::mouseMoved(wxMouseEvent& event)
 	axApp::GetInstance()->GetWindowManager()->OnMouseMotion(pos);
 }
 
-void BasicGLPane::mouseDown(wxMouseEvent& event)
+void axWxPanel::mouseDown(wxMouseEvent& event)
 {
 	axPoint pos(event.GetPosition().x, event.GetPosition().y);
 
@@ -35,12 +37,12 @@ void BasicGLPane::mouseDown(wxMouseEvent& event)
 	}
 }
 
-void BasicGLPane::mouseWheelMoved(wxMouseEvent& event)
+void axWxPanel::mouseWheelMoved(wxMouseEvent& event)
 {
 	(event);
 }
 
-void BasicGLPane::mouseReleased(wxMouseEvent& event)
+void axWxPanel::mouseReleased(wxMouseEvent& event)
 {
 	axPoint pos(event.GetPosition().x, event.GetPosition().y);
 
@@ -50,27 +52,27 @@ void BasicGLPane::mouseReleased(wxMouseEvent& event)
 	}
 }
 
-void BasicGLPane::rightClick(wxMouseEvent& event)
+void axWxPanel::rightClick(wxMouseEvent& event)
 {
 	(event);
 }
 
-void BasicGLPane::mouseLeftWindow(wxMouseEvent& event)
+void axWxPanel::mouseLeftWindow(wxMouseEvent& event)
 {
 	(event);
 }
 
-void BasicGLPane::keyPressed(wxKeyEvent& event)
+void axWxPanel::keyPressed(wxKeyEvent& event)
 {
 	(event);
 }
 
-void BasicGLPane::keyReleased(wxKeyEvent& event)
+void axWxPanel::keyReleased(wxKeyEvent& event)
 {
 	(event);
 }
 
-void BasicGLPane::OnEvent(wxCommandEvent& event)
+void axWxPanel::OnEvent(wxCommandEvent& event)
 {
 	(event);
 	std::cout << "Event" << std::endl;
@@ -78,7 +80,7 @@ void BasicGLPane::OnEvent(wxCommandEvent& event)
 }
 
 
-BasicGLPane::BasicGLPane(wxPanel* parent, 
+axWxPanel::axWxPanel(wxPanel* parent,
 						 const wxPoint& pos, 
 						 const wxSize& size, 
 						 int* args) :
@@ -108,28 +110,28 @@ wxGLCanvas(parent, wxID_ANY, args, pos, size, wxFULL_REPAINT_ON_RESIZE)
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 }
 
-BasicGLPane::~BasicGLPane()
+axWxPanel::~axWxPanel()
 {
 	delete m_context;
 }
 
-void BasicGLPane::resized(wxSizeEvent& evt)
+void axWxPanel::resized(wxSizeEvent& evt)
 {
 	(evt);
 	Refresh();
 }
 
-int BasicGLPane::getWidth()
+int axWxPanel::getWidth()
 {
 	return GetSize().x;
 }
 
-int BasicGLPane::getHeight()
+int axWxPanel::getHeight()
 {
 	return GetSize().y;
 }
 
-void BasicGLPane::render(wxPaintEvent& evt)
+void axWxPanel::render(wxPaintEvent& evt)
 {
 	(evt);
 	if (!IsShown())
@@ -143,7 +145,7 @@ void BasicGLPane::render(wxPaintEvent& evt)
 	axCore* core = axApp::GetInstance()->GetCore();
 
 	wxSize size(GetSize());
-	core->ResizeGLScene(size.x, size.y, 0);
+	core->ResizeGLScene(axSize(size.x, size.y));
 	
 	core->DrawGLScene();
 

@@ -23,10 +23,10 @@
 
 bool axVar::is_null() const
 {
-    return !ptr;
+	return ptr == nullptr ? true : false;
 }
 
 bool axVar::not_null() const
 {
-    return ptr;
+    return ptr == nullptr ? false : true;
 }

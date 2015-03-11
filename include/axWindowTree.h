@@ -73,6 +73,8 @@ class axWindowTree
 public:
 	axWindowTree();
 
+	~axWindowTree();
+
 	/** 
 	*  @brief Get all window parent's from top to bottom.
 	*		  Index [0] is the older parent of the window after 

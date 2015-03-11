@@ -67,6 +67,7 @@ public:
     
     virtual void SetAttribute(const axStringPair& attribute)
     {
+		(attribute);
     }
    
     
@@ -80,6 +81,7 @@ public:
     
     virtual std::string GetAttributeValue(const std::string& name)
     {
+		(name);
         return "";
     }
     

@@ -46,7 +46,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(AX_LIB)/include/;$(AX_LIB)/axWin32;$(AX_LIB)/axWidgets;$(AX_LIB)/libs/freetype-2.5.3/include;$(AX_LIB)/libs/lpng1610;$(AX_LIB)/libs/glew-1.12.0/include;$(AX_LIB)/libs/wxWidgets-3.0.2/include/;$(AX_LIB)/libs/wxWidgets-3.0.2/lib/vc_lib/mswud/;$(AX_LIB)/libs/wxWidgets-3.0.2/include/msvc/;$(AX_LIB)/axCore/wxWidgets/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include/;../../../axWin32;../../../axWidgets;../../../libs/freetype-2.5.3/include;../../../libs/lpng1610;../../../libs/glew-1.12.0/include;../../../libs/wxWidgets-3.0.2/include/;../../../libs/wxWidgets-3.0.2/lib/vc_lib/mswud/;../../../libs/wxWidgets-3.0.2/include/msvc/;../../../axCore/wxWidgets/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/bigobj</AdditionalOptions>
     </ClCompile>
@@ -56,7 +56,7 @@
       <AdditionalDependencies>glew32d.lib;glew32sd.lib;opengl32.lib;glu32.lib;libpng16.lib;zlib.lib;freetype253_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(AX_LIB)/libs/wxWidgets-3.0.2/lib/vc_lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../libs/wxWidgets-3.0.2/lib/vc_lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,12 +83,10 @@
     <ClInclude Include="..\..\..\axWidgets\axButton.h" />
     <ClInclude Include="..\..\..\axWidgets\axDebugButton.h" />
     <ClInclude Include="..\..\..\axWidgets\axDropMenu.h" />
-    <ClInclude Include="..\..\..\axWidgets\axGrid.h" />
     <ClInclude Include="..\..\..\axWidgets\axKnob.h" />
     <ClInclude Include="..\..\..\axWidgets\axLabel.h" />
     <ClInclude Include="..\..\..\axWidgets\axMenu.h" />
     <ClInclude Include="..\..\..\axWidgets\axNumberBox.h" />
-    <ClInclude Include="..\..\..\axWidgets\axPlot.h" />
     <ClInclude Include="..\..\..\axWidgets\axPopupMenu.h" />
     <ClInclude Include="..\..\..\axWidgets\axScrollBar.h" />
     <ClInclude Include="..\..\..\axWidgets\axSlider.h" />
@@ -102,6 +100,7 @@
     <ClInclude Include="..\..\..\include\axColor.h" />
     <ClInclude Include="..\..\..\include\axConfig.h" />
     <ClInclude Include="..\..\..\include\axCore.h" />
+    <ClInclude Include="..\..\..\include\axDrawingBuffer.h" />
     <ClInclude Include="..\..\..\include\axEvent.h" />
     <ClInclude Include="..\..\..\include\axEventManager.h" />
     <ClInclude Include="..\..\..\include\axFont.h" />
@@ -139,12 +138,10 @@
     <ClCompile Include="..\..\..\axWidgets\axButton.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axDebugButton.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axDropMenu.cpp" />
-    <ClCompile Include="..\..\..\axWidgets\axGrid.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axKnob.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axLabel.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axMenu.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axNumberBox.cpp" />
-    <ClCompile Include="..\..\..\axWidgets\axPlot.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axPopupMenu.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axScrollBar.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axSlider.cpp" />
@@ -153,6 +150,7 @@
     <ClCompile Include="..\..\..\axWidgets\axTextControl.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axToggle.cpp" />
     <ClCompile Include="..\..\..\axWidgets\axWidgetSelector.cpp" />
+    <ClCompile Include="..\..\..\include\axDrawingBuffer.cpp" />
     <ClCompile Include="..\..\..\source\axApp.cpp" />
     <ClCompile Include="..\..\..\source\axC++.cpp" />
     <ClCompile Include="..\..\..\source\axColor.cpp" />

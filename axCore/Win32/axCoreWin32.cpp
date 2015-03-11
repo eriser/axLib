@@ -560,10 +560,10 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			mouse_position = axPoint(GET_X_LPARAM(lParam),
 				GET_Y_LPARAM(lParam));
 
-			axApp::MainInstance->GetPopupManager()->OnMouseMotion(mouse_position);
-			if (axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+			axApp::GetInstance()->GetPopupManager()->OnMouseMotion(mouse_position);
+			if (axApp::GetInstance()->GetPopupManager()->IsEventReachWindow() == false)
 			{
-				axApp::MainInstance->GetWindowManager()->OnMouseMotion(mouse_position);
+				axApp::GetInstance()->GetWindowManager()->OnMouseMotion(mouse_position);
 			}
 			return 0;
 
@@ -571,11 +571,11 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			mouse_position = axPoint(GET_X_LPARAM(lParam),
 				GET_Y_LPARAM(lParam));
 
-			axApp::MainInstance->GetPopupManager()->OnMouseLeftDown(mouse_position);
+			axApp::GetInstance()->GetPopupManager()->OnMouseLeftDown(mouse_position);
 
-			if (axApp::MainInstance->GetPopupManager()->IsEventReachWindow() == false)
+			if (axApp::GetInstance()->GetPopupManager()->IsEventReachWindow() == false)
 			{
-				axApp::MainInstance->GetWindowManager()->OnMouseLeftDown(mouse_position);
+				axApp::GetInstance()->GetWindowManager()->OnMouseLeftDown(mouse_position);
 			}
 			return 0;
 
@@ -583,8 +583,8 @@ LRESULT CALLBACK axCoreWin32::WindowCallback(HWND hWnd,	// Handle For This Windo
 			mouse_position = axPoint(GET_X_LPARAM(lParam),
 				GET_Y_LPARAM(lParam));
 
-			axApp::MainInstance->GetPopupManager()->OnMouseLeftUp(mouse_position);
-			axApp::MainInstance->GetWindowManager()->OnMouseLeftUp(mouse_position);
+			axApp::GetInstance()->GetPopupManager()->OnMouseLeftUp(mouse_position);
+			axApp::GetInstance()->GetWindowManager()->OnMouseLeftUp(mouse_position);
 			return 0;
 
 		case WM_RBUTTONDOWN:

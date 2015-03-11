@@ -196,30 +196,32 @@ public:
     void SetMsg(const string& msg);
     void SetSelected(const bool& selected);
 
-private:
-    axToggle::Events _events;
-	axColor* _currentColor;
-	axImage* _bgImg;
-    std::string _label;
-    std::string _msg;
-    axFont* _font;
-	
-	bool _selected;
-	axFlag _flags;
-	axColor test;
-	axFloat _bgAlpha;
-
+protected:
 	enum axToggleState
 	{
 		axTOG_NORMAL,
 		axTOG_HOVER,
 		axTOG_CLICK,
 		axTOG_SEL_NORMAL,
-        axTOG_SEL_HOVER,
-        axTOG_SEL_CLICK
+		axTOG_SEL_HOVER,
+		axTOG_SEL_CLICK
 	};
 
 	int _nCurrentImg;
+private:
+    axToggle::Events _events;
+	axColor* _currentColor;
+	axImage* _bgImg;
+    std::string _label;
+    std::string _msg;
+    std::unique_ptr<axFont> _font;
+	
+	bool _selected;
+	axFlag _flags;
+	axColor test;
+	axFloat _bgAlpha;
+
+
 
     // Events.
 	virtual void OnPaint();

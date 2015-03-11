@@ -46,7 +46,7 @@ double axNumberBox::Msg::GetValue() const
 
 axMsg* axNumberBox::Msg::GetCopy()
 {
-    return new Msg(*this);
+    return new_ Msg(*this);
 }
 
 /*******************************************************************************
@@ -168,7 +168,7 @@ void axNumberBox::Info::SetAttribute(const axStringPair& attribute)
     }
     else if(attribute.first == "single_img")
     {
-        single_img = stoi(attribute.second);
+		single_img = stoi(attribute.second) == 1 ? true : false;
     }
 }
 
@@ -245,7 +245,7 @@ axNumberBox* axNumberBox::Builder::Create(axVectorPairString attributes)
         
     }
     
-    axNumberBox* box = new axNumberBox(_parent, axRect(pos, _size),
+    axNumberBox* box = new_ axNumberBox(_parent, axRect(pos, _size),
                                        evts, _info, 0, 0.0, range,
                                        ctrltype);
     
@@ -268,7 +268,7 @@ axNumberBox::axNumberBox(axWindow* parent,
                          axControlInterpolation interpolation,
                          std::string label):
 
-axWidget(parent, rect, new axNumberBox::Info(info)),
+axWidget(parent, rect, new_ axNumberBox::Info(info)),
 // Members.
 _events(events),
 //_info(info),
@@ -281,11 +281,11 @@ _currentColor(&static_cast<Info*>(_info)->normal),
 _nCurrentImg(axNUM_BOX_NORMAL),
 _font(nullptr)
 {
-    _bgImg = new axImage(static_cast<Info*>(_info)->img);
+    _bgImg = new_ axImage(static_cast<Info*>(_info)->img);
     
     _value = axClamp<double>(value, _range.left, _range.right);
     
-    _font = new axFont(0);
+    _font = new_ axFont(0);
     _font->SetFontSize(10);
 
     _zeroToOneValue = _range.GetZeroToOneValue(_value);
@@ -304,7 +304,7 @@ void axNumberBox::SetInfo(const axVectorPairString& attributes)
     std::string path = _info->GetAttributeValue("img");
     if(_bgImg->GetImagePath() != path)
     {
-        _bgImg = new axImage(path);
+        _bgImg = new_ axImage(path);
     }
     
     Update();
@@ -361,7 +361,7 @@ void axNumberBox::OnMouseLeftUp(const axPoint& pos)
             _nCurrentImg = axNUM_BOX_NORMAL;
         }
 
-        PushEvent(Events::VALUE_CHANGE, new Msg(_value));
+        PushEvent(Events::VALUE_CHANGE, new_ Msg(_value));
         Update();
     }
 }
@@ -381,7 +381,7 @@ void axNumberBox::OnMouseLeftDragging(const axPoint& pos)
     _zeroToOneValue = axClamp<double>(_zeroToOneValue, 0.0, 1.0);
     _value = _range.GetValueFromZeroToOne(_zeroToOneValue);
 
-    PushEvent(Events::VALUE_CHANGE, new Msg(_value));
+    PushEvent(Events::VALUE_CHANGE, new_ Msg(_value));
     
     Update();
 }

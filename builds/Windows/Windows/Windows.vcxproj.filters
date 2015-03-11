@@ -27,6 +27,69 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\axWidgets\axAnimatedButton.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axButton.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axDebugButton.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axDropMenu.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axKnob.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axLabel.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axMenu.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axNumberBox.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axPopupMenu.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axScrollBar.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axSlider.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axStaticImage.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axTextBox.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axTextControl.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axToggle.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axWidgets\axWidgetSelector.h">
+      <Filter>axWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axCore\Win32\axCoreWin32.h">
+      <Filter>Core\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axCore\Win32\axDebugWin32.h">
+      <Filter>Core\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axCore\Win32\axWin32Utils.h">
+      <Filter>Core\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axCore\wxWidgets\axCoreWxWidgets.h">
+      <Filter>Core\wxWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\axCore\wxWidgets\axWxPanel.h">
+      <Filter>Core\wxWidgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\axApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -40,6 +103,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\axCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\axDrawingBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\axEvent.h">
@@ -119,75 +185,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\rapidxml.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axAnimatedButton.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axButton.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axDebugButton.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axDropMenu.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axGrid.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axKnob.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axLabel.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axMenu.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axNumberBox.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axPlot.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axPopupMenu.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axScrollBar.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axSlider.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axStaticImage.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axTextBox.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axTextControl.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axToggle.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axWidgets\axWidgetSelector.h">
-      <Filter>axWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axCore\Win32\axCoreWin32.h">
-      <Filter>Core\Win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axCore\Win32\axDebugWin32.h">
-      <Filter>Core\Win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axCore\Win32\axWin32Utils.h">
-      <Filter>Core\Win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axCore\wxWidgets\axCoreWxWidgets.h">
-      <Filter>Core\wxWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\axCore\wxWidgets\axWxPanel.h">
-      <Filter>Core\wxWidgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -293,9 +290,6 @@
     <ClCompile Include="..\..\..\axWidgets\axDropMenu.cpp">
       <Filter>axWidgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\axWidgets\axGrid.cpp">
-      <Filter>axWidgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\axWidgets\axKnob.cpp">
       <Filter>axWidgets</Filter>
     </ClCompile>
@@ -306,9 +300,6 @@
       <Filter>axWidgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\axWidgets\axNumberBox.cpp">
-      <Filter>axWidgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\axWidgets\axPlot.cpp">
       <Filter>axWidgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\axWidgets\axPopupMenu.cpp">
@@ -349,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\axCore\wxWidgets\axWxPanel.cpp">
       <Filter>Core\wxWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\axDrawingBuffer.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

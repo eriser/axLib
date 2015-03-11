@@ -46,7 +46,7 @@ _isReady(false)
         }
         else
         {
-            bool err = FT_New_Memory_Face(_freeType,
+			FT_Error err = FT_New_Memory_Face(_freeType,
                                           GetDefaultFontData(data_index),
                                           GetDefaultFontDataSize(data_index),
                                           0,

@@ -17,18 +17,18 @@
 
 #include "axLib.h"
 
-class BasicGLPane : public wxGLCanvas, public axObject
+class axWxPanel : public wxGLCanvas, public axObject
 {
 public:
 	/***************************************************************************
 	* BasicGLPane::BasicGLPane.
 	**************************************************************************/
-	BasicGLPane(wxPanel* parent,
+	axWxPanel(wxPanel* parent,
 		const wxPoint& pos,
 		const wxSize& size,
 		int* args);
 
-	virtual ~BasicGLPane();
+	virtual ~axWxPanel();
 
 	void resized(wxSizeEvent& evt);
 

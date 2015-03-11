@@ -57,7 +57,7 @@ _lastSelected(nullptr)
     
 	for (int i = 0; i < _labels.size(); i++)
 	{
-		_btns.push_back(new axToggle(this,
+		_btns.push_back(new_ axToggle(this,
 						axRect(axPoint(0, i * LABEL_HEIGHT), tog_size),
 						tog_event, tog_info, bgImg, _labels[i],
                                      axToggle::Flags::CANT_UNSELECT_WITH_MOUSE,
@@ -110,7 +110,7 @@ void axPopupMenu::OnButtonClick(const axToggle::Msg& msg)
 	}
     
     PushEvent(axPopupMenuEvents::SELECTION_CHANGE,
-              new axPopupMenuMsg(msg.GetMsg()));
+              new_ axPopupMenuMsg(msg.GetMsg()));
     
 //    if(_events.selection_change)
 //    {

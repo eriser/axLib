@@ -45,6 +45,8 @@ public:
 
 	axRect GetRect() const;
 	axRect GetAbsoluteRect() const;
+
+	void SetRect(const axRect& rect);
     
 	axSize GetSize() const;
 	void SetSize(const axSize& size);
@@ -113,19 +115,19 @@ public:
     // Mouse events.
     virtual void OnLeftDragging(){}
     virtual void OnRightDragging(){}
-    virtual void OnMouseMotion(const axPoint& pos){}
-    virtual void OnMouseLeftDown(const axPoint& pos){}
-    virtual void OnMouseLeftDoubleClick(const axPoint& pos){}
-    virtual void OnMouseLeftUp(const axPoint& pos){}
-    virtual void OnMouseRightDown(const axPoint& pos){}
+	virtual void OnMouseMotion(const axPoint& pos){ (pos); }
+	virtual void OnMouseLeftDown(const axPoint& pos){ (pos); }
+	virtual void OnMouseLeftDoubleClick(const axPoint& pos){ (pos); }
+	virtual void OnMouseLeftUp(const axPoint& pos){ (pos); }
+	virtual void OnMouseRightDown(const axPoint& pos){ (pos); }
     virtual void OnMouseRightUp(){}
     virtual void OnMouseEnter(){}
     virtual void OnMouseLeave(){}
     virtual void OnFocusIn(){}
-    virtual void OnMouseLeftDragging(const axPoint& pos){}
+	virtual void OnMouseLeftDragging(const axPoint& pos){ (pos); }
     
     // Keyboard events.
-    virtual void OnKeyDown(const char& key){}
+	virtual void OnKeyDown(const char& key){ (key); }
     virtual void OnBackSpaceDown(){}
     virtual void OnEnterDown(){}
     virtual void OnKeyDeleteDown(){}

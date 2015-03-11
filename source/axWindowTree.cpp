@@ -102,15 +102,11 @@ void BeforeDrawing(axWindow* win)
         double sumY = (abs_rect.position.y + shown_rect.position.y +
                        abs_rect.size.y + delta_size_y);
         
-        glScissor(abs_rect.position.x + shown_rect.position.x - 1,
-                  globalY - sumY,
-                  //abs_rect.size.x + delta_size_x + 1,
-                  shown_rect.size.x + 1,
-                  shown_rect.size.y + 1);
-//                  abs_rect.size.y + delta_size_y + 1);
-        
-        
-//        std::cout << "SHOUWN  " << shown_rect.size.x << std::endl;
+		glScissor(GLint(abs_rect.position.x + shown_rect.position.x - 1),
+			GLint(globalY - sumY),
+			GLint(shown_rect.size.x + 1),
+			GLint(shown_rect.size.y + 1));
+
         glEnable(GL_SCISSOR_TEST);
     }
 }
@@ -200,6 +196,14 @@ void axWindowNode::DrawNode()
  ******************************************************************************/
 axWindowTree::axWindowTree()
 {
+}
+
+axWindowTree::~axWindowTree()
+{
+	for (auto& node : _nodes)
+	{
+		delete node;
+	}
 }
 
 std::deque<axWindow*> axWindowTree::GetWindowParents(axWindow* win)
@@ -294,7 +298,7 @@ void axWindowTree::DeleteWindow(axWindow* win)
         std::vector<axWindowNode*> childs = parent->GetChild();
 
         int child_index = -1;
-        for (int i = 0; i < childs.size(); i++)
+        for (int i = 0; i < (int)childs.size(); i++)
         {
             if(childs[i]->window == node->window)
             {
